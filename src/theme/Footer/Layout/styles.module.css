@@ -1,0 +1,42 @@
+.social_container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  width: 100%;
+  padding: 24px 0px;
+  background-color: #f3f3f3;
+}
+[data-theme="dark"] .social_container {
+  
+   background:  #464848
+}
+
+.social_item {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+.social_item span {
+  margin-left: 8px;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+@media screen and (max-width: 900px) {
+  .social_container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .social_container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
