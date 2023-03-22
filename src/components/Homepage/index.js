@@ -19,7 +19,7 @@ const FeatureList = [
     title: "Developers",
     description:
       "Info on how to build on fuse, including API docs and code references.",
-    link: "/docs-developers/Overview",
+    link: "/",
   },
   {
     image: "img/img3.svg",
@@ -51,7 +51,7 @@ const FeatureList = [
     title: "Validators",
     description:
       "See behind the scenes of Fuse, Learn how staking works and join as a validator.",
-    link: "/docs-validators/",
+    link: "/",
   },
 ];
 
