@@ -1,0 +1,37 @@
+---
+sidebar_position: 1
+---
+
+## Fuse Network (ChainID: 122)
+
+| Block size | Block speed | Gas price | Native token | Network ID |
+| ---------- | ----------- | --------- | ------------ | ---------- |
+| 20,000,000 | 5 seconds   | 10 GWei   | FUSE         | 122        |
+
+**RPC**: https://rpc.fuse.io/​
+
+**Chain ID**: 122
+
+**Symbol**: Fuse
+
+**Health**: https://health.fuse.io/
+
+**Explorer**: https://explorer.fuse.io/
+
+## Fuse Spark testnet (ChainID: 123)
+
+| Block size | Block speed | Gas price | Native token | Network ID |
+| ---------- | ----------- | --------- | ------------ | ---------- |
+| 20,000,000 | 5 seconds   | 10 GWei   | FUSE         | 123        |
+
+**RPC**: https://rpc.fusespark.io
+
+**Chain ID**: 123
+
+**Testnet explorer**: https://explorer.fusespark.io
+
+**Symbol**: Fuse
+
+**Health**: https://health.fusespark.io
+
+**Faucet**: you can get some Fuse Sparknet (testnet) tokens at https://get.fusespark.io/
