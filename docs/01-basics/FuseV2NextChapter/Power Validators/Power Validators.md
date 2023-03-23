@@ -23,7 +23,7 @@ In the current setup, these services are offered mainly by Fuse Labs, although t
 - Storage
 - Blockchain indexing
 
-![](<../images/Fuse%20Documentation%20-%20Technical%20Points%20(2).png>)
+![](<./images/Fuse%20Documentation%20-%20Technical%20Points%20(2).png>)
 _Middleware problem_
 
 Power Validators aim to form a reliable and sufficiently decentralized layer that provides those services. At the same time, the Fuse Network provides security and incentivization for those services.
@@ -36,7 +36,7 @@ Blockchain applications and wallets depend on various middleware services extern
 
 Currently, we provide a solution with a hosted service developed and maintained under the umbrella of the Charge platform, already providing a great experience to the developers and end-users.
 
-![](<../images/Fuse%20Documentation%20-%20Technical%20Points%20(1)%20(1).png>)
+![](<./images/Fuse%20Documentation%20-%20Technical%20Points%20(1)%20(1).png>)
 _Trusted Middleware_
 
 ## Becoming a Power Validator

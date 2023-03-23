@@ -1,4 +1,5 @@
 ---
+title: RPC
 sidebar_position: 5
 ---
 

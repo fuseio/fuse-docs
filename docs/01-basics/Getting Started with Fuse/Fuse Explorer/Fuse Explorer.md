@@ -16,7 +16,7 @@ Blockscout is optimized for next-level blockchain exploration. Multichain, highl
 - The ability to read and authenticate smart contracts
 - You can easily tag and keep tabs on your transactions by using the tools under "My Account."
 
-![](../images/image.png)
+![](./images/image.png)
 
 ## Fuse Spark
 
