@@ -1,4 +1,5 @@
 ---
+title: Payment Flow
 sidebar_position: 7
 ---
 

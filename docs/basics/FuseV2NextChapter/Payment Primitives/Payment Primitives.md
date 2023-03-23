@@ -1,4 +1,5 @@
 ---
+title: Payment Primitives
 sidebar_position: 6
 ---
 

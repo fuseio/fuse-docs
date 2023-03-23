@@ -1,4 +1,5 @@
 ---
+title: Add Fuse to MetaMask and Other Wallets
 sidebar_position: 1
 ---
 

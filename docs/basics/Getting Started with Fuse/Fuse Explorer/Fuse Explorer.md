@@ -1,4 +1,5 @@
 ---
+title: Fuse Explorer
 sidebar_position: 6
 ---
 
