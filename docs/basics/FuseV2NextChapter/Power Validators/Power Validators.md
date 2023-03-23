@@ -1,4 +1,5 @@
 ---
+title: Power Validators
 sidebar_position: 3
 ---
 

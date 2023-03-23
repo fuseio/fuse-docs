@@ -1,4 +1,5 @@
 ---
+title: Fuse Today
 sidebar_position: 1
 ---
 

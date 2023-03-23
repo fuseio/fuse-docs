@@ -1,4 +1,5 @@
 ---
+title: Roles and Entities
 sidebar_position: 2
 ---
 

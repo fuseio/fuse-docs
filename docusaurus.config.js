@@ -89,6 +89,7 @@ const config = {
             position: "left",
             label: "Validators",
           },
+          
           {to: '/changelog', label: 'Changelog', position: 'left'}
          
         ],
