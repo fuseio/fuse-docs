@@ -1,4 +1,5 @@
 ---
+title: New consensus Mechanism
 sidebar_position: 5
 ---
 

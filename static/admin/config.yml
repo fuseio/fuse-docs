@@ -1,22 +1,38 @@
 backend:
   name: github
-  branch: main 
+  branch: master 
   repo: fuseio/fuse-docs
-
 # These lines should *not* be indented
 media_folder: "static/img" # Media files will be stored in the repo under static/images/uploads
 public_folder: "/img/" # The src attribute for uploaded media will begin with /images/uploads
 
+
+
 collections:
-- name: blog
-  label: "blog"
-  folder: blog
-  identifier_field: title
-  extension: md
-  widget: "list"
-  create: true
-  slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-  fields:
+-   name: docs
+    label: Docs
+    label_singular: 'Page'
+    folder: docs
+    create: true
+    # adding a nested object will show the collection folder structure
+    nested:
+      depth: 100 # max depth to show in the collection tree
+      summary: '{{title}}' # optional summary for a tree node, defaults to the inferred title field
+    fields:
+      - { label: Position, name: sidebar_position, widget: number }
+      - { label: Title, name: title, widget: string }
+      - { label: Body, name: body, widget: markdown }
+    # adding a meta object with a path property allows editing the path of entries
+    # moving an existing entry will move the entire sub tree of the entry to the new location
+-  name: blog
+   label: "Changelog"
+   folder: blog
+   identifier_field: title
+   extension: md
+   widget: "list"
+   create: true
+   slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+   fields:
     - { name: title, label: Title, widget: string }
     - { name: body, label: Body, widget: markdown }
     - { name: slug, label: Slug, widget: string }
@@ -31,3 +47,25 @@ collections:
         - { name: title, label: Title, widget: string } 
         - { name: url, label: URL, widget: string } 
         - { name: imageUrl, label: ImageURL, widget: string } 
+
+
+# //
+#  -  name: docs
+#     label: 'Docs'
+#     label_singular: 'Doc'
+#     folder: docs
+#     # path: '{{menu}}/{{filename}}'
+#     create: true
+#     nested:
+#       depth: 100 # max depth to show in the collection tree
+#       summary: '{{title}}' 
+#     slug: '{{body}}'
+#     extension: 'md'
+#     format: 'frontmatter'
+#     editor:
+#       preview: false
+#     fields:
+#       # - name: 'menu'
+#       #   label: 'Menu'
+#       - { label: 'Body', name: 'body', widget: 'markdown' }
+
