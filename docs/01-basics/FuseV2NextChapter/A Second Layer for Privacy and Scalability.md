@@ -1,4 +1,5 @@
 ---
+title: A Second Layer for Privacy and Scalability
 sidebar_position: 4
 ---
 

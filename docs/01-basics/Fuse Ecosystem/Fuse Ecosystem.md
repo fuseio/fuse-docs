@@ -1,4 +1,5 @@
 ---
+title: Fuse Ecosystem
 sidebar_position: 3
 ---
 
