@@ -1,5 +1,5 @@
 ---
-title: Fuse Blockchain
+title: Fuse Block
 sidebar_position: 3
 ---
 
