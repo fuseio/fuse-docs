@@ -1,4 +1,5 @@
 ---
+title: Fuse Assembly
 sidebar_position: 3
 description: A governance body formed from active members of the Fuse community.
 ---

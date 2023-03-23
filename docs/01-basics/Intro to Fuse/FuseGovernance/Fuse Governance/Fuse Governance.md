@@ -1,4 +1,5 @@
 ---
+title: Fuse Governance
 sidebar_position: 1
 ---
 

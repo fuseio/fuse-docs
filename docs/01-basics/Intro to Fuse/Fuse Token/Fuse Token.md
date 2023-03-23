@@ -1,4 +1,5 @@
 ---
+title: Fuse Token
 sidebar_position: 5
 ---
 

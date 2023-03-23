@@ -1,4 +1,5 @@
 ---
+title: Fuse Blockchain
 sidebar_position: 3
 ---
 

@@ -1,4 +1,5 @@
 ---
+title: Fuse Consensus
 sidebar_position: 4
 ---
 
