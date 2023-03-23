@@ -1,4 +1,5 @@
 ---
+title: Fuse Payment Infrastructure
 sidebar_position: 6
 ---
 
