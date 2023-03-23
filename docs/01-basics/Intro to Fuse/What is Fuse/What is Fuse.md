@@ -1,4 +1,5 @@
 ---
+title: What is Fuse
 sidebar_position: 1
 ---
 
