@@ -1,4 +1,5 @@
 ---
+title: Network Details
 sidebar_position: 1
 ---
 

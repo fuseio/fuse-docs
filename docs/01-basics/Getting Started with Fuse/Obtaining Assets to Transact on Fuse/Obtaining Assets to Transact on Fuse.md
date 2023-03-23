@@ -1,4 +1,5 @@
 ---
+title: Obtaining Assets to Transact on Fuse
 sidebar_position: 3
 ---
 

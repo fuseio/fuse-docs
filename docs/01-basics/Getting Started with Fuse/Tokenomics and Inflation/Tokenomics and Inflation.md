@@ -1,4 +1,5 @@
 ---
+title: Tokenomics and Inflation
 sidebar_position: 5
 description: The FUSE token supply is set to observe a mildly inflationary model.
 ---
