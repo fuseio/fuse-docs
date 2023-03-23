@@ -1,4 +1,5 @@
 ---
+title: History of Fuse
 sidebar_position: 2
 ---
 
