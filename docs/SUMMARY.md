@@ -89,8 +89,6 @@
 
 ## More
 
-***
-
 * [2023 Technical Roadmap](2023-technical-roadmap.md)
 
 ## Links

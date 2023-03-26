@@ -7,7 +7,7 @@ The standard way for users to connect to the Fuse Network blockchain is with a b
 * Network name: **Fuse Network**
 * ChanId: **122**
 * Gas price: **10 gwei**
-* RPC: [https://rpc.fuse.io/](https://rpc.fuse.io/), or any other from the [list](broken-reference)
+* RPC: [https://rpc.fuse.io/](https://rpc.fuse.io/), or any other from the [list](../rpc.md)
 * Native token: **FUSE**
 * Explorer: [https://explorer.fuse.io/](https://explorer.fuse.io/)
 
