@@ -4,9 +4,9 @@
 
 To be a Spark validator, you first must see that you meet the pre-requirements:
 
-* You know what it means to be a Spark validator - [Becoming a validator](broken-reference).
+* You know what it means to be a Spark validator.
 * You have at least 100K SPARK tokens, or you will have an aggregated delegation of at least 100K SPARK tokens - To apply for SPARK test tokens, fill out this [form](https://forms.monday.com/forms/b5887fc37b5b287df59422a8ec052a32?r=use1)
-* You have an always-on hardware that meets the pre-requisites - [How to run network nodes](https://app.gitbook.com/o/-LdmeTBjede0-BcSd0W0/s/-MQROvzQPC4eD8u5AQhv/c/AuYNVNsGG1QrJ8DFBFZ4/network/how-to-run-network-nodes)
+* You have an always-on hardware that meets the pre-requisites - [How to run network nodes](../../developers/run-or-access-fuse-nodes.md)
 
 ## How to become a Spark validator
 

@@ -26,9 +26,9 @@ Fuse Network is fully compatible with Ethereum, meaning that any smart contract 
 
 The Fuse Network blockchain uses a variant of delegated Proof of Stake (dPoS) for achieving consensus. The consensus is secured by a significant number of independent validators, only one of which is run by the Fuse Foundation.
 
-Validators are also responsible for Fuse's most crucial type of governance: adopting the network protocol changes via [Fuse Improvement Proposals](broken-reference) (FIPs).&#x20;
+Validators are also responsible for Fuse's most crucial type of governance: adopting the network protocol changes via [Fuse Improvement Proposals](fuse-governance-and-development/fips.md) (FIPs).&#x20;
 
-The native token of the network is called FUSE. New FUSE tokens are issued with every added block and used to pay for gas, like Ether (ETH) on Ethereum. For more information about issuing new tokens, please refer to the [tokenomics](broken-reference) section.
+The native token of the network is called FUSE. New FUSE tokens are issued with every added block and used to pay for gas, like Ether (ETH) on Ethereum. For more information about issuing new tokens, please refer to the [tokenomics](fuse-token.md#fuse-tokenomics) section.
 
 The Fuse Network blockchain is designed to ensure fast block confirmation times and a low cost of transactions. The average block interval on Fuse is around 5 seconds, which currently costs less than 1 cent to confirm a transaction.
 
