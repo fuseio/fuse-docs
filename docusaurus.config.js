@@ -73,7 +73,7 @@ const config = {
           },
           {
             type: "doc",
-            docId: "SUMMARY",
+            docId: "/category/intro-to-fuse",
             position: "left",
             label: "Basics",
           },
