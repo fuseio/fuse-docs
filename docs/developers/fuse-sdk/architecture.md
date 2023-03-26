@@ -1,6 +1,6 @@
 # Architecture
 
-<figure><img src="../../.gitbook/assets/123.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/123.png" alt=""/><figcaption></figcaption></figure>
 
 The Fuse Stack is comprised of several essential components, including:
 

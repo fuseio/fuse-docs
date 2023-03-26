@@ -17,7 +17,7 @@ About Blockscout:
 * The ability to read and authenticate smart contracts
 * You can easily tag and keep tabs on your transactions by using the tools under "My Account."
 
-<figure><img src="../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (31).png" alt=""/><figcaption></figcaption></figure>
 
 ### Fuse Spark
 

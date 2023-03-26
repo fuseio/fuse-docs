@@ -23,7 +23,7 @@ wget -O quickstart.sh https://raw.githubusercontent.com/fuseio/fuse-network/mast
 
 It is highly recommended to back up your database folder before attempting!.
 
-Follow the instruction here to upgrade from V13->V16 DBs [https://github.com/openethereum/3.1-db-upgrade-tool](https://github.com/openethereum/3.1-db-upgrade-tool). The database is stored in \<path to quickstart.sh>/fusenet/database/FuseNetwork/db/dee77c98f8210dbb/archive
+Follow the instruction here to upgrade from V13->V16 DBs [https://github.com/openethereum/3.1-db-upgrade-tool](https://github.com/openethereum/3.1-db-upgrade-tool). The database is stored in \<"path to quickstart.sh">/fusenet/database/FuseNetwork/db/dee77c98f8210dbb/archive
 
 ### Step 4 - Update the Client version in env file and rerun quickstart
 

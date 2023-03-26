@@ -73,19 +73,19 @@ const config = {
           },
           {
             type: "doc",
-            docId: "/category/intro-to-fuse",
+            docId: "SUMMARY",
             position: "left",
             label: "Basics",
           },
           {
             type: "doc",
-            docId: "developers/Overview",
+            docId: "developers/fuse-sdk/README",
             position: "left",
             label: "Developers",
           },
           {
             type: "doc",
-            docId: "/category/how-to-become-a-validator",
+            docId: "validators/node-upgrades/README",
             position: "left",
             label: "Validators",
           },
