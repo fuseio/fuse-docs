@@ -14,7 +14,7 @@
 
 ## Bridges&#x20;
 
-Do not send funds to the bridges, use [FuseSwap](https://fuseswap.co) or read the [manual ](broken-reference)
+Do not send funds to the bridges, use [Voltage](https://voltage.finance) or read the [manual](../../understanding-fuse/getting-started-with-fuse/asset-bridges-to-other-chains.md)
 
 ### Ethereum<->Fuse Gooddollar bridge
 

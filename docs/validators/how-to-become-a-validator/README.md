@@ -43,7 +43,7 @@ Community operators are the foremost stakeholders in the network and can upgrade
 
 ### Who can become a validator (Technical requirements)
 
-* See [_Running a validator node_](broken-reference)__
+* See [_Running a validator node_](getting-started-as-a-validator-on-fuse-mainnet.md)__
 
 ### Who shouldn’t become a validator (and what can he still do)
 
