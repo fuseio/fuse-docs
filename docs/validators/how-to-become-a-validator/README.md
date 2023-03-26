@@ -9,7 +9,7 @@ The more communities and users conducting transactions, the more validators will
 
 ### What does it mean to be a validator?
 
-[Any entity holding the Fuse token can run a node](broken-reference) that approves transactions in the network and, in doing so, receive rewards in the form of Fuse tokens (FUSE).
+Any entity holding the Fuse token can run a node that approves transactions in the network and, in doing so, receive rewards in the form of Fuse tokens (FUSE).
 
 Validators are running special software that holds a copy of the Fuse blockchain and validates transactions in the network.
 
