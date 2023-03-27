@@ -2,17 +2,17 @@
 
 ## What are Power Validators?
 
-The role of Power Validators on the Fuse platform is critical in achieving the desired level of decentralization that makes sense for businesses. They are responsible for powering the payment infrastructure of the Fuse platform while also actively validating transactions.&#x20;
+The role of Power Validators on the Fuse platform is critical in achieving the desired level of decentralization that makes sense for businesses. They are responsible for powering the payment infrastructure of the Fuse platform while also actively validating transactions.
 
-Introducing Power Validators is part of our strategy to further decentralize the business processes by running an additional trustless middleware on top of existing validator roles as part of the Fuse network.&#x20;
+Introducing Power Validators is part of our strategy to further decentralize the business processes by running an additional trustless middleware on top of existing validator roles as part of the Fuse network.
 
 Power validators are a big part of the payment flow and will be incentivized by charging a small percentage of the payment for the services provided.
 
-<figure><img src="../../.gitbook/assets/Frame 8.jpg" alt=""/><figcaption></figcaption></figure>
+![](<../../.gitbook/assets/Frame 8.jpg>)
 
 ## Why are they needed?
 
-Blockchain applications and wallets depend on various middleware services external to the on-chain logic. In the Fuse Stack, those services include relayers, account management, wallet APIs, verification, and more.&#x20;
+Blockchain applications and wallets depend on various middleware services external to the on-chain logic. In the Fuse Stack, those services include relayers, account management, wallet APIs, verification, and more.
 
 While Validators are essential for transaction approval, we found that the payment flow we want to provide ([link to docs](https://app.gitbook.com/o/-LdmeTBjede0-BcSd0W0/s/goUiB6chXvy8iVhpHHNd/\~/changes/128/understanding-fuse/fuse-v2-next-chapter/payment-flow)) is much more complex. The payment flow requires an elaborated infrastructure of smart contracts and backend services, and it will have the following additional requirements:
 
@@ -23,13 +23,13 @@ While Validators are essential for transaction approval, we found that the payme
 
 ## Service Quality Verification
 
-The objective is to create a fault-tolerant system enabling high-quality service and a failover architecture. An algorithm to rate and verify the service quality per service needs to be defined. This algorithm can be used for Power Validators' reputation.&#x20;
+The objective is to create a fault-tolerant system enabling high-quality service and a failover architecture. An algorithm to rate and verify the service quality per service needs to be defined. This algorithm can be used for Power Validators' reputation.
 
 We need to consider that evaluating one service is more complex than the other. For example, evaluating QoS for the relayer service is more accessible as it is based on on-chain data. On the other hand, the QoS of an API service has multiple parameters, such as response time failure rate.
 
-## Potential Effect on FUSE Tokenomics&#x20;
+## Potential Effect on FUSE Tokenomics
 
-Becoming a Power Validator on the Fuse network will require more staked FUSE tokens due to the additional services they provide beyond block validation. These services involve critical business operations, which increase the stakes and risks for the operators of the Power Validators.&#x20;
+Becoming a Power Validator on the Fuse network will require more staked FUSE tokens due to the additional services they provide beyond block validation. These services involve critical business operations, which increase the stakes and risks for the operators of the Power Validators.
 
 While the final staking amount and further information on the staking mechanism for Power Validators will be proposed in a subsequent FIP, we expect these additional requirements will significantly impact FUSE tokenomics.
 
@@ -39,7 +39,7 @@ Our plan to achieve the vision of Power Validators consists of two main phases:
 
 ### **Phase 1**
 
-The Relay service is the inaugural service available for Power Validators to operate, and it has been instrumental in the growth of businesses on the Fuse network.&#x20;
+The Relay service is the inaugural service available for Power Validators to operate, and it has been instrumental in the growth of businesses on the Fuse network.
 
 This service facilitated gasless transactions for over 180,000 unique users and has been the backbone of this growth. Permitting Power Validators to operate the Relay service will significantly enhance its robustness and decentralization, ultimately promoting the thriving of the Fuse ecosystem. In addition, Power Validators performing the Relay service will receive rewards through operators' fees.
 
@@ -51,8 +51,8 @@ The reward for payments should not be exclusively tied to gas fees but also to t
 
 Two main factors will define QoS in the context of Relay services of Power Validators:
 
-* Availability: Overall service uptime&#x20;
-* Performance: The duration between when the transaction was sent for relaying and confirmed by the network.&#x20;
+* Availability: Overall service uptime
+* Performance: The duration between when the transaction was sent for relaying and confirmed by the network.
 
 We will discuss these factors in more detail in the upcoming FIP.
 
