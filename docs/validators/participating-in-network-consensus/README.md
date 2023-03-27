@@ -4,7 +4,7 @@ Consensus is a fault-tolerant mechanism used in blockchain systems to achieve th
 
 In PoS, there are a set of validators that are responsible for keeping the network updated and validating the network's state. They do this in turns, and every validator has their turn. On their turn, the validator updates the network's state, and the rest of the validators check that the update is valid.
 
-![](<../../.gitbook/assets/image (30).png>)
+![](<../../.gitbook/assets/image (10).png>)
 
 A consensus contract is used to manage the network validators and delegators list.
 
