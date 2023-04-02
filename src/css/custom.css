@@ -35,8 +35,11 @@
 }
 
 
-footer {
-  background: #ffffff !important;
+/* footer {
+  background: #ffffff ;
+} */
+.pagination-nav__link{
+  background: #ffffff;
 }
 
 [data-theme="dark"] .footer {
@@ -200,7 +203,6 @@ align-items: center;
 
 }
 @media screen and (max-width: 600px) {
- 
 .explore-apis-section-card{
   width: 100%;
   margin:15px 20px 0 0;

@@ -69,7 +69,6 @@ const config = {
         logo: {
           alt: "Fuse_logo",
           src: "img/fuse-logo.png",
-          
         },
         items: [
           {
@@ -94,9 +93,7 @@ const config = {
             position: "left",
             label: "Validators",
           },
-          
           // {to: '/changelog', label: 'Changelog', position: 'left'}
-         
         ],
       },
       // footer: {
@@ -175,7 +172,6 @@ const config = {
       // },
       
       // algolia: {
-
       //   contextualSearch: true,
       // },
     }),
