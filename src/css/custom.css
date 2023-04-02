@@ -6,6 +6,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
+  --ifm-background-color:#F3F3F3;
   --ifm-color-primary: #0b5202;
   --ifm-color-primary-dark: #0a4a02;
   --ifm-color-primary-darker: #094602;
@@ -14,6 +15,7 @@
   --ifm-color-primary-lighter: #0d5e02;
   --ifm-color-primary-lightest: #0e6b03;
   --ifm-code-font-size: 95%;
+  
 }
 [data-theme="dark"] {
   --ifm-color-primary: #89f397;
@@ -24,14 +26,20 @@
   --ifm-color-primary-lighter: #bdf8c5;
   --ifm-color-primary-lightest: #f0fef2;
 }
+.theme-doc-footer-edit-meta-row{
+ background-color: #F3F3F3;
+}
 
 .footer__copyright {
   text-align: left !important;
 }
 
 
-footer {
-  background: #ffffff !important;
+/* footer {
+  background: #ffffff ;
+} */
+.pagination-nav__link{
+  background: #ffffff;
 }
 
 [data-theme="dark"] .footer {
@@ -48,4 +56,158 @@ footer {
 .DocSearch {
   width: 300px;
   height: 20px;
+}
+.first-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 0 0;
+  width:1118px;
+}
+.first-page-header-title{
+  max-width: 595px;
+}
+
+.explore-apis-section{
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+ align-items: center;
+}
+.explore-apis-section-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.explore-apis-section-card{
+  width: 362px;
+  border-radius: 12px;
+  padding: 16px;
+  background-color: #fff;
+  margin:20px 16px 15px 0;
+  height: 140px;
+}
+.explore-apis-section-card:hover {
+  box-shadow: 0px 8px 24px rgba(66, 74, 83, 0.12),
+    0px 1px 3px rgba(66, 74, 83, 0.12);
+}
+.explore-apis-section h2{
+  font-size: 20px;
+  line-height: 28px;
+}
+.explore-apis-section p{
+  font-size: 14px;
+  line-height: 19.6px !important;
+}
+.explore-apis-section-h1{
+  margin-top: 100px;
+  font-size: 20px !important;
+  font-weight: 700;
+  width: 95%;
+}
+.social-section{
+  margin-top: 100px;
+  max-width: 1200px;
+  display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+}
+.social-card{
+    width: 551px;
+    border-radius: 12px;
+    background-color: #B4F9BA;
+    height: 135px;
+    padding: 34px 0 33px 24px;
+    margin: 20px 16px 0 0;
+    color:#000000;
+    position: relative;
+
+}
+.social-card:hover {
+  box-shadow: 0px 8px 24px rgba(66, 74, 83, 0.12),
+    0px 1px 3px rgba(66, 74, 83, 0.12);
+    color: #000000;
+}
+.social-card-title{
+  display: flex;
+justify-content: start;  
+align-items: center;
+}
+.social-card-title h2{
+ margin: 0 0 0 16px ;
+}
+.social-card-title-icon {
+  max-width: 26px;
+  max-height: 26px !important ;
+}
+.social-card-arrow{
+  position: absolute;
+  top: 12%;
+  right: 3%;
+}
+
+@media screen and (max-width: 1100px) {
+  .first-page-header {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .first-page-image {
+    display: none ;
+  }
+  
+  .first-page-header {
+   width: auto;
+  }
+  .first-page-header-title{
+  margin-top: 30px;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center;
+   padding: 0 15px 0 15px;
+  }
+  .explore-apis-section-section{
+    width: 100%;
+  }
+  .explore-apis-section-h1{
+    margin-top: 20px;
+    /* padding-left: 45px ; */
+  }
+  .explore-apis-section-container{
+    margin-top:0 ;
+    
+  }
+  .explore-apis-section-card {
+    margin-top: 5px ;
+  }
+
+  .social-card{
+    justify-content: center;
+    align-items: center;
+    /* width: 86%; */
+    /* padding: 10px 0 10px 8px; */
+ }
+ 
+ .social-section{
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+}
+@media screen and (max-width: 600px) {
+.explore-apis-section-card{
+  width: 100%;
+  margin:15px 20px 0 0;
+}
+.explore-apis-section-section{
+  width: 100%;
+}
 }

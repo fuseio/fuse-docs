@@ -7,11 +7,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Fuse Documentation",
-  url: "https://your-docusaurus-test-site.com",
-  baseUrl: "/",
-  onBrokenLinks: "throw",
+  url: "https://fuse-docs.com",
+  baseUrl: "/v2",
+  onBrokenLinks: "log",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/logo.svg",
+  
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -25,6 +26,7 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  
 
   presets: [
     [
@@ -35,8 +37,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          
         },
         blog: {
           blogTitle: "Changelog",
@@ -57,14 +58,17 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
+      },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
         logo: {
           alt: "Fuse_logo",
-          src: "img/logo_black.svg",
-          srcDark:"img/logo_white.svg",
-          width: 200,
+          src: "img/fuse-logo.png",
         },
         items: [
           {
@@ -79,100 +83,99 @@ const config = {
           },
           {
             type: "doc",
-            docId: "developers/Overview",
+            docId: "developers/fuse-sdk/README",
             position: "left",
             label: "Developers",
           },
           {
             type: "doc",
-            docId: "/category/how-to-become-a-validator",
+            docId: "validators/node-upgrades/README",
             position: "left",
             label: "Validators",
           },
-          
-          {to: '/changelog', label: 'Changelog', position: 'left'}
-         
+          // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],
       },
-      footer: {
-        style: 'light',
-        links:[
-        {
-          title: "Getting Started",
-          items: [
-            { label: "Fuse Studio", to: "/" },
-            {
-              label: "Fuse Staking",
-              to: "/",
-            },
-            {
-              label: "Fuse Swap",
-              to: "/",
-            },
-            {
-              label: "Fuse Cash",
-              to: "/",
-            },
-          ],
-        },
-        {
-          title: "Under the hood",
-          items: [
-            {
-              label: "Fuse Network",
-              to: "/",
-            },
-            {
-              label: "Fuse Token",
-              to: "/",
-            },
-            {
-              label: "Explorer",
-              to: "/",
-            },
-            {
-              label: "Documentation",
-              to: "/",
-            },
-            {
-              label: "Service Status",
-              to: "/",
-            },
-          ],
-        },
-        {
-          title: "General",
-          items: [
-            {
-              label: "About Us",
-              to: "/",
-            },
-            {
-              label: "Privacy Policy",
-              to: "/",
-            },
-            {
-              label: "Brand kit",
-              to: "/",
-            },
-            {
-              label: "Jobs",
-              to: "/",
-            },
-          ],
-        },
-        ],
-        copyright: `© ${new Date().getFullYear()} Fuse. All Rights Reserved`,
-      },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-      },
+      // footer: {
+      //   style: 'light',
+      //   links:[
+      //   {
+      //     title: "Getting Started",
+      //     items: [
+      //       { label: "Fuse Studio", to: "/" },
+      //       {
+      //         label: "Fuse Staking",
+      //         to: "/",
+      //       },
+      //       {
+      //         label: "Fuse Swap",
+      //         to: "/",
+      //       },
+      //       {
+      //         label: "Fuse Cash",
+      //         to: "/",
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     title: "Under the hood",
+      //     items: [
+      //       {
+      //         label: "Fuse Network",
+      //         to: "/",
+      //       },
+      //       {
+      //         label: "Fuse Token",
+      //         to: "/",
+      //       },
+      //       {
+      //         label: "Explorer",
+      //         to: "/",
+      //       },
+      //       {
+      //         label: "Documentation",
+      //         to: "/",
+      //       },
+      //       {
+      //         label: "Service Status",
+      //         to: "/",
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     title: "General",
+      //     items: [
+      //       {
+      //         label: "About Us",
+      //         to: "/",
+      //       },
+      //       {
+      //         label: "Privacy Policy",
+      //         to: "/",
+      //       },
+      //       {
+      //         label: "Brand kit",
+      //         to: "/",
+      //       },
+      //       {
+      //         label: "Jobs",
+      //         to: "/",
+      //       },
+      //     ],
+      //   },
+      //   ],
+      //   copyright: `© ${new Date().getFullYear()} Fuse. All Rights Reserved`,
+      // },
+      // prism: {
+      //   theme: lightCodeTheme,
+      //   darkTheme: darkCodeTheme,
+      // },
+      
       // algolia: {
-        
       //   contextualSearch: true,
       // },
     }),
+    
 };
 
 module.exports = config;
