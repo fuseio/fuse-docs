@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: "Fuse Documentation",
   url: "https://fuse-docs.com",
-  baseUrl: "/v2",
+  baseUrl: "/",
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/logo.svg",
