@@ -7,8 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Fuse Documentation",
-  url: "https://your-docusaurus-test-site.com",
-  baseUrl: "/",
+  url: "https://fuse-docs.com",
+  baseUrl: "/v2",
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/logo.svg",
