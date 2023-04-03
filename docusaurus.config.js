@@ -38,6 +38,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           
+          // exclude: ['**/*/README.md'],
         },
         blog: {
           blogTitle: "Changelog",
