@@ -8,8 +8,6 @@
 .docusaurus
 .cache-loader
 
-#Gitbook readme files
-docs/**README.md
 
 # Misc
 .DS_Store

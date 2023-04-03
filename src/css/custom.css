@@ -5,6 +5,16 @@
  */
 
 /* You can override the default Infima variables here. */
+
+@font-face {
+  font-family: 'Mona Sans';
+  src:
+    url('./MonaSans/Mona-Sans.woff2') format('woff2 supports variations'),
+    url('./MonaSans/Mona-Sans.woff2') format('woff2-variations');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+}
+
 :root {
   --ifm-background-color:#F3F3F3;
   --ifm-color-primary: #0b5202;
@@ -15,7 +25,8 @@
   --ifm-color-primary-lighter: #0d5e02;
   --ifm-color-primary-lightest: #0e6b03;
   --ifm-code-font-size: 95%;
-  
+  --ifm-font-family-base: 'Mona Sans';
+
 }
 [data-theme="dark"] {
   --ifm-color-primary: #89f397;
@@ -211,3 +222,4 @@ align-items: center;
   width: 100%;
 }
 }
+
