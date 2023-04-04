@@ -7,7 +7,7 @@ export function ExploreApisCard({ title, description, href }) {
 
         <Link className='explore-apis-section-card'
             target={href ? "_blank" : "_self"}
-            href={href ? href : ""}>
+            href={href ? href : null}>
 
             <h2>{title}</h2>
             <p>{description}</p>

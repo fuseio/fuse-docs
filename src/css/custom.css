@@ -53,6 +53,13 @@
   background:rgb(238, 249, 253);;
 } */
 
+.theme-doc-sidebar-menu{
+  padding-top: 20px;
+}
+.theme-doc-sidebar-menu li{
+  padding-top: 3px;
+}
+
 .menu__caret:before{
   background: var(--ifm-menu-link-sublist-icon) 50%/1.25rem 1.25rem;
 }
@@ -170,7 +177,7 @@ width: 86px;
     margin: 16px 16px 0 0;
     color:#000000;
     position: relative;
-    transition: all 0.1s;
+    transition: all 0.2s ease-in-out;
 
 }
 .social-card:hover {

@@ -25,9 +25,8 @@ const ExploreApisList = [
       href:'https://api-docs.fuse.io/reference/post_admin-wallets-create'
     },
     {
-      title: "Data APIs",
-      description: 'Access real-time indexed data for balances, tokens, and transactions with ease.',
-      href:''
+      title: "Data APIs (Coming soon)",
+      description: 'Access real-time indexed data for balances, tokens, and transactions with ease.'
     }
   ];
 
