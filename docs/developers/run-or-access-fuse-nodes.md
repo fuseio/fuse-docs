@@ -1,3 +1,6 @@
+---
+sidebar_position: 5
+---
 # Run or Access Fuse Nodes
 
 ## Run Local Node

@@ -1,3 +1,6 @@
+---
+sidebar_position: 6
+---
 # WalletConnect on Fuse
 
 [WalletConnect](https://walletconnect.com) is an open-source protocol for data exchange between wallets and decentralized applications (dApps). The process occurs via a specialized server, and the data flow is encrypted in both directions.

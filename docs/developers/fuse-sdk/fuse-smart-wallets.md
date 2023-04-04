@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Fuse Smart Wallets
 
 ### **What are Smart Wallets?**

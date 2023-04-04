@@ -1,3 +1,6 @@
+---
+sidebar_position: 7
+---
 # Future SDKs
 
 In addition to the current Flutter SDK, we plan to release additional SDKs for other popular languages and frameworks. These SDKs will allow developers to integrate Fuse Smart Wallets into their applications seamlessly.

@@ -1,3 +1,6 @@
+---
+sidebar_position: 4
+---
 # Architecture
 
 <figure><img src="../../.gitbook/assets/123.png" alt=""/><figcaption></figcaption></figure>
