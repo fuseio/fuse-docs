@@ -17,7 +17,7 @@
 
 :root {
   --ifm-background-color:#F3F3F3;
-  --ifm-color-primary: #0b5202;
+  --ifm-color-primary: #20B92E;
   --ifm-color-primary-dark: #0a4a02;
   --ifm-color-primary-darker: #094602;
   --ifm-color-primary-darkest: #083901;
@@ -49,8 +49,22 @@
 /* footer {
   background: #ffffff ;
 } */
-.pagination-nav__link{
-  background: #ffffff;
+/* .pagination-nav__link{
+  background:rgb(238, 249, 253);;
+} */
+
+.theme-doc-sidebar-menu{
+  padding-top: 20px;
+}
+.theme-doc-sidebar-menu li{
+  padding-top: 3px;
+}
+
+.menu__caret:before{
+  background: var(--ifm-menu-link-sublist-icon) 50%/1.25rem 1.25rem;
+}
+.menu__link{
+  font-size: 15px;
 }
 
 [data-theme="dark"] .footer {
@@ -62,6 +76,11 @@
 }
 .navbar{
   box-shadow: none;
+  background-color:#F3F3F3;
+  border-bottom: 1px solid #E5E5E5;
+}
+.navbar img{
+width: 86px;
 }
 
 .DocSearch {
@@ -77,15 +96,34 @@
 }
 .first-page-header-title{
   max-width: 595px;
+  height: 266px;
+}
+.first-page-header-title p{
+    margin-top: 30px;
+    width: 100%;
+    font-size: 20px;
+    line-height: 28px;
+    color:#666666;
+}
+.first-page-image{
+  max-width: 344px;
+  max-height: 251px;
 }
 
 .explore-apis-section{
   max-width: 1200px;
+  margin-top: 100px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
- align-items: center;
+  align-items: center;
+}
+.explore-apis-section-h1{
+  font-size: 20px !important;
+  font-weight: 700;
+  width: 94%;
+  
 }
 .explore-apis-section-container{
   display: flex;
@@ -98,27 +136,31 @@
   border-radius: 12px;
   padding: 16px;
   background-color: #fff;
-  margin:20px 16px 15px 0;
+  margin:20px 16px 0 0;
   height: 140px;
+  transition: all 0.2s;
+
 }
 .explore-apis-section-card:hover {
   box-shadow: 0px 8px 24px rgba(66, 74, 83, 0.12),
     0px 1px 3px rgba(66, 74, 83, 0.12);
+    text-decoration: none;
+
 }
 .explore-apis-section h2{
+  font-weight: bold;
   font-size: 20px;
   line-height: 28px;
+  color: #000000;
+
 }
 .explore-apis-section p{
   font-size: 14px;
-  line-height: 19.6px !important;
+  line-height: 20px;
+  color: #737373
+  ;
 }
-.explore-apis-section-h1{
-  margin-top: 100px;
-  font-size: 20px !important;
-  font-weight: 700;
-  width: 95%;
-}
+
 .social-section{
   margin-top: 100px;
   max-width: 1200px;
@@ -132,15 +174,18 @@
     background-color: #B4F9BA;
     height: 135px;
     padding: 34px 0 33px 24px;
-    margin: 20px 16px 0 0;
+    margin: 16px 16px 0 0;
     color:#000000;
     position: relative;
+    transition: all 0.2s ease-in-out;
 
 }
 .social-card:hover {
   box-shadow: 0px 8px 24px rgba(66, 74, 83, 0.12),
     0px 1px 3px rgba(66, 74, 83, 0.12);
     color: #000000;
+    text-decoration: none;
+    
 }
 .social-card-title{
   display: flex;
