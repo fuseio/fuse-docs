@@ -90,7 +90,7 @@ const config = {
           },
           {
             type: "docSidebar",
-            docId: "validatorsSidebar",
+            sidebarId: "validatorsSidebar",
             position: "left",
             label: "Validators",
           },
