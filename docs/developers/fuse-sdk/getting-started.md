@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Getting Started
 
 ## Creating a Developer Account and Project

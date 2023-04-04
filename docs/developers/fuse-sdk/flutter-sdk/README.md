@@ -1,3 +1,6 @@
+---
+sidebar_position: 5
+---
 # Flutter SDK
 
 Welcome to the Flutter SDK documentation for Fuse Wallet. This SDK enables developers to easily integrate the Fuse Wallet functionality into their Flutter applications, allowing users to manage their digital assets on the Fuse network.&#x20;

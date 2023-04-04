@@ -1,7 +1,9 @@
 ---
+sidebar_position: 4
 description: >-
   Here you will find a growing list of dapp management and development tools
   that you can use on Fuse network.
+  
 ---
 
 # Dapp Development Tools

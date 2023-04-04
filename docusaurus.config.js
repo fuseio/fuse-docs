@@ -38,7 +38,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           
-          // exclude: ['**/*/README.md'],
+          // exclude: ['**/developers/*/*README.md'],
         },
         blog: {
           blogTitle: "Changelog",
@@ -77,20 +77,20 @@ const config = {
             position: "right",
           },
           {
-            type: "doc",
-            docId: "/category/intro-to-fuse",
+            type: "docSidebar",
+            sidebarId: "basicsSidebar",
             position: "left",
             label: "Basics",
           },
           {
             type: "doc",
-            docId: "developers/fuse-sdk/README",
+            docId: "developers/overview",
             position: "left",
             label: "Developers",
           },
           {
-            type: "doc",
-            docId: "validators/node-upgrades/README",
+            type: "docSidebar",
+            sidebarId: "validatorsSidebar",
             position: "left",
             label: "Validators",
           },
