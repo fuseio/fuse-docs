@@ -69,7 +69,7 @@ const config = {
       navbar: {
         logo: {
           alt: "Fuse_logo",
-          src: "img/fuse-logo.png",
+          src: "img/fuse-logo.svg",
         },
         items: [
           {

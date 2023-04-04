@@ -1,6 +1,6 @@
 ---
 description: Projects and platforms on Fuse.
-sidebar_position: 1
+sidebar_position: 4
 ---
 
 # Fuse Ecosystem
