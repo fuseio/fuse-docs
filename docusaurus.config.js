@@ -40,6 +40,10 @@ const config = {
           
           // exclude: ['**/developers/*/*README.md'],
         },
+        gtag: {
+          trackingID: 'G-97ZSEK7BLJ',
+          anonymizeIP: true,
+        },
         blog: {
           blogTitle: "Changelog",
           blogSidebarTitle: "Recent Changes",

@@ -13,6 +13,7 @@
     url('./MonaSans/Mona-Sans.woff2') format('woff2-variations');
   font-weight: 200 900;
   font-stretch: 75% 125%;
+  
 }
 
 :root {
@@ -26,6 +27,7 @@
   --ifm-color-primary-lightest: #0e6b03;
   --ifm-code-font-size: 95%;
   --ifm-font-family-base: 'Mona Sans';
+  /* --ifm-navbar-link-color: red; */
 
 }
 [data-theme="dark"] {
@@ -55,7 +57,9 @@
   /* Hit */
   --docsearch-hit-color: var(--ifm-font-color-base);
   --docsearch-hit-active-color: var(--ifm-color-white);
-  --docsearch-hit-background: var(--ifm-color-white);
+  /* --docsearch-hit-background: red;
+  --docsearch-highlight-color: red; */
+  --docsearch-searchbox-shadow: inset  #000000 0 0 0 1px;
   /* Footer */
   --docsearch-footer-background: var(--ifm-color-white);
 }
