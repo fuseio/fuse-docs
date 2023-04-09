@@ -66,11 +66,38 @@ const config = {
       },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'JSFYQGECI7',
+  
+        // Public API key: it is safe to commit it
+        apiKey: '2a8a6ef22e32bf775c4f948b1ea79350',
+  
+        indexName: 'fuse--fuse-team-v2',
+  
+        // Optional: see doc section below
+        contextualSearch: true,
+  
+        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+        externalUrlRegex: 'external\\.com|domain\\.com',
+  
+        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+     
+  
+        // Optional: Algolia search parameters
+        searchParameters: {},
+  
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: 'search',
+  
+        //... other Algolia params
+      },
       navbar: {
         logo: {
           alt: "Fuse_logo",
           src: "img/fuse-logo.svg",
         },
+        
         items: [
           {
             type: "search",
@@ -171,10 +198,7 @@ const config = {
       //   theme: lightCodeTheme,
       //   darkTheme: darkCodeTheme,
       // },
-      
-      // algolia: {
-      //   contextualSearch: true,
-      // },
+     
     }),
     
 };
