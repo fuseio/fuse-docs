@@ -3,7 +3,7 @@ sidebar_position: 4
 ---
 # Architecture
 
-<figure><img src="../../.gitbook/assets/123.png" alt=""/><figcaption></figcaption></figure>
+![](<../../.gitbook/assets/123.png>)
 
 The Fuse Stack is comprised of several essential components, including:
 

@@ -36,9 +36,10 @@ set "sudo" on `PERMISSION_PREFIX` if running docker/docker-compose requires root
 ./quickstart.sh
 ```
 
-{% hint style="success" %}
+:::tip
+
 After running the script successfully, you will see your address in the [health](https://health.fuse.io/) site.
-{% endhint %}
+:::
 
 ### Step 5: Stake and/or delegate!
 
@@ -46,25 +47,27 @@ After running the script successfully, you will see your address in the [health]
 
 To stake FUSE tokens, all you should do is send your FUSE tokens to the Fuse Consensus contract address over the Fuse network from the validator address.
 
-{% hint style="success" %}
+:::tip
+
 The Fuse Consensus contract address: `0x3014ca10b91cb3D0AD85fEf7A3Cb95BCAc9c0f79`
-{% endhint %}
+:::
 
 The easiest way is to import your private key or key-store file to your favorite wallet (for example, Metamask), switch the network to Fuse, and send the FUSE tokens (native tokens) to the Consensus contract address.
 
-{% hint style="info" %}
+:::info
 You can find your key-store (containing your private key) and the password for the created account in:
 
 `$HOME/fusenet/config/keys/FuseNetwork/UTC--xxxx`
 
 `$HOME/fusenet/config/pass.pwd`
-{% endhint %}
+:::
 
 #### Delegate
 
 To delegate, send the FUSE tokens from any address to the Consensus contract address with the data: `0x5c19a95c000000000000000000000000<address without 0x>`.
 
-{% hint style="success" %}
+:::tip
+
 Example:
 
 For the address: `0xb8ce4a040e8aa33bbe2de62e92851b7d7afd52de`\
@@ -73,14 +76,15 @@ Use: `0x5c19a95c000000000000000000000000b8ce4a040e8aa33bbe2de62e92851b7d7afd52de
 `5c19a95c` is for the `delegate(address)` function signature.
 
 `b8ce4a040e8aa33bbe2de62e92851b7d7afd52de`in this example, is an address you're delegating to (without the `0x` prefix)
-{% endhint %}
+:::
 
 ### Step 6: Wait for one cycle (approximately 48 hours).
 
 Wait until the next cycle is started.
 
-{% hint style="success" %}
+:::tip
+
 You can see that you are validating both in the [health](https://health.fuse.io/) and explorer sites.
-{% endhint %}
+:::
 
 For live support, contact us on [Telegram](https://t.me/fuseio) or [Discord](https://discord.gg/tz7ArR). Good luck, and happy validating!

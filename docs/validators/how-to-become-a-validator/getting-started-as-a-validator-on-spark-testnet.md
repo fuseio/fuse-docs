@@ -39,9 +39,10 @@ TESTNET=true
 ./quickstart.sh
 ```
 
-{% hint style="success" %}
+:::tip
+
 After running the script successfully, you will see your address on the [health](https://health.fuse.io/) site.
-{% endhint %}
+:::
 
 ### Step 4: Stake and/or delegate!
 
@@ -49,25 +50,28 @@ After running the script successfully, you will see your address on the [health]
 
 To stake SPARK tokens, all you should do is send your SPARK tokens to the Spark Consensus contract address over the Spark Network from the validator address.
 
-{% hint style="success" %}
+:::tip
+
 The Spark Consensus contract address: 0xC8c3a332f9e4CE6bfFFcf967026cB006Db2311c7
-{% endhint %}
+:::
 
 The easiest way is to import your private key or key-store file to your favorite wallet (for example, Metamask), switch the network to Spark, and send the SPARK tokens (native testnet tokens) to the Consensus contract address.
 
-{% hint style="info" %}
+:::info
+
 You can find your key-store (containing your private key) and the password for the created account in:
 
 `$HOME/fusenet/config/keys/FuseNetwork/UTC--xxxx`
 
 `$HOME/fusenet/config/pass.pwd`
-{% endhint %}
+:::
 
 #### Delegate
 
 To delegate, send the SPARK tokens from any address to the Consensus contract address with the data: `0x5c19a95c000000000000000000000000<address without 0x>`.
 
-{% hint style="success" %}
+:::tip
+
 Example:
 
 For the address: `0xb8ce4a040e8aa33bbe2de62e92851b7d7afd52de`\
@@ -76,14 +80,15 @@ Use: `0x5c19a95c000000000000000000000000b8ce4a040e8aa33bbe2de62e92851b7d7afd52de
 `5c19a95c` is for the `delegate(address)` function signature.
 
 `b8ce4a040e8aa33bbe2de62e92851b7d7afd52de`in this example, is an address you're delegating to (without the `0x` prefix)
-{% endhint %}
+:::
 
 ### Step 5: Wait for one cycle (approximately 1 hour).
 
 Wait until the next cycle is started.
 
-{% hint style="success" %}
+:::tip
+
 You can see that you are validating both on the[ health](https://health.fusespark.io) site
-{% endhint %}
+:::
 
 For live support, contact us on [Telegram](https://t.me/fuseio) or [Discord](https://discord.gg/tz7ArR). Good luck, and happy validating!

@@ -24,11 +24,12 @@ The stake amount for a validator is the sum of staked and delegated amount to it
 
 This contract is based on `non-reporting ValidatorSet` [described in Parity Wiki](https://wiki.parity.io/Validator-Set.html#non-reporting-contract).
 
-{% hint style="info" %}
+:::info
+
 minimum stake amount = 100,000 Fuse token
 
 cycle duration blocks = 34560 (approximately 2 days)
-{% endhint %}
+:::
 
 ## [Block Reward - 0x63D4efeD2e3dA070247bea3073BCaB896dFF6C9B](https://explorer.fuse.io/address/0x63d4efed2e3da070247bea3073bcab896dff6c9b)
 
@@ -46,7 +47,8 @@ Only network validators can open new ballots, and everyone can vote on them, but
 
 Ballots are opened/closed on the cycle end.
 
-{% hint style="info" %}
+:::info
+
 max number of open ballots = 100
 
 max number of open ballots per validator = 100 / number of validators
@@ -54,7 +56,7 @@ max number of open ballots per validator = 100 / number of validators
 minimum ballot duration (cycles) = 2
 
 maximum ballot duration (cycles) = 14
-{% endhint %}
+:::
 
 ## [Proxy Storage](https://explorer.fuse.io/address/0x23D8634ED1B2662dC96FcE6208fde93258731333)
 
