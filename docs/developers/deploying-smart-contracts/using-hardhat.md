@@ -6,15 +6,14 @@ You may learn more about installing and using Hardhat by reading [the official d
 
 ### Config Hardhat for Fuse Mainnet <a href="#config-hardhat-for-gnosis" id="config-hardhat-for-gnosis"></a>
 
-{% code title="/packages/hardhat-ts/hardhat.config.ts" overflow="wrap" %}
-```typescript
+```typescript title="/packages/hardhat-ts/hardhat.config.ts"
 // Update the default network to be fuse network 
+
 const defaultNetwork = 'fuse';
 ```
-{% endcode %}
 
-{% code title="hardhat.config.js" overflow="wrap" %}
-```typoscript
+ 
+```typescript title="hardhat.config.js" overflow="wrap"
 // Update the RPC endpoints for Fuse Mainnet
     const config: HardhatUserConfig = {
   networks: {
@@ -38,14 +37,13 @@ const defaultNetwork = 'fuse';
   },
 };
 ```
-{% endcode %}
 
-{% code title="hardhat.config.js" overflow="wrap" %}
-```typescript
+
+ 
+```typescript title="hardhat.config.js" overflow="wrap" 
 // Update the TNetworkInfo to be Fuse Network
 export const targetNetworkInfo: TNetworkInfo = NETWORKS.fuse;
 ```
-{% endcode %}
 
 ### Compile Your Smart Contract using Hardhat for Fuse Mainnet <a href="#config-hardhat-for-gnosis" id="config-hardhat-for-gnosis"></a>
 

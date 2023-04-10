@@ -4,9 +4,10 @@ description: For Nodes, Bootnodes and Validators
 
 # Upgrade Guide
 
-{% hint style="info" %}
+:::info
+
 This guide assumes that you have created your node via our [quickstart script](https://github.com/fuseio/fuse-network/blob/master/scripts/quickstart.sh). If you have built your own client using our spec, ensure that your client matches the officially supported client and use the most up-to-date [chain spec](https://github.com/fuseio/fuse-network/blob/master/config/spec.json).
-{% endhint %}
+:::
 
 ### Prerequisites
 
@@ -31,6 +32,4 @@ Wait for script to complete
 
 Check your node on our [health site ](https://health.fuse.io)It should be online, and the client should be "OpenEthereum//v3.2.6-stable" ensure your node is connected to peers and syncing/ in sync.
 
-### &#x20;<a href="#step-3-verify-upgrade" id="step-3-verify-upgrade"></a>
 
-Check your node on our [health site ](https://health.fuse.io/)It should be online, and the client should be "OpenEthereum//v3.2.6-stable" ensure your node is connected to peers and syncing/ in sync.

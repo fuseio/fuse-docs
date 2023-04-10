@@ -61,8 +61,12 @@ const config = {
   ],
 
   themeConfig:
+  
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      prism: {
+        additionalLanguages: ['dart'],
+      },
       colorMode: {
         defaultMode: 'light',
         disableSwitch: true,
@@ -70,6 +74,7 @@ const config = {
       },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
+      
       algolia: {
         // The application ID provided by Algolia
         appId: 'JSFYQGECI7',
@@ -125,6 +130,12 @@ const config = {
             position: "left",
             label: "Validators",
           },
+          {
+            type: "docSidebar",
+            sidebarId: "moreSidebar",
+            position: "left",
+            label: "More",
+          }
           // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],
       },
