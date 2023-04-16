@@ -105,7 +105,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: auto;
   }
+  .container h1 {
+    font-size: 40px !important;
+  }
+  .container p{
+    margin-top: 10px;
+    text-align: start;
+}
+
   .grid {
     width: 100%;
     margin-top: 20px;

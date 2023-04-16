@@ -289,6 +289,10 @@ align-items: center;
    width: auto;
   }
   .first-page-header-title{
+    max-width: 595px;
+    height: auto;
+  }
+  .first-page-header-title{
   margin-top: 30px;
    width: 100%;
    display: flex;
@@ -324,6 +328,7 @@ align-items: center;
   width: 100%;
   margin-top: 10px;
 }
+
 
 
 }
