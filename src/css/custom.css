@@ -83,8 +83,16 @@
 .theme-doc-sidebar-item-link.theme-doc-sidebar-item-link-level-1.menu__list-item a{
 color: #000000;
 }
+.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__list-item.menu__list-item--collapsed a{
+  color: #B3B3B3;
+  }
+
 .menu__link--active{
   font-weight:700;
+}
+
+.theme-doc-markdown.markdown a{
+color: #3D39FC;
 }
 
 /* footer {
