@@ -1,0 +1,49 @@
+---
+id: mint-an-erc-20-token
+title: "Mint an ERC20 token"
+description: "Mints an ERC20 token"
+sidebar_label: "Mint an ERC20 token"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["Tokens"],"description":"Mints an ERC20 token\n\n*   Token must be owned by project's backend account\n*   toAddress is optional and when provided, then newly minted tokens will be transferred to that address","requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"tokenAddress":{"type":"string","example":"0xaf03155DF641f77917803C634E9e4d808ea42ae4"},"amount":{"type":"string","example":"1000"},"toAddress":{"type":"string","example":"0xBE06B7DF117dc1D6cD63aa133d6f4dfa614ed87C"}},"example":{"tokenAddress":"0x6F353A3A737bF3f6442BEc6246411E513285882E","amount":"1000","toAddress":"0xdBDe387a58bbba6cFA352DFE0d77B3003Dc044bB"}}}}},"parameters":[{"name":"API-SECRET","in":"header","schema":{"type":"string"},"description":"(Required) You Secret API key","example":"{{secretKey}}"},{"name":"Content-Type","in":"header","schema":{"type":"string"},"example":"application/json"},{"name":"Accept","in":"header","schema":{"type":"string"},"example":"application/json"},{"name":"apiKey","in":"query","schema":{"type":"string"},"description":"(Required) You Public API key","example":"{{publicKey}}"}],"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"type":"object"},"example":{"job":{"status":"pending","_id":"62b17a6c8c26160014940e84","name":"mint","data":{"tokenAddress":"0xaf03155DF641f77917803C634E9e4d808ea42ae4s","bridgeType":"home","accountAddress":"0xbC3bA1ae0a4Cf6269F79d0D30767C60cB58D7Ff2","amount":"1000000000000000000000","toAddress":"0xBE06B7DF117dc1D6cD63aa133d6f4dfa614ed87C"},"createdAt":"2022-06-21T07:59:40.927Z","updatedAt":"2022-06-21T07:59:40.927Z","__v":0}}}}},"400":{"description":"Bad Request","content":{"text/plain":{"schema":{"type":"string"},"example":""}}},"401":{"description":"Unauthorized","content":{"text/plain":{"schema":{"type":"string"},"example":""}}},"403":{"description":"Forbidden","content":{"text/plain":{"schema":{"type":"string"},"example":""}}}},"method":"post","path":"/admin/tokens/mint","servers":[{"url":"https://api.fuse.io/api/v0"}],"jsonRequestBodyExample":{"tokenAddress":"0x6F353A3A737bF3f6442BEc6246411E513285882E","amount":"1000","toAddress":"0xdBDe387a58bbba6cFA352DFE0d77B3003Dc044bB"},"info":{"title":"Admin API","description":"With Fuse Admin API you can create and manage custodial wallets for your users to offer a Web2-like experience, as well as create, mint, and burn tokens for your economies/communities.","version":"1.0.0"},"postman":{"name":"Mint an ERC20 token","description":{"content":"Mints an ERC20 token\n\n*   Token must be owned by project's backend account\n*   toAddress is optional and when provided, then newly minted tokens will be transferred to that address","type":"text/plain"},"url":{"path":["admin","tokens","mint"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"(Required) You Public API key","type":"text/plain"},"key":"apiKey","value":""}],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) You Secret API key","type":"text/plain"},"key":"API-SECRET","value":""},{"key":"Content-Type","value":"application/json"},{"key":"Accept","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/admin-api/admin-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Mint an ERC20 token
+
+
+
+Mints an ERC20 token
+
+*   Token must be owned by project's backend account
+*   toAddress is optional and when provided, then newly minted tokens will be transferred to that address
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"description":"(Required) You Public API key","example":"{{publicKey}}"}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"API-SECRET","in":"header","schema":{"type":"string"},"description":"(Required) You Secret API key","example":"{{secretKey}}"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"Content-Type","in":"header","schema":{"type":"string"},"example":"application/json"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"Accept","in":"header","schema":{"type":"string"},"example":"application/json"}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"tokenAddress"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"0xaf03155DF641f77917803C634E9e4d808ea42ae4"}}></SchemaItem><SchemaItem collapsible={false} name={"amount"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"1000"}}></SchemaItem><SchemaItem collapsible={false} name={"toAddress"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"0xBE06B7DF117dc1D6cD63aa133d6f4dfa614ed87C"}}></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"201"} value={"201"}><div>
+
+Created
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>object</strong></div></li></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"job\": {\n    \"status\": \"pending\",\n    \"_id\": \"62b17a6c8c26160014940e84\",\n    \"name\": \"mint\",\n    \"data\": {\n      \"tokenAddress\": \"0xaf03155DF641f77917803C634E9e4d808ea42ae4s\",\n      \"bridgeType\": \"home\",\n      \"accountAddress\": \"0xbC3bA1ae0a4Cf6269F79d0D30767C60cB58D7Ff2\",\n      \"amount\": \"1000000000000000000000\",\n      \"toAddress\": \"0xBE06B7DF117dc1D6cD63aa133d6f4dfa614ed87C\"\n    },\n    \"createdAt\": \"2022-06-21T07:59:40.927Z\",\n    \"updatedAt\": \"2022-06-21T07:59:40.927Z\",\n    \"__v\": 0\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>string</strong></div></li></ul></details></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>string</strong></div></li></ul></details></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"403"} value={"403"}><div>
+
+Forbidden
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>string</strong></div></li></ul></details></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

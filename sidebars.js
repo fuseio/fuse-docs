@@ -37,7 +37,64 @@ const sidebars = {
       dirName: 'more'
     },
   ],
-
+  
+  apiSidebar:[
+    {
+      type: 'category',
+      label: 'Admin API',
+      link:{
+        type:"generated-index",
+        title:"Admin API",
+      },
+      items:require('./docs/admin-api/sidebar.js'),
+    },
+    {
+      type: 'category',
+      label: 'Wallet API',
+      link:{
+        type:"generated-index",
+        title:"Wallet API",
+      },
+      items:require('./docs/wallet-api/sidebar.js'),
+    },
+    
+    {
+      type: 'category',
+      label: 'Notification API',
+      link:{
+        type:"generated-index",
+        title:"Notification API",
+      },
+      items:require('./docs/notification-api/sidebar.js'),
+    },
+      {
+        type: 'category',
+        label: 'Smart Wallet API',
+        link:{
+          type:"generated-index",
+          title:"Smart Wallet API",
+        },
+        items:require('./docs/smart-wallet-api/sidebar.js'),
+      },
+      {
+        type: 'category',
+        label: 'Payments API',
+        link:{
+          type:"generated-index",
+          title:"Payments API",
+        },
+        items:require('./docs/payments-api/sidebar.js'),
+      },
+      {
+        type: 'category',
+        label: 'Trade API',
+        link:{
+          type:"generated-index",
+          title:"Trade API",
+        },
+        items:require('./docs/trade-api/sidebar.js'),
+      },
+  ]
 };
 
 module.exports = sidebars;

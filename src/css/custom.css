@@ -13,7 +13,6 @@
     url('./MonaSans/Mona-Sans.woff2') format('woff2-variations');
   font-weight: 200 900;
   font-stretch: 75% 125%;
-  
 }
 
 :root {
@@ -85,10 +84,15 @@ color: #000000;
 }
 .theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__list-item.menu__list-item--collapsed a{
   color: #B3B3B3;
+  
   }
 
 .menu__link--active{
-  font-weight:700;
+  font-weight:600;
+}
+
+.menu__link--active a{
+  background-color: #B4F9BA !important;
 }
 
 .theme-doc-markdown.markdown a{
@@ -111,6 +115,9 @@ color: #3D39FC;
 .menu__list-item-collapsible{
   flex-direction: row-reverse;  
 }
+.menu__list-item-collapsible--active{
+  background-color: #B4F9BA !important;
+}
 .menu__link.menu__link--sublist{
   padding-left: 0;
   
@@ -131,7 +138,7 @@ color: #3D39FC;
 color: #000;
 }
 .menu__link.menu__link--sublist.menu__link--active{
-  font-weight: 700;
+  font-weight: 600;
   }
 
 .menu__caret:before{
@@ -356,5 +363,77 @@ align-items: center;
   }
 }
   
+.api-method > .menu__link {
+  align-items: center;
+  justify-content: start;
+}
+
+.api-method > .menu__link::before {
+  width: 50px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  border: 1px solid;
+  border-inline-start-width: 5px;
+  margin-right: var(--ifm-spacing-horizontal);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.get > .menu__link::before {
+  content: "get";
+  background-color: var(--ifm-color-info-contrast-background);
+  color: var(--ifm-color-info-contrast-foreground);
+  border-color: var(--ifm-color-info-dark);
+}
+
+.post > .menu__link::before {
+  content: "post";
+  background-color: var(--ifm-color-success-contrast-background);
+  color: var(--ifm-color-success-contrast-foreground);
+  border-color: var(--ifm-color-success-dark);
+}
+
+.delete > .menu__link::before {
+  content: "del";
+  background-color: var(--ifm-color-danger-contrast-background);
+  color: var(--ifm-color-danger-contrast-foreground);
+  border-color: var(--ifm-color-danger-dark);
+}
+
+.put > .menu__link::before {
+  content: "put";
+  background-color: var(--ifm-color-warning-contrast-background);
+  color: var(--ifm-color-warning-contrast-foreground);
+  border-color: var(--ifm-color-warning-dark);
+}
+
+.patch > .menu__link::before {
+  content: "patch";
+  background-color: var(--ifm-color-success-contrast-background);
+  color: var(--ifm-color-success-contrast-foreground);
+  border-color: var(--ifm-color-success-dark);
+}
+
+.head > .menu__link::before {
+  content: "head";
+  background-color: var(--ifm-color-secondary-contrast-background);
+  color: var(--ifm-color-secondary-contrast-foreground);
+  border-color: var(--ifm-color-secondary-dark);
+}
 
 
+.menu__link--active:not(.menu__link--sublist) {
+  background-color: #B4F9BA;
+}
+
+
+.docusaurus-theme-classic-lib-theme-DocCard-styles-module{
+  color: #000;
+}
+.card{
+  color:#000 !important;
+}

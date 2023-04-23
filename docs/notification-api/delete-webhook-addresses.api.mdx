@@ -1,0 +1,34 @@
+---
+id: delete-webhook-addresses
+title: "Delete Webhook Addresses"
+description: "Delete addresses from a webhook"
+sidebar_label: "Delete Webhook Addresses"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["Webhooks"],"description":"Delete addresses from a webhook","requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"webhookId":{"type":"string","example":"62d3f2aa15a8393bd802c313"},"addresses":{"type":"array","example":["0x14E138F31b38847Fd7E3462fFfae6b6F91867Fc3"]}},"example":{"webhookId":"62d3f2aa15a8393bd802c313","addresses":["0x14E138F31b38847Fd7E3462fFfae6b6F91867Fc3"]}}}}},"parameters":[{"name":"API-SECRET","in":"header","schema":{"type":"string"},"example":"{{secretKey}}"},{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}"}],"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"type":"object"},"example":{"acknowledged":true,"deletedCount":1}}}}},"method":"post","path":"/notifications/webhook/delete-addresses","servers":[{"url":"https://api.fuse.io/api/v0"}],"jsonRequestBodyExample":{"webhookId":"62d3f2aa15a8393bd802c313","addresses":["0x14E138F31b38847Fd7E3462fFfae6b6F91867Fc3"]},"info":{"title":"Notifications API","version":"1.0.0"},"postman":{"name":"Delete Webhook Addresses","description":{"content":"Delete addresses from a webhook","type":"text/plain"},"url":{"path":["notifications","webhook","delete-addresses"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"apiKey","value":""}],"variable":[]},"header":[{"disabled":false,"description":{"content":"","type":"text/plain"},"key":"API-SECRET","value":""},{"key":"Content-Type","value":"application/json"},{"key":"Accept","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/notification-api/notifications-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Delete Webhook Addresses
+
+
+
+Delete addresses from a webhook
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}"}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"API-SECRET","in":"header","schema":{"type":"string"},"example":"{{secretKey}}"}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"webhookId"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"62d3f2aa15a8393bd802c313"}}></SchemaItem><SchemaItem collapsible={false} name={"addresses"} required={false} schemaName={"array"} qualifierMessage={undefined} schema={{"type":"array","example":["0x14E138F31b38847Fd7E3462fFfae6b6F91867Fc3"]}}></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"201"} value={"201"}><div>
+
+Created
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>object</strong></div></li></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"acknowledged\": true,\n  \"deletedCount\": 1\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

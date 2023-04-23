@@ -37,8 +37,9 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          
           // exclude: ['**/developers/*/*README.md'],
+          docLayoutComponent: "@theme/DocPage",
+          docItemComponent: "@theme/ApiItem", 
         },
         gtag: {
           trackingID: 'G-97ZSEK7BLJ',
@@ -63,6 +64,7 @@ const config = {
   themeConfig:
   
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    
     ({
       prism: {
         additionalLanguages: ['dart'],
@@ -135,6 +137,19 @@ const config = {
             sidebarId: "moreSidebar",
             position: "left",
             label: "More",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "apiSidebar",
+            label: "API references",
+            position: "left",
+            items: [
+              {
+                label: "Wallet API",
+                to: "/category/created-ref/wallets",
+              }
+            ]
+           
           }
           // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],
@@ -215,7 +230,84 @@ const config = {
       // },
      
     }),
-    
+    plugins: [
+      [
+        "docusaurus-plugin-openapi-docs",
+        {
+          id: "api",
+          docsPluginId: "api", // e.g. "classic" or the plugin-content-docs id
+          config: {
+            adminApi: { // "petstore" is considered the <id> that you will reference in the CLI
+              specPath: "api-references/fuse-admin-api.yaml", // path or URL to the OpenAPI spec
+              outputDir: "docs/admin-api", // output directory for generated *.mdx and sidebar.js files
+              sidebarOptions: {
+                groupPathsBy: "tag", // generate a sidebar.js slice that groups operations by tag
+                categoryLinkSource: "tag",
+              }
+            },
+              paymentApi:{
+                specPath: "api-references/payments-api.yaml",
+                outputDir: "docs/payments-api",
+                sidebarOptions: {
+                  groupPathsBy: "tag",
+                  categoryLinkSource: "tag",
+                }
+              },
+              notificationApi:{
+                specPath: "api-references/fuse-notification-api.yaml",
+                outputDir: "docs/notification-api",
+                sidebarOptions: {
+                  groupPathsBy: "tag",
+                  categoryLinkSource: "tag",
+                }
+              },
+              smartWalletApi:{
+                specPath: "api-references/fuse-smart-wallets-api.yaml",
+                outputDir: "docs/smart-wallet-api",
+                sidebarOptions: {
+                  groupPathsBy: "tag",
+                  categoryLinkSource: "tag",
+                }
+              },
+             walletApi:{
+                specPath: "api-references/fuse-wallet-api.yml",
+                outputDir: "docs/wallet-api",
+                sidebarOptions: {
+                  groupPathsBy: "tag",
+                  categoryLinkSource: "tag",
+                }
+              },
+              tradeApi:{
+                specPath: "api-references/trade-api.yaml",
+                outputDir: "docs/trade-api",
+                sidebarOptions: {
+                  groupPathsBy: "tag",
+                  categoryLinkSource: "tag",
+                }
+              },
+          }
+        },
+        // "docusaurus-plugin-openapi-docs",
+        // {
+        //   id: "wallet-api",
+        //   docsPluginId: "classc", // e.g. "classic" or the plugin-content-docs id
+        //   config: {
+        //     reference: { // "petstore" is considered the <id> that you will reference in the CLI
+        //       specPath: "api-references/fuse-wallet-api.yaml", // path or URL to the OpenAPI spec
+        //       outputDir: "docs/wallet-api", // output directory for generated *.mdx and sidebar.js files
+        //       sidebarOptions: {
+        //         groupPathsBy: "tag", // generate a sidebar.js slice that groups operations by tag
+        //         categoryLinkSource: "tag",
+        //       }
+        //     },
+           
+            
+        //   }
+        // },
+      ]
+    ],
+    themes: ["docusaurus-theme-openapi-docs"],
+
 };
 
 module.exports = config;
