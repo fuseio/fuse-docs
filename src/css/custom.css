@@ -375,54 +375,43 @@ align-items: center;
   line-height: 20px;
   text-transform: uppercase;
   font-weight: 600;
-  border-radius: 0.25rem;
+  border-radius:100px;
   border: 1px solid;
-  border-inline-start-width: 5px;
   margin-right: var(--ifm-spacing-horizontal);
   text-align: center;
   flex-shrink: 0;
+  border-color: transparent;
+  color: white;
 }
 
 .get > .menu__link::before {
   content: "get";
-  background-color: var(--ifm-color-info-contrast-background);
-  color: var(--ifm-color-info-contrast-foreground);
-  border-color: var(--ifm-color-info-dark);
+  background-color: #0A7500;
 }
 
 .post > .menu__link::before {
   content: "post";
-  background-color: var(--ifm-color-success-contrast-background);
-  color: var(--ifm-color-success-contrast-foreground);
-  border-color: var(--ifm-color-success-dark);
+  background-color: #000C75;
 }
 
 .delete > .menu__link::before {
   content: "del";
-  background-color: var(--ifm-color-danger-contrast-background);
-  color: var(--ifm-color-danger-contrast-foreground);
-  border-color: var(--ifm-color-danger-dark);
+  background-color: #FF4242;
 }
 
 .put > .menu__link::before {
   content: "put";
-  background-color: var(--ifm-color-warning-contrast-background);
-  color: var(--ifm-color-warning-contrast-foreground);
-  border-color: var(--ifm-color-warning-dark);
+  background-color: #FF9100;
 }
 
 .patch > .menu__link::before {
   content: "patch";
-  background-color: var(--ifm-color-success-contrast-background);
-  color: var(--ifm-color-success-contrast-foreground);
-  border-color: var(--ifm-color-success-dark);
+  background-color: var(--openapi-code-orange);
 }
 
 .head > .menu__link::before {
   content: "head";
-  background-color: var(--ifm-color-secondary-contrast-background);
-  color: var(--ifm-color-secondary-contrast-foreground);
-  border-color: var(--ifm-color-secondary-dark);
+  background-color: var(--ifm-color-secondary-darkest);
 }
 
 
@@ -430,10 +419,15 @@ align-items: center;
   background-color: #B4F9BA;
 }
 
-
-.docusaurus-theme-classic-lib-theme-DocCard-styles-module{
-  color: #000;
+.theme-api-markdown .alert{
+  background-color:#ffffff;
+  border-color: transparent;
+  --docusaurus-details-decoration-color:#000;
+  
 }
+
+
+
 .card{
   color:#000 !important;
 }
