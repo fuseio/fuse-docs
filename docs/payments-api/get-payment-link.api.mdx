@@ -1,0 +1,38 @@
+---
+id: get-payment-link
+title: "Get Payment Link"
+description: "Get a payment link's details including its status."
+sidebar_label: "Get Payment Link"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["Payments"],"description":"Get a payment link's details including its status.","parameters":[{"name":"paymentLinkId","in":"path","schema":{"type":"string"},"required":true,"description":"(Required) Payment link Id","example":"635a73541f25b1f56f7576d7"}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object"},"example":{"_id":"635a73541f25b1f56f7576d7","ownerId":"63458300becbd35a8c2a2703","title":"My payment link","description":"Description","tokenSymbol":"FBXT","tokenAddress":"0x8AB8BBE0bdbf24e57ee4aF11B65D0486323EEbe2","amount":1.5,"backendWalletId":{"_id":"635a73521f25b1f56f7576d5","walletAddress":"0xB902180f8A48188E42129B5B009767C82a9fd33b"},"status":"PENDING","createdAt":"2022-10-27T12:02:28.359Z","updatedAt":"2022-10-27T12:02:28.359Z","__v":0}}}},"404":{"description":"Not Found","content":{"application/json":{"schema":{"type":"object"},"example":{"statusCode":404,"errorMessage":"Payment link with 635a5da6784cdf39a37161a5 not found","path":"/app-store/payments/payment_link/635a5da6784cdf39a37161a5"}}}}},"method":"get","path":"/payments/payment_link/{paymentLinkId}","servers":[{"url":"https://api.fuse.io/app-store/v1"}],"info":{"title":"Payments API","version":"1.0.0"},"postman":{"name":"Get Payment Link","description":{"content":"Get a payment link's details including its status.","type":"text/plain"},"url":{"path":["payments","payment_link",":paymentLinkId"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) (Required) Payment link Id","type":"text/plain"},"type":"any","value":"","key":"paymentLinkId"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/payments-api/payments-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Payment Link
+
+
+
+Get a payment link's details including its status.
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"paymentLinkId","in":"path","schema":{"type":"string"},"required":true,"description":"(Required) Payment link Id","example":"635a73541f25b1f56f7576d7"}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>object</strong></div></li></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"_id\": \"635a73541f25b1f56f7576d7\",\n  \"ownerId\": \"63458300becbd35a8c2a2703\",\n  \"title\": \"My payment link\",\n  \"description\": \"Description\",\n  \"tokenSymbol\": \"FBXT\",\n  \"tokenAddress\": \"0x8AB8BBE0bdbf24e57ee4aF11B65D0486323EEbe2\",\n  \"amount\": 1.5,\n  \"backendWalletId\": {\n    \"_id\": \"635a73521f25b1f56f7576d5\",\n    \"walletAddress\": \"0xB902180f8A48188E42129B5B009767C82a9fd33b\"\n  },\n  \"status\": \"PENDING\",\n  \"createdAt\": \"2022-10-27T12:02:28.359Z\",\n  \"updatedAt\": \"2022-10-27T12:02:28.359Z\",\n  \"__v\": 0\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Not Found
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>object</strong></div></li></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 404,\n  \"errorMessage\": \"Payment link with 635a5da6784cdf39a37161a5 not found\",\n  \"path\": \"/app-store/payments/payment_link/635a5da6784cdf39a37161a5\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      
