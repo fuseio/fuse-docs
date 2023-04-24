@@ -67,7 +67,7 @@ const config = {
     
     ({
       prism: {
-        additionalLanguages: ['dart'],
+        additionalLanguages: ['dart','solidity'],
       },
       colorMode: {
         defaultMode: 'light',
@@ -131,13 +131,7 @@ const config = {
             sidebarId: "validatorsSidebar",
             position: "left",
             label: "Validators",
-          },
-          {
-            type: "docSidebar",
-            sidebarId: "moreSidebar",
-            position: "left",
-            label: "More",
-          },
+          },          
           {
             type: "docSidebar",
             sidebarId: "apiSidebar",

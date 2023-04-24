@@ -426,8 +426,11 @@ align-items: center;
   
 }
 
-
-
 .card{
   color:#000 !important;
+}
+
+
+.collapsibleContent_node_modules-\@docusaurus-theme-common-lib-components-Details-styles-module{
+  border-top: none !important;
 }

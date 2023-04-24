@@ -8,11 +8,11 @@ Fuse Admin API has the following two high-level API sets, which create a capabil
 
 #### Admin Wallet API
 
-With the Admin Wallet API, you can create and manage your users' wallets on the Fuse blockchain. Each wallet created through this API is a Smart Contract wallet deployed on the Fuse blockchain, and your project's backend account owns and manages it. To see how it works, check out the [API Reference](https://api-docs.fuse.io/v1.15/reference/post\_admin-wallets-create).
+With the Admin Wallet API, you can create and manage your users' wallets on the Fuse blockchain. Each wallet created through this API is a Smart Contract wallet deployed on the Fuse blockchain, and your project's backend account owns and manages it. To see how it works, check out the [API Reference](../../admin-api/admin-api.info.mdx).
 
 #### Admin Tokens API
 
-With the Admin Tokens API, you can create and manage ERC20 tokens on the Fuse blockchain. Each token created through this API is a mintable/burnable ERC20 token deployed on the Fuse blockchain, and your project's backend account owns and manages it. To see how it works, check out the [API reference](https://api-docs.fuse.io/v1.15/reference/admin-api-tokens) ).
+With the Admin Tokens API, you can create and manage ERC20 tokens on the Fuse blockchain. Each token created through this API is a mintable/burnable ERC20 token deployed on the Fuse blockchain, and your project's backend account owns and manages it. To see how it works, check out the [API reference](../../admin-api/tokens.tag.mdx).
 
 #### How does it work?
 
@@ -42,6 +42,6 @@ Once you have your project set and access your Public and Secret API keys, you c
 >
 > You should **always** use Admin API only on your server-side applications and not expose your Secret API Key in your client-side applications.
 
-The main thing you need to know when you work with the Admin API is that all requests are handled asynchronously, meaning that when you send a request, you will receive a reference job object with which you can track the status of the task. In each job object, you will see the `id` of the created job, and to track its status, you can use the [Jobs API](https://api-docs.fuse.io/v1.15/reference/jobs).
+The main thing you need to know when you work with the Admin API is that all requests are handled asynchronously, meaning that when you send a request, you will receive a reference job object with which you can track the status of the task. In each job object, you will see the `id` of the created job, and to track its status, you can use the [Jobs API](../../admin-api/jobs-api.tag.mdx).
 
 When a job's status is `succeeded`, which means that the relevant transaction was successfully processed and included in a block on the blockchain. For a successful job, you will also see the `txHash` value, which you can always go and check on [Fuse Explorer](https://explorer.fuse.io/).

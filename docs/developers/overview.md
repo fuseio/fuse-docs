@@ -34,7 +34,7 @@ Our documentation covers a range of topics, from setting up a local development 
 
 ### Community Support
 
-Join our developer community on [Discord](https://discord.gg/ZxN8Zbrk) or [Telegram](https://t.me/fuseio/163566) to get help from other developers and to stay up to date with the latest news and updates from the Fuse team. Our community is a great place to ask questions, share knowledge, and collaborate with other developers.
+Join our developer community on [Discord](https://discord.com/invite/jpPMeSZ) or [Telegram](https://t.me/fuseio/163566) to get help from other developers and to stay up to date with the latest news and updates from the Fuse team. Our community is a great place to ask questions, share knowledge, and collaborate with other developers.
 
 ### Contribute
 

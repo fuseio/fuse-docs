@@ -8,7 +8,7 @@ description: >-
 
 Governance is currently split among the following actors:
 
-**1) Network Validators.** Fuse Network validators are entrusted with deciding whether to adopt [Fuse improvement proposals](https://docs.fuse.io/general/fips) (FIPs).  Regardless of their share of the overall network stake, every validator has one vote, but this will likely change soon.
+**1) Network Validators.** Fuse Network validators are entrusted with deciding whether to adopt [Fuse improvement proposals](./fips.md) (FIPs).  Regardless of their share of the overall network stake, every validator has one vote, but this will likely change soon.
 
 **2) Fuse Foundation and the project team.** Like most public blockchain projects at the initial stage of development, the development of the core network protocol and the Fuse treasury that primarily consists of the undistributed genesis FUSE supply (see the subsection "[FUSE Supply and Current Distribution](https://docs.fuse.io/general/fuse-token/fuse-supply-and-current-distribution)") are currently managed mainly by a foundation.&#x20;
 

@@ -1,3 +1,7 @@
+---
+sidebar_position: 1  
+---
+
 # Introduction
 
 Until today, the development of Fuse as a payment-focused blockchain platform has primarily relied on the infrastructure (middleware stack) created by Fuse Labs.&#x20;

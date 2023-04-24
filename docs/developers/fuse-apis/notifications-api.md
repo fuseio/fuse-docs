@@ -195,7 +195,7 @@ After you have a webhook address (either in your app, or in webhook.site or simi
 
 #### Step 1
 
-Create a webhook with [Create Webhook API](https://api-docs.fuse.io/v1.15/reference/post\_notifications-webhook)
+Create a webhook with [Create Webhook API](../../notification-api/create-webhook.api.mdx)
 
 > #### 📘You can find your `projectId` in the URL of your project page
 >
@@ -203,11 +203,11 @@ Create a webhook with [Create Webhook API](https://api-docs.fuse.io/v1.15/refere
 
 #### Step 2
 
-Add addresses to listen to with [Add Webhook Addresses API](https://api-docs.fuse.io/v1.15/reference/post\_notifications-webhook-add-addresses)
+Add addresses to listen to with [Add Webhook Addresses API](../../notification-api/add-webhook-addresses.api.mdx)
 
 > #### 📘
 >
-> If you don't remember your `webhookId`, you can always fetch all your webhooks with [Get Webhooks for Project](https://api-docs.fuse.io/v1.15/reference/get\_notifications-webhooks-projectid)
+> If you don't remember your `webhookId`, you can always fetch all your webhooks with [Get Webhooks for Project](../../notification-api/get-webhooks-for-project.api.mdx)
 
 #### Step 3
 
@@ -221,14 +221,14 @@ You can always edit or delete your webhook, add or remove addresses, and change 
 >
 > Addresses that you add to webhooks, can be either wallet or token addresses. In all webhook event objects you will see the `addressType` key with the value `Wallet` for wallet addresses or `Token` for token addresses that you subscribed to.
 >
-> \
+> 
 > **Note:** If in any event there is both a wallet address and a token address you subscribed to, you may receive events that may look like duplicates, but you should be able to differentiate between them by looking at the `addressType` field.
 
-* [Delete Webhook](https://api-docs.fuse.io/v1.15/reference/delete\_notifications-webhook)
-* [Update Webhook](https://api-docs.fuse.io/v1.15/reference/put\_notifications-webhook)
-* [Add Webhook Addresses](https://api-docs.fuse.io/v1.15/reference/post\_notifications-webhook-add-addresses)
-* [Delete Webhook Addresses](https://api-docs.fuse.io/v1.15/reference/post\_notifications-webhook-delete-addresses)
+* [Delete Webhook](../../notification-api/delete-webhook.api.mdx)
+* [Update Webhook](../../notification-api/update-webhook.api.mdx)
+* [Add Webhook Addresses](../../notification-api/add-webhook-addresses.api.mdx)
+* [Delete Webhook Addresses](../../notification-api/delete-webhook-addresses.api.mdx)
 
-You can find all the available endpoints in [Webhooks API Reference](https://api-docs.fuse.io/v1.15/reference/webhooks).
+You can find all the available endpoints in [Webhooks API Reference](../../notification-api/webhooks.tag.mdx).
 
-\
+

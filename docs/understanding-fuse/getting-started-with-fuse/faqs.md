@@ -6,7 +6,7 @@ description: Dashboard for monitoring Network Health Status
 
 ### What is Fuse Network?
 
-The Fuse Network is an enterprise-grade, use-case agnostic, reliable, stable, and secure decentralized EVM-compatible public blockchain. Designed for high transaction volumes and microtransactions, Fuse supports DeFi and Gaming applications alongside general blockchain use cases. [Learn more](https://docs.fuse.io/aboutFuse/about-fuse).
+The Fuse Network is an enterprise-grade, use-case agnostic, reliable, stable, and secure decentralized EVM-compatible public blockchain. Designed for high transaction volumes and microtransactions, Fuse supports DeFi and Gaming applications alongside general blockchain use cases. [Learn more](../intro-to-fuse/what-is-fuse.md).
 
 ### Who is the target audience for Fuse?
 
@@ -14,7 +14,7 @@ The Fuse blockchain is for any product or service looking for enterprise-grade, 
 
 ### What is the Fuse SDK?
 
-The Fuse SDK lets companies plug Web3 services and crypto payments into their existing mobile products with business-ready smart contract wallets, eliminating the complexities of Web3. [Learn more](../../readme/fuse-sdk/).
+The Fuse SDK lets companies plug Web3 services and crypto payments into their existing mobile products with business-ready smart contract wallets, eliminating the complexities of Web3. [Learn more](../../developers/fuse-sdk/)
 
 ### How is Fuse Network different from other blockchains?
 
@@ -26,7 +26,7 @@ MetaMask is a blockchain wallet that supports Fuse tokens and NFTs. To interact 
 
 ### What is the FUSE token?
 
-The Fuse Network also has its native token called FUSE. It serves as a medium of exchange within the network and a reward for users who contribute by running validators or developing applications on the platform. [Learn more](https://news.fuse.io/what-is-the-fuse-token-and-why-hold-it/).
+The Fuse Network also has its native token called FUSE. It serves as a medium of exchange within the network and a reward for users who contribute by running validators or developing applications on the platform. [Learn more](../intro-to-fuse/fuse-token.md).
 
 ### Where can I get FUSE tokens?
 

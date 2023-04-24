@@ -12,9 +12,9 @@ The Graph is an indexing protocol for querying networks like Ethereum and IPFS. 
 
 ## To get Started
 
-* [Get Started](https://thegraph.com/docs/en/) Guide
+* [Get Started Guide](https://thegraph.com/docs/en/)
 * [About The Graph](https://thegraph.com/docs/en/about/)
-* What is [Hosted Service](https://thegraph.com/docs/en/deploying/hosted-service/)
+* [What is Hosted Service](https://thegraph.com/docs/en/deploying/hosted-service/)
 
 ## FAQ
 
