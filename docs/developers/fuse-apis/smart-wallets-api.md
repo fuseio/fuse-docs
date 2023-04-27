@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Smart Wallets API
 
 Smart Wallets API provides a Wallets as a Service (WaaS) API for your cross-platform applications. As a developer, you can access the Smart Wallets API via the [fuse-sdk](../fuse-sdk/ "mention") or refer to the [Smart Wallets API reference](../../smart-wallet-api/smart-wallets.tag.mdx) directly.&#x20;

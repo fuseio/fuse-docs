@@ -7,8 +7,8 @@ sidebar_position: 2
 
 ### Q1
 
-* Release the new [Fuse mobile SDK](https://docs.fuse.io/v2/developers/fuse-sdk/flutter-sdk), providing tools to build mobile cross-platform Web3 apps and wallets – **Live.**
-* Launch API Service: The Fuse API Service is a vital part of the services provided to Operators and powers the Fuse SDK. Its components will serve as the foundation for [Power Validators’ ](https://docs.fuse.io/v2/understanding-fuse/fuse-v2-next-chapter/power-validators)services. – **Live**
+* Release the new [Fuse mobile SDK](../../developers/fuse-sdk/flutter-sdk/README.md), providing tools to build mobile cross-platform Web3 apps and wallets – **Live.**
+* Launch API Service: The Fuse API Service is a vital part of the services provided to Operators and powers the Fuse SDK. Its components will serve as the foundation for [Power Validators](../fuse-v2-next-chapter/power-validators) services. – **Live**
 * The [WooCommerce Payment plugin](https://wordpress.org/plugins/charge-web3/) is available for WordPress stores. – **Live**
 * Fuse Improvement Proposal (FIP) for Power Validators.
 
@@ -16,7 +16,7 @@ sidebar_position: 2
 
 * Fuse Improvement Proposal (FIP) for Tokenomics upgrade. We will share details in the FIP.
 * API Service improvements:
-  * New Operators module – [Operators](https://docs.fuse.io/v2/understanding-fuse/fuse-v2-next-chapter/roles-and-entities) will cover user and merchant fees.
+  * New Operators module – [Operators](../fuse-v2-next-chapter/roles-and-entities) will cover user and merchant fees.
   * Smart contract wallet upgrades.
   * EIP-4337 – Account Abstraction compatibility.
 * Web SDK version for the JS ecosystem.
