@@ -68,24 +68,6 @@ const sidebars = {
       },
       items:require('./docs/notification-api/sidebar.js'),
     },
-    {
-      type: 'category',
-      label: 'Wallet API',
-      link:{
-        type:"generated-index",
-        title:"Wallet API",
-      },
-      items:require('./docs/wallet-api/sidebar.js'),
-    },
-      {
-        type: 'category',
-        label: 'Payments API',
-        link:{
-          type:"generated-index",
-          title:"Payments API",
-        },
-        items:require('./docs/payments-api/sidebar.js'),
-      },
   ]
 };
 

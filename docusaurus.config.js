@@ -137,12 +137,6 @@ const config = {
             sidebarId: "apiSidebar",
             label: "API references",
             position: "left",
-            items: [
-              {
-                label: "Wallet API",
-                to: "/category/created-ref/wallets",
-              }
-            ]
            
           }
           // {to: '/changelog', label: 'Changelog', position: 'left'}
@@ -239,14 +233,6 @@ const config = {
                 categoryLinkSource: "tag",
               }
             },
-              paymentApi:{
-                specPath: "api-references/payments-api.yaml",
-                outputDir: "docs/payments-api",
-                sidebarOptions: {
-                  groupPathsBy: "tag",
-                  categoryLinkSource: "tag",
-                }
-              },
               notificationApi:{
                 specPath: "api-references/fuse-notification-api.yaml",
                 outputDir: "docs/notification-api",
@@ -258,14 +244,6 @@ const config = {
               smartWalletApi:{
                 specPath: "api-references/fuse-smart-wallets-api.yaml",
                 outputDir: "docs/smart-wallet-api",
-                sidebarOptions: {
-                  groupPathsBy: "tag",
-                  categoryLinkSource: "tag",
-                }
-              },
-             walletApi:{
-                specPath: "api-references/fuse-wallet-api.yml",
-                outputDir: "docs/wallet-api",
                 sidebarOptions: {
                   groupPathsBy: "tag",
                   categoryLinkSource: "tag",

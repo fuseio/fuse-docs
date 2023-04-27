@@ -1,3 +1,6 @@
+---
+sidebar_position: 3  
+---
 # Features
 
 ## Core Features
@@ -298,7 +301,7 @@ The `getTokenList` function allows you to get the list of tokens owned by a spec
 
 ```dart
 final String address = 'ADDRESS';
-final tokenListData = await fuseWalletSDK.explorerSection.getTokenList(
+final tokenListData = await fuseWalletSDK.explorerModule.getTokenList(
   address,
 );
 tokenListData.pick(
@@ -317,7 +320,7 @@ The `getTokenDetails` function allows you to retrieve detailed information about
 
 ```dart
 final String tokenAddress = 'TOKEN_ADDRESS';
-final tokenDetailsData = await smartWalletsSDK.explorerSection.getTokenDetails(
+final tokenDetailsData = await smartWalletsSDK.explorerModule.getTokenDetails(
   tokenAddress,
 );
 
@@ -338,7 +341,7 @@ The `getTokenBalance` function allows you to retrieve the balance of a specific 
 ```dart
 final String tokenAddress = 'TOKEN_ADDRESS';
 final String smartWalletAddress = 'WALLET_ADDRESS';
-final tokenBalanceData = await smartWalletsSDK.explorerSection.getTokenBalance(
+final tokenBalanceData = await smartWalletsSDK.explorerModule.getTokenBalance(
   tokenAddress,
   smartWalletAddress,
 );
@@ -358,7 +361,7 @@ tokenBalanceData.pick(
 ### Get staking options
 
 ```dart
-final stakingOptionsData = await smartWalletsSDK.stakingSection.getStakingOptions();
+final stakingOptionsData = await smartWalletsSDK.stakingModule.getStakingOptions();
 stakingOptionsData.pick(
   onData: (List<StakingOption> data) {
     // Do you magic here
@@ -462,7 +465,7 @@ if (exceptionOrStream.hasError) {
 
 ```dart
 final smartWalletAddress = 'YOUR_SMART_WALLET_ADDRESS';
-final stakedTokensData = await smartWalletsSDK.stakingSection.getStakedTokens(smartWalletAddress);
+final stakedTokensData = await smartWalletsSDK.stakingModule.getStakedTokens(smartWalletAddress);
 
 stakedTokensData.pick(
   onData: (StakedTokenResponse data) {
@@ -480,7 +483,7 @@ stakedTokensData.pick(
 
 ```dart
 final tokenAddress = 'TOKEN_ADDRESS';
-final priceData = await smartWalletsSDK.tradeSection.price(tokenAddress);
+final priceData = await smartWalletsSDK.tradeModule.price(tokenAddress);
 priceData.pick(
   onData: (String tokenPrice) {
     // Do you magic here
@@ -495,7 +498,7 @@ priceData.pick(
 
 ```dart
 final tokenAddress = 'TOKEN_ADDRESS';
-final priceChangeData = await smartWalletsSDK.tradeSection.priceChange(tokenAddress);
+final priceChangeData = await smartWalletsSDK.tradeModule.priceChange(tokenAddress);
 priceChangeData.pick(
   onData: (String priceInfo) {
     // Do you magic here
@@ -510,7 +513,7 @@ priceChangeData.pick(
 
 ```dart
 final tokenAddress = 'TOKEN_ADDRESS';
-final intervalData = await smartWalletsSDK.tradeSection.interval(tokenAddress, TimeFrame.day);
+final intervalData = await smartWalletsSDK.tradeModule.interval(tokenAddress, TimeFrame.day);
 intervalData.pick(
   onData: (List<IntervalStats> stats) {
     // Do you magic here
@@ -524,7 +527,7 @@ intervalData.pick(
 ### Get the list of supported tokens
 
 ```dart
-final tokensData = await smartWalletsSDK.tradeSection.fetchTokens();
+final tokensData = await smartWalletsSDK.tradeModule.fetchTokens();
 tokensData.pick(
   onData: (List<TokenDetails> tokens) {
     // Do you magic here
