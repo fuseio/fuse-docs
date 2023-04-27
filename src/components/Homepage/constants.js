@@ -2,17 +2,17 @@ const ExploreApisList = [
     {
       title: "Smart Wallets API",
       description: 'Maximize the security and user experience of your apps by leveraging smart contract wallets.',
-      href: 'docs/category/smart-wallet-api/smart-wallets'
+      href: '/docs/smart-wallet-api/smart-wallets'
     },
     {
       title: "Relay API",
       description: 'Use our relay service to cover user transaction fees and remove friction.',
-      href:'docs/smart-wallet-api/relay'
+      href:'/docs/smart-wallet-api/relay'
     },
     {
       title: "Trade API",
       description: 'Enable DeFi functionalities including token swaps, real-time price information, and more in your apps.',
-      href:'docs/category/trade-api'
+      href:'/docs/category/trade-api'
     },
     {
       title: "Notifications API",
