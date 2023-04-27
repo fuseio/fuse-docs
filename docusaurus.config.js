@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Fuse Documentation",
-  url: "https://fuse-docs.com",
+  url: "https://docs.fuse.io",
   baseUrl: "/",
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "warn",
@@ -42,7 +42,7 @@ const config = {
           docItemComponent: "@theme/ApiItem", 
         },
         gtag: {
-          trackingID: 'G-97ZSEK7BLJ',
+          trackingID: 'G-ZQQQ9Q88VY',
           anonymizeIP: true,
         },
         blog: {
