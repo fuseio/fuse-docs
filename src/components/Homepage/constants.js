@@ -2,27 +2,27 @@ const ExploreApisList = [
     {
       title: "Smart Wallets API",
       description: 'Maximize the security and user experience of your apps by leveraging smart contract wallets.',
-      href: 'https://api-docs.fuse.io/reference/post_api-v1-smart-wallets-auth'
+      href: 'docs/category/smart-wallet-api/smart-wallets'
     },
     {
       title: "Relay API",
       description: 'Use our relay service to cover user transaction fees and remove friction.',
-      href:'https://api-docs.fuse.io/reference/post_api-v1-smart-wallets-relay'
+      href:'docs/smart-wallet-api/relay'
     },
     {
       title: "Trade API",
       description: 'Enable DeFi functionalities including token swaps, real-time price information, and more in your apps.',
-      href:'https://api-docs.fuse.io/reference/get_trade-price-tokenaddress'
+      href:'docs/category/trade-api'
     },
     {
       title: "Notifications API",
       description: 'Maximize the security and user experience of your apps by leveraging smart contract wallets.',
-      href:'https://api-docs.fuse.io/reference/post_notifications-webhook'
+      href:'/docs/category/notification-api'
     },
     {
       title: "Admin API",
       description: 'Create and manage custodial wallets and ERC20 tokens for payments, loyalty and more.',
-      href:'https://api-docs.fuse.io/reference/post_admin-wallets-create'
+      href:'/docs/category/admin-api'
     },
     {
       title: "Data APIs (Coming soon)",
