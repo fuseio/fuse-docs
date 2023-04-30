@@ -1,3 +1,6 @@
+---
+sidebar_position: 7
+---
 # Scaling and Consensus Migration
 
 Currently, the Fuse Network blockchain relies on the AuRa consensus mechanism, developed for proof-of-authority blockchains. Still, the Fuse team successfully modified it to run one of the first delegated proof of stake (DPoS) forms. As a result, It enabled on-chain governance and delegated staking.&#x20;
