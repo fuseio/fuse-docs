@@ -27,6 +27,7 @@
 * Fuse V2: Next Chapter
   * Introduction
   * Roles and Entities
+  * Operators
   * Power Validators
   * Payment Primitives
   * Scaling and Consensus Migration

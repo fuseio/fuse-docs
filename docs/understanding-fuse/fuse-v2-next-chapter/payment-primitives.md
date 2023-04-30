@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Payment Primitives
 
 ## Payment Primitives
@@ -84,5 +87,3 @@ When a user wants to pay a merchant, the following steps occur
 * Power Validators receive such transactions, validate them, bundle them, and relay them to the blockchain network.
 * The transactions are confirmed by the validators and added to blocks.
 * The merchants receive the funds in their wallets.
-
-\
