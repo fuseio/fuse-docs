@@ -31,3 +31,10 @@ You can learn more on [https://www.pokt.network/](https://www.pokt.network/)
 Public endpoint: [https://fuse.getblock.io/mainnet/](https://fuse.getblock.io/mainnet/)
 
 You can learn more on [https://getblock.io/](https://getblock.io/)
+
+
+#### OnFinality
+
+Public endpoint: [https://fuse.api.onfinality.io/public](https://fuse.api.onfinality.io/public)
+
+You can learn more on [https://onfinality.io/](https://onfinality.io/)
