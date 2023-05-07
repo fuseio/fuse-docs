@@ -32,7 +32,6 @@ Public endpoint: [https://fuse.getblock.io/mainnet/](https://fuse.getblock.io/ma
 
 You can learn more on [https://getblock.io/](https://getblock.io/)
 
-
 #### OnFinality
 
 Public endpoint: [https://fuse.api.onfinality.io/public](https://fuse.api.onfinality.io/public)
