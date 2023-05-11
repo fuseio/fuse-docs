@@ -1,4 +1,5 @@
 ---
+title: End Of Cycle Flow
 description: >-
   This describes the End-of-Cycle flow that completes the Cycle, handles
   rewards, and enforces the consensus.

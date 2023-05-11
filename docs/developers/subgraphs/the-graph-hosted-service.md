@@ -1,4 +1,5 @@
 ---
+title: The Graph Hosted Service
 description: >-
   Build of The Graph, we expose a GraphQL API to access the data on the Fuse
   Network

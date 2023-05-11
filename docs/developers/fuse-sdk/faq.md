@@ -1,3 +1,6 @@
+---
+title: Faq
+---
 # FAQ
 
 ### What is a Fuse Smart Wallet?

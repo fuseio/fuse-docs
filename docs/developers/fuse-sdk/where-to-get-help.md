@@ -1,3 +1,6 @@
+---
+title: Where To Get Help
+---
 # Where to Get Help
 
 If you have any questions, feedback, or need assistance with the Fuse Wallet SDK, please reach out to us:

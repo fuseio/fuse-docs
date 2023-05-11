@@ -1,4 +1,5 @@
 ---
+title: Flutter SDK
 sidebar_position: 5
 ---
 # Flutter SDK

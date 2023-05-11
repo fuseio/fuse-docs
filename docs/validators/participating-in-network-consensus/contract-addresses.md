@@ -1,3 +1,6 @@
+---
+title: Contract Addresses
+---
 # Contract Addresses
 
 | Contract     | Fuse Network address                        | Spark Testnet address                      |

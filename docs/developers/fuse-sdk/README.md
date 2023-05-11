@@ -1,4 +1,5 @@
 ---
+title: Fuse SDK
 sidebar_position: 2
 ---
 

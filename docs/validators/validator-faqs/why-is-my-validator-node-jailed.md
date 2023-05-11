@@ -1,4 +1,5 @@
 ---
+title: Why Is My Validator Node Jailed
 description: Everything you need to know about jailing and strike counts.
 ---
 

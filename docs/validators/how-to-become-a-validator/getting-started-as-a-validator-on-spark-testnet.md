@@ -1,3 +1,6 @@
+---
+title: Getting Started As A Validator On Spark Testnet
+---
 # Getting started as a validator on Spark testnet
 
 ## Pre-requirements

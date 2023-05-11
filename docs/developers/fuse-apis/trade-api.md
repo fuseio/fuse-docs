@@ -1,3 +1,6 @@
+---
+title: Trade Api
+---
 # Trade API
 
 Trade API lets you integrate trading functionality into your application. With the Trade API, users can buy and sell popular cryptocurrencies like Bitcoin and Ethereum, stablecoins, or custom tokens dedicated to their application domain. Behind the scenes, it uses [voltage.finance](https://voltage.finance/) decentralized exchange.
@@ -26,4 +29,4 @@ Before working with Trade API, if you haven't done so, please follow the guide [
 >
 > For all Trade API requests, you will need to add your Public API Key to the request query params under the key `apiKey`.
 
-Once you have your project set and access to your Public API key, you can start working with the Trade API. Check out the [Trade API Reference](../../trade-api/trade-api.info.mdx) for usage.
+Once you have your project set and access to your Public API key, you can start working with the Trade API. Check out the [Trade API Reference](../../trade-api/trade-api.info.md) for usage.

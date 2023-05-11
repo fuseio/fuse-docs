@@ -1,4 +1,5 @@
 ---
+title: Upgrade Guide
 description: For Nodes, Bootnodes and Validators
 ---
 

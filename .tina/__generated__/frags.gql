@@ -1,0 +1,11 @@
+fragment DocParts on Doc {
+  title
+  description
+  tags
+  body
+}
+
+fragment DropdownsParts on Dropdowns {
+  label
+  position
+}

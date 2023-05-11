@@ -1,4 +1,5 @@
 ---
+title: Validator FAQs
 description: A list of frequently asked questions for the validators
 ---
 

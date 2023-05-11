@@ -1,4 +1,5 @@
 ---
+title: Upgrade Guide Explorer Nodes
 description: This guide is intended specifically for explorer nodes.
 ---
 

@@ -12,6 +12,7 @@ const config = {
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/logo.svg",
+  staticDirectories: ['static'],
   
 
   // GitHub pages deployment config.

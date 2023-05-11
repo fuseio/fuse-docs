@@ -1,3 +1,6 @@
+---
+title: Stake Delegate And Withdraw
+---
 # Stake, Delegate and Withdraw
 
 The requirement to become a Fuse chain validator is having a stake of at least 100,000 FUSE tokens.&#x20;
@@ -15,7 +18,7 @@ There are two options to stake (both should be called from the address which wou
 
 Fuse token holders who don't want to run a node alone but still wish to participate in governing the network can delegate any amount to one of the validators. Delegating is done by calling the \`delegate\` function on the [consensus contract](https://explorer.fuse.io/address/0x3014ca10b91cb3d0ad85fef7a3cb95bcac9c0f79) with the validator address as data (see the screenshot from MEW).
 
-![](<../../.gitbook/assets/delegate-img.png>)
+![](</img/delegate-img.png>)
 
 ## Withdraw <a href="#withdraw" id="withdraw"></a>
 
@@ -24,5 +27,5 @@ Both stakers and validators can withdraw their Fuse tokens, up to the staked/del
 1. 1\. Call the \`withdraw\` function on the [consensus contract](https://explorer.fuse.io/address/0x3014ca10b91cb3d0ad85fef7a3cb95bcac9c0f79) with one parameter - the amount to withdraw. This call is for stakers and will reduce the stake amount of the sender address.
 2. 2\. Call the \`withdraw\` function on the [consensus contract](https://explorer.fuse.io/address/0x3014ca10b91cb3d0ad85fef7a3cb95bcac9c0f79) with two parameters - validator address and amount to withdraw. This call is for both stakers (who can use their address as the parameter) and for delegators to withdraw their delegated stake on a specific validator.
 
-![withdraw option no. 1](<../../.gitbook/assets/withdraw-option2.png>)
-![withdraw option no. 2](<../../.gitbook/assets/withdraw.png>)
+![withdraw option no. 1](</img/withdraw-option2.png>)
+![withdraw option no. 2](</img/withdraw.png>)

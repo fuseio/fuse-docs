@@ -1,3 +1,6 @@
+---
+title: Fuse Token On Other Chains
+---
 # Fuse Token on Other Chains
 
 Fuse Token (FUSE) is the native token on the Fuse Network. Its official versions also exist on the following Layer-1 and 2 networks via the following ERC20 or ERC20-compatible smart contracts:

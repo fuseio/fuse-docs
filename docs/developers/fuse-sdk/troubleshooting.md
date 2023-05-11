@@ -1,3 +1,6 @@
+---
+title: Troubleshooting
+---
 # Troubleshooting
 
 If you encounter any issues while using the Fuse Wallet SDK, here are some troubleshooting steps you can take:

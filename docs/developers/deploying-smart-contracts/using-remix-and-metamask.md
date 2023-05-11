@@ -1,3 +1,6 @@
+---
+title: Using Remix And Metamask
+---
 # Using Remix and Metamask
 
 Remix is an IDE for smart contract development, including compilation, deployment, testing, and debugging.
@@ -21,31 +24,31 @@ Using MetaMask with Remix is an example of Injected Web3, which we shall discuss
 
 
 
-![](<../../.gitbook/assets/remix-online-ide.png>)
+![](//img/remix-online-ide.png)
 <p>Select "Remix online IDE" option</p>
 
-![](<../../.gitbook/assets/image (31).png>)
+![](/img/image(31).png)
 <p>Select "Deploy &#x26; run transactions" option</p>
 
-![](<../../.gitbook/assets/image (12).png>)<p>Select "Injected Provider - Metamask" option under Environment</p>
+![](/img/image(12).png)<p>Select "Injected Provider - Metamask" option under Environment</p>
 
-![](<../../.gitbook/assets/image (21).png>)
+![](/img/image(21).png)
 <p>Select the Metamask Account you want to connect. Make sure you selected Fuse Network in the Metamask Network option.</p>
 
-![](<../../.gitbook/assets/image (26).png>)
+![](/img/image(26).png)
 <p>Click Connect to link your Remix IDE to Metamask with Fuse network connection.</p>
 
-![](<../../.gitbook/assets/connected-remix.png>)
+![](/img/connected-remix.png)
 <p>Remix IDE is successfully connected to Metamask with Fuse Network connection.</p>
 
 ### Compiling your contract in Remix <a href="#compiling-your-contract-in-remix" id="compiling-your-contract-in-remix"></a>
 
-![](<../../.gitbook/assets/image (13).png>)
+![](/img/image(13).png)
 <p>Compiling a smart contract on Fuse Network</p>
 
 ### Deploying your Contract <a href="#deploying-your-contract" id="deploying-your-contract"></a>
 
-![](<../../.gitbook/assets/image.png>)<p>Deploying your smart contract on Fuse Network</p>
+![](/img/image.png)<p>Deploying your smart contract on Fuse Network</p>
 
 You can view your deployed smart contract transaction at Fuse explorers.
 

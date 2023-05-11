@@ -1,3 +1,6 @@
+---
+title: Admin Api
+---
 # Admin API
 
 Admin API lets you build applications on Web3 that feel like traditional Web2 applications without any friction related to Web3 to the users. It is exactly like integrating Stripe or Plaid into your app, but everything behind the scenes is happening on the Fuse blockchain instead of the traditional legacy payment infrastructures.&#x20;
@@ -8,11 +11,11 @@ Fuse Admin API has the following two high-level API sets, which create a capabil
 
 #### Admin Wallet API
 
-With the Admin Wallet API, you can create and manage your users' wallets on the Fuse blockchain. Each wallet created through this API is a Smart Contract wallet deployed on the Fuse blockchain, and your project's backend account owns and manages it. To see how it works, check out the [API Reference](../../admin-api/admin-api.info.mdx).
+With the Admin Wallet API, you can create and manage your users' wallets on the Fuse blockchain. Each wallet created through this API is a Smart Contract wallet deployed on the Fuse blockchain, and your project's backend account owns and manages it. To see how it works, check out the [API Reference](../../admin-api/admin-api.info.d).
 
 #### Admin Tokens API
 
-With the Admin Tokens API, you can create and manage ERC20 tokens on the Fuse blockchain. Each token created through this API is a mintable/burnable ERC20 token deployed on the Fuse blockchain, and your project's backend account owns and manages it. To see how it works, check out the [API reference](../../admin-api/tokens.tag.mdx).
+With the Admin Tokens API, you can create and manage ERC20 tokens on the Fuse blockchain. Each token created through this API is a mintable/burnable ERC20 token deployed on the Fuse blockchain, and your project's backend account owns and manages it. To see how it works, check out the [API reference](../../admin-api/tokens.tag.d).
 
 #### How does it work?
 
@@ -26,7 +29,7 @@ Once you have a secured backend account, all the transactions through the Admin 
 
 #### Before Getting Started
 
-Before working with Admin API, if you haven't done so, please follow the guide [Getting Started](../fuse-sdk/getting-started.md).
+Before working with Admin API, if you haven't done so, please follow the guide [Getting Started](../fuse-sdk/getting-started.d).
 
 > #### 📘For all the Admin APIs you will need to have both your Public and Secret API Keys.
 
@@ -42,6 +45,6 @@ Once you have your project set and access your Public and Secret API keys, you c
 >
 > You should **always** use Admin API only on your server-side applications and not expose your Secret API Key in your client-side applications.
 
-The main thing you need to know when you work with the Admin API is that all requests are handled asynchronously, meaning that when you send a request, you will receive a reference job object with which you can track the status of the task. In each job object, you will see the `id` of the created job, and to track its status, you can use the [Jobs API](../../admin-api/jobs-api.tag.mdx).
+The main thing you need to know when you work with the Admin API is that all requests are handled asynchronously, meaning that when you send a request, you will receive a reference job object with which you can track the status of the task. In each job object, you will see the `id` of the created job, and to track its status, you can use the [Jobs API](../../admin-api/jobs-api.tag.d).
 
 When a job's status is `succeeded`, which means that the relevant transaction was successfully processed and included in a block on the blockchain. For a successful job, you will also see the `txHash` value, which you can always go and check on [Fuse Explorer](https://explorer.fuse.io/).

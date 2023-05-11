@@ -1,4 +1,5 @@
 ---
+title: How To Unjail Your Validator Node
 description: When your validator is jailed, follow these instructions
 ---
 

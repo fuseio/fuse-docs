@@ -1,3 +1,6 @@
+---
+title: Node Upgrades
+---
 # Node Upgrades
 
 Significant updates on the network level are introduced via forks.

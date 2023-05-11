@@ -1,3 +1,6 @@
+---
+title: Getting Started As A Validator On Fuse Mainnet
+---
 # Getting started as a validator on Fuse Mainnet
 
 ## Pre-requirements

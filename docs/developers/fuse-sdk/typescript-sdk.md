@@ -1,4 +1,5 @@
 ---
+title: Typescript Sdk
 sidebar_position: 8
 ---
 # Typescript SDK

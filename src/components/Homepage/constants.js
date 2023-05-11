@@ -77,7 +77,7 @@ const ExploreApisList = [
       title: "Participate in governance",
       description:
         "Learn about governance and how to shape the future of Fuse network through the FIP framework.",
-      link: "/docs/understanding-fuse/intro-to-fuse/fuse-governance-and-development/",
+      link: "/docs/basics/intro-to-fuse/fuse-governance-and-development/",
     },
   ];
 

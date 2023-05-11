@@ -1,4 +1,5 @@
 ---
+title: Working With Walletconnect
 sidebar_position: 9
 ---
 # Working with WalletConnect

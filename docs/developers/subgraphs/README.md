@@ -1,3 +1,6 @@
+---
+title: Subgraphs
+---
 # Subgraphs
 
 The Graph is a decentralized protocol for indexing and querying data from blockchains, starting with Ethereum. It makes it possible to query data that is difficult to query directly. Read more about the graph protocol in the [official documentation](https://thegraph.com/docs/en/about/).

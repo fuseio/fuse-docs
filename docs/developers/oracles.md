@@ -1,6 +1,8 @@
 ---
+title: Oracles
 sidebar_position: 4
 ---
+
 # Oracles
 
 Blockchain oracles are third-party services that provide data to smart contracts running on a blockchain network. Oracles act as intermediaries between the blockchain network and the outside world, enabling smart contracts to execute based on real-world events or data.
@@ -14,3 +16,7 @@ Check the list of [price feeds](https://docs.diadata.org/documentation/oracle-do
 ## Chainlink
 
 A centralized version on Chainlink data feeds will be launched soon.
+
+<Admonition type="danger" title="Test">
+  TEST
+</Admonition>

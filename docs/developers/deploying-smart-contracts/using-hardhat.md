@@ -1,3 +1,6 @@
+---
+title: Using Hardhat
+---
 # Using Hardhat
 
 Hardhat is a development environment for building, deploying, testing, and debugging smart contracts.

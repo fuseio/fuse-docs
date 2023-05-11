@@ -1,4 +1,5 @@
 ---
+title: Fuse Smart Wallets
 sidebar_position: 2
 ---
 # Fuse Smart Wallets
