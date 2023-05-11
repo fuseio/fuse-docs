@@ -6,6 +6,6 @@ sidebar_position: 4
 
 # Fuse Ecosystem
 
-![](/img/spaces_7Xn7uz5nFYpose4Ig9kK_uploads_vd7r96aFXpA85G6z24z2_image.webp)
+![](</img/Screenshot 2023-05-11 at 15.16.49.png>)![]()
 
 ### You can fully explore the Fuse ecosystem by visiting the dedicated page on the [Fuse official website](https://fuse.io/ecosystem).
