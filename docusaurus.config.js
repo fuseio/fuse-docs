@@ -135,6 +135,13 @@ const config = {
           },          
           {
             type: "docSidebar",
+            sidebarId: "tutorialsSidebar",
+            label: "Tutorials",
+            position: "left",
+           
+          },
+          {
+            type: "docSidebar",
             sidebarId: "apiSidebar",
             label: "API references",
             position: "left",
