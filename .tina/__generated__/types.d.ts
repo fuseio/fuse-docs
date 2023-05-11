@@ -204,54 +204,11 @@ export type RichTextFilter = {
   exists?: InputMaybe<Scalars['Boolean']>;
 };
 
-export type DocBodyAdmonitionFilter = {
-  type?: InputMaybe<StringFilter>;
-  title?: InputMaybe<StringFilter>;
-  children?: InputMaybe<RichTextFilter>;
-};
-
-export type DocBodyDetailsFilter = {
-  summary?: InputMaybe<StringFilter>;
-  children?: InputMaybe<RichTextFilter>;
-};
-
-export type DocBodyCodeBlockFilter = {
-  title?: InputMaybe<StringFilter>;
-  language?: InputMaybe<StringFilter>;
-  children?: InputMaybe<RichTextFilter>;
-};
-
-export type DocBodyTabsChildrenTabItemFilter = {
-  label?: InputMaybe<StringFilter>;
-  value?: InputMaybe<StringFilter>;
-  children?: InputMaybe<StringFilter>;
-};
-
-export type DocBodyTabsChildrenFilter = {
-  TabItem?: InputMaybe<DocBodyTabsChildrenTabItemFilter>;
-};
-
-export type DocBodyTabsFilter = {
-  children?: InputMaybe<DocBodyTabsChildrenFilter>;
-};
-
-export type DocBodyDocCardListFilter = {
-  title?: InputMaybe<StringFilter>;
-};
-
-export type DocBodyFilter = {
-  Admonition?: InputMaybe<DocBodyAdmonitionFilter>;
-  Details?: InputMaybe<DocBodyDetailsFilter>;
-  CodeBlock?: InputMaybe<DocBodyCodeBlockFilter>;
-  Tabs?: InputMaybe<DocBodyTabsFilter>;
-  DocCardList?: InputMaybe<DocBodyDocCardListFilter>;
-};
-
 export type DocFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
   tags?: InputMaybe<StringFilter>;
-  body?: InputMaybe<DocBodyFilter>;
+  body?: InputMaybe<RichTextFilter>;
 };
 
 export type DocConnectionEdges = {
@@ -601,7 +558,7 @@ const generateRequester = (client: TinaClient) => {
  **/
 export const ExperimentalGetTinaClient = () =>
   getSdk(
-    generateRequester(createClient({ url: "http://localhost:4001/graphql", queries }))
+    generateRequester(createClient({ url: "https://content.tinajs.io/1.4/content/97ce1e15-5c4d-4c87-8d64-8ca62a3b514f/github/feat/tina-cms", queries }))
   );
 
 export const queries = (client: TinaClient) => {

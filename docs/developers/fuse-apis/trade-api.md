@@ -29,4 +29,4 @@ Before working with Trade API, if you haven't done so, please follow the guide [
 >
 > For all Trade API requests, you will need to add your Public API Key to the request query params under the key `apiKey`.
 
-Once you have your project set and access to your Public API key, you can start working with the Trade API. Check out the [Trade API Reference](../../trade-api/trade-api.info.md) for usage.
+Once you have your project set and access to your Public API key, you can start working with the Trade API. Check out the [Trade API Reference](../../trade-api/trade-api.info.mdx) for usage.

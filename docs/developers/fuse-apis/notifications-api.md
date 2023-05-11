@@ -198,7 +198,7 @@ After you have a webhook address (either in your app, or in webhook.site or simi
 
 #### Step 1
 
-Create a webhook with [Create Webhook API](../../notification-api/create-webhook.api.md)
+Create a webhook with [Create Webhook API](../../notification-api/create-webhook.api.mdx)
 
 > #### 📘You can find your `projectId` in the URL of your project page
 >
@@ -206,11 +206,11 @@ Create a webhook with [Create Webhook API](../../notification-api/create-webhook
 
 #### Step 2
 
-Add addresses to listen to with [Add Webhook Addresses API](../../notification-api/add-webhook-addresses.api.md)
+Add addresses to listen to with [Add Webhook Addresses API](../../notification-api/add-webhook-addresses.api.mdx)
 
 > #### 📘
 >
-> If you don't remember your `webhookId`, you can always fetch all your webhooks with [Get Webhooks for Project](../../notification-api/get-webhooks-for-project.api.md)
+> If you don't remember your `webhookId`, you can always fetch all your webhooks with [Get Webhooks for Project](../../notification-api/get-webhooks-for-project.api.mdx)
 
 #### Step 3
 
@@ -227,11 +227,11 @@ You can always edit or delete your webhook, add or remove addresses, and change 
 > 
 > **Note:** If in any event there is both a wallet address and a token address you subscribed to, you may receive events that may look like duplicates, but you should be able to differentiate between them by looking at the `addressType` field.
 
-* [Delete Webhook](../../notification-api/delete-webhook.api.md)
-* [Update Webhook](../../notification-api/update-webhook.api.md)
-* [Add Webhook Addresses](../../notification-api/add-webhook-addresses.api.md)
-* [Delete Webhook Addresses](../../notification-api/delete-webhook-addresses.api.md)
+* [Delete Webhook](../../notification-api/delete-webhook.api.mdx)
+* [Update Webhook](../../notification-api/update-webhook.api.mdx)
+* [Add Webhook Addresses](../../notification-api/add-webhook-addresses.api.mdx)
+* [Delete Webhook Addresses](../../notification-api/delete-webhook-addresses.api.mdx)
 
-You can find all the available endpoints in [Webhooks API Reference](../../notification-api/webhooks.tag.md).
+You can find all the available endpoints in [Webhooks API Reference](../../notification-api/webhooks.tag.mdx).
 
 
