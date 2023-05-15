@@ -1,5 +1,5 @@
 ---
-title: Network Tutorial
+title: ssNetwork Tutorial
 sidebar_position: 1
 description: 'Here are the articles in this section:'
 ---
