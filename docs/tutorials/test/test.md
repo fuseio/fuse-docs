@@ -1,6 +1,6 @@
 ---
-title: Tutorials
+title: Network Tutorials
 sidebar_position: 1
-description: >-
-  Here you can find Tutorials.
+description: 'Here are the articles in this section:'
 ---
+
