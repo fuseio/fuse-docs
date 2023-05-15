@@ -112,11 +112,54 @@ input RichTextFilter {
   exists: Boolean
 }
 
+input DocBodyAdmonitionFilter {
+  type: StringFilter
+  title: StringFilter
+  children: RichTextFilter
+}
+
+input DocBodyDetailsFilter {
+  summary: StringFilter
+  children: RichTextFilter
+}
+
+input DocBodyCodeBlockFilter {
+  title: StringFilter
+  language: StringFilter
+  children: RichTextFilter
+}
+
+input DocBodyTabsChildrenTabItemFilter {
+  label: StringFilter
+  value: StringFilter
+  children: StringFilter
+}
+
+input DocBodyTabsChildrenFilter {
+  TabItem: DocBodyTabsChildrenTabItemFilter
+}
+
+input DocBodyTabsFilter {
+  children: DocBodyTabsChildrenFilter
+}
+
+input DocBodyDocCardListFilter {
+  title: StringFilter
+}
+
+input DocBodyFilter {
+  Admonition: DocBodyAdmonitionFilter
+  Details: DocBodyDetailsFilter
+  CodeBlock: DocBodyCodeBlockFilter
+  Tabs: DocBodyTabsFilter
+  DocCardList: DocBodyDocCardListFilter
+}
+
 input DocFilter {
   title: StringFilter
   description: StringFilter
   tags: StringFilter
-  body: RichTextFilter
+  body: DocBodyFilter
 }
 
 type DocConnectionEdges {

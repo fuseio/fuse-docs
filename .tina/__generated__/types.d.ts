@@ -204,11 +204,54 @@ export type RichTextFilter = {
   exists?: InputMaybe<Scalars['Boolean']>;
 };
 
+export type DocBodyAdmonitionFilter = {
+  type?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  children?: InputMaybe<RichTextFilter>;
+};
+
+export type DocBodyDetailsFilter = {
+  summary?: InputMaybe<StringFilter>;
+  children?: InputMaybe<RichTextFilter>;
+};
+
+export type DocBodyCodeBlockFilter = {
+  title?: InputMaybe<StringFilter>;
+  language?: InputMaybe<StringFilter>;
+  children?: InputMaybe<RichTextFilter>;
+};
+
+export type DocBodyTabsChildrenTabItemFilter = {
+  label?: InputMaybe<StringFilter>;
+  value?: InputMaybe<StringFilter>;
+  children?: InputMaybe<StringFilter>;
+};
+
+export type DocBodyTabsChildrenFilter = {
+  TabItem?: InputMaybe<DocBodyTabsChildrenTabItemFilter>;
+};
+
+export type DocBodyTabsFilter = {
+  children?: InputMaybe<DocBodyTabsChildrenFilter>;
+};
+
+export type DocBodyDocCardListFilter = {
+  title?: InputMaybe<StringFilter>;
+};
+
+export type DocBodyFilter = {
+  Admonition?: InputMaybe<DocBodyAdmonitionFilter>;
+  Details?: InputMaybe<DocBodyDetailsFilter>;
+  CodeBlock?: InputMaybe<DocBodyCodeBlockFilter>;
+  Tabs?: InputMaybe<DocBodyTabsFilter>;
+  DocCardList?: InputMaybe<DocBodyDocCardListFilter>;
+};
+
 export type DocFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
   tags?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<DocBodyFilter>;
 };
 
 export type DocConnectionEdges = {

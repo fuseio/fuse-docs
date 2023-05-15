@@ -35,24 +35,24 @@ export const titleFromSlug = (slug) => {
 
 export const getDocId = (doc) => {
   return doc
-    .replace(/\.md?$/, "")
+    .replace(/\.mdx?$/, "")
     .split("/")
     .slice(1)
     .join("/");
 };
 
 export const getDocPath = (doc) => {
-  return doc.replace(/\.md?$/, "");
+  return doc.replace(/\.mdx?$/, "");
 };
 
 export const getPageRoute = (page) => {
   return page
-    .replace(/\.md?$/, "")
+    .replace(/\.mdx?$/, "")
     .split("/")
     .slice(2)
     .join("/");
 };
 
 export const getPath = (page) => {
-  return page.replace(/\.md?$/, "");
+  return page.replace(/\.mdx?$/, "");
 };
