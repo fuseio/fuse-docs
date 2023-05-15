@@ -1,9 +1,9 @@
 ---
-title: Network Tutorials
+title: Network Tutorial
 sidebar_position: 1
 description: 'Here are the articles in this section:'
 ---
 
-1. To set up Fuse as a new network on Metamask. Click on the network selector at the top of the app and then choose "Custom RPC" from the list:   
+1. To set up Fuse as a new network on Metamask. Click on the network selector at the top of the app and then choose "Custom RPC" from the list:
 
 ![](/img/image3223232r23.png)
