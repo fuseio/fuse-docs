@@ -434,3 +434,7 @@ align-items: center;
 .collapsibleContent_node_modules-\@docusaurus-theme-common-lib-components-Details-styles-module{
   border-top: none !important;
 }
+.openapi-tabs__schema-item.active{
+  border: 1px solid #ffffff !important;
+  color: #ffffff !important;
+}
