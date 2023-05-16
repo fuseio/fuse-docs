@@ -132,6 +132,13 @@ const config = {
             sidebarId: "validatorsSidebar",
             position: "left",
             label: "Validators",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "tutorialsSidebar",
+            label: "Tutorials",
+            position: "left",
+           
           },          
           {
             type: "docSidebar",
@@ -140,6 +147,7 @@ const config = {
             position: "left",
            
           }
+         
           // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],
       },
