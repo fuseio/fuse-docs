@@ -9,6 +9,7 @@ export const DocPartsFragmentDoc = gql`
     fragment DocParts on Doc {
   title
   description
+  sidebar_position
   tags
   body
 }

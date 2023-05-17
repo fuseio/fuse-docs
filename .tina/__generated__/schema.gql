@@ -92,6 +92,7 @@ union DocumentNode = Doc | Dropdowns | Folder
 type Doc implements Node & Document {
   title: String!
   description: String
+  sidebar_position: Float
   tags: [String]
   body: JSON
   id: ID!
@@ -104,6 +105,16 @@ input StringFilter {
   eq: String
   exists: Boolean
   in: [String]
+}
+
+input NumberFilter {
+  lt: Float
+  lte: Float
+  gte: Float
+  gt: Float
+  eq: Float
+  exists: Boolean
+  in: [Float]
 }
 
 input RichTextFilter {
@@ -158,6 +169,7 @@ input DocBodyFilter {
 input DocFilter {
   title: StringFilter
   description: StringFilter
+  sidebar_position: NumberFilter
   tags: StringFilter
   body: DocBodyFilter
 }
@@ -179,16 +191,6 @@ type Dropdowns implements Node & Document {
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
-}
-
-input NumberFilter {
-  lt: Float
-  lte: Float
-  gte: Float
-  gt: Float
-  eq: Float
-  exists: Boolean
-  in: [Float]
 }
 
 input DropdownsFilter {
@@ -232,6 +234,7 @@ input DocumentMutation {
 input DocMutation {
   title: String
   description: String
+  sidebar_position: Float
   tags: [String]
   body: JSON
 }

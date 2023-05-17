@@ -30,6 +30,11 @@ const DocsCollection = {
       label: "Description",
     },
     {
+      type: "number",
+      name: "sidebar_position",
+      label: "Sidebar-position",
+    },
+    {
       label: "Tags",
       name: "tags",
       type: "string",

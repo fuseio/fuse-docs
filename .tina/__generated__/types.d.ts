@@ -184,6 +184,7 @@ export type Doc = Node & Document & {
   __typename?: 'Doc';
   title: Scalars['String'];
   description?: Maybe<Scalars['String']>;
+  sidebar_position?: Maybe<Scalars['Float']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   body?: Maybe<Scalars['JSON']>;
   id: Scalars['ID'];
@@ -196,6 +197,16 @@ export type StringFilter = {
   eq?: InputMaybe<Scalars['String']>;
   exists?: InputMaybe<Scalars['Boolean']>;
   in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type NumberFilter = {
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  eq?: InputMaybe<Scalars['Float']>;
+  exists?: InputMaybe<Scalars['Boolean']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
 };
 
 export type RichTextFilter = {
@@ -250,6 +261,7 @@ export type DocBodyFilter = {
 export type DocFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
+  sidebar_position?: InputMaybe<NumberFilter>;
   tags?: InputMaybe<StringFilter>;
   body?: InputMaybe<DocBodyFilter>;
 };
@@ -274,16 +286,6 @@ export type Dropdowns = Node & Document & {
   id: Scalars['ID'];
   _sys: SystemInfo;
   _values: Scalars['JSON'];
-};
-
-export type NumberFilter = {
-  lt?: InputMaybe<Scalars['Float']>;
-  lte?: InputMaybe<Scalars['Float']>;
-  gte?: InputMaybe<Scalars['Float']>;
-  gt?: InputMaybe<Scalars['Float']>;
-  eq?: InputMaybe<Scalars['Float']>;
-  exists?: InputMaybe<Scalars['Boolean']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
 };
 
 export type DropdownsFilter = {
@@ -381,6 +383,7 @@ export type DocumentMutation = {
 export type DocMutation = {
   title?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
+  sidebar_position?: InputMaybe<Scalars['Float']>;
   tags?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   body?: InputMaybe<Scalars['JSON']>;
 };
@@ -390,7 +393,7 @@ export type DropdownsMutation = {
   position?: InputMaybe<Scalars['Float']>;
 };
 
-export type DocPartsFragment = { __typename?: 'Doc', title: string, description?: string | null, tags?: Array<string | null> | null, body?: any | null };
+export type DocPartsFragment = { __typename?: 'Doc', title: string, description?: string | null, sidebar_position?: number | null, tags?: Array<string | null> | null, body?: any | null };
 
 export type DropdownsPartsFragment = { __typename?: 'Dropdowns', label: string, position?: number | null };
 
@@ -399,7 +402,7 @@ export type DocQueryVariables = Exact<{
 }>;
 
 
-export type DocQuery = { __typename?: 'Query', doc: { __typename?: 'Doc', id: string, title: string, description?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type DocQuery = { __typename?: 'Query', doc: { __typename?: 'Doc', id: string, title: string, description?: string | null, sidebar_position?: number | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type DocConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']>;
@@ -411,7 +414,7 @@ export type DocConnectionQueryVariables = Exact<{
 }>;
 
 
-export type DocConnectionQuery = { __typename?: 'Query', docConnection: { __typename?: 'DocConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DocConnectionEdges', cursor: string, node?: { __typename?: 'Doc', id: string, title: string, description?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type DocConnectionQuery = { __typename?: 'Query', docConnection: { __typename?: 'DocConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DocConnectionEdges', cursor: string, node?: { __typename?: 'Doc', id: string, title: string, description?: string | null, sidebar_position?: number | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type DropdownsQueryVariables = Exact<{
   relativePath: Scalars['String'];
@@ -436,6 +439,7 @@ export const DocPartsFragmentDoc = gql`
     fragment DocParts on Doc {
   title
   description
+  sidebar_position
   tags
   body
 }
