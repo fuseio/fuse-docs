@@ -133,13 +133,13 @@ const config = {
             position: "left",
             label: "Validators",
           },
-          {
-            type: "docSidebar",
-            sidebarId: "tutorialsSidebar",
-            label: "Tutorials",
-            position: "left",
+          // {
+          //   type: "docSidebar",
+          //   sidebarId: "tutorialsSidebar",
+          //   label: "Tutorials",
+          //   position: "left",
            
-          },          
+          // },          
           {
             type: "docSidebar",
             sidebarId: "apiSidebar",
