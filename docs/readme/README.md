@@ -1,8 +1,0 @@
----
-layout: landing
----
-
-# developers
-
-
-
