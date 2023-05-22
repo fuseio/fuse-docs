@@ -12,6 +12,7 @@ const config = {
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/logo.svg",
+  staticDirectories: ['static'],
   
 
   // GitHub pages deployment config.
@@ -79,12 +80,12 @@ const config = {
       
       algolia: {
         // The application ID provided by Algolia
-        appId: 'JSFYQGECI7',
+        appId: 'NPQ4ZLHJEE',
   
         // Public API key: it is safe to commit it
-        apiKey: '2a8a6ef22e32bf775c4f948b1ea79350',
+        apiKey: '634a56f04a07683a37e4462981e0a754',
   
-        indexName: 'fuse--fuse-team-v2',
+        indexName: 'fuseio',
   
         // Optional: see doc section below
         contextualSearch: true,
@@ -131,6 +132,13 @@ const config = {
             sidebarId: "validatorsSidebar",
             position: "left",
             label: "Validators",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "tutorialsSidebar",
+            label: "Tutorials",
+            position: "left",
+           
           },          
           {
             type: "docSidebar",
@@ -139,6 +147,7 @@ const config = {
             position: "left",
            
           }
+         
           // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],
       },

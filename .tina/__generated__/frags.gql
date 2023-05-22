@@ -1,0 +1,12 @@
+fragment DocParts on Doc {
+  title
+  description
+  sidebar_position
+  tags
+  body
+}
+
+fragment DropdownsParts on Dropdowns {
+  label
+  position
+}
