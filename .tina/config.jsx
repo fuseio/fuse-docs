@@ -9,7 +9,7 @@ import title from "title";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
-  "feat/tina-cms";
+  "master";
 
 const DocsCollection = {
   name: "doc",
@@ -80,8 +80,8 @@ const DropdownCollection = {
 
 export default defineConfig({
   branch,
-  clientId: "97ce1e15-5c4d-4c87-8d64-8ca62a3b514f", // Get this from tina.io
-  token: "035e1913af3b6d7ea5ad390354583e2408dbf0c6", // Get this from tina.io
+  clientId: process.env.clientId, // Get this from tina.io
+  token: process.env.token, // Get this from tina.io
   build: {
     outputFolder: "admin",
     publicFolder: "static",
