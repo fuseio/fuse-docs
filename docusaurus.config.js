@@ -224,8 +224,10 @@ const config = {
     [
       'docusaurus-plugin-yandex-metrica',
       {
-        counterID: '94018505',
+        counterID: '86645179',
       },
+    ],
+    [
       'docusaurus-plugin-openapi-docs',
       {
         id: 'api',
