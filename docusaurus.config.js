@@ -1,19 +1,18 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer/themes/github')
+const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Fuse Documentation",
-  url: "https://docs.fuse.io",
-  baseUrl: "/",
-  onBrokenLinks: "log",
-  onBrokenMarkdownLinks: "warn",
-  favicon: "img/logo.svg",
+  title: 'Fuse Documentation',
+  url: 'https://docs.fuse.io',
+  baseUrl: '/',
+  onBrokenLinks: 'log',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/logo.svg',
   staticDirectories: ['static'],
-  
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -27,7 +26,6 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-  
 
   presets: [
     [
@@ -39,18 +37,18 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // exclude: ['**/developers/*/*README.md'],
-          docLayoutComponent: "@theme/DocPage",
-          docItemComponent: "@theme/ApiItem", 
+          docLayoutComponent: '@theme/DocPage',
+          docItemComponent: '@theme/ApiItem',
         },
         gtag: {
           trackingID: 'G-ZQQQ9Q88VY',
           anonymizeIP: true,
         },
         blog: {
-          blogTitle: "Changelog",
-          blogSidebarTitle: "Recent Changes",
-          postsPerPage: "ALL",
-          routeBasePath: "/changelog",
+          blogTitle: 'Changelog',
+          blogSidebarTitle: 'Recent Changes',
+          postsPerPage: 'ALL',
+          routeBasePath: '/changelog',
           showReadingTime: true,
           readingTime: ({ content, frontMatter, defaultReadingTime }) =>
             defaultReadingTime({ content, options: { wordsPerMinute: 300 } }),
@@ -63,12 +61,11 @@ const config = {
   ],
 
   themeConfig:
-  
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    
+
     ({
       prism: {
-        additionalLanguages: ['dart','solidity'],
+        additionalLanguages: ['dart', 'solidity'],
       },
       colorMode: {
         defaultMode: 'light',
@@ -77,77 +74,74 @@ const config = {
       },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
-      
+
       algolia: {
         // The application ID provided by Algolia
         appId: 'NPQ4ZLHJEE',
-  
+
         // Public API key: it is safe to commit it
         apiKey: '634a56f04a07683a37e4462981e0a754',
-  
+
         indexName: 'fuseio',
-  
+
         // Optional: see doc section below
         contextualSearch: true,
-  
+
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
         externalUrlRegex: 'external\\.com|domain\\.com',
-  
+
         // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-     
-  
+
         // Optional: Algolia search parameters
         searchParameters: {},
-  
+
         // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: 'search',
-  
+
         //... other Algolia params
       },
       navbar: {
         logo: {
-          alt: "Fuse_logo",
-          src: "img/fuse-logo.svg",
+          alt: 'Fuse_logo',
+          src: 'img/fuse-logo.svg',
         },
-        
+
         items: [
           {
-            type: "search",
-            position: "right",
+            type: 'search',
+            position: 'right',
           },
           {
-            type: "docSidebar",
-            sidebarId: "basicsSidebar",
-            position: "left",
-            label: "Basics",
+            type: 'docSidebar',
+            sidebarId: 'basicsSidebar',
+            position: 'left',
+            label: 'Basics',
           },
           {
-            type: "doc",
-            docId: "developers/overview",
-            position: "left",
-            label: "Developers",
+            type: 'doc',
+            docId: 'developers/overview',
+            position: 'left',
+            label: 'Developers',
           },
           {
-            type: "docSidebar",
-            sidebarId: "validatorsSidebar",
-            position: "left",
-            label: "Validators",
+            type: 'docSidebar',
+            sidebarId: 'validatorsSidebar',
+            position: 'left',
+            label: 'Validators',
           },
           {
-            type: "docSidebar",
-            sidebarId: "tutorialsSidebar",
-            label: "Tutorials",
-            position: "left",
-           
-          },          
+            type: 'docSidebar',
+            sidebarId: 'tutorialsSidebar',
+            label: 'Tutorials',
+            position: 'left',
+          },
           {
-            type: "docSidebar",
-            sidebarId: "apiSidebar",
-            label: "API references",
-            position: "left",
-           
-          }
-         
+            type: 'docSidebar',
+            sidebarId: 'apiSidebar',
+            label: 'API references',
+            position: 'left',
+          },
+
           // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],
       },
@@ -225,70 +219,74 @@ const config = {
       //   theme: lightCodeTheme,
       //   darkTheme: darkCodeTheme,
       // },
-     
     }),
-    plugins: [
-      [
-        "docusaurus-plugin-openapi-docs",
-        {
-          id: "api",
-          docsPluginId: "api", // e.g. "classic" or the plugin-content-docs id
-          config: {
-            adminApi: { // "petstore" is considered the <id> that you will reference in the CLI
-              specPath: "api-references/fuse-admin-api.yaml", // path or URL to the OpenAPI spec
-              outputDir: "docs/admin-api", // output directory for generated *.mdx and sidebar.js files
-              sidebarOptions: {
-                groupPathsBy: "tag", // generate a sidebar.js slice that groups operations by tag
-                categoryLinkSource: "tag",
-              }
-            },
-              notificationApi:{
-                specPath: "api-references/fuse-notification-api.yaml",
-                outputDir: "docs/notification-api",
-                sidebarOptions: {
-                  groupPathsBy: "tag",
-                  categoryLinkSource: "tag",
-                }
-              },
-              smartWalletApi:{
-                specPath: "api-references/fuse-smart-wallets-api.yaml",
-                outputDir: "docs/smart-wallet-api",
-                sidebarOptions: {
-                  groupPathsBy: "tag",
-                  categoryLinkSource: "tag",
-                }
-              },
-              tradeApi:{
-                specPath: "api-references/trade-api.yaml",
-                outputDir: "docs/trade-api",
-                sidebarOptions: {
-                  groupPathsBy: "tag",
-                  categoryLinkSource: "tag",
-                }
-              },
-          }
-        },
-        // "docusaurus-plugin-openapi-docs",
-        // {
-        //   id: "wallet-api",
-        //   docsPluginId: "classc", // e.g. "classic" or the plugin-content-docs id
-        //   config: {
-        //     reference: { // "petstore" is considered the <id> that you will reference in the CLI
-        //       specPath: "api-references/fuse-wallet-api.yaml", // path or URL to the OpenAPI spec
-        //       outputDir: "docs/wallet-api", // output directory for generated *.mdx and sidebar.js files
-        //       sidebarOptions: {
-        //         groupPathsBy: "tag", // generate a sidebar.js slice that groups operations by tag
-        //         categoryLinkSource: "tag",
-        //       }
-        //     },
-           
-            
-        //   }
-        // },
-      ]
+  plugins: [
+    [
+      'docusaurus-plugin-yandex-metrica',
+      {
+        counterID: '86645179',
+      },
     ],
-    themes: ["docusaurus-theme-openapi-docs"],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'api',
+        docsPluginId: 'api', // e.g. "classic" or the plugin-content-docs id
+        config: {
+          adminApi: {
+            // "petstore" is considered the <id> that you will reference in the CLI
+            specPath: 'api-references/fuse-admin-api.yaml', // path or URL to the OpenAPI spec
+            outputDir: 'docs/admin-api', // output directory for generated *.mdx and sidebar.js files
+            sidebarOptions: {
+              groupPathsBy: 'tag', // generate a sidebar.js slice that groups operations by tag
+              categoryLinkSource: 'tag',
+            },
+          },
+          notificationApi: {
+            specPath: 'api-references/fuse-notification-api.yaml',
+            outputDir: 'docs/notification-api',
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+              categoryLinkSource: 'tag',
+            },
+          },
+          smartWalletApi: {
+            specPath: 'api-references/fuse-smart-wallets-api.yaml',
+            outputDir: 'docs/smart-wallet-api',
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+              categoryLinkSource: 'tag',
+            },
+          },
+          tradeApi: {
+            specPath: 'api-references/trade-api.yaml',
+            outputDir: 'docs/trade-api',
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+              categoryLinkSource: 'tag',
+            },
+          },
+        },
+      },
+      // "docusaurus-plugin-openapi-docs",
+      // {
+      //   id: "wallet-api",
+      //   docsPluginId: "classc", // e.g. "classic" or the plugin-content-docs id
+      //   config: {
+      //     reference: { // "petstore" is considered the <id> that you will reference in the CLI
+      //       specPath: "api-references/fuse-wallet-api.yaml", // path or URL to the OpenAPI spec
+      //       outputDir: "docs/wallet-api", // output directory for generated *.mdx and sidebar.js files
+      //       sidebarOptions: {
+      //         groupPathsBy: "tag", // generate a sidebar.js slice that groups operations by tag
+      //         categoryLinkSource: "tag",
+      //       }
+      //     },
 
-};
+      //   }
+      // },
+    ],
+  ],
+  themes: ['docusaurus-theme-openapi-docs'],
+}
 
-module.exports = config;
+module.exports = config
