@@ -224,7 +224,7 @@ const config = {
     [
       'docusaurus-plugin-yandex-metrica',
       {
-        counterID: '86645179',
+        counterID: '94018505',
         webvisor: true,
       },
     ],
