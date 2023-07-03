@@ -6,13 +6,13 @@ import MailChimpNewsLetter from '../../MailSubsription/MailChimpNewsLetter.js'
 function ColumnLinkItem({ item }) {
   return item.html ? (
     <li
-      className='footer__item'
+      className={styles.footer__item}
       // Developer provided the HTML, so assume it's safe.
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: item.html }}
     />
   ) : (
-    <li key={item.href ?? item.to} className='footer__item'>
+    <li key={item.href ?? item.to} className={styles.footer__item}>
       <LinkItem item={item} />
     </li>
   )

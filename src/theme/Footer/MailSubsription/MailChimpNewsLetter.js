@@ -21,7 +21,7 @@ const CustomForm = ({ status, message, onValidated }) => {
   return (
     <div className={styles.mailChimp}>
       <div className={styles.mailChimp__title}>Subscribe to Newsletter</div>
-      <div className={styles.mailChimp__description}>Description Sample</div>
+      {/* <div className={styles.mailChimp__description}>Description Sample</div> */}
       <Formik
         initialValues={{ email: '' }}
         validationSchema={SignupSchema}

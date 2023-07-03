@@ -22,6 +22,9 @@
 .footerColumn {
   width: 250px;
 }
+.footer__item {
+  margin-top: 10px;
+}
 .input_container button {
   background-color: #000;
   color: #fff;
