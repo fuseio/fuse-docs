@@ -66,6 +66,7 @@ const config = {
     ({
       prism: {
         additionalLanguages: ['dart', 'solidity'],
+        theme: lightCodeTheme,
       },
       colorMode: {
         defaultMode: 'light',
@@ -145,80 +146,64 @@ const config = {
           // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],
       },
-      // footer: {
-      //   style: 'light',
-      //   links:[
-      //   {
-      //     title: "Getting Started",
-      //     items: [
-      //       { label: "Fuse Studio", to: "/" },
-      //       {
-      //         label: "Fuse Staking",
-      //         to: "/",
-      //       },
-      //       {
-      //         label: "Fuse Swap",
-      //         to: "/",
-      //       },
-      //       {
-      //         label: "Fuse Cash",
-      //         to: "/",
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: "Under the hood",
-      //     items: [
-      //       {
-      //         label: "Fuse Network",
-      //         to: "/",
-      //       },
-      //       {
-      //         label: "Fuse Token",
-      //         to: "/",
-      //       },
-      //       {
-      //         label: "Explorer",
-      //         to: "/",
-      //       },
-      //       {
-      //         label: "Documentation",
-      //         to: "/",
-      //       },
-      //       {
-      //         label: "Service Status",
-      //         to: "/",
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: "General",
-      //     items: [
-      //       {
-      //         label: "About Us",
-      //         to: "/",
-      //       },
-      //       {
-      //         label: "Privacy Policy",
-      //         to: "/",
-      //       },
-      //       {
-      //         label: "Brand kit",
-      //         to: "/",
-      //       },
-      //       {
-      //         label: "Jobs",
-      //         to: "/",
-      //       },
-      //     ],
-      //   },
-      //   ],
-      //   copyright: `© ${new Date().getFullYear()} Fuse. All Rights Reserved`,
-      // },
-      // prism: {
-      //   theme: lightCodeTheme,
-      //   darkTheme: darkCodeTheme,
-      // },
+      footer: {
+        style: 'light',
+        links: [
+          {
+            title: 'Getting Started',
+            items: [
+              { label: 'Fuse Network', to: 'https://www.fuse.io/network' },
+              {
+                label: 'Mobile Stack',
+                to: 'https://www.fuse.io/mobile',
+              },
+              {
+                label: 'Voltage Finance',
+                to: 'https://voltage.finance/',
+              },
+            ],
+          },
+          {
+            title: 'Under the hood',
+            items: [
+              {
+                label: 'Explorer',
+                to: 'https://explorer.fuse.io/',
+              },
+              {
+                label: 'Documentation',
+                to: 'https://docs.fuse.io/',
+              },
+              {
+                label: 'Staking',
+                to: 'https://staking.fuse.io/',
+              },
+              {
+                label: 'Governance',
+                to: 'https://forum.fuse.io/',
+              },
+              {
+                label: 'Service Status',
+                to: 'https://status.fuse.io/',
+              },
+            ],
+          },
+          {
+            title: 'General',
+            items: [
+              {
+                label: 'Brand kits',
+                to: 'https://uploads-ssl.webflow.com/63a6d0820bd1f472b4150067/63f758e4017a399398360f78_Brand%20kit.pdf',
+              },
+              {
+                label: 'Jobs',
+                to: 'https://fuse.freshteam.com/jobs',
+              },
+            ],
+          },
+        ],
+        copyright: `© ${new Date().getFullYear()} Fuse. All Rights Reserved`,
+      },
     }),
   plugins: [
     [

@@ -75,14 +75,14 @@ const GovernanceList = [
     icon: 'img/git.png',
     title: 'Fip`s',
     description: `Governance is currently split among the following \n actors.....`,
-    href: 'https://github.com/fuseio',
+    href: 'docs/basics/intro-to-fuse/fuse-governance-and-development/',
   },
   {
     icon: 'img/forum.png',
     title: 'Fuse Assembly',
     description:
       'Fuse Assembly is the first step in transitioning full governance and ownership over the Fuse platform to the community.',
-    href: 'https://forum.fuse.io/',
+    href: 'docs/basics/intro-to-fuse/fuse-governance-and-development/fips',
   },
 ]
 
