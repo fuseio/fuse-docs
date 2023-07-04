@@ -70,6 +70,12 @@
   display: none;
 }
 
+.openapi-left-panel__container > .openapi-markdown__details,
+.openapi-markdown__details.mime,
+.openapi-markdown__details.response {
+  padding: 10px;
+}
+
 .theme-doc-footer-edit-meta-row {
   background-color: #f3f3f3;
 }
@@ -416,6 +422,6 @@
   border-top: none !important;
 }
 .openapi-tabs__schema-item.active {
-  border: 1px solid #ffffff !important;
-  color: #ffffff !important;
+  border: 1px solid #2e8555 !important;
+  color: #2e8555 !important;
 }

@@ -254,22 +254,6 @@ const config = {
           },
         },
       },
-      // "docusaurus-plugin-openapi-docs",
-      // {
-      //   id: "wallet-api",
-      //   docsPluginId: "classc", // e.g. "classic" or the plugin-content-docs id
-      //   config: {
-      //     reference: { // "petstore" is considered the <id> that you will reference in the CLI
-      //       specPath: "api-references/fuse-wallet-api.yaml", // path or URL to the OpenAPI spec
-      //       outputDir: "docs/wallet-api", // output directory for generated *.mdx and sidebar.js files
-      //       sidebarOptions: {
-      //         groupPathsBy: "tag", // generate a sidebar.js slice that groups operations by tag
-      //         categoryLinkSource: "tag",
-      //       }
-      //     },
-
-      //   }
-      // },
     ],
   ],
   themes: ['docusaurus-theme-openapi-docs'],

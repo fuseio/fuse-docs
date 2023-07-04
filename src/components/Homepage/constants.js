@@ -3,7 +3,7 @@ const ExploreApisList = [
     title: 'Smart Wallets API',
     description:
       'Maximize the security and user experience of your apps by leveraging smart contract wallets.',
-    href: '/docs/smart-wallet-api/smart-wallets',
+    href: '/docs/category/smart-wallet-api',
   },
   {
     title: 'Relay API',
