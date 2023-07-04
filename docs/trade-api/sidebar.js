@@ -1,5 +1,5 @@
 module.exports = [
-  { type: 'doc', id: 'trade-api/trade-api ' },
+  { type: 'doc', id: 'trade-api/trade-api' },
   {
     type: 'category',
     label: 'Price',
