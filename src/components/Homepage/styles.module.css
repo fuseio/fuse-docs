@@ -52,8 +52,7 @@
 }
 
 .card h2 {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 16px;
   font-size: 20px;
   display: flex;
   align-items: center;

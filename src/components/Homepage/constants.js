@@ -39,7 +39,7 @@ const ExploreApisList = [
 const MainFeatureList = [
   {
     image: 'img/new-ms-p.svg',
-    title: 'Fuse Docs',
+    title: 'Fuse Basics',
     description:
       'Learn all the basics about the Fuse network, including network details, wallets, bridges and more.',
     link: '/docs/category/intro-to-fuse',
@@ -47,26 +47,26 @@ const MainFeatureList = [
   {
     image: 'img/new-ms-p1.svg',
 
-    title: 'Fuse Basics',
+    title: 'Fuse Token',
+    description:
+      'Learn more about FUSE - the native currency of the Fuse Network.',
+    link: '/docs/basics/intro-to-fuse/fuse-token',
+  },
+  {
+    image: 'img/new-ms-p2.svg',
+
+    title: 'Fuse SDK',
     description:
       'Develop seamless UX with Fuse SDK on Fuse network, leveraging account abstraction, gasless transactions, and more.',
     link: '/docs/developers/fuse-sdk/',
   },
   {
-    image: 'img/new-ms-p2.svg',
+    image: 'img/new-ms-p3.svg',
 
     title: 'Fuse Guides',
     description:
       "Discover everything you need to know about Fuse v2 and how we're revolutionizing various industries with web3 technology.",
-    link: '/docs/category/fuse-v2-next-chapter/',
-  },
-  {
-    image: 'img/new-ms-p3.svg',
-
-    title: 'Fuse 2.0',
-    description:
-      'Discover how to confidently deploy secure and reliable smart contracts using a range of powerful tools designed to simplify the process.',
-    link: '/docs/developers/deploying-smart-contracts/',
+    link: '/docs/category/network-tutorial',
   },
 ]
 
