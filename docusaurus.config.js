@@ -66,7 +66,7 @@ const config = {
     ({
       prism: {
         additionalLanguages: ['dart', 'solidity'],
-        theme: lightCodeTheme,
+        theme: darkCodeTheme,
       },
       colorMode: {
         defaultMode: 'light',
