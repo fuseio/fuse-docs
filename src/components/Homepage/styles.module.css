@@ -104,6 +104,7 @@
   }
   .container h1 {
     font-size: 40px !important;
+    text-align: left;
   }
   .container p {
     margin-top: 10px;
