@@ -1,67 +1,73 @@
 ---
 title: Using Hardhat
 ---
-# Using Hardhat
 
-Hardhat is a development environment for building, deploying, testing, and debugging smart contracts.
+# What is hardhat
 
-You may learn more about installing and using Hardhat by reading [the official documentation](https://hardhat.org/hardhat-runner/docs/getting-started#installation).
+Hardhat is a development environment for Ethereum software. It consists of different components for editing, compiling, debugging and deploying your smart contracts and dApps, all of which work together to create a complete development environment.
 
-### Config Hardhat for Fuse Mainnet <a href="#config-hardhat-for-gnosis" id="config-hardhat-for-gnosis"></a>
+# How to use hardhat on Fuse and Spark
 
-```typescript title="/packages/hardhat-ts/hardhat.config.ts"
-// Update the default network to be fuse network 
+Following the instructions [here](https://hardhat.org/hardhat-runner/docs/getting-started#overview), run `npx hardhat` to create a hardhat project.
 
-const defaultNetwork = 'fuse';
-```
+Then in hardhat.config.js add Fuse and Spark to the network section:
 
- 
 ```typescript title="hardhat.config.js" overflow="wrap"
-// Update the RPC endpoints for Fuse Mainnet
-    const config: HardhatUserConfig = {
+module.exports = {
+  // ...
   networks: {
-    localhost: {
-      url: 'http://localhost:8545',
-    },
-    gnosis: {
+    fuse: {
       url: 'https://rpc.fuse.io/',
-      gasPrice: 10000000000,
       accounts: {
-        mnemonic: Mnemonic,
+        // put dev menomonic or PK here
       },
     },
-    chiado: {
-      url: 'https://rpc.fusespark.io',
-      gasPrice: 10000000000,
+    spark: {
+      url: 'https://rpc.fusespark.io/',
       accounts: {
-        mnemonic: Mnemonic,
+        // put dev menomonic or PK here
       },
     },
   },
-};
+  // ...
+}
 ```
 
+## How to verify contracts
 
- 
-```typescript title="hardhat.config.js" overflow="wrap" 
-// Update the TNetworkInfo to be Fuse Network
-export const targetNetworkInfo: TNetworkInfo = NETWORKS.fuse;
+To verify contracts with hardhat the [hardhat-etherscan](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify) is used. Yes it’s sound counterintuitive and wrong, but the `hardhat-etherscan` plugin verifies contracts in the blockscout explorer.
+
+Add the following property to `hardhat.config.js`
+
+```typescript title="hardhat.config.js" overflow="wrap"
+etherscan: {
+    apiKey: {
+      fuse: "YOUR_KEY_IF_YOU_HAVE_ONE",
+      spark: "YOUR_KEY_IF_YOU_HAVE_ONE"
+    },
+    customChains: [
+      {
+        network: "fuse",
+        chainId: 122,
+        urls: {
+          apiURL: "https://explorer.fuse.io/api",
+          browserURL: "https://explorer.fuse.io"
+        }
+      },
+      {
+        network: "spark",
+        chainId: 123,
+        urls: {
+          apiURL: "https://explorer.fusespark.io/api",
+          browserURL: "https://explorer.fusespark.io"
+        }
+      }
+    ]
+  }
 ```
 
-### Compile Your Smart Contract using Hardhat for Fuse Mainnet <a href="#config-hardhat-for-gnosis" id="config-hardhat-for-gnosis"></a>
+### Now to verify the contract on Fuse:
 
-```shell
-npx hardhat compile
+```javascript
+npx hardhat verify --network fuse DEPLOYED_CONTRACT_ADDRESS "Constructor argument 1"
 ```
-
-### Deploy Your Smart Contract using Hardhat for Fuse Mainnet <a href="#config-hardhat-for-gnosis" id="config-hardhat-for-gnosis"></a>
-
-```shell
-hardhat run --network gnosis scripts/deploy.js
-```
-
-You can view your deployed smart contract transaction at Fuse explorers.
-
-Fuse Mainnet Explorer is at [https://explorer.fuse.io/](https://explorer.fuse.io/)
-
-Fuse Testnet Spark is at [https://explorer.fusespark.io/](https://explorer.fusespark.io/)
