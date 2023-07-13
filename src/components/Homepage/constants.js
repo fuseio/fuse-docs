@@ -38,11 +38,19 @@ const ExploreApisList = [
 
 const MainFeatureList = [
   {
-    image: 'img/new-ms-p.svg',
-    title: 'Fuse Basics',
+    image: 'img/new-ms-p1.svg',
+
+    title: 'Fuse Token',
     description:
-      'Learn all the basics about the Fuse network, including network details, wallets, bridges and more.',
-    link: '/docs/category/intro-to-fuse',
+      'Learn more about FUSE - the native currency of the Fuse Network.',
+    link: '/docs/basics/intro-to-fuse/fuse-token',
+  },
+  {
+    image: 'img/new-ms-p.svg',
+    title: 'Quick Start',
+    description:
+      'Find links to valuable resources and websites that will bring you up to speed on building on Fuse.',
+    link: '/docs/developers/Quick-Start',
   },
   {
     image: 'img/new-ms-p1.svg',
