@@ -1,7 +1,8 @@
 ---
 title: Power Validators
-sidebar_position: 6 
+sidebar_position: 6
 ---
+
 # Power Validators
 
 ## What are Power Validators?
@@ -12,13 +13,13 @@ Introducing Power Validators is part of our strategy to further decentralize the
 
 Power validators are a big part of the payment flow and will be incentivized by charging a small percentage of the payment for the services provided.
 
-![](</img/Frame8.jpg>)
+![](/img/Group2.png)![]()
 
 ## Why are they needed?
 
 Blockchain applications and wallets depend on various middleware services external to the on-chain logic. In the Fuse Stack, those services include relayers, account management, wallet APIs, verification, and more.
 
-While Validators are essential for transaction approval, we found that the payment flow we want to provide ([link to docs](https://app.gitbook.com/o/-LdmeTBjede0-BcSd0W0/s/goUiB6chXvy8iVhpHHNd/\~/changes/128/basics/fuse-v2-next-chapter/payment-flow)) is much more complex. The payment flow requires an elaborated infrastructure of smart contracts and backend services, and it will have the following additional requirements:
+While Validators are essential for transaction approval, we found that the payment flow we want to provide ([link to docs](https://app.gitbook.com/o/-LdmeTBjede0-BcSd0W0/s/goUiB6chXvy8iVhpHHNd/~/changes/128/basics/fuse-v2-next-chapter/payment-flow)) is much more complex. The payment flow requires an elaborated infrastructure of smart contracts and backend services, and it will have the following additional requirements:
 
 * SCW and account abstraction - The network must deploy smart contract wallets for every user. All users will require a complex transaction flow, and account abstraction helps to automate the process. PVs allow scaling.
 * High throughput and fault tolerance - PWs will enable better scalability for the network. There are some advantages to having a centralized solution sometimes. Still, for generating a healthy network for business adoption, we can’t imagine how much essential infrastructure could have critical points of failure. Hence, the new PW utility comes to mitigate this. We plan to achieve high throughput via Rollups. At the same time, the power validators will run sequencer nodes that commit the transactions in batches to L1—more on this in the Privacy/Scalability section.
