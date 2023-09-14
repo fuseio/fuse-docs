@@ -1,2 +1,0 @@
-# getting-started-with-fuse
-
