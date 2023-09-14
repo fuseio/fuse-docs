@@ -236,6 +236,14 @@ const config = {
               categoryLinkSource: 'tag',
             },
           },
+          dataLayerApi: {
+            specPath: 'api-references/data-layer-api.yml',
+            outputDir: 'docs/data-layer-api',
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+              categoryLinkSource: 'tag',
+            },
+          },
           smartWalletApi: {
             specPath: 'api-references/fuse-smart-wallets-api.yaml',
             outputDir: 'docs/smart-wallet-api',
