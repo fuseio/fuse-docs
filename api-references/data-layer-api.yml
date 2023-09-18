@@ -7,19 +7,34 @@ servers:
 components:
   securitySchemes:
     bearerAuth:
+      bearerFormat: 'JWT'
       type: http
       scheme: bearer
 paths:
   /api/v2/smart-wallets/auth:
     post:
       tags:
-        - default
+        - Data layer
       summary: Auth
+      description: Authenticate user using signed data standard EIP-191
       requestBody:
         content:
           application/json:
             schema:
               type: object
+              properties:
+                hash:
+                  type: string
+                  example: '0xdf6d23a8155755395ba2cf5ae9b18b5988f49aeb907f267525975832d544c88f'
+                signature:
+                  type: string
+                  example: '0xd773c543f1702629f0dfe2f788cc46a56bd504e1eb25bb26bdd4983d928440302f402cc3183c98814e6d467a00f969e238604a74cc5a3d2ec057d937ceec1ba71c'
+                ownerAddress:
+                  type: string
+                  example: '0x61Cda92886f6aA817587bd190D77fA08a14A1be1'
+                smartWalletAddress:
+                  type: string
+                  example: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
               example:
                 hash: >-
                   0xdf6d23a8155755395ba2cf5ae9b18b5988f49aeb907f267525975832d544c88f
@@ -37,39 +52,6 @@ paths:
       responses:
         '201':
           description: Created
-          headers:
-            X-Powered-By:
-              schema:
-                type: string
-                example: Express
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            Content-Type:
-              schema:
-                type: string
-                example: application/json; charset=utf-8
-            Content-Length:
-              schema:
-                type: integer
-                example: '247'
-            ETag:
-              schema:
-                type: string
-                example: W/"f7-D6bEjaTxCSDbehrS8scTy7iYOPQ"
-            Date:
-              schema:
-                type: string
-                example: Thu, 02 Feb 2023 08:39:54 GMT
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Keep-Alive:
-              schema:
-                type: string
-                example: timeout=5
           content:
             application/json:
               schema:
@@ -79,31 +61,6 @@ paths:
                   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvd25lckFkZHJlc3MiOiIweDgwOUI3ODM3MWY1MGYyOEQyQzYxRjYzZTQ4YjU4YjdFZTA1M0UzRWEiLCJwcm9qZWN0SWQiOiI2M2NkMWJjMWQxOGMxNjQyMmJiOGMwYzMiLCJpYXQiOjE2NzUzMjcxOTR9.-iWIEN6OLyCI4j5WOA8V2mH3KQtrmEoUGhIS4migV9g
         '400':
           description: Bad Request
-          headers:
-            Content-Length:
-              schema:
-                type: integer
-                example: '166'
-            Content-Type:
-              schema:
-                type: string
-                example: application/json; charset=utf-8
-            Date:
-              schema:
-                type: string
-                example: Thu, 02 Feb 2023 11:12:13 GMT
-            Etag:
-              schema:
-                type: string
-                example: W/"a6-cJ3vgY5wmggf39YeOGRrK5lZp/k"
-            Ngrok-Trace-Id:
-              schema:
-                type: string
-                example: c8b96c2f6185996702be8c1067a55b15
-            X-Powered-By:
-              schema:
-                type: string
-                example: Express
           content:
             application/json:
               schema:
@@ -111,11 +68,11 @@ paths:
               example:
                 statusCode: 400
                 errorMessage: Owner Address does not match recovered address in signature
-                path: /api/v1/smart-wallets/auth?apiKey={{publicKey}}
+                path: /api/v2/smart-wallets/auth?apiKey={{publicKey}}
   /api/v2/smart-wallets/actions:
     get:
       tags:
-        - default
+        - Data layer
       summary: Get Wallet Actions (4337)
       security:
         - bearerAuth: []
@@ -124,634 +81,248 @@ paths:
           in: query
           schema:
             type: string
+          description: (Required) Your Public API key
           example: '{{publicKey}}'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: tokenAddress
+          in: query
+          schema:
+            type: string
+          example: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
       responses:
         '200':
           description: OK
-          headers:
-            Date:
-              schema:
-                type: string
-                example: Wed, 01 Mar 2023 17:12:58 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json; charset=utf-8
-            Transfer-Encoding:
-              schema:
-                type: string
-                example: chunked
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Server:
-              schema:
-                type: string
-                example: nginx/1.21.3
-            X-Powered-By:
-              schema:
-                type: string
-                example: Express
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            ETag:
-              schema:
-                type: string
-                example: W/"1e33-MQBseJOYiSNEW4QimimojHEs+o8"
-            Front-End-Https:
-              schema:
-                type: string
-                example: 'on'
-            Content-Encoding:
-              schema:
-                type: string
-                example: gzip
           content:
             application/json:
               schema:
                 type: object
-              examples:
-                example-0:
-                  summary: Success
-                  value:
-                    data:
-                      docs:
-                        - _id: 63f488d2ad300586076c69a4
-                          name: createWallet
-                          walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                          tokenAddress: []
-                          job: 63f488d2ad300586076c69a2
-                          data:
-                            value: '0'
-                            txHash: >-
-                              0x29aa2d08050354e4d267c2d6c49fbd3c9fb1bfd8c8f69482b49a127e922ad1b0
-                            status: succeeded
-                            blockNumber: 21882367
-                          status: succeeded
-                          createdAt: '2023-02-21T09:03:14.148Z'
-                          updatedAt: '2023-02-21T09:03:15.492Z'
-                          __v: 0
-                        - _id: 63f48944ad300586076c6b76
-                          name: receiveTokens
-                          walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                          tokenAddress:
-                            - '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
-                          data:
-                            txHash: >-
-                              0x039968b2746fd3067ea972d50d602e9c4bd32ec807b6cddc77d8afa1baf5f762
-                            walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            to: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            from: '0x7Ceabc27B1dc6A065fAD85A86AFBaF97F7692088'
-                            tokenName: FUSE
-                            tokenSymbol: FUSE
-                            tokenDecimal: 18
-                            asset: FUSE
-                            status: succeeded
-                            tokenType: FUSE
-                            value: '1000000000000000000'
-                            tokenAddress: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
-                            timeStamp: '1676970308'
-                          status: succeeded
-                          createdAt: '2023-02-21T09:05:08.388Z'
-                          updatedAt: '2023-02-21T09:05:08.388Z'
-                          __v: 0
-                        - _id: 63f4cc9fad300586076cc66e
-                          name: receiveNFT
-                          walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                          tokenAddress:
-                            - '0xd08a296d68f553938b96de150f3f18a14be5629f'
-                          data:
-                            txHash: >-
-                              0xda410fee6ad245c3cd1075f685b3f6d5bd82501e5fcc70688d349155d519bbfe
-                            walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            to: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            from: '0x7Ceabc27B1dc6A065fAD85A86AFBaF97F7692088'
-                            tokenName: AmazingHorses
-                            tokenSymbol: AMZ
-                            tokenDecimal: null
-                            asset: AMZ
-                            status: succeeded
-                            tokenType: ERC-721
-                            value: NaN
-                            tokenAddress: '0xd08a296d68f553938b96de150f3f18a14be5629f'
-                            timeStamp: '1676987552'
-                          status: succeeded
-                          createdAt: '2023-02-21T13:52:31.654Z'
-                          updatedAt: '2023-02-21T13:52:31.654Z'
-                          __v: 0
-                        - _id: 63f4cd53ad300586076cc70a
-                          name: receiveNFT
-                          walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                          tokenAddress:
-                            - '0xd08a296d68f553938b96de150f3f18a14be5629f'
-                          data:
-                            txHash: >-
-                              0xa5f5b763ecfd420e1e2a2db2726378637c27738e312fb951e1f91a5c6a3b652f
-                            walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            to: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            from: '0x7Ceabc27B1dc6A065fAD85A86AFBaF97F7692088'
-                            tokenName: AmazingHorses
-                            tokenSymbol: AMZ
-                            tokenDecimal: null
-                            asset: AMZ
-                            status: succeeded
-                            tokenType: ERC-721
-                            value: NaN
-                            tokenAddress: '0xd08a296d68f553938b96de150f3f18a14be5629f'
-                            timeStamp: '1676987732'
-                          status: succeeded
-                          createdAt: '2023-02-21T13:55:31.523Z'
-                          updatedAt: '2023-02-21T13:55:31.523Z'
-                          __v: 0
-                        - _id: 63f4cff5ad300586076cc86d
-                          name: receiveTokens
-                          walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                          tokenAddress:
-                            - '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
-                          data:
-                            txHash: >-
-                              0x93c197a6e6da7f2da7c232b5ab98be32c1cb60d514599ae3346b1dd6c97a4cfc
-                            walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            to: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            from: '0x7Ceabc27B1dc6A065fAD85A86AFBaF97F7692088'
-                            tokenName: FUSE
-                            tokenSymbol: FUSE
-                            tokenDecimal: 18
-                            asset: FUSE
-                            status: succeeded
-                            tokenType: FUSE
-                            value: '1000000000000000000'
-                            tokenAddress: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
-                            timeStamp: '1676988406'
-                          status: succeeded
-                          createdAt: '2023-02-21T14:06:45.825Z'
-                          updatedAt: '2023-02-21T14:06:45.825Z'
-                          __v: 0
-                        - _id: 63f4e08f20abbc6ed88e05c1
-                          name: receiveTokens
-                          walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                          tokenAddress:
-                            - '0x620fd5fa44be6af63715ef4e65ddfa0387ad13f5'
-                          data:
-                            txHash: >-
-                              0x10432963a35696491dd98edd557c89ef581a756e8106d8336ad71609e192850e
-                            walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            to: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            from: '0xc79983b0754ac688Bf54939aDd59BDF75916fDA2'
-                            tokenName: USD Coin on Fuse
-                            tokenSymbol: USDC
-                            tokenDecimal: 6
-                            asset: USDC
-                            status: succeeded
-                            tokenType: ERC-20
-                            value: '81591'
-                            tokenAddress: '0x620fd5fa44be6af63715ef4e65ddfa0387ad13f5'
-                            timeStamp: '1676992655'
-                          status: succeeded
-                          createdAt: '2023-02-21T15:17:35.139Z'
-                          updatedAt: '2023-02-21T15:17:35.139Z'
-                          __v: 0
-                        - _id: 63f4e55520abbc6ed88e0ad5
-                          name: receiveTokens
-                          walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                          tokenAddress:
-                            - '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
-                          data:
-                            txHash: >-
-                              0xf1f3703c1167848db68dbdec850f2df9a4b80343618b61c9d8622c54032213b4
-                            walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            to: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            from: '0xE3F85aAd0c8DD7337427B9dF5d0fB741d65EEEB5'
-                            tokenName: FUSE
-                            tokenSymbol: FUSE
-                            tokenDecimal: 18
-                            asset: FUSE
-                            status: succeeded
-                            tokenType: FUSE
-                            value: '609144132954467250'
-                            tokenAddress: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
-                            timeStamp: '1676993878'
-                          status: succeeded
-                          createdAt: '2023-02-21T15:37:57.607Z'
-                          updatedAt: '2023-02-21T15:37:57.607Z'
-                          __v: 0
-                        - _id: 63f4e97720abbc6ed88e1020
-                          name: receiveTokens
-                          walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                          tokenAddress:
-                            - '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
-                          data:
-                            txHash: >-
-                              0xf256e0673eb65a7420cab562dd9b707e9a2013f29e8cf0f36525eb429e5b21e4
-                            walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            to: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            from: '0xE3F85aAd0c8DD7337427B9dF5d0fB741d65EEEB5'
-                            tokenName: FUSE
-                            tokenSymbol: FUSE
-                            tokenDecimal: 18
-                            asset: FUSE
-                            status: succeeded
-                            tokenType: FUSE
-                            value: '241942036554581990'
-                            tokenAddress: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
-                            timeStamp: '1676994935'
-                          status: succeeded
-                          createdAt: '2023-02-21T15:55:35.101Z'
-                          updatedAt: '2023-02-21T15:55:35.101Z'
-                          __v: 0
-                        - _id: 63f4e99e20abbc6ed88e108a
-                          name: receiveTokens
-                          walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                          tokenAddress:
-                            - '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
-                          data:
-                            txHash: >-
-                              0x7b304ec2439e1c6cb5a7b27e564b3dd664367275a527f003216a7f86a7010819
-                            walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            to: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                            from: '0xE3F85aAd0c8DD7337427B9dF5d0fB741d65EEEB5'
-                            tokenName: FUSE
-                            tokenSymbol: FUSE
-                            tokenDecimal: 18
-                            asset: FUSE
-                            status: succeeded
-                            tokenType: FUSE
-                            value: '120970389826859458'
-                            tokenAddress: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
-                            timeStamp: '1676994974'
-                          status: succeeded
-                          createdAt: '2023-02-21T15:56:14.111Z'
-                          updatedAt: '2023-02-21T15:56:14.111Z'
-                          __v: 0
-                        - _id: 63f50e5d0905cd0b768c55a2
-                          name: swapTokens
-                          walletAddress: '0xbFF3E288219EBD83B1C4d09CC7a55F37b0B60842'
-                          tokenAddress:
-                            - '0x0BE9e53fd7EDaC9F859882AfdDa116645287C629'
-                            - '0x620fd5fa44BE6af63715Ef4E65DDFA0387aD13F5'
-                          job: 63f50e5d0905cd0b768c559e
-                          data:
-                            value: '0'
-                            tokenAddress: '0x0be9e53fd7edac9f859882afdda116645287c629'
-                            metadata:
-                              executionPrice: '0'
-                              nextMidPrice: '0'
-                              priceImpact: '0'
-                              route:
-                                - '0x620fd5fa44BE6af63715Ef4E65DDFA0387aD13F5'
-                                - '0x0BE9e53fd7EDaC9F859882AfdDa116645287C629'
-                              inputAmount: '0.01'
-                              outputAmount: '0.120627353584457792'
-                              inputToken: USDC
-                              outputToken: FUSE
-                            timestamp: '1677004382'
-                            txHash: >-
-                              0x9cf5222cd2e744926a9bc732a6edc6ea604462050681fa5b3a426bcae5361396
-                            status: failed
-                            blockNumber: 21889191
-                          status: failed
-                          createdAt: '2023-02-21T18:33:01.717Z'
-                          updatedAt: '2023-02-21T18:33:05.881Z'
-                          __v: 0
-                          failReason: >-
-                            Transaction failed due to internal contract error.
-                            One possible reason might be that the wallet doesn't
-                            have sufficient funds.
-                          failedAt: '2023-02-21T18:33:05.880Z'
-                      totalDocs: 18
-                      offset: 0
-                      limit: 10
-                      totalPages: 2
-                      page: 1
-                      pagingCounter: 1
-                      hasPrevPage: false
-                      hasNextPage: true
-                      prevPage: null
-                      nextPage: 2
-                example-1:
-                  summary: Query limited to 5 records
-                  value:
-                    docs:
-                      - _id: 64ff1e7d765da015c4742210
-                        walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
-                        name: batchTransaction
-                        status: pending
-                        sent:
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7d765da015c4742211
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7d765da015c4742212
-                        userOpHash: '0x111'
-                        txHash: ''
-                        blockNumber: 0
-                        received: []
-                        createdAt: '2023-09-11T14:04:45.898Z'
-                        updatedAt: '2023-09-11T14:04:45.898Z'
-                        __v: 0
-                      - _id: 64ff1e7d765da015c474220a
-                        walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
-                        name: batchTransaction
-                        status: pending
-                        sent:
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7d765da015c474220b
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7d765da015c474220c
-                        userOpHash: '0x111'
-                        txHash: ''
-                        blockNumber: 0
-                        received: []
-                        createdAt: '2023-09-11T14:04:45.592Z'
-                        updatedAt: '2023-09-11T14:04:45.592Z'
-                        __v: 0
-                      - _id: 64ff1e7d765da015c4742204
-                        walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
-                        name: batchTransaction
-                        status: pending
-                        sent:
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7d765da015c4742205
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7d765da015c4742206
-                        userOpHash: '0x111'
-                        txHash: ''
-                        blockNumber: 0
-                        received: []
-                        createdAt: '2023-09-11T14:04:45.203Z'
-                        updatedAt: '2023-09-11T14:04:45.203Z'
-                        __v: 0
-                      - _id: 64ff1e7c765da015c47421fe
-                        walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
-                        name: batchTransaction
-                        status: pending
-                        sent:
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7c765da015c47421ff
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7c765da015c4742200
-                        userOpHash: '0x111'
-                        txHash: ''
-                        blockNumber: 0
-                        received: []
-                        createdAt: '2023-09-11T14:04:44.898Z'
-                        updatedAt: '2023-09-11T14:04:44.898Z'
-                        __v: 0
-                      - _id: 64ff1e7c765da015c47421f8
-                        walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
-                        name: batchTransaction
-                        status: pending
-                        sent:
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7c765da015c47421f9
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7c765da015c47421fa
-                        userOpHash: '0x111'
-                        txHash: ''
-                        blockNumber: 0
-                        received: []
-                        createdAt: '2023-09-11T14:04:44.430Z'
-                        updatedAt: '2023-09-11T14:04:44.430Z'
-                        __v: 0
-                    totalDocs: 51
-                    limit: 5
-                    totalPages: 11
-                    page: 1
-                    pagingCounter: 1
-                    hasPrevPage: false
-                    hasNextPage: true
-                    prevPage: null
-                    nextPage: 2
-                example-2:
-                  summary: Page, limit and token interraction Query example
-                  value:
-                    docs:
-                      - _id: 64ff1e7c765da015c47421f2
-                        walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
-                        name: batchTransaction
-                        status: pending
-                        sent:
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7c765da015c47421f3
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7c765da015c47421f4
-                        userOpHash: '0x111'
-                        txHash: ''
-                        blockNumber: 0
-                        received: []
-                        createdAt: '2023-09-11T14:04:44.010Z'
-                        updatedAt: '2023-09-11T14:04:44.010Z'
-                        __v: 0
-                      - _id: 64ff1e7b765da015c47421ec
-                        walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
-                        name: batchTransaction
-                        status: pending
-                        sent:
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7b765da015c47421ed
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7b765da015c47421ee
-                        userOpHash: '0x111'
-                        txHash: ''
-                        blockNumber: 0
-                        received: []
-                        createdAt: '2023-09-11T14:04:43.672Z'
-                        updatedAt: '2023-09-11T14:04:43.672Z'
-                        __v: 0
-                      - _id: 64ff1e7b765da015c47421e6
-                        walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
-                        name: batchTransaction
-                        status: pending
-                        sent:
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7b765da015c47421e7
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e7b765da015c47421e8
-                        userOpHash: '0x111'
-                        txHash: ''
-                        blockNumber: 0
-                        received: []
-                        createdAt: '2023-09-11T14:04:43.362Z'
-                        updatedAt: '2023-09-11T14:04:43.362Z'
-                        __v: 0
-                      - _id: 64ff1e79765da015c47421e0
-                        walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
-                        name: batchTransaction
-                        status: pending
-                        sent:
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e79765da015c47421e1
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e79765da015c47421e2
-                        userOpHash: '0x111'
-                        txHash: ''
-                        blockNumber: 0
-                        received: []
-                        createdAt: '2023-09-11T14:04:41.927Z'
-                        updatedAt: '2023-09-11T14:04:41.927Z'
-                        __v: 0
-                      - _id: 64ff1e79765da015c47421da
-                        walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
-                        name: batchTransaction
-                        status: pending
-                        sent:
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e79765da015c47421db
-                          - name: GoodDollar
-                            symbol: G$
-                            address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-                            decimals: 2
-                            value: '10'
-                            to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
-                            _id: 64ff1e79765da015c47421dc
-                        userOpHash: '0x111'
-                        txHash: ''
-                        blockNumber: 0
-                        received: []
-                        createdAt: '2023-09-11T14:04:41.602Z'
-                        updatedAt: '2023-09-11T14:04:41.602Z'
-                        __v: 0
-                    totalDocs: 46
-                    limit: 5
-                    totalPages: 10
-                    page: 2
-                    pagingCounter: 6
-                    hasPrevPage: true
-                    hasNextPage: true
-                    prevPage: 1
-                    nextPage: 3
+              example:
+                docs:
+                  - _id: 6502e7648e04f67688ac69f9
+                    walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
+                    name: swapTokens
+                    status: pending
+                    received:
+                      - name: Luna Terra
+                        symbol: atLUNA
+                        address: '0x588e24DEd8f850b14BB2e62E9c50A7Cd5Ee13Da9'
+                        decimals: 18
+                        value: '12320154038834973'
+                        type: ERC-20
+                        _id: 6502e7648e04f67688ac69fa
+                    sent:
+                      - name: GoodDollar
+                        symbol: G$
+                        address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
+                        decimals: 2
+                        value: '1'
+                        to: '0xE3F85aAd0c8DD7337427B9dF5d0fB741d65EEEB5'
+                        type: ERC-20
+                        _id: 6502e7648e04f67688ac69fb
+                    userOpHash: '0x111'
+                    txHash: ''
+                    blockNumber: 0
+                    description: 0.01 G$ was swapped to 0.012320154038834972 atLUNA
+                    createdAt: '2023-09-14T10:58:44.641Z'
+                    updatedAt: '2023-09-14T10:58:44.641Z'
+                    __v: 0
+                  - _id: 6502e75d8e04f67688ac69f3
+                    walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
+                    name: swapTokens
+                    status: pending
+                    received:
+                      - name: GoodDollar
+                        symbol: G$
+                        address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
+                        decimals: 2
+                        value: '1693317379'
+                        type: ERC-20
+                        _id: 6502e75d8e04f67688ac69f4
+                    sent:
+                      - name: Fuse Token
+                        symbol: FUSE
+                        address: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
+                        decimals: 18
+                        value: '10000000000000000'
+                        to: '0xE3F85aAd0c8DD7337427B9dF5d0fB741d65EEEB5'
+                        type: native
+                        _id: 6502e75d8e04f67688ac69f5
+                    userOpHash: '0x111'
+                    txHash: ''
+                    blockNumber: 0
+                    description: 0.01 FUSE was swapped to 16933173.79 G$
+                    createdAt: '2023-09-14T10:58:37.027Z'
+                    updatedAt: '2023-09-14T10:58:37.027Z'
+                    __v: 0
+                  - _id: 6502e7438e04f67688ac69ed
+                    walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
+                    name: batchTransaction
+                    status: pending
+                    sent:
+                      - name: GoodDollar
+                        symbol: G$
+                        address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
+                        decimals: 2
+                        value: '10'
+                        to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
+                        _id: 6502e7438e04f67688ac69ee
+                      - name: GoodDollar
+                        symbol: G$
+                        address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
+                        decimals: 2
+                        value: '10'
+                        to: '0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808'
+                        _id: 6502e7438e04f67688ac69ef
+                    userOpHash: '0x111'
+                    txHash: ''
+                    blockNumber: 0
+                    description: Batch transferring to 2 recipients
+                    received: []
+                    createdAt: '2023-09-14T10:58:11.870Z'
+                    updatedAt: '2023-09-14T10:58:11.870Z'
+                    __v: 0
+                  - _id: 6502e5abdf48eca536d04252
+                    walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
+                    name: nftTransfer
+                    status: pending
+                    sent:
+                      - name: Cozy Cosmonauts
+                        symbol: COZY
+                        address: '0x32319834d90323127988E4e2DC7b2162d4262904'
+                        value: '0'
+                        to: '0x5BBEA139C1b1b32CF7b5C7fD1D1fF802De006117'
+                        type: ERC-721
+                        tokenId: '1'
+                        _id: 6502e5abdf48eca536d04253
+                    userOpHash: '0x111'
+                    txHash: ''
+                    blockNumber: 0
+                    description: 'COZY #1 sent to 0x5BBEA139C1b1b32CF7b5C7fD1D1fF802De006117'
+                    received: []
+                    createdAt: '2023-09-14T10:51:23.189Z'
+                    updatedAt: '2023-09-14T10:51:23.189Z'
+                    __v: 0
+                  - _id: 6502ca26d02e33b857c1d71c
+                    walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
+                    name: unstakeTokens
+                    status: pending
+                    received:
+                      - name: Liquid staked Fuse
+                        symbol: sFUSE
+                        address: '0xb1DD0B683d9A56525cC096fbF5eec6E60FE79871'
+                        decimals: 18
+                        value: '159514909830694585'
+                        _id: 6502ca26d02e33b857c1d71d
+                    userOpHash: '0x111'
+                    txHash: ''
+                    blockNumber: 0
+                    description: Unstaked 0.15951490983069458 sFUSE
+                    sent: []
+                    createdAt: '2023-09-14T08:53:58.749Z'
+                    updatedAt: '2023-09-14T08:53:58.749Z'
+                    __v: 0
+                  - _id: 6502ca20d02e33b857c1d716
+                    walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
+                    name: stakeTokens
+                    status: pending
+                    sent:
+                      - name: Fuse Token
+                        symbol: FUSE
+                        address: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
+                        decimals: 18
+                        value: '100000000000000000'
+                        type: native
+                        _id: 6502ca20d02e33b857c1d717
+                    userOpHash: '0x111'
+                    txHash: ''
+                    blockNumber: 0
+                    description: Staked 0.1 FUSE
+                    received: []
+                    createdAt: '2023-09-14T08:53:52.354Z'
+                    updatedAt: '2023-09-14T08:53:52.354Z'
+                    __v: 0
+                  - _id: 6502ca18d02e33b857c1d712
+                    walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
+                    name: approveToken
+                    status: pending
+                    sent:
+                      - name: GoodDollar
+                        symbol: G$
+                        address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
+                        decimals: 2
+                        value: '1000000'
+                        to: '0x5BBEA139C1b1b32CF7b5C7fD1D1fF802De006117'
+                        _id: 6502ca18d02e33b857c1d713
+                    userOpHash: '0x111'
+                    txHash: ''
+                    blockNumber: 0
+                    description: Approved 10000 G$
+                    received: []
+                    createdAt: '2023-09-14T08:53:44.350Z'
+                    updatedAt: '2023-09-14T08:53:44.350Z'
+                    __v: 0
+                  - _id: 6502ca12d02e33b857c1d70d
+                    walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
+                    name: tokenTransfer
+                    status: pending
+                    sent:
+                      - name: Flambucks
+                        symbol: Fmb
+                        address: '0xb1232fD89d027e4B949cED570609e8aD0e18811e'
+                        decimals: 18
+                        value: '1000000000000000000'
+                        to: '0xcc95E80DA76bd41507b99d9b977Dc3062bcf6430'
+                        type: ERC-20
+                        _id: 6502ca12d02e33b857c1d70e
+                    userOpHash: '0x111'
+                    txHash: ''
+                    blockNumber: 0
+                    description: Transferred 1 Fmb
+                    received: []
+                    createdAt: '2023-09-14T08:53:38.715Z'
+                    updatedAt: '2023-09-14T08:53:38.715Z'
+                    __v: 0
+                  - _id: 6502ca03d02e33b857c1d707
+                    walletAddress: '0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117'
+                    name: tokenTransfer
+                    status: pending
+                    sent:
+                      - name: Fuse Token
+                        symbol: FUSE
+                        address: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
+                        decimals: 18
+                        value: '0'
+                        to: '0x5BBEA139C1b1b32CF7b5C7fD1D1fF802De006117'
+                        type: native
+                        _id: 6502ca03d02e33b857c1d708
+                    userOpHash: '0x111'
+                    txHash: ''
+                    blockNumber: 0
+                    description: Transferred 0 FUSE
+                    received: []
+                    createdAt: '2023-09-14T08:53:23.146Z'
+                    updatedAt: '2023-09-14T08:53:23.146Z'
+                    __v: 0
+                totalDocs: 9
+                limit: 20
+                totalPages: 1
+                page: 1
+                pagingCounter: 1
+                hasPrevPage: false
+                hasNextPage: false
+                prevPage: null
+                nextPage: null
         '403':
           description: Forbidden
-          headers:
-            X-Powered-By:
-              schema:
-                type: string
-                example: Express
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            Content-Type:
-              schema:
-                type: string
-                example: application/json; charset=utf-8
-            Content-Length:
-              schema:
-                type: integer
-                example: '142'
-            ETag:
-              schema:
-                type: string
-                example: W/"8e-Tpoi6UmdYbLzqVbKO+Ors5Vghj4"
-            Date:
-              schema:
-                type: string
-                example: Mon, 11 Sep 2023 16:46:11 GMT
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Keep-Alive:
-              schema:
-                type: string
-                example: timeout=5
           content:
             application/json:
               schema:
@@ -762,4 +333,5 @@ paths:
                   statusCode: 403
                   message: Forbidden resource
                   error: Forbidden
-                path: /api/v2/smart-wallets/actions
+                path: >-
+                  /api/v2/smart-wallets/actions?apiKey={{publicKey}}
