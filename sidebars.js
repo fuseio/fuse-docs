@@ -68,7 +68,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Data Layer API',
+      label: 'Data Layer API (staging)',
       link: {
         type: 'generated-index',
         title: 'Data Layer API',

@@ -3,7 +3,7 @@ info:
   title: Smart Wallets API V2 (Data Layer)
   version: 1.0.0
 servers:
-  - url: https://api.fuse.io
+  - url: https://api.staging.fuse.io
 components:
   securitySchemes:
     bearerAuth:
