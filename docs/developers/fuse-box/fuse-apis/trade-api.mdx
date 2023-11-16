@@ -8,21 +8,17 @@ Trade API lets you integrate trading functionality into your application. With t
 
 Fuse Trade API has the following high-level API sets, which create the capabilities to build endless use cases for your apps.
 
-### Prices
+**Prices:** Returns current Prices and the Historic Prices of various Assets.
 
-Allows the developer to fetch prices and the historic prices of various assets. This can show a chart's current token price or price history.
+**Price Changes:** Returns the change in the price of the asset, showing how much the token price has changed over a defined interval.
 
-### Price Changes
+**Stats:** Returns Token Price Change Data.
 
-Allows the developer to fetch the change in the price of the asset. This can show how much the token price has changed over a defined interval.
+**Swap:** Swap is an auxiliary API that helps you perform transactions if you cannot use the [voltage-sdk](https://github.com/voltfinance/voltage-sdk). The voltage SDK is written in JS and is hard to use in a mobile environment. Instead, you can send a request to the Swap API, which will generate the trade data. Then the user needs to sign and relay the data.
 
-### Swap
+**Tokens:** Returns ALL Token information.
 
-Swap is an auxiliary API that helps you perform transactions if you cannot use the [voltage-sdk](https://github.com/voltfinance/voltage-sdk). The voltage SDK is written in JS and is hard to use in a mobile environment. Instead, you can send a request to the Swap API, which will generate the trade data. Then the user needs to sign and relay the data.
-
-## Working with Trade API
-
-Before working with Trade API, if you haven't done so, please follow the guide [Getting Started](../fuse-sdk/getting-started.mdx).
+**Working with Trade API:** Before working with Trade API, if you haven't done so, please follow the guide [Getting Started](../fuse-sdk/getting-started.mdx).
 
 #### Ready to start!
 
@@ -30,4 +26,17 @@ Before working with Trade API, if you haven't done so, please follow the guide [
 >
 > For all Trade API requests, you will need to add your Public API Key to the request query params under the key `apiKey`.
 
-Once you have your project set and access to your Public API key, you can start working with the Trade API. Check out the [Trade API Reference](../../trade-api/trade-api.info.mdx) for usage.
+The Trade API is available to developers in the [API Reference](/docs/category/smart-wallet-api/) and via the [Flutter SDK](https://pub.dev/packages/fuse_wallet_sdk). The base API url is https://api.fuse.io The API key is parsed as a param `?apiKey=<YOUR_PUBLIC_API_KEY>`.
+
+The available methods are:
+
+| Endpoint                                        | URL path                                                    | Http |
+| :---------------------------------------------- | :---------------------------------------------------------- | ---- |
+| `Get Latest Price for a Token`                  | /api/v0/trade/price/:tokenAddress                           | GET  |
+| `Get Price Change for Token Over last 24 hours` | /api/v0/trade/pricechange/:tokenAddress                     | GET  |
+| `Get Price Change for Token Over Time Duration` | /api/v0/trade/pricechange/:tokenAddress                     | POST |
+| `Get Price Change for Token Over an interval`   | /api/v0/trade/pricechange/interval/:timeFrame/:tokenAddress | GET  |
+| `Get Historical Statistics for a Token`         | /api/v0/trade/stats/:tokenAddress                           | GET  |
+| `Get quote for a Token Pair`                    | /api/v0/trade/swap/quote                                    | POST |
+| `Create Swap Parameters for a Trade`            | /api/v0/trade/swap/swapcallparameters                       | POST |
+| `Get the list of Tokens on Fuse`                | /api/v0/trade/tokens                                        | GET  |
