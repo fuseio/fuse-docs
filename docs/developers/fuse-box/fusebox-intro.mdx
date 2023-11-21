@@ -5,11 +5,9 @@ sidebar_position: 0
 
 # What is FuseBox
 
-[FuseBox](https://github.com/fuseio/fusebox-backend) is a Open Source Developer Tool designed for constructing applications on the Fuse Network. It provides a set of `methods` that are available to Developers via a **REST API**, a **Flutter SDK** and a **TypeScript SDK**. Thus making is easier for Developers to interact wiht the Fuse Blockchain without the need to make direct RPC calls, and eliminating the need to use a node service provider.
+[FuseBox](https://github.com/fuseio/fusebox-backend) is an Open Source Wallet-As-A-Service platform based on Account Abstraction. It is ERC-4337 complaint and provides Developers the ability to use a Bundler for collacting UserOperations, and also a Paymaster to sponsor Gas payments for their users to provide a Gasless experience. FuseBox is required for building applications on the Fuse Network. It provides a set of `methods` that are available to Developers via a **REST API**, a **Flutter SDK** and a **TypeScript SDK**. Thus making is easier for Developers to interact with the Fuse Blockchain without the need to make direct RPC calls, and eliminating the need to use a node service provider.
 
-Developers can also build using FuseBox by cloing the **GitHub** repository as it is Open Source, making Fuse Blockchain the ONLY Blockchain enabling this for Developers.
-
-[FuseBox Backend](https://github.com/fuseio/fusebox-backend) is developed with the NestJS framework.
+[FuseBox Backend](https://github.com/fuseio/fusebox-backend) is developed with the NestJS framework. It relies on ERC-4337  Smart Contracts, Paymaster, Bundler, and additional API endpoints written in NodeJS. 
 
 <p>&nbsp;</p>
 
@@ -17,7 +15,7 @@ Developers can also build using FuseBox by cloing the **GitHub** repository as i
 
 The Fuse API is a REST API that Developers can use to access particular features on a need basis if they prefer this method as against cloning the GitHub repository into their projects. The Smart Wallet API is powered by Account Abstraction and as a result the Smart Wallet creates Smart Contract Accounts. The API is available at the Base Endpoint: https://api.fuse.io/. The Fuse REST API is divided into:
 
-- Smart Wallet API v2: This API enables the creation and administration of smart wallet accounts built on the ERC4337 standard.
+- Smart Wallet API v2: This API enables the creation and administration of smart wallet accounts supporting the ERC-4337 standard.
 - Notification API: Subscribing to the Notification API allows you to receive updates on wallet events and activities pertaining to your customers.
 - Trade API: This API facilitates trading activities and provides access to trading-related data.
 
@@ -62,8 +60,7 @@ curl -L -X GET 'https://api.fuse.io/api/v0/trade/price/:tokenAddress' \
 
 ### Flutter SDK
 
-The Fuse Flutter SDK is available as a Flutter [package](https://pub.dev/packages/fuse_wallet_sdk) for Mobile applications development. The Package contains all the endpoints available in the REST API. Fuse Wallet SDK lets users create smart contract wallets(Based on ERC-4337) associated with each user's Externally Owned Account (EOA) that provide added security compared to traditional EOAs with a single private key. Amongst it many features the Flutter SDK can be used for the following:
-
+The Fuse Flutter SDK is available as a Flutter [package](https://pub.dev/packages/fuse_wallet_sdk) for Mobile applications development. The Package contains all the endpoints available in the REST API.
 - Create and Get Address
 - Send transactions
 - Approve Token Transactions
@@ -99,7 +96,7 @@ Our team is finalizing the Typescript SDK, and we anticipate it will be released
 
 ### Account Abstraction using FuseBox
 
-The introduction of Account Abstraction as a standard in the Ethereum Ecosystem is a welcome development that ensures the ability to onboard the next billion users to Web3. This standard has also been extended into Fuse blockchain. Fuse is EVM compatible and this typically means that features available on Ethereum are available on the Fuse blockchain.
+The introduction of ERC-4337 as a standard in the Ethereum Ecosystem is a welcome development that ensures the ability to onboard the next billion users to Web3. This standard has also been extended into Fuse blockchain.
 
 The difference is that the Fuse ecosystem provides a higher Transactions Output Per Second (TPS) and thus a faster Block Time for validating transactions. With the introduction of Account Abstraction into Fuse, DApp developers can now build without having to worry about onboarding traditional web2 users, who might have to come to use their applications and find a steep learning curve as is commonly associated with onboarding using wallets that are non-custodial and require users to recall their private keys and/or mnemonic seed phrases, given whichever scenario. So, to make it easier for developers to onboard users, Fuse has built the [Fuse Connect](fuse-connect) Wallet.
 
