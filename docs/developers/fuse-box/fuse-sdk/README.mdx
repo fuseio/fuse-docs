@@ -12,8 +12,8 @@ Welcome to the FuseBox Web SDK documentation! This guide will walk you through t
 1. [Installation](#installation)
 
 2. [Getting Started](#getting-started)
-   - [Initializing a Smart Contract Wallet](#importing-fusebox-web-sdk)
-   - [Initializing FuseBox](#initializing-fusebox)
+   - [Importing FuseBox Web SDK](#importing-fusebox-web-sdk)
+   - [Initializing a Smart Contract Wallet](#initializing-fusebox)
    - [Authentication](#authentication)
 
 3. [Available Methods](#available-methods)
@@ -52,14 +52,17 @@ npm install @fuseio/fusebox-web-sdk
 import { FuseSDK } from "@fuseio/fusebox-web-sdk";
 ```
 
-### Initializing FuseBox<a name="initializing-fusebox"></a>
+### Initializing a Smart Contract Wallet<a name="initializing-fusebox"></a>
 
 ```javascript
-const fuse = new FuseBox();
-fuse.init({ apiKey: 'YOUR_API_KEY' });
+const fuse = await FuseSDK.init(publicApiKey, credentials, {
+    withPaymaster: true,
+});
 ```
 
-Replace 'YOUR_API_KEY' with your actual API key obtained from the Fuse Dashboard.
+Replace 'YOUR_API_KEY' with your actual API key obtained from the Fuse Console Dashboard.
+If you don’t want to enable `Paymaster` set it to false. It is default `false`
+
 
 ### Authentication<a name="authentication"></a>
 
