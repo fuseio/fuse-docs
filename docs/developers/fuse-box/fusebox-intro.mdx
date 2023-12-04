@@ -7,7 +7,7 @@ sidebar_position: 0
 
 [FuseBox](https://github.com/fuseio/fusebox-backend) is an Open Source Wallet-As-A-Service platform based on Account Abstraction. It is ERC-4337 complaint and provides Developers the ability to use a Bundler for collacting UserOperations, and also a Paymaster to sponsor Gas payments for their users to provide a Gasless experience. FuseBox is required for building applications on the Fuse Network. It provides a set of `methods` that are available to Developers via a **REST API**, a **Flutter SDK** and a **TypeScript SDK**. Thus making is easier for Developers to interact with the Fuse Blockchain without the need to make direct RPC calls, and eliminating the need to use a node service provider.
 
-[FuseBox Backend](https://github.com/fuseio/fusebox-backend) is developed with the NestJS framework. It relies on ERC-4337  Smart Contracts, Paymaster, Bundler, and additional API endpoints written in NodeJS. 
+[FuseBox Backend](https://github.com/fuseio/fusebox-backend) is developed with the NestJS framework. It relies on ERC-4337 Smart Contracts, Paymaster, Bundler, and additional API endpoints written in NodeJS.
 
 <p>&nbsp;</p>
 
@@ -18,7 +18,6 @@ The Fuse API is a REST API that Developers can use to access particular features
 - Smart Wallet API v2: This API enables the creation and administration of smart wallet accounts supporting the ERC-4337 standard.
 - Notification API: Subscribing to the Notification API allows you to receive updates on wallet events and activities pertaining to your customers.
 - Trade API: This API facilitates trading activities and provides access to trading-related data.
-
 
 - **Smart Wallet API v2:** The Smart Wallet API v2 (previously referenced as Smart Wallets, now deprecated) enables Developers to Authenticate and access a `jwt` string which they can then parse to enable **sessions** for users. This enables users who Authenticate in the DApp provided by the Developer and are recognised upon sign out and sign in without the need to re-authenticate. The endpoints available are:
   - `Auth`
@@ -58,9 +57,10 @@ curl -L -X GET 'https://api.fuse.io/api/v0/trade/price/:tokenAddress' \
 
 <p>&nbsp;</p>
 
-### Flutter SDK
+### FuseBox Flutter SDK
 
-The Fuse Flutter SDK is available as a Flutter [package](https://pub.dev/packages/fuse_wallet_sdk) for Mobile applications development. The Package contains all the endpoints available in the REST API.
+The FuseBox Flutter SDK is available as a Flutter [package](https://pub.dev/packages/fuse_wallet_sdk) for Mobile applications development. The Package contains all the endpoints available in the REST API.
+
 - Create and Get Address
 - Send transactions
 - Approve Token Transactions
@@ -78,19 +78,33 @@ final fuseSDK = await FuseSDK.init(apiKey, privateKey);
 
 <p>&nbsp;</p>
 
-### GitHub Repo
+### FuseBox Web SDK
 
-FuseBox Backend is the only Open Source project that enables developers have access to the Fuse Blockchain RPC methods without the need for a node service provider. The default open source library is free for use by developers can be accessed on [GitHub](https://github.com/fuseio/fusebox-backend/blob/master/README.md).
+[FuseBox Web SDK](/docs/developers/fuse-box/fuse-sdk/) is a powerful toolkit designed to streamline the integration of your applications with the Fuse Blockchain. Leveraging this SDK empowers developers to effortlessly create Smart Contract Wallets, initiate User Operations, and tap into the Fuse Notification and Trade APIs which are COMING to the SDK in the next release. With a comprehensive set of methods, FuseBox Web SDK simplifies the development process, facilitating efficient integration with the Fuse Network.
+
+The FuseBox Web SDK all-in-one solution streamlines development, ensuring efficient integration with the Fuse Network.
+
+**Smart Contract Wallet Initialization**
+
+The SDK simplifies the initializing of Smart Contract Wallets from an Externally Owned Account (EOA). Developers can easily manage wallet credentials and initiate Smart Contract Wallet creation. It is as seamless as running the code below:
+
+**Wallet Action History Retrieval**
+
+Developers can retrieve the complete history of User Operations carried out by a Smart Contract Wallet. This feature enables seamless auditing and tracking of wallet activities.
+
+**User Operation Transfers**
+
+The SDK facilitates sending User Operations, whether with or without a Paymaster. This flexibility allows developers to implement customizable transaction functionalities within their applications.
+
+**Batch Transfers**
+
+Effortlessly batch multiple User Operations, such as swaps, using the callContract or executeBatch method. This feature simplifies complex transactions, enhancing the overall user experience.
 
 <p>&nbsp;</p>
 
-### TypeScript SDK - **[COMING SOON]**
+### GitHub Repo
 
-We are pleased to announce that a Typescript SDK will soon be available for our users. This SDK will be a powerful tool for developers who prefer to write code in Typescript.
-
-The Typescript SDK will provide all the functionality of our existing API reference in an easier format for Typescript developers. It will provide a more robust set of tools for building web applications, allowing developers to build applications faster and with fewer errors.
-
-Our team is finalizing the Typescript SDK, and we anticipate it will be released soon. Keep an eye on our website and social media channels for updates on the release date.
+FuseBox Backend is the only Open Source project that enables developers have access to the Fuse Blockchain RPC methods without the need for a node service provider. The default open source library is free for use by developers can be accessed on [GitHub](https://github.com/fuseio/fusebox-backend/blob/master/README.md).
 
 <p>&nbsp;</p>
 
