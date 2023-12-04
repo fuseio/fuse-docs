@@ -20,12 +20,14 @@ In this tutorial, we will explore how to use the Fuse Web SDK to send a Fuse Blo
 ## Step 1: Set up your Project
 
 Create a new project folder and initialize it using Node.js:
+
 ```bash
 mkdir new-project && cc new-project
 npm init -y
 ```
 
 Install the required packages:
+
 ```bash
 npm install ethers@5.7.2 @fuseio/fusebox-web-sdk
 ```
@@ -36,12 +38,10 @@ Open your code editor and create a new file, e.g. `sendUserOp.mjs`.
 
 Import Libraries and Initialize FuseSDK: Import the necessary libraries, including ethers for web3 access functionalities and FuseSDK for Fuse Network interactions.
 
-
 ```javascript
-import { ethers } from 'ethers';
-import { FuseSDK } from '@fuseio/fusebox-web-sdk';
+import { ethers } from "ethers";
+import { FuseSDK } from "@fuseio/fusebox-web-sdk";
 ```
-
 
 ## Step 3: Set Up Wallet Credential
 
@@ -56,7 +56,7 @@ Create a wallet using your private key and set up the public API key required fo
 
 ```javascript
 const fuseSDK = await FuseSDK.init(publicApiKey, credentials, {
-    withPaymaster: true,
+  withPaymaster: true,
 });
 ```
 
@@ -75,7 +75,7 @@ Specify the contract address and the amount (in Wei) for the transaction. In thi
 
 ```javascript
 const contractCall = new ethers.utils.Interface([
-    "function mint(uint256 amount)",
+  "function mint(uint256 amount)",
 ]);
 
 const data = contractCall.encodeFunctionData("mint", [1]);
@@ -121,18 +121,18 @@ Transaction Hash: 0x9876543210fedcba...
 
 Congratulations! You've just sent a UserOp on the Fuse Blockchain using the Fuse Web SDK.
 
-
 ## Complete Code
 
+```
 const main = async () => {
     const credentials = new ethers.Wallet(process.env.NEXT_PUBLIC_PRIVATE_KEY);
     const publicApiKey = process.env.NEXT_PUBLIC_PUBLIC_API_KEY;
     const fuseSDK = await FuseSDK.init(publicApiKey, credentials, {
       withPaymaster: true,
     });
-  
+
     // You can use any other "to" address and any other "value"
-// MTK Token
+    // MTK Token
     const contractAddress = "0xb8D4BD32d0c8C9012cF5E90D2acF37091a73B6F6"; Contract
     const amount = parseEther("0");
 
@@ -143,20 +143,18 @@ const main = async () => {
     const data = contractCall.encodeFunctionData("mint", [1]);
 
     const res = await fuseSDK.callContract(contractAddress, amount, data);
-  
+
     console.log(`UserOpHash: ${res?.userOpHash}`);
     console.log("Waiting for transaction...");
 
     const receipt = await res?.wait();
     console.log("Transaction Hash:", receipt?.transactionHash);
-    };
+};
 
 // Execute the main function
 main();
-
+```
 
 ## Conclusion:
 
 Congratulations! You have successfully sent a Fuse blockchain state-changing UserOp for a Smart Account Wallet using the Fuse Web SDK. This example demonstrates a gasless transaction with a smart contract on the Fuse blockchain. Feel free to explore and modify the code for your specific use case.
-
-
