@@ -1,16 +1,213 @@
 ---
-title: Typescript SDK
+title: FuseBox Web SDK
 sidebar_position: 2
 ---
 
-# Typescript SDK
+# FuseBox Web SDK
 
-## Coming Soon
+Welcome to the FuseBox Web SDK documentation! This guide will walk you through the process of integrating the SDK into your applications, covering initialization, authentication, and usage of various methods.
 
-We are pleased to announce that a Typescript SDK will soon be available for our users. This SDK will be a powerful tool for developers who prefer to write code in Typescript.
+## Table of Contents
 
-The Typescript SDK will provide all the functionality of our existing SDKs in an easier format for Typescript developers. It will provide a more robust set of tools for building web applications, allowing developers to build applications faster and with fewer errors.
+1. [Installation](#installation)
 
-Our team is finalizing the Typescript SDK, and we anticipate it will be released soon. Keep an eye on our website and social media channels for updates on the release date.
+2. [Getting Started](#getting-started)
+   - [Importing FuseBox Web SDK](#importing-fusebox-web-sdk)
+   - [Initializing a Smart Contract Wallet](#initializing-fusebox)
+   - [Authentication](#authentication)
 
-We are excited to offer this new tool to our users and look forward to seeing the amazing applications built using it. Stay tuned for more information on the Typescript SDK release!
+3. [Available Methods](#available-methods)
+   - [authenticate](#authenticate)
+   - [init](#init)
+   - [callContract](#callcontract)
+   - [executeBatch](#executebatch) - Coming Soon!
+   - [getBalance](#getbalance)
+   - [getAllowance](#getallowance)
+   - [getERC20TokenDetails](#geterc20tokendetails)
+
+4. [Example Usage](#example-usage)
+   - [Creating a Smart Contract Wallet](#creating-a-smart-contract-wallet)
+   - [Executing Batch Transactions](#executing-batch-transactions)
+
+5. [Additional Information](#additional-information)
+   - [Authentication Token (JWT)](#authentication-token-jwt)
+   - [Tutorials](#tutorial)
+   - [Support and Issues](#support-and-issues)
+
+6. [License](#license)
+
+## 1. Installation<a name="installation"></a>
+
+To get started with FuseBox Web SDK, install it using npm:
+
+```bash
+npm install @fuseio/fusebox-web-sdk
+```
+
+## 2. Getting Started<a name="getting-started"></a>
+
+### Importing FuseBox Web SDK<a name="importing-fusebox-web-sdk"></a>
+
+```javascript
+import { FuseSDK } from "@fuseio/fusebox-web-sdk";
+```
+
+### Initializing a Smart Contract Wallet<a name="initializing-fusebox"></a>
+
+```javascript
+const fuse = await FuseSDK.init(publicApiKey, credentials, {
+    withPaymaster: true,
+});
+```
+
+Replace 'YOUR_API_KEY' with your actual API key obtained from the Fuse Console Dashboard.
+If you don’t want to enable `Paymaster` set it to false. It is default `false`
+
+
+### Authentication<a name="authentication"></a>
+
+```javascript
+const userToken = await fuse.authenticate('USER_PRIVATE_KEY');
+```
+
+The `authenticate` method returns a JSON Web Token (JWT) that will be used for making calls to other methods in the SDK.
+
+## 3. Available Methods<a name="available-methods"></a>
+
+### authenticate<a name="authenticate"></a>
+
+Authenticate a user using their private key and obtain a user token (JWT) for subsequent operations.
+
+```javascript
+const userToken = await fuse.authenticate('USER_PRIVATE_KEY');
+```
+
+### init<a name="init"></a>
+
+Initialize the FuseBox Smart Contract Wallet  with your API key.
+
+```javascript
+fuse.init({ apiKey: 'YOUR_API_KEY' });
+```
+
+### callContract<a name="callcontract"></a>
+
+Call a method on a smart contract deployed on the Fuse Network.
+
+```javascript
+  const to = <RECEIVER_ADDRESS>;
+  const value = parseEther("0.001");
+  const data = Uint8Array.from([]);
+
+  const res = await fuse.callContract(to, value, data);
+  
+  console.log(`UserOpHash: ${res?.userOpHash}`);
+  console.log('Waiting for transaction...');
+  const receipt = await res?.wait();
+  console.log('Transaction Hash:', receipt?.transactionHash);
+```
+
+### executeBatch<a name="executebatch"></a>
+
+Execute a batch of transactions atomically.
+
+```javascript
+const batchTransactions = [
+  { method: 'transfer', parameters: ['RECIPIENT_ADDRESS', 'AMOUNT'] },
+  // Add more transactions as needed
+];
+await fuse.executeBatch(batchTransactions, wallet);
+```
+
+### getBalance<a name="getbalance"></a>
+
+Retrieve the balance of a wallet.
+
+```javascript
+const balance = await fuse.getBalance(wallet);
+```
+
+### getAllowance<a name="getallowance"></a>
+
+Retrieve the allowance of a wallet.
+
+```javascript
+const allowance = await fuse.getAllowance(wallet);
+```
+
+### getERC20TokenDetails<a name="geterc20tokendetails"></a>
+
+Retrieve details about an ERC-20 token.
+
+```javascript
+const tokenDetails = await fuse.getERC20TokenDetails('TOKEN_ADDRESS');
+```
+
+## 4. Example Usage<a name="example-usage"></a>
+
+### Creating a Smart Contract Wallet<a name="creating-a-smart-contract-wallet"></a>
+
+```javascript
+// createSmartAccountWallet.mjs
+
+// Import necessary libraries
+import { ethers } from 'ethers';
+import { FuseSDK } from '@fuseio/fuse-web-sdk';
+
+// Main function to create a Smart Account Wallet
+const main = async () => {
+  // Load your private key from the environment variables
+  const credentials = new ethers.Wallet(process.env.PRIVATE_KEY as string);
+
+  // Retrieve your public API key from the environment variables
+  const publicApiKey = process.env.PUBLIC_API_KEY as string;
+
+  // Initialize the Fuse SDK with your public API key and wallet credentials
+  const fuseSDK = await FuseSDK.init(publicApiKey, credentials);
+
+  // Log the sender address of the Smart Wallet
+  console.log(`Sender Address is ${fuseSDK.wallet.getSender()}`);
+};
+
+// Execute the main function
+main();
+```
+
+Executing Batch Transactions - Coming Soon!
+
+```javascript
+const batchTransactions = [
+  { method: 'transfer', parameters: ['RECIPIENT_ADDRESS', 'AMOUNT'] },
+  // Add more transactions as needed
+];
+await fuse.executeBatch(batchTransactions, wallet);
+
+```
+
+### Executing Batch Transactions<a name="executing-batch-transactions"></a>
+
+```javascript
+const batchTransactions = [
+  { method: 'transfer', parameters: ['RECIPIENT_ADDRESS', 'AMOUNT'] },
+  // Add more transactions as needed
+];
+await fuse.executeBatch(batchTransactions, wallet);
+```
+
+## 5. Additional Information<a name="additional-information"></a>
+
+### Authentication Token (JWT)<a name="authentication-token-jwt"></a>
+
+The `authenticate` method returns a JSON Web Token (JWT) that must be used as the `sender` parameter in subsequent method calls.
+
+### Tutorials<a name="tutorial"></a>
+
+For detailed information on each method and additional features, refer to the [How to Guides](/docs/category/how-to-guides).
+
+### Support and Issues<a name="support-and-issues"></a>
+
+For support or to report issues, please visit the [Fuse Community Forum](link_to_forum).
+
+## 6. License<a name="license"></a>
+
+This project is licensed under the MIT License - see the [LICENSE](link_to_license) file for details.

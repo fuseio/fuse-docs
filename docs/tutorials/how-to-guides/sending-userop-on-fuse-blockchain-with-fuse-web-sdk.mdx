@@ -1,0 +1,139 @@
+---
+title: Sending UserOps on Fuse Blockchain with Fuse Web SDK
+sidebar_position: 2
+---
+
+# Sending UserOps on Fuse Blockchain with FuseBox Web SDK
+
+## Introduction
+
+Welcome to the tutorial on sending UserOps on the Fuse Blockchain using the FuseBox Web SDK. In this guide, we'll break down the process step by step, ensuring you understand each component. By the end, you'll be able to send a UserOp (transactions) according to the ERC-4337 Standard on the Fuse Blockchain.
+
+## Prerequisites
+
+Before we start, make sure you have the following:
+
+1. Node.js Installed: You can download it from [here](https://nodejs.org/).
+2. Code Editor: Use your preferred code editor; VS Code is recommended.
+3. Fuse Wallet and API Key: Obtain a Fuse Wallet and API Key from the Fuse Console Dashboard.
+4. Basic Understanding of JavaScript: Familiarity with JavaScript will be helpful.
+
+## Step 1: Set up your Project
+
+Create a new project folder and initialize it using Node.js:
+```bash
+mkdir new-project && cc new-project
+npm init -y
+```
+
+Install the required packages:
+```bash
+npm install ethers@5.7.2 @fuseio/fuse-sdk  @etherspot/prime-sdk
+```
+
+## Step 2: Write the Code
+Open your code editor and create a new file, e.g. `sendUserOp.mjs`. Copy and paste the code below:
+
+```javascript
+import { ethers } from 'ethers';
+import { FuseSDK } from 'fuse-web-sdk';
+import { parseEther } from 'ethers/lib/utils';
+import { AddressZero } from '@etherspot/prime-sdk/dist/sdk/common';
+
+const main = async () => {
+  // Replace 'YOUR_PRIVATE_KEY' and 'YOUR_PUBLIC_API_KEY' with your actual private key and API key
+  const credentials = new ethers.Wallet('YOUR_PRIVATE_KEY');
+  const publicApiKey = 'YOUR_PUBLIC_API_KEY';
+  const fuseSDK = await FuseSDK.init(publicApiKey, credentials, { withPaymaster: true });
+
+  // You can use any other "to" address and any other "value"
+  const to = AddressZero;
+  const value = parseEther("0.001");
+  const data = Uint8Array.from([]);
+  const res = await fuseSDK.callContract(to, value, data);
+  
+  console.log(`UserOpHash: ${res?.userOpHash}`);
+  console.log('Waiting for transaction...');
+
+  const receipt = await res?.wait();
+  console.log('Transaction Hash:', receipt?.transactionHash);
+};
+
+main();
+```
+
+## Code Walk-through - Skip if you already understand
+
+
+Replace `'YOUR_PRIVATE_KEY'` and `'YOUR_PUBLIC_API_KEY'` with your actual private key and API key from the Fuse Console.
+
+
+```javascript
+// Import necessary libraries
+import { ethers } from 'ethers';
+import { FuseSDK } from 'fuse-web-sdk';
+import { parseEther } from 'ethers/lib/utils';
+import { AddressZero } from '@etherspot/prime-sdk/dist/sdk/common';
+
+// Define the main function, which is an asynchronous function
+const main = async () => {
+  
+  // Replace 'YOUR_PRIVATE_KEY' and 'YOUR_PUBLIC_API_KEY' with your actual private key and API key
+  // Create a wallet using your private key
+  const credentials = new ethers.Wallet('YOUR_PRIVATE_KEY');
+
+  // Get your public API key from the Fuse Dashboard
+  const publicApiKey = 'YOUR_PUBLIC_API_KEY';
+
+  // Initialize the Fuse Web SDK with your public API key and wallet credentials
+  const fuseSDK = await FuseSDK.init(publicApiKey, credentials, { withPaymaster: true });
+
+  // You can use any other "to" address and any other "value"
+  // Specify the destination address for the transaction (can be any address, even an empty one)
+  const to = AddressZero;
+
+  // Specify the amount of cryptocurrency to send (in this case, 0.001 Ether)
+  const value = parseEther("0.001");
+
+  // Specify the data for the transaction (in this case, an empty array)
+  const data = Uint8Array.from([]);
+
+  // Call the contract using the Fuse SDK, passing the destination, value, and data
+  const res = await fuseSDK.callContract(to, value, data);
+
+  // Output the UserOpHash, a unique identifier for the transaction on the Fuse network
+  console.log(`UserOpHash: ${res?.userOpHash}`);
+  console.log('Waiting for transaction...');
+
+  // Wait for the transaction to be mined and output the transaction hash
+  const receipt = await res?.wait();
+  console.log('Transaction Hash:', receipt?.transactionHash);
+};
+
+// Call the main function to execute the code
+main();
+
+```
+
+## Step 3: Running the Code
+
+Save the file and open your terminal. Navigate to your project folder and run:
+
+```bash
+node sendUserOp.mjs
+```
+
+This will execute the script, and you should see output similar to:
+
+```
+UserOpHash: 0x1234567890abcdef...
+Waiting for transaction...
+Transaction Hash: 0x9876543210fedcba...
+```
+
+Congratulations! You've just sent a UserOp on the Fuse Blockchain using the Fuse Web SDK.
+
+## Conclusion
+
+You've successfully completed the tutorial on sending UserOps on the Fuse Blockchain. This foundational knowledge can be extended to build more complex applications on the Fuse network. Explore the Fuse documentation for further details and possibilities. Happy coding!
+
