@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Smart Wallets API v1 - DEPRECATED
+  title: Smart Wallets API v2
   version: 1.0.0
 servers:
   - url: https://api.fuse.io
