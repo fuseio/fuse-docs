@@ -331,7 +331,7 @@ paths:
     get:
       tags:
         - Smart Wallets
-      summary: Get Historical Transactions
+      summary: Get Wallet Actions
       security:
         - bearerAuth: []
       parameters:
@@ -630,7 +630,7 @@ paths:
                   statusCode: 401
                   message: Unauthorized
                 path: >-
-                  /api/v1/smart-wallets/historical_txs?apiKey={{publicKey}}&page=1&updatedAt=0&tokenAddress=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                  /api/v2/smart-wallet/actions?apiKey={{publicKey}}&page=1&updatedAt=0&tokenAddress=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
         "403":
           description: Forbidden
           content:
@@ -644,4 +644,4 @@ paths:
                   message: Forbidden resource
                   error: Forbidden
                 path: >-
-                  /api/v1/smart-wallets/historical_txs?apiKey={{publicKey}}&page=1&updatedAt=0&tokenAddress=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                  /api/v2/smart-wallet/actions?apiKey={{publicKey}}&page=1&updatedAt=0&tokenAddress=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
