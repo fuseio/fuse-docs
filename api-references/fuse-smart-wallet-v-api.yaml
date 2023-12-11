@@ -11,10 +11,10 @@ components:
       type: http
       scheme: bearer
 paths:
-  /api/v1/smart-wallets/auth:
+  /api/v2/smart-wallets/auth:
     post:
       tags:
-        - Smart Wallets
+        - Smart Wallet
       summary: Auth
       description: Authenticate user using signed data standard EIP-191
       requestBody:
@@ -79,7 +79,7 @@ paths:
                   error: Forbidden
                 path: >-
                   /api/v2/smart-wallet/auth?apiKey={{publicKey}}
-  /api/v1/smart-wallets/historical_txs:
+  /api/v2/smart-wallets/actions:
     get:
       tags:
         - Smart Wallets

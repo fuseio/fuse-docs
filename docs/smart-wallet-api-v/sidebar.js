@@ -1,5 +1,5 @@
 module.exports = [
-  { type: "doc", id: "smart-wallet-api-v/smart-wallets-api-v2" },
+  { type: "doc", id: "smart-wallet-api-v/smart-wallets-api-v" },
   {
     type: "category",
     label: "Smart Wallets v2",
