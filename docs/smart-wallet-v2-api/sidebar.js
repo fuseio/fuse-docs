@@ -1,18 +1,18 @@
 module.exports = [
-  { type: "doc", id: "smart-wallet-api-v/smart-wallets-api-v2" },
+  { type: "doc", id: "smart-wallet-v2-api/smart-wallets-v2-api" },
   {
     type: "category",
     label: "Smart Wallets v2",
     items: [
       {
         type: "doc",
-        id: "smart-wallet-api-v/auth",
+        id: "smart-wallet-v2-api/auth",
         label: "Auth",
         className: "api-method post",
       },
       {
         type: "doc",
-        id: "smart-wallet-api-v/get-wallet-actions",
+        id: "smart-wallet-v2-api/get-wallet-actions",
         label: "Get Wallet Actions",
         className: "api-method get",
       },
