@@ -1,0 +1,231 @@
+---
+title: Candide
+sidebar_position: 2
+---
+
+# Gasless Transactions with Candide Wallet on Fuse Blockchain
+
+## Introduction
+
+Gasless transactions have become increasingly popular in the blockchain space, providing a seamless experience for users by eliminating the need to pay transaction fees in the native cryptocurrency. In this tutorial, we will explore how to create gasless transactions using Candide Wallet on the Fuse Blockchain. Candide Wallet is a powerful tool that facilitates the creation and execution of transactions without requiring users to manage gas fees directly.
+
+## Prerequisites
+
+Before we begin, make sure you have the following prerequisites:
+
+1. Node.js installed on your machine. You can download it from [here](https://nodejs.org/).
+2. Code Editor: Use your preferred code editor; VS Code is recommended.
+3. An EOA wallet with a private key. You can use an existing one or create a new wallet.
+4. Basic Understanding of JavaScript: Familiarity with JavaScript will be helpful.
+
+## Step 1: Set Up Your Project
+
+Create a new project folder and initialize it using Node.js:
+
+```bash
+mkdir new-project && cc new-project
+npm init -y
+```
+
+## Step 2: **Install Dependencies:**
+
+Ensure that you have the required dependencies installed. You can install them using the following command:
+
+```bash
+npm install dotenv abstractionkit ethers@5.7.2 typescript ts-node
+```
+
+In this step, we import the necessary libraries for our gasless transaction, including Candide Wallet's abstraction kit which is a JS library for building ERC-4337 user operations.
+
+**Configure Environment Variables:**
+
+Create a `.env` file in your project directory and add the following variables:
+
+```bash
+BUNDLER_URL=<Bundler Endpoint URL>
+ENTRYPOINT_ADDRESS=<Candide Wallet Entrypoint Address>
+PRIVATE_KEY=<Your Private Key>
+JSON_RPC_NODE_PROVIDER=<Your JSON RPC Node Provider URL>
+CHAIN_ID=<Your Chain ID>
+```
+
+## Step 3: **Code:**
+
+### Step 1: gasless_txns.ts
+
+Create a file gasless_txns.ts and start by importing the Libraries.
+
+```javascript
+import * as dotenv from "dotenv";
+import { ethers } from "ethers";
+import { Bundler, CandideAccount } from "abstractionkit";
+```
+
+In this step we import the dotenv Library to enable us parse env variables without exposing them. We will also use methods from the EthersJS package to create wallets and also handle Hex values. The abstractionkit provides us with methods to create an Account that will be connected to the Bundler of the particular network we are interacting with.
+
+### Step 2: Initializing Bundler and Wallet
+
+Start by creating a function in gasless_txns.ts
+
+```javascript
+async function main(): Promise<void> {
+  // Rest of the code will go here...
+}
+
+main();
+```
+
+Add the following code to initialize the bundler and create a Smart Contract Account using the EOA.
+
+```javascript
+//get values from .env
+dotenv.config();
+const bundlerUrl = process.env.BUNDLER_URL as string;
+const entrypointAddress = process.env.ENTRYPOINT_ADDRESS as string;
+const privateKey = process.env.PRIVATE_KEY as string;
+
+// Define our Bundler endpoint where we will be sending our userOp
+const bundler: Bundler = new Bundler(bundlerUrl, entrypointAddress);
+
+// Initiate the owner of our Candide Account (EOA)
+const eoaSigner = new Wallet(privateKey);
+
+const smartAccount = new CandideAccount();
+```
+
+This segment initializes the Bundler and the wallet using the values from the environment variables. It also sets up the owner of the Candide Account, which is an externally owned account (EOA).
+
+### Step 3: Creating a Smart Contract Account
+
+```javascript
+// Generate the new account address and initCode
+let [newAccountAddress, initCode] = smartAccount.createNewAccount([
+  eoaSigner.address,
+]);
+
+console.log("Account address(sender) : " + newAccountAddress);
+```
+
+Here, we generate a new account address and initialization code for the Candide Account. The account address is then logged to the console.
+
+### Step 4: Sending Ether Gaslessly
+
+```javascript
+//send 5 wei to 0x1a02592A3484c2077d2E5D24482497F85e1980C6
+let callData = smartAccount.createSendEthCallData(
+  "0xa42872B5359F6e3905BB031df62C3AADde532933",
+  5 // 5 wei
+);
+
+let user_operation: UserOperation = {
+  ...UserOperationEmptyValues,
+  sender: newAccountAddress,
+  nonce: "0x00",
+  initCode,
+  callData,
+};
+```
+
+In this step, we create the call data for sending 5 wei to an address. We then define the user operation object with the necessary values.
+
+### Step 5: Estimating Gas
+
+```javascript
+let estimation = (await bundler.estimateUserOperationGas(
+  user_operation
+)) as GasEstimationResult;
+
+// catch errors if there's any in the estimateUserOperationGas call
+if ("code" in estimation) {
+  console.log(estimation);
+  return;
+}
+
+user_operation.callGasLimit = ethers.utils.hexlify(
+  Math.round(Number(estimation.callGasLimit) * 1.2)
+);
+
+user_operation.preVerificationGas = ethers.utils.hexlify(
+  Math.round(Number(estimation.preVerificationGas) * 1.2)
+);
+
+console.log(estimation);
+```
+
+Here, we estimate the gas required for the user operation and adjust the gas limits accordingly. Errors are caught and logged if there are any issues with the gas estimation.
+
+### Step 6: Setting Fee Parameters
+
+```javascript
+const jsonRpcNodeProvider = process.env.JSON_RPC_NODE_PROVIDER as string;
+const provider = new ethers.providers.JsonRpcProvider(jsonRpcNodeProvider);
+const feeData = await provider.getFeeData();
+
+if (feeData.maxFeePerGas && feeData.maxPriorityFeePerGas) {
+  user_operation.maxFeePerGas = ethers.utils.hexlify(
+    Math.round(Number(feeData.maxFeePerGas) * 1.5)
+  );
+
+  user_operation.maxPriorityFeePerGas = ethers.utils.hexlify(
+    Math.round(Number(feeData.maxFeePerGas) * 1.5)
+  );
+}
+```
+
+This segment retrieves fee data from the JSON RPC node provider and sets the maximum fee per gas and maximum priority fee per gas in the user operation.
+
+### Step 7: Signing and Sending the Transaction
+
+```javascript
+const chainId = process.env.CHAIN_ID as string;
+
+const user_operation_hash = getUserOperationHash(
+  user_operation,
+  entrypointAddress,
+  chainId
+);
+
+user_operation.signature = await eoaSigner.signMessage(
+  ethers.utils.hexZeroPad(user_operation_hash, 32)
+);
+
+const bundlerResponse = await bundler.sendUserOperation(user_operation);
+
+console.log(bundlerResponse, "bundlerResponse");
+```
+
+In this step, we generate the user operation hash, sign it with the wallet, and send the gasless transaction to the Bundler. The response from the Bundler is then logged to the console.
+
+### Step 8: Handling Responses
+
+```javascript
+if (
+  "message" in bundlerResponse &&
+  (bundlerResponse.message as string) == "AA21 didn't pay prefund"
+) {
+  console.log(
+    "Please fund the new account address with some sepolia eth to pay for gas : " +
+      newAccountAddress
+  );
+}
+```
+
+Finally, we check the Bundler's response and prompt for funding if the message indicates that prefunding is required.
+
+This breakdown provides a clear understanding of each segment's purpose in the gasless transaction code using Candide Wallet on the Fuse Blockchain.
+
+## Step 4: Running the Code
+
+1. Save the provided code in a file (e.g., `gasless_transaction.js`).
+
+2. Run the script using the following command:
+
+   ```bash
+   npx ts-node index.ts gasless_transaction.js
+   ```
+
+3. Follow any prompts or logs to fund the new account address if required.
+
+## Conclusion
+
+Congratulations! You have successfully created a gasless transaction using Candide Wallet on the Fuse Blockchain. This tutorial has covered the essential steps to set up your environment, understand the provided code, and execute gasless transactions seamlessly. Feel free to explore and customize the code further based on your specific use cases and requirements.

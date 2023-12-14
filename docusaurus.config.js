@@ -142,6 +142,12 @@ const config = {
             label: "API references",
             position: "left",
           },
+          {
+            type: "docSidebar",
+            sidebarId: "integrationSidebar",
+            label: "Partner Integrations",
+            position: "left",
+          },
 
           // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],

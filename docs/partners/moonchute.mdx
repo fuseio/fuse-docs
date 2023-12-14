@@ -1,0 +1,168 @@
+---
+title: MoonChute
+sidebar_position: 3
+---
+
+Tutorial: How to send UserOperations on Fuse with MoonChute.
+
+# Tutorial: Integrating Moonchute with Fuse Blockchain in a ReactJS Project
+
+## Introduction
+
+Moonchute is a powerful interface for managing account abstraction, overseeing smart accounts, and providing customized verification. In this tutorial, we will guide you through the process of integrating Moonchute with the Fuse Blockchain in a ReactJS project using the `wagmi` library.
+
+## Prerequisites
+
+Make sure you have the following installed:
+
+Before we begin, ensure you have the following:
+
+1. Node.js installed on your machine. You can download it from [here](https://nodejs.org/).
+2. Code Editor: Use your preferred code editor; VS Code is recommended.
+3. An EOA wallet with a private key. You can use an existing one or create a new wallet.
+4. Basic Understanding of JavaScript: Familiarity with JavaScript will be helpful.
+
+## Step 1: Set Up Your Project
+
+Create a new project folder and initialize it using Node.js:
+
+```bash
+mkdir fuse-moonchute-demo && cd fuse-moonchute-demo
+```
+
+We are going to use ViteJS to quickly set up a ReactJS project. Run the command
+
+```bash
+npm create vite@latest .
+```
+
+Select the prompts….
+
+Where dot . indicate deploying vitejs in the already created directory. Next Run
+
+```bash
+npm install
+npm run dev
+```
+
+The project will be available on localhost at http://localhost:5173/
+
+Add the project to Code Editor, such as VSCode. Open the project and navigate to App.jsx
+
+## Step 2: **Install Dependencies:**
+
+Ensure that you have the required dependencies installed. You can install them using the following command:
+
+```bash
+npm install dotenv abstractionkit ethers@5.7.2 typescript ts-node
+```
+
+## Step 1: Install Moonchute and Configure Wagmi
+
+Open your terminal and run the following command to add Moonchute to your ReactJS project:
+
+```bash
+yarn add moonchute wagmi viem
+```
+
+Now, let's configure Wagmi in your project. In a file, for example, `wagmiConfig.ts`, add the following:
+
+```javascript
+// wagmiConfig.ts
+import { createConfig, configureChains, fuse } from "wagmi";
+import { publicProvider } from "wagmi/providers/public";
+
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [fuse],
+  [publicProvider()]
+);
+
+export const wagmiConfig = createConfig({
+  publicClient,
+  webSocketPublicClient,
+});
+```
+
+## Step 2: Configure Moonchute in the Main Application File
+
+In your main application file (e.g., `App.tsx`), import `createMoonChuteConfig` and `MoonChuteConfig`:
+
+```javascript
+// App.tsx
+import { MoonChuteConfig, createMoonChuteConfig } from "moonchute";
+import { wagmiConfig } from "./wagmiConfig"; // Import the Wagmi config
+
+const config = createMoonChuteConfig({
+  appId: "YOUR_MOONCHUTE_APP_ID",
+});
+```
+
+## Step 3: Integrate Moonchute and Wagmi in the App Component
+
+Now, integrate Moonchute and Wagmi in your `App` component:
+
+```javascript
+// App.tsx
+import React from "react";
+import { WagmiConfig } from "wagmi";
+import { MoonChuteConfig } from "moonchute";
+import { wagmiConfig } from "./wagmiConfig";
+
+function App() {
+  return (
+    <WagmiConfig config={wagmiConfig}>
+      <MoonChuteConfig config={config}>
+        <MyComponent />
+      </MoonChuteConfig>
+    </WagmiConfig>
+  );
+}
+
+export default App;
+```
+
+## Step 4: Sending User Operations to Fuse Blockchain with Moonchute
+
+Now, you can use Moonchute to send user operations to the Fuse Blockchain. Create a component, for example, `MyComponent.tsx`:
+
+```javascript
+// MyComponent.tsx
+import React from "react";
+import {
+  useSmartAccounts,
+  usePrepareUserOperation,
+  useSendUserOperation,
+} from "moonchute";
+
+const MyComponent: React.FC = () => {
+  const { data: accounts } = useSmartAccounts({
+    address: "YOUR_ADDRESS",
+    chainId: "CHAIN_ID",
+  });
+
+  const { config } = usePrepareUserOperation({
+    address: "YOUR_ADDRESS",
+    account: accounts.smartAccount[0].address,
+    abi: "NFT_ABI",
+    functionName: "mint",
+    args: ["address"],
+  });
+
+  const { data: userOpHash, write } = useSendUserOperation(config);
+
+  return (
+    <div>
+      <button onClick={() => write()} disabled={!config}>
+        Mint NFT
+      </button>
+      {userOpHash && <p>Transaction Hash: {userOpHash}</p>}
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+## Conclusion
+
+Congratulations! You have successfully integrated Moonchute with the Fuse Blockchain in your ReactJS project using `wagmi`. This setup allows you to manage account abstraction, oversee smart accounts, and perform customized verification seamlessly. Feel free to explore more features and customize your application as needed.
