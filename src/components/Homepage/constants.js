@@ -3,7 +3,7 @@ const ExploreApisList = [
     title: "Smart Wallets API",
     description:
       "Maximize the security and user experience of your apps by leveraging smart contract wallets.",
-    href: "/docs/category/smart-wallet-api",
+    href: "/docs/category/smart-wallet-api-v2",
   },
   {
     title: "Relay API",
@@ -23,12 +23,7 @@ const ExploreApisList = [
       "Maximize the security and user experience of your apps by leveraging smart contract wallets.",
     href: "/docs/category/notification-api",
   },
-  {
-    title: "Admin API",
-    description:
-      "Create and manage custodial wallets and ERC20 tokens for payments, loyalty and more.",
-    href: "/docs/category/admin-api",
-  },
+
   {
     title: "Data APIs (Coming soon)",
     description:
