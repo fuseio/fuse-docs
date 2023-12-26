@@ -265,6 +265,9 @@ const config = {
     ],
   ],
   themes: ["docusaurus-theme-openapi-docs"],
+  customFields: {
+    happyReactToken: "c56b4364-23fd-41f1-8f5b-3ebe7f31d082"
+  }
 };
 
 module.exports = config;
