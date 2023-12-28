@@ -109,6 +109,19 @@ const config = {
 
         items: [
           {
+            type: "docSidebar",
+            sidebarId: "supportSidebar",
+            label: "Support",
+            position: "right",
+            className: "button button--secondary button--lg",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "apiSidebar",
+            label: "API References",
+            position: "right",
+          },
+          {
             type: "search",
             position: "right",
           },
@@ -134,12 +147,6 @@ const config = {
             type: "docSidebar",
             sidebarId: "tutorialsSidebar",
             label: "Tutorials",
-            position: "left",
-          },
-          {
-            type: "docSidebar",
-            sidebarId: "apiSidebar",
-            label: "API references",
             position: "left",
           },
 
@@ -266,8 +273,8 @@ const config = {
   ],
   themes: ["docusaurus-theme-openapi-docs"],
   customFields: {
-    happyReactToken: "c56b4364-23fd-41f1-8f5b-3ebe7f31d082"
-  }
+    happyReactToken: "c56b4364-23fd-41f1-8f5b-3ebe7f31d082",
+  },
 };
 
 module.exports = config;
