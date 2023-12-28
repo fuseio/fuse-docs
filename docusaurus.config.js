@@ -110,16 +110,15 @@ const config = {
         items: [
           {
             type: "docSidebar",
-            sidebarId: "supportSidebar",
-            label: "Support",
-            position: "right",
-            className: "button button--secondary button--lg",
-          },
-          {
-            type: "docSidebar",
             sidebarId: "apiSidebar",
             label: "API References",
             position: "right",
+          },
+          {
+            to: "https://discord.com/invite/jpPMeSZ",
+            label: "Support",
+            position: "right",
+            // className: "button button--secondary button--lg",
           },
           {
             type: "search",
@@ -133,7 +132,7 @@ const config = {
           },
           {
             type: "doc",
-            docId: "developers/overview",
+            docId: "developers/quick-start",
             position: "left",
             label: "Developers",
           },
@@ -143,12 +142,12 @@ const config = {
             position: "left",
             label: "Validators",
           },
-          {
-            type: "docSidebar",
-            sidebarId: "tutorialsSidebar",
-            label: "Tutorials",
-            position: "left",
-          },
+          // {
+          //   type: "docSidebar",
+          //   sidebarId: "tutorialsSidebar",
+          //   label: "Tutorials",
+          //   position: "left",
+          // },
 
           // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],

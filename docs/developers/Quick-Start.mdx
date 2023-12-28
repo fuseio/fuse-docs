@@ -3,77 +3,93 @@ title: Quick Start
 sidebar_position: -2
 ---
 
-### Get Started with Fuse
+# Fuse Blockchain Developer Quick Start Guide
 
-This guide will provide you with an overview of the Fuse ecosystem. It will also include links to helpful resources and websites that will help you learn more about building blockchain applications, not only on Fuse but also on other platforms.
+Welcome to the Fuse Blockchain Developer Quick Start Guide! This guide is designed to help developers like you get up and running quickly with building on the Fuse Blockchain. Whether you're a seasoned blockchain developer or just getting started, this guide will provide you with the essential information and resources you need to start building on the Fuse network.
 
-### Building on Fuse
+## Network Details
 
-If you are an Ethereum developer, you are already a Fuse developer. Simply switch to the [Fuse RPC](https://docs.fuse.io/docs/basics/getting-started-with-fuse/network-details) and get started. All the tools you are familiar with on the Ethereum blockchain are supported on Fuse by default, such as Truffle, Remix, and Web3js.
+### Fuse Mainnet
 
-You can deploy decentralized applications to either Fuse Spark Testnet or the Mainnet.
+| **RPC**       | [https://rpc.fuse.io/](https://rpc.fuse.io/)​          |
+| :------------ | :----------------------------------------------------- |
+| **Chain ID**  | 122                                                    |
+| **Symbol**    | FUSE                                                   |
+| **Health**    | [https://health.fuse.io/](https://health.fuse.io/)     |
+| **Explorer**  | [https://explorer.fuse.io/](https://explorer.fuse.io/) |
+| **WebSocket** | wss://explorer-node.fuse.io/ws                         |
 
-### Publicly available Fuse RPC endpoints
+<p>&nbsp;</p>
 
-Check out a [list of public endpoints](https://docs.fuse.io/docs/basics/getting-started-with-fuse/rpc#fuse-labs) for the Fuse Network.
+### Fuse Spark Testnet
 
-### Subgaphs
+| **RPC**       | [https://rpc.fusespark.io](https://rpc.fusespark.io)                                                                       |
+| :------------ | :------------------------------------------------------------------------------------------------------------------------- |
+| **Chain ID**  | 123                                                                                                                        |
+| **Symbol**    | FUSE                                                                                                                       |
+| **Health**    | [https://health.fusespark.io](https://health.fusespark.io)                                                                 |
+| **Explorer**  | [https://explorer.fusespark.io/](https://explorer.fusespark.io/)                                                           |
+| **Faucet**    | [ChainDrop faucet](https://chaindrop.org/?chainid=123&token=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee "ChainDrop faucet") |
+| **WebSocket** | wss://explorernode.fusespark.io/ws                                                                                         |
 
-You can easily get the indexed data from the blockchain through the different [subgraphs solutions](https://docs.fuse.io/docs/developers/subgraphs/) available on Fuse Network.
+<p>&nbsp;</p>
 
-### Oracles
+## Building on Fuse
 
-Fuse integrated with industry-leader [oracle providers](https://docs.fuse.io/docs/developers/oracles) Dia and Supra for maximum flexibility to access price feeds.
+### Creating a Fuse Wallet
 
-### Wallets
+To interact with the Fuse Blockchain, you'll need a wallet. Follow the [Fuse Metamask guide](https://docs.fuse.io/fuse-wallet/create-fuse-wallet) to set up your wallet.
 
-To interact with the Fuse Network, you need to have an Ethereum-based wallet because Fuse runs on Ethereum Virtual Machine (EVM). You can add Fuse to [MetaMask](https://docs.fuse.io/docs/basics/getting-started-with-fuse/wallets/add-fuse-to-metamask-and-other-wallets), which allows you to connect to Fuse using [RPC](https://docs.fuse.io/docs/basics/getting-started-with-fuse/wallets/add-fuse-to-metamask-and-other-wallets).
+### Choosing a Development Option
 
-You can find the wallets currently supporting the Fuse Network blockchain [here](https://fuse.io/ecosystem) (filter using the tag "Wallet").
+Fuse is EVM compatible and uses Solidity programming languages for smart contract development.
 
-### Smart Contracts
+Fuse provides a set of APIs for building on the Fuse blockchain, and also a Web SDK and Flutter SDK for building Mobile Apps.
 
-Fuse supports many services you can use to test, compile, debug, and deploy decentralized applications onto the Fuse Network. These include deployment using [Hardhat](https://docs.fuse.io/docs/developers/deploying-smart-contracts/using-hardhat), [Thirdweb](https://docs.fuse.io/docs/developers/deploying-smart-contracts/using-thirdweb) and [Remix](https://docs.fuse.io/docs/developers/deploying-smart-contracts/using-remix-and-metamask).
+### Writing and Deploying Smart Contracts
 
-Fuse Token (FUSE) is the native token on the Fuse Network. Its official versions exist on the Ethereum, BSC, Polygon and Arbitrum networks. [Here](https://docs.fuse.io/docs/developers/important-smart-contracts/fuse-token-on-other-chains) you can find relevant smart contracts.
+Follow the [smart contract development guide](https://docs.fuse.io/fuse-studio/smart-contracts) for step-by-step instructions on writing and deploying smart contracts on Fuse.
 
-### Building a new dApp on Fuse?
+You can use Remix IDE, Hardhat, and/or ThirdWeb to deploy and test your smart contracts. Refer to the [smart contract deployment guide](https://docs.fuse.io/fuse-studio/smart-contracts) for step-by-step instructions.
 
-Decentralized applications (dApps) serve as the link between users and data privacy on the blockchain. The growing prevalence of dApps underscores their value in the blockchain environment, addressing issues such as facilitating transactions between two parties without a central authority through smart contracts.
+Get familiar with Fuse smart contract concepts, including token creation, staking, and governance. Refer to the [smart contract guide](https://docs.fuse.io/fuse-studio/smart-contracts) for in-depth information.
 
-If you're new to creating decentralized applications (dApps), the resources mentioned below will provide you with a jumpstart on the necessary tools to construct, troubleshoot, and launch dApps on the Fuse Network.
+Learn how to interact with smart contracts using web3 libraries. Fuse supports Ethereum-compatible libraries like Web3.js and ethers.js.
 
-- [Full Stack dApp: Tutorial Series](https://kauri.io/#collections/Full%20Stack%20dApp%20Tutorial%20Series/full-stack-dapp-tutorial-series-intro/)
-- [Web3.js](https://www.dappuniversity.com/articles/web3-js-intro)
-- [Ethers.js](https://docs.ethers.org/v5/)
-- [Hardhat](https://docs.fuse.io/docs/developers/deploying-smart-contracts/using-hardhat)
-- [Thirdweb](https://docs.fuse.io/docs/developers/deploying-smart-contracts/using-thirdweb)
-- [Remix](https://docs.fuse.io/docs/developers/deploying-smart-contracts/using-remix-and-metamask)
+<p>&nbsp;</p>
 
-### Note
+## Fuse Developer Tools
 
-If you find all of this overwhelming, don't worry! You can jump right in and start experimenting. However, here are a few things to keep in mind before you dive into the available resources, repositories, and documentation:
+### Fuse API Documentation
 
-1. Be aware of the challenges of being on the cutting edge: Like any specialized field of programming, dApps and blockchain development evolve rapidly. During your research, you may come across complex code repositories, documentation sites with broken links, or even a lack of documentation altogether. Take this as an opportunity to reach out to us through any social media channel for assistance.
-2. The learning curve may seem intimidating, but the entry barrier is low: The community is incredibly open and welcoming! Projects actively encourage contributions from external developers and are committed to resolving any obstacles you may encounter. We are all working towards creating a better world, and any form of contribution is highly appreciated. We would be thrilled to have you join this incredible Web3 ecosystem.
+Refer to the [Fuse API documentation](https://docs.fuse.io/api) for comprehensive information on Fuse APIs, endpoints, and integration guides.
 
-### General Resources
+### FuseBox
 
+Visit the [Fuse developer portal](https://developer.fuse.io/) for additional resources, tutorials, and community support.
 
+### Flutter SDK
 
-#### Learn more about Fuse Network
+Fuse provides a variety of tools and SDKs to enhance your development experience. Explore the [Fuse GitHub repository](https://github.com/fuseio) for the latest tools and libraries.
 
-- [Proof-of-Stake mechanism](https://news.fuse.io/what-is-proof-of-stake/)
-- [Webhooks](https://docs.fuse.io/docs/notification-api/webhooks)
+<p>&nbsp;</p>
 
-#### Basics of Web3 Development
+## Community and Support
 
-- [What is Ethereum?](https://blockgeeks.com/guides/ethereum/)
-- [Mastering Ethereum](https://github.com/ethereumbook/ethereumbook)
-- [Full-Stack dApp Tutorial Series](https://kauri.io/#collections/Full%20Stack%20dApp%20Tutorial%20Series/full-stack-dapp-tutorial-series-intro/)
-- [Web3 Developer Stack](https://www.quicknode.com/guides/web3-sdks/the-web3-developer-stack)
-- [How to Create a Token (ERC20)?](https://www.quicknode.com/guides/ethereum-development/smart-contracts/how-to-create-and-deploy-an-erc20-token)
-- [Integrating IPFS with Ethereum](https://www.quicknode.com/guides/ethereum-development/dapps/how-to-integrate-ipfs-with-ethereum)
-- [Hello World Smart Contract](https://docs.alchemy.com/docs/hello-world-smart-contract)
-- [How to Create an NFT](https://docs.alchemy.com/docs/how-to-create-an-nft)
-- [Dapp University](https://www.youtube.com/channel/UCY0xL8V6NzzFcwzHCgB8orQ)
+### Joining the Fuse Developer Community
+
+Connect with fellow developers, ask questions, and share your experiences in the [Fuse Discord channel](https://discord.gg/ZRJc7QW).
+
+### Getting Support and Assistance
+
+For technical support and assistance, visit the [Fuse Help Center](https://help.fuse.io/) or reach out to the community on Discord.
+
+<p>&nbsp;</p>
+
+## Next Steps
+
+### Contributing to the Fuse Ecosystem
+
+Join the open-source community by contributing to the development of Fuse tools, libraries, and documentation. Visit the [Fuse GitHub repository](https://github.com/fuseio) to explore contribution opportunities.
+
+Congratulations! You've completed the Fuse Blockchain Developer Quick Start Guide. Now you're ready to dive deeper into Fuse development and contribute to the thriving ecosystem. Happy coding!
