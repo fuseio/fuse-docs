@@ -142,13 +142,6 @@ const config = {
             position: "left",
             label: "Validators",
           },
-          // {
-          //   type: "docSidebar",
-          //   sidebarId: "tutorialsSidebar",
-          //   label: "Tutorials",
-          //   position: "left",
-          // },
-
           // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],
       },
