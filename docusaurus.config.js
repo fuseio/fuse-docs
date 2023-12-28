@@ -132,7 +132,7 @@ const config = {
           },
           {
             type: "doc",
-            docId: "developers/quick-start",
+            docId: "developers/Quick-Start",
             position: "left",
             label: "Developers",
           },
