@@ -109,6 +109,18 @@ const config = {
 
         items: [
           {
+            type: "docSidebar",
+            sidebarId: "apiSidebar",
+            label: "API References",
+            position: "right",
+          },
+          {
+            to: "https://discord.com/invite/jpPMeSZ",
+            label: "Support",
+            position: "right",
+            // className: "button button--secondary button--lg",
+          },
+          {
             type: "search",
             position: "right",
           },
@@ -120,7 +132,7 @@ const config = {
           },
           {
             type: "doc",
-            docId: "developers/overview",
+            docId: "developers/Quick-Start",
             position: "left",
             label: "Developers",
           },
@@ -130,19 +142,6 @@ const config = {
             position: "left",
             label: "Validators",
           },
-          {
-            type: "docSidebar",
-            sidebarId: "tutorialsSidebar",
-            label: "Tutorials",
-            position: "left",
-          },
-          {
-            type: "docSidebar",
-            sidebarId: "apiSidebar",
-            label: "API references",
-            position: "left",
-          },
-
           // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],
       },
@@ -266,8 +265,8 @@ const config = {
   ],
   themes: ["docusaurus-theme-openapi-docs"],
   customFields: {
-    happyReactToken: "c56b4364-23fd-41f1-8f5b-3ebe7f31d082"
-  }
+    happyReactToken: "c56b4364-23fd-41f1-8f5b-3ebe7f31d082",
+  },
 };
 
 module.exports = config;
