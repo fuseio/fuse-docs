@@ -118,7 +118,12 @@ const config = {
             to: "https://discord.com/invite/jpPMeSZ",
             label: "Support",
             position: "right",
-            // className: "button button--secondary button--lg",
+            className: "navbar--discord-logo",
+          },
+          {
+            href: "https://discord.com/invite/jpPMeSZ",
+            position: "right",
+            className: "navbar--discord-link",
           },
           {
             type: "search",
