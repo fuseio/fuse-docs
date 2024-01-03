@@ -2,10 +2,179 @@
 title: Flutter SDK
 sidebar_position: 3
 ---
-# Flutter SDK
 
-Welcome to the Flutter SDK documentation for Fuse Wallet. This SDK enables developers to easily integrate the Fuse Wallet functionality into their Flutter applications, allowing users to manage their digital assets on the Fuse network.&#x20;
+1. [Introduction](#introduction)
 
-In this documentation, we will cover the key concepts and features of the Fuse Wallet Flutter SDK and guide you on integrating it into your application.&#x20;
+   - [Purpose of the SDK](#purpose-of-the-sdk)
 
-We will also provide detailed examples to help you get started quickly. Whether you are building a DeFi application, a game, a marketplace, or a simple payment gateway, the Fuse Wallet Flutter SDK provides a mobile-first, convenient, and secure way to interact with the Fuse network.
+2. [Instantiation](#instantiation)
+
+3. [Features](#features)
+
+   - [Get Address](#get-address)
+   - [Send transactions](#send-transactions)
+   - [Send batch transactions](#send-batch-transactions)
+   - [Sponsored Transactions](#sponsored-transactions)
+   - [Staking](#staking)
+   - [Trading](#trading)
+
+4. [Troubleshooting](#troubleshooting)
+
+5. [Limitations](#limitations)
+
+## Introduction
+
+The Fuse Wallet SDK is a set of tools for creating, managing, and engaging with Fuse Wallet SDK in client applications. Fuse Wallet SDK lets users create smart contract wallets([Based on ERC-4337](https://eips.ethereum.org/EIPS/eip-4337)) associated with each user's Externally Owned Account (EOA) that provide added security compared to traditional EOAs with a single private key. With Fuse Wallet SDK, users can deposit funds that no one else can control and withdraw at any time.
+
+### Purpose of the SDK
+
+The SDK is designed to make it easy for developers to create, manage, and engage with Fuse Wallet SDK in their applications. The SDK provides pre-built functions and utilities, allowing developers to interact with Fuse Wallet SDK securely and efficiently.
+
+## Instantiation
+
+```dart
+import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
+final apiKey = 'YOUR_PUBLIC_API_KEY';
+final privateKey = EthPrivateKey.fromHex('YOUR_PRIVATE_KEY');
+final fuseSDK = await FuseSDK.init(apiKey, privateKey);
+```
+
+## Available Methods
+
+The Fuse Wallet SDK provides several features that allow developers to create, manage, and engage with Fuse Wallet SDK in their applications. Some of the key features include:
+
+### Get Address<a name="get-address"></a>
+
+Gets the address of the wallet created.
+
+```dart
+print('Smart contract wallet address: ${fuseSDK.wallet.getSender()}');
+```
+
+### Send transactions <a name="send-transactions"></a>
+
+Send transactions, including ERC20 and NFT transfers and interaction with arbitrary smart contracts.
+
+```dart
+final res = await fuseSDK.transferToken(
+    EthereumAddress.fromHex('TOKEN_ADDRESS'), // For sending native token, use '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
+    EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
+    BigInt.parse('AMOUNT_IN_WEI'),
+);
+print('UserOpHash: ${res.userOpHash}');
+print('Waiting for transaction...');
+final ev = await res.wait();
+```
+
+### Send batch transactions
+
+The process of grouping multiple transactions into a single batch to be processed together. This is often done to optimize processing time and reduce transaction fees.
+
+```dart
+final res = await fuseSDK.executeBatch(
+  [
+    // Transfer Native Token call
+    Call(
+      to: EthereumAddress.fromHex('TARGET_ADDRESS'),
+      value: BigInt.parse('AMOUNT_IN_WEI'),
+      data: Uint8List(0),
+    ),
+    // Transfer ERC-20 Token call
+    Call(
+      to: EthereumAddress.fromHex('TOKEN_ADDRESS'),
+      value: BigInt.zero,
+      data: ContractsUtils.encodeERC20TransferCall(
+        EthereumAddress.fromHex('TOKEN_ADDRESS'),
+        EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
+        BigInt.parse('AMOUNT_IN_WEI'),
+      ),
+    ),
+  ],
+);
+
+print('UserOpHash: ${res.userOpHash}');
+
+print('Waiting for transaction...');
+final ev = await res.wait();
+print('Transaction hash: ${ev?.transactionHash}');
+```
+
+### Sponsored Transactions
+
+Sponsored transactions are the ability to pay for another user’s transaction fees. To do this, the Fuse operator must enable the sponsored feature in his project and deposit some funds into the paymaster contract. The SDK provides a middleware to check if the project is sponsored and the amount of funds available for sponsoring.
+
+To use this feature, you must first initialize the SDK with the `withPaymaster` parameter set to `true`.
+
+```dart
+import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
+final apiKey = 'YOUR_PUBLIC_API_KEY';
+final privateKey = EthPrivateKey.fromHex('YOUR_PRIVATE_KEY');
+final fuseSDK = await FuseSDK.init(apiKey, privateKey, withPaymaster: true);
+```
+
+### Staking
+
+The SDK provides a module for staking. This module allows users to stake their tokens and earn rewards.
+
+Currently, the SDK supports staking for the following tokens: Native Fuse & VoltToken
+
+```dart
+
+final stakingOptions = await fuseSDK.stakingModule.getStakingOptions();
+
+final res = await fuseSDK.stakeToken(
+  StakeRequestBody(
+    accountAddress: fuseSDK.wallet.getSender(),
+    tokenAmount: '0.1',
+    tokenAddress: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
+  ),
+);
+```
+
+### Trading
+
+Smart Wallet can buy and sell popular cryptocurrencies like Bitcoin and Ethereum, Stable-coins. Behind the scenes, it uses [voltage.finance](https://voltage.finance/) decentralized exchange.
+
+```dart
+final nativeTokenAddress = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE';
+final usdcTokenAddress = '0x620fd5fa44be6af63715ef4e65ddfa0387ad13f5';
+
+final res = await fuseSDK.swapTokens(
+  TradeRequestBody(
+    amountIn: '0.1',
+    currencyIn: nativeTokenAddress,
+    currencyOut: usdcTokenAddress,
+    recipient: fuseSDK.wallet.getSender(),
+  ),
+);
+```
+
+## Troubleshooting
+
+1. **User op cannot be replaced: fee too low.**
+
+   If you're getting the `User op cannot be replaced: fee too low` error, it means that the gas price you set is too low. You can increase the gas price by setting the `TxOptions` parameter when sending a transaction. To replace an user operation, a new user operation must have at least 10% higher `maxPriorityFeePerGas` and 10% higher `maxPriorityFeePerGas` than the one in the user operation mempool.
+
+To replace the user operation, the new gas price must be at least 10% higher.
+
+```dart
+final res = await fuseSDK.transferToken(
+    EthereumAddress.fromHex('TOKEN_ADDRESS'),
+    EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
+    BigInt.parse('AMOUNT_IN_WEI'),
+    FuseSDK.defaultTxOptions.copyWith(
+      feePerGas: '2000000',
+      withRetry: true,
+      feeIncrementPercentage: 11,
+    ),
+);
+print('UserOpHash: ${res.userOpHash}');
+print('Waiting for transaction...');
+final ev = await res.wait();
+```
+
+## Limitations
+
+The Fuse Wallet SDK works only on the Fuse & Fuse Sparknet networks, an EVM based chain L1 blockchain. Support for other blockchains is planned for the future.
+
+If you have any questions or feedback, please get in touch with our support team at support@fuse.io.
