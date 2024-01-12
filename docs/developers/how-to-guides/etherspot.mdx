@@ -1,0 +1,198 @@
+---
+title: Etherspot Account Abstraction on Fuse
+sidebar_position: 7
+---
+
+## Introduction
+
+This tutorial will guide you through creating a Smart Wallet on the Fuse network using the Etherspot SDK. A Smart Wallet is a secure and versatile wallet that can execute transactions on the blockchain. We'll cover setting up your development environment, configuring the Smart Wallet, and connecting it to the Fuse network.
+
+## Prerequisites
+
+Before you begin, make sure you have the following:
+
+- Node.js and npm: [Install Node.js](https://nodejs.org/)
+- Etherspot API Key: [Get an API Key](https://bit.ly/3TVFqU7)
+- An Ethereum wallet with a private key. You can use a tool like MetaMask or any other Ethereum wallet provider.
+
+## Step 1: Set Up Your Project
+
+1. Create a new directory for your project and navigate into it:
+
+```bash
+mkdir fuse-etherspot-demo
+cd fuse-etherspot-demo
+```
+
+2. Initialize a new Node.js project:
+
+```bash
+npm init -y
+```
+
+3. Install the required dependencies:
+
+```bash
+npm install @etherspot/prime-sdk ethers
+npm install - D typescript ts-node
+```
+
+Etherspot Prime is a ERC-4337 compliant Account Abstraction SDK. It is a fully open-source SDK.
+
+The Etherspot Prime SDK makes it incredibly easy to get up and running with Account Abstraction. From social logins to transaction batching, using an Etherspot smart wallet can give your dapp a web2 like interface to ensure the user has a seamless experience.
+This demo is built using TypeScript.
+
+## Step 2: Obtain Etherspot Project Key
+
+[Get an API Key](https://bit.ly/3TVFqU7)
+
+## Step 3: Create Smart Contract Account
+
+Open your preferred code editor and create a new file (e.g., `index.ts`). Paste the provided code into the file.
+
+```javascript
+// Import the required libraries
+import { PrimeSdk } from "@etherspot/prime-sdk";
+import { ethers } from "ethers";
+
+// Initialize PrimeSdk with an EOA private key and project configuration
+const primeSdk = new PrimeSdk(
+  {
+    privateKey: "YOUR_PRIVATE_KEY_HERE", // Replace with your wallet's private key
+  },
+  {
+    chainId: Number(122),
+    projectKey: "YOUR_PROJECT_KEY_HERE", // Replace with your Etherspot project key
+  }
+);
+
+const address: string = await primeSdk.getCounterFactualAddress();
+console.log("\x1b[33m%s\x1b[0m", `EtherspotWallet address: ${address}`);
+```
+
+Replace `"YOUR_PRIVATE_KEY_HERE"` and `"YOUR_PROJECT_KEY_HERE"` with your wallet's private key and Etherspot project key, respectively. The Private Key of the EOA will be used to create Smart Contract Accounts.
+
+We declare an instance of the PrimeSDK and pass it the Private Key of the EOA, Set the Network where we want to deploy the Smart Contract Account by setting the ChainID, which is set to the Fuse Mainnet and set the Project ID.
+
+Note: Etherspot provides support for ONLY the Fuse Mainnet.
+
+The method `getCounterFactualAddress()` is used to create the SCA.
+
+To run the code, update the “start” value in the package.json file ` "start": "node --loader ts-node/esm index.ts" and run:
+
+```javascript
+npm start
+```
+
+The Smart Contract Account will be logged into the console.
+
+## Step 4: Sending a User Operation
+
+We can send UserOperations with or without a Paymaster with the newly created SCA. To send UserOperations without a Paymaster, get some Native [Fuse Tokens](https://docs.fuse.io/docs/basics/getting-started-with-fuse/obtaining-assets-to-transact-on-fuse) from a DEX or CEX.
+
+Update the code:
+
+## 4.1 Clear Transaction Batch:
+
+```javascript
+await primeSdk.clearUserOpsFromBatch();
+```
+
+This snippet clears any existing transactions from the transaction batch.
+
+### 4.2 Add Transaction to Batch using the `addUserOpsToBatch()` method.
+
+```javascript
+// Add a transfer transaction to the batch
+const transactionBatch = await primeSdk.addUserOpsToBatch({
+  to: recipient, //Enter a Receiving Wallet Address. It could be an EOA or SCA
+  value: ethers.utils.parseEther(value),
+});
+console.log("transactions: ", transactionBatch);
+```
+
+This snippet adds a transfer transaction to the batch with the specified recipient and value and logs the transaction batch to the console.
+
+### 4.3 Optionally, you can check the Balance on the SCA using the `getNativeBalance()` method:
+
+```javascript
+// Get the balance of the account address
+const balance = await primeSdk.getNativeBalance();
+console.log("balances: ", balance);
+```
+
+This snippet retrieves the native balance of the account and logs it to the console.
+
+### 4.4 Estimate Transaction Fee:
+
+```javascript
+// Estimate transactions added to the batch and get the fee data for the UserOp
+const op = await primeSdk.estimate();
+console.log(`Estimate UserOp: ${await printOp(op)}`);
+```
+
+This snippet estimates the transaction fee and provides information about the UserOp.
+
+### 4.5 Sign and Send Transaction:
+
+```javascript
+// Sign the UserOp and send it to the bundler
+const uoHash = await primeSdk.send(op);
+console.log(`UserOpHash: ${uoHash}`);
+```
+
+This snippet signs the UserOp and sends it to the bundler, logging the UserOpHash to the console.
+
+### 4.6 Wait for Transaction Receipt:
+
+```javascript
+// Wait for the transaction receipt
+let userOpsReceipt = null;
+const timeout = Date.now() + 60000; // 1 minute timeout
+while (userOpsReceipt == null && Date.now() < timeout) {
+  await sleep(2);
+  userOpsReceipt = await primeSdk.getUserOpReceipt(uoHash);
+}
+console.log("\x1b[33m%s\x1b[0m", `Transaction Receipt: `, userOpsReceipt);
+```
+
+This snippet waits for the transaction receipt and logs it to the console.
+
+## Step 5: Run the Code
+
+Execute the following command in your terminal:
+
+```bash
+node index.js
+```
+
+This will run the code and initiate a transaction on the Fuse network.
+
+## Step 6: Verify the Transaction
+
+1. Check the console output for the UserOpHash.
+2. Optionally, use a blockchain explorer to verify the transaction by searching for the UserOpHash.
+
+## Step 7: Sending a User Operation with a Paymaster
+
+Sending User Operations with the PrimeSDK happens in the `estimate` mode, by parsing 3 arguments, `url` containing Etherspot API Key, `chainID` and `context`. Context is the critical component as it establishes the mode of UserOperation, if it is sponsored by a Paymaster or not. Context is denoted using `context: { mode: 'sponsor' } }`
+
+To send a UserOp using the Paymaster with the `estimate()` method:
+
+```javascript
+const op = await primeSdk.estimate({
+  url: `https://arka.etherspot.io?apiKey=${api_key}&chainId=${Number(
+    process.env.CHAIN_ID
+  )}`,
+  context: { mode: "sponsor" },
+});
+console.log(`Estimate UserOp: ${await printOp(op)}`);
+```
+
+## Conclusion:
+
+Congratulations! You've successfully executed the Etherspot Account Abstraction code on the Fuse network. This step-by-step tutorial should help you understand and implement the process. Customize the code as needed for your specific use case.
+
+## Reference:
+
+Etherspot Prime - Etherspot Prime. https://etherspot.fyi/introduction
