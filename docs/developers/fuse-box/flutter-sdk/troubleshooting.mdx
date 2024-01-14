@@ -3,11 +3,9 @@ title: Troubleshooting
 sidebar_position: 6
 ---
 
-## Troubleshooting
+**Error - User op cannot be replaced: fee too low.**
 
-1. **User op cannot be replaced: fee too low.**
-
-   If you're getting the `User op cannot be replaced: fee too low` error, it means that the gas price you set is too low. You can increase the gas price by setting the `TxOptions` parameter when sending a transaction. To replace an user operation, a new user operation must have at least 10% higher `maxPriorityFeePerGas` and 10% higher `maxPriorityFeePerGas` than the one in the user operation mempool.
+If you're getting the `User op cannot be replaced: fee too low` error, it means that the gas price you set is too low. You can increase the gas price by setting the `TxOptions` parameter when sending a transaction. To replace an user operation, a new user operation must have at least 10% higher `maxPriorityFeePerGas` and 10% higher `maxPriorityFeePerGas` than the one in the user operation mempool.
 
 To replace the user operation, the new gas price must be at least 10% higher.
 
