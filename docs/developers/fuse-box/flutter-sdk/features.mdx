@@ -225,7 +225,7 @@ The `getTokenBalance` function allows you to retrieve the balance of a specific 
 
 ```dart
 final String tokenAddress = 'TOKEN_ADDRESS';
-final String smartWalletAddress = 'WALLET_ADDRESS';
+final String smartWalletAddress = fuseSDK.wallet.getSender();
 final tokenBalanceData = await fuseSDK.explorerModule.getTokenBalance(
   tokenAddress,
   smartWalletAddress,
