@@ -1,9 +1,9 @@
 ---
-title: Upgrading
+title: Migration
 sidebar_position: 4
 ---
 
-## Upgrading from lower versions to v0.2
+## Migrating to v0.2
 
 #### Introduction
 
@@ -27,19 +27,19 @@ With your API key in hand, you're all set to integrate and experience the enhanc
 
 **Initialization and Smart Wallet Creation**
 
-1.  **Locate the Old Initialization**:
-    Start by finding your old SDK initialization in your code. This is typically where you have the `FuseWalletSDK` instantiation.
-2.  **Remove Wallet Creation Steps**:
-    In the old SDK, there were multiple steps involved in creating a smart wallet, including authenticating the credentials, creating a wallet, and handling the creation events. These steps are now greatly simplified in the new SDK.
-    Identify and remove the following sections from your old SDK code:
+1. **Locate the Old Initialization**:
+Start by finding your old SDK initialization in your code. This is typically where you have the `FuseWalletSDK` instantiation.
+2. **Remove Wallet Creation Steps**:
+In the old SDK, there were multiple steps involved in creating a smart wallet, including authenticating the credentials, creating a wallet, and handling the creation events. These steps are now greatly simplified in the new SDK.
+    
+Identify and remove the following sections from your old SDK code:
 
-    - The authentication step: `await fuseWalletSDK.authenticate(credentials);`
-    - The wallet creation step: `await fuseWalletSDK.createWallet();`
-    - The entire `onSmartWalletEvent` function and its associated event listening code.
-
-3.  **Update SDK Initialization**:
-    Replace the old initialization:
-
+- The authentication step: `await fuseWalletSDK.authenticate(credentials);`
+- The wallet creation step: `await fuseWalletSDK.createWallet();`
+- The entire `onSmartWalletEvent` function and its associated event listening code.
+3. **Update SDK Initialization**:
+Replace the old initialization:
+    
 ```dart
 final FuseWalletSDK fuseWalletSDK = FuseWalletSDK(publicApiKey);
 ```
@@ -49,9 +49,9 @@ with the new one:
 ```dart
 final fuseSDK = await FuseSDK.init(publicApiKey, credentials);
 ```
-
-4.  **Access the Smart Contract Wallet Address**:
-    In the new SDK, you can obtain the smart contract wallet address directly after initialization. Replace the older method:
+    
+4. **Access the Smart Contract Wallet Address**:
+In the new SDK, you can obtain the smart contract wallet address directly after initialization. Replace the older method:
 
 ```dart
 print('Smart contract wallet address: ${fuseWalletSDK.smartWallet.smartWalletAddress}');
@@ -61,8 +61,8 @@ with the simplified new version:
 
 ```dart
 print('Smart contract wallet address: ${fuseSDK.wallet.getSender()}');
-
 ```
+    
 
 By following the steps above, developers can smoothly transition to the new SDK and take advantage of the more streamlined and simplified process provided by the update. It’s worth noting that the migration not only reduces the lines of code but also enhances clarity and reduces complexity, resulting in a more efficient and cleaner integration process.
 
