@@ -2,132 +2,41 @@
 title: Features
 sidebar_position: 3  
 ---
-# Features
 
-## Core Features
+### Initialization
 
-### Authentication
-
-The `authenticate` method is a fundamental feature of the Fuse Wallet Flutter SDK that enables you to authenticate the user's provided credentials. When you send a request to the server using this method, it verifies the credentials and returns a JSON Web Token (JWT) if the credentials are valid. The JWT is then used to make authenticated API requests, which allows you to access the Fuse Wallet API securely.
+The `init` method is a fundamental feature of the Fuse Wallet Flutter SDK that enables you to setup a wallet & authenticate the user's provided credentials. When you send a request to the server using this method, it verifies the credentials and returns a JSON Web Token (JWT) if the credentials are valid. The JWT is then used to make authenticated API requests, which allows you to access the Fuse Wallet API securely.
 
 ```dart
 // Generate a random Ethereum private key
 final String privateKey = await Mnemonic.generatePrivateKey();
 final EthPrivateKey credentials = EthPrivateKey.fromHex(privateKey);
 
-final result = await FuseWalletSDK.authenticate(credentials);
-if (result.hasError) {
-  // Handle authentication error
-} else if (result.hasData) {
-  final jwt = result.data!;
-  // Use the JWT token to make authenticated API requests
-}
+final fuseSDK = await FuseSDK.init(credentials);
 ```
 
-### **Creating a Smart Wallet**
-
-To create a new Fuse Smart Wallet, you can use the **`createWallet`** method. Before calling the method, you can subscribe to any of the events as shown below:
+### **Access the wallet**
 
 ```dart
 // Create Wallet
-final exceptionOrStream = await fuseWalletSDK.createWallet();
-
-if (exceptionOrStream.hasError) {
-  print(exceptionOrStream.error.toString());
-} else if (exceptionOrStream.hasData) {
-  final smartWalletEventStream = exceptionOrStream.data!;
-  smartWalletEventStream.listen(
-    (SmartWalletEvent event) {
-      switch (event.name) {
-        case "smartWalletCreationStarted":
-          print('smartWalletCreationStarted ${event.data.toString()}');
-          break;
-        case "transactionHash":
-          print('transactionHash ${event.data.toString()}');
-          break;
-	case "smartWalletCreationSucceeded":
-	  print('smartWalletCreationSucceeded ${event.data.toString()}');
-	  break;
-        case "smartWalletCreationFailed":
-	  print('smartWalletCreationFailed ${event.data.toString()}');
-          break;
-      }
-   },
-    onError: (error) {
-      print('Error occurred: ${error.toString()}');
-      exit(1);
-    },
-  );
-}
+final smartContractAddress = fuseSDK.wallet.getSender();
+print('Smart contract wallet address: $smartContractAddress');
 ```
 
-### **Retrieving an existing Smart Wallet**
+### Sponsored Transactions
 
-To retrieve an existing Fuse Smart Wallet, you can use the **`retrieveWallet`** method. If the wallet cannot be found, the function will return an error:
+Sponsored transactions are the ability to pay for another user’s transaction fees. To do this, the Fuse operator must enable the sponsored feature in his project and deposit some funds into the paymaster contract. The SDK provides a middleware to check if the project is sponsored and the amount of funds available for sponsoring.
+
+To use this feature, you must first initialize the SDK with the `withPaymaster` parameter set to `true`.
 
 ```dart
-// Try to fetch a wallet for the EOA, if it doesn't exist create one
-final walletData = await fuseWalletSDK.fetchWallet();
-
-walletData.pick(
-	onData: (SmartWallet smartWallet) async {
-    print('Smart wallet address ${smartWallet.smartWalletAddress}');
-  },
-  onError: (Exception exception) async {
-		print('Fetching wallet failed.');
-	}
-)
+import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
+final apiKey = 'YOUR_PUBLIC_API_KEY';
+final privateKey = EthPrivateKey.fromHex('YOUR_PRIVATE_KEY');
+final fuseSDK = await FuseSDK.init(apiKey, privateKey, withPaymaster: true);
 ```
 
-### Fetch or Create a Smart Wallet
-
-Since each externally owned account (EOA) can only have one associated Fuse Smart Wallet, attempting to create a new smart wallet for a user that already has one will result in an error.&#x20;
-
-For this reason, we suggest using the following code example to either fetch an existing wallet for the authenticated user if one exists or to create a new one if it does not.
-
-```dart
-// Try to fetch a wallet for the EOA, if it doesn't exist create one
-final walletData = await fuseWalletSDK.fetchWallet();
-
-walletData.pick(
-  onData: (SmartWallet smartWallet) async {
-    print('Smart wallet address ${smartWallet.smartWalletAddress}');
-  },
-  onError: (Exception exception) async {
-    print('Failed to fetch wallet.');
-    print('Trying to create...');
-
-    final exceptionOrStream = await fuseWalletSDK.createWallet();
-    if (exceptionOrStream.hasError) {
-      print(exceptionOrStream.error.toString());
-    } else if (exceptionOrStream.hasData) {
-      final smartWalletEventStream = exceptionOrStream.data!;
-      smartWalletEventStream.listen(
-        (SmartWalletEvent event) {
-	 switch (event.name) {
-	    case "smartWalletCreationStarted":
-	      print('smartWalletCreationStarted ${event.data.toString()}');
-	      break;
-	    case "transactionHash":
-	      print('transactionHash ${event.data.toString()}');
-	      break;
-	    case "smartWalletCreationSucceeded":
-	      print('smartWalletCreationSucceeded ${event.data.toString()}');
-	      break;
-	    case "smartWalletCreationFailed":
-	      print('smartWalletCreationFailed ${event.data.toString()}');
-	      break;
-	  }
-	},
-	onError: (error) {
-	  print('Error occurred: ${error.toString()}');
-	  exit(1);
-	},
-      );
-    }
-  },
-);
-```
+## Send transactions
 
 ### Transfer ERC20 Token/ Native FUSE
 
@@ -138,99 +47,93 @@ You can also subscribe to events related to the token transfer to track its prog
 | Parameter    | Description                                     |
 | ------------ | ----------------------------------------------- |
 | tokenAddress | The contract address of the ERC20 token or FUSE |
-| toAddress    | The recipient's wallet address                  |
+| recipientAddress| The recipient's wallet address                  |
 | amount       | The amount to transfer                          |
 
 ```dart
-final String toAddress = 'RECEIVER_ADDRESS'; // "0x..."
-final String amount = 'AMOUNT'; // "0.01"
-final String tokenAddress = 'TOKEN_ADDRESS'; // "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+final res = await fuseSDK.transferToken(
+    EthereumAddress.fromHex('TOKEN_ADDRESS'), // For sending native token, use '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
+    EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
+    BigInt.parse('AMOUNT_IN_WEI'),
+);
+print('UserOpHash: ${res.userOpHash}');
+print('Waiting for transaction...');
+final ev = await res.wait();
+```
 
-// Sending a gasless transaction
-final exceptionOrStream = await fuseWalletSDK.transferToken(
-  credentials,
-  tokenAddress,
-  toAddress,
-  amount,
+### Non-Blocking transactions
+
+```dart
+// Approve and transfer
+final res = await fuseSDK.executeBatch(
+  [
+    Call(
+      to: EthereumAddress.fromHex('TOKEN_ADDRESS'),
+      value: BigInt.zero,
+      data: ContractsUtils.encodeERC20ApproveCall(
+        EthereumAddress.fromHex('TOKEN_ADDRESS'),
+        EthereumAddress.fromHex('SPENDER_ADDRESS'),
+        BigInt.parse('AMOUNT_IN_WEI'),
+      ),
+    ),
+    Call(
+      to: EthereumAddress.fromHex('TOKEN_ADDRESS'),
+      value: BigInt.zero,
+      data: ContractsUtils.encodeERC20TransferCall(
+        EthereumAddress.fromHex('TOKEN_ADDRESS'),
+        EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
+        BigInt.parse('AMOUNT_IN_WEI'),
+      ),
+    ),
+  ],
+  FuseSDK.defaultTxOptions.copyWith(
+    useNonceSequence: true,
+  ),
 );
 
-if (exceptionOrStream.hasError) {
-  print(exceptionOrStream.error.toString());
-} else {
-  final smartWalletEventStream = exceptionOrStream.data!;
-  smartWalletEventStream.listen(
-    (SmartWalletEvent event) {
-      switch (event.name) {
-        case 'transactionStarted':
-          print('transactionStarted ${event.data.toString()}');
-          break;
-        case 'transactionHash':
-          print('transactionHash ${event.data.toString()}');
-          break;
-        case 'transactionSucceeded':
-          print('transactionSucceeded ${event.data.toString()}');
-          break;
-        case 'transactionFailed':
-          print('transactionFailed ${event.data.toString()}');
-          break;
-      }
-    },
-    onError: (error) {
-      print('Error occurred: ${error.toString()}');
-    },
-  );
-}
+// Transfer
+await fuseSDK.transferToken(
+  EthereumAddress.fromHex(Variables.NATIVE_TOKEN_ADDRESS),
+  EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
+  BigInt.parse('AMOUNT_IN_WEI'),
+  FuseSDK.defaultTxOptions.copyWith(
+    useNonceSequence: true,
+  ),
+);
+
+// Transfer
+await fuseSDK.transferToken(
+  EthereumAddress.fromHex(Variables.NATIVE_TOKEN_ADDRESS),
+  EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
+  BigInt.parse('AMOUNT_IN_WEI'),
+  FuseSDK.defaultTxOptions.copyWith(
+    useNonceSequence: true,
+  ),
+);
 ```
 
 ### Transfer NFT
 
-To transfer an ERC721 (NFT) asset with a relay, use the `transferNFT` method. This method also relays the transaction and covers the gas fees for the user, so they don't need to worry about those fees. The method takes the following parameters as inputs:
+To transfer an ERC721 (NFT) asset, use the `transferNFT` method. The method takes the following parameters as inputs:
 
 | Parameter          | Description                              |
 | ------------------ | ---------------------------------------- |
 | nftContractAddress | The contract address of the ERC721 asset |
-| toAddress          | The recipient's wallet address           |
+| recipientAddress   | The recipient's wallet address           |
 | tokenId            | The ID of the asset you wish to transfer |
 
-To ensure your transfer request is successful, you should subscribe to the transactionStarted, transactionHash, transactionSucceeded, and transactionFailed events of the FuseWalletSDK instance. This will allow you to monitor the transaction as it progresses through the network and handle any errors that may occur.
-
 ```dart
-// Sending a gasless transaction
-final exceptionOrStream = await fuseWalletSDK.transferNft(
-  credentials,
-  nftContractAddress,
-  receiverAddress,
+final tokenId = 1;
+final res = await fuseSDK.transferNFT(
+  EthereumAddress.fromHex('NFT_CONTRACT_ADDRESS'),
+  EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
   tokenId,
 );
+print('UserOpHash: ${res.userOpHash}');
 
-if (exceptionOrStream.hasError) {
-  print(exceptionOrStream.error.toString());
-} else {
-  final smartWalletEventStream = exceptionOrStream.data!;
-
-  smartWalletEventStream.listen(
-    (SmartWalletEvent event) {
-      switch (event.name) {
-        case "transactionStarted":
-          print('transactionStarted ${event.data.toString()}');
-          break;
-        case "transactionHash":
-          print('transactionHash ${event.data.toString()}');
-          break;
-        case "transactionSucceeded":
-          print('transactionSucceeded ${event.data.toString()}');
-          break;
-        case "transactionFailed":
-          print('transactionFailed ${event.data.toString()}');
-          exit(1);
-      }
-    },
-    onError: (error) {
-      print('Error occurred: ${error.toString()}');
-      exit(1);
-    },
-  );
-}
+print('Waiting for transaction...');
+final ev = await res.wait();
+print('Transaction hash: ${ev?.transactionHash}');
 ```
 
 ### Swap tokens
@@ -258,40 +161,15 @@ final TradeRequestBody tradeRequestBody = TradeRequestBody(
   recipient: 'RECIPIENT_ADDRESS',
 );
 
-// Sending a gasless transaction
-final exceptionOrStream = await fuseWalletSDK.swapTokens(
-  credentials,
+final res = await fuseSDK.swapTokens(
   tradeRequestBody,
 );
 
-if (exceptionOrStream.hasError) {
-  print(exceptionOrStream.error.toString());
-} else {
-  final smartWalletEventStream = exceptionOrStream.data!;
+print('UserOpHash: ${res.userOpHash}');
 
-  smartWalletEventStream.listen(
-    (SmartWalletEvent event) {
-      switch (event.name) {
-        case "transactionStarted":
-          print('transactionStarted ${event.data.toString()}');
-          break;
-        case "transactionHash":
-          print('transactionHash ${event.data.toString()}');
-          break;
-        case "transactionSucceeded":
-          print('transactionSucceeded ${event.data.toString()}');
-          break;
-        case "transactionFailed":
-          print('transactionFailed ${event.data.toString()}');
-          exit(1);
-      }
-    },
-    onError: (error) {
-      print('Error occurred: ${error.toString()}');
-      exit(1);
-    },
-  );
-}
+print('Waiting for transaction...');
+final ev = await res.wait();
+print('Transaction hash: ${ev?.transactionHash}');
 ```
 
 ## Data Features
@@ -302,7 +180,7 @@ The `getTokenList` function allows you to get the list of tokens owned by a spec
 
 ```dart
 final String address = 'ADDRESS';
-final tokenListData = await fuseWalletSDK.explorerModule.getTokenList(
+final tokenListData = await fuseSDK.explorerModule.getTokenList(
   address,
 );
 tokenListData.pick(
@@ -315,13 +193,19 @@ tokenListData.pick(
 );
 ```
 
+### **Get the historical transactions**
+
+```dart
+final walletActionsResult = await fuseSDK.getWalletActions(page: 1, limit: 50);
+```
+
 ### Get token details
 
 The `getTokenDetails` function allows you to retrieve detailed information about a specific ERC20 token. This includes the token's name, symbol, decimal places, and total supply. To use the `getTokenDetails` function, you need to provide the contract address of the ERC20 token that you want to retrieve information from. Once you call the function, it will return a `TokenDetails` object that contains all the relevant information about the token.
 
 ```dart
 final String tokenAddress = 'TOKEN_ADDRESS';
-final tokenDetailsData = await smartWalletsSDK.explorerModule.getTokenDetails(
+final tokenDetailsData = await fuseSDK.explorerModule.getTokenDetails(
   tokenAddress,
 );
 
@@ -341,8 +225,8 @@ The `getTokenBalance` function allows you to retrieve the balance of a specific 
 
 ```dart
 final String tokenAddress = 'TOKEN_ADDRESS';
-final String smartWalletAddress = 'WALLET_ADDRESS';
-final tokenBalanceData = await smartWalletsSDK.explorerModule.getTokenBalance(
+final String smartWalletAddress = fuseSDK.wallet.getSender();
+final tokenBalanceData = await fuseSDK.explorerModule.getTokenBalance(
   tokenAddress,
   smartWalletAddress,
 );
@@ -362,7 +246,7 @@ tokenBalanceData.pick(
 ### Get staking options
 
 ```dart
-final stakingOptionsData = await smartWalletsSDK.stakingModule.getStakingOptions();
+final stakingOptionsData = await fuseSDK.stakingModule.getStakingOptions();
 stakingOptionsData.pick(
   onData: (List<StakingOption> data) {
     // Do you magic here
@@ -376,97 +260,44 @@ stakingOptionsData.pick(
 ### Stake
 
 ```dart
-final StakeRequestBody stakeRequestBody = StakeRequestBody(
-  accountAddress: 'YOUR_SMART_WALLET_ADDRESS',
-  tokenAmount: 'AMOUNT', // "0.01"
-  tokenAddress: 'TOKEN_ADDRESS', // "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4"
+final res = await fuseSDK.stakeToken(
+  StakeRequestBody(
+    accountAddress: fuseSDK.wallet.getSender(),
+    tokenAmount: 'AMOUNT', // "0.01"
+    tokenAddress: 'TOKEN_ADDRESS', // "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4"
+  ),
 );
-// Sending a gasless transaction
-final exceptionOrStream = await smartWalletsSDK.stakeToken(
-  credentials,
-  stakeRequestBody,
-);
+print('UserOpHash: ${res.userOpHash}');
 
-if (exceptionOrStream.hasError) {
-  print(exceptionOrStream.error.toString());
-} else {
-  final smartWalletEventStream = exceptionOrStream.data!;
-
-  smartWalletEventStream.listen(
-    (SmartWalletEvent event) {
-      switch (event.name) {
-        case "transactionStarted":
-          print('transactionStarted ${event.data.toString()}');
-          break;
-        case "transactionHash":
-          print('transactionHash ${event.data.toString()}');
-          break;
-        case "transactionSucceeded":
-          print('transactionSucceeded ${event.data.toString()}');
-          break;
-        case "transactionFailed":
-          print('transactionFailed ${event.data.toString()}');
-          exit(1);
-      }
-    },
-    onError: (error) {
-      print('Error occurred: ${error.toString()}');
-      exit(1);
-    },
-  );
-}
+print('Waiting for transaction...');
+final ev = await res.wait();
+print('Transaction hash: ${ev?.transactionHash}');
 ```
 
 ### Unstake
 
 ```dart
-final UnstakeRequestBody unstakeRequestBody = UnstakeRequestBody(
-  accountAddress: 'YOUR_SMART_WALLET_ADDRESS',
-  tokenAmount: 'AMOUNT', // "0.01"
-  tokenAddress: 'TOKEN_ADDRESS', // "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4"
+final res = await fuseSDK.unstakeToken(
+  UnstakeRequestBody(
+    accountAddress: fuseSDK.wallet.getSender(),
+    tokenAmount: '0.1',
+    tokenAddress: 'TOKEN_ADDRESS', // "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4"
+  ),
+  EthereumAddress.fromHex('0xb1DD0B683d9A56525cC096fbF5eec6E60FE79871'),
 );
 
-// Sending a gasless transaction
-final exceptionOrStream = await smartWalletsSDK.unstakeToken(
-  credentials,
-  unstakeRequestBody,
-);
+print('UserOpHash: ${res.userOpHash}');
 
-if (exceptionOrStream.hasError) {
-  print(exceptionOrStream.error.toString());
-} else {
-  final smartWalletEventStream = exceptionOrStream.data!;
-
-  smartWalletEventStream.listen(
-    (SmartWalletEvent event) {
-      switch (event.name) {
-        case "transactionStarted":
-          print('transactionStarted ${event.data.toString()}');
-          break;
-        case "transactionHash":
-          print('transactionHash ${event.data.toString()}');
-          break;
-        case "transactionSucceeded":
-          print('transactionSucceeded ${event.data.toString()}');
-          break;
-        case "transactionFailed":
-          print('transactionFailed ${event.data.toString()}');
-          exit(1);
-      }
-    },
-    onError: (error) {
-      print('Error occurred: ${error.toString()}');
-      exit(1);
-    },
-  );
-}
+print('Waiting for transaction...');
+final ev = await res.wait();
+print('Transaction hash: ${ev?.transactionHash}');
 ```
 
 ### Get staked tokens
 
 ```dart
-final smartWalletAddress = 'YOUR_SMART_WALLET_ADDRESS';
-final stakedTokensData = await smartWalletsSDK.stakingModule.getStakedTokens(smartWalletAddress);
+final smartWalletAddress = fuseSDK.wallet.getSender();
+final stakedTokensData = await fuseSDK.stakingModule.getStakedTokens(smartWalletAddress);
 
 stakedTokensData.pick(
   onData: (StakedTokenResponse data) {
@@ -484,7 +315,7 @@ stakedTokensData.pick(
 
 ```dart
 final tokenAddress = 'TOKEN_ADDRESS';
-final priceData = await smartWalletsSDK.tradeModule.price(tokenAddress);
+final priceData = await fuseSDK.tradeModule.price(tokenAddress);
 priceData.pick(
   onData: (String tokenPrice) {
     // Do you magic here
@@ -499,7 +330,7 @@ priceData.pick(
 
 ```dart
 final tokenAddress = 'TOKEN_ADDRESS';
-final priceChangeData = await smartWalletsSDK.tradeModule.priceChange(tokenAddress);
+final priceChangeData = await fuseSDK.tradeModule.priceChange(tokenAddress);
 priceChangeData.pick(
   onData: (String priceInfo) {
     // Do you magic here
@@ -514,7 +345,7 @@ priceChangeData.pick(
 
 ```dart
 final tokenAddress = 'TOKEN_ADDRESS';
-final intervalData = await smartWalletsSDK.tradeModule.interval(tokenAddress, TimeFrame.day);
+final intervalData = await fuseSDK.tradeModule.interval(tokenAddress, TimeFrame.day);
 intervalData.pick(
   onData: (List<IntervalStats> stats) {
     // Do you magic here
@@ -528,7 +359,7 @@ intervalData.pick(
 ### Get the list of supported tokens
 
 ```dart
-final tokensData = await smartWalletsSDK.tradeModule.fetchTokens();
+final tokensData = await fuseSDK.tradeModule.fetchTokens();
 tokensData.pick(
   onData: (List<TokenDetails> tokens) {
     // Do you magic here
@@ -541,4 +372,4 @@ tokensData.pick(
 
 ## Code examples
 
-For more code examples on using the Fuse Wallet SDK for Flutter, you can check out the official [**Flutter SDK repository**](https://github.com/fuseio/smart\_wallets\_sdk/tree/master/example).
+For more code examples on using the Fuse Wallet SDK for Flutter, you can check out the official [**Flutter SDK repository**](https://github.com/fuseio/fuse_wallet_sdk).
