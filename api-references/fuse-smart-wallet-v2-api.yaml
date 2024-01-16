@@ -82,7 +82,7 @@ paths:
   /api/v2/smart-wallets/actions:
     get:
       tags:
-        - Smart Wallets
+        - Smart Wallet
       summary: Get Wallet Actions
       security:
         - bearerAuth: []
