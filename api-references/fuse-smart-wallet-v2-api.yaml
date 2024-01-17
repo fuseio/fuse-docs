@@ -8,7 +8,7 @@ components:
   securitySchemes:
     bearerAuth:
       bearerFormat: "JWT"
-      type: http
+      type: https
       scheme: bearer
 paths:
   /api/v2/smart-wallets/auth:
@@ -82,7 +82,7 @@ paths:
   /api/v2/smart-wallets/actions:
     get:
       tags:
-        - Smart Wallets
+        - Smart Wallet
       summary: Get Wallet Actions
       security:
         - bearerAuth: []
