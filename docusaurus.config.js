@@ -9,8 +9,8 @@ const config = {
   title: "Fuse Documentation",
   url: "https://docs.fuse.io",
   baseUrl: "/",
-  onBrokenLinks: "log",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: 'log',
+  onBrokenMarkdownLinks: 'warn',
   favicon: "img/logo.svg",
   staticDirectories: ["static"],
 
@@ -66,7 +66,8 @@ const config = {
     ({
       prism: {
         additionalLanguages: ["dart", "solidity"],
-        theme: darkCodeTheme,
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
       },
       colorMode: {
         defaultMode: "light",
@@ -248,9 +249,9 @@ const config = {
               categoryLinkSource: "tag",
             },
           },
-          smartWalletvApi: {
-            specPath: "api-references/fuse-smart-wallet-v-api.yaml",
-            outputDir: "docs/smart-wallet-api-v",
+          smartWalletv2Api: {
+            specPath: "api-references/fuse-smart-wallet-v2-api.yaml",
+            outputDir: "docs/smart-wallet-v2-api",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
