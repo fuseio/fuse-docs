@@ -20,19 +20,20 @@ The Fuse API is a REST API that Developers can use to access particular features
 - Trade API: This API facilitates trading activities and provides access to trading-related data.
 
 - **Smart Wallet API v2:** The Smart Wallet API v2 (previously referenced as Smart Wallets, now deprecated) enables Developers to Authenticate and access a `jwt` string which they can then parse to enable **sessions** for users. This enables users who Authenticate in the DApp provided by the Developer and are recognised upon sign out and sign in without the need to re-authenticate. The endpoints available are:
-  - `Auth`
   - `Create Wallet`
-  - `Get Wallet`
-  - `Get Historical Transaction`
+  - `Get Wallet Action`
 
 Below is an example using curl to create a Smart Contract Account using the endpoint
 
 ```
-curl -L -X POST 'https://api.fuse.io/api/v1/smart-wallets/create' \
--H 'Content-Type: application/json' \
--H 'Accept: application/json' \
--H 'Authorization: Bearer <TOKEN>' \
---data-raw '{}'
+import { ethers } from 'ethers';
+import { FuseSDK } from "@fuseio/fusebox-web-sdk";
+
+const credentials = new ethers.Wallet(process.env.PRIVATE_KEY as string);
+const publicApiKey = process.env.PUBLIC_API_KEY as string;
+const fuseSDK = await FuseSDK.init(publicApiKey, credentials);
+
+console.log(`Smart Contract wallet address: ${fuseSDK.wallet.getSender()}`);
 ```
 
 `Bearer` is the `jwt` **TOKEN** returned from `Auth` endpoint.
@@ -71,9 +72,16 @@ It is easy for developers to start building with the Flutter SDK. Below is an ex
 
 ```
 import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
-final apiKey = 'YOUR_PUBLIC_API_KEY';
-final privateKey = EthPrivateKey.fromHex('YOUR_PRIVATE_KEY');
-final fuseSDK = await FuseSDK.init(apiKey, privateKey);
+
+final credentials = EthPrivateKey.fromHex('WALLET_PRIVATE_KEY');
+// Create a project and get an API Key here: https://developers.fuse.io
+final publicApiKey = 'YOUR_PUBLIC_API_KEY';
+final fuseSDK = await FuseSDK.init(publicApiKey,credentials,
+// Optional: Specify baseUrl. Default is api.fuse.io.
+baseUrl: "api.alpha.fuse.io",
+);
+
+print('Smart contract wallet address: ${fuseSDK.wallet.getSender()}');
 ```
 
 <p>&nbsp;</p>
