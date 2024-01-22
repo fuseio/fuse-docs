@@ -57,10 +57,10 @@ const MainFeatureList = [
   {
     image: "img/new-ms-p3.svg",
 
-    title: "Fuse Guides",
+    title: "Tutorials",
     description:
       "Discover everything you need to know about Fuse v2 and how we're revolutionizing various industries with web3 technology.",
-    link: "/docs/category/network-tutorial",
+    link: "/docs/category/tutorials",
   },
 ];
 

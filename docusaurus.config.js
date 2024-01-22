@@ -9,8 +9,8 @@ const config = {
   title: "Fuse Documentation",
   url: "https://docs.fuse.io",
   baseUrl: "/",
-  onBrokenLinks: 'log',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: "log",
+  onBrokenMarkdownLinks: "warn",
   favicon: "img/logo.svg",
   staticDirectories: ["static"],
 
@@ -147,6 +147,12 @@ const config = {
             sidebarId: "validatorsSidebar",
             position: "left",
             label: "Validators",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "tutorialsSidebar",
+            position: "left",
+            label: "Tutorials",
           },
           // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],
