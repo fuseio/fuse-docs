@@ -23,11 +23,11 @@ const ExploreApisList = [
       "Maximize the security and user experience of your apps by leveraging smart contract wallets.",
     href: "/docs/category/notification-api",
   },
-
   {
-    title: "Data APIs (Coming soon)",
+    title: "Data APIs",
     description:
-      "Access real-time indexed data for balances, tokens, and transactions with ease.",
+      "Access real-time indexed transactions with ease.",
+    href: "/docs/smart-wallet-v2-api/get-wallet-actions",
   },
 ];
 
