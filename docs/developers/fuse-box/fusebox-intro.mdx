@@ -21,9 +21,10 @@ The Fuse API is a REST API that Developers can use to access particular features
 
 - **Smart Wallet API v2:** The Smart Wallet API v2 (previously referenced as Smart Wallets, now deprecated) enables Developers to Authenticate and access a `jwt` string which they can then parse to enable **sessions** for users. This enables users who Authenticate in the DApp provided by the Developer and are recognised upon sign out and sign in without the need to re-authenticate. The endpoints available are:
   - `Create Wallet`
+  - `Send Single & Batch Transactions`
   - `Get Wallet Action`
 
-Below is an example using curl to create a Smart Contract Account using the endpoint
+Below is an example using the JS SDK to create a Smart Contract Account
 
 ```
 import { ethers } from 'ethers';
