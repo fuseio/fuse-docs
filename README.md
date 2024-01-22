@@ -19,11 +19,6 @@ Source can be viewed in [`docs`](./docs/) directory.
 
 1. Open the file in `docs/`
 
-## Modifying routes
-
-Whenever a route is changed DocSearch needs to crawl the website in order to keep the search engine working properly, this is scheduled once a week, it is therefore
-recommended to use redirects to avoid broken links. See [link](https://vercel.com/docs/concepts/projects/project-configuration#redirects).
-
 ## Customize Settings & Theme
 
 1. Open `docusaurus.config.js`
