@@ -1,4 +1,5 @@
 fragment DocParts on Doc {
+  __typename
   title
   description
   sidebar_position
@@ -7,6 +8,7 @@ fragment DocParts on Doc {
 }
 
 fragment DropdownsParts on Dropdowns {
+  __typename
   label
   position
 }

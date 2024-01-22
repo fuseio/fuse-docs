@@ -9,8 +9,8 @@ const config = {
   title: "Fuse Documentation",
   url: "https://docs.fuse.io",
   baseUrl: "/",
-  onBrokenLinks: "log",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: 'log',
+  onBrokenMarkdownLinks: 'warn',
   favicon: "img/logo.svg",
   staticDirectories: ["static"],
 
