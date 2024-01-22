@@ -7,6 +7,7 @@ export function gql(strings, ...args) {
 }
 export const DocPartsFragmentDoc = gql`
     fragment DocParts on Doc {
+  __typename
   title
   description
   sidebar_position
@@ -16,6 +17,7 @@ export const DocPartsFragmentDoc = gql`
     `;
 export const DropdownsPartsFragmentDoc = gql`
     fragment DropdownsParts on Dropdowns {
+  __typename
   label
   position
 }
@@ -147,20 +149,31 @@ export function getSdk(requester) {
   };
 }
 import { createClient } from "tinacms/dist/client";
-const generateRequester = (client) => {
-  const requester = async (doc, vars, _options) => {
+const generateRequester = (client, options) => {
+  const requester = async (doc, vars, options2) => {
+    let url = client.apiUrl;
+    if (options2?.branch) {
+      const index = client.apiUrl.lastIndexOf("/");
+      url = client.apiUrl.substring(0, index + 1) + options2.branch;
+    }
     const data = await client.request({
       query: doc,
-      variables: vars
+      variables: vars,
+      url
     });
-    return { data: data?.data, query: doc, variables: vars || {} };
+    return { data: data?.data, errors: data?.errors, query: doc, variables: vars || {} };
   };
   return requester;
 };
 export const ExperimentalGetTinaClient = () => getSdk(
-  generateRequester(createClient({ url: "http://localhost:4001/graphql", queries }))
+  generateRequester(
+    createClient({
+      url: "http://localhost:4001/graphql",
+      queries
+    })
+  )
 );
-export const queries = (client) => {
-  const requester = generateRequester(client);
+export const queries = (client, options) => {
+  const requester = generateRequester(client, options);
   return getSdk(requester);
 };

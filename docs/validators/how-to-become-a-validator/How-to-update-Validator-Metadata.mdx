@@ -5,13 +5,13 @@ sidebar_position: 4
 
 # How to update Validator Metadata
 
-Successfully running a node? Follow these steps to update your metadata to be displayed on [Staking App](https://staking.fuse.io/ "Staking App"):
+Successfully running a node? Follow these steps to update your metadata to be displayed on [Staking App](https://console.fuse.io/staking "Staking App"):
 
 ### Step 1: Fork the Repository:
 
-Start by forking the [repository](https://github.com/fuseio/fuse-staking-v2) to your own GitHub account. This will create a copy of the repository under your account that you can work with.
+Start by forking the [repository](https://github.com/fuseio/console-dapp) to your own GitHub account. This will create a copy of the repository under your account that you can work with.
 
-![](/img/0\(0\)fork.png)
+![](/img/fork-console.png)
 
 ### Step 2: Clone the Repository:
 
@@ -21,7 +21,7 @@ To clone the repository run this command in your terminal:
 
 `git clone <url of forked repository>`
 
-![](/img/0\(0\)clone.png)
+![](/img/clone-console.png)
 
 ### Step 3: Create a New Branch:
 
@@ -33,11 +33,11 @@ To create a new branch, navigate to the cloned repository and run
 
 ### Step 4: Make the Necessary Changes:
 
-Navigate to `src/validators/validators.json`
+Navigate to `validators/validators.json`
 
 * If you want to update your metadata, search for your node address, and make changes to the attribute next to it, currently 4 attributes are supported:
   1. **name**:- Name of your validating node
-  2. **image**:- Location of your node's image, all images are located in `src/assets/logos` you are required to update/add the logo in the same directory, and your image attribute should look like `logos/<image name>` , The recommended image size is\*\* 64px\*64px or 128px\*128px in jpg/png\*\* format.
+  2. **image**:- Location of your node's image, all images are located in `public/logos` you are required to update/add the logo in the same directory, and your image attribute should look like `logos/<image name>` , The recommended image size is\*\* 64px\*64px or 128px\*128px in jpg/png\*\* format.
   3. **website**:- the website for your validating node
   4. **description**:- description to be displayed for your node
 * If you are adding a new node, add an entry at the **end** of the JSON object with your node's address as the key and follow the above instruction.
@@ -61,8 +61,8 @@ git push origin <branch_name>
 
 ### Step 6: Open a Pull Request:
 
-On the [original repository](https://github.com/fuseio/fuse-staking-v2) page, you should see an option to compare and open a new pull request. Click on it, and select your branch as the source branch and the target branch as `fuseio/fuse-staking-v2 master` where we want it merged, provide a short description, and ask for a review. If the review is a success, your PR will be merged and changes will be live within a few minutes of merging.
+On the [original repository](https://github.com/fuseio/console-dapp) page, you should see an option to compare and open a new pull request. Click on it, and select your branch as the source branch and the target branch as `fuseio/console-dapp master` where we want it merged, provide a short description, and ask for a review. If the review is a success, your PR will be merged and changes will be live within a few minutes of merging.
 
-![](/img/0\(0\)pr.png)
+![](/img/pull_request-console.png)
 
 For live support, contact us on [Telegram](https://t.me/fuseio) or [Discord](https://discord.gg/tz7ArR). Good luck, and happy validating!
