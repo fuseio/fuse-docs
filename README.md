@@ -1,44 +1,24 @@
-[![Tinasaurus Demo](https://res.cloudinary.com/forestry-demo/image/upload/v1677522334/tina-io/blog/tinacms-docusaurus-markdown-editing.gif 'Tinasaurus Overview Video')](https://www.youtube.com/watch?v=2bHBwM54UB8)
+# Fuse Docs
 
+This repo runs [docs.fuse.io](https://docs.fuse.io).
 
-## Quickstart With Tina
+Source can be viewed in [`docs`](./docs/) directory.
 
-```
-$ npm install && npm run tina  
-```
+## Running Locally
 
-This will install dependancies and open the website in your browser. 
+1. `yarn install`
+2. `yarn start`
+3. Open `http://localhost:3000/`
 
-Visit the CMS at [http://localhost:3000/admin](http://localhost:3000/admin) to start editing.
+## Adding a New Page
 
-## About
+1. Create a new file in `docs/`
+2. Configure `sidebars.js` to create the sidebar link.
 
-This website is built using [Docusaurus 2](https://docusaurus.io/) and [TinaCMS](https://tina.io/).
+## Editing a Page
 
-[Watch an overview of this project on YouTube](https://www.youtube.com/watch?v=2bHBwM54UB8).
+1. Open the file in `docs/`
 
-### Installation
+## Customize Settings & Theme
 
-```
-$ npm install
-```
-
-### Local Development
-
-```
-$ npm run tina
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server. Go to the [Tina Admin](http://localhost:3000/admin) to start editing.
-
-### Build
-
-```
-$ npm run build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-To deploy to production and support editing on your live website (at **your-domain.com/admin**), you can follow the steps from [Tina's docs](https://tina.io/docs/forestry/migrate/#deploy-tina-to-your-site).
+1. Open `docusaurus.config.js`
