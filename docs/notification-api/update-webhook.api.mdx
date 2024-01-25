@@ -5,7 +5,7 @@ description: "Update webhook's `webhookUrl` or `eventType`"
 sidebar_label: "Update Webhook"
 hide_title: true
 hide_table_of_contents: true
-api: eJzNVVtP2zAU/iuVX/bStHHSXN8Y6gMCbYiBkMYq6sQnbSCtvdgpVFH/+46TQBsBFdvTWqn15Tv37xzXRLOFIvEduYVkKcSjIrMh4aDSMpc6F2sSkxvJmYbBUwv4ogbzbnlTFvOBKAdz2MBaX28lzMmQlPC7AqW/Cr4lcU1SsdZ4a5ZMyiJPmVE7flBGd01UuoQVMyuN8mhNJA+QatQjSyGh1Dkoc9uZPOMHUKXLfL1AKDyzlSzMke9wN3MYox4L3chNeGg7qUtdshuSvdfHdSy1lioejzv8SOUaxjxgAfVZaoWURtaE0okVeaFvZbbvB6mTJhQaI6+pOG5jenXq2GS3OzjrxWgCYaEHfpRQzw8d6jmOyyLOST+O9521Xc+hNvWsJMh8a8ImrhUxHlmQeNwBP8X0JKTnKzm5uEB3dsYjyUq2Ag2l4UVN1rgxgMsz68f09Gp6jZK54cUSGIcSd29q2AV8GB2pawVpCfoctrsdXr0qZjLHsxelyJ1y+3mdskqQUp3OmSGfkmKtWs44tm3++mz+fo7a/5GU/XLd5/wY4xoGG7GunimEQRpSlyZJloGdhS7LfO9T9fwU+fr1bAmGkZaAzctPMFbMh+NYdmDR4JrS2IniiT+aeNFPhFVNj78HcxHpjILAN7D7+w2J7Y4nyJGlMLHJqulXppe4Ga+FzrMuo+olDlNRKDcvnKp6sSIDRlmlYJQLsx5v7KaWphpX+2Ey/Y8axZA1Ew1Bct1Q8dth1ANsFhQz4bakoyN7ZBsxKZResYZkHf276Xr7mqceXQ/m59/O4Y66Gp71WBYMuwvtV+3wa2t1R3q12mfMvAFL9NRA6jphCtAEdhget/1pashzxZICsAYZKxQMySN28UE7b1hRGQeaWm5YmRs0Ss7QjW50vKvmw/g/iqm125tPe9s4Z9r701aP1ZRxj3jT/nuJkzQFqY9iZwddcHljLCfds7cS3IiU7Mk8ifgbk1/4xY2QbbYR1JzXpGDrRcUWBt+qNZ8/+eJ3Aw==
+api: eJzNVU1v2zgQ/SvGXHqRbFGyPm9pkEOQYjdIExTYNEhG4ihmK0ssSTk1BP33BSUlttA0yO6puoggH2f4+N4MOzD4qCG7hS+Ub5rmu4Y7BzjpQglpRFNDBjeSo6HF0wj4oBcP0/BGVQ+LRi0eaEe1ud5LegAHFP1oSZuPDd9D1kHR1IZqY4coZSUKtGFX37SN3YEuNrRFOzJ7SZBBk3+jwoADUjWSlBGk7eqU8pwfQbVRon4EB+gnbmVlpyKfB6WPyEJMgjTIeeL5RcAC6B04nPrtGBtjpM5Wqwm/1MLQiscYswgLN2EsddeMrd00TCK39KIoLvwiZzQkebmKt3OcXZ36HvT90dyMoyWCSUhRmrMwSnwW+n6AKecw5/H6Yb0g9JnHQjePy8hd4zpwU+SpS3nIfYoKZGEOs7PCyadP0NvPAYkKt2RIWV90UON2AFyeu5/PTq/OrsEBYX2xIeSkwPlVw4nwMTvoOk2FInNB+76H3nkJjFJc0P456I+W1P79MWWbV6KYYt5Z82nZ1Hr0jO959jd3898X4PxfU87luhf8LccNDrbbJj0LSuIiYQHL87Ikr0wCLKPwXXq+y3xzPUeDOVAoQkP8xEAGvuf7rhe7LL5mLPPTbB0t12H6DzjQDjX+Gixgme8v4ziysPv7HWTe5JMtmU1jucl2qFc0G8hgVTdGlNON6mceVlFSu2dPtTOuKMWybDUtRWPHq503aGnVuDo0k7M/qFCsWctmMIgwgxX/Oma9OLk8Bwcs3dF0bOktPbtNNtpscTDZZP+pu355uaeZXY/653/tw5N1Df00K1mhqG3+dmx+o1a3MNPqcGP2Ddg02lhI1+Wo6UZVfW+nx/q0GnKhMa+IQ1ZipcmB77Q/LucdVq09wKDlDpWwaMhu73rnuXW8Gua3/H/Hacw760+H3E43rZ+OcdxBxgPil/I/7DgpCpLmTezdURVc3tjM+fTsbRtutyh8sk8iPkEGX+Gr5dDI8bazbpzvoML6scVHix/D2u9f+eJ3Aw==
 sidebar_class_name: "put api-method"
 info_path: docs/notification-api/notifications-api
 custom_edit_url: null
@@ -24,11 +24,18 @@ import Markdown from "@theme/Markdown";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
-<h1 className={"openapi__heading"}>Update Webhook</h1>
+<h1
+  className={"openapi__heading"}
+>
+  Update Webhook
+</h1>
 
-<MethodEndpoint method={"put"} path={"/notifications/webhook"}></MethodEndpoint>
-
-<SecuritySchemes infoPath={"docs/notification-api/notifications-api"}></SecuritySchemes>
+<MethodEndpoint
+  method={"put"}
+  path={"/notifications/webhook"}
+>
+  
+</MethodEndpoint>
 
 
 
@@ -36,13 +43,204 @@ Update webhook's `webhookUrl` or `eventType`
 
 ## Request
 
-<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}"}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Header Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"API-SECRET","in":"header","schema":{"type":"string"},"example":"{{secretKey}}"}}></ParamsItem></ul></div></details><MimeTabs className={"openapi-tabs__mime"}><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"webhookId"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"62d3f2aa15a8393bd802c313"}}></SchemaItem><SchemaItem collapsible={false} name={"webhookUrl"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e3"}}></SchemaItem><SchemaItem collapsible={false} name={"eventType"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"ERC20"}}></SchemaItem></ul></details></TabItem></MimeTabs><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
-
-OK
-
-</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}>
-
-object
-
-</div></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"_id\": \"62d3f2aa15a8393bd802c313\",\n  \"projectId\": \"62ce87c8131bbffe0f83af65\",\n  \"webhookUrl\": \"https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e3\",\n  \"eventType\": \"ERC20\",\n  \"createdAt\": \"2022-07-17T11:29:46.459Z\",\n  \"updatedAt\": \"2022-07-17T11:31:22.776Z\",\n  \"__v\": 0\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}"}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Header Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"API-SECRET","in":"header","schema":{"type":"string"},"example":"{{secretKey}}"}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"application/json"}
+    value={"application/json-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"webhookId"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","example":"62d3f2aa15a8393bd802c313"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"webhookUrl"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","example":"https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e3"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"eventType"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","example":"ERC20"}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          OK
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <div
+                        style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+                      >
+                        
+                        
+                        object
+                        
+                        
+                      </div>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"Example"}
+                  value={"Example"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"_id\": \"62d3f2aa15a8393bd802c313\",\n  \"projectId\": \"62ce87c8131bbffe0f83af65\",\n  \"webhookUrl\": \"https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e3\",\n  \"eventType\": \"ERC20\",\n  \"createdAt\": \"2022-07-17T11:29:46.459Z\",\n  \"updatedAt\": \"2022-07-17T11:31:22.776Z\",\n  \"__v\": 0\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
       
