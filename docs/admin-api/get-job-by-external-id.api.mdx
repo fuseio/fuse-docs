@@ -5,7 +5,7 @@ description: "Check the status of a job you created by jobId"
 sidebar_label: "Get Job by External Id"
 hide_title: true
 hide_table_of_contents: true
-api: eJydVMFO3DAQ/ZWRT60UNluOe0MIEOVSQStUIQ5OMtmYdWzjcYBVtP/eGW9YWAqt2lwSx+M3b+a98aiSXpJa3KivviI4+naubgvVINXRhGS8Uwt13GG9gtQhUNJpIPAtaLjzFaz9AHVEnbCBai2/zhtVqKCj7jFhFOBROV4wDGMfXJ0cX5585xAjwB3qBiOvqO6w12oxqrQOEkspGrdUm7dUPl3i/WAiNp/hJ+e+Qs6ehDWscM1A+KT7YAVhHClvXuB6s2GgHQ18YmJO28w007gfMK7/zOI17gvAPrAO5iKT+B/QMFTW1BNZViAiBe8ISU4ezufy2m/F1VDXSNQOFp6DOV3tXUKXJFyHwJBawss7kjPjhp9CsTSdbxhiiSmrlTpelKwelc/FCXOMD88SDtGKXikFWpQlVzprB8KZ8fJdPswzZ+Nanws1KVd11PTGZUu9lfHapA5OGQF2MVsvaTf5CbRroNdOLxHqgZJvjLbwqK3FRND6KPERGCISJM+WbDGyK6+xOjywZoWATwGjQVdjAZrgEa2V9xa+AE6bipylGqJjiBW6V8DIjfS9QSpr3/eDM4m/Z1yItGRbxJfZfDYXHYOnxFSl9MkKZ2xKnieZiZOpoZD9tteG8UWtf5+xyU2JBSuD1ew5ZpJlGidFb5Qomodi0pQ16pirbI1jpQl/RMt+499bt4rSjSFdWWR7tNoSFkoG683UPGg7SPLs/g8O7KbhJfhWFtFINKe6Zb7TBfBu3g9b9bc74N3ObEntXUF7VUz7PFIhvdr7bYakiN38nDHOZvMLDcPItQ==
+api: eJydVE1P3DAQ/SujObWS2Ww55obQFgEXBFSoQntwnMnGrGMbewy7ivLfK2c/2KXQqj058Yyf38yb5x5ZLiKWj3jlqghnN5c4F1hTVEF71s5iiectqSVwSxBZcorgGpDw5CpYuwQqkGSqoVrnrcsaBXoZZEdMIQP3aGVHWOLZzeXJ3ez8dnaPAnUGbknWFFBgVC11Esseee1zbuSg7QKH91S+3NJz0oHqr/DTJbgjFYgza1jSGgXSSnbeZIS+j2PwmtbDgIPY06AVU7DSjExHGs+JwvrPLA5x3wCOgaXX1yOJ/wH1qTJabcnOBQaK3tlIMZ88nU7zctyKu6QUxdgkA7tkFKicZbKc06X3RiuZ04unmM/0wzAMAjvi1tVY4oJ4VItbLLF4clUsdsVl5hRedhKmYLJezD6WRSG9njQp0kS7/F28TEfO2jZuLFTzWNVZ3Wk7jtR7GR80t/A9RYJ9zmaWpN3OE0hbQyetXBCoFNnVWhp4lcYQR2hcyPkBUqQQgR24pqEAEh6oOj0xeklAK09Bk1UkQEZ4JWPyuoEX0GnLYrylSsECuyXZA2BSzrpOUyyU67pkNWuKExSYW7Ip4ttkOplmHb2L3Mnc390oXBDDlauyJ2bbhsI4b0dt6N/U+nePbaeJacWFN1LbzGSUqd8q+ohZ0dEUW03nAlsXOYf6vpKRfgQzDHl7M61Z6VpHWRmqsWykiSQwG+uda16kSfnycfo/ObB3w1vyPP8EnbOxfJwPYvcAfHjvp6362xvwYWc2pI6eoKMqtnGlyPNB7DcP5SL2/rmY3eMw/AINw8i1
 sidebar_class_name: "get api-method"
 info_path: docs/admin-api/admin-api
 custom_edit_url: null
@@ -24,11 +24,18 @@ import Markdown from "@theme/Markdown";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
-<h1 className={"openapi__heading"}>Get Job by External Id</h1>
+<h1
+  className={"openapi__heading"}
+>
+  Get Job by External Id
+</h1>
 
-<MethodEndpoint method={"get"} path={"/jobs/external"}></MethodEndpoint>
-
-<SecuritySchemes infoPath={"docs/admin-api/admin-api"}></SecuritySchemes>
+<MethodEndpoint
+  method={"get"}
+  path={"/jobs/external"}
+>
+  
+</MethodEndpoint>
 
 
 
@@ -36,9 +43,121 @@ Check the status of a job you created by jobId
 
 ## Request
 
-<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"externalId","in":"query","schema":{"type":"string"},"example":"{{externalId}}"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}"}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Header Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"API-SECRET","in":"header","schema":{"type":"string"},"description":"(Required) You Secret API key","example":"{{secretKey}}"}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
-
-Successful response
-
-</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"externalId","in":"query","schema":{"type":"string"},"example":"{{externalId}}"}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}"}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Header Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"API-SECRET","in":"header","schema":{"type":"string"},"description":"(Required) You Secret API key","example":"{{secretKey}}"}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Successful response
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      any
+                    </ul>
+                  </details>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
       
