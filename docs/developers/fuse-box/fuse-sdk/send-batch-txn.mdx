@@ -1,0 +1,59 @@
+---
+title: Send Batch Transactions
+sidebar_position: 7
+---
+
+### Send Batch Transactions
+
+A batch refers to a group of calls inside a single user operationhe. This can be an `approve` and `send` transaction in one call. The **`executeBatch()`** method is used.
+
+The **`executeBatch()`** method takes in an array of objects. With each object taking in 3 keys: `to`, `value` and `data`.
+
+```javascript
+executeBatch([
+  { to, value, data },
+  { to, value, data },
+  { to, value, data },
+]);
+```
+
+|   Param   | Type       | Status     | Description                                      |
+| :-------: | ---------- | ---------- | ------------------------------------------------ |
+|  **to**   | _address_  | _required_ | The address where the user want to send Tokens.  |
+| **value** | _number_   | _required_ | The amount of Tokens the user is sending         |
+| **data**  | _Function_ |            | Encoded Function Data for Smart Contract Methods |
+
+Example: **`index.ts`**
+
+```typescript
+import { ethers } from "ethers";
+import { FuseSDK } from "@fuseio/fusebox-web-sdk";
+
+const main = async () => {
+  const credentials = new ethers.Wallet("PRIVATE_KEY" as string);
+  const publicApiKey = "YOUR_API_KEY" as string;
+  const fuseSDK = await FuseSDK.init(publicApiKey, credentials);
+
+  console.log(`Sender Address is ${fuseSDK.wallet.getSender()}`);
+
+  const to = ["EOA_ADDRESS", "EOA_ADDRESS"];
+
+  const calls = to.map((x) => {
+    return {
+      to: x,
+      value: ethers.utils.parseEther("0.001"),
+      data: Uint8Array.from([]),
+    };
+  });
+
+  const res = await fuseSDK.executeBatch(calls);
+
+  console.log(`UserOpHash: ${res?.userOpHash}`);
+  console.log("Waiting for transaction...");
+
+  const receipt = await res?.wait();
+  console.log("Transaction Hash:", receipt?.transactionHash);
+};
+
+main();
+```

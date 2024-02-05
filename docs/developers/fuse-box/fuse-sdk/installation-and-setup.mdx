@@ -6,7 +6,7 @@ sidebar_position: 2
 Install the FuseBox JS SDK:
 
 ```bash
-npm install ethers @fuseio/fusebox-web-sdk
+npm install @fuseio/fusebox-web-sdk
 ```
 
 Once you have installed the package, you can import it into your JS code:
@@ -19,10 +19,16 @@ import { FuseSDK } from "@fuseio/fusebox-web-sdk";
 
 To use the FuseBox JS SDK in your project, you must create an instance of the **`FuseSDK`** class. This class is the key to interacting with the Fuse API using the SDK. Fortunately, the `FuseSDK` class provides a range of instance methods, allowing you to execute various operations with the API.
 
+Using the SDK requires the use of the `EthersJS` library. We require the `EthersJS` library methods for creating Wallets.
+
+```bash
+npm install ethers
+```
+
 The following code initializes the Fuse SDK and creates an instance of the `FuseSDK` class. The `publicApiKey` variable should be set to your own API key.
 
-Replace `YOUR_API_KEY` with your actual API key obtained from the Fuse Console Dashboard.
-If you don’t want to enable `Paymaster` set it to false. It is default `false`
+Replace `YOUR_API_KEY` with your actual API key obtained from the Fuse [Developer](https://developers.fuse.io/) Dashboard.
+To enable `Paymaster`, set it as the third argument in the `init()` method. `withPaymaster: true` . It is default `false` where the argument is not provided.
 
 ```javascript
 import { ethers } from 'ethers';

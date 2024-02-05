@@ -1,0 +1,19 @@
+---
+title: Send Transactions using Paymaster
+sidebar_position: 8
+---
+
+### Sponsored Transactions
+
+Sponsored transactions are the ability to pay for another user’s transaction fees. To do this, the Fuse operator must enable the sponsored feature in his project and deposit some funds into the paymaster contract. The SDK provides a middleware to check if the project is sponsored and the amount of funds available for sponsoring.
+
+To use this feature, you must first initialize the SDK with the _`withPaymaster`_ parameter set to true.
+
+```javascript
+import { FuseSDK } from "@fuseio/fusebox-web-sdk";
+
+const publicApiKey = "YOUR_API_KEY";
+const fuseSDK = await FuseSDK.init(publicApiKey, credentials, {
+  withPaymaster: true,
+});
+```
