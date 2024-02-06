@@ -23,39 +23,37 @@ executeBatch([
 | **value** | _number_   | _required_ | The amount of Tokens the user is sending         |
 | **data**  | _Function_ |            | Encoded Function Data for Smart Contract Methods |
 
-Example **`transfer_and_approve.dart`**
+Example **`approve_and_transfer.dart`**
 
 ```dart
-// Approve and transfer
-  final res = await fuseSDK.executeBatch(
-    [
-      // Approve ERC20 Token call
-      Call(
-        to: tokenAddress,
-        value: BigInt.zero,
-        data: ContractsUtils.encodeERC20ApproveCall(
-          tokenAddress,
-          recipientAddress,
-          amountInWei,
-        ),
-      ),
-      // Transfer ERC20 Token call
-      Call(
-        to: tokenAddress,
-        value: BigInt.zero,
-        data: ContractsUtils.encodeERC20TransferCall(
-          tokenAddress,
-          recipientAddress,
-          amountInWei,
-        ),
-      ),
-    ],
-  );
-  print('UserOpHash: ${res.userOpHash}');
+final tokenAddress = EthereumAddress.fromHex('TOKEN_ADDRESS');
+final recipientAddress = EthereumAddress.fromHex('RECIPIENT_ADDRESS');
+final amountInWei = BigInt.parse('AMOUNT_IN_WEI');
 
-  print('Waiting for transaction...');
-  final ev = await res.wait();
-  print('Transaction hash: ${ev?.transactionHash}');
+final res = await fuseSDK.executeBatch(
+  [
+    // Approve ERC20 Token call
+    Call(
+      to: tokenAddress,
+      value: BigInt.zero,
+      data: ContractsUtils.encodeERC20ApproveCall(
+        tokenAddress,
+        recipientAddress,
+        amountInWei,
+      ),
+    ),
+    // Transfer ERC20 Token call
+    Call(
+      to: tokenAddress,
+      value: BigInt.zero,
+      data: ContractsUtils.encodeERC20TransferCall(
+        tokenAddress,
+        recipientAddress,
+        amountInWei,
+      ),
+    ),
+  ],
+);
 ```
 
 ## Code example
