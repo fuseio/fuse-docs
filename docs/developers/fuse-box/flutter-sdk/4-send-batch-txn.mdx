@@ -27,51 +27,35 @@ Example **`transfer_and_approve.dart`**
 
 ```dart
 // Approve and transfer
-final res = await fuseSDK.executeBatch(
-  [
-    Call(
-      to: EthereumAddress.fromHex('TOKEN_ADDRESS'),
-      value: BigInt.zero,
-      data: ContractsUtils.encodeERC20ApproveCall(
-        EthereumAddress.fromHex('TOKEN_ADDRESS'),
-        EthereumAddress.fromHex('SPENDER_ADDRESS'),
-        BigInt.parse('AMOUNT_IN_WEI'),
+  final res = await fuseSDK.executeBatch(
+    [
+      // Approve ERC20 Token call
+      Call(
+        to: tokenAddress,
+        value: BigInt.zero,
+        data: ContractsUtils.encodeERC20ApproveCall(
+          tokenAddress,
+          recipientAddress,
+          amountInWei,
+        ),
       ),
-    ),
-    Call(
-      to: EthereumAddress.fromHex('TOKEN_ADDRESS'),
-      value: BigInt.zero,
-      data: ContractsUtils.encodeERC20TransferCall(
-        EthereumAddress.fromHex('TOKEN_ADDRESS'),
-        EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
-        BigInt.parse('AMOUNT_IN_WEI'),
+      // Transfer ERC20 Token call
+      Call(
+        to: tokenAddress,
+        value: BigInt.zero,
+        data: ContractsUtils.encodeERC20TransferCall(
+          tokenAddress,
+          recipientAddress,
+          amountInWei,
+        ),
       ),
-    ),
-  ],
-  FuseSDK.defaultTxOptions.copyWith(
-    useNonceSequence: true,
-  ),
-);
+    ],
+  );
+  print('UserOpHash: ${res.userOpHash}');
 
-// Transfer
-await fuseSDK.transferToken(
-  EthereumAddress.fromHex(Variables.NATIVE_TOKEN_ADDRESS),
-  EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
-  BigInt.parse('AMOUNT_IN_WEI'),
-  FuseSDK.defaultTxOptions.copyWith(
-    useNonceSequence: true,
-  ),
-);
-
-// Transfer
-await fuseSDK.transferToken(
-  EthereumAddress.fromHex(Variables.NATIVE_TOKEN_ADDRESS),
-  EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
-  BigInt.parse('AMOUNT_IN_WEI'),
-  FuseSDK.defaultTxOptions.copyWith(
-    useNonceSequence: true,
-  ),
-);
+  print('Waiting for transaction...');
+  final ev = await res.wait();
+  print('Transaction hash: ${ev?.transactionHash}');
 ```
 
 ## Code example
