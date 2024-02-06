@@ -1,0 +1,19 @@
+---
+title: GET Token Price
+sidebar_position: 15
+---
+
+### Get Token Price
+
+```dart
+final tokenAddress = 'TOKEN_ADDRESS';
+final priceData = await fuseSDK.tradeModule.price(tokenAddress);
+priceData.pick(
+  onData: (String tokenPrice) {
+    // Do you magic here
+  },
+  onError: (err) {
+    // Handle errors
+  },
+);
+```

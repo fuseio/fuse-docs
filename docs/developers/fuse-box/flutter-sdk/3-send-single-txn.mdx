@@ -1,0 +1,31 @@
+---
+title: Send Native/ERC20 Transactions
+sidebar_position: 3
+---
+
+### Transfer ERC20 Token/ Native FUSE
+
+To transfer an ERC20/FUSE with a relay, use the **`transferToken()`** method. This method relays the transaction and covers the gas fees for the user, so they don't need to worry about those fees.
+
+You can also subscribe to events related to the token transfer to track its progress. The method takes the following parameters as inputs:
+
+| Parameter        | Type      | Description                                     |
+| ---------------- | --------- | ----------------------------------------------- |
+| tokenAddress     | _address_ | The contract address of the ERC20 token or FUSE |
+| recipientAddress | _address_ | The recipient's wallet address                  |
+| amount           | _number_  | The amount to transfer                          |
+
+```dart
+final res = await fuseSDK.transferToken(
+    EthereumAddress.fromHex('TOKEN_ADDRESS'), // For sending native token, use '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
+    EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
+    BigInt.parse('AMOUNT_IN_WEI'),
+);
+print('UserOpHash: ${res.userOpHash}');
+print('Waiting for transaction...');
+final ev = await res.wait();
+```
+
+## Code example
+
+For more code examples on using the Fuse Wallet SDK for Flutter for Token Transfer, you can check out the official [**Flutter SDK repository**](https://github.com/fuseio/fuse_wallet_sdk/blob/master/example/transfer.dart).

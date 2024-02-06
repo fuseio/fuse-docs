@@ -1,0 +1,40 @@
+---
+title: Stake and Unstake Tokens
+sidebar_position: 13
+---
+
+### Stake
+
+```dart
+final res = await fuseSDK.stakeToken(
+  StakeRequestBody(
+    accountAddress: fuseSDK.wallet.getSender(),
+    tokenAmount: 'AMOUNT', // "0.01"
+    tokenAddress: 'TOKEN_ADDRESS', // "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4"
+  ),
+);
+print('UserOpHash: ${res.userOpHash}');
+
+print('Waiting for transaction...');
+final ev = await res.wait();
+print('Transaction hash: ${ev?.transactionHash}');
+```
+
+### Unstake
+
+```dart
+final res = await fuseSDK.unstakeToken(
+  UnstakeRequestBody(
+    accountAddress: fuseSDK.wallet.getSender(),
+    tokenAmount: '0.1',
+    tokenAddress: 'TOKEN_ADDRESS', // "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4"
+  ),
+  EthereumAddress.fromHex('0xb1DD0B683d9A56525cC096fbF5eec6E60FE79871'),
+);
+
+print('UserOpHash: ${res.userOpHash}');
+
+print('Waiting for transaction...');
+final ev = await res.wait();
+print('Transaction hash: ${ev?.transactionHash}');
+```

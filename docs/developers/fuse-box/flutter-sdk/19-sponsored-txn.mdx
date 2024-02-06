@@ -1,0 +1,17 @@
+---
+title: Sponsored Transactions
+sidebar_position: 19
+---
+
+### Sponsored Transactions
+
+Sponsored transactions are the ability to pay for another user’s transaction fees. To do this, the Fuse operator must enable the sponsored feature in his project and deposit some funds into the paymaster contract. The SDK provides a middleware to check if the project is sponsored and the amount of funds available for sponsoring.
+
+To use this feature, you must first initialize the SDK with the `withPaymaster` parameter set to `true`.
+
+```dart
+import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
+final apiKey = 'YOUR_PUBLIC_API_KEY';
+final privateKey = EthPrivateKey.fromHex('YOUR_PRIVATE_KEY');
+final fuseSDK = await FuseSDK.init(apiKey, privateKey, withPaymaster: true);
+```
