@@ -1,0 +1,18 @@
+---
+title: GET Staking Options
+sidebar_position: 11
+---
+
+### Get Staking Options
+
+```dart
+final stakingOptionsData = await fuseSDK.stakingModule.getStakingOptions();
+stakingOptionsData.pick(
+  onData: (List<StakingOption> data) {
+    // Do you magic here
+  },
+  onError: (Exception err) {
+    // Handle errors
+  }
+);
+```

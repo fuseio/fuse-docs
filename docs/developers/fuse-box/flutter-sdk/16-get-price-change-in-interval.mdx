@@ -1,0 +1,19 @@
+---
+title: GET the Price Change in Interval
+sidebar_position: 16
+---
+
+### Get Price Change in Interval
+
+```dart
+final tokenAddress = 'TOKEN_ADDRESS';
+final intervalData = await fuseSDK.tradeModule.interval(tokenAddress, TimeFrame.day);
+intervalData.pick(
+  onData: (List<IntervalStats> stats) {
+    // Do you magic here
+  },
+  onError: (err) {
+    // Handle errors
+  },
+);
+```

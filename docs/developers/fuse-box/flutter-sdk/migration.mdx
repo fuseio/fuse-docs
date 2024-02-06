@@ -1,6 +1,6 @@
 ---
-title: Migration
-sidebar_position: 4
+title: Migration from Old Versions
+sidebar_position: 21
 ---
 
 # Migration guides
@@ -30,18 +30,19 @@ With your API key in hand, you're all set to integrate and experience the enhanc
 **Initialization and Smart Wallet Creation**
 
 1. **Locate the Old Initialization**:
-Start by finding your old SDK initialization in your code. This is typically where you have the `FuseWalletSDK` instantiation.
+   Start by finding your old SDK initialization in your code. This is typically where you have the `FuseWalletSDK` instantiation.
 2. **Remove Wallet Creation Steps**:
-In the old SDK, there were multiple steps involved in creating a smart wallet, including authenticating the credentials, creating a wallet, and handling the creation events. These steps are now greatly simplified in the new SDK.
-    
+   In the old SDK, there were multiple steps involved in creating a smart wallet, including authenticating the credentials, creating a wallet, and handling the creation events. These steps are now greatly simplified in the new SDK.
+
 Identify and remove the following sections from your old SDK code:
 
 - The authentication step: `await fuseWalletSDK.authenticate(credentials);`
 - The wallet creation step: `await fuseWalletSDK.createWallet();`
 - The entire `onSmartWalletEvent` function and its associated event listening code.
+
 3. **Update SDK Initialization**:
-Replace the old initialization:
-    
+   Replace the old initialization:
+
 ```dart
 final FuseWalletSDK fuseWalletSDK = FuseWalletSDK(publicApiKey);
 ```
@@ -51,9 +52,9 @@ with the new one:
 ```dart
 final fuseSDK = await FuseSDK.init(publicApiKey, credentials);
 ```
-    
+
 4. **Access the Smart Contract Wallet Address**:
-In the new SDK, you can obtain the smart contract wallet address directly after initialization. Replace the older method:
+   In the new SDK, you can obtain the smart contract wallet address directly after initialization. Replace the older method:
 
 ```dart
 print('Smart contract wallet address: ${fuseWalletSDK.smartWallet.smartWalletAddress}');
@@ -64,14 +65,12 @@ with the simplified new version:
 ```dart
 print('Smart contract wallet address: ${fuseSDK.wallet.getSender()}');
 ```
-    
 
 By following the steps above, developers can smoothly transition to the new SDK and take advantage of the more streamlined and simplified process provided by the update. It’s worth noting that the migration not only reduces the lines of code but also enhances clarity and reduces complexity, resulting in a more efficient and cleaner integration process.
 
 In summary, the new SDK code provides a more structured, modular, and extensive set of functions to interact with FuseBox. It allows for a broader range of operations, from basic token transfers to more complex operations like staking and swapping tokens. The design considerations (like separating modules) make the SDK more maintainable and scalable.
 
 ## Migrating to v0.1
-
 
 The new Smart Wallets SDK uses the same smart contract wallet architecture. Therefore, the migration to the SDK will be seamless for existing projects. We have already migrated all previously created wallets, but some breaking changes must be considered.
 
@@ -81,23 +80,23 @@ The new Smart Wallets SDK uses the same smart contract wallet architecture. Ther
 
 The following field names have changed in Smart Wallets SDK:
 
-* `accountAddress` field name has changed to `ownerAddress` and the new field contains a checksum value instead of an all-lowercase string.
-* `walletAddress` field name has changed to `smartWalletAddress`
+- `accountAddress` field name has changed to `ownerAddress` and the new field contains a checksum value instead of an all-lowercase string.
+- `walletAddress` field name has changed to `smartWalletAddress`
 
 ### Removed fields
 
 The following fields were removed and do not exist in the smart wallet schema:
 
-* `backup`
-* `balancesOnForeign`
-* `apy`
+- `backup`
+- `balancesOnForeign`
+- `apy`
 
 ### Deprecated APIs
 
-* **Job API** was deprecated, and instead, an event-driven architecture was implemented. Therefore to check the status of relay jobs, developers now need to use the SDK events, which also improve the overall experience and performance of the SDK.
-* **Sign-up and Login APIs** were deprecated, and Smart Wallets SDK no longer provides end-user authentication. If needed, developers must implement end-user authentication and map created Smart Wallets with their users’ accounts on their backend.
-* **Backup API** was deprecated, and developers must implement a backup of private keys for their users if needed.
-* **Contacts API** was deprecated and developers need to implement any contacts-related features in their apps.
+- **Job API** was deprecated, and instead, an event-driven architecture was implemented. Therefore to check the status of relay jobs, developers now need to use the SDK events, which also improve the overall experience and performance of the SDK.
+- **Sign-up and Login APIs** were deprecated, and Smart Wallets SDK no longer provides end-user authentication. If needed, developers must implement end-user authentication and map created Smart Wallets with their users’ accounts on their backend.
+- **Backup API** was deprecated, and developers must implement a backup of private keys for their users if needed.
+- **Contacts API** was deprecated and developers need to implement any contacts-related features in their apps.
 
 ## Migration
 
@@ -117,7 +116,7 @@ import 'package:charge_wallet_sdk/charge_wallet_sdk.dart';
 
 void main() async {
   // Your public API key (<https://chargeweb3.com>)
-  final String PUBLIC_API_KEY = 'YOUR_PUBLIC_API_KEY'; 
+  final String PUBLIC_API_KEY = 'YOUR_PUBLIC_API_KEY';
 
   // generate mnemonic
   String mnemonic = Web3.generateMnemonic();
@@ -200,15 +199,15 @@ import 'package:fuse/fuse_wallet_sdk.dart';
 void main() async {
   // Create a project: https://chargeweb3.com
   final String publicApiKey = 'YOUR_PUBLIC_API_KEY';
-  
+
 	print('Enter privateKey:');
 	String privateKey =
         stdin.readLineSync(encoding: Encoding.getByName('utf-8')!)!;
   final EthPrivateKey credentials = EthPrivateKey.fromHex(privateKey);
-  
+
 	print('privateKey: $privateKey');
   print('address: ${credentials.address.hexEip55}');
-  
+
 	// Initialize FuseWalletSDK
 	final FuseWalletSDK fuseWalletSDK = FuseWalletSDK(publicApiKey);
   final DC<Exception, String> authRes = await fuseWalletSDK.authenticate(
@@ -227,7 +226,7 @@ void main() async {
       onError: (Exception exception) async {
         print('Failed to fetch');
         print('Trying to create...');
-        
+
 				// Create wallet subscriptions
         fuseWalletSDK.on('smartWalletCreationStarted', (eventData) {
           print('smartWalletCreationStarted ${eventData.toString()}');

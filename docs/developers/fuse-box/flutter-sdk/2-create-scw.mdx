@@ -1,0 +1,28 @@
+---
+title: Create Smart Contract Wallet
+sidebar_position: 2
+---
+
+### Initialization
+
+The `init` method is a fundamental feature of the Fuse Wallet Flutter SDK that enables you to setup a wallet & authenticate the user's provided credentials. When you send a request to the server using this method, it verifies the credentials and if the credentials are valid, developers can use the **`getSender()`** to return an address.
+
+```dart
+// Generate a random Ethereum private key
+final String privateKey = await Mnemonic.generatePrivateKey();
+final EthPrivateKey credentials = EthPrivateKey.fromHex(privateKey);
+
+final fuseSDK = await FuseSDK.init(credentials);
+```
+
+### **Access the wallet**
+
+```dart
+// Create Wallet
+final smartContractAddress = fuseSDK.wallet.getSender();
+print('Smart contract wallet address: $smartContractAddress');
+```
+
+## Code example
+
+For more code examples on using the Fuse Wallet SDK for Creating Address using Flutter, you can check out the official [**Flutter SDK repository**](https://github.com/fuseio/fuse_wallet_sdk/blob/master/example/address.dart).

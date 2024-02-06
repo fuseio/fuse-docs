@@ -1,0 +1,24 @@
+---
+title: GET Token Details
+sidebar_position: 9
+---
+
+### Get Token Details
+
+The **`getTokenDetails()`** function allows you to retrieve detailed information about a specific ERC20 token. This includes the token's name, symbol, decimal places, and total supply. To use the `getTokenDetails` function, you need to provide the contract address of the ERC20 token that you want to retrieve information from. Once you call the function, it will return a `TokenDetails` object that contains all the relevant information about the token.
+
+```dart
+final String tokenAddress = 'TOKEN_ADDRESS';
+final tokenDetailsData = await fuseSDK.explorerModule.getTokenDetails(
+  tokenAddress,
+);
+
+tokenDetailsData.pick(
+  onData: (TokenDetails tokenList) {
+    // Do you magic here
+  },
+  onError: (err) {
+    // Handle errors
+  },
+);
+```
