@@ -1,0 +1,295 @@
+---
+title: Privy Login Guide
+sidebar_position: 1
+---
+
+# Tutorial: Integrating Social Login with Privy.io SDK on Fuse Blockchain using React
+## Introduction
+
+In this tutorial, we'll guide you through integrating social login functionality into a React application using the Privy.io SDK on the Fuse Blockchain. By the end of this tutorial, you'll have a basic React app that allows users to log in with email or wallet, view user information, and initiate a sample blockchain transaction.
+### Prerequisites
+
+Before you start, make sure you have the following:
+
+1. Node.js installed on your machine. You can download it from [here](https://nodejs.org/).
+2. Code Editor: Use your preferred code editor; VS Code is recommended.
+3. A Privy.io account and a configured application with the necessary credentials.
+4. Basic knowledge of React.
+
+## Step 1: Setting up the React App
+
+If you haven't already created a React app, use the following commands to set up a new app:
+
+```bash
+npx create-react-app fuse-social-login
+cd fuse-social-login
+```
+
+Create a React JS Application. You can follow the steps in the official React Docs.
+
+## Step 2: Install Dependencies
+
+Install the necessary dependencies for Privy.io and Fuse Blockchain:
+
+```bash
+npm install @privy-io/react-auth viem/chains
+```
+## Step 3: Configure Privy.io
+
+Replace the content of `src/index.js` with the following code:
+
+```jsx
+// src/index.js
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { PrivyProvider } from "@privy-io/react-auth";
+import { fuse } from "viem/chains";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <PrivyProvider
+      appId={process.env.REACT_APP_PRIVY_APP_ID}
+      onSuccess={(user) => console.log(`User ${user.id} logged in!`)}
+      config={{
+        defaultChain: fuse,
+        supportedChains: [fuse],
+        loginMethods: ["email"],
+        embeddedWallets: {
+          createOnLogin: "users-without-wallets", // or 'all-users'
+        },
+      }}
+    >
+      <App />
+    </PrivyProvider>
+  </React.StrictMode>
+);
+reportWebVitals();
+```
+
+Make sure to replace `REACT_APP_PRIVY_APP_ID` with your actual Privy.io application ID.
+## Step 4: Implement Social Login in App.js
+1. Import Statements:
+   ```jsx
+   import { usePrivy } from "@privy-io/react-auth";
+   ```
+   - Import the `usePrivy` hook from the Privy.io React SDK, which provides access to authentication-related functions and user data.
+
+2. Functional Component Declaration:   
+```jsx
+   function App() {
+     // Destructure the necessary functions and data from the usePrivy hook
+     const { ready, authenticated, user, login, logout, sendTransaction } = usePrivy();
+
+     // Check if the Privy client is ready before taking any actions
+     if (!ready) {
+       return null;
+     }
+
+     // ... rest of the code ...
+   }
+   ```
+   - Define the `App` functional component.
+   - Destructure essential functions and data from the `usePrivy` hook, making them accessible within the component.
+
+3. Check Privy Client Readiness:
+   ```jsx
+   if (!ready) {
+     return null;
+   }
+   ```
+   - If the Privy client is not ready, return `null` to prevent rendering until the client is ready.
+
+4. Rendering Components Conditionally:
+   ```jsx
+   return (
+     <div className="App">
+       <header className="App-header">
+         {/* Conditionally render content based on authentication status */}
+         {ready && authenticated ? (
+           <>
+             {/* ... content for authenticated users ... */}
+           </>
+         ) : (
+           {/* ... content for non-authenticated users ... */}
+         )}
+       </header>
+     </div>
+   );
+   ```
+   - Conditionally render content based on whether the Privy client is ready and the user is authenticated.
+
+5. Authenticated User Content:   
+```jsx
+   <>
+     {/* Display user information and logout button if authenticated */}
+     <div>
+       {/* ... textarea displaying user information ... */}
+       <br />
+       <button
+         onClick={logout}
+         style={{
+           // ... styles for the logout button ...
+         }}
+       >
+         Log Out
+       </button>
+     </div>
+     <div>
+       {/* ... button for sending a transaction ... */}
+     </div>
+   </>
+   ```
+   - If the user is authenticated, display user information in a textarea, a logout button, and a button to send a transaction (if the user has a wallet).
+
+6. Non-authenticated User Content:
+   ```jsx
+   <button
+     onClick={login}
+     style={{
+       // ... styles for the login button ...
+     }}
+   >
+     Log In
+   </button>
+   ```
+   - If the user is not authenticated, display a login button.
+
+## Step 5: Sending a Transaction
+
+1. Define Sample Transaction Data:
+   ```jsx
+   const unsignedTx = {
+     to: "Enter any EOA or SCW Address",
+     chainId: 122, // Fuse Mainnet
+     value: "0x3B9ACA00", //0.001 Fuse Token in HEX
+   };
+   ```
+   - Define a sample unsigned transaction object with destination address (`to`), chain ID, and value.
+
+2. Transaction UI Configuration:
+   ```jsx
+   const uiConfig = {
+     header: "Sample header text",
+     description: "Sample description text",
+     buttonText: "Transfer",
+   };
+   ```
+   - Configure the UI for the transaction modal with an optional header and description, and required button text.
+
+3. Export the Component:
+   ```jsx
+   export default App;
+   ```
+   - Export the `App` component to make it available for use in the `index.js` file.
+
+## Complete code:
+
+```jsx
+// src/App.js
+import "./App.css";
+import { usePrivy } from "@privy-io/react-auth";
+
+function App() {
+  const { ready, authenticated, user, login, logout, sendTransaction } =
+    usePrivy();
+
+  if (!ready) {
+    return null;
+  }
+
+  const unsignedTx = {
+     to: "Enter any EOA or SCW Address",
+     chainId: 122, // Fuse Mainnet
+     value: "0x3B9ACA00", //0.001 Fuse Token in HEX
+  };
+
+  const uiConfig = {
+    buttonText: "Transfer",
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        {ready && authenticated ? (
+          <>
+            <div>
+              <textarea
+                readOnly
+                value={JSON.stringify(user, null, 2)}
+                style={{ width: "600px", height: "250px", borderRadius: "6px" }}
+              />
+              <br />
+              <button
+                onClick={logout}
+                style={{
+                  marginTop: "20px",
+                  padding: "12px",
+                  backgroundColor: "#069478",
+                  color: "#FFF",
+                  border: "none",
+                  borderRadius: "6px",
+                }}
+              >
+                Log Out
+              </button>
+            </div>
+            <div>
+              <button
+                disabled={!user.wallet}
+                onClick={async () => {
+                  const txReceipt = await sendTransaction(unsignedTx, uiConfig);
+                }}
+                style={{
+                  marginTop: "20px",
+                  padding: "12px",
+                  backgroundColor: "#069478",
+                  color: "#FFF",
+                  border: "none",
+                  borderRadius: "6px",
+                }}
+              >
+                Send transaction
+              </button>
+            </div>
+          </>
+        ) : (
+          <button
+            onClick={login}
+            style={{
+              padding: "12px",
+              backgroundColor: "#069478",
+              color: "#FFF",
+              border: "none",
+              borderRadius: "6px",
+            }}
+          >
+            Log In
+          </button>
+        )}
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+## Step 6: Run the Application
+
+Run your React app with the following command:
+
+```bash
+npm start
+```
+
+Visit `http://localhost:3000` in your browser, and you should see your app with social login functionality integrated.
+
+Try `login`, `logout` and `Send Transaction`. You can view all transactions on the created Smart Contract Wallet using the Fuse [Explorer](https://explorer.fuse.io) 
+
+<img src="/img/tutorials/privy-login.png" width="80%" height="50%" />
+
+Congratulations! You have successfully integrated social login with Privy.io SDK on the Fuse Blockchain using React. Feel free to customize the code further based on your application requirements.
