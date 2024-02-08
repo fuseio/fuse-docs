@@ -1,0 +1,26 @@
+---
+title: ERC 4337
+sidebar_position: 2
+---
+
+## ERC-4337 Token Standard: Unlocking the Potential
+
+To enable the possibilities of account abstraction, Ethereum has introduced the ERC-4337 token standard. This standard, co-authored by Buterin and a team of experts, unlocks the power of Smart Contract crypto Wallets on the Ethereum blockchain and enhances the accessibility of various aspects within the cryptocurrency realm.
+
+## The Power of ERC-4337
+
+ERC-4337 is a token standard that introduces Account Abstraction without changing the Ethereum protocol. It provides developers with an easy way to write custom Smart Contract Wallets, opening up new possibilities for creating innovative wallet solutions.
+
+Before the official acceptance of ERC-4337, several Ethereum Improvement Proposals (EIPs) related to account abstraction were proposed. However, ERRC-4337 gained authorization and acceptance via governance in 2023 due to its zero consensus-layer protocol changes.
+
+How ERC-4337 Works: Introducing UserOperations
+
+ERC-4337 introduces a concept called a "pseudo-transaction" object known as a UserOperation. Unconfirmed UserOperations are stored in an "Alt Mempool" on the Ethereum network. Nodes on the network can act as "Bundlers" that pick up multiple UserOperations and pack them into a single transaction, a Bundle transaction.
+
+These Bundle transactions are then sent to a global smart contract called the "EntryPoint" on the Ethereum blockchain. It's important to note that there is only one entry point on the Ethereum blockchain.
+
+The Bundlers initiate a function call on the EntryPoint smart contract named "handleOps." This function receives the bundle transaction, and for each account, it invokes the "validateUserOp" function to authenticate the signature and process the gas fee payment. The EntryPoint contract then executes the operation sent in by the smart contract wallet.
+
+By removing the direct control of assets from private keys and implementing programmable functions, account abstraction eliminates the need for users to perform multiple steps and confirmations, making the process more efficient and user-friendly.
+
+[image]
