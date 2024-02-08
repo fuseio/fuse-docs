@@ -3,24 +3,22 @@ title: ERC 4337
 sidebar_position: 2
 ---
 
-## ERC-4337 Token Standard: Unlocking the Potential
+## ERC-4337 Standard: Unlocking the Potential
 
-To enable the possibilities of account abstraction, Ethereum has introduced the ERC-4337 token standard. This standard, co-authored by Buterin and a team of experts, unlocks the power of Smart Contract crypto Wallets on the Ethereum blockchain and enhances the accessibility of various aspects within the cryptocurrency realm.
+Ethereum has introduced the ERC-4337 standard, co-authored by Vitalik Buterin and a team of experts, to facilitate account abstraction. This innovation empowers Smart Contract crypto wallets on EVM-based chains, broadening access and utility in the cryptocurrency domain.
 
 ## The Power of ERC-4337
 
-ERC-4337 is a token standard that introduces Account Abstraction without changing the Ethereum protocol. It provides developers with an easy way to write custom Smart Contract Wallets, opening up new possibilities for creating innovative wallet solutions.
+The ERC-4337 standard presents a groundbreaking Account Abstraction proposal that circumvents the need for consensus-layer protocol modifications. It enables developers to craft custom Smart Contract Wallets with ease, paving the way for novel wallet functionalities.
 
-Before the official acceptance of ERC-4337, several Ethereum Improvement Proposals (EIPs) related to account abstraction were proposed. However, ERRC-4337 gained authorization and acceptance via governance in 2023 due to its zero consensus-layer protocol changes.
+Despite previous Ethereum Improvement Proposals (EIPs) concerning account abstraction, ERC-4337 stood out and was officially recognized in 2023. Its appeal lies in requiring no consensus-layer protocol adjustments.
 
 How ERC-4337 Works: Introducing UserOperations
 
-ERC-4337 introduces a concept called a "pseudo-transaction" object known as a UserOperation. Unconfirmed UserOperations are stored in an "Alt Mempool" on the Ethereum network. Nodes on the network can act as "Bundlers" that pick up multiple UserOperations and pack them into a single transaction, a Bundle transaction.
+At the heart of ERC-4337 is the "UserOperation," a pseudo-transaction object stored within an alternative mempool ("Alt Mempool") on the network. Network nodes, dubbed "Bundlers," gather these UserOperations, consolidating them into a singular transaction known as a Bundle transaction.
 
-These Bundle transactions are then sent to a global smart contract called the "EntryPoint" on the Ethereum blockchain. It's important to note that there is only one entry point on the Ethereum blockchain.
+This Bundle is then processed by a universal smart contract on the blockchain, the "EntryPoint." Notably, the blockchain hosts a single EntryPoint.
 
-The Bundlers initiate a function call on the EntryPoint smart contract named "handleOps." This function receives the bundle transaction, and for each account, it invokes the "validateUserOp" function to authenticate the signature and process the gas fee payment. The EntryPoint contract then executes the operation sent in by the smart contract wallet.
-
-By removing the direct control of assets from private keys and implementing programmable functions, account abstraction eliminates the need for users to perform multiple steps and confirmations, making the process more efficient and user-friendly.
+Bundlers engage the EntryPoint via the "handleOps" function, which authenticates signatures and manages gas fees through "validateUserOp" for each operation within the bundle. This mechanism shifts asset control away from private keys to programmable functions, streamlining the user experience by reducing the steps and confirmations required for transactions.
 
 [image]
