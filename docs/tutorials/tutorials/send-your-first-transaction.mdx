@@ -1,0 +1,98 @@
+---
+title: Send your first transaction
+sidebar_position: 4
+---
+
+## Introduction
+
+In this tutorial, you will learn how to submit your first transaction using a smart contract wallet. You'll be guided through setting up the necessary client with @fuseio/fusebox-web-sdk, creating a user operation, obtaining sponsorship from FuseBox's verifying paymaster, and finally submitting it on-chain using FuseBox's bundler.
+
+### Obtain an API Key
+
+To begin, navigate to our [Operator Dashboard](https://developers.fuse.io/) and generate an API key. This key is essential for accessing our services.
+
+### Clone the FuseBox Tutorial Template Repository
+
+To facilitate your start, we've prepared a [FuseBox tutorial template repository](https://github.com/fuseio/tutorial-template) equipped with Typescript, viem, and @fuseio/fusebox-web-sdk. Follow these steps to clone the repository and set up your environment:
+
+```bash
+git clone https://github.com/fuseio/tutorial-template.git fusebox-tutorial
+cd fusebox-tutorial
+```
+
+Proceed by installing the dependencies:
+
+```bash
+npm install
+```
+
+We'll mainly work with the `index.ts` file. Test your setup by running:
+
+```bash
+npm start
+```
+
+If set up correctly, you should see `Hello world!` printed in the console.
+
+### Generate a Private Key
+
+Generate a private key and store it securely. Use the following code snippet in `index.ts`:
+
+```typescript
+const privateKey =
+  process.env.PRIVATE_KEY ??
+  (() => {
+    const pk = generatePrivateKey();
+    writeFileSync(".env", `PRIVATE_KEY=${pk}`);
+    return pk;
+  })();
+```
+
+### Initialize the SDK
+
+FuseSDK enables the creation of User Operations for ERC-4337 Etherspot Smart Account, Bundler service, or Paymaster. It's open source and MIT licensed, offering flexibility and no lock-in. Replace `YOUR_FUSEBOX_API_KEY` with your actual API key:
+
+```typescript
+const apiKey = "YOUR_FUSEBOX_API_KEY";
+const credentials = new ethers.Wallet(privateKey);
+const fuseSDK = await FuseSDK.init(apiKey, credentials);
+```
+
+### Create a smart contract wallet
+
+Initialize the SDK with the previously generated private key to create the Etherspot Smart Account:
+
+```typescript
+console.log(
+  `Smart account address: https://explorer.fuse.io/address/${fuseSDK.wallet.getSender()}`
+);
+```
+
+Running this code will display the smart account address in the console. Note that the smart account is counterfactual and will be deployed on-chain when you send a transaction.
+
+### Submit a Transaction
+
+Now, let's submit a transaction from the smart account. We'll send a transaction to `0xd8da6bf26964af9d7eed9e03e53415d37aa96045` (`vitalik.eth`) with `0x1234` as example call data. FuseSDK will handle the operations, including sponsorship and submission:
+
+```typescript
+const value = ethers.utils.parseEther("0");
+const data = new TextEncoder().encode("0x1234");
+const res = await fuseSDK.callContract(to, value, data);
+
+console.log(`UserOpHash: ${res?.userOpHash}`);
+console.log("Waiting for transaction...");
+
+const receipt = await res?.wait();
+
+console.log(
+  `User operation included: https://explorer.fuse.io/tx/${receipt?.transactionHash}`
+);
+```
+
+Upon running, you'll see the transaction hash and confirmation that your operation is on-chain.
+
+Congratulations! You've successfully sent a transaction, deploying a smart account, verifying its signature, having the operation sponsored, and executing a transaction—all with just a few lines of code.
+
+For any questions or to share your projects, please [contact us](https://t.me/fuseio).
+
+This streamlined version improves clarity, conciseness, and corrects minor errors, ensuring a smoother tutorial experience.
