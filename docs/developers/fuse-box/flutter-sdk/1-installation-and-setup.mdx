@@ -21,12 +21,12 @@ To use the Fuse Flutter SDK in your project, you must create an instance of the 
 
 Whether you aim to fetch or create a smart wallet, relay an ERC20/FUSE transfer, relay an ERC721 transfer, relay a generic transaction, swap tokens, or stake tokens, the `FuseSDK` class has you covered. Additionally, the SDK provides data features that allow you to get the list of tokens owned by an address, get token details, and get a smart wallet's token balance.
 
-The following code initializes the Fuse SDK and creates an instance of the `FuseSDK` class. The `publicApiKey` variable should be set to your own API key.
+The following code initializes the Fuse SDK and creates an instance of the `FuseSDK` class. The `apiKey` variable should be set to your own API key.
 
 ```dart
 import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
 
-final apiKey = 'YOUR_PUBLIC_API_KEY';
+final apiKey = 'API_KEY';
 final privateKey = EthPrivateKey.fromHex('YOUR_PRIVATE_KEY');
 final fuseSDK = await FuseSDK.init(apiKey, privateKey);
 ```

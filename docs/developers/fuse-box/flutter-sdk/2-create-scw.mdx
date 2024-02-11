@@ -9,13 +9,13 @@ The `init` method is a fundamental feature of the Fuse Wallet Flutter SDK that e
 
 ```dart
 //Enter your Fuse Developer API Key
-final publicApiKey = 'YOUR_API_KEY';
+final apiKey = 'API_KEY';
 
 // Generate a random Ethereum private key
 final String privateKey = await Mnemonic.generatePrivateKey();
 final EthPrivateKey credentials = EthPrivateKey.fromHex(privateKey);
 
-final fuseSDK = await FuseSDK.init(credentials);
+final fuseSDK = await FuseSDK.init(apiKey, credentials);
 ```
 
 ### **Access the wallet**

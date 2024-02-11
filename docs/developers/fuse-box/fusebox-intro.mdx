@@ -30,9 +30,9 @@ Below is an example using the JS SDK to create a Smart Contract Account
 import { ethers } from 'ethers';
 import { FuseSDK } from "@fuseio/fusebox-web-sdk";
 
-const credentials = new ethers.Wallet(process.env.PRIVATE_KEY as string);
-const publicApiKey = process.env.PUBLIC_API_KEY as string;
-const fuseSDK = await FuseSDK.init(publicApiKey, credentials);
+const credentials = new ethers.Wallet("PRIVATE_KEY");
+const apiKey = "API_KEY";
+const fuseSDK = await FuseSDK.init(apiKey, credentials);
 
 console.log(`Smart Contract wallet address: ${fuseSDK.wallet.getSender()}`);
 ```
@@ -76,11 +76,8 @@ import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
 
 final credentials = EthPrivateKey.fromHex('WALLET_PRIVATE_KEY');
 // Create a project and get an API Key here: https://developers.fuse.io
-final publicApiKey = 'YOUR_PUBLIC_API_KEY';
-final fuseSDK = await FuseSDK.init(publicApiKey,credentials,
-// Optional: Specify baseUrl. Default is api.fuse.io.
-baseUrl: "api.alpha.fuse.io",
-);
+final apiKey = 'API_KEY';
+final fuseSDK = await FuseSDK.init(apiKey, credentials);
 
 print('Smart contract wallet address: ${fuseSDK.wallet.getSender()}');
 ```
