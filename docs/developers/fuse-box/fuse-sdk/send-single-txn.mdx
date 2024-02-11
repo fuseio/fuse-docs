@@ -26,9 +26,9 @@ import { ethers } from "ethers";
 import { FuseSDK } from "@fuseio/fusebox-web-sdk";
 
 const main = async () => {
-  const credentials = new ethers.Wallet("PRIVATE_KEY" as string);
-  const publicApiKey = "pk_wEP0gTlc3jcvBXEDpSnXBgbQ" as string;
-  const fuseSDK = await FuseSDK.init(publicApiKey, credentials);
+  const credentials = new ethers.Wallet("PRIVATE_KEY");
+  const apiKey = "API_KEY";
+  const fuseSDK = await FuseSDK.init(apiKey, credentials);
 
   console.log(`Sender Address is ${fuseSDK.wallet.getSender()}`);
 

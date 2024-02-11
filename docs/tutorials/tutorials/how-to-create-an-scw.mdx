@@ -47,13 +47,13 @@ import { FuseSDK } from '@fuseio/fuse-web-sdk';
 // Main function to create a Smart Account Wallet
 const main = async () => {
   // Load your private key from the environment variables
-  const credentials = new ethers.Wallet(process.env.PRIVATE_KEY as string);
+  const credentials = new ethers.Wallet("PRIVATE_KEY");
 
   // Retrieve your public API key from the environment variables
-  const publicApiKey = process.env.PUBLIC_API_KEY as string;
+  const apiKey = "API_KEY";
 
   // Initialize the Fuse SDK with your public API key and wallet credentials
-  const fuseSDK = await FuseSDK.init(publicApiKey, credentials);
+  const fuseSDK = await FuseSDK.init(apiKey, credentials);
 
   // Log the sender address of the Smart Wallet
   console.log(`Sender Address is ${fuseSDK.wallet.getSender()}`);

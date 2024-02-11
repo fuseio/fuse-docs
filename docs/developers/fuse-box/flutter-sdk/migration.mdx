@@ -44,13 +44,13 @@ Identify and remove the following sections from your old SDK code:
    Replace the old initialization:
 
 ```dart
-final FuseWalletSDK fuseWalletSDK = FuseWalletSDK(publicApiKey);
+final FuseWalletSDK fuseWalletSDK = FuseWalletSDK(apiKey);
 ```
 
 with the new one:
 
 ```dart
-final fuseSDK = await FuseSDK.init(publicApiKey, credentials);
+final fuseSDK = await FuseSDK.init(apiKey, credentials);
 ```
 
 4. **Access the Smart Contract Wallet Address**:
@@ -116,7 +116,7 @@ import 'package:charge_wallet_sdk/charge_wallet_sdk.dart';
 
 void main() async {
   // Your public API key (<https://chargeweb3.com>)
-  final String PUBLIC_API_KEY = 'YOUR_PUBLIC_API_KEY';
+  final String apiKey = 'API_KEY';
 
   // generate mnemonic
   String mnemonic = Web3.generateMnemonic();
@@ -137,7 +137,7 @@ void main() async {
   print('account address: $accountAddress');
 
   // init api module
-  ChargeApi chargeApi = ChargeApi(PUBLIC_API_KEY);
+  ChargeApi chargeApi = ChargeApi(apiKey);
 
   // login
   print('enter phone number and press ENTER');
