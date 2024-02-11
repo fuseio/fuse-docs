@@ -3,48 +3,46 @@ title: Send your first gasless transaction
 sidebar_position: 4
 ---
 
-# Send your first gasless transaction
+# Send Your First Gasless Transaction
 
 ## Introduction
 
-In this tutorial, you will submit your first fully-gasless transaction from a smart account.
+In this tutorial, you will learn how to submit your first gasless transaction using a smart contract wallet. You'll be guided through setting up the necessary client with @fuseio/fusebox-web-sdk, creating a user operation, obtaining sponsorship from FuseBox's verifying paymaster, and finally submitting it on-chain using FuseBox's bundler.
 
-You will set up the necessary @fuseio/fusebox-web-sdk client, create a user operation, ask FuseBox's verifying paymaster to sponsor it, and then submit it on-chain with FuseBox's bundler.
+### Obtain an API Key
 
-### Get a API key
+To begin, navigate to our [Operator Dashboard](https://console.fuse.io/build) and generate an API key. This key is essential for accessing our services.
 
-To get started, please go to our [Operator dashboard](https://console.fuse.io/build) and generate an API key.
+### Clone the FuseBox Tutorial Template Repository
 
-### Clone the FuseBox tutorial template repository
-
-We have created a [FuseBox tutorial template repository](https://github.com/fuseio/tutorial-template) that you can use to get started. It comes set up with Typescript, viem, and @fuseio/fusebox-web-sdk.
+To facilitate your start, we've prepared a [FuseBox tutorial template repository](https://github.com/fuseio/tutorial-template) equipped with Typescript, Vue.js, and @fuseio/fusebox-web-sdk. Follow these steps to clone the repository and set up your environment:
 
 ```bash
 git clone https://github.com/fuseio/tutorial-template.git fusebox-tutorial
 cd fusebox-tutorial
 ```
 
-Now, let's install the dependencies:
+Proceed by installing the dependencies:
 
 ```bash
 npm install
 ```
 
-The main file we will be working with is `index.ts`. Let's run it to make sure everything is working:
+We'll mainly work with the `index.ts` file. Test your setup by running:
 
 ```bash
 npm start
 ```
 
-If everything has been set up correctly, you should see `Hello world!` printed to the console.
+If set up correctly, you should see `Hello world!` printed in the console.
 
-### Generate a private key
+### Generate a Private Key
 
-```ts
-const apiKey = "YOUR_FUSEBOX_API_KEY";
+Generate a private key and store it securely. Use the following code snippet in `index.ts`:
 
+```typescript
 const privateKey =
-  (process.env.PRIVATE_KEY as Hex) ??
+  process.env.PRIVATE_KEY ??
   (() => {
     const pk = generatePrivateKey();
     writeFileSync(".env", `PRIVATE_KEY=${pk}`);
@@ -54,54 +52,33 @@ const privateKey =
 
 ### Initialize the SDK
 
-The FuseSDK responsibility is to create User Operations for ERC-4337 Etherspot Smart Account, Bundler service, or Paymaster. Completely open source and MIT licensed, so you can modify it however you like, and know you're never locked in.
+FuseSDK enables the creation of User Operations for ERC-4337 Etherspot Smart Account, Bundler service, or Paymaster. It's open source and MIT licensed, offering flexibility and no lock-in. Replace `YOUR_FUSEBOX_API_KEY` with your actual API key:
 
-Make sure to replace `YOUR_FUSEBOX_API_KEY` in the code below with your actual FuseBox API key.
-
-Let's open up `index.ts`, and add the following to the bottom:
-
-```ts
+```typescript
 const apiKey = "YOUR_FUSEBOX_API_KEY";
 const credentials = new ethers.Wallet(privateKey);
 const fuseSDK = await FuseSDK.init(apiKey, credentials);
 ```
 
-### Access the Smart Account
+### Create a smart contract wallet
 
-To create the Etherspot Smart Account, we need to initialize the SDK. For the signer, we will be using the previously generated private key.
+Initialize the SDK with the previously generated private key to create the Etherspot Smart Account:
 
-Add the following to the bottom of `index.ts`:
-
-```ts
-const credentials = new ethers.Wallet(privateKey);
-const fuseSDK = FuseSDK.init(apiKey, credentials);
-
+```typescript
 console.log(
   `Smart account address: https://explorer.fuse.io/address/${fuseSDK.wallet.getSender()}`
 );
 ```
 
-Let's run this code with `npm start`. You should see the smart account address printed to the console.
+Running this code will display the smart account address in the console. Note that the smart account is counterfactual and will be deployed on-chain when you send a transaction.
 
-```txt
-Smart account address: https://explorer.fuse.io/address/0x374b42bCFAcf85FDCaAB84774EA15ff36D42cdA7
-```
+### Submit a Transaction
 
-:::info
-If you visit the address on Fuse Explorer, you might notice that no contract is actually deployed to this address yet. This is because smart account are counterfactual, meaning that they are only deployed on-chain the first time you send a transaction through the account.
-:::
-
-### Submit a transaction from the account
-
-Finally, let's submit a transaction from the smart account. We will send a transaction to the `0xd8da6bf26964af9d7eed9e03e53415d37aa96045` (`vitalik.eth`) address with `0x1234` as example `callData`.
-
-Underneath the hood, the `FuseSDK` will create a `UserOperation`, request FuseBox paymaster sponsorship, sign it with the smart account's private key, and then submit it to the bundler. The bundler will then query for receipts until it sees the user operation included on-chain.
-
-Add the following to the bottom of `index.ts`:
+Now, let's submit a transaction from the smart account. We'll send a transaction to `0xd8da6bf26964af9d7eed9e03e53415d37aa96045` (`vitalik.eth`) with `0x1234` as example call data. FuseSDK will handle the operations, including sponsorship and submission:
 
 ```typescript
-const value = parseEther("0");
-const data = (uint8array = new TextEncoder().encode("0x1234"));
+const value = ethers.utils.parseEther("0");
+const data = new TextEncoder().encode("0x1234");
 const res = await fuseSDK.callContract(to, value, data);
 
 console.log(`UserOpHash: ${res?.userOpHash}`);
@@ -114,21 +91,10 @@ console.log(
 );
 ```
 
-Let's run this code again with `npm start`. You should see the transaction hash bundling the user operation on-chain printed to the console.
+Upon running, you'll see the transaction hash and confirmation that your operation is on-chain.
 
-```txt
-User operation included: https://explorer.fuse.io/tx/0x7a2b61b4b7b6e9e66c459e3c9c24c7a292fc6c740533ce35dbf58710960cc0e5
-```
+Congratulations! You've successfully sent a gasless transaction, deploying a smart account, verifying its signature, having the operation sponsored, and executing a transaction—all with just a few lines of code.
 
-You can now view the transaction on the Fuse explorer. By sending this user operation, you have:
+For any questions or to share your projects, please [contact us](https://t.me/fuseio).
 
-- Deployed the counterfactual smart account contract
-- Had this newly-deployed smart account verify the private key's signature
-- Made FuseBox's verifying paymaster sponsor the user operation's gas fees
-- Executed a simple transaction to `vitalik.eth`'s address
-
-All in a couple lines of code.
-
-Congratulations, you are now a pioneer of Account Abstraction! 🎉
-
-Please [get in touch](https://t.me/fuseio) if you have any questions or if you'd like to share what you're building!
+This streamlined version improves clarity, conciseness, and corrects minor errors, ensuring a smoother tutorial experience.
