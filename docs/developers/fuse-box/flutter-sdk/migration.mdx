@@ -198,7 +198,7 @@ import 'package:fuse/fuse_wallet_sdk.dart';
 
 void main() async {
   // Create a project: https://chargeweb3.com
-  final String publicApiKey = 'YOUR_PUBLIC_API_KEY';
+  final String apiKey = 'YOUR_PUBLIC_API_KEY';
 
 	print('Enter privateKey:');
 	String privateKey =
@@ -209,7 +209,7 @@ void main() async {
   print('address: ${credentials.address.hexEip55}');
 
 	// Initialize FuseWalletSDK
-	final FuseWalletSDK fuseWalletSDK = FuseWalletSDK(publicApiKey);
+	final FuseWalletSDK fuseWalletSDK = FuseWalletSDK(apiKey);
   final DC<Exception, String> authRes = await fuseWalletSDK.authenticate(
     credentials,
   );
