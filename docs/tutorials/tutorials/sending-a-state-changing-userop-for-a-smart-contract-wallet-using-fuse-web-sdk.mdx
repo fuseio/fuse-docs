@@ -46,8 +46,8 @@ import { FuseSDK } from "@fuseio/fusebox-web-sdk";
 ## Step 3: Set Up Wallet Credential
 
 ```javascript
-const credentials = new ethers.Wallet(process.env.<YOUR_PRIVATE_KEY>);
-const publicApiKey = process.env.<YOUR_PUBLIC_API_KEY> ;
+const credentials = new ethers.Wallet("PRIVATE_KEY");
+const apiKey = "API_KEY";
 ```
 
 Create a wallet using your private key and set up the public API key required for FuseSDK initialization. Make sure to keep your private key secure and never share it.
@@ -55,7 +55,7 @@ Create a wallet using your private key and set up the public API key required fo
 ## Step 4: Initialize FuseSDK:
 
 ```javascript
-const fuseSDK = await FuseSDK.init(publicApiKey, credentials, {
+const fuseSDK = await FuseSDK.init(apiKey, credentials, {
   withPaymaster: true,
 });
 ```
@@ -125,9 +125,9 @@ Congratulations! You've just sent a UserOp on the Fuse Blockchain using the Fuse
 
 ```
 const main = async () => {
-    const credentials = new ethers.Wallet(process.env.NEXT_PUBLIC_PRIVATE_KEY);
-    const publicApiKey = process.env.NEXT_PUBLIC_PUBLIC_API_KEY;
-    const fuseSDK = await FuseSDK.init(publicApiKey, credentials, {
+    const credentials = new ethers.Wallet("PRIVATE_KEY");
+    const apiKey = "API_KEY";
+    const fuseSDK = await FuseSDK.init(apiKey, credentials, {
       withPaymaster: true,
     });
 

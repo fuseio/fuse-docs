@@ -12,8 +12,8 @@ To use this feature, you must first initialize the SDK with the _`withPaymaster`
 ```javascript
 import { FuseSDK } from "@fuseio/fusebox-web-sdk";
 
-const publicApiKey = "YOUR_API_KEY";
-const fuseSDK = await FuseSDK.init(publicApiKey, credentials, {
+const apiKey = "API_KEY";
+const fuseSDK = await FuseSDK.init(apiKey, credentials, {
   withPaymaster: true,
 });
 ```

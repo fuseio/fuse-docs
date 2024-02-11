@@ -43,10 +43,10 @@ import { FuseSDK } from "@fuseio/fuse-web-sdk";
 import { parseEther } from "ethers/lib/utils";
 
 const main = async () => {
-  // Replace 'YOUR_PRIVATE_KEY' and 'YOUR_PUBLIC_API_KEY' with your actual private key and API key
-  const credentials = new ethers.Wallet("YOUR_PRIVATE_KEY");
-  const publicApiKey = "YOUR_PUBLIC_API_KEY";
-  const fuseSDK = await FuseSDK.init(publicApiKey, credentials, {
+  // Replace 'YOUR_PRIVATE_KEY' and 'API_KEY' with your actual private key and API key
+  const credentials = new ethers.Wallet("PRIVATE_KEY");
+  const apiKey = "API_KEY";
+  const fuseSDK = await FuseSDK.init(apiKey, credentials, {
     withPaymaster: true,
   });
 
@@ -68,7 +68,7 @@ main();
 
 ## Code Walk-through - Skip if you already understand
 
-Replace `'YOUR_PRIVATE_KEY'` and `'YOUR_PUBLIC_API_KEY'` with your actual private key and API key from the Fuse Console.
+Replace `'PRIVATE_KEY'` and `'API_KEY'` with your actual private key and API key from the Fuse Console.
 
 ```javascript
 // Import necessary libraries
@@ -78,15 +78,15 @@ import { parseEther } from "ethers/lib/utils";
 
 // Define the main function, which is an asynchronous function
 const main = async () => {
-  // Replace 'YOUR_PRIVATE_KEY' and 'YOUR_PUBLIC_API_KEY' with your actual private key and API key
+  // Replace 'PRIVATE_KEY' and 'API_KEY' with your actual private key and API key
   // Create a wallet using your private key
-  const credentials = new ethers.Wallet("YOUR_PRIVATE_KEY");
+  const credentials = new ethers.Wallet("PRIVATE_KEY");
 
   // Get your public API key from the Fuse Dashboard
-  const publicApiKey = "YOUR_PUBLIC_API_KEY";
+  const apiKey = "API_KEY";
 
   // Initialize the Fuse Web SDK with your public API key and wallet credentials
-  const fuseSDK = await FuseSDK.init(publicApiKey, credentials, {
+  const fuseSDK = await FuseSDK.init(apiKey, credentials, {
     withPaymaster: true,
   });
 
