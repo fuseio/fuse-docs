@@ -5,17 +5,17 @@ sidebar_position: 2
 
 ### Initialization
 
-The `init` method is a fundamental feature of the Fuse Wallet Flutter SDK that enables you to setup a wallet & authenticate the user's provided credentials. The method requires the use of a `PRIVATE_KEY` which you can get in the Fuse Developer Console [here](https://developers.fuse.io/). When you send a request to the server using this method, it verifies the credentials and if the credentials are valid, developers can use the **`getSender()`** to return an address.
+The `init` method is a fundamental feature of the Fuse Wallet Flutter SDK that enables you to setup a wallet & authenticate the user's provided credentials. The method requires the use of a `PRIVATE_KEY` which you can get in the Fuse Developer Console [here](https://console.fuse.io/build). When you send a request to the server using this method, it verifies the credentials and if the credentials are valid, developers can use the **`getSender()`** to return an address.
 
 ```dart
 //Enter your Fuse Developer API Key
-final publicApiKey = 'YOUR_API_KEY';
+final apiKey = 'API_KEY';
 
 // Generate a random Ethereum private key
 final String privateKey = await Mnemonic.generatePrivateKey();
 final EthPrivateKey credentials = EthPrivateKey.fromHex(privateKey);
 
-final fuseSDK = await FuseSDK.init(credentials);
+final fuseSDK = await FuseSDK.init(apiKey, credentials);
 ```
 
 ### **Access the wallet**

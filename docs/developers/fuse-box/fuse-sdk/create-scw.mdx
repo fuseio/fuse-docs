@@ -5,7 +5,7 @@ sidebar_position: 5
 
 ### Create a Smart Contract Wallet
 
-The `init` method is a fundamental feature of the FuseBox JS SDK that enables you to setup a wallet by parsing the `PRIVATE_KEY` from an EOA. In the example below, we parse the `PRIVATE_KEY` and `YOUR_API_KEY` to the `init` method. Get `YOUR_API_KEY` [here](https://developers.fuse.io/). We use the `EthersJS` library to access the `PRIVATE_KEY` of the EOA. After a Smart Contract Wallet has been initialized, we can read it using the `getSender()` method.
+The `init` method is a fundamental feature of the FuseBox JS SDK that enables you to setup a wallet by parsing the `PRIVATE_KEY` from an EOA. In the example below, we parse the `PRIVATE_KEY` and `API_KEY` to the `init` method. Get `API_KEY` [here](https://console.fuse.io/build). We use the `EthersJS` library to access the `PRIVATE_KEY` of the EOA. After a Smart Contract Wallet has been initialized, we can read it using the `getSender()` method.
 
 Note: Developers can use the EthersJS `createRandom()` to create new random Wallets.
 
@@ -14,10 +14,10 @@ import { ethers } from "ethers";
 import { FuseSDK } from "@fuseio/fusebox-web-sdk";
 
 const main = async () => {
-  const publicApiKey = "YOUR_API_KEY" as string;
-  const credentials = new ethers.Wallet("PRIVATE_KEY" as string);
+  const apiKey = "API_KEY";
+  const credentials = new ethers.Wallet("PRIVATE_KEY");
 
-  const fuse = await FuseSDK.init(publicApiKey, credentials);
+  const fuse = await FuseSDK.init(apiKey, credentials);
 
   console.log(`Sender Address is ${fuseSDK.wallet.getSender()}`);
 };
