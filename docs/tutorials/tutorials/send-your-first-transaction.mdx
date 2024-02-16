@@ -68,13 +68,14 @@ console.log(
 );
 ```
 
-Running this code will display the smart account address in the console. Note that the smart account is counterfactual and will be deployed on-chain when you send a transaction.
+Running this code will display the smart account address in the console. Note that the smart account is counterfactual and will be deployed on-chain when you send a transaction. Go ahead and send some FUSE to this account so it can pay its gas.
 
 ### Submit a Transaction
 
-Now, let's submit a transaction from the smart account. We'll send a transaction to `0xd8da6bf26964af9d7eed9e03e53415d37aa96045` (`vitalik.eth`) with `0x1234` as example call data. FuseSDK will handle the operations, including sponsorship and submission:
+Now, let's submit a transaction from the smart account. We'll send a transaction to `0xd8da6bf26964af9d7eed9e03e53415d37aa96045` (`vitalik.eth`) with `0x1234` as example call data. FuseSDK will handle the operations (but you need to fund the account with some FUSE yourself first):
 
 ```typescript
+const to = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045"; // for vitalik.eth
 const value = ethers.utils.parseEther("0");
 const data = new TextEncoder().encode("0x1234");
 const res = await fuseSDK.callContract(to, value, data);
