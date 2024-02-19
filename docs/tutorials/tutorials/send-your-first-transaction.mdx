@@ -72,9 +72,10 @@ Running this code will display the smart account address in the console. Note th
 
 ### Submit a Transaction
 
-Now, let's submit a transaction from the smart account. We'll send a transaction to `0xd8da6bf26964af9d7eed9e03e53415d37aa96045` (`vitalik.eth`) with `0x1234` as example call data. FuseSDK will handle the operations, including sponsorship and submission:
+Now, let's submit a transaction from the smart account. We'll send a transaction to `0xd8da6bf26964af9d7eed9e03e53415d37aa96045` (`vitalik.eth`) with `0x1234` as example call data. FuseSDK will handle the operations (but you need to fund the account with some FUSE yourself first):
 
 ```typescript
+const to = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045"; // for vitalik.eth
 const value = ethers.utils.parseEther("0");
 const data = new TextEncoder().encode("0x1234");
 const res = await fuseSDK.callContract(to, value, data);
@@ -94,5 +95,3 @@ Upon running, you'll see the transaction hash and confirmation that your operati
 Congratulations! You've successfully sent a transaction, deploying a smart account, verifying its signature, having the operation sponsored, and executing a transaction—all with just a few lines of code.
 
 For any questions or to share your projects, please [contact us](https://t.me/fuseio).
-
-This streamlined version improves clarity, conciseness, and corrects minor errors, ensuring a smoother tutorial experience.
