@@ -30,9 +30,9 @@ Below is an example using the JS SDK to create a Smart Contract Account
 import { ethers } from 'ethers';
 import { FuseSDK } from "@fuseio/fusebox-web-sdk";
 
-const credentials = new ethers.Wallet(process.env.PRIVATE_KEY as string);
-const publicApiKey = process.env.PUBLIC_API_KEY as string;
-const fuseSDK = await FuseSDK.init(publicApiKey, credentials);
+const credentials = new ethers.Wallet("PRIVATE_KEY");
+const apiKey = "API_KEY";
+const fuseSDK = await FuseSDK.init(apiKey, credentials);
 
 console.log(`Smart Contract wallet address: ${fuseSDK.wallet.getSender()}`);
 ```
@@ -75,12 +75,9 @@ It is easy for developers to start building with the Flutter SDK. Below is an ex
 import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
 
 final credentials = EthPrivateKey.fromHex('WALLET_PRIVATE_KEY');
-// Create a project and get an API Key here: https://developers.fuse.io
-final publicApiKey = 'YOUR_PUBLIC_API_KEY';
-final fuseSDK = await FuseSDK.init(publicApiKey,credentials,
-// Optional: Specify baseUrl. Default is api.fuse.io.
-baseUrl: "api.alpha.fuse.io",
-);
+// Create a project and get an API Key here: https://console.fuse.io/build
+final apiKey = 'API_KEY';
+final fuseSDK = await FuseSDK.init(apiKey, credentials);
 
 print('Smart contract wallet address: ${fuseSDK.wallet.getSender()}');
 ```
@@ -121,7 +118,7 @@ FuseBox Backend is the only Open Source project that enables developers have acc
 
 The introduction of ERC-4337 as a standard in the Ethereum Ecosystem is a welcome development that ensures the ability to onboard the next billion users to Web3. This standard has also been extended into Fuse blockchain.
 
-The difference is that the Fuse ecosystem provides a higher Transactions Output Per Second (TPS) and thus a faster Block Time for validating transactions. With the introduction of Account Abstraction into Fuse, DApp developers can now build without having to worry about onboarding traditional web2 users, who might have to come to use their applications and find a steep learning curve as is commonly associated with onboarding using wallets that are non-custodial and require users to recall their private keys and/or mnemonic seed phrases, given whichever scenario. So, to make it easier for developers to onboard users, Fuse has built the [Fuse Connect](fuse-connect) Wallet.
+The difference is that the Fuse ecosystem provides a higher Transactions Output Per Second (TPS) and thus a faster Block Time for validating transactions. With the introduction of Account Abstraction into Fuse, DApp developers can now build without having to worry about onboarding traditional web2 users, who might have to come to use their applications and find a steep learning curve as is commonly associated with onboarding using wallets that are non-custodial and require users to recall their private keys and/or mnemonic seed phrases, given whichever scenario.
 
 <p>&nbsp;</p>
 
