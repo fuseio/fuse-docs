@@ -1,0 +1,134 @@
+---
+title: Minting ERC 721 Tokens with FuseBox Web SDK - Smart Contract
+sidebar_position: 4
+---
+
+In this tutorial, we'll explore how to use the FuseBox Web SDK to build a Next.js application that interacts with the Fuse blockchain. We'll cover connecting to MetaMask, initializing a Smart Contract Wallet, and minting NFT Tokens on the Fuse blockchain.
+
+To build an NFT DApp with Hardhat and a frontend powered by Account Abstraction on the Fuse blockchain, we'll create a simple NFT smart contract using Hardhat and integrate it with the Fuse web SDK for account abstraction. This guide is divided into 2 parts:
+Part 1: The NFT Smart Contract
+Part 2: The User Interface.
+
+Part 1: The NFT Smart Contract
+
+## 1. Initialize Hardhat Project
+
+Create a new directory for your project and initialize a Hardhat project.
+
+```bash
+mkdir NFTDApp
+cd NFTDApp
+npm init -y
+npm install --save-dev hardhat
+npx hardhat
+```
+
+Follow the prompts to set up your Hardhat project.
+
+## 2. Install Required Packages
+
+Install the necessary packages for the project.
+
+```bash
+npm install ethers hardhat-waffle @nomiclabs/hardhat-ethers
+```
+
+## 3. Smart Contract Development
+
+Create a simple NFT contract using Hardhat. Save the file as `NFTContract.sol` in the `contracts` directory. This particular NFT allow an EOA to mint no more than 5 times each.
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts@4.0.0/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts@4.0.0/access/Ownable.sol";
+
+contract LimitedMintERC721 is ERC721, Ownable {
+    // Counter to keep track of the number of NFTs minted by each address
+    mapping(address => uint256) private _mintedCount;
+
+    // Maximum number of NFTs that an address can mint
+    uint256 private _maxMintPerAddress = 5;
+uint256 private _nextTokenId;
+    // Event triggered upon a successful minting
+    event Minted(address indexed to, uint256 tokenId);
+
+    // Constructor to initialize the ERC721 contract
+    constructor(address initialOwner)
+        ERC721("MyToken", "MTK")
+        Ownable()
+    {}
+
+    // Function to set the maximum mint limit per address
+    function setMaxMintPerAddress(uint256 maxMintPerAddress) external onlyOwner {
+        _maxMintPerAddress = maxMintPerAddress;
+    }
+
+    // Function to get the maximum mint limit per address
+    function getMaxMintPerAddress() external view returns (uint256) {
+        return _maxMintPerAddress;
+    }
+
+    // Function to mint a new NFT
+    function mint() external {
+        // Ensure the caller is not exceeding the mint limit
+        require(_mintedCount[msg.sender] < _maxMintPerAddress, "Exceeds mint limit");
+
+        // Mint the NFT
+        uint256 tokenId = _nextTokenId++;
+        _safeMint(msg.sender, tokenId);
+
+        // Increment mint count for the caller
+        _mintedCount[msg.sender]++;
+
+        // Emit the Minted event
+        emit Minted(msg.sender, tokenId);
+    }
+}
+
+```
+
+## 4. Hardhat Configuration
+
+Update the `hardhat.config.js` file to include the required plugins.
+
+```javascript
+// hardhat.config.js
+require("@nomiclabs/hardhat-waffle");
+
+module.exports = {
+  solidity: "0.8.0",
+  networks: {
+    fuse: {
+      url: `https://rpc.fuse.io`,
+      accounts: [`${PRIVATE_KEY}`],
+      gas: 2100000,
+      gasPrice: 8000000000,
+      saveDeployments: true,
+    },
+  },
+};
+```
+
+## 5. Deploy the Smart Contract
+
+Create a deployment script for the NFT contract. Save the file as `scripts/deploy.js`.
+
+```javascript
+// scripts/deploy.js
+async function main() {
+  const NFTContract = await ethers.getContractFactory("NFTContract");
+  const nftContract = await NFTContract.deploy();
+
+  console.log("NFTContract deployed to:", nftContract.address);
+}
+
+main();
+```
+
+Deploy the smart contract to the Fuse network.
+
+```bash
+npx hardhat run scripts/deploy.js --network fuse
+```

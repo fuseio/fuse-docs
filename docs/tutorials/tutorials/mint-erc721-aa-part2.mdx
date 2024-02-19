@@ -1,0 +1,329 @@
+---
+title: Mint ERC 721 Tokens with FuseBox Web SDK - User Interface
+sidebar_position: 5
+---
+
+In this tutorial, we'll explore how to use the FuseBox Web SDK to build a Next.js application that interacts with the Fuse blockchain. We'll cover connecting to MetaMask, initializing a Smart Contract Wallet, and minting NFT Tokens on the Fuse blockchain.
+
+To build an NFT DApp with Hardhat and a frontend powered by Account Abstraction on the Fuse blockchain, we'll create a simple NFT smart contract using Hardhat and integrate it with the Fuse web SDK for account abstraction. This guide is divided into 2 parts:
+Part 1: The NFT Smart Contract
+Part 2: The User Interface.
+
+Part 2: The User Interface.
+
+## Prerequisites
+
+Before we begin, ensure you have the following:
+
+1. Node.js installed on your machine. You can download it from [here](https://nodejs.org/).
+2. Code Editor: Use your preferred code editor; VS Code is recommended.
+3. An EOA wallet with a private key. You can use an existing one or create a new wallet.
+4. Basic Understanding of JavaScript: Familiarity with JavaScript will be helpful.
+
+## Step 1: Set Up Your Project
+
+Create a new project folder and initialize it using Node.js:
+
+```bash
+mkdir new-project && cc new-project
+npm init -y
+```
+
+## Step 2: Set Up Your Next.js App
+
+Create a new Next.js app:
+
+```bash
+npx create-next-app my-fuse-nft-app
+cd my-fuse-nft-app
+```
+
+Answer the required prompts from NextJS in the terminal. It is important to note that we use TypeScript for this application and Tailwind CSS.
+
+## Step 3: Install Dependencies
+
+Install the required dependencies:
+
+```bash
+npm install @fuseio/fusebox-web-sdk
+```
+
+There are 2 primary functions for the application: Authentication and Minting. Both actions will be carried out using the FuseBox Web SDK. We will also use the EthersJS Library for particular RPC methods. Also, install the EthersJS library; we will use v6.
+
+```bash
+npm install ethers
+```
+
+## Step 4: Import Libraries
+
+Open the index.tsx file, delete the default code from NextJS. First import the required libraries:
+
+```javascript
+import { FuseSDK } from "@fuseio/fusebox-web-sdk";
+import { ethers } from "ethers";
+
+export default function Home() {
+  return (
+    <main className={`flex flex-col items-center p-24 ${inter.className}`}>
+      Hello
+    </main>
+  );
+}
+```
+
+## Step 5: Authentication
+
+To manage Authentication, we have to set up a useState to confirm if a user is logged in or not.
+
+```javascript
+import { useState } from "react";
+
+const [loggedIn, setLoggedIn] = useState(false);
+
+const connect = async () => {
+  let signer = null;
+  let provider;
+
+  if (window.ethereum == null) {
+    console.log("MetaMask not installed; using read-only defaults");
+    provider = ethers.getDefaultProvider();
+  } else {
+    provider = new ethers.BrowserProvider(window.ethereum);
+    signer = await provider.getSigner();
+
+    const apiKey = "API_KEY";
+    const fuseSDK = await FuseSDK.init(apiKey, signer);
+    console.log(`logged in, ${fuseSDK.wallet.getSender()}`);
+    setLoggedIn(true);
+    console.log(loggedIn);
+  }
+};
+```
+
+The `Connect ` function is used to set up the Authetication state, the next step is to add the function call in the return as a button, and implement a Loggedin state using a tenary operator. In the return statement inside the main div, add the following code:
+
+```javascript
+ {loggedIn ? (
+        <>
+          <p>Logged In</p>
+
+           ) : (
+
+        <button
+          type="button"
+          onClick={connect}
+          className="max-w-64 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+        >
+          Login
+        </button>
+      )}
+```
+
+Save, and run the code using the command:
+
+```bash
+npm run dev
+```
+
+The app will be running on `localhost:3000` in the web browser.
+
+Click on Login, you will be prompted to Login to the App by using your MetaMask to provide a Signature, this will parse your EOA as a Signer to the Fusebox SDK, which will use the information to create a Smart Wallet Account for the EOA. This happens in the section of the `Connect` method;
+
+```javascript
+provider = new ethers.BrowserProvider(window.ethereum);
+signer = await provider.getSigner();
+
+const apiKey = "API_KEY";
+const fuseSDK = await FuseSDK.init(apiKey, signer);
+console.log(`logged in, ${fuseSDK.wallet.getSender()}`);
+```
+
+Open the console, to see the Smart Contract Wallet logged to the console.
+
+## Step 6: Mint an NFT
+
+In part 1 of this guide, we wrote and deployed a Smart Contract for an NFT. We have the Smart Contract address, and we will use the FuseBox SDK to interact with the Smart Contract. Update the index.tsx file by adding the `Mint` method:
+
+```javascript
+const mint = async () => {
+  try {
+    const mintTx = new ethers.Interface(["function mint()"]);
+    const txData = mintTx.encodeFunctionData("mint");
+    const to = "NFT_Smart_Contract_Address";
+    const value = ethers.parseEther("0");
+    const data = Uint8Array.from([txData]);
+    console.log(data);
+
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const signer = await provider.getSigner();
+
+    const apiKey = "API_KEY";
+    const fuseSDK = await FuseSDK.init(apiKey, signer);
+    const res = await fuseSDK.callContract(to, value, data);
+
+    console.log(`UserOpHash: ${res?.userOpHash}`);
+    console.log("Waiting for transaction...");
+    console.log("Transaction Hash:", receipt?.transactionHash);
+  } catch (error) {
+    console.log(error);
+  }
+};
+```
+
+The `Mint` method can be explained in 2 parts, the first part set up the Transaction structure.
+
+```javascript
+const mintTx = new ethers.Interface(["function mint()"]);
+const txData = mintTx.encodeFunctionData("mint");
+const to = "NFT_Smart_Contract_Address";
+const value = ethers.parseEther("0");
+const data = Uint8Array.from([txData]);
+console.log(data);
+```
+
+The ethers library has the `interface` method for interacting with Smart Contracts. We use the `encodeFunctionData` to parse the function and where available, it’s arguments.
+
+The second part initiates the call to the FuseBox method of creating UserOperations using the `callContract`.
+
+```javascript
+const provider = new ethers.BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
+
+const apiKey = "API_KEY";
+const fuseSDK = await FuseSDK.init(apiKey, signer);
+const res = await fuseSDK.callContract(to, value, data);
+
+console.log(`UserOpHash: ${res?.userOpHash}`);
+console.log("Waiting for transaction...");
+console.log("Transaction Hash:", receipt?.transactionHash);
+```
+
+Update the return statement LoggedIn state with a button to call the `Mint` to mint an NFT.
+
+```javascript
+<button
+  type="button"
+  onClick={mint}
+  className="mt-10 max-w-64 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+>
+  Mint NFT
+</button>
+```
+
+Click the Mint Button. Open the console and you will see the UserOperation hash and the Transaction hash logged to the Console. You have successfully minted an NFT.
+
+## Complete Code
+
+We added the React Toastify Library so you can see the Transaction state from an alert in the UI.
+
+```javascript
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
+import { FuseSDK } from "@fuseio/fusebox-web-sdk";
+import { ethers } from "ethers";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { ToastContainer, toast, Slide } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
+export default function Home() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const connect = async () => {
+    let signer = null;
+    let provider;
+
+    if (window.ethereum == null) {
+      console.log("MetaMask not installed; using read-only defaults");
+      provider = ethers.getDefaultProvider();
+    } else {
+      provider = new ethers.BrowserProvider(window.ethereum);
+      signer = await provider.getSigner();
+
+      const apiKey = "API_KEY";
+      const fuseSDK = await FuseSDK.init(apiKey, signer);
+      console.log(`logged in, ${fuseSDK.wallet.getSender()}`);
+      setLoggedIn(true);
+      console.log(loggedIn);
+    }
+  };
+
+  const mint = async () => {
+    try {
+      const mintTx = new ethers.Interface(["function mint()"]);
+      const txData = mintTx.encodeFunctionData("mint");
+
+      const to = "NFT_Smart_Contract";
+      const value = ethers.parseEther("0");
+      const data = Uint8Array.from([txData]);
+
+      console.log(data);
+
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+
+      const apiKey = "API_KEY";
+      const fuseSDK = await FuseSDK.init(apiKey, signer);
+      const res = await fuseSDK.callContract(to, value, data);
+
+      console.log(`UserOpHash: ${res?.userOpHash}`);
+      console.log("Waiting for transaction...");
+      toast("Waiting for Transaction!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+      });
+
+      const receipt = await res?.wait();
+      console.log("Transaction Hash:", receipt?.transactionHash);
+      toast("Transaction Completed!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <main className={`flex flex-col items-center p-24 ${inter.className}`}>
+      {loggedIn ? (
+        <>
+          <p>Logged In</p>
+
+          <button
+            type="button"
+            onClick={mint}
+            className="mt-10 max-w-64 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+          >
+            Mint NFT
+          </button>
+          <ToastContainer transition={Slide} />
+        </>
+      ) : (
+        <button
+          type="button"
+          onClick={connect}
+          className="max-w-64 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+        >
+          Login
+        </button>
+      )}
+    </main>
+  );
+}
+```
