@@ -3,92 +3,94 @@ title: Getting Started
 sidebar_position: 1
 ---
 
-# Getting Started
+To use the FuseBox [Web SDK](../fuse-box/fuse-sdk) or [Flutter SDK](../fuse-box/flutter-sdk), you need to create an `API KEY` using the Fuse [Console](https://console.fuse.io) Tool by following the steps outlined in this guide.
+Console is where Developers and Non-Developers can get all the tools and services required to start their journey on Fuse Blockchain.
 
-## Creating a Developer Account and Project
+Console offers the following functionality for Users:
 
-To use the Fuse Wallet SDK, you need to create a project in Fuse Developers Dashboard by following the below steps.
+- Wallet
+- Staking
+- Bridging
+- Building
 
-### 1. Create a Fuse Developer Account
+This Guide is for Developers building Account Abstraction apps with Paymaster functionality and low gas fees. We will walk through the steps to setting up an Operator Account and getting an API Key to start building on Fuse.
 
-Signup or log in to [https://console.fuse.io/build](https://console.fuse.io/build).
+Pre-requisites:
+Understanding of Fuse Blockchain
+A Wallet Service Provider: MetaMask or Coinbase
+Fuse Tokens in your External Owned Account (EOA). You can buy Fuse Tokens [here]. You can also use the Bridge to move over assets from other Blockchain.
 
-### 2. Create Your First Project
+This guide assumes you have basic knowledge of building apps and you want to build your apps on Fuse using the FuseBox Flutter or JavaScript SDKS.
 
-![](/img/getting-started/first-project.png)
+## Step 1: Go to [console.fuse.io](https://console.fuse.io)
 
-Once you created your account successfully, you will be taken to your Projects page. Click the "Create a new project" button for your first project.
+<img src="/img/console/welcome.png" width="60%" height="50%" />
 
-### 3. Name Your Project and Give a Description
+## Step 2: Click the button “Connect Wallet”
 
-![](/img/getting-started/name-project.png)
+<img src="/img/console/connect-wallet.png" width="60%" height="50%" />
 
-Name the project, give it a description (the name and description are only visible to you, so feel free to write anything), and click Done.
+It prompts you to sign a message to connect your EOA using MetaMask or Coinbase wallet. Then it redirects you to your Dashboard, where you can see the menu items: **Wallet**, **Build**, **Bridge** and **Staking**
 
-### 4. Project Details and API Keys
+You can also see the Native Token Balance in your Wallet.
 
-![](/img/getting-started/public-key.png)
+<img src="/img/console/wallet-balance.png" width="60%" height="50%" />
 
-Once you have created your project, you will see it in the list of your projects. Go on and enter the project details to get your API keys.
+## Step 3: Click the Button “Become an Operator”.
 
-> 📘 Public API KeyHere you will see that your **Public API Key** is already generated for you and you can always come to this page to check it out. You will need your Public API Key in all the API requests placed in the query parameters under the key `apiKey`.
+It redirects you to the Build section of Fuse Console. Operator Accounts are Developer Accounts. Here, developers can get an API Key to build their Applications on Fuse using the FuseBox Flutter or JS SDK.
 
-### 5. Try Making a Request
+The Operator Account is needed by Developers in order to be able to fund a Paymaster for Sponsored Transactions using the ERC-4337 standard, and in soon to come updates, pay for Premium subscriptions. Operators can freely deposit and withdraw any tokens available on the Fuse Network.
 
-At this stage, you can already start using 💰 Fuse Wallet SDK and [Trade API](./fuse-apis/trade-api.mdx) with your public key.
+Sponsored transactions are a feature allowing you to pay your customers' gas fees.
+Since the gas cost in the Fuse Network is very low, your customers will not have to solve the gas issue on their own, you can easily take on these very small costs yourself.
 
-For example, let's try to get the Fuse token price with [Price API](https://api-docs.fuse.io/v1.15/reference/get_trade-price-tokenaddress), where you can enter `0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE` to the `tokenAddress` field and your public API key to the `apiKey` field and hit the `Try It!` the button below the code snippet.
+### Click the button “Create your project”
 
-Or you can try this cURL command by inserting your public API key instead of `yourPublicKey`:
+<img src="/img/console/operator-landing.png" width="60%" height="50%" />
 
-```curl
-curl --request GET \
-     --url 'https://api.fuse.io/api/v0/trade/price/0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE?apiKey=<yourPublicKey>' \
-     --header 'Accept: application/json'
+## Step 4: Click the button “Create Operator Wallet”
+
+<img src="/img/console/operator-dashboard.png" width="60%" height="50%" />
+
+Sign the message prompt from your Wallet Service Provider.
+
+<img src="/img/console/sign-message.png" width="60%" height="50%" />
+
+Fill in your details.
+
+<img src="/img/console/contact-details.png" width="60%" height="50%" />
+
+You have successfully created an Operator Account! Congratulations.
+
+<img src="/img/console/congratulations.png" width="60%" height="50%" />
+
+## Step 5: Fund the Operator Account
+
+<img src="/img/console/operator-add-funds.png" width="60%" height="50%" />
+
+Click the button “Add funds”. Copy the Operator Account Address.
+Note: The Operator Account Address is a Smart Contract Wallet, and as such it can be used for ERC-4337 functions such as Batch Transaction requests.
+
+<img src="/img/console/operator-balance.png" width="60%" height="50%" />
+
+After you have funded the Operator Account with at least 10 Fuse Tokens, you can then access the API Key.
+
+<img src="/img/console/operator-dashboard-final.png" width="60%" height="50%" />
+
+## Set up Paymaster
+
+Your Paymaster is pre-funded with **1 FUSE** and you can set up your application for a Gasless experience by parsing a 3rd argument when initializing the FuseBox SDK.
+
+Initialize the SDK with Paymaster
+With FuseSDK, you can create User Operations for ERC-4337 Etherspot Smart Accounts, Bundler services, or Paymasters. Ensure you replace `YOUR_FUSEBOX_API_KEY` with your actual API key:
+
+```javascript
+const apiKey = "YOUR_FUSEBOX_API_KEY";
+const credentials = new ethers.Wallet(privateKey);
+const fuseSDK = await FuseSDK.init(apiKey, credentials, {
+  withPaymaster: true,
+});
 ```
 
-The response should look like this:
-
-```json
-{
-  "data": {
-    "price": "0.12206779487998277"
-  }
-}
-```
-
-### 6. Generate Your Secret API Key
-
-If your use case is a better fit for the Custodial mode, follow the next steps to generate your Secret API Key. Otherwise, you can continue to the API Reference section to learn how to use the API for your application.
-
-> 📘 Secret API KeyIn addition to the Public API Key, you will also need your **Secret API Key** for the **Admin API**. The Secret Key adds an additional layer of security for the Custodial use cases as in this case, you will be in charge of the security of your users. But about the security we also get you covered, all you need to do is to securely keep your Secret API Key and we take care of the rest!
-
-To generate your Secret API Key, click "Generate a new API secret key" on the project's detail page. Once you click it, a popup will appear with your Secret API Key.
-
-> 🚧 Make sure to keep your Secret API Key securedYour Secret API Key will appear only once, so make sure to save it somewhere secure!\
-> If you lose your Secret Key, you will not be able to recover it, but you can always roll it and get a new one, which will expire the old one the moment you roll your key.\
-> To learn how t roll your secret key, check out the "Rolling your Secret API Key" section.
-
-### 7. Funding Your Backend Account
-
-Congratulations, you have created your first Secret API Key and are almost ready to use the Admin API for your project.
-
-The last step before we are done is to fund your backend account so that you can cover the transaction fees on behalf of your users. But worry not; the transaction fees on Fuse are so cheap that funding your account only with 1 Fuse will be enough for a long time!🤩
-
-> ❗️ Sending Fuse to your project's backend account is irreversiblePlease note that currently once you send Fuse to your backend account, you cannot withdraw your funds from there, so we suggest to start with a small amount like 0.1 Fuse and only if needed you can always send more funds to your project's backend account.
-
-To fund your backend account, click the "Fund" button on the Project Details Page. You will see your backend account's address which you can copy or read the QR code in a mobile wallet like Fuse Cash (suggested) or Metamask.
-
-You can always track your project's account balance at [https://explorer.fuse.io](https://explorer.fuse.io). Just enter your account's address in the search bar, and you will see the Fuse balance of your account.
-
-> 🚧 Make Sure to Fund Your Account On Fuse Network!Make sure that you send Fuse tokens on Fuse network! If you need guidance on how to do that, follow the link on the pop-up to learn more.
-
-### 8. Rolling Your Secret API Key
-
-If you ever lose your Secret API Key or fear it is compromised, you can always roll it to get a new one that will revoke your existing key.
-
-![](/img/getting-started/roll-api-secret.png)
-
-To roll your Secret API Key, go to the Project Details Page and click on the "Roll API secret key" button, and on the pop-up that appears, click on the red "Roll" button.
-
-Once you roll your Secret API Key, the new key will appear in the pop-up window. Again, make sure to securely save this key and replace the old one with the new one in all the apps that use the secret key.
+Congratulations, you have successfully created an API Key, funded it with Fuse Tokens, and initialized an application with Paymaster for a Gas experience. You can start calling other FuseBox SDK methods to transfer tokens, call particular methods in a contract, and carry out other on-chain transactions.
