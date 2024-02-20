@@ -1,0 +1,319 @@
+---
+title: FuseBox Social Login using Web3Auth
+sidebar_position: 7
+---
+
+In this tutorial, we'll guide you through integrating web3 authentication into a React application using the `web3auth` library and interacting with the Fuse blockchain using the `Fusebox Web SDK.` By the end of this tutorial, you'll have a functional web application allowing users to log in with their wallets and perform basic blockchain interactions using FuseBox.
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
+- Node.js installed on your machine
+- An account on [web3auth.io](https://web3auth.io/) to obtain your `clientId`
+- An API Key from the Fuse [Console](https://console.fuse.io)
+
+## Step 1: Setup a React App
+
+Create a new React app using the following commands:
+
+```bash
+npx create-react-app web3auth-fusebox-tutorial
+cd web3auth-fusebox-tutorial
+```
+
+## Step 2: Install Dependencies
+
+Install the necessary dependencies:
+
+```bash
+npm install @web3auth/modal @web3auth/base @fuseio/fusebox-web-sdk web3 ethers
+```
+
+## Step 3: Set Up Components
+
+Replace the contents of `src/App.js` with the following code:
+
+```jsx
+// Import necessary libraries and components
+import { useEffect, useState } from "react";
+import { Web3Auth } from "@web3auth/modal";
+import { CHAIN_NAMESPACES, IProvider } from "@web3auth/base";
+import { FuseSDK } from "@fuseio/fusebox-web-sdk";
+import { ethers } from "ethers";
+import Web3 from "web3";
+
+import "./App.css";
+
+// Initialize Web3Auth with your clientId and chain information
+const clientId = "YOUR_CLIENT_ID"; // Replace with your actual clientId
+const chainConfig = {
+  chainNamespace: CHAIN_NAMESPACES.EIP155,
+  chainId: "0x7A", // Please use 0x1 for Mainnet
+  rpcTarget: "https://rpc.fuse.io",
+  displayName: "Fuse Mainnet",
+  blockExplorer: "https://explorer.fuse.io/",
+  ticker: "FUSE",
+  tickerName: "Fuse",
+};
+
+const web3auth = new Web3Auth({
+  clientId,
+  chainConfig,
+});
+
+// Function components will be added in the following sections
+// ...
+```
+
+## Section 4: Configure Dashboard and Chain Information
+
+Visit [web3auth.io](https://web3auth.io/) to create a new dashboard and obtain your `clientId`. Replace the placeholder `YOUR_CLIENT_ID` in the code with your actual `clientId`.
+
+## Section 5: Initialize SDK and Web3Auth
+
+No additional code is needed in this section. The initialization of `web3auth` and the `Fusebox Web SDK` is already provided in the initial code.
+
+## Section 6: Implement Login and Logout Functions
+
+Add the following code to implement login, logout, and user information retrieval:
+
+```jsx
+// ... (Code continued from Section 3)
+
+function App() {
+  // State variables
+  const [provider, setProvider] = (useState < IProvider) | (null > null);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [fuseSDK, setFuseSDK] = (useState < FuseSDK) | (null > null);
+
+  // useEffect to initialize Web3Auth
+  useEffect(() => {
+    const init = async () => {
+      try {
+        await web3auth.initModal();
+        setProvider(web3auth.provider);
+
+        if (web3auth.connected) {
+          setLoggedIn(true);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    init();
+  }, []);
+
+  // Function to handle login
+  const login = async () => {
+    try {
+      const web3authProvider = await web3auth.connect();
+      setProvider(web3authProvider);
+
+      if (web3auth.connected) {
+        setLoggedIn(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Function to get user information
+  const getUserInfo = async () => {
+    try {
+      const user = await web3auth.getUserInfo();
+      console.log(user);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Function to handle logout
+  const logout = async () => {
+    try {
+      await web3auth.logout();
+      setProvider(null);
+      setLoggedIn(false);
+      console.log("Logged out");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // ... (Code will continue in Section 7)
+}
+```
+
+## Section 7: Blockchain Interactions
+
+Add the following code to interact with the Fuse blockchain using the `Fusebox Web SDK`:
+
+```jsx
+// ... (Code continued from Section 6)
+
+function App() {
+  // State variables
+  // ...
+
+  // useEffect to initialize Web3Auth
+  // ...
+
+  // Additional code for login, logout, and user information retrieval
+  // ...
+
+  // Function to get user accounts
+  const getAccounts = async () => {
+    if (!provider) {
+      console.log("Provider not initialized yet");
+      return;
+    }
+
+    const web3 = new Web3(provider as any);
+    const address = await web3.eth.getAccounts();
+    const scaAddress = fuseSDK?.wallet.getSender();
+    console.log(`EOA: ${address}`, `SCA: ${scaAddress}`);
+  };
+
+  // Function to get user balance
+  const getBalance = async () => {
+    if (!provider) {
+      console.log("Provider not initialized yet");
+      return;
+    }
+
+    const web3 = new Web3(provider as any);
+    const address = (await web3.eth.getAccounts())[0];
+    const balance = web3.utils.fromWei(await web3.eth.getBalance(address), "ether");
+    console.log(`Balance: ${balance} ETH`);
+  };
+
+  // Function to sign a message
+  const signMessage = async () => {
+    if (!provider) {
+      console.log("Provider not initialized yet");
+      return;
+    }
+
+    const web3 = new Web3(provider as any);
+    const fromAddress = (await web3.eth.getAccounts())[0];
+    const originalMessage = "YOUR_MESSAGE"; // Replace with your actual message
+
+    try {
+      const signedMessage = await web3.eth.personal.sign(
+        originalMessage,
+        fromAddress,
+        "test password!" // Configure your own password here
+      );
+      console.log("Signed Message:", signedMessage);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // ... (Code will continue in Section 8)
+}
+```
+
+## Section 8: Display User Interface
+
+Add the following code to display the user interface:
+
+```jsx
+// ... (Code continued from Section 7)
+
+function App() {
+  // State variables
+  // ...
+
+  // useEffect to initialize Web3Auth
+  // ...
+
+  // Additional code for login, logout, and user information retrieval
+  // ...
+
+  // Additional code for blockchain interactions
+  // ...
+
+  // JSX code for the UI
+  return (
+    <div className="container">
+      <h1 className="title">
+        <a
+          target="_blank"
+          href="https://web3auth.io/docs
+
+/sdk/pnp/web/modal"
+          rel="noreferrer"
+        >
+          Web3Auth{" "}
+        </a>
+        & ReactJS - Fuse Web SDK Login Quick Start
+      </h1>
+
+      <div className="grid">
+        {loggedIn ? (
+          <div className="flex-container">
+            <div>
+              <button onClick={getUserInfo} className="card">
+                Get User Info
+              </button>
+            </div>
+            <div>
+              <button onClick={getAccounts} className="card">
+                Get Accounts
+              </button>
+            </div>
+            <div>
+              <button onClick={getBalance} className="card">
+                Get Balance
+              </button>
+            </div>
+            <div>
+              <button onClick={signMessage} className="card">
+                Sign Message
+              </button>
+            </div>
+            <div>
+              <button onClick={logout} className="card">
+                Log Out
+              </button>
+            </div>
+          </div>
+        ) : (
+          <button onClick={login} className="card">
+            Login
+          </button>
+        )}
+      </div>
+      <div id="console" style={{ whiteSpace: "pre-line" }}>
+        <p style={{ whiteSpace: "pre-line" }}></p>
+      </div>
+
+      <footer className="footer">
+        <a
+          href="https://github.com/Web3Auth/web3auth-pnp-examples/tree/main/web-modal-sdk/quick-starts/react-modal-quick-start"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Source code
+        </a>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
+```
+
+## Section 9: Run the Application
+
+Run the React app using the following command:
+
+```bash
+npm start
+```
+
+Visit [http://localhost:3000](http://localhost:3000) in your browser to see the application in action.
+
+Congratulations! You've successfully implemented web3 authentication using `web3auth` and integrated the Fuse blockchain with the `Fusebox Web SDK` in your React application. Feel free to explore additional features and customize the application based on your requirements.
