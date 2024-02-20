@@ -1,4 +1,44 @@
 ---
-title: FuseBox Login using Web3Auth
+title: FuseBox Login using MetaMask
 sidebar_position: 6
 ---
+
+In this tutorial, we will guide you through the process of implementing user authentication using MetaMask, ethers.js, and FuseBox Web SDK in a decentralized application (DApp). This tutorial assumes you have a basic understanding of JavaScript, Ethereum, and Web3 development.
+
+Prerequisites:
+
+- Basic knowledge of JavaScript
+- MetaMask wallet extension installed in your browser
+- FuseBox Web SDK [API Key](https://console.fuse.io)
+
+Implementing the Connection Logic
+
+```javascript
+import { FuseSDK } from "@fuseio/fusebox-web-sdk";
+import { ethers } from "ethers";
+
+const connect = async () => {
+  let signer = null;
+  let provider;
+
+  if (window.ethereum == null) {
+    console.log("MetaMask not installed; using read-only defaults");
+    provider = ethers.getDefaultProvider();
+  } else {
+    provider = new ethers.BrowserProvider(window.ethereum);
+    signer = await provider.getSigner();
+
+    const apiKey = "YOUR_API_KEY"; // Replace with your FuseBox API key
+    const fuseSDK = await FuseSDK.init(apiKey, signer);
+
+    console.log(`Logged in, ${fuseSDK.wallet.getSender()}`);
+    // Perform additional actions after successful login, e.g., update UI
+    setLoggedIn(true);
+    console.log(loggedIn);
+  }
+};
+
+connect();
+```
+
+Make sure to replace "YOUR_API_KEY" with your actual FuseBox API key.
