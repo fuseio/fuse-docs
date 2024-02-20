@@ -70,24 +70,6 @@ const sidebars = {
       },
       items: require("./docs/notification-api/sidebar.js"),
     },
-    {
-      type: "category",
-      label: "Admin API - DEPRECATED",
-      link: {
-        type: "generated-index",
-        title: "Admin API - DEPRECATED",
-      },
-      items: require("./docs/admin-api/sidebar.js"),
-    },
-    {
-      type: "category",
-      label: "Smart Wallet API v1 - DEPRECATED",
-      link: {
-        type: "generated-index",
-        title: "Smart Wallet API v1 - DEPRECATED",
-      },
-      items: require("./docs/smart-wallet-api/sidebar.js"),
-    },
   ],
 };
 
