@@ -45,12 +45,12 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Smart Wallet API v2",
+      label: "Smart Wallets API",
       link: {
         type: "generated-index",
-        title: "Smart Wallet API v2",
+        title: "Smart Wallets API",
       },
-      items: require("./docs/smart-wallet-v2-api/sidebar.js"),
+      items: require("./docs/smart-wallets-api/sidebar.js"),
     },
     {
       type: "category",
@@ -69,24 +69,6 @@ const sidebars = {
         title: "Notification API",
       },
       items: require("./docs/notification-api/sidebar.js"),
-    },
-    {
-      type: "category",
-      label: "Admin API - DEPRECATED",
-      link: {
-        type: "generated-index",
-        title: "Admin API - DEPRECATED",
-      },
-      items: require("./docs/admin-api/sidebar.js"),
-    },
-    {
-      type: "category",
-      label: "Smart Wallet API v1 - DEPRECATED",
-      link: {
-        type: "generated-index",
-        title: "Smart Wallet API v1 - DEPRECATED",
-      },
-      items: require("./docs/smart-wallet-api/sidebar.js"),
     },
   ],
 };
