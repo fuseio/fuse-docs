@@ -230,15 +230,6 @@ const config = {
         id: "api",
         docsPluginId: "api", // e.g. "classic" or the plugin-content-docs id
         config: {
-          adminApi: {
-            // "petstore" is considered the <id> that you will reference in the CLI
-            specPath: "api-references/fuse-admin-api.yaml", // path or URL to the OpenAPI spec
-            outputDir: "docs/admin-api", // output directory for generated *.mdx and sidebar.js files
-            sidebarOptions: {
-              groupPathsBy: "tag", // generate a sidebar.js slice that groups operations by tag
-              categoryLinkSource: "tag",
-            },
-          },
           notificationApi: {
             specPath: "api-references/fuse-notification-api.yaml",
             outputDir: "docs/notification-api",
@@ -249,15 +240,7 @@ const config = {
           },
           smartWalletApi: {
             specPath: "api-references/fuse-smart-wallets-api.yaml",
-            outputDir: "docs/smart-wallet-api",
-            sidebarOptions: {
-              groupPathsBy: "tag",
-              categoryLinkSource: "tag",
-            },
-          },
-          smartWalletv2Api: {
-            specPath: "api-references/fuse-smart-wallet-v2-api.yaml",
-            outputDir: "docs/smart-wallet-v2-api",
+            outputDir: "docs/smart-wallets-api",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
