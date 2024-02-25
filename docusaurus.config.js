@@ -44,15 +44,6 @@ const config = {
           trackingID: "G-ZQQQ9Q88VY",
           anonymizeIP: true,
         },
-        blog: {
-          blogTitle: "Changelog",
-          blogSidebarTitle: "Recent Changes",
-          postsPerPage: "ALL",
-          routeBasePath: "/changelog",
-          showReadingTime: true,
-          readingTime: ({ content, frontMatter, defaultReadingTime }) =>
-            defaultReadingTime({ content, options: { wordsPerMinute: 300 } }),
-        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -65,7 +56,7 @@ const config = {
 
     ({
       prism: {
-        additionalLanguages: ["dart", "solidity"],
+        additionalLanguages: ["dart", "solidity", "javascript"],
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
@@ -74,9 +65,6 @@ const config = {
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
-      // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
-
       algolia: {
         // The application ID provided by Algolia
         appId: "NPQ4ZLHJEE",
@@ -89,10 +77,7 @@ const config = {
         // Optional: see doc section below
         contextualSearch: true,
 
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        externalUrlRegex: "external\\.com|domain\\.com",
 
-        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
 
         // Optional: Algolia search parameters
         searchParameters: {},
@@ -143,18 +128,17 @@ const config = {
             label: "Developers",
           },
           {
+            type: "doc",
+            docId: "fuse-box/getting-started",
+            position: "left",
+            label: "FuseBox",
+          },
+          {
             type: "docSidebar",
             sidebarId: "validatorsSidebar",
             position: "left",
             label: "Validators",
           },
-          {
-            type: "docSidebar",
-            sidebarId: "tutorialsSidebar",
-            position: "left",
-            label: "Tutorials",
-          },
-          // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],
       },
       footer: {

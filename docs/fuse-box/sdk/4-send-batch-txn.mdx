@@ -1,0 +1,88 @@
+---
+title: Send Batch Transactions
+sidebar_position: 4
+---
+
+import PlatformTabs from "../../components/PlatformTabs";
+import PlatformTabItem from "../../components/PlatformTabItem";
+
+A batch refers to a group of calls inside a single user operation. This can be an approve and send transaction in one call. The executeBatch() method is used.
+
+| Parameter | Type       | Status     | Description                                      |
+| :-------: | ---------- | ---------- | ------------------------------------------------ |
+|  **to**   | _address_  | _required_ | The address where the user want to send Tokens.  |
+| **value** | _number_   | _required_ | The amount of Tokens the user is sending         |
+| **data**  | _Function_ |            | Encoded Function Data for Smart Contract Methods |
+
+Example of approve and transfer in a single batch
+
+<PlatformTabs
+	groupId="w3w"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```javascript
+const approveCallData = ContractUtils.encodeERC20ApproveCall(
+  spender,
+  amount
+) as unknown as Uint8Array;
+
+const calls = [
+  {
+    to: tokenAddress,
+    value: BigInt(0),
+    data: approveCallData,
+  },
+  {
+    to: spender,
+    value: BigInt(0),
+    data: callData,
+  },
+];
+
+const res = await  fuseSDK.executeBatch(calls, txOptions);
+console.log(`UserOpHash: ${res?.userOpHash}`);
+console.log('Waiting for transaction...');
+
+const receipt = await res?.wait();
+console.log('Transaction Hash:', receipt?.transactionHash);
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+```dart
+final tokenAddress = EthereumAddress.fromHex('TOKEN_ADDRESS');
+final recipientAddress = EthereumAddress.fromHex('RECIPIENT_ADDRESS');
+final amountInWei = BigInt.parse('AMOUNT_IN_WEI');
+
+final res = await fuseSDK.executeBatch(
+  [
+    // Approve ERC20 Token call
+    Call(
+      to: tokenAddress,
+      value: BigInt.zero,
+      data: ContractsUtils.encodeERC20ApproveCall(
+        tokenAddress,
+        recipientAddress,
+        amountInWei,
+      ),
+    ),
+    // Transfer ERC20 Token call
+    Call(
+      to: tokenAddress,
+      value: BigInt.zero,
+      data: ContractsUtils.encodeERC20TransferCall(
+        tokenAddress,
+        recipientAddress,
+        amountInWei,
+      ),
+    ),
+  ],
+);
+```
+
+</PlatformTabItem>
+</PlatformTabs>

@@ -46,7 +46,7 @@ const MainFeatureList = [
     title: "FuseBox",
     description:
       "Develop seamless UX with FuseBox on Fuse network, leveraging Account Abstraction, Gasless transactions, and more.",
-    link: "/docs/developers/fuse-box/fusebox-intro",
+    link: "/docs/fuse-box/getting-started",
   },
   {
     image: "img/new-ms-p3.svg",

@@ -1,0 +1,76 @@
+---
+title: Swap Tokens
+sidebar_position: 7
+---
+
+import PlatformTabs from "../../components/PlatformTabs";
+import PlatformTabItem from "../../components/PlatformTabItem";
+
+### Swap Tokens
+
+To exchange one token for another, use the **`swapTokens()`** method. This method swaps the token with the contract address specified in the `currencyIn` parameter for the token with the contract address specified in the `currencyOut` parameter at the current market price.&#x20;
+
+Additionally, this method relays the transaction and covers the gas fees for the user, so they don't need to worry about those fees.
+
+The method requires a **`TradeRequestBody`** parameter with the following properties:
+
+| Parameter   | Type      | Description                                      |
+| ----------- | --------- | ------------------------------------------------ |
+| currencyIn  | _address_ | The contract address of the token to be swapped. |
+| currencyOut | _address_ | The contract address of the token to swap for.   |
+| amountIn    | _number_  | The amount of currencyIn to swap.                |
+| recipient   | _address_ | The recipient address for the swapped tokens.    |
+
+To ensure your transfer request is successful, subscribe to the transactionStarted, transactionHash, transactionSucceeded, and transactionFailed events of the FuseWalletSDK instance. This will allow you to monitor the transaction as it progresses through the network and handle any errors that may occur.
+
+<PlatformTabs
+	groupId="w3w"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```javascript
+const nativeTokenAddress = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
+const usdcTokenAddress = "0x28C3d1cD466Ba22f6cae51b1a4692a831696391A";
+const res = await fuseSDK.swapTokens(
+  new TradeRequestBody({
+    amountIn: "0.1",
+    currencyIn: nativeTokenAddress,
+    currencyOut: usdcTokenAddress,
+    recipient: fuseSDK.wallet.getSender(),
+  })
+);
+
+console.log(`UserOpHash: ${res?.userOpHash}`);
+console.log("Waiting for transaction...");
+const ev = await res?.wait();
+console.log(
+  `Transaction hash: https://explorer.fuse.io/tx/${ev?.transactionHash}`
+);
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+```dart
+final TradeRequestBody tradeRequestBody = TradeRequestBody(
+  currencyIn: 'CURRENCY_IN',
+  currencyOut: 'CURRENCY_OUT',
+  amountIn: 'AMOUNT',
+  recipient: 'RECIPIENT_ADDRESS',
+);
+
+final res = await fuseSDK.swapTokens(
+  tradeRequestBody,
+);
+
+print('UserOpHash: ${res.userOpHash}');
+
+print('Waiting for transaction...');
+final ev = await res.wait();
+print('Transaction hash: ${ev?.transactionHash}');
+```
+
+</PlatformTabItem>
+</PlatformTabs>

@@ -1,0 +1,42 @@
+---
+title: Trade API
+---
+
+# Trade API
+
+Trade API lets you integrate trading functionality into your application. With the Trade API, users can buy and sell popular cryptocurrencies like Bitcoin and Ethereum, stablecoins, or custom tokens dedicated to their application domain. Behind the scenes, it uses [voltage.finance](https://voltage.finance/) decentralized exchange.
+
+Fuse Trade API has the following high-level API sets, which create the capabilities to build endless use cases for your apps.
+
+**Prices:** Returns current Prices and the Historic Prices of various Assets.
+
+**Price Changes:** Returns the change in the price of the asset, showing how much the token price has changed over a defined interval.
+
+**Stats:** Returns Token Price Change Data.
+
+**Swap:** Swap is an auxiliary API that helps you perform transactions if you cannot use the [voltage-sdk](https://github.com/voltfinance/voltage-sdk). The voltage SDK is written in JS and is hard to use in a mobile environment. Instead, you can send a request to the Swap API, which will generate the trade data. Then the user needs to sign and relay the data.
+
+**Tokens:** Returns ALL Token information.
+
+**Working with Trade API:** Before working with Trade API, if you haven't done so, please follow the guide [Getting Started](../getting-started.mdx).
+
+#### Ready to start!
+
+> #### 📘Remember
+>
+> For all Trade API requests, you will need to add your Public API Key to the request query params under the key `apiKey`.
+
+The Trade API is available to developers in the [API Reference](/docs/category/smart-wallets-api/) and via the [Flutter SDK](https://pub.dev/packages/fuse_wallet_sdk). The base API url is https://api.fuse.io The API key is parsed as a param `?apiKey=<YOUR_PUBLIC_API_KEY>`.
+
+The available methods are:
+
+| Endpoint                                        | URL path                                                    | Http |
+| :---------------------------------------------- | :---------------------------------------------------------- | ---- |
+| `Get Latest Price for a Token`                  | /api/v0/trade/price/:tokenAddress                           | GET  |
+| `Get Price Change for Token Over last 24 hours` | /api/v0/trade/pricechange/:tokenAddress                     | GET  |
+| `Get Price Change for Token Over Time Duration` | /api/v0/trade/pricechange/:tokenAddress                     | POST |
+| `Get Price Change for Token Over an interval`   | /api/v0/trade/pricechange/interval/:timeFrame/:tokenAddress | GET  |
+| `Get Historical Statistics for a Token`         | /api/v0/trade/stats/:tokenAddress                           | GET  |
+| `Get quote for a Token Pair`                    | /api/v0/trade/swap/quote                                    | POST |
+| `Create Swap Parameters for a Trade`            | /api/v0/trade/swap/swapcallparameters                       | POST |
+| `Get the list of Tokens on Fuse`                | /api/v0/trade/tokens                                        | GET  |
