@@ -197,6 +197,21 @@ html[data-theme="dark"] .navbar--discord-link:before {
   padding-right: 0;
 }
 
+.navbar--get-api-key {
+  background-color: #1A1A1A;
+  border-radius: 100px;
+  color: white;
+  padding: var(--ifm-navbar-item-padding-vertical) var(--ifm-navbar-item-padding-horizontal) !important;
+}
+
+.navbar--get-api-key svg {
+  display: none;
+}
+
+.navbar--get-api-key:hover {
+  background-color: #b4f9ba;
+}
+
 .DocSearch {
   width: 300px;
   height: 20px;

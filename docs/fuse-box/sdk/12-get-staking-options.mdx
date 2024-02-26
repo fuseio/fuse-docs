@@ -1,0 +1,38 @@
+---
+title: GET Staking Options
+sidebar_position: 12
+---
+
+import PlatformTabs from "../../components/PlatformTabs";
+import PlatformTabItem from "../../components/PlatformTabItem";
+
+### Get Staking Options
+
+<PlatformTabs
+	groupId="sdk"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```javascript
+const stakingOptions = await fuseSDK.stakingModule.getStakingOptions();
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+```dart
+final stakingOptionsData = await fuseSDK.stakingModule.getStakingOptions();
+stakingOptionsData.pick(
+  onData: (List<StakingOption> data) {
+    // Do you magic here
+  },
+  onError: (Exception err) {
+    // Handle errors
+  }
+);
+```
+
+</PlatformTabItem>
+</PlatformTabs>

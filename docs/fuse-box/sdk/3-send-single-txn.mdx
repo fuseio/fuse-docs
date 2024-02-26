@@ -1,0 +1,54 @@
+---
+title: Send Native/ERC20 Transactions
+sidebar_position: 3
+---
+
+import PlatformTabs from "../../components/PlatformTabs";
+import PlatformTabItem from "../../components/PlatformTabItem";
+
+To transfer an ERC20/FUSE with a relay, use the **`transferToken()`** method. This method relays the transaction and covers the gas fees for the user, so they don't need to worry about those fees.
+
+You can also subscribe to events related to the token transfer to track its progress. The method takes the following parameters as inputs:
+
+| Parameter        | Type      | Description                                     |
+| ---------------- | --------- | ----------------------------------------------- |
+| tokenAddress     | _address_ | The contract address of the ERC20 token or FUSE |
+| recipientAddress | _address_ | The recipient's wallet address                  |
+| amount           | _number_  | The amount to transfer                          |
+
+<PlatformTabs
+	groupId="sdk"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```javascript
+const tokenAddress = "YOUR_TOKEN";
+const to = "RECEIVER_ADDRESS";
+const amount = parseEther("0.001");
+const res = await fuseSDK.transferToken(tokenAddress, to, amount);
+
+console.log(`UserOpHash: ${res?.userOpHash}`);
+console.log("Waiting for transaction...");
+
+const receipt = await res?.wait();
+console.log("Transaction Hash:", receipt?.transactionHash);
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+```dart
+final res = await fuseSDK.transferToken(
+    EthereumAddress.fromHex('TOKEN_ADDRESS'), // For sending native token, use '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
+    EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
+    BigInt.parse('AMOUNT_IN_WEI'),
+);
+print('UserOpHash: ${res.userOpHash}');
+print('Waiting for transaction...');
+final ev = await res.wait();
+```
+
+</PlatformTabItem>
+</PlatformTabs>

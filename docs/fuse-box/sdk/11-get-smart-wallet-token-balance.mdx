@@ -1,0 +1,52 @@
+---
+title: GET Smart Wallet Token Balance
+sidebar_position: 11
+---
+
+import PlatformTabs from "../../components/PlatformTabs";
+import PlatformTabItem from "../../components/PlatformTabItem";
+
+### Get Smart Wallet’s Token Balance
+
+The **`getTokenBalance()`** function allows you to retrieve the balance of a specific ERC20 token owned by a Fuse wallet. You will need to provide the contract address of the token and the address of the Fuse wallet. The function returns the balance as a `BigInt` object, which you can use to perform further calculations or display the balance to the user.
+
+<PlatformTabs
+	groupId="sdk"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```javascript
+const tokenAddress = "TOKEN_ADDRESS";
+const smartWalletAddress = fuseSDK.wallet.getSender();
+const tokenBalance = await fuseSDK.explorerModule.getTokenBalance(
+  tokenAddress,
+  smartWalletAddress
+);
+console.log(`Token: ${tokenAddress}, balance: ${tokenBalance.toString()}`);
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+```dart
+final String tokenAddress = 'TOKEN_ADDRESS';
+final String smartWalletAddress = fuseSDK.wallet.getSender();
+final tokenBalanceData = await fuseSDK.explorerModule.getTokenBalance(
+  tokenAddress,
+  smartWalletAddress,
+);
+
+tokenBalanceData.pick(
+  onData: (BigInt value) {
+    // Do you magic here
+  },
+  onError: (err) {
+    // Handle errors
+  },
+);
+```
+
+</PlatformTabItem>
+</PlatformTabs>

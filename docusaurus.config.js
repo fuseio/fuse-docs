@@ -34,24 +34,30 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // exclude: ['**/developers/*/*README.md'],
+          editUrl: 'https://github.com/fuseio/fuse-docs/blob/master',
           docLayoutComponent: "@theme/DocPage",
           docItemComponent: "@theme/ApiItem",
+          remarkPlugins: [
+            [
+              require('@docusaurus/remark-plugin-npm2yarn'),
+              {
+                sync: true,
+                converters: [
+                  'yarn',
+                  [
+                    'Bun',
+                    code => code.replace(/npm i /g, 'bun a ').replace(/npm install /g, 'bun add ')
+                  ],
+                  'pnpm'
+                ]
+              }
+            ]
+          ]
         },
+        blog: false,
         gtag: {
           trackingID: "G-ZQQQ9Q88VY",
           anonymizeIP: true,
-        },
-        blog: {
-          blogTitle: "Changelog",
-          blogSidebarTitle: "Recent Changes",
-          postsPerPage: "ALL",
-          routeBasePath: "/changelog",
-          showReadingTime: true,
-          readingTime: ({ content, frontMatter, defaultReadingTime }) =>
-            defaultReadingTime({ content, options: { wordsPerMinute: 300 } }),
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -65,7 +71,7 @@ const config = {
 
     ({
       prism: {
-        additionalLanguages: ["dart", "solidity"],
+        additionalLanguages: ["dart", "solidity", "javascript"],
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
@@ -74,9 +80,6 @@ const config = {
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
-      // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
-
       algolia: {
         // The application ID provided by Algolia
         appId: "NPQ4ZLHJEE",
@@ -89,10 +92,7 @@ const config = {
         // Optional: see doc section below
         contextualSearch: true,
 
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        externalUrlRegex: "external\\.com|domain\\.com",
 
-        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
 
         // Optional: Algolia search parameters
         searchParameters: {},
@@ -110,12 +110,6 @@ const config = {
 
         items: [
           {
-            type: "docSidebar",
-            sidebarId: "apiSidebar",
-            label: "API References",
-            position: "right",
-          },
-          {
             to: "https://discord.com/invite/jpPMeSZ",
             label: "Support",
             position: "right",
@@ -131,6 +125,19 @@ const config = {
             position: "right",
           },
           {
+            href: 'https://github.com/fuseio/',
+            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository'
+          },
+          {
+            label: 'Get API key',
+            href: 'https://console.fuse.io/build',
+            position: 'right',
+            className: 'navbar--get-api-key',
+            'aria-label': 'Become an operator',
+          },
+          {
             type: "docSidebar",
             sidebarId: "basicsSidebar",
             position: "left",
@@ -143,18 +150,17 @@ const config = {
             label: "Developers",
           },
           {
+            type: "doc",
+            docId: "fuse-box/getting-started",
+            position: "left",
+            label: "FuseBox",
+          },
+          {
             type: "docSidebar",
             sidebarId: "validatorsSidebar",
             position: "left",
             label: "Validators",
           },
-          {
-            type: "docSidebar",
-            sidebarId: "tutorialsSidebar",
-            position: "left",
-            label: "Tutorials",
-          },
-          // {to: '/changelog', label: 'Changelog', position: 'left'}
         ],
       },
       footer: {
@@ -232,26 +238,23 @@ const config = {
         config: {
           notificationApi: {
             specPath: "api-references/fuse-notification-api.yaml",
-            outputDir: "docs/notification-api",
+            outputDir: "docs/fuse-box/fuse-apis/Notification API",
             sidebarOptions: {
               groupPathsBy: "tag",
-              categoryLinkSource: "tag",
             },
           },
           smartWalletApi: {
             specPath: "api-references/fuse-smart-wallets-api.yaml",
-            outputDir: "docs/smart-wallets-api",
+            outputDir: "docs/fuse-box/fuse-apis/Smart Wallets API",
             sidebarOptions: {
               groupPathsBy: "tag",
-              categoryLinkSource: "tag",
             },
           },
           tradeApi: {
             specPath: "api-references/trade-api.yaml",
-            outputDir: "docs/trade-api",
+            outputDir: "docs/fuse-box/fuse-apis/Trade API",
             sidebarOptions: {
               groupPathsBy: "tag",
-              categoryLinkSource: "tag",
             },
           },
         },

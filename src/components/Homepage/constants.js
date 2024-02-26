@@ -3,25 +3,25 @@ const ExploreApisList = [
     title: "Smart Wallets API",
     description:
       "Maximize the security and user experience of your apps by leveraging smart contract wallets.",
-    href: "/docs/category/smart-wallets-api",
+    href: "/docs/fuse-box/fuse-apis/Smart%20Wallets%20API/smart-wallets-api",
   },
   {
     title: "Trade API",
     description:
       "Enable DeFi functionalities including token swaps, real-time price information, and more in your apps.",
-    href: "/docs/category/trade-api",
+    href: "/docs/fuse-box/fuse-apis/Trade%20API/trade-api",
   },
   {
     title: "Notifications API",
     description:
       "Maximize the security and user experience of your apps by leveraging smart contract wallets.",
-    href: "/docs/category/notification-api",
+    href: "/docs/fuse-box/fuse-apis/Notification%20API/notifications-api",
   },
   {
     title: "Data APIs",
     description:
       "Access real-time indexed transactions with ease.",
-    href: "/docs/smart-wallets-api/get-wallet-actions",
+    href: "/docs/fuse-box/fuse-apis/Smart%20Wallets%20API/get-wallet-actions",
   },
 ];
 
@@ -46,7 +46,7 @@ const MainFeatureList = [
     title: "FuseBox",
     description:
       "Develop seamless UX with FuseBox on Fuse network, leveraging Account Abstraction, Gasless transactions, and more.",
-    link: "/docs/developers/fuse-box/fusebox-intro",
+    link: "/docs/fuse-box/getting-started",
   },
   {
     image: "img/new-ms-p3.svg",

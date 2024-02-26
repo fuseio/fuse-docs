@@ -1,0 +1,61 @@
+---
+title: Transfer NFT
+sidebar_position: 6
+---
+
+import PlatformTabs from "../../components/PlatformTabs";
+import PlatformTabItem from "../../components/PlatformTabItem";
+
+### Transfer NFT
+
+To transfer an ERC721 (NFT) asset, use the **`transferNFT()`** method. The method takes the following parameters as inputs:
+
+| Parameter          | Type      | Description                              |
+| ------------------ | --------- | ---------------------------------------- |
+| nftContractAddress | _address_ | The contract address of the ERC721 asset |
+| recipientAddress   | _address_ | The recipient's wallet address           |
+| tokenId            | _number_  | The ID of the asset you wish to transfer |
+
+<PlatformTabs
+	groupId="sdk"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```javascript
+const nftContractAddress = "NFT_CONTRACT_ADDRESS";
+const recipientAddress = "RECEIVER_ADDRESS";
+const tokenId = 1;
+const res = await fuseSDK.transferNFT(
+  nftContractAddress,
+  recipientAddress,
+  tokenId
+);
+
+console.log(`UserOpHash: ${res?.userOpHash}`);
+console.log("Waiting for transaction...");
+
+const receipt = await res?.wait();
+console.log("Transaction Hash:", receipt?.transactionHash);
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+```dart
+final tokenId = 1;
+final res = await fuseSDK.transferNFT(
+  EthereumAddress.fromHex('NFT_CONTRACT_ADDRESS'),
+  EthereumAddress.fromHex('RECIPIENT_ADDRESS'),
+  tokenId,
+);
+print('UserOpHash: ${res.userOpHash}');
+
+print('Waiting for transaction...');
+final ev = await res.wait();
+print('Transaction hash: ${ev?.transactionHash}');
+```
+
+</PlatformTabItem>
+</PlatformTabs>
