@@ -1,0 +1,42 @@
+---
+title: GET Staked Tokens
+sidebar_position: 14
+---
+
+import PlatformTabs from "../../components/PlatformTabs";
+import PlatformTabItem from "../../components/PlatformTabItem";
+
+### Get Staked Tokens
+
+<PlatformTabs
+	groupId="w3w"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```javascript
+const smartWalletAddress = fuseSDK.wallet.getSender();
+const stakedTokens: StakedTokenResponse =
+  await fuseSDK.stakingModule.getStakedTokens(smartWalletAddress);
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+```dart
+final smartWalletAddress = fuseSDK.wallet.getSender();
+final stakedTokensData = await fuseSDK.stakingModule.getStakedTokens(smartWalletAddress);
+
+stakedTokensData.pick(
+  onData: (StakedTokenResponse data) {
+    // Do you magic here
+  },
+  onError: (err) {
+    // Handle errors
+  }
+);
+```
+
+</PlatformTabItem>
+</PlatformTabs>

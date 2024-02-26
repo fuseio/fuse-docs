@@ -1,0 +1,41 @@
+---
+title: GET Token Price
+sidebar_position: 15
+---
+
+import PlatformTabs from "../../components/PlatformTabs";
+import PlatformTabItem from "../../components/PlatformTabItem";
+
+### Get Token Price
+
+<PlatformTabs
+	groupId="w3w"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```dart
+const tokenAddress = 'TOKEN_ADDRESS';
+const price = await fuseSDK.tradeModule.price(tokenAddress);
+console.log(`Token: ${tokenAddress} price: ${price}`)
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+```dart
+final tokenAddress = 'TOKEN_ADDRESS';
+final priceData = await fuseSDK.tradeModule.price(tokenAddress);
+priceData.pick(
+  onData: (String tokenPrice) {
+    // Do you magic here
+  },
+  onError: (err) {
+    // Handle errors
+  },
+);
+```
+
+</PlatformTabItem>
+</PlatformTabs>

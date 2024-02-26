@@ -1,0 +1,43 @@
+---
+title: GET the Price Change in Interval
+sidebar_position: 17
+---
+
+import PlatformTabs from "../../components/PlatformTabs";
+import PlatformTabItem from "../../components/PlatformTabItem";
+
+### Get Price Change in Interval
+
+<PlatformTabs
+	groupId="w3w"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```javascript
+const tokenAddress = "TOKEN_ADDRESS";
+const intervalData = await fuseSDK.tradeModule.interval(
+  tokenAddress,
+  TimeFrame.day
+);
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+```dart
+final tokenAddress = 'TOKEN_ADDRESS';
+final intervalData = await fuseSDK.tradeModule.interval(tokenAddress, TimeFrame.day);
+intervalData.pick(
+  onData: (List<IntervalStats> stats) {
+    // Do you magic here
+  },
+  onError: (err) {
+    // Handle errors
+  },
+);
+```
+
+</PlatformTabItem>
+</PlatformTabs>

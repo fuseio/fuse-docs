@@ -1,0 +1,28 @@
+---
+title: Architecture
+sidebar_position: 5
+---
+# Architecture
+
+![](</img/fusebox-architecture.png>)
+
+The FuseBox Stack is comprised of several essential components, including:
+
+* Fuse SDK enables interaction with Fuse APIs, indexing solutions, RPCs, and bundlers.
+* Fuse APIs, which include:
+  * Smart Wallets API for creating and managing Smart Contract Wallets.
+  * Notifications API for subscribing to updates about wallet activity.
+  * Trade API for fetching trade data and assisting with swaps.
+  * DATA APIs enable additional indexed data such as NFTs, transaction histories, and more.
+  * Network API:
+    - Staking API - Volt and Fuse liquid staking (Voltage DEX module)
+    - NFT API that utilizes the subgraphs
+* Indexers, including subgraphs and the explorer.
+* Fuse Network serves as the underlying infrastructure for the Fuse Stack.
+* Smart Wallet Contracts and their modules.
+* Token contracts, including ERC20 tokens and ERC721 (NFTs).
+* Token factories for creating new tokens.
+* Other smart contracts include AMMs of DEXes, DAO contracts, and more.
+
+These components comprise the robust and comprehensive Fuse Stack, providing a powerful toolkit for building and deploying blockchain-based applications on the Fuse Network.
+

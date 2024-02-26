@@ -1,0 +1,99 @@
+---
+title: Installation And Setup
+sidebar_position: 1
+---
+
+import PlatformTabs from "../../components/PlatformTabs";
+import PlatformTabItem from "../../components/PlatformTabItem";
+
+## Installation
+
+<PlatformTabs
+	groupId="w3w"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```bash npm2yarn
+npm install @fuseio/fusebox-web-sdk
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+Install the FuseSDK using Dart or flutter.
+
+```dart
+dart pub add fuse_wallet_sdk
+```
+
+```dart
+flutter pub add fuse_wallet_sdk
+```
+
+</PlatformTabItem>
+</PlatformTabs>
+
+Once you have installed the package, you can import it into your code:
+
+<PlatformTabs
+	groupId="w3w"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```bash
+import { FuseSDK } from "@fuseio/fusebox-web-sdk";
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+```dart
+import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
+```
+
+</PlatformTabItem>
+</PlatformTabs>
+
+### Usage
+
+To use the SDK in your project, you must create an instance of the **`FuseSDK`** class. This class is the key to interacting with the Fuse API using the SDK. Fortunately, the `FuseSDK` class provides a range of instance methods, allowing you to execute various operations with the API.
+
+Whether you aim to fetch or create a smart wallet, relay an ERC20/FUSE transfer, relay an ERC721 transfer, relay a generic transaction, swap tokens, or stake tokens, the `FuseSDK` class has you covered. Additionally, the SDK provides data features that allow you to get the list of tokens owned by an address, get token details, and get a smart wallet's token balance.
+
+The following code initializes the Fuse SDK and creates an instance of the `FuseSDK` class. The `apiKey` variable should be set to your own API key.
+
+<PlatformTabs
+	groupId="w3w"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```bash
+import { ethers } from 'ethers';
+import { FuseSDK } from '@fuseio/fusebox-web-sdk';
+
+const apiKey = 'API_KEY';
+const credentials = new ethers.Wallet("PRIVATE_KEY");
+const fuse = await FuseSDK.init(apiKey, credentials);
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+```dart
+import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
+
+final apiKey = 'API_KEY';
+final privateKey = EthPrivateKey.fromHex('YOUR_PRIVATE_KEY');
+final fuseSDK = await FuseSDK.init(apiKey, privateKey);
+```
+
+</PlatformTabItem>
+</PlatformTabs>
+
+Once you have created an instance of the `FuseSDK` class, you can use its instance methods to interact with the Fuse API. In the following section, we will cover the available methods of the SDK.
