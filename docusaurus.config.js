@@ -40,6 +40,7 @@ const config = {
           docLayoutComponent: "@theme/DocPage",
           docItemComponent: "@theme/ApiItem",
         },
+        blog: false,
         gtag: {
           trackingID: "G-ZQQQ9Q88VY",
           anonymizeIP: true,
@@ -114,6 +115,19 @@ const config = {
           {
             type: "search",
             position: "right",
+          },
+          {
+            href: 'https://github.com/fuseio/',
+            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository'
+          },
+          {
+            label: 'Get API key',
+            href: 'https://console.fuse.io/build',
+            position: 'right',
+            className: 'navbar--get-api-key',
+            'aria-label': 'Become an operator',
           },
           {
             type: "docSidebar",
