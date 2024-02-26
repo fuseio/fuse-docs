@@ -34,11 +34,25 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // exclude: ['**/developers/*/*README.md'],
+          editUrl: 'https://github.com/fuseio/fuse-docs/blob/master',
           docLayoutComponent: "@theme/DocPage",
           docItemComponent: "@theme/ApiItem",
+          remarkPlugins: [
+            [
+              require('@docusaurus/remark-plugin-npm2yarn'),
+              {
+                sync: true,
+                converters: [
+                  'yarn',
+                  [
+                    'Bun',
+                    code => code.replace(/npm i /g, 'bun a ').replace(/npm install /g, 'bun add ')
+                  ],
+                  'pnpm'
+                ]
+              }
+            ]
+          ]
         },
         blog: false,
         gtag: {
