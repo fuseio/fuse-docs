@@ -110,12 +110,6 @@ const config = {
 
         items: [
           {
-            type: "docSidebar",
-            sidebarId: "apiSidebar",
-            label: "API References",
-            position: "right",
-          },
-          {
             to: "https://discord.com/invite/jpPMeSZ",
             label: "Support",
             position: "right",
@@ -244,26 +238,23 @@ const config = {
         config: {
           notificationApi: {
             specPath: "api-references/fuse-notification-api.yaml",
-            outputDir: "docs/notification-api",
+            outputDir: "docs/fuse-box/fuse-apis/Notification API",
             sidebarOptions: {
               groupPathsBy: "tag",
-              categoryLinkSource: "tag",
             },
           },
           smartWalletApi: {
             specPath: "api-references/fuse-smart-wallets-api.yaml",
-            outputDir: "docs/smart-wallets-api",
+            outputDir: "docs/fuse-box/fuse-apis/Smart Wallets API",
             sidebarOptions: {
               groupPathsBy: "tag",
-              categoryLinkSource: "tag",
             },
           },
           tradeApi: {
             specPath: "api-references/trade-api.yaml",
-            outputDir: "docs/trade-api",
+            outputDir: "docs/fuse-box/fuse-apis/Trade API",
             sidebarOptions: {
               groupPathsBy: "tag",
-              categoryLinkSource: "tag",
             },
           },
         },
