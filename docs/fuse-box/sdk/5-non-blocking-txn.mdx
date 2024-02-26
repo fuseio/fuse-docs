@@ -17,34 +17,30 @@ To utilize this feature, simply pass the `TxOptions` with `useNonceSequence: tru
 <PlatformTabItem value="web">
 
 ```javascript
-const approveCallData = ContractUtils.encodeERC20ApproveCall(
-  spender,
-  amount
-) as unknown as Uint8Array;
-
-const calls = [
-  {
-    to: tokenAddress,
-    value: BigInt(0),
-    data: approveCallData,
-  },
-  {
-    to: spender,
-    value: BigInt(0),
-    data: callData,
-  },
+const tokenAddress = "YOUR_TOKEN";
+const to = "RECEIVER_ADDRESS";
+const amount = parseEther("0.001");
+const data = Uint8Array.from([]);
+await fuseSDK.transferToken(
+  tokenAddress,
+  to,
+  amount,
+  data,
   {
    useNonceSequence: true,
-    customNonceKey: 100,
   }
-];
+);
 
-const res = await  fuseSDK.executeBatch(calls, txOptions);
-console.log(`UserOpHash: ${res?.userOpHash}`);
-console.log('Waiting for transaction...');
-
-const receipt = await res?.wait();
-console.log('Transaction Hash:', receipt?.transactionHash);
+await fuseSDK.transferToken(
+  tokenAddress,
+  to,
+  amount,
+  data,
+  {
+   useNonceSequence: true,
+    customNonceKey: 231,
+  }
+);
 ```
 
 </PlatformTabItem>
