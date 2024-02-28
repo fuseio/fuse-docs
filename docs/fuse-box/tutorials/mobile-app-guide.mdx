@@ -13,7 +13,7 @@ Whether you're a pro developer wanting to try out blockchain or someone new to t
 
 ## Pre-requites:
 - Basic knowledge of Dart/Flutter
-- An API Key from [Console](https://console.fuse.io)
+- An API Key from [Console](https://console.fuse.io/build)
 
 ## Step 1: Set Up Your Project
 Create a new project folder and initialize it using Flutter:
@@ -29,8 +29,6 @@ Open the project in your favorite code editor, such as VSCode and run it using:
 flutter run
 ```
 You will find the default app running: 
-
-_Image_
 
 ## Step2: Index
 Open your Flutter project and update the default  Dart file in the `lib` dir of your app, `main.dart`.
@@ -154,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             GestureDetector(
               onTap: () async {
-                const apiKey = 'pk_wEP0gTlc3jcvBXEDpSnXBgbQ';
+                const apiKey = 'API_KEY';
                 final privateKey = EthPrivateKey.fromHex(
                     'EOA_PRIVATE_KEY’');
                 final fuseSDK = await FuseSDK.init(apiKey, privateKey);
@@ -189,8 +187,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
 Run the application. 
 
-_Image_
-
 Click the **Connect** button, you will see the Smart Contract Wallet Address logged to the console.
 
 _**Note: If you are experiencing problems, open the `macos` directory, open `Runner` and open the `DebugProfile.entitlements` add the line:**_
@@ -201,3 +197,92 @@ _**Note: If you are experiencing problems, open the `macos` directory, open `Run
 ```
 
 Restart your file, click “Connect” and you will see the Smart Contract Wallet logged to the Console. The next step will be to update the UI and change the State to display the address via the UI.
+
+To update the UI, we have to `setState` of the Flutter app so that we can change the Button from “Create” to “Transfer” and Display the created Smart Contract Account to the UI.
+
+Update the code:
+
+```dart
+class _MyHomePageState extends State<MyHomePage> {
+  String walletAddress = ''; // Variable to hold the wallet address
+
+  @override
+  Widget build(BuildContext context) {
+    // Determine the text content based on walletAddress
+    String buttonText = walletAddress.isEmpty ? 'Create' : 'Transfer';
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('FuseBox Mobile App'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+           
+            GestureDetector(
+              onTap: () async {
+                print("OKKK");
+                const apiKey = 'API_KEY';
+                final privateKey = EthPrivateKey.fromHex(
+                    'EOA_PRIVATE_KEY’');
+
+                final fuseSDK = await FuseSDK.init(apiKey, privateKey);
+                String address = fuseSDK.wallet.getSender();
+                print('Smart contract wallet address: $address');
+
+                setState(() {
+                  // Update the walletAddress variable with the obtained address
+                  walletAddress = address;
+                });
+              },
+              child: Container(
+                height: 45,
+                width: 130,
+                decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                        colors: [Color(0xff9DCEFF), Color(0xff92A3FD)]),
+                    borderRadius: BorderRadius.circular(50)),
+                child: Center(
+                  child: Text(
+                    buttonText,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Container(
+              height:50,
+              width: 300,
+              decoration: BoxDecoration(
+                  color: Colors.green, borderRadius: BorderRadius.circular(4)),
+              child: Center(
+                child: Text(
+                  'SCW: $walletAddress',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w100,
+                      fontSize: 12),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+Re-Run the code!
+
+Click the “Create Button” You will see the Smart Contract Address displayed on your screen, and the Button is now ready for carrying out Transfers.
+
+## Conclusion
+This is a beginner guide on creating Smart Contract Wallets using the Fuse Wallet SDK. Developers can build Mobile Apps where users can authentication using Social Methods and get assinged a Smart Contract Wallet address which they can use to carry out UserOperations according to the ERC-4337 standard. In the next guide, we will walk through sending "Transfers" to the Fuse Blockchain from Mobile App powered by the Fuse Wallet SDK.
