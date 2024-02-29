@@ -54,6 +54,12 @@ const config = {
             ]
           ]
         },
+        sitemap: {
+          changefreq: 'always',
+          priority: 0.5,
+          ignorePatterns: ['/tags/**'],
+          filename: 'sitemap.xml',
+        },
         blog: false,
         gtag: {
           trackingID: "G-ZQQQ9Q88VY",
