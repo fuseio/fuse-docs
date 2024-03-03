@@ -13,20 +13,12 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: "img/logo.svg",
   staticDirectories: ["static"],
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "fuse", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
-
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  organizationName: "fuse",
+  projectName: "docusaurus",
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
   },
-
   presets: [
     [
       "classic",
@@ -71,10 +63,8 @@ const config = {
       }),
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-
     ({
       prism: {
         additionalLanguages: ["dart", "solidity", "javascript"],
@@ -87,33 +77,19 @@ const config = {
         respectPrefersColorScheme: false,
       },
       algolia: {
-        // The application ID provided by Algolia
         appId: "NPQ4ZLHJEE",
-
-        // Public API key: it is safe to commit it
         apiKey: "634a56f04a07683a37e4462981e0a754",
-
         indexName: "fuseio",
-
-        // Optional: see doc section below
         contextualSearch: true,
-
-
-
-        // Optional: Algolia search parameters
         searchParameters: {},
-
-        // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: "search",
-
-        //... other Algolia params
+        externalUrlRegex: 'voltage\\.finance|fuse\\.io',
       },
       navbar: {
         logo: {
           alt: "Fuse_logo",
           src: "img/fuse-logo.svg",
         },
-
         items: [
           {
             to: "https://discord.com/invite/jpPMeSZ",
@@ -175,7 +151,10 @@ const config = {
           {
             title: "Getting Started",
             items: [
-              { label: "Fuse Network", to: "https://www.fuse.io/network" },
+              {
+                label: "Fuse Network",
+                to: "https://www.fuse.io/network"
+              },
               {
                 label: "Mobile Stack",
                 to: "https://www.fuse.io/mobile",
@@ -199,7 +178,7 @@ const config = {
               },
               {
                 label: "Staking",
-                to: "https://staking.fuse.io/",
+                to: "https://console.fuse.io/staking",
               },
               {
                 label: "Governance",
@@ -216,7 +195,7 @@ const config = {
             items: [
               {
                 label: "Brand kits",
-                to: "https://uploads-ssl.webflow.com/63a6d0820bd1f472b4150067/63f758e4017a399398360f78_Brand%20kit.pdf",
+                to: "https://www.fuse.io/brand-kit",
               },
               {
                 label: "Jobs",
