@@ -14,7 +14,7 @@ const config = {
   favicon: "img/logo.svg",
   staticDirectories: ["static"],
   organizationName: "fuse",
-  projectName: "docusaurus",
+  projectName: "fuse-docs",
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
