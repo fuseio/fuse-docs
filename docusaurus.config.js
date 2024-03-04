@@ -173,8 +173,8 @@ const config = {
                 to: "https://explorer.fuse.io/",
               },
               {
-                label: "Documentation",
-                to: "https://docs.fuse.io/",
+                label: "Bridge",
+                to: "https://console.fuse.io/bridge",
               },
               {
                 label: "Staking",
