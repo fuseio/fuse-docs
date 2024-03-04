@@ -24,9 +24,18 @@ import Markdown from "@theme/Markdown";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
-<h1 className={"openapi__heading"}>Get Wallet Actions</h1>
+<h1
+  className={"openapi__heading"}
+>
+  Get Wallet Actions
+</h1>
 
-<MethodEndpoint method={"get"} path={"/api/v2/smart-wallets/actions"}></MethodEndpoint>
+<MethodEndpoint
+  method={"get"}
+  path={"/api/v2/smart-wallets/actions"}
+>
+  
+</MethodEndpoint>
 
 
 
@@ -34,29 +43,299 @@ Get Wallet Actions
 
 ## Request
 
-<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"description":"(Required) Your Public API key","example":"{{publicKey}}"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"page","in":"query","schema":{"type":"integer"},"example":"1"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"limit","in":"query","schema":{"type":"integer"},"example":"10"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"tokenAddress","in":"query","schema":{"type":"string"},"example":"0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
-
-Successful response
-
-</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}>
-
-object
-
-</div></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"docs\": [\n    {\n      \"_id\": \"6502e7648e04f67688ac69f9\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"swapTokens\",\n      \"status\": \"pending\",\n      \"received\": [\n        {\n          \"name\": \"Luna Terra\",\n          \"symbol\": \"atLUNA\",\n          \"address\": \"0x588e24DEd8f850b14BB2e62E9c50A7Cd5Ee13Da9\",\n          \"decimals\": 18,\n          \"value\": \"12320154038834973\",\n          \"type\": \"ERC-20\",\n          \"_id\": \"6502e7648e04f67688ac69fa\"\n        }\n      ],\n      \"sent\": [\n        {\n          \"name\": \"GoodDollar\",\n          \"symbol\": \"G$\",\n          \"address\": \"0x495d133B938596C9984d462F007B676bDc57eCEC\",\n          \"decimals\": 2,\n          \"value\": \"1\",\n          \"to\": \"0xE3F85aAd0c8DD7337427B9dF5d0fB741d65EEEB5\",\n          \"type\": \"ERC-20\",\n          \"_id\": \"6502e7648e04f67688ac69fb\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"0.01 G$ was swapped to 0.012320154038834972 atLUNA\",\n      \"createdAt\": \"2023-09-14T10:58:44.641Z\",\n      \"updatedAt\": \"2023-09-14T10:58:44.641Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502e75d8e04f67688ac69f3\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"swapTokens\",\n      \"status\": \"pending\",\n      \"received\": [\n        {\n          \"name\": \"GoodDollar\",\n          \"symbol\": \"G$\",\n          \"address\": \"0x495d133B938596C9984d462F007B676bDc57eCEC\",\n          \"decimals\": 2,\n          \"value\": \"1693317379\",\n          \"type\": \"ERC-20\",\n          \"_id\": \"6502e75d8e04f67688ac69f4\"\n        }\n      ],\n      \"sent\": [\n        {\n          \"name\": \"Fuse Token\",\n          \"symbol\": \"FUSE\",\n          \"address\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n          \"decimals\": 18,\n          \"value\": \"10000000000000000\",\n          \"to\": \"0xE3F85aAd0c8DD7337427B9dF5d0fB741d65EEEB5\",\n          \"type\": \"native\",\n          \"_id\": \"6502e75d8e04f67688ac69f5\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"0.01 FUSE was swapped to 16933173.79 G$\",\n      \"createdAt\": \"2023-09-14T10:58:37.027Z\",\n      \"updatedAt\": \"2023-09-14T10:58:37.027Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502e7438e04f67688ac69ed\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"batchTransaction\",\n      \"status\": \"pending\",\n      \"sent\": [\n        {\n          \"name\": \"GoodDollar\",\n          \"symbol\": \"G$\",\n          \"address\": \"0x495d133B938596C9984d462F007B676bDc57eCEC\",\n          \"decimals\": 2,\n          \"value\": \"10\",\n          \"to\": \"0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808\",\n          \"_id\": \"6502e7438e04f67688ac69ee\"\n        },\n        {\n          \"name\": \"GoodDollar\",\n          \"symbol\": \"G$\",\n          \"address\": \"0x495d133B938596C9984d462F007B676bDc57eCEC\",\n          \"decimals\": 2,\n          \"value\": \"10\",\n          \"to\": \"0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808\",\n          \"_id\": \"6502e7438e04f67688ac69ef\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"Batch transferring to 2 recipients\",\n      \"received\": [],\n      \"createdAt\": \"2023-09-14T10:58:11.870Z\",\n      \"updatedAt\": \"2023-09-14T10:58:11.870Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502e5abdf48eca536d04252\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"nftTransfer\",\n      \"status\": \"pending\",\n      \"sent\": [\n        {\n          \"name\": \"Cozy Cosmonauts\",\n          \"symbol\": \"COZY\",\n          \"address\": \"0x32319834d90323127988E4e2DC7b2162d4262904\",\n          \"value\": \"0\",\n          \"to\": \"0x5BBEA139C1b1b32CF7b5C7fD1D1fF802De006117\",\n          \"type\": \"ERC-721\",\n          \"tokenId\": \"1\",\n          \"_id\": \"6502e5abdf48eca536d04253\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"COZY #1 sent to 0x5BBEA139C1b1b32CF7b5C7fD1D1fF802De006117\",\n      \"received\": [],\n      \"createdAt\": \"2023-09-14T10:51:23.189Z\",\n      \"updatedAt\": \"2023-09-14T10:51:23.189Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502ca26d02e33b857c1d71c\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"unstakeTokens\",\n      \"status\": \"pending\",\n      \"received\": [\n        {\n          \"name\": \"Liquid staked Fuse\",\n          \"symbol\": \"sFUSE\",\n          \"address\": \"0xb1DD0B683d9A56525cC096fbF5eec6E60FE79871\",\n          \"decimals\": 18,\n          \"value\": \"159514909830694585\",\n          \"_id\": \"6502ca26d02e33b857c1d71d\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"Unstaked 0.15951490983069458 sFUSE\",\n      \"sent\": [],\n      \"createdAt\": \"2023-09-14T08:53:58.749Z\",\n      \"updatedAt\": \"2023-09-14T08:53:58.749Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502ca20d02e33b857c1d716\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"stakeTokens\",\n      \"status\": \"pending\",\n      \"sent\": [\n        {\n          \"name\": \"Fuse Token\",\n          \"symbol\": \"FUSE\",\n          \"address\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n          \"decimals\": 18,\n          \"value\": \"100000000000000000\",\n          \"type\": \"native\",\n          \"_id\": \"6502ca20d02e33b857c1d717\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"Staked 0.1 FUSE\",\n      \"received\": [],\n      \"createdAt\": \"2023-09-14T08:53:52.354Z\",\n      \"updatedAt\": \"2023-09-14T08:53:52.354Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502ca18d02e33b857c1d712\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"approveToken\",\n      \"status\": \"pending\",\n      \"sent\": [\n        {\n          \"name\": \"GoodDollar\",\n          \"symbol\": \"G$\",\n          \"address\": \"0x495d133B938596C9984d462F007B676bDc57eCEC\",\n          \"decimals\": 2,\n          \"value\": \"1000000\",\n          \"to\": \"0x5BBEA139C1b1b32CF7b5C7fD1D1fF802De006117\",\n          \"_id\": \"6502ca18d02e33b857c1d713\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"Approved 10000 G$\",\n      \"received\": [],\n      \"createdAt\": \"2023-09-14T08:53:44.350Z\",\n      \"updatedAt\": \"2023-09-14T08:53:44.350Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502ca12d02e33b857c1d70d\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"tokenTransfer\",\n      \"status\": \"pending\",\n      \"sent\": [\n        {\n          \"name\": \"Flambucks\",\n          \"symbol\": \"Fmb\",\n          \"address\": \"0xb1232fD89d027e4B949cED570609e8aD0e18811e\",\n          \"decimals\": 18,\n          \"value\": \"1000000000000000000\",\n          \"to\": \"0xcc95E80DA76bd41507b99d9b977Dc3062bcf6430\",\n          \"type\": \"ERC-20\",\n          \"_id\": \"6502ca12d02e33b857c1d70e\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"Transferred 1 Fmb\",\n      \"received\": [],\n      \"createdAt\": \"2023-09-14T08:53:38.715Z\",\n      \"updatedAt\": \"2023-09-14T08:53:38.715Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502ca03d02e33b857c1d707\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"tokenTransfer\",\n      \"status\": \"pending\",\n      \"sent\": [\n        {\n          \"name\": \"Fuse Token\",\n          \"symbol\": \"FUSE\",\n          \"address\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n          \"decimals\": 18,\n          \"value\": \"0\",\n          \"to\": \"0x5BBEA139C1b1b32CF7b5C7fD1D1fF802De006117\",\n          \"type\": \"native\",\n          \"_id\": \"6502ca03d02e33b857c1d708\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"Transferred 0 FUSE\",\n      \"received\": [],\n      \"createdAt\": \"2023-09-14T08:53:23.146Z\",\n      \"updatedAt\": \"2023-09-14T08:53:23.146Z\",\n      \"__v\": 0\n    }\n  ],\n  \"totalDocs\": 9,\n  \"limit\": 20,\n  \"totalPages\": 1,\n  \"page\": 1,\n  \"pagingCounter\": 1,\n  \"hasPrevPage\": false,\n  \"hasNextPage\": false,\n  \"prevPage\": null,\n  \"nextPage\": null\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"401"} value={"401"}><div>
-
-Unauthorized
-
-</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}>
-
-object
-
-</div></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 401,\n  \"errorMessage\": {\n    \"statusCode\": 401,\n    \"message\": \"Unauthorized\"\n  },\n  \"path\": \"/api/v2/smart-wallet/actions?apiKey={{publicKey}}\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"403"} value={"403"}><div>
-
-Forbidden
-
-</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}>
-
-object
-
-</div></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 403,\n  \"errorMessage\": {\n    \"statusCode\": 403,\n    \"message\": \"Forbidden resource\",\n    \"error\": \"Forbidden\"\n  },\n  \"path\": \"/api/v2/smart-wallet/actions?apiKey={{publicKey}}\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"description":"(Required) Your Public API key","example":"{{publicKey}}"}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"page","in":"query","schema":{"type":"integer"},"example":"1"}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"limit","in":"query","schema":{"type":"integer"},"example":"10"}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"tokenAddress","in":"query","schema":{"type":"string"},"example":"0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Successful response
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <div
+                        style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+                      >
+                        
+                        
+                        object
+                        
+                        
+                      </div>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"Example"}
+                  value={"Example"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"docs\": [\n    {\n      \"_id\": \"6502e7648e04f67688ac69f9\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"swapTokens\",\n      \"status\": \"pending\",\n      \"received\": [\n        {\n          \"name\": \"Luna Terra\",\n          \"symbol\": \"atLUNA\",\n          \"address\": \"0x588e24DEd8f850b14BB2e62E9c50A7Cd5Ee13Da9\",\n          \"decimals\": 18,\n          \"value\": \"12320154038834973\",\n          \"type\": \"ERC-20\",\n          \"_id\": \"6502e7648e04f67688ac69fa\"\n        }\n      ],\n      \"sent\": [\n        {\n          \"name\": \"GoodDollar\",\n          \"symbol\": \"G$\",\n          \"address\": \"0x495d133B938596C9984d462F007B676bDc57eCEC\",\n          \"decimals\": 2,\n          \"value\": \"1\",\n          \"to\": \"0xE3F85aAd0c8DD7337427B9dF5d0fB741d65EEEB5\",\n          \"type\": \"ERC-20\",\n          \"_id\": \"6502e7648e04f67688ac69fb\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"0.01 G$ was swapped to 0.012320154038834972 atLUNA\",\n      \"createdAt\": \"2023-09-14T10:58:44.641Z\",\n      \"updatedAt\": \"2023-09-14T10:58:44.641Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502e75d8e04f67688ac69f3\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"swapTokens\",\n      \"status\": \"pending\",\n      \"received\": [\n        {\n          \"name\": \"GoodDollar\",\n          \"symbol\": \"G$\",\n          \"address\": \"0x495d133B938596C9984d462F007B676bDc57eCEC\",\n          \"decimals\": 2,\n          \"value\": \"1693317379\",\n          \"type\": \"ERC-20\",\n          \"_id\": \"6502e75d8e04f67688ac69f4\"\n        }\n      ],\n      \"sent\": [\n        {\n          \"name\": \"Fuse Token\",\n          \"symbol\": \"FUSE\",\n          \"address\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n          \"decimals\": 18,\n          \"value\": \"10000000000000000\",\n          \"to\": \"0xE3F85aAd0c8DD7337427B9dF5d0fB741d65EEEB5\",\n          \"type\": \"native\",\n          \"_id\": \"6502e75d8e04f67688ac69f5\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"0.01 FUSE was swapped to 16933173.79 G$\",\n      \"createdAt\": \"2023-09-14T10:58:37.027Z\",\n      \"updatedAt\": \"2023-09-14T10:58:37.027Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502e7438e04f67688ac69ed\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"batchTransaction\",\n      \"status\": \"pending\",\n      \"sent\": [\n        {\n          \"name\": \"GoodDollar\",\n          \"symbol\": \"G$\",\n          \"address\": \"0x495d133B938596C9984d462F007B676bDc57eCEC\",\n          \"decimals\": 2,\n          \"value\": \"10\",\n          \"to\": \"0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808\",\n          \"_id\": \"6502e7438e04f67688ac69ee\"\n        },\n        {\n          \"name\": \"GoodDollar\",\n          \"symbol\": \"G$\",\n          \"address\": \"0x495d133B938596C9984d462F007B676bDc57eCEC\",\n          \"decimals\": 2,\n          \"value\": \"10\",\n          \"to\": \"0xA21d0D4Ee4F633e72CEE117b93f662aDfC30B808\",\n          \"_id\": \"6502e7438e04f67688ac69ef\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"Batch transferring to 2 recipients\",\n      \"received\": [],\n      \"createdAt\": \"2023-09-14T10:58:11.870Z\",\n      \"updatedAt\": \"2023-09-14T10:58:11.870Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502e5abdf48eca536d04252\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"nftTransfer\",\n      \"status\": \"pending\",\n      \"sent\": [\n        {\n          \"name\": \"Cozy Cosmonauts\",\n          \"symbol\": \"COZY\",\n          \"address\": \"0x32319834d90323127988E4e2DC7b2162d4262904\",\n          \"value\": \"0\",\n          \"to\": \"0x5BBEA139C1b1b32CF7b5C7fD1D1fF802De006117\",\n          \"type\": \"ERC-721\",\n          \"tokenId\": \"1\",\n          \"_id\": \"6502e5abdf48eca536d04253\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"COZY #1 sent to 0x5BBEA139C1b1b32CF7b5C7fD1D1fF802De006117\",\n      \"received\": [],\n      \"createdAt\": \"2023-09-14T10:51:23.189Z\",\n      \"updatedAt\": \"2023-09-14T10:51:23.189Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502ca26d02e33b857c1d71c\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"unstakeTokens\",\n      \"status\": \"pending\",\n      \"received\": [\n        {\n          \"name\": \"Liquid staked Fuse\",\n          \"symbol\": \"sFUSE\",\n          \"address\": \"0xb1DD0B683d9A56525cC096fbF5eec6E60FE79871\",\n          \"decimals\": 18,\n          \"value\": \"159514909830694585\",\n          \"_id\": \"6502ca26d02e33b857c1d71d\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"Unstaked 0.15951490983069458 sFUSE\",\n      \"sent\": [],\n      \"createdAt\": \"2023-09-14T08:53:58.749Z\",\n      \"updatedAt\": \"2023-09-14T08:53:58.749Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502ca20d02e33b857c1d716\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"stakeTokens\",\n      \"status\": \"pending\",\n      \"sent\": [\n        {\n          \"name\": \"Fuse Token\",\n          \"symbol\": \"FUSE\",\n          \"address\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n          \"decimals\": 18,\n          \"value\": \"100000000000000000\",\n          \"type\": \"native\",\n          \"_id\": \"6502ca20d02e33b857c1d717\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"Staked 0.1 FUSE\",\n      \"received\": [],\n      \"createdAt\": \"2023-09-14T08:53:52.354Z\",\n      \"updatedAt\": \"2023-09-14T08:53:52.354Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502ca18d02e33b857c1d712\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"approveToken\",\n      \"status\": \"pending\",\n      \"sent\": [\n        {\n          \"name\": \"GoodDollar\",\n          \"symbol\": \"G$\",\n          \"address\": \"0x495d133B938596C9984d462F007B676bDc57eCEC\",\n          \"decimals\": 2,\n          \"value\": \"1000000\",\n          \"to\": \"0x5BBEA139C1b1b32CF7b5C7fD1D1fF802De006117\",\n          \"_id\": \"6502ca18d02e33b857c1d713\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"Approved 10000 G$\",\n      \"received\": [],\n      \"createdAt\": \"2023-09-14T08:53:44.350Z\",\n      \"updatedAt\": \"2023-09-14T08:53:44.350Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502ca12d02e33b857c1d70d\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"tokenTransfer\",\n      \"status\": \"pending\",\n      \"sent\": [\n        {\n          \"name\": \"Flambucks\",\n          \"symbol\": \"Fmb\",\n          \"address\": \"0xb1232fD89d027e4B949cED570609e8aD0e18811e\",\n          \"decimals\": 18,\n          \"value\": \"1000000000000000000\",\n          \"to\": \"0xcc95E80DA76bd41507b99d9b977Dc3062bcf6430\",\n          \"type\": \"ERC-20\",\n          \"_id\": \"6502ca12d02e33b857c1d70e\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"Transferred 1 Fmb\",\n      \"received\": [],\n      \"createdAt\": \"2023-09-14T08:53:38.715Z\",\n      \"updatedAt\": \"2023-09-14T08:53:38.715Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6502ca03d02e33b857c1d707\",\n      \"walletAddress\": \"0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117\",\n      \"name\": \"tokenTransfer\",\n      \"status\": \"pending\",\n      \"sent\": [\n        {\n          \"name\": \"Fuse Token\",\n          \"symbol\": \"FUSE\",\n          \"address\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n          \"decimals\": 18,\n          \"value\": \"0\",\n          \"to\": \"0x5BBEA139C1b1b32CF7b5C7fD1D1fF802De006117\",\n          \"type\": \"native\",\n          \"_id\": \"6502ca03d02e33b857c1d708\"\n        }\n      ],\n      \"userOpHash\": \"0x111\",\n      \"txHash\": \"\",\n      \"blockNumber\": 0,\n      \"description\": \"Transferred 0 FUSE\",\n      \"received\": [],\n      \"createdAt\": \"2023-09-14T08:53:23.146Z\",\n      \"updatedAt\": \"2023-09-14T08:53:23.146Z\",\n      \"__v\": 0\n    }\n  ],\n  \"totalDocs\": 9,\n  \"limit\": 20,\n  \"totalPages\": 1,\n  \"page\": 1,\n  \"pagingCounter\": 1,\n  \"hasPrevPage\": false,\n  \"hasNextPage\": false,\n  \"prevPage\": null,\n  \"nextPage\": null\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"401"}
+        value={"401"}
+      >
+        <div>
+          
+          
+          Unauthorized
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <div
+                        style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+                      >
+                        
+                        
+                        object
+                        
+                        
+                      </div>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"Example"}
+                  value={"Example"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"statusCode\": 401,\n  \"errorMessage\": {\n    \"statusCode\": 401,\n    \"message\": \"Unauthorized\"\n  },\n  \"path\": \"/api/v2/smart-wallet/actions?apiKey={{publicKey}}\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"403"}
+        value={"403"}
+      >
+        <div>
+          
+          
+          Forbidden
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <div
+                        style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+                      >
+                        
+                        
+                        object
+                        
+                        
+                      </div>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"Example"}
+                  value={"Example"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"statusCode\": 403,\n  \"errorMessage\": {\n    \"statusCode\": 403,\n    \"message\": \"Forbidden resource\",\n    \"error\": \"Forbidden\"\n  },\n  \"path\": \"/api/v2/smart-wallet/actions?apiKey={{publicKey}}\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
       
