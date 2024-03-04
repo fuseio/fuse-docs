@@ -1,0 +1,201 @@
+---
+title: Handling Transfers Using the Fuse Wallet SDK in a Flutter App
+sidebar_position: 9
+---
+
+## Pre-requites:
+- Basic knowledge of Dart/Flutter
+- An API Key from [Console](https://console.fuse.io/build)
+- PrivateKEY from an Externally Owned Account (EOA)
+
+## Step 1: Set Up Your Flutter Project
+Create a new Flutter project using the following command:
+
+```bash
+flutter create fuse_wallet_app
+cd fuse_wallet_app
+```
+
+Open the project in your favorite code editor, such as VSCode and run it using:
+
+```bash
+flutter run
+```
+You will find the default app running.
+
+## Step 2: Add Dependencies
+In your pubspec.yaml file, add the required dependencies:
+
+```yaml
+dependencies:
+  fuse_wallet_sdk: ^0.3.1
+  flutter_hooks: ^0.23.0
+```
+
+Run flutter pub get to install the dependencies.
+
+## Step 3: Implement the Wallet Creation Screen
+
+Open your Flutter project and open the default  Dart file in the `lib` dir of your app, `main.dart`. Update it with the following code:
+
+
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Smart Contract Wallet',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: WalletCreationScreen(),
+    );
+  }
+}
+
+
+class WalletCreationScreen extends HookWidget {
+  @override
+  Widget build(BuildContext context) {
+    final createWallet = useState<String?>(null);
+
+    Future<void> _createSmartContractWallet() async {
+      const apiKey = 'pk_KEY';
+      final privateKey = EthPrivateKey.fromHex('0xEOA_PRIVATE_KEY');
+
+      try {
+        final fuseSDK = await FuseSDK.init(apiKey, privateKey);
+        String address = fuseSDK.wallet.getSender();
+
+        createWallet.value = address;
+print('Smart contract wallet address: ${createWallet.value}');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TransferScreen(fuseSDK: fuseSDK, walletAddress: address),
+          ),
+        );
+      } catch (e) {
+        // Handle initialization error
+        print('Error during wallet creation: $e');
+      }
+    }
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('FuseBox Mobile App'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                _createSmartContractWallet();
+              },
+              child: Text('Create Smart Contract Wallet'),
+            ),
+            SizedBox(height: 20),
+            if (createWallet.value != null)
+              Text('Wallet Address: ${createWallet.value}'),
+              
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+In the Screen above, we implemented a Basic Screen when you can click a Button, and create a Smart Contract Wallet. The screen navigates to a Transfer Screen where the created Smart Contract Wallet is displayed.
+
+## Step 4: Implement the Transfer
+Create a new file named transfer_screen.dart and implement the Transfer Screen.
+
+```dart
+class TransferScreen extends HookWidget {
+  final FuseSDK fuseSDK;
+  final String walletAddress;
+
+
+  TransferScreen({required this.fuseSDK, required this.walletAddress});
+
+  Future<void> _transferFunds() async {
+    try {
+      final res = await fuseSDK.transferToken(
+        EthereumAddress.fromHex('0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'), // Replace with your token address
+        EthereumAddress.fromHex('0xd8da6bf26964af9d7eed9e03e53415d37aa96045'), //  for 'vitalik.eth'. Replace with recipient's address.
+        BigInt.parse('1000000000000000000'), // Replace with the amount in Wei
+      );
+
+      print('UserOpHash: ${res.userOpHash}');
+      print('Waiting for transaction...');
+
+      final ev = await res.wait();
+      print('Transaction successful... Hash ${ev}');
+      // Handle success, you can show a success message or navigate to another screen
+    } catch (e) {
+      // Handle the error, you can show an error message or log it
+      print('Error during transfer: $e');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Transfer Screen'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          
+          children: <Widget>[
+            Text('Wallet Address: ${walletAddress}'),
+            Text('Transfer funds here'),
+            ElevatedButton(
+              onPressed: () {
+                _transferFunds();
+              },
+              child: Text('Transfer Funds'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+Run your app using:
+```bash
+flutter run
+```
+
+You should now have a basic Flutter app that allows users to create a Smart Contract Wallet and perform token transfers using the Fuse Wallet SDK. Please replace the placeholder values with your actual API key, private key, token address, recipient address, and transfer amount.
+
+## Conclusion
+In this tutorial, we've created a simple Flutter app that leverages the Fuse Wallet SDK to demonstrate the process of creating a Smart Contract Wallet and initiating a token transfer on the Fuse Blockchain. While this example serves as a basic introduction to integrating blockchain functionality into a mobile app, developers can expand upon this foundation to build more robust and feature-rich applications.
+
+### Use Cases for Expansion
+- User Authentication and Security: Enhance the app by implementing authentication mechanisms to secure user accounts and wallet access. Integrate biometrics or PIN-based authentication for an added layer of security.
+
+- Token Balance and Transaction History: Extend the app to display the user's token balance and transaction history. Utilize the Fuse Wallet SDK's functionalities to retrieve and present this information in a user-friendly manner.
+
+- Advanced Token Transfer Features: Explore advanced token transfer features such as handling different token types, adding transfer notes, or implementing recurring transfers. This can enhance the app's versatility for various use cases.
+
+- Integration with External APIs: Integrate the app with external APIs or services to retrieve real-time market data, token prices, or additional information relevant to the user's financial activities.
+
+- Smart Contract Interactions: Explore smart contract interactions beyond simple transfers. Implement features like voting, decentralized finance (DeFi) integrations, or participation in decentralized applications (DApps).
+
+Remember, this example is a starting point, and developers can tailor the app to meet specific use cases and business requirements. Fuse Wallet SDK provides a powerful toolkit to explore various blockchain-related functionalities, and integrating these features can result in a versatile and powerful mobile app for users interested in decentralized finance and blockchain technology.
+
+
