@@ -33,12 +33,12 @@ To ensure your transfer request is successful, subscribe to the transactionStart
 const nativeTokenAddress = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
 const usdcTokenAddress = "0x28C3d1cD466Ba22f6cae51b1a4692a831696391A";
 const res = await fuseSDK.swapTokens(
-  new TradeRequestBody({
-    amountIn: "0.1",
-    currencyIn: nativeTokenAddress,
-    currencyOut: usdcTokenAddress,
-    recipient: fuseSDK.wallet.getSender(),
-  })
+  new TradeRequest(
+    nativeTokenAddress,
+    usdcTokenAddress,
+    parseUnits('1', 18),
+    true,
+  ),
 );
 
 console.log(`UserOpHash: ${res?.userOpHash}`);
@@ -54,15 +54,16 @@ console.log(
 <PlatformTabItem value="flutter">
 
 ```dart
-final TradeRequestBody tradeRequestBody = TradeRequestBody(
-  currencyIn: 'CURRENCY_IN',
-  currencyOut: 'CURRENCY_OUT',
-  amountIn: 'AMOUNT',
-  recipient: 'RECIPIENT_ADDRESS',
-);
+final nativeTokenAddress = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
+final usdcTokenAddress = "0x28C3d1cD466Ba22f6cae51b1a4692a831696391A";
 
 final res = await fuseSDK.swapTokens(
-  tradeRequestBody,
+  TradeRequest(
+    inputToken: nativeTokenAddress,
+    outputToken: usdcTokenAddress,
+    inputAmount: BigInt.parse('100000000000000000'),
+    exactIn: true,
+  ),
 );
 
 print('UserOpHash: ${res.userOpHash}');
