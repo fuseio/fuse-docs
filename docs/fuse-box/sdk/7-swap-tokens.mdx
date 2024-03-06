@@ -8,18 +8,18 @@ import PlatformTabItem from "../../components/PlatformTabItem";
 
 ### Swap Tokens
 
-To exchange one token for another, use the **`swapTokens()`** method. This method swaps the token with the contract address specified in the `currencyIn` parameter for the token with the contract address specified in the `currencyOut` parameter at the current market price.&#x20;
+To exchange one token for another, use the **`swapTokens()`** method. This method swaps the token with the contract address specified in the `inputToken` parameter for the token with the contract address specified in the `outputToken` parameter at the current market price.&#x20;
 
 Additionally, this method relays the transaction and covers the gas fees for the user, so they don't need to worry about those fees.
 
-The method requires a **`TradeRequestBody`** parameter with the following properties:
+The method requires a **`TradeRequest`** parameter with the following properties:
 
-| Parameter   | Type      | Description                                      |
-| ----------- | --------- | ------------------------------------------------ |
-| currencyIn  | _address_ | The contract address of the token to be swapped. |
-| currencyOut | _address_ | The contract address of the token to swap for.   |
-| amountIn    | _number_  | The amount of currencyIn to swap.                |
-| recipient   | _address_ | The recipient address for the swapped tokens.    |
+| Parameter   | Type      | Description                                                      |
+| ----------- | --------- | ------------------------------------------------                 |
+| inputToken  | _address_ | The contract address of the token to be swapped.                 |
+| outputToken | _address_ | The contract address of the token to swap for.                   |
+| inputAmount | _number_  | The amount of the input token to be traded.                      |
+| exactIn     | _boolean_ | Determines the type of trade (exact input or exact output).      |
 
 To ensure your transfer request is successful, subscribe to the transactionStarted, transactionHash, transactionSucceeded, and transactionFailed events of the FuseWalletSDK instance. This will allow you to monitor the transaction as it progresses through the network and handle any errors that may occur.
 
