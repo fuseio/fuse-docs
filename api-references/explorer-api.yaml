@@ -1,0 +1,2312 @@
+openapi: 3.0.0
+info:
+  title: Explorer API
+  description: '?module=account'
+  version: 1.0.0
+servers:
+  - url: https://api.fuse.io/api/v0/explorer
+paths:
+  /?module=account&action=eth_get_balance:
+    get:
+      summary: Return balance from a provided block
+      operationId: ethGetBalance
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - account
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - eth_get_balance
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+          description: 'string containing the address hash.'
+        - name: block
+          in: query
+          schema:
+            type: string
+          description: 'Block number as a string, or `latest`, `earliest` or `pending`. Latest is the latest balance in a consensus block. Earliest is the first recorded balance for the address. Pending is the latest balance in a consensus or nonconsensus block.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  jsonrpc:
+                    type: string
+                  result:
+                    type: string
+
+  /?module=account&action=balance:
+    get:
+      summary: Get the native token balance for an address
+      operationId: getBalance
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - account
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - balance
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+          description: 'string containing the address hash.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+
+  /?module=account&action=balancemulti:
+    get:
+      summary: Get balance for multiple addresses
+      operationId: getBalanceMulti
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - account
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - balancemulti
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+          description: 'string containing the address hash, comma separated. Max 20 addresses.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        account:
+                          type: string
+                        balance:
+                          type: string
+                        stale:
+                          type: boolean
+                  status:
+                    type: string
+
+  /?module=account&action=pendingtxlist:
+    get:
+      summary: Get pending transactions by address
+      operationId: getPendingTxList
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - account
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - pendingtxlist
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+          description: 'string containing the address hash.'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing the page number used for pagination. `offset` must also be provided.'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing number of transactions returned per page. `page` must also be provided.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                  status:
+                    type: string
+
+  /?module=account&action=txlist:
+    get:
+      summary: Get transactions by address
+      operationId: getTxList
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - account
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - txlist
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+          description: 'string containing the address hash.'
+        - name: startblock
+          in: query
+          schema:
+            type: integer
+          description: 'integer block number to start transaction search.'
+        - name: endblock
+          in: query
+          schema:
+            type: integer
+          description: 'integer block number to stop transaction search.'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing the page number used for pagination. `offset` must also be provided.'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing number of transactions returned per page. `page` must also be provided.'
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+          description: 'sorting preference, `asc` for ascending and `desc` for descending. Descending is default.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                  status:
+                    type: string
+
+  /?module=account&action=txlistinternal:
+    get:
+      summary: Get internal transactions by transaction or address hash
+      operationId: getTxListInternal
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - account
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - txlistinternal
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: txhash
+          in: query
+          schema:
+            type: string
+          description: 'string representing the transaction hash to check for internal transactions.'
+        - name: address
+          in: query
+          schema:
+            type: string
+          description: 'string containing the address hash. Optional.'
+        - name: startblock
+          in: query
+          schema:
+            type: integer
+          description: 'integer block number to start transaction search. Optional.'
+        - name: endblock
+          in: query
+          schema:
+            type: integer
+          description: 'integer block number to stop transaction search. Optional.'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing the page number used for pagination. `offset` must also be provided. Optional.'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing number of transactions returned per page. `page` must also be provided. Optional.'
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+          description: 'sorting preference, `asc` for ascending and `desc` for descending. Descending is default. Only available if `address` is provided.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                  status:
+                    type: string
+
+  /?module=account&action=tokentx:
+    get:
+      summary: Get token transfer events by address
+      operationId: getTokenTx
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - account
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - tokentx
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+          description: 'string containing the address hash.'
+        - name: contractaddress
+          in: query
+          schema:
+            type: string
+          description: 'string with the token contract address to identify a contract. Optional.'
+        - name: startblock
+          in: query
+          schema:
+            type: integer
+          description: 'integer block number to start transaction search. Optional.'
+        - name: endblock
+          in: query
+          schema:
+            type: integer
+          description: 'integer block number to stop transaction search. Optional.'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing the page number used for pagination. `offset` must also be provided. Optional.'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing number of transactions returned per page. `page` must also be provided. Optional.'
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+          description: 'sorting preference, `asc` for ascending and `desc` for descending. Descending is default. Optional.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                  status:
+                    type: string
+
+  /?module=account&action=tokennfttx:
+    get:
+      summary: Get ERC-721 token transfer events by address
+      operationId: getTokenNftTx
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - account
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - tokennfttx
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+          description: 'string containing the address hash.'
+        - name: contractaddress
+          in: query
+          schema:
+            type: string
+          description: 'string with the token contract address to identify a contract. Optional.'
+        - name: startblock
+          in: query
+          schema:
+            type: integer
+          description: 'integer block number to start transaction search. Optional.'
+        - name: endblock
+          in: query
+          schema:
+            type: integer
+          description: 'integer block number to stop transaction search. Optional.'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing the page number used for pagination. `offset` must also be provided. Optional.'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing number of transactions returned per page. `page` must also be provided. Optional.'
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+          description: 'sorting preference, `asc` for ascending and `desc` for descending. Descending is default. Optional.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                  status:
+                    type: string
+
+  /?module=account&action=tokenbalance:
+    get:
+      summary: Get token account balance for token contract address
+      operationId: getTokenBalance
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - account
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - tokenbalance
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: contractaddress
+          in: query
+          required: true
+          schema:
+            type: string
+          description: 'string containing the contract address hash.'
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+          description: 'string containing the account address hash to retrieve balance for.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+
+  /?module=account&action=tokenlist:
+    get:
+      summary: Get list of tokens owned by address
+      operationId: getTokenList
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - account
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - tokenlist
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+          description: 'string containing the account address hash.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                  status:
+                    type: string
+
+  /?module=account&action=getminedblocks:
+    get:
+      summary: Get list of blocks mined by address
+      operationId: getMinedBlocks
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - account
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - getminedblocks
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+          description: 'string containing the address hash.'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing the page number used for pagination. `offset` must also be provided. Optional.'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing number of transactions returned per page. `page` must also be provided. Optional.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                  status:
+                    type: string
+
+  /?module=account&action=listaccounts:
+    get:
+      summary: Get a list of accounts and their balances
+      operationId: listAccounts
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - account
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - listaccounts
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing the page number used for pagination. `offset` must also be provided. Optional.'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          description: 'integer representing number of transactions returned per page. `page` must also be provided. Optional.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                  status:
+                    type: string
+
+  /?module=block&action=getblockreward:
+    get:
+      summary: Get block reward by block number
+      operationId: getBlockReward
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - block
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - getblockreward
+          required: true
+        - name: blockno
+          in: query
+          schema:
+            type: integer
+          required: true
+          description: Integer block number to check block rewards for.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: object
+                    properties:
+                      blockMiner:
+                        type: string
+                      blockNumber:
+                        type: string
+                      blockReward:
+                        type: string
+                      timeStamp:
+                        type: string
+                      uncleInclusionReward:
+                        type: string
+                      uncles:
+                        type: string
+                  status:
+                    type: string
+
+  /?module=block&action=getblockcountdown:
+    get:
+      summary: Get estimated block countdown time by block number
+      operationId: getBlockCountdown
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - block
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - getblockcountdown
+          required: true
+        - name: blockno
+          in: query
+          schema:
+            type: integer
+          required: true
+          description: Integer block number to check block countdown time for.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: object
+                    properties:
+                      CurrentBlock:
+                        type: string
+                      CountdownBlock:
+                        type: string
+                      RemainingBlock:
+                        type: string
+                      EstimateTimeInSec:
+                        type: string
+                  status:
+                    type: string
+
+  /?module=block&action=getblocknobytime:
+    get:
+      summary: Get block number by time stamp
+      operationId: getBlockNoByTime
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - block
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - getblocknobytime
+          required: true
+        - name: timestamp
+          in: query
+          schema:
+            type: integer
+          required: true
+          description: Integer representing the Unix timestamp in seconds.
+        - name: closest
+          in: query
+          schema:
+            type: string
+            enum:
+              - before
+              - after
+          required: true
+          description: Closest block to the provided timestamp, either before or after.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: object
+                    properties:
+                      blockNumber:
+                        type: string
+                  status:
+                    type: string
+
+  /?module=block&action=eth_block_number:
+    get:
+      summary: Get the latest block number
+      operationId: ethBlockNumber
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - block
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - eth_block_number
+          required: true
+        - name: id
+          in: query
+          schema:
+            type: integer
+          required: false
+          description: Optional nonnegative integer that represents the json rpc request id.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  result:
+                    type: string
+                  id: type
+  /?module=contract&action=listcontracts:
+    get:
+      summary: Get a list of contracts
+      operationId: listContracts
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - contract
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - listcontracts
+          required: true
+        - name: page
+          in: query
+          schema:
+            type: integer
+          required: false
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          required: false
+        - name: filter
+          in: query
+          schema:
+            type: string
+          required: false
+        - name: not_decompiled_with_version
+          in: query
+          schema:
+            type: string
+          required: false
+        - name: verified_at_start_timestamp
+          in: query
+          schema:
+            type: integer
+          required: false
+        - name: verified_at_end_timestamp
+          in: query
+          schema:
+            type: integer
+          required: false
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                  status:
+                    type: string
+  /?module=contract&action=getabi:
+    get:
+      summary: Get ABI for a verified contract
+      operationId: getAbi
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - contract
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - getabi
+          required: true
+        - name: address
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=contract&action=getsourcecode:
+    get:
+      summary: Get contract source code for a verified contract
+      operationId: getSourceCode
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - contract
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - getsourcecode
+          required: true
+        - name: address
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: object
+                  status:
+                    type: string
+  /?module=contract&action=getcontractcreation:
+    get:
+      summary: Get contract creator address hash and creation transaction hash
+      operationId: getContractCreation
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - contract
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - getcontractcreation
+          required: true
+        - name: contractaddresses
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                  status:
+                    type: string
+  /?module=contract&action=verify:
+    post:
+      summary: Verify a contract with its source code and contract creation information
+      operationId: verifyContract
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - contract
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - verify
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                addressHash:
+                  type: string
+                name:
+                  type: string
+                compilerVersion:
+                  type: string
+                optimization:
+                  type: boolean
+                contractSourceCode:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=contract&action=verify_via_sourcify:
+    post:
+      summary: Verify a contract through Sourcify
+      operationId: verifyViaSourcify
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - contract
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - verify_via_sourcify
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                addressHash:
+                  type: string
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=contract&action=verify_vyper_contract:
+    post:
+      summary: Verify a Vyper contract with its source code and contract creation information
+      operationId: verifyVyperContract
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - contract
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - verify_vyper_contract
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                addressHash:
+                  type: string
+                name:
+                  type: string
+                compilerVersion:
+                  type: string
+                contractSourceCode:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=contract&action=verifysourcecode:
+    post:
+      summary: Verify a contract with Standard input JSON file
+      operationId: verifySourceCode
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - contract
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - verifysourcecode
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                codeformat:
+                  type: string
+                contractaddress:
+                  type: string
+                contractname:
+                  type: string
+                compilerversion:
+                  type: string
+                sourceCode:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=contract&action=checkverifystatus:
+    get:
+      summary: Return status of a verification attempt
+      operationId: checkVerifyStatus
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - contract
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - checkverifystatus
+          required: true
+        - name: guid
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=contract&action=verifyproxycontract:
+    post:
+      summary: Verify proxy contract
+      operationId: verifyProxyContract
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - contract
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - verifyproxycontract
+          required: true
+        - name: address
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=contract&action=checkproxyverification:
+    get:
+      summary: Return status of a proxy contract verification attempt
+      operationId: checkProxyVerification
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - contract
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - checkproxyverification
+          required: true
+        - name: guid
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=logs&action=getLogs:
+    get:
+      summary: Get Event Logs by Address and/or Topic(s)
+      operationId: getLogs
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - logs
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - getLogs
+          required: true
+        - name: fromBlock
+          in: query
+          schema:
+            type: integer
+          required: true
+        - name: toBlock
+          in: query
+          schema:
+            type: integer
+          required: true
+        - name: address
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: topic0
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: topic1
+          in: query
+          schema:
+            type: string
+        - name: topic2
+          in: query
+          schema:
+            type: string
+        - name: topic3
+          in: query
+          schema:
+            type: string
+        - name: topic0_1_opr
+          in: query
+          schema:
+            type: string
+            enum:
+              - and
+              - or
+        - name: topic0_2_opr
+          in: query
+          schema:
+            type: string
+            enum:
+              - and
+              - or
+        - name: topic0_3_opr
+          in: query
+          schema:
+            type: string
+            enum:
+              - and
+              - or
+        - name: topic1_2_opr
+          in: query
+          schema:
+            type: string
+            enum:
+              - and
+              - or
+        - name: topic1_3_opr
+          in: query
+          schema:
+            type: string
+            enum:
+              - and
+              - or
+        - name: topic2_3_opr
+          in: query
+          schema:
+            type: string
+            enum:
+              - and
+              - or
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                        blockNumber:
+                          type: string
+                        data:
+                          type: string
+                        gasPrice:
+                          type: string
+                        gasUsed:
+                          type: string
+                        logIndex:
+                          type: string
+                        timeStamp:
+                          type: string
+                        topics:
+                          type: array
+                          items:
+                            type: string
+                        transactionHash:
+                          type: string
+                        transactionIndex:
+                          type: string
+                  status:
+                    type: string
+  /?module=stats&action=tokensupply:
+    get:
+      summary: Get ERC-20 or ERC-721 token total supply by contract address
+      operationId: tokenSupply
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - stats
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - tokensupply
+          required: true
+        - name: contractaddress
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=stats&action=ethsupplyexchange:
+    get:
+      summary: Get total supply in Wei from exchange
+      operationId: ethSupplyExchange
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - stats
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - ethsupplyexchange
+          required: true
+        - name: param
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=stats&action=ethsupply:
+    get:
+      summary: Get total supply in Wei from DB
+      operationId: ethSupply
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - stats
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - ethsupply
+          required: true
+        - name: param
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=stats&action=coinsupply:
+    get:
+      summary: Get total coin supply from DB minus burnt number
+      operationId: coinSupply
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - stats
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - coinsupply
+          required: true
+        - name: param
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=stats&action=ethprice:
+    get:
+      summary: Get latest price of native coin in USD and BTC
+      operationId: ethPrice
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - stats
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - ethprice
+          required: true
+        - name: param
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=stats&action=coinprice:
+    get:
+      summary: Get latest price of native coin in USD and BTC in more general format
+      operationId: coinPrice
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - stats
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - coinprice
+          required: true
+        - name: param
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=stats&action=totalfees:
+    get:
+      summary: Get total transaction fees in Wei paid by users to validators per day
+      operationId: totalFees
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - stats
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - totalfees
+          required: true
+        - name: param
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: string
+                  status:
+                    type: string
+  /?module=token&action=getToken:
+    get:
+      summary: Get ERC-20 or ERC-721 token by contract address
+      operationId: getToken
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - token
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - getToken
+          required: true
+        - name: contractaddress
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: object
+                    properties:
+                      cataloged:
+                        type: boolean
+                      contractAddress:
+                        type: string
+                      decimals:
+                        type: string
+                      name:
+                        type: string
+                      symbol:
+                        type: string
+                      totalSupply:
+                        type: string
+                      type:
+                        type: string
+                  status:
+                    type: string
+  /?module=token&action=getTokenHolders:
+    get:
+      summary: Get token holders by contract address
+      operationId: getTokenHolders
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - token
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - getTokenHolders
+          required: true
+        - name: contractaddress
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                        value:
+                          type: string
+                  status:
+                    type: string
+  /?module=token&action=bridgedTokenList:
+    get:
+      summary: Get bridged tokens list
+      operationId: bridgedTokenList
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - token
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - bridgedTokenList
+          required: true
+        - name: chainid
+          in: query
+          schema:
+            type: integer
+          required: true
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        foreignChainId:
+                          type: string
+                        foreignTokenContractAddressHash:
+                          type: string
+                        homeContractAddressHash:
+                          type: string
+                        homeDecimals:
+                          type: string
+                        homeHolderCount:
+                          type: integer
+                        homeName:
+                          type: string
+                        homeSymbol:
+                          type: string
+                        homeTotalSupply:
+                          type: string
+                        homeUsdValue:
+                          type: string
+                  status:
+                    type: string
+  /?module=transaction&action=gettxinfo:
+    get:
+      summary: Get transaction info
+      operationId: getTransactionInfo
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - transaction
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - gettxinfo
+          required: true
+        - name: txhash
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: index
+          in: query
+          schema:
+            type: integer
+          required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      revertReason:
+                        type: string
+                      blockNumber:
+                        type: string
+                      confirmations:
+                        type: string
+                      from:
+                        type: string
+                      gasLimit:
+                        type: string
+                      gasPrice:
+                        type: string
+                      gasUsed:
+                        type: string
+                      hash:
+                        type: string
+                      input:
+                        type: string
+                      logs:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                            data:
+                              type: string
+                            topics:
+                              type: array
+                              items:
+                                type: string
+                      success:
+                        type: boolean
+                      timeStamp:
+                        type: string
+                      to:
+                        type: string
+                      value:
+                        type: string
+                  status:
+                    type: string
+  /?module=transaction&action=gettxreceiptstatus:
+    get:
+      summary: Get transaction receipt status
+      operationId: getTransactionReceiptStatus
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - transaction
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - gettxreceiptstatus
+          required: true
+        - name: txhash
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                  status:
+                    type: string
+  /?module=transaction&action=getstatus:
+    get:
+      summary: Get error status and message
+      operationId: getErrorStatus
+      parameters:
+        - name: module
+          in: query
+          schema:
+            type: string
+            enum:
+              - transaction
+          required: true
+        - name: action
+          in: query
+          schema:
+            type: string
+            enum:
+              - getstatus
+          required: true
+        - name: txhash
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  result:
+                    type: object
+                    properties:
+                      errDescription:
+                        type: string
+                      isError:
+                        type: string
+                  status:
+                    type: string

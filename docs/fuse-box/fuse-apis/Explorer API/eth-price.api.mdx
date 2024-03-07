@@ -1,0 +1,42 @@
+---
+id: eth-price
+title: "Get latest price of native coin in USD and BTC"
+description: "Get latest price of native coin in USD and BTC"
+sidebar_label: "Get latest price of native coin in USD and BTC"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVUk1PwzAM/StRDpyqtXCshBBfQtMOIAEntENIvTVTm4TEmZiq/nfslHHgY2JVpdZ59vNzngfpPASFxtl5I2sJ2D4Eo0EW0qugekAIUdYvg7QUUELvmtQxbCxFbwnCjoKoW+iVrAeJO89pEYOxa0LApp7q6UBhlMuxkAHekglA3TAkGIsvaqVZxvHUpNlnzQfZ8zj/JT8o05sF7I5ggnfV+47PhsGn185oqh9H+aPHkk+idzZCZKazquJPA1EH4/Pl1PJ+QYXaWQSLjCrviTE7WG4ipww/xbjXDWhkUwP7jWZq0EOMag1/zB9Th79C7GWKv0DTU3xTfAcoOoUQUWSfhFsJS4K3ILQzVtD7/HgjlG3E1dM1iaStax1v4xqyZoUtBeXFtHvneZVOpm05/zKfZEHY7rc1hY5KWkQf67Iky2arFGFmHP+X26qEd9+5AEHyrRu7cnkcg9mn209QXD7M5fdx9jKU1i5ZFshdJ+x0Vs0quocPq6gkXA==
+sidebar_class_name: "get api-method"
+info_path: docs/fuse-box/fuse-apis/Explorer API/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get latest price of native coin in USD and BTC</h1>
+
+<MethodEndpoint method={"get"} path={"/?module=stats&action=ethprice"}></MethodEndpoint>
+
+
+
+Get latest price of native coin in USD and BTC
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["stats"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["ethprice"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"param","in":"query","schema":{"type":"string"},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}","required":true}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"result"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\",\n  \"result\": \"string\",\n  \"status\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

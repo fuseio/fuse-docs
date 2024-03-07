@@ -1,0 +1,42 @@
+---
+id: get-contract-creation
+title: "Get contract creator address hash and creation transaction hash"
+description: "Get contract creator address hash and creation transaction hash"
+sidebar_label: "Get contract creator address hash and creation transaction hash"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVUsFOwzAM/ZUqB05VWzhWQgghhCYOcEccQmvWTG0SbGdiqvrvOOmK0AYT26VLbL/nl/dG5TygZuPsqlW1WgPfOcuoG75DSPcqV16jHoABSdUvo7JykN7BtaEHKRsrp48AuJMDNR0MWtWj4p2PbcRo7FoqYMMg86rZE6jXKVcIH8EgCDdjgCn/RpeGmfxMdFGwEDSLgpNES7duWwQioP9yntzem0fYnYEEn3rwfbwbRx/eetPI/DSpI47XeEPe2bipIF1VVfy0QA0an+TW6ulRBqMwsByr2ntBTI9Rbii2jMfLuLcNiCtiN8ZQsJkJBnkUvYY/9FPo+UdJI+okm2GgY+xJZog1B/oFbv7lB1IegLPFoiw56jDbe5V1mrpM2zZbrM6kz9KcnVSVXSS5nduHO4WZOzmUN3N+rxfwi3nq+rcAydaA2yX/AXsB6Jg91WUpVhfvgaAwLv4vt1UJn753CKiiW8a+u6TWcPL3fl/Mbp9X6lDtspRuGhdsXDeyzrXLoioqeaYvF+hJ3w==
+sidebar_class_name: "get api-method"
+info_path: docs/fuse-box/fuse-apis/Explorer API/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get contract creator address hash and creation transaction hash</h1>
+
+<MethodEndpoint method={"get"} path={"/?module=contract&action=getcontractcreation"}></MethodEndpoint>
+
+
+
+Get contract creator address hash and creation transaction hash
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["getcontractcreation"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"contractaddresses","in":"query","schema":{"type":"string"},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}","required":true}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"result"} required={false} schemaName={"object[]"} qualifierMessage={undefined} schema={{"type":"array","items":{"type":"object"}}}></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\",\n  \"result\": [\n    {}\n  ],\n  \"status\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

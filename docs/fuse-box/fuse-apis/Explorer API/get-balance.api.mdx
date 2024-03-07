@@ -1,0 +1,42 @@
+---
+id: get-balance
+title: "Get the native token balance for an address"
+description: "Get the native token balance for an address"
+sidebar_label: "Get the native token balance for an address"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVUkFuwjAQ/IrlQ08oSXtEQlUrVRXi0N4rDsZZiNvENus1AkX5e9dJoIIi1OYSr2c9M2tPK50HVGScnZdyKjdAz6pWVoOcSK9QNUCAQU4/Wmm54JbGlbFOsLFcbSPggYugK2iUnLaSDj61BUJjN4yAjQ2fl0prFy3JZTeRCNtoEFiRMEI3OZErnaz8n3w1mr5N7s0CDn8lZybYq8bXaa9tfVzVRvP5rpO3NMoSIYRLkfP+m6IlBI3G9/dw3BfaWVLGpiVVIEYVUalQZbJbJoHgnQ0QEudDUaTfOdPbgn0kHuBHYFR5zwP1T59/htTS/rblVp+gKWUBU1DIDAINi6sNXPXPTmJNV6FAimK4Ag3f5eyvQP20lk3uQJD7AivGlxZrh0JZ8XPfnNTKjRnuw0sVF/njkNfZGL+7IWGz1SnlAXB3jHjEms9URD5M85zzkq1jgMy4tM53RQ57XzsE7O/c2LXrhzHUh+RlBMXT+1xeDnPhg/GkOmD3WZEVfAvfLVE5Bg==
+sidebar_class_name: "get api-method"
+info_path: docs/fuse-box/fuse-apis/Explorer API/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get the native token balance for an address</h1>
+
+<MethodEndpoint method={"get"} path={"/?module=account&action=balance"}></MethodEndpoint>
+
+
+
+Get the native token balance for an address
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["account"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["balance"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}","required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"address","in":"query","required":true,"schema":{"type":"string"},"description":"string containing the address hash."}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"result"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\",\n  \"result\": \"string\",\n  \"status\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

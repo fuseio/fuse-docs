@@ -1,0 +1,42 @@
+---
+id: get-token-balance
+title: "Get token account balance for token contract address"
+description: "Get token account balance for token contract address"
+sidebar_label: "Get token account balance for token contract address"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Uz1PwzAQ/SuWB6YqCYyVEAIJoaoDDGyIwXWujUtiu+dzRRX1v3NOUtSGqoKFLPH5+e69+2ql84CKjLOzUk7lCujVfYB9ULWyGuREeoWqAQIMcvrWSssGv2tcGesEG8vWJgLu2Ai6gkbJaStp59OzQGjsihGwsWF/qbR20ZJ8308kwiYaBKYljLCffAdXOun5e3BKyheD8ssM3sxh91sGjgSfqvF1umtbHxe10ey/38sLHNpZQk5FlSVCCGOyU7+L5CUEjcZ3RTncixReGZuOVIE4sImBTlQqVJk8zvlfdAwNPpEhyAkEfg5bEEN/xNIhy3tPAoJ3NkBInDdFkX6nTM9z1pl4gCeHUeU9N6Ab2nwd0pP2p2y3WIOmNMCYRpxMT9CwKLWCs/mxkljTWSiQohjOQP03rs0TkOim8bseR2kPyLhjLJX3rHLDGnarRxUb+V2/bbdDrKt+P25Pxp0lAm4PWxqxZseKyIdpnvO0Z8sYIDMunfNtkcOnrx0Cdh0wdum61Ax1I/44gOL+ZSbHqY3EMJ5Ye+w6K7KCa/IFNkyCCg==
+sidebar_class_name: "get api-method"
+info_path: docs/fuse-box/fuse-apis/Explorer API/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get token account balance for token contract address</h1>
+
+<MethodEndpoint method={"get"} path={"/?module=account&action=tokenbalance"}></MethodEndpoint>
+
+
+
+Get token account balance for token contract address
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["account"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["tokenbalance"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}","required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"contractaddress","in":"query","required":true,"schema":{"type":"string"},"description":"string containing the contract address hash."}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"address","in":"query","required":true,"schema":{"type":"string"},"description":"string containing the account address hash to retrieve balance for."}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"result"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\",\n  \"result\": \"string\",\n  \"status\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

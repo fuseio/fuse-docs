@@ -1,0 +1,42 @@
+---
+id: eth-block-number
+title: "Get the latest block number"
+description: "Get the latest block number"
+sidebar_label: "Get the latest block number"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVUk1r3DAQ/StiDj0tttujIZQWSgiBtveyBK08u1YqS4o0WhKM/3tn5Gygm5APX6zRzLz3RvNmCBGTJhv81QA9II3fXTB/f5Zphwk2EHXSExKmDP2fGTwHXKajvcYHTlvP0V3BJEE2I04a+hnoIUpZpmT9AZYN4L2eopO7eY5l56zh/mXhpoR3xSZkckoFl80TxxSGwh3v5GAKXybWCDvRD9vlFWhtZOCPQ/Pr3FT4G7++z6ssdniTwXrCA+P8B7PXLuMGBswm2ViV9vCrHrRTPniPB97YEdVju6JRk0oYE2b0lDlGdZuDVykaJcCYSdmhgWUrRDkGnzGLji9dJ78zrmvWagKDe5KsjpEXVk3SCqzcPRsl7G7RkDgmiaXIrgRSzypeNAUrKY5eTFkxY71d6nf+HJdIdUqnSWarS1H+ZFo27BgE4YBVkaaRg/braqmLWv1pNcHFs53ymjAdT4YvyXHrSBRz37bs+2ZfMjY2yLk9di3eRxeS7HAr296HOo+lavYfj0n17fcVnM9wkqONCcWLUGFdc5+brul49n/0WkCZ
+sidebar_class_name: "get api-method"
+info_path: docs/fuse-box/fuse-apis/Explorer API/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get the latest block number</h1>
+
+<MethodEndpoint method={"get"} path={"/?module=block&action=eth_block_number"}></MethodEndpoint>
+
+
+
+Get the latest block number
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}","required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["block"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["eth_block_number"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"id","in":"query","schema":{"type":"integer"},"required":false,"description":"Optional nonnegative integer that represents the json rpc request id."}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"jsonrpc"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"result"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"id"} required={false} schemaName={""} qualifierMessage={undefined} schema={"type"}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"jsonrpc\": \"string\",\n  \"result\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

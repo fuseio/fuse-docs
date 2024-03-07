@@ -1,0 +1,42 @@
+---
+id: get-error-status
+title: "Get error status and message"
+description: "Get error status and message"
+sidebar_label: "Get error status and message"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVUktPwzAM/itVDpyqtnCsNCEkEJo4gMQR7RBSb83UJpntTJuq/neStoPBxuuUup/zPWJ3wjpAydqaeSVKsQK+Q7T4zJI9iVQ4ibIFBiRRvnTChCK0tbbyDQRYm1BtPOA+FKRqaKUoO8F7F9uIUZtVQMD4NtwXjNKQVFFOLPpUIGy8RgjKjB769F1g6vm3QPBPo/Uf6XlXS6r/Sn/KtIh/yFlDQLH/qijiUQEp1G6wXorHh8CprGEwHFHpXKPV8Nb5mmJLdyppX9egOD48xsmwHgVaIJIr+MYb+YZ/5wDE22ODZ6g0DdM/g/UBnV72HNgPDZ/z3wMnEOmS8WIiTZUcgqQhEtd22rlh0bgORX497tbsaFUuxmP2MdzgBXB7WEqPTbhZMzsq81w6nS09QaZt/M63RQ4711gEFHFw2iztkEFzE0PcTWBy8zQXXzMc3EilrDfRZ1QdscusyIoQ/g257yHV
+sidebar_class_name: "get api-method"
+info_path: docs/fuse-box/fuse-apis/Explorer API/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get error status and message</h1>
+
+<MethodEndpoint method={"get"} path={"/?module=transaction&action=getstatus"}></MethodEndpoint>
+
+
+
+Get error status and message
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["transaction"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["getstatus"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"txhash","in":"query","schema":{"type":"string"},"required":true}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><span className={"openapi-schema__container"}><strong className={"openapi-schema__property"}>result</strong><span className={"openapi-schema__name"}> object</span></span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"errDescription"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"isError"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\",\n  \"result\": {\n    \"errDescription\": \"string\",\n    \"isError\": \"string\"\n  },\n  \"status\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

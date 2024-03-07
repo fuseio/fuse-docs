@@ -1,0 +1,42 @@
+---
+id: verify-contract
+title: "Verify a contract with its source code and contract creation information"
+description: "Verify a contract with its source code and contract creation information"
+sidebar_label: "Verify a contract with its source code and contract creation information"
+hide_title: true
+hide_table_of_contents: true
+api: eJytU01v2zAM/SuGDjsFsbtjgGLYigItetiwAb0MPSgyU6uwJZWi0npG/vsoKY6bxMU2YLk4FL8eHx8HYR2gJG3NbS1WYguoN/2VNYRSkVgIJ1F2QIBerH4OwrDBYZ2tQwvs1oat5wDYs+FVA50Uq0FQ72KYJ9TmkT1gQsf5Qo2FH3YLgfAcNAK3JQywWxyqcwDj+ffqGfwfajt9B/3f1uZK8Co718a3YXBh3WrF+budOOvxkF/A0xdb97HWccAiTQ+Goks6x5US7+WT52H57QyEXT9BXgLGLZEGn3LrGsH7G+mbWcR50hmHsp3TLeA9b1Pnnmcx1pHu9K+E7E3A2toWpMlV8g5/2IAKrmw91yz9IiHeWeMz7o9VFT81eIXa5Qbi6534b8R0zIp8nJ+dkYSWZl2eJAX/3hAccIz4PqmskMVIRPGiqSk0+cInSthRQyFNPUUohDRSoc3GYif3+ubDamw8O2d9PjbilYryU76vyzH/Q76Iy73AGTLgdjzJgC3nNETOr8qS9b3cBA9LbeP/cluV8Opai4AiSjRy+n2S6fWo7hNZTce1v5uDfSaiyXWsnUnzp2p5w33kIzGvKd3Y9R5r8fnbrThlfqRFKmWDiYRtDyAultWy4pX9Bq0CsMs=
+sidebar_class_name: "post api-method"
+info_path: docs/fuse-box/fuse-apis/Explorer API/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Verify a contract with its source code and contract creation information</h1>
+
+<MethodEndpoint method={"post"} path={"/?module=contract&action=verify"}></MethodEndpoint>
+
+
+
+Verify a contract with its source code and contract creation information
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["verify"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}","required":true}}></ParamsItem></ul></div></details><MimeTabs className={"openapi-tabs__mime"}><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3><strong className={"openapi-schema__required"}>required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"addressHash"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"name"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"compilerVersion"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"optimization"} required={false} schemaName={"boolean"} qualifierMessage={undefined} schema={{"type":"boolean"}}></SchemaItem><SchemaItem collapsible={false} name={"contractSourceCode"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem></MimeTabs><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"result"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\",\n  \"result\": \"string\",\n  \"status\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

@@ -1,0 +1,54 @@
+---
+id: get-staked-tokens-by-wallet-address
+title: "Get staked tokens by wallet address"
+description: "Get staked tokens by wallet address"
+sidebar_label: "Get staked tokens by wallet address"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV1tv2zYU/isCn7bBtqj7ZciDYytpkLgJGmfrkAYFJVG2GllUKSpxZvi/75Cy3ShOVmPoXoYFcCRS5/6dc3i4QoLMahTeopRmpCkEuuuhinCyoIJy+WGFSligEJEqP6dPqIfyElZfG8rlok7mdEFQuELiqZJkteB5OUPrHqJLsqgKubdaVU1c5Anwr9fAxOnXJuc0RaHgDV33vulIEtaUYpimnNb1VldFxPyZqrIpit4LdS9ldrU/kqKg4jNpxYIJ6zvJUFesrGktjTcxlo+U1gnPK5EzqffyHOTOKUlVJFboY/+KPVLQ0T9+kuu3fH+uPFpWypU1BGSYJPDaH7FScFb0h0XBHvuXPJ9JLw8T94sSJCXQUvSniu4wTlJVgACRrulfalb+qiVzwmsqjhqR9f2O3AtaziDkr0nOgWJGeUd04LiKPZqS2aHm/K5/Qlac9C/n0z8eJ4luFmS5LJcj/fz8ZjKu3iUT/xNSUsdEHOzkhJU9DdvahHDNxKatGXZoGaERaKeT6dbFkiYtwIfJvKe06pMif6BKwLlcDtXyQAEiX1DWiCMH+EFA0gZZ8rzE5FWJLP4CBncKCr4xQYprQe5pOlzIkrm5HqMQDzA2sGVbjuc4jmFjjINeSxsRXnZpoaAU/5Td07KtdCFft8UXIry07CgzR4kfmMT3bcOhQYbNODCOs2GQBEY2wnHkxmMb9VreCzZjNx/OgHcuRFWHus7J42CWi3kTNzXlG98HCVvoD6wQWV6SMqG6Yu4XwF3rC5KXevt6uAGKYVCpyCth79uG8hsoUQ5u96+fFjEr5JfLiylsNqWK4vSl54FHXOr5SWBiPzENkpExcT3qRa6ReiQ1Pdf36UlqoG0Y29BKDBzDsHzLwIGDHTdwnS7FDijABhsO9n0T2wAWUALCb6AEKTWsOArtgetj3/J9BwcB9nxX9s491CIKf5H6Re0/+Yh22+oJm/8aaoca8BZqJ6B1D7CTm+vobwCLjfEYH7u+lQZDx3VMJxnhwM3iE4fSxI1cfBJ5ge+9BhjUjG/anuVYRmA7hmX4b0EW2LaJXdez5Ftgfh8wwx0ErueYnmVisGl9t1Y9wMbW/nFzwnicp6nK1f9Pne+eOqYR/KNTJ437f7pfsvrs6qL2xfvFVK/qY1G/m5zOrj7OftShY4ew8x87dCCxRVOPWAoryGD4xjnjE8guMnudYLH99i25NUhM1vBEFrji72T+utdOeyHSYd7UH7C+qSa9LcjPqifU+yNdO50edSfNdVtt3TI7pUJrhWmtMC1+0lpxGtkNnjD/zhkMk2hGBTrMKH3VHV/lpAvd82E7Rze8eNZiQdIggz43yJkaR2uaNDwXT9cSinYoLRlpxHzYtEWxQUbyb4dhuW6JVJbkZcYUZS5UDly3VmrDqzPt9urm+OJsdAes0qA2FMYAupqKOavFgqhU2Ezih0WpE9mdiYIuhV4VcCJI2crt1SaCt/IaIW3AaNcodx15E0dYhy8uAhCfOZgo+VermNT0hheAL2y39xAZ3jSvSVzIC0BGipruGbcrAfTTh81d4WcN9V43+h5uOs+uPA+kaCSRQuqB8Fxq+vFaN5uk7OjcWdONCZwl23NCWdISyW5fiWfse+UuXdhl92kkO9Rfa+Gryg==
+sidebar_class_name: "get api-method"
+info_path: docs/fuse-box/fuse-apis/Staking API/staking-api-public
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get staked tokens by wallet address</h1>
+
+<MethodEndpoint method={"get"} path={"/api/v0/staking/staked_tokens/{accountAddress}"}></MethodEndpoint>
+
+
+
+Get staked tokens by wallet address
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"accountAddress","in":"path","schema":null,"type":"string","required":true,"example":"{{wallet_address}}"}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}","required":true}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><details style={{"textAlign":"left","marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collaposed={true} open={false}><summary style={{}}><strong>Response Headers</strong></summary><ul style={{"marginLeft":"1rem"}}><li className={"schemaItem"}><summary style={{}}><strong>X-Powered-By</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Origin</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Content-Type</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Content-Length</strong><span style={{"opacity":"0.6"}}> integer</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>ETag</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Date</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Connection</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Keep-Alive</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li></ul></details><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}>
+
+object
+
+</div></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"totalStakedAmountUSD\": 0.001034357555140009,\n  \"totalEarnedAmountUSD\": 0,\n  \"stakedTokens\": [\n    {\n      \"tokenAddress\": \"0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4\",\n      \"tokenLogoURI\": \"https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4/logo.png\",\n      \"tokenName\": \"VoltToken\",\n      \"tokenSymbol\": \"VOLT\",\n      \"unStakeTokenAddress\": \"0x97a6e78c9208c21afaDa67e7E61d7ad27688eFd1\",\n      \"stakedAmount\": 0.5113831095056965,\n      \"stakedAmountUSD\": 0.00009015088204551696,\n      \"earnedAmountUSD\": 0,\n      \"stakingApr\": 4.680838850990786\n    },\n    {\n      \"tokenAddress\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n      \"tokenLogoURI\": \"https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE/logo.png\",\n      \"tokenName\": \"Fuse\",\n      \"tokenSymbol\": \"FUSE\",\n      \"unStakeTokenAddress\": \"0xb1DD0B683d9A56525cC096fbF5eec6E60FE79871\",\n      \"stakedAmount\": 0.010824735319451318,\n      \"stakedAmountUSD\": 0.000944206673094492,\n      \"earnedAmountUSD\": 0,\n      \"stakingApr\": 16.967527320525\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"403"} value={"403"}><div>
+
+Forbidden
+
+</div><details style={{"textAlign":"left","marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collaposed={true} open={false}><summary style={{}}><strong>Response Headers</strong></summary><ul style={{"marginLeft":"1rem"}}><li className={"schemaItem"}><summary style={{}}><strong>X-Powered-By</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Origin</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Content-Type</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Content-Length</strong><span style={{"opacity":"0.6"}}> integer</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>ETag</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Date</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Connection</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Keep-Alive</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li></ul></details><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}>
+
+object
+
+</div></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 403,\n  \"errorMessage\": {\n    \"statusCode\": 403,\n    \"message\": \"Forbidden resource\",\n    \"error\": \"Forbidden\"\n  },\n  \"path\": \"/api/v0/staking/staked_tokens{{wallet_address}}apiKey={{publicKey}}\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

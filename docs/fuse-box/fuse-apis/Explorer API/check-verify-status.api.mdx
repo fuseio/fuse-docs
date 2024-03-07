@@ -1,0 +1,42 @@
+---
+id: check-verify-status
+title: "Return status of a verification attempt"
+description: "Return status of a verification attempt"
+sidebar_label: "Return status of a verification attempt"
+hide_title: true
+hide_table_of_contents: true
+api: eJydUrFOwzAQ/ZXIA1OUBMZIFWJgqDqAQGJBHdzk0rgktns+V42i/DvnpGVooAKyOOd39+757vXCWEBJyuhlKXJR1FB8vAGqqnslSd6JWFiJsgUCdCJ/74XmgDNbU/oGGFaao70H7DhwTNBKkfeCOhvSHKHSW0ZA+5brRWE0oSxIrIdYIOy9QuDOhB6G+IudE1jSP9iD/sOo3036r7bZelX+tslVuVatoPsDExxla5tw1/fWbxpVcP0wiFmPdbhx1mgHLjDdZVk4SnAFKjsOKRdPKy4MgwVNAZXWMuO41XTnQko/F2M2O+A18H4xeIDU1KAF5+QWfni/8w19C52mPYemL75Q/ALkUUdTVWSqSEbj1k6qI0kErQ3q2Hm1CdbcwihWUs1Bej/5b3G2083kmMXcAKwN8HB2r8eGy2si6/I05b0llXeQKBP+00OWwtE2BgFFGL3SlRnfpGhc1uMJjB6el+LyTWdJsiiM10Fs6Dpht0mWZDyMT0+LMSM=
+sidebar_class_name: "get api-method"
+info_path: docs/fuse-box/fuse-apis/Explorer API/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Return status of a verification attempt</h1>
+
+<MethodEndpoint method={"get"} path={"/?module=contract&action=checkverifystatus"}></MethodEndpoint>
+
+
+
+Return status of a verification attempt
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["checkverifystatus"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"guid","in":"query","schema":{"type":"string"},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}","required":true}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"result"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\",\n  \"result\": \"string\",\n  \"status\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

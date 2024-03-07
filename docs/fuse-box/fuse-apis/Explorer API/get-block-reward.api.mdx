@@ -1,0 +1,42 @@
+---
+id: get-block-reward
+title: "Get block reward by block number"
+description: "Get block reward by block number"
+sidebar_label: "Get block reward by block number"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVU8Fu2zAM/RWDh54C293RQFFsQFEExbaiOxY5yAqTqLUlVaK6Bob/faScDkjrptvFNv3Ix0fpcQDnMSgyzi7X0MAW6Vvn9OMd/lZhDQvwKqgeCUOE5n4AywGnKW9ucM+wsRw9JQwSRL3DXkEzAO29pEUKxm5hXAC+qN538m8YfGo7o7l+HLko4FMyAbk5hYTj4m+P3q0TV/xjD25hU88aoRX9sBpPUCstA/8/NZ9OZg/T6ZzskROt+7SJsYRbDPCOawFrjDoYn7U2sJwSi0xcsKKWA3IFE3I8/Z2ExWLjQgnjSiijdzZilI5f6lpex7Q/b1iVdkxuSVDlPd9OdkT1ECVleC/atQ+oSewRxD9kpgY9xqi2OOsAVpI6+pwjD/LdWD6SOZoM/8jDf4wf3DuHk+nxF7EZZ9FkdYdLfqTI85+gyYlxBhoZjKQozYNjTji+gWuko+sr2v3RJfMR8Qbu3GE/81LSjoPqctqRi5x9Nrn64o1JWQ6G59f9TaHjwh2Rj01V8RqXmxSxNE6+q+e6whffuSB+XIlzNy6PYSjv7tUBLL7eLuHtGK9ilNYuWZEpXSfsvKzLmuf/A49ViTc=
+sidebar_class_name: "get api-method"
+info_path: docs/fuse-box/fuse-apis/Explorer API/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get block reward by block number</h1>
+
+<MethodEndpoint method={"get"} path={"/?module=block&action=getblockreward"}></MethodEndpoint>
+
+
+
+Get block reward by block number
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"{{publicKey}}","required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["block"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["getblockreward"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"blockno","in":"query","schema":{"type":"integer"},"required":true,"description":"Integer block number to check block rewards for."}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><span className={"openapi-schema__container"}><strong className={"openapi-schema__property"}>result</strong><span className={"openapi-schema__name"}> object</span></span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"blockMiner"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"blockNumber"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"blockReward"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"timeStamp"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"uncleInclusionReward"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"uncles"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\",\n  \"result\": {\n    \"blockMiner\": \"string\",\n    \"blockNumber\": \"string\",\n    \"blockReward\": \"string\",\n    \"timeStamp\": \"string\",\n    \"uncleInclusionReward\": \"string\",\n    \"uncles\": \"string\"\n  },\n  \"status\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

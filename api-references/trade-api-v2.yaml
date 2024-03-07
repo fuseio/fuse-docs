@@ -1,0 +1,411 @@
+openapi: 3.0.0
+info:
+  title: Swap Price API
+  description: API endpoint to acquire an indicative price for a transaction.
+  version: 1.0.0
+servers:
+  - url: https://api.fuse.io/api/v1/trade
+paths:
+  /swap/v1/price:
+    get:
+      summary: Get an indicative price for a transaction
+      operationId: getIndicativePrice
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          description: (Required) Your Public API key
+          example: '{{publicKey}}'
+          required: true
+        - name: sellToken
+          in: query
+          description: The ERC20 token address of the token you want to sell.
+          required: true
+          schema:
+            type: string
+        - name: buyToken
+          in: query
+          description: The ERC20 token address of the token you want to receive.
+          required: true
+          schema:
+            type: string
+        - name: sellAmount
+          in: query
+          description: The amount of sellToken (in sellToken base units) you want to send.
+          required: false
+          schema:
+            type: string
+        - name: buyAmount
+          in: query
+          description: The amount of buyToken (in buyToken base units) you want to receive.
+          required: false
+          schema:
+            type: string
+        - name: slippagePercentage
+          in: query
+          description: The maximum acceptable slippage of the buyToken or sellToken amount.
+          required: false
+          schema:
+            type: string
+        - name: gasPrice
+          in: query
+          description: The target gas price (in wei) for the swap transaction.
+          required: false
+          schema:
+            type: string
+        - name: takerAddress
+          in: query
+          description: The address which will fill the quote.
+          required: false
+          schema:
+            type: string
+        - name: excludedSources
+          in: query
+          description: Liquidity sources to exclude from the quote.
+          required: false
+          schema:
+            type: string
+        - name: includedSources
+          in: query
+          description: Liquidity sources to include in the quote.
+          required: false
+          schema:
+            type: string
+        - name: skipValidation
+          in: query
+          description: Skip validation of the quote.
+          required: false
+          schema:
+            type: boolean
+        - name: feeRecipient
+          in: query
+          description: The ETH address that should receive affiliate fees.
+          required: false
+          schema:
+            type: string
+        - name: buyTokenPercentageFee
+          in: query
+          description: The percentage of the buyAmount attributed as affiliate fees.
+          required: false
+          schema:
+            type: string
+        - name: enableSlippageProtection
+          in: query
+          description: Enable MEV-aware slippage protection.
+          required: false
+          schema:
+            type: boolean
+        - name: priceImpactProtectionPercentage
+          in: query
+          description: Allowed price impact percentage.
+          required: false
+          schema:
+            type: string
+        - name: feeRecipientTradeSurplus
+          in: query
+          description: Recipient address of any trade surplus fees.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Indicative price for the transaction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  price:
+                    type: string
+                    description: Price of buyToken in sellToken and vice versa.
+                  grossPrice:
+                    type: string
+                    description: Price with fees removed.
+                  estimatedPriceImpact:
+                    type: string
+                    description: Estimated change in price due to price impact.
+                  value:
+                    type: string
+                    description: Amount of ether (in wei) to be sent with the transaction.
+                  gasPrice:
+                    type: string
+                    description: Gas price (in wei) for the transaction.
+                  gas:
+                    type: string
+                    description: Estimated gas limit for the transaction.
+                  estimatedGas:
+                    type: string
+                    description: Estimate of the actual gas used in the transaction.
+                  protocolFee:
+                    type: string
+                    description: Maximum ether paid towards the protocol fee (in wei).
+                  minimumProtocolFee:
+                    type: string
+                    description: Minimum ether paid towards the protocol fee (in wei).
+                  buyAmount:
+                    type: string
+                    description: Amount of buyToken that would be bought in this swap.
+                  grossBuyAmount:
+                    type: string
+                    description: BuyAmount with fees removed.
+                  sellAmount:
+                    type: string
+                    description: Amount of sellToken that would be sold in this swap.
+                  grossSellAmount:
+                    type: string
+                    description: SellAmount with fees removed.
+                  sources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        proportion:
+                          type: string
+                    description: Distribution of buyAmount or sellAmount between liquidity sources.
+                  buyTokenAddress:
+                    type: string
+                    description: ERC20 token address of the token you want to receive.
+                  sellTokenAddress:
+                    type: string
+                    description: ERC20 token address of the token you want to sell.
+                  allowanceTarget:
+                    type: string
+                    description: Target contract address for which the user needs to have an allowance.
+                  sellTokenToEthRate:
+                    type: string
+                    description: Rate between ETH and sellToken.
+                  buyTokenToEthRate:
+                    type: string
+                    description: Rate between ETH and buyToken.
+                  expectedSlippage:
+                    type: string
+                    description: Expected slippage used in routing calculations for the quote.
+                  fees:
+                    type: object
+                    properties:
+                      zeroExFee:
+                        type: object
+                        properties:
+                          feeType:
+                            type: string
+                          feeToken:
+                            type: string
+                          feeAmount:
+                            type: string
+                          billingType:
+                            type: string
+                    description: Fees that would be charged, including 0x fee details.
+
+  /swap/v1/quote:
+    get:
+      summary: Get a quote for buying or selling any ERC20 token.
+      operationId: getQuote
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          description: (Required) Your Public API key
+          example: '{{publicKey}}'
+          required: true
+        - name: sellToken
+          in: query
+          description: The ERC20 token address of the token you want to sell.
+          required: true
+          schema:
+            type: string
+        - name: buyToken
+          in: query
+          description: The ERC20 token address of the token you want to receive.
+          required: true
+          schema:
+            type: string
+        - name: sellAmount
+          in: query
+          description: The amount of sellToken you want to send.
+          required: false
+          schema:
+            type: string
+        - name: buyAmount
+          in: query
+          description: The amount of buyToken you want to receive.
+          required: false
+          schema:
+            type: string
+        - name: slippagePercentage
+          in: query
+          description: The maximum acceptable slippage percentage.
+          required: false
+          schema:
+            type: string
+        - name: gasPrice
+          in: query
+          description: The target gas price for the swap transaction.
+          required: false
+          schema:
+            type: string
+        - name: takerAddress
+          in: query
+          description: The address which will fill the quote.
+          required: false
+          schema:
+            type: string
+        - name: excludedSources
+          in: query
+          description: Liquidity sources to exclude from the quote.
+          required: false
+          schema:
+            type: string
+        - name: includedSources
+          in: query
+          description: Liquidity sources to include in the quote.
+          required: false
+          schema:
+            type: string
+        - name: skipValidation
+          in: query
+          description: Skip validation of the quote.
+          required: false
+          schema:
+            type: boolean
+        - name: feeRecipient
+          in: query
+          description: The address that should receive affiliate fees.
+          required: false
+          schema:
+            type: string
+        - name: buyTokenPercentageFee
+          in: query
+          description: The percentage of the buyAmount attributed as affiliate fees.
+          required: false
+          schema:
+            type: string
+        - name: enableSlippageProtection
+          in: query
+          description: Enable slippage protection.
+          required: false
+          schema:
+            type: boolean
+        - name: priceImpactProtectionPercentage
+          in: query
+          description: Allowed price impact percentage.
+          required: false
+          schema:
+            type: string
+        - name: feeRecipientTradeSurplus
+          in: query
+          description: The recipient address of any trade surplus fees.
+          required: false
+          schema:
+            type: string
+        - name: shouldSellEntireBalance
+          in: query
+          description: Sell the entirety of the caller's takerToken balance.
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Successful response with the quote details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  price:
+                    type: string
+                  guaranteedPrice:
+                    type: string
+                  to:
+                    type: string
+                  data:
+                    type: string
+                  value:
+                    type: string
+                  gasPrice:
+                    type: string
+                  gas:
+                    type: string
+                  estimatedGas:
+                    type: string
+                  protocolFee:
+                    type: string
+                  minimumProtocolFee:
+                    type: string
+                  buyAmount:
+                    type: string
+                  sellAmount:
+                    type: string
+                  sources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        proportion:
+                          type: string
+                  buyTokenAddress:
+                    type: string
+                  sellTokenAddress:
+                    type: string
+                  allowanceTarget:
+                    type: string
+                    fees:
+                    properties:
+                      zeroExFee:
+                        type: object
+                        properties:
+                          feeType:
+                            type: string
+                          feeToken:
+                            type: string
+                          feeAmount:
+                            type: string
+                          billingType:
+                            type: string
+                  grossPrice:
+                    type: string
+                  grossBuyAmount:
+                    type: string
+                  grossSellAmount:
+                    type: string
+                  sellTokenToEthRate:
+                    type: string
+                  buyTokenToEthRate:
+                    type: string
+                  expectedSlippage:
+                    type: string
+        '400':
+          description: Bad request, possibly due to missing or invalid parameters.
+        '401':
+          description: Unauthorized, possibly due to missing or invalid API key.
+  /swap/v1/sources:
+    get:
+      summary: Returns the liquidity sources enabled for the chain.
+      operationId: getLiquiditySources
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          description: (Required) Your Public API key
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: An array of liquidity sources.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    proportion:
+                      type: string

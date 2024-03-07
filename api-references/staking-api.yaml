@@ -1,0 +1,486 @@
+openapi: 3.0.0
+info:
+  title: Staking API [PUBLIC]
+  version: 1.0.0
+servers:
+  - url: https://api.fuse.io
+components:
+  securitySchemes:
+    noauthAuth:
+      type: http
+      scheme: noauth
+paths:
+  /api/v0/staking/staking_options:
+    get:
+      tags:
+        - default
+      summary: Staking options
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '833'
+            ETag:
+              schema:
+                type: string
+                example: W/"341-Il4emmoStBHnabDuzbZlCoJs1RE"
+            Date:
+              schema:
+                type: string
+                example: Mon, 04 Mar 2024 14:31:48 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - tokenAddress: '0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4'
+                  tokenSymbol: VOLT
+                  tokenName: VoltToken
+                  tokenLogoURI: >-
+                    https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4/logo.png
+                  unStakeTokenAddress: '0x97a6e78c9208c21afaDa67e7E61d7ad27688eFd1'
+                  stakingProviderId: volt-bar
+                  expired: true
+                  stakingApr: 4.680838850990786
+                  tvl: 17677.41655899244
+                - tokenAddress: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
+                  tokenSymbol: FUSE
+                  tokenName: Fuse
+                  tokenLogoURI: >-
+                    https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE/logo.png
+                  unStakeTokenAddress: '0xb1DD0B683d9A56525cC096fbF5eec6E60FE79871'
+                  stakingProviderId: fuse-liquid-staking
+                  expired: false
+                  stakingApr: 16.967527320525
+                  tvl: 511042.40456797834
+        '403':
+          description: Forbidden
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '178'
+            ETag:
+              schema:
+                type: string
+                example: W/"b2-nVTjbvHV5vr+s8PoRPHnfY16FHI"
+            Date:
+              schema:
+                type: string
+                example: Mon, 04 Mar 2024 14:32:54 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                statusCode: 403
+                errorMessage:
+                  statusCode: 403
+                  message: Forbidden resource
+                  error: Forbidden
+                path: >-
+                  /api/v0/staking/staking_options?apiKey={{publicKey}}
+  /api/v0/staking/stake:
+    post:
+      tags:
+        - default
+      summary: Stake token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: true
+              example:
+                accountAddress: '{{wallet_address}}'
+                tokenAmount: '1000000000000000000000'
+                tokenAddress: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '90'
+            ETag:
+              schema:
+                type: string
+                example: W/"5a-oFW09yUDk+A8ujHu59gILTk2YEU"
+            Date:
+              schema:
+                type: string
+                example: Mon, 04 Mar 2024 14:21:59 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                contractAddress: '0xa3dc222eC847Aac61FB6910496295bF344Ea46be'
+                encodedABI: '0xd0e30db0'
+        '403':
+          description: Forbidden
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '168'
+            ETag:
+              schema:
+                type: string
+                example: W/"a8-i8wA7bvxGn0gX251wIFhTcqtvL0"
+            Date:
+              schema:
+                type: string
+                example: Mon, 04 Mar 2024 14:33:07 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                statusCode: 403
+                errorMessage:
+                  statusCode: 403
+                  message: Forbidden resource
+                  error: Forbidden
+                path: /api/v0/staking/stake?apiKey={{publicKey}}
+  /api/v0/staking/unstake:
+    post:
+      tags:
+        - default
+      summary: Unstake token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required: true
+              type: object
+              example:
+                accountAddress: '{{wallet_address}}'
+                tokenAmount: '1000000000000000000000'
+                tokenAddress: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '154'
+            ETag:
+              schema:
+                type: string
+                example: W/"9a-XfuTUVK7NiBiAV2i04etmxch8i8"
+            Date:
+              schema:
+                type: string
+                example: Mon, 04 Mar 2024 14:22:41 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                contractAddress: '0xa3dc222eC847Aac61FB6910496295bF344Ea46be'
+                encodedABI: >-
+                  0x2e1a7d4d00000000000000000000000000000002f050fe938943acc45f65568000000000
+        '403':
+          description: Forbidden
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '170'
+            ETag:
+              schema:
+                type: string
+                example: W/"aa-TkMPJJASJx9KZ6WIGsz2oZEG504"
+            Date:
+              schema:
+                type: string
+                example: Mon, 04 Mar 2024 14:33:54 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                statusCode: 403
+                errorMessage:
+                  statusCode: 403
+                  message: Forbidden resource
+                  error: Forbidden
+                path: /api/v0/staking/unstake?apiKey={{publicKey}}
+  /api/v0/staking/staked_tokens/{accountAddress}:
+    get:
+      tags:
+        - default
+      summary: Get staked tokens by wallet address
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: accountAddress
+          in: path
+          schema:
+          type: string
+          required: true
+          example: '{{wallet_address}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '956'
+            ETag:
+              schema:
+                type: string
+                example: W/"3bc-OhTYwMc/2laxxnxC/KKUMDpHcM8"
+            Date:
+              schema:
+                type: string
+                example: Mon, 04 Mar 2024 14:31:19 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                totalStakedAmountUSD: 0.001034357555140009
+                totalEarnedAmountUSD: 0
+                stakedTokens:
+                  - tokenAddress: '0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4'
+                    tokenLogoURI: >-
+                      https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4/logo.png
+                    tokenName: VoltToken
+                    tokenSymbol: VOLT
+                    unStakeTokenAddress: '0x97a6e78c9208c21afaDa67e7E61d7ad27688eFd1'
+                    stakedAmount: 0.5113831095056965
+                    stakedAmountUSD: 0.00009015088204551696
+                    earnedAmountUSD: 0
+                    stakingApr: 4.680838850990786
+                  - tokenAddress: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
+                    tokenLogoURI: >-
+                      https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE/logo.png
+                    tokenName: Fuse
+                    tokenSymbol: FUSE
+                    unStakeTokenAddress: '0xb1DD0B683d9A56525cC096fbF5eec6E60FE79871'
+                    stakedAmount: 0.010824735319451318
+                    stakedAmountUSD: 0.000944206673094492
+                    earnedAmountUSD: 0
+                    stakingApr: 16.967527320525
+        '403':
+          description: Forbidden
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '219'
+            ETag:
+              schema:
+                type: string
+                example: W/"db-z6jfsIPLs8tNmT/psBtsHMGgPXg"
+            Date:
+              schema:
+                type: string
+                example: Mon, 04 Mar 2024 14:34:04 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                statusCode: 403
+                errorMessage:
+                  statusCode: 403
+                  message: Forbidden resource
+                  error: Forbidden
+                path: >-
+                  /api/v0/staking/staked_tokens{{wallet_address}}apiKey={{publicKey}}

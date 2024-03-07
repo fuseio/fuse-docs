@@ -1,0 +1,42 @@
+---
+id: get-liquidity-sources
+title: "Returns the liquidity sources enabled for the chain."
+description: "Returns the liquidity sources enabled for the chain."
+sidebar_label: "Returns the liquidity sources enabled for the chain."
+hide_title: true
+hide_table_of_contents: true
+api: eJydU01v2zAM/SuCThtQxMmOvuUwDMV2CNrtMBQ9MDJTq3MklaK9Bkb++0g5zdK6wIDl4kj8eI/viaONCQnYx3Dd2No+IH/zT71vPB9uY08Os72yCQj2yEjZ1nejDXKQXEj+Kx4k7IOcnnokPWTX4h5sPVo+JE3LTD482OOVbTA78knB5P7DDQoQYfPR/BQks+m3nXdmvbk2v0pbfIZ96rTFOKYSFLjjUSJ0qrQ1U4/He73JKYYsbAX403Kpn9dw62CACA4m7kz3MqLJ04wLaepiYAyslZCSoBVVqses5eN8rtJNp2fc54v7uH1Ex6oaqbbsJ1KTaO+oommRJpaz8On3Vrsb5J5CNtzifBiDAbYdNmYXqWS4FnzQEcXDNp5sLrZyK4cq/4ZUDasqnw3PSMOL2z11ktQyp1xXlZi+2PUZFz7qfy1jggatuuDDLpYhPBffbqWx2ZB3qLbat1Oo1RiaFH1gw9GAK7YaCMaHphgwoEmlXmcBI1Ahg9N6nUc5Tq1Wi+ViWdSMmfcQ/ir+v1q9onr2hfGZq9RJjoIVacaTjndWdVRWK1XwpKWo0golDY/jFjL+oE7esFxPC6MKNz4XErbeQZdxhn1+mZc788/1eZexhi42d4Cu16Ti3gDklYdwupfUFsVWKgSnqrVzmPiiarYm2uX8xr58/i7v9w/6X4Iq
+sidebar_class_name: "get api-method"
+info_path: docs/fuse-box/fuse-apis/Trade API/V2/swap-price-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Returns the liquidity sources enabled for the chain.</h1>
+
+<MethodEndpoint method={"get"} path={"/swap/v1/sources"}></MethodEndpoint>
+
+
+
+Returns the liquidity sources enabled for the chain.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"description":"(Required) Your Public API key","example":"{{publicKey}}","required":true}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+An array of liquidity sources.
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}>Array [</div></li><SchemaItem collapsible={false} name={"name"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"proportion"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}>]</div></li></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"[\n  {\n    \"name\": \"string\",\n    \"proportion\": \"string\"\n  }\n]"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

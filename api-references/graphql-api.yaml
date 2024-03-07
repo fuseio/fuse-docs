@@ -1,0 +1,297 @@
+openapi: 3.0.0
+info:
+  title: Graphql API
+  version: 1.0.0
+servers:
+  - url: https://api.fuse.io
+paths:
+  /api/v0/graphql/collectibles/{address}:
+    get:
+      tags:
+        - default
+      summary: Get NFT`s by wallet address
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: address
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '{{wallet_address}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '46244'
+            ETag:
+              schema:
+                type: string
+                example: W/"b4a4-hQRPfSJtoiCWuM2WzCk9TEcEdX0"
+            Date:
+              schema:
+                type: string
+                example: Mon, 04 Mar 2024 14:40:50 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  account:
+                    id: '{{wallet_address}}'
+                    address: '{{wallet_address}}'
+                    collectibles:
+                      - id: 0xa7239f619cafdf010e4fe71bc0f52ca497cac7e2-0x121
+                        created: '1704724260'
+                        tokenId: '289'
+                        description: null
+                        descriptorUri: https://www.npmjs.com/package/body-parser289
+                        name: null
+                        imageURL: null
+                        creator:
+                          id: '{{wallet_address}}'
+                        owner:
+                          id: '{{wallet_address}}'
+                        collection:
+                          collectionName: MyToken
+                          collectionSymbol: MTK
+                          collectionAddress: '0xa7239f619cafdf010e4fe71bc0f52ca497cac7e2'
+                      - id: 0xa7239f619cafdf010e4fe71bc0f52ca497cac7e2-0x122
+                        created: '1704724260'
+                        tokenId: '290'
+                        description: null
+                        descriptorUri: https://www.npmjs.com/package/body-parser290
+                        name: null
+                        imageURL: null
+                        creator:
+                          id: '{{wallet_address}}'
+                        owner:
+                          id: '{{wallet_address}}'
+                        collection:
+                          collectionName: MyToken
+                          collectionSymbol: MTK
+                          collectionAddress: '0xa7239f619cafdf010e4fe71bc0f52ca497cac7e2'
+        '403':
+          description: Forbidden
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '222'
+            ETag:
+              schema:
+                type: string
+                example: W/"de-6QluzZxbeqcOHcYRabvizdBahzs"
+            Date:
+              schema:
+                type: string
+                example: Mon, 04 Mar 2024 16:24:19 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                statusCode: 403
+                errorMessage:
+                  statusCode: 403
+                  message: Forbidden resource
+                  error: Forbidden
+                path: >-
+                  /api/v0/graphql/collectibles{{wallet_address}}=pk_KRGd_qRcUSm9c0NrwFv3ZYxf%20
+  /api/v0/graphql/userops/{address}:
+    get:
+      tags:
+        - default
+      summary: Get UserOps by wallet address
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{publicKey}}'
+          required: true
+        - name: address
+          in: path
+          schema:
+            type: string
+          example: '{{wallet_address}}'
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '222486'
+            ETag:
+              schema:
+                type: string
+                example: W/"36516-BRSR+o7LEApLoy0fkYLdpNGMOEE"
+            Date:
+              schema:
+                type: string
+                example: Mon, 04 Mar 2024 16:24:36 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  userOps:
+                    - id: >-
+                        0x7fc29ae0592ce1235047b98f18679b6c9f81e55acd4b58513376fcec0c233d5d-1
+                      transactionHash: >-
+                        0x8f102263e0be9cc546b3cee15b485ad2c9dc27cbbb9dad0491c8d95772864fc0
+                      userOpHash: >-
+                        0x7fc29ae0592ce1235047b98f18679b6c9f81e55acd4b58513376fcec0c233d5d
+                      sender: '{{wallet_address}}'
+                      entryPoint: '0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789'
+                      paymaster: '0xea1ba4305a07ced2bb5e42224d71abe0bc3c3f28'
+                      paymasterAndData: >-
+                        0xea1ba4305a07ced2bb5e42224d71abe0bc3c3f280000000000000000000000000000000000000000000000000000000065e4881e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000065e483cf91d90eccba45567300000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000041b2fef72a813e38d79a9077a2a6b5f7705876625a38d50946c12bf3300cfb9208195ab5fec347f628334dfd0466a4b3733110bce433543045a21f03dd9bfc3fba1b00000000000000000000000000000000000000000000000000000000000000b2fef72a813e38d79a9077a2a6b5f7705876625a38d50946c12bf3300cfb9208195ab5fec347f628334dfd0466a4b3733110bce433543045a21f03dd9bfc3fba1b
+                      bundler: '0x4e0df48f7584ad9ae9978c60178ef726345cc48a'
+                      nonce: '1639'
+                      initCode: 0x
+                      actualGasCost: '3637220000000000'
+                      actualGasUsed: '363722'
+                      callGasLimit: '52598'
+                      verificationGasLimit: '140000'
+                      preVerificationGas: '297548'
+                      maxFeePerGas: '10000000000'
+                      maxPriorityFeePerGas: '10000000000'
+                      baseFeePerGas: null
+                      gasPrice: '10000000000'
+                      gasLimit: '872160'
+                      signature: >-
+                        0xc9e71bdfe27c9db58c6a57d579c8558b2dd540263a330b347d30834d5930cf3230ffef12eafc392fbc19ac66d5ac8bafb74121633531917cb7f5346c1bd8414f1b
+                      success: true
+                      revertReason: null
+                      blockTime: '1709474985'
+                      blockNumber: '28299801'
+                      network: fuse
+                      target: '{{wallet_address}}'
+                      accountTarget:
+                        id: '{{wallet_address}}'
+                        userOpsCount: '3656'
+                      callData: >-
+                        0xb61d27f6000000000000000000000000e65513fe95f52f4350d2184c2fd722c37e6fd995000000000000000000000000000000000000000000000000016345785d8a000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000
+                      beneficiary: '0xdcdd0ddeaa0407c26dfcd481de9a34e1c55f8d54'
+                      factory: 0x
+                      erc20Transfers: []
+                      erc721Transfers: []
+        '403':
+          description: Forbidden
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '217'
+            ETag:
+              schema:
+                type: string
+                example: W/"d9-ZjCe8zRRsGQ1LRTGfODcfW6nCJ0"
+            Date:
+              schema:
+                type: string
+                example: Mon, 04 Mar 2024 16:24:46 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                statusCode: 403
+                errorMessage:
+                  statusCode: 403
+                  message: Forbidden resource
+                  error: Forbidden
+                path: >-
+                  /api/v0/graphql/userops{{wallet_address}}={{wrong_api_key}}
