@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://api.fuse.io/api/v1/trade
 paths:
-  /swap/v1/price:
+  /price:
     get:
       summary: Get an indicative price for a transaction
       operationId: getIndicativePrice
@@ -199,7 +199,7 @@ paths:
                             type: string
                     description: Fees that would be charged, including 0x fee details.
 
-  /swap/v1/quote:
+  /quote:
     get:
       summary: Get a quote for buying or selling any ERC20 token.
       operationId: getQuote
@@ -383,7 +383,7 @@ paths:
           description: Bad request, possibly due to missing or invalid parameters.
         '401':
           description: Unauthorized, possibly due to missing or invalid API key.
-  /swap/v1/sources:
+  /sources:
     get:
       summary: Returns the liquidity sources enabled for the chain.
       operationId: getLiquiditySources
