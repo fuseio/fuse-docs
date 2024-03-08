@@ -1,10 +1,41 @@
 openapi: 3.0.0
 info:
   title: Explorer API
-  description: '?module=account'
+  description: |
+    ## Unleash the Power of Fuse Blockchain Analytics
+
+    Welcome the newly unveiled Fuse Explorer API. This API empowers developers with access to the inner workings of the Fuse Blockchain and powers analytics and data exploration on the Fuse Blockchain.
+
+    ## What is Fuse Explorer API?
+
+    The Fuse Explorer API is a REST API with endpoints designed to provide developers with a comprehensive suite of analytics capabilities for the Fuse Blockchain. Whether building decentralized applications (DApps), conducting research, or seeking insights into blockchain transactions on Fuse, this API is your gateway to a wealth of data.
+
+    ## Key Features:
+
+    ### 1. Real-Time Transaction Insights:
+      Dive into the heart of the Fuse Blockchain with real-time transaction data. Explore, analyze, and visualize transactions as they occur, gaining a dynamic understanding of blockchain activity.
+
+    ### 2. Address Information:
+      Retrieve detailed information about specific addresses on the Fuse Blockchain. Uncover transaction histories, balances, and other pertinent details crucial for monitoring and analysis.
+
+    ### 3. Token Analytics:
+      Seamlessly integrate token analytics into your applications. Track token movement, monitor liquidity, and gain valuable insights into token-related activities.
+
+    ### 4. Smart Contract Analytics:
+      Delve into the functionality and performance of smart contracts deployed on the Fuse Blockchain. Extract vital data to optimize your decentralized applications and enhance overall development efficiency.
+
+    ### 5. Historical Data:
+      Access historical data to perform in-depth analyses and generate trend insights. Uncover patterns, identify anomalies, and make informed decisions based on the Fuse Blockchain's historical performance.
+
+    ## Getting Started:
+
+    To start with the Fuse Explorer API, developers can get an API from the [Console](https://console.fuse.io/build) tool and reference the comprehensive documentation, including detailed guides, code snippets, and examples. Integration is seamless, allowing you to harness the power of blockchain analytics with minimal effort.
   version: 1.0.0
 servers:
   - url: https://api.fuse.io/api/v0/explorer
+    description: Default server
+  - url: https://api.staging.fuse.io/api/v0/explorer
+    description: Sandbox server
 paths:
   /?module=account&action=eth_get_balance:
     get:
@@ -29,7 +60,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: address
           in: query
@@ -80,7 +111,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: address
           in: query
@@ -126,7 +157,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: address
           in: query
@@ -181,7 +212,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: address
           in: query
@@ -239,7 +270,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: address
           in: query
@@ -313,7 +344,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: txhash
           in: query
@@ -391,7 +422,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: address
           in: query
@@ -470,7 +501,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: address
           in: query
@@ -549,7 +580,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: contractaddress
           in: query
@@ -601,7 +632,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: address
           in: query
@@ -649,7 +680,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: address
           in: query
@@ -707,7 +738,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: page
           in: query
@@ -745,7 +776,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: module
           in: query
@@ -804,7 +835,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: module
           in: query
@@ -859,7 +890,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: module
           in: query
@@ -917,7 +948,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
         - name: module
           in: query
@@ -1005,7 +1036,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1051,7 +1082,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1095,7 +1126,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1139,7 +1170,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1180,7 +1211,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       requestBody:
         required: true
@@ -1236,7 +1267,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       requestBody:
         required: true
@@ -1289,7 +1320,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       requestBody:
         required: true
@@ -1343,7 +1374,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       requestBody:
         required: true
@@ -1404,7 +1435,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1448,7 +1479,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1492,7 +1523,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1605,7 +1636,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1674,7 +1705,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1718,7 +1749,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1762,7 +1793,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1806,7 +1837,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1850,7 +1881,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1894,7 +1925,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1938,7 +1969,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -1982,7 +2013,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -2049,7 +2080,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
@@ -2108,7 +2139,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '{{publicKey}}'
+          example: "pk_1234567890"
           required: true
       responses:
         '200':
