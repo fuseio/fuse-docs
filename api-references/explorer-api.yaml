@@ -33,9 +33,9 @@ info:
   version: 1.0.0
 servers:
   - url: https://api.fuse.io/api/v0/explorer
-    description: Default server
+    description: Production server
   - url: https://api.staging.fuse.io/api/v0/explorer
-    description: Sandbox server
+    description: Staging server
 paths:
   /?module=account&action=eth_get_balance:
     get:
