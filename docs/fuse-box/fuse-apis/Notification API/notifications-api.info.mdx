@@ -215,7 +215,7 @@ After you have a webhook address (either in your app, or in webhook.site or simi
 
 #### Step 1
 
-Create a webhook with [Create Webhook API](./create-webhook.api.mdx)
+Create a webhook with [Create Webhook API](./create-a-webhook.api.mdx)
 
 > #### 📘You can find your `projectId` in the URL of your project page
 >
@@ -223,11 +223,11 @@ Create a webhook with [Create Webhook API](./create-webhook.api.mdx)
 
 #### Step 2
 
-Add addresses to listen to with [Add Webhook Addresses API](./add-webhook-addresses.api.mdx)
+Add addresses to listen to with [Add Webhook Addresses API](./add-addresses-to-a-webhook.api.mdx)
 
 > #### 📘
 >
-> If you don't remember your `webhookId`, you can always fetch all your webhooks with [Get Webhooks for Project](./get-webhooks-for-project.api.mdx)
+> If you don't remember your `webhookId`, you can always fetch all your webhooks with [Get Webhooks for Project](./get-webhooks-for-a-project.api.mdx)
 
 #### Step 3
 
@@ -243,11 +243,6 @@ You can always edit or delete your webhook, add or remove addresses, and change 
 >
 > 
 > **Note:** If in any event there is both a wallet address and a token address you subscribed to, you may receive events that may look like duplicates, but you should be able to differentiate between them by looking at the `addressType` field.
-
-* [Delete Webhook](./delete-webhook.api.mdx)
-* [Update Webhook](./update-webhook.api.mdx)
-* [Add Webhook Addresses](./add-webhook-addresses.api.mdx)
-* [Delete Webhook Addresses](./delete-webhook-addresses.api.mdx)
 
 
 

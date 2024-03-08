@@ -1,7 +1,8 @@
-openapi: 3.0.0
+openapi: 3.0.3
 info:
+  title: Notifications API
   description: |
-    
+
     ## Problem
 
     Notifications don't exist on the blockchain!
@@ -197,7 +198,7 @@ info:
 
     #### Step 1
 
-    Create a webhook with [Create Webhook API](./create-webhook.api.mdx)
+    Create a webhook with [Create Webhook API](./create-a-webhook.api.mdx)
 
     > #### 📘You can find your `projectId` in the URL of your project page
     >
@@ -205,11 +206,11 @@ info:
 
     #### Step 2
 
-    Add addresses to listen to with [Add Webhook Addresses API](./add-webhook-addresses.api.mdx)
+    Add addresses to listen to with [Add Webhook Addresses API](./add-addresses-to-a-webhook.api.mdx)
 
     > #### 📘
     >
-    > If you don't remember your `webhookId`, you can always fetch all your webhooks with [Get Webhooks for Project](./get-webhooks-for-project.api.mdx)
+    > If you don't remember your `webhookId`, you can always fetch all your webhooks with [Get Webhooks for Project](./get-webhooks-for-a-project.api.mdx)
 
     #### Step 3
 
@@ -225,475 +226,297 @@ info:
     >
     > 
     > **Note:** If in any event there is both a wallet address and a token address you subscribed to, you may receive events that may look like duplicates, but you should be able to differentiate between them by looking at the `addressType` field.
-
-    * [Delete Webhook](./delete-webhook.api.mdx)
-    * [Update Webhook](./update-webhook.api.mdx)
-    * [Add Webhook Addresses](./add-webhook-addresses.api.mdx)
-    * [Delete Webhook Addresses](./delete-webhook-addresses.api.mdx)
-
-  title: Notifications API
   version: 1.0.0
 servers:
-  - url: https://api.fuse.io/api/v0
+  - url: https://api.fuse.io/api/v0/notifications
+    description: Production server
+  - url: https://api.staging.fuse.io/api/v0/notifications
+    description: Staging server
 tags:
   - name: Webhooks
+    description: Operations related to webhooks
 paths:
-  /notifications/webhook:
+  /webhook:
     post:
       tags:
         - Webhooks
-      summary: Create Webhook
-      description: Create a webhook associated with a Charge project
+      summary: Create a webhook
+      description: Create a webhook associated with a project to receive notifications.
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                projectId: 
-                  type: string
-                  example: 62ce87c8131bbffe0f83af65
-                webhookUrl: 
-                  type: string
-                  example: https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e1
-                eventType: 
-                  type: string
-                  example: ALL
-              example:
-                projectId: 62caedf9e2719e72815d0703
-                webhookUrl: https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e1
-                eventType: ALL
+              $ref: "#/components/schemas/WebhookCreateRequest"
       parameters:
-        - name: API-SECRET
-          in: header
-          schema:
-            type: string
-          example: '{{secretKey}}'
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: '{{publicKey}}'
+        - $ref: "#/components/parameters/ApiSecret"
+        - $ref: "#/components/parameters/ApiKey"
       responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                projectId: 62ce87c8131bbffe0f83af65
-                webhookUrl: https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e1
-                eventType: ALL
-                _id: 62d3f2aa15a8393bd802c313
-                createdAt: '2022-07-17T11:29:46.459Z'
-                updatedAt: '2022-07-17T11:29:46.459Z'
-                __v: 0
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                statusCode: 403
-                errorMessage:
-                  statusCode: 403
-                  message: Forbidden resource
-                  error: Forbidden
-                path: >-
-                  /api/v0/notifications/webhook?apiKey=pk_fPI_B8UbTnpPmH5UgQl2E7VI
+        "201":
+          $ref: "#/components/responses/WebhookCreated"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
     put:
       tags:
         - Webhooks
-      summary: Update Webhook
-      description: Update webhook's `webhookUrl` or `eventType`
+      summary: Update a webhook
+      description: Update a webhook's details such as its URL or event type.
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                webhookId: 
-                  type: string
-                  example: 62d3f2aa15a8393bd802c313
-                webhookUrl: 
-                  type: string
-                  example: https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e3
-                eventType: 
-                  type: string
-                  example: ERC20
-              example:
-                webhookId: 62da85e69b1568215223a9dd
-                webhookUrl: https://webhook.site/03521015-b7f6-4a43-9ad9-eb5d2e6ca15b
-                eventType: ALL
+              $ref: "#/components/schemas/WebhookUpdateRequest"
       parameters:
-        - name: API-SECRET
-          in: header
-          schema:
-            type: string
-          example: '{{secretKey}}'
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: '{{publicKey}}'
+        - $ref: "#/components/parameters/ApiSecret"
+        - $ref: "#/components/parameters/ApiKey"
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                _id: 62d3f2aa15a8393bd802c313
-                projectId: 62ce87c8131bbffe0f83af65
-                webhookUrl: https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e3
-                eventType: ERC20
-                createdAt: '2022-07-17T11:29:46.459Z'
-                updatedAt: '2022-07-17T11:31:22.776Z'
-                __v: 0
-  /notifications/webhook/{webhookId}:
+        "200":
+          $ref: "#/components/responses/WebhookUpdated"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+  /webhook/{webhookId}:
     get:
       tags:
         - Webhooks
-      summary: Get Webhook
-      description: Find a webhook by id
+      summary: Get a webhook by ID
+      description: Retrieve details of a specific webhook by its ID.
       parameters:
-        - name: API-SECRET
-          in: header
-          schema:
-            type: string
-          example: '{{secretKey}}'
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: '{{publicKey}}'
-        - name: webhookId
-          in: path
-          schema:
-            type: string
-          required: true
-          example: 62d3f2aa15a8393bd802c313
+        - $ref: "#/components/parameters/ApiSecret"
+        - $ref: "#/components/parameters/ApiKey"
+        - $ref: "#/components/parameters/WebhookId"
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                _id: 62d3f2aa15a8393bd802c313
-                projectId: 62ce87c8131bbffe0f83af65
-                webhookUrl: https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e1
-                eventType: ALL
-                createdAt: '2022-07-17T11:29:46.459Z'
-                updatedAt: '2022-07-17T11:29:46.459Z'
-                __v: 0
+        "200":
+          $ref: "#/components/responses/WebhookDetails"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
     delete:
       tags:
         - Webhooks
-      summary: Delete Webhook
+      summary: Delete a webhook
+      description: Remove a webhook by its ID.
       parameters:
-        - name: API-SECRET
-          in: header
-          schema:
-            type: string
-          example: '{{secretKey}}'
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: '{{publicKey}}'
-        - name: webhookId
-          in: path
-          schema:
-            type: string
-          required: true
-          example: 630bce35495c43af6627cbfa
+        - $ref: "#/components/parameters/ApiSecret"
+        - $ref: "#/components/parameters/ApiKey"
+        - $ref: "#/components/parameters/WebhookId"
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                _id: 630bce35495c43af6627cbfa
-                projectId: 62ce87c8131bbffe0f83af65
-                webhookUrl: https://webhook.site/3a27d99c-ccd2-496d-a50b-8ffd073c7e44
-                eventType: ALL
-                createdAt: '2022-08-28T20:21:09.710Z'
-                updatedAt: '2022-08-28T20:21:09.710Z'
-                __v: 0
-  /notifications/webhooks/{projectId}:
+        "200":
+          $ref: "#/components/responses/WebhookDeleted"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+  /webhooks/{projectId}:
     get:
       tags:
         - Webhooks
-      summary: Get Webhooks for Project
-      description: Find and fetch all the webhooks associated with a project by projectId
+      summary: Get webhooks for a project
+      description: Retrieve all webhooks associated with a given project ID.
       parameters:
-        - name: API-SECRET
-          in: header
-          schema:
-            type: string
-          example: '{{secretKey}}'
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: '{{publicKey}}'
-        - name: projectId
-          in: path
-          schema:
-            type: string
-          required: true
-          example: 62caedf9e2719e72815d0703
+        - $ref: "#/components/parameters/ApiSecret"
+        - $ref: "#/components/parameters/ApiKey"
+        - $ref: "#/components/parameters/ProjectId"
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                - _id: 62cfd9b84c800bc28528e65f
-                  projectId: 62ce87c8131bbffe0f83af65
-                  webhookUrl: https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e1
-                  eventType: ALL
-                  createdAt: '2022-07-14T08:54:16.249Z'
-                  updatedAt: '2022-07-14T08:54:16.249Z'
-                  __v: 0
-                - _id: 62cfd9b94c800bc28528e661
-                  projectId: 62ce87c8131bbffe0f83af65
-                  webhookUrl: https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e1
-                  eventType: ALL
-                  createdAt: '2022-07-14T08:54:17.540Z'
-                  updatedAt: '2022-07-14T08:54:17.540Z'
-                  __v: 0
-                - _id: 62cfd9ba4c800bc28528e663
-                  projectId: 62ce87c8131bbffe0f83af65
-                  webhookUrl: https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e1
-                  eventType: ALL
-                  createdAt: '2022-07-14T08:54:18.590Z'
-                  updatedAt: '2022-07-14T08:54:18.590Z'
-                  __v: 0
-                - _id: 62cfd9bb4c800bc28528e665
-                  projectId: 62ce87c8131bbffe0f83af65
-                  webhookUrl: https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e1
-                  eventType: ALL
-                  createdAt: '2022-07-14T08:54:19.697Z'
-                  updatedAt: '2022-07-14T08:54:19.697Z'
-                  __v: 0
-                - _id: 62cfd9bc4c800bc28528e667
-                  projectId: 62ce87c8131bbffe0f83af65
-                  webhookUrl: https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e1
-                  eventType: ALL
-                  createdAt: '2022-07-14T08:54:20.687Z'
-                  updatedAt: '2022-07-14T08:54:20.687Z'
-                  __v: 0
-                - _id: 62d3f2aa15a8393bd802c313
-                  projectId: 62ce87c8131bbffe0f83af65
-                  webhookUrl: https://webhook.site/d7a716ac-8119-4114-9586-f0667c2cb1e1
-                  eventType: ALL
-                  createdAt: '2022-07-17T11:29:46.459Z'
-                  updatedAt: '2022-07-17T11:29:46.459Z'
-                  __v: 0
-  /notifications/webhook/add-addresses:
+        "200":
+          $ref: "#/components/responses/WebhooksForProject"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+  /webhook/add-addresses:
     post:
       tags:
         - Webhooks
-      summary: Add Webhook Addresses
-      description: Add new addresses to a webhook
+      summary: Add addresses to a webhook
+      description: Associate new addresses with an existing webhook to listen for their events.
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                webhookId: 
-                  type: string
-                  example: 62d3f2aa15a8393bd802c313
-                addresses:
-                  type: array
-                  items:
-                    type: string
-              example:
-                webhookId: 62da85e69b1568215223a9dd
-                addresses:
-                  - '0x14E138F31b38847Fd7E3462fFfae6b6F91867Fc2'
-                  - '0x14E138F31b38847Fd7E3462fFfae6b6F91867Fc3'
-                  - '0x285029e7a50F9e2d9dAa4e1BFd2e5573fa3D3DCF'
+              $ref: "#/components/schemas/WebhookAddAddressesRequest"
       parameters:
-        - name: API-SECRET
-          in: header
-          schema:
-            type: string
-          example: '{{secretKey}}'
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: '{{publicKey}}'
+        - $ref: "#/components/parameters/ApiSecret"
+        - $ref: "#/components/parameters/ApiKey"
       responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                - webhookId: 62d3f2aa15a8393bd802c313
-                  address: '0xcc95E80DA76bd41507b99d9b977Dc3062bcf6430'
-                  _id: 62d3f32415a8393bd802c31b
-                  __v: 0
-                  createdAt: '2022-07-17T11:31:48.413Z'
-                  updatedAt: '2022-07-17T11:31:48.413Z'
-                - webhookId: 62d3f2aa15a8393bd802c313
-                  address: '0x14E138F31b38847Fd7E3462fFfae6b6F91867Fc2'
-                  _id: 62d3f32415a8393bd802c31c
-                  __v: 0
-                  createdAt: '2022-07-17T11:31:48.413Z'
-                  updatedAt: '2022-07-17T11:31:48.413Z'
-                - webhookId: 62d3f2aa15a8393bd802c313
-                  address: '0x14E138F31b38847Fd7E3462fFfae6b6F91867Fc3'
-                  _id: 62d3f32415a8393bd802c31e
-                  __v: 0
-                  createdAt: '2022-07-17T11:31:48.414Z'
-                  updatedAt: '2022-07-17T11:31:48.414Z'
-                - webhookId: 62d3f2aa15a8393bd802c313
-                  address: '0x285029e7a50F9e2d9dAa4e1BFd2e5573fa3D3DCF'
-                  _id: 62d3f32415a8393bd802c31f
-                  __v: 0
-                  createdAt: '2022-07-17T11:31:48.414Z'
-                  updatedAt: '2022-07-17T11:31:48.414Z'
-                - webhookId: 62d3f2aa15a8393bd802c313
-                  address: '0x7A3B4B45D9efFFa2629Ad07288Ee3FD0Ed161A30'
-                  _id: 62d3f32415a8393bd802c320
-                  __v: 0
-                  createdAt: '2022-07-17T11:31:48.414Z'
-                  updatedAt: '2022-07-17T11:31:48.414Z'
-                - webhookId: 62d3f2aa15a8393bd802c313
-                  address: '0x44fcF21eff7B4EEa363cc5235a4715a42B4C28FD'
-                  _id: 62d3f32415a8393bd802c321
-                  __v: 0
-                  createdAt: '2022-07-17T11:31:48.414Z'
-                  updatedAt: '2022-07-17T11:31:48.414Z'
-                - webhookId: 62d3f2aa15a8393bd802c313
-                  address: '0x245C4eDa9E358A8cE83CBEDFB2b516dc80A07534'
-                  _id: 62d3f32415a8393bd802c322
-                  __v: 0
-                  createdAt: '2022-07-17T11:31:48.415Z'
-                  updatedAt: '2022-07-17T11:31:48.415Z'
-  /notifications/webhook/delete-addresses:
+        "201":
+          $ref: "#/components/responses/AddressesAdded"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+  /webhook/delete-addresses:
     post:
       tags:
         - Webhooks
-      summary: Delete Webhook Addresses
-      description: Delete addresses from a webhook
+      summary: Delete addresses from a webhook
+      description: Remove addresses from a webhook's listening scope.
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                webhookId: 
-                  type: string
-                  example: 62d3f2aa15a8393bd802c313
-                addresses:
-                  type: array
-                  example: 
-                  - '0x14E138F31b38847Fd7E3462fFfae6b6F91867Fc3'
-              example:
-                webhookId: 62d3f2aa15a8393bd802c313
-                addresses:
-                  - '0x14E138F31b38847Fd7E3462fFfae6b6F91867Fc3'
+              $ref: "#/components/schemas/WebhookDeleteAddressesRequest"
       parameters:
-        - name: API-SECRET
-          in: header
-          schema:
-            type: string
-          example: '{{secretKey}}'
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: '{{publicKey}}'
+        - $ref: "#/components/parameters/ApiSecret"
+        - $ref: "#/components/parameters/ApiKey"
       responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                acknowledged: true
-                deletedCount: 1
-  /notifications/webhook/addresses/{webhookId}:
+        "201":
+          $ref: "#/components/responses/AddressesDeleted"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+  /webhook/addresses/{webhookId}:
     get:
       tags:
         - Webhooks
-      summary: Get Webhook Addresses for Webhook Id
-      description: Get all the addresses associated with a webhook
+      summary: Get addresses for a webhook
+      description: Retrieve all addresses associated with a specific webhook.
       parameters:
-        - name: API-SECRET
-          in: header
-          schema:
-            type: string
-          example: '{{secretKey}}'
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: '{{publicKey}}'
-        - name: webhookId
-          in: path
-          schema:
-            type: string
-          required: true
-          example: 62d3f2aa15a8393bd802c313
+        - $ref: "#/components/parameters/ApiSecret"
+        - $ref: "#/components/parameters/ApiKey"
+        - $ref: "#/components/parameters/WebhookId"
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                - _id: 62d3f32415a8393bd802c31e
-                  webhookId: 62d3f2aa15a8393bd802c313
-                  address: '0x14E138F31b38847Fd7E3462fFfae6b6F91867Fc3'
-                  __v: 0
-                  createdAt: '2022-07-17T11:31:48.414Z'
-                  updatedAt: '2022-07-17T11:31:48.414Z'
-                - _id: 62d3f32415a8393bd802c322
-                  webhookId: 62d3f2aa15a8393bd802c313
-                  address: '0x245C4eDa9E358A8cE83CBEDFB2b516dc80A07534'
-                  __v: 0
-                  createdAt: '2022-07-17T11:31:48.415Z'
-                  updatedAt: '2022-07-17T11:31:48.415Z'
-                - _id: 62d3f32415a8393bd802c31f
-                  webhookId: 62d3f2aa15a8393bd802c313
-                  address: '0x285029e7a50F9e2d9dAa4e1BFd2e5573fa3D3DCF'
-                  __v: 0
-                  createdAt: '2022-07-17T11:31:48.414Z'
-                  updatedAt: '2022-07-17T11:31:48.414Z'
-                - _id: 62d3f32415a8393bd802c321
-                  webhookId: 62d3f2aa15a8393bd802c313
-                  address: '0x44fcF21eff7B4EEa363cc5235a4715a42B4C28FD'
-                  __v: 0
-                  createdAt: '2022-07-17T11:31:48.414Z'
-                  updatedAt: '2022-07-17T11:31:48.414Z'
-                - _id: 62d3f32415a8393bd802c320
-                  webhookId: 62d3f2aa15a8393bd802c313
-                  address: '0x7A3B4B45D9efFFa2629Ad07288Ee3FD0Ed161A30'
-                  __v: 0
-                  createdAt: '2022-07-17T11:31:48.414Z'
-                  updatedAt: '2022-07-17T11:31:48.414Z'
-                - _id: 62d3f32415a8393bd802c31b
-                  webhookId: 62d3f2aa15a8393bd802c313
-                  address: '0xcc95E80DA76bd41507b99d9b977Dc3062bcf6430'
-                  __v: 0
-                  createdAt: '2022-07-17T11:31:48.413Z'
-                  updatedAt: '2022-07-17T11:31:48.413Z'
+        "200":
+          $ref: "#/components/responses/AddressesForWebhook"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+components:
+  parameters:
+    ApiSecret:
+      name: API-SECRET
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The secret API key for authentication.
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      schema:
+        type: string
+      description: The public API key for authentication.
+    WebhookId:
+      name: webhookId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the webhook.
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the project.
+  schemas:
+    WebhookCreateRequest:
+      type: object
+      properties:
+        projectId:
+          type: string
+        webhookUrl:
+          type: string
+        eventType:
+          type: string
+    WebhookUpdateRequest:
+      type: object
+      properties:
+        webhookId:
+          type: string
+        webhookUrl:
+          type: string
+        eventType:
+          type: string
+    WebhookAddAddressesRequest:
+      type: object
+      properties:
+        webhookId:
+          type: string
+        addresses:
+          type: array
+          items:
+            type: string
+    WebhookDeleteAddressesRequest:
+      type: object
+      properties:
+        webhookId:
+          type: string
+        addresses:
+          type: array
+          items:
+            type: string
+  responses:
+    WebhookCreated:
+      description: Webhook successfully created.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/WebhookCreateRequest"
+    WebhookUpdated:
+      description: Webhook successfully updated.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/WebhookUpdateRequest"
+    WebhookDetails:
+      description: Details of the specified webhook.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/WebhookCreateRequest"
+    WebhookDeleted:
+      description: Webhook successfully deleted.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Webhook deleted successfully.
+    WebhooksForProject:
+      description: List of all webhooks for the specified project.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/WebhookCreateRequest"
+    AddressesAdded:
+      description: Addresses successfully added to the webhook.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/WebhookAddAddressesRequest"
+    AddressesDeleted:
+      description: Addresses successfully deleted from the webhook.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Addresses deleted successfully.
+    AddressesForWebhook:
+      description: List of all addresses for the specified webhook.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/WebhookAddAddressesRequest"
+    ForbiddenError:
+      description: Access to the resource is forbidden.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 403
+              errorMessage:
+                type: string
+                example: Forbidden resource
+              error:
+                type: string
+                example: Forbidden

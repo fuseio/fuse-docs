@@ -1,0 +1,50 @@
+---
+id: authenticate-user
+title: "Authenticate user"
+description: "Authenticate user using signed data standard EIP-191."
+sidebar_label: "Authenticate user"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVV81uGzcQfpUpfagNrCU77aU6GHBcu0iDwobtwigsARktR7uMueRmOCt5Iegpeumtr9hHKMhdR1KkpGiRS33xkhzOzzcfZ0ZLJVgENXpUdxWywANaSxLUJFOaQs6mFuOdGqnzRkpyYnIUgiYQQxOMKyCYwpEGjYIQBJ1G1nD55ub49IfTgcoU04eGgrz2ulWjZVoaJq1Gwg1lKvdOyEk8wrq2Ub3xbvg+RKNLFfKSKoxf0takRspP31MuKlM1+5pYDIV4WmIoN6SCsHGFWmUquofSMO099QtHfK41Uwj7r0dQOkw+L7bKlBix1KN020WsVqt4UiNjRUIcQV4qh1WUw9q8pVZlykRsPzTEbY/VJjg70a8d207Ob75huGmm1uRwfvMGnqgdqNUkagy1d6ED6dXJafy3ffWCCYW0+mqpeL+QfRh1aHx/crLrwmvU8ALaV3MjCEoTLrzezLxxQgVxBJCYPf9CIWCxnxs1yj5KbST7Mqq47RFWLwF+txvgleep0Zrc/zy8VaYqktJrNVK1T9nq1KghNlKqTAXi+QvVG7ZqpEqROoyGQ6zNYNYEGhgfv4fzV8P0uI4XfcX5lNM37HWTxwV0WtUq26c0CBbGFf9O+V136aPmSXQ9b9hIexcz0IE8JWTi+KY3kIq2Vf8247oTUln/ceW5QlEj9fPDfYIzZvZ2XQQvn7GqLa2L1gv0W7VqvbldojaE91SmjfQaN/PJ6T6ZW9U91giVqZipDo7TwcngZAeksdu5BTX7udEUAD9uY1zcEc9NTnD4gHh3lERnnqGNhSlnH8JxbVFmnivYoH0YwI80JxuZHSBHB2iDB8xzCgGkJNj1YG4wnTzGhB8H/TQ5HGqfh2FaT/3zsCAR44rjIMhCelDp56PBvmDSR+sbwE+bW4CFkTLaMQyXz0Ls0NoWrhex2Z3nuW+cBDi8vD4PR4BOQ57qaO/vhXfCmAv0/MuAnilvhKDAYFNsjC5goncMlH1TJHPAZLFNvDQ5ZTAjyUuYokWXR9SdBvFP5EIGBcmmGihNEM9tloSqJi+h8kyDsbvEvOw96d3UWyZ3gTHREjR1wahxaj8TFmiqrW9Jg3dJ0VUTCBzJwvPTAO5LehE0AZx3x3kTxGuDNh42AYxAiclUYjkYB3mJXBD4WVLYXe9UdSKxfLK3YeMYZo3THTSRQTVxopmXkngb52mbxpX48KuuNHbXAjkdN6WkCsSv80A8GLuDA3jw/BQFEil24Bq71zTzTLD4olgGZpbYVuKc3LcC2juC4DOoLWEgmHlr/SJZLxqjCR5/6pgMdx2TJ4f/xPGDg4MDuCXUbYwjHX4zdmeQ9v/68/c/bqmiakoMZ3AGV54Brd1DgH5qC1lyeGGsBUeRNh5Q6+5Zb8wbb6ld45ZuQpppIE0/ARqnYy5KipMJvOumn3eDsbt2OX3EpFNbs48dDwJJSs5LMfA7Vp+o7fyLaU+xbmdgL7cHY5fanw9SYWq5/Ui2M+B+Wg+X6979n6fhvocIPcuwtmiSL6mnLftW+qhSK51kqowddvSolsspBvqV7WoVt7thMTZYbUJ8nFqNZmgDfcHdw9t+sjyCvaPiZxx7onZzVp2jbaJQapdzZBOtq9HjZJWpklATJ7e6Wxed8eP7qHh9d2fmiU29u3Ge51TLF2UnGwPIzfXdfey6/Q+LKo1CinERB2lcxP6lxip20ARIauhpf6ksuqJJg5Hq9Ma/vwEOpJNU
+sidebar_class_name: "post api-method"
+info_path: docs/fuse-box/fuse-apis/Smart Wallets API/smart-wallets-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Authenticate user</h1>
+
+<MethodEndpoint method={"post"} path={"/auth"}></MethodEndpoint>
+
+
+
+Authenticate user using signed data standard EIP-191.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your Public API key."}}></ParamsItem></ul></div></details><MimeTabs className={"openapi-tabs__mime"}><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3><strong className={"openapi-schema__required"}>required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"hash"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"signature"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"ownerAddress"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"smartWalletAddress"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem></MimeTabs><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"201"} value={"201"}><div>
+
+Created
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"jwt"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"jwt\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"statusCode"} required={false} schemaName={"integer"} qualifierMessage={undefined} schema={{"type":"integer"}}></SchemaItem><SchemaItem collapsible={false} name={"errorMessage"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"path"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"errorMessage\": \"string\",\n  \"path\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"403"} value={"403"}><div>
+
+Forbidden
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"statusCode"} required={false} schemaName={"integer"} qualifierMessage={undefined} schema={{"type":"integer"}}></SchemaItem><SchemaItem collapsible={false} name={"errorMessage"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"path"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"errorMessage\": \"string\",\n  \"path\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

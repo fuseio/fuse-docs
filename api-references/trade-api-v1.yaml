@@ -1,0 +1,361 @@
+openapi: 3.0.0
+info:
+  title: Trade API
+  version: 1.0.0
+  description: |
+    Trade API lets you integrate trading functionality into your application. With the Trade API, users can buy and sell popular cryptocurrencies like Bitcoin and Ethereum, stablecoins, or custom tokens dedicated to their application domain. Behind the scenes, it uses [voltage.finance](https://voltage.finance/) decentralized exchange.
+
+    Fuse Trade API has the following high-level API sets, which create the capabilities to build endless use cases for your apps.
+
+    ### Prices
+
+    Allows the developer to fetch prices and the historic prices of various assets. This can show a chart's current token price or price history.
+
+    ### Price Changes
+
+    Allows the developer to fetch the change in the price of the asset. This can show how much the token price has changed over a defined interval.
+
+    ### Swap
+
+    Swap is an auxiliary API that helps you perform transactions if you cannot use the [voltage-sdk](https://github.com/voltfinance/voltage-sdk). The voltage SDK is written in JS and is hard to use in a mobile environment. Instead, you can send a request to the Swap API, which will generate the trade data. Then the user needs to sign and relay the data.
+
+    ## Working with Trade API
+
+    Before working with Trade API, if you haven't done so, please follow the guide [Getting Started](fuse-box/getting-started.mdx).
+
+    #### Ready to start!
+
+    > #### 📘Remember
+    >
+    > For all Trade API requests, you will need to add your Public API Key to the request query params under the key `apiKey`.
+
+    Once you have your project set and access to your Public API key, you can start working with the Trade API.
+
+servers:
+  - url: https://api.fuse.io/api/v0/trade
+    description: Production server
+  - url: https://api.staging.fuse.io/api/v0/trade
+    description: Staging server
+
+tags:
+  - name: Price
+  - name: Price Change
+  - name: Stats
+  - name: Swap
+  - name: Tokens
+
+paths:
+  /price/{tokenAddress}:
+    get:
+      tags:
+        - Price
+      summary: Get Latest Price for a Token
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
+        - $ref: "#/components/parameters/TokenAddress"
+      responses:
+        "200":
+          $ref: "#/components/responses/PriceResponse"
+
+  /pricechange/{tokenAddress}:
+    get:
+      tags:
+        - Price Change
+      summary: Get Price Change for Token Over Last 24 hours
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
+        - $ref: "#/components/parameters/TokenAddress"
+      responses:
+        "200":
+          $ref: "#/components/responses/PriceChangeResponse"
+    post:
+      tags:
+        - Price Change
+      summary: Get Price Change for Token Over Time Duration
+      description: >
+        Specify a duration object to calculate the price change over the specified timeframe.
+      requestBody:
+        $ref: "#/components/requestBodies/Duration"
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
+        - $ref: "#/components/parameters/TokenAddress"
+      responses:
+        "200":
+          $ref: "#/components/responses/PriceChangeResponse"
+
+  /pricechange/interval/{timeFrame}/{tokenAddress}:
+    get:
+      tags:
+        - Price Change
+      summary: Get Price Change for Token Over An Interval
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
+        - $ref: "#/components/parameters/TimeFrame"
+        - $ref: "#/components/parameters/TokenAddress"
+      responses:
+        "200":
+          $ref: "#/components/responses/PriceChangeIntervalResponse"
+
+  /stats/{tokenAddress}:
+    get:
+      tags:
+        - Stats
+      summary: Get Historical Statistics of a Token
+      parameters:
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/ApiKey"
+        - $ref: "#/components/parameters/TokenAddress"
+      responses:
+        "200":
+          $ref: "#/components/responses/StatsResponse"
+
+  /swap/quote:
+    post:
+      tags:
+        - Swap
+      summary: Get a Quote for a Token Pair
+      requestBody:
+        $ref: "#/components/requestBodies/SwapQuote"
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
+      responses:
+        "201":
+          $ref: "#/components/responses/SwapQuoteResponse"
+
+  /swap/swapcallparameters:
+    post:
+      tags:
+        - Swap
+      summary: Create Swap Parameters for a Trade
+      requestBody:
+        $ref: "#/components/requestBodies/SwapParameters"
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
+      responses:
+        "201":
+          $ref: "#/components/responses/SwapParametersResponse"
+
+  /tokens:
+    get:
+      tags:
+        - Tokens
+      summary: Get the List of Tokens on Fuse
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
+      responses:
+        "200":
+          $ref: "#/components/responses/TokenListResponse"
+
+components:
+  parameters:
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Your Public API key.
+    TokenAddress:
+      name: tokenAddress
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Token Contract Address.
+    TimeFrame:
+      name: timeFrame
+      in: path
+      required: true
+      schema:
+        type: string
+      description: 'Interval for price change. Allowed values: "ALL", "MONTH", "WEEK", "DAY", "HOUR".'
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+      description: Number of items to return.
+
+  requestBodies:
+    Duration:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              duration:
+                type: object
+                properties:
+                  days:
+                    type: integer
+            example:
+              duration:
+                days: 1
+    SwapQuote:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              currencyIn:
+                type: string
+              currencyOut:
+                type: string
+              amountIn:
+                type: string
+            example:
+              currencyIn: "0x495d133B938596C9984d462F007B676bDc57eCEC"
+              currencyOut: "0x0BE9e53fd7EDaC9F859882AfdDa116645287C629"
+              amountIn: "1000"
+    SwapParameters:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              currencyIn:
+                type: string
+              currencyOut:
+                type: string
+              amountIn:
+                type: string
+              recipient:
+                type: string
+              slippageTolerance:
+                type: string
+              deadline:
+                type: string
+            example:
+              currencyIn: "0xd8Bf72f3e163B9CF0C73dFdCC316417A5ac20670"
+              currencyOut: "0x620fd5fa44BE6af63715Ef4E65DDFA0387aD13F5"
+              amountIn: "1"
+              recipient: "0xe5d28349fb6Cb9C16D3163497e49C5E9253f9976"
+              slippageTolerance: "50"
+              deadline: "1200"
+
+  responses:
+    PriceResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  price:
+                    type: string
+    PriceChangeResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  priceChange:
+                    type: string
+                  currentPrice:
+                    type: string
+                  previousPrice:
+                    type: string
+    PriceChangeIntervalResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    timestamp:
+                      type: integer
+                    priceChange:
+                      type: string
+                    previousPrice:
+                      type: string
+                    currentPrice:
+                      type: string
+    StatsResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    address:
+                      type: string
+                    price:
+                      type: string
+                    volume:
+                      type: string
+                    timestamp:
+                      type: integer
+                    date:
+                      type: string
+    SwapQuoteResponse:
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  info:
+                    type: object
+                  trade:
+                    type: object
+    SwapParametersResponse:
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  info:
+                    type: object
+                  trade:
+                    type: object
+    TokenListResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              tokens:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    symbol:
+                      type: string
+                    decimals:
+                      type: integer
+                    address:
+                      type: string
+                    logoURI:
+                      type: string
+                    type:
+                      type: string

@@ -9,7 +9,7 @@ const ExploreApisList = [
     title: "Trade API",
     description:
       "Enable DeFi functionalities including token swaps, real-time price information, and more in your apps.",
-    href: "/docs/fuse-box/fuse-apis/Trade%20API/trade-api",
+    href: "/docs/fuse-box/fuse-apis/Trade%20API/V1/trade-api",
   },
   {
     title: "Notifications API",
@@ -22,6 +22,17 @@ const ExploreApisList = [
     description:
       "Access real-time indexed transactions with ease.",
     href: "/docs/fuse-box/fuse-apis/Smart%20Wallets%20API/get-wallet-actions",
+  },
+  {
+    title: "GraphQL APIs",
+    description:
+      "Access real-time indexed transactions with ease.",
+    href: "/docs/fuse-box/fuse-apis/Graphql%20API/graphql-api",
+  },
+  {
+    title: "Staking APIs",
+    description: "Enhance your app with staking functionalities.",
+    href: "/docs/fuse-box/fuse-apis/Graphql%20API/graphql-api",
   },
 ];
 

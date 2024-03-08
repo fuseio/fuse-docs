@@ -1,0 +1,208 @@
+openapi: 3.0.3
+info:
+  title: Staking API
+  description: |
+    ## Elevate Your Token Staking Experience
+
+    Staking APIs provide robust endpoints to enhance your staking experience on the Fuse Blockchain.
+
+    ## What is Staking API?
+
+    The Staking API offers a suite of endpoints designed to empower developers to manage token staking efficiently. Whether you're staking tokens, exploring staking options, or monitoring staked assets, these APIs provide a streamlined interface for a comprehensive staking experience.
+
+    ## Key Features:
+
+    ### 1. Get Staked Tokens by Wallet Address:
+      Retrieve detailed information about staked tokens associated with a specific wallet address. Gain insights into staking activities and track the status of staked assets effortlessly.
+
+    ### 2. Stake Token:
+      Seamlessly stake tokens using our intuitive API. With just a few API calls, you can simplify the staking process and optimize your token holdings.
+
+    ### 3. Staking Options:
+      Explore the available staking options to tailor your staking strategy. Retrieve information on staking durations, rewards, and other essential parameters to make informed decisions.
+
+    ### 4. Unstake Token:
+      Unleash flexibility with the ability to **unstake** tokens conveniently. Utilize the Unstake Token endpoint to manage and adjust your staking portfolio according to your preferences.
+
+    ## Getting Started:
+
+    Get an API key from the [Console](https://console.fuse.io/build) tool and refer to our comprehensive documentation to dive into the world of effortless token staking.
+  version: 1.0.0
+servers:
+  - url: https://api.fuse.io/api/v0/staking
+    description: Production server
+  - url: https://api.staging.fuse.io/api/v0/staking
+    description: Staging server
+paths:
+  /staking_options:
+    get:
+      tags:
+        - Staking
+      summary: Retrieve staking options
+      description: Fetches available staking options including details like APR, token information, and provider IDs.
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
+      responses:
+        "200":
+          description: A list of staking options.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StakingOptionsResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+
+  /stake:
+    post:
+      tags:
+        - Staking
+      summary: Stake tokens
+      description: Stakes a specified amount of tokens from a wallet.
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StakeRequest"
+      responses:
+        "201":
+          description: Token staking initiated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StakeResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+
+  /unstake:
+    post:
+      tags:
+        - Staking
+      summary: Unstake tokens
+      description: Unstakes a specified amount of tokens back to a wallet.
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UnstakeRequest"
+      responses:
+        "201":
+          description: Token unstaking initiated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnstakeResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+
+  /staked_tokens/{accountAddress}:
+    get:
+      tags:
+        - Staking
+      summary: Get staked tokens by wallet address
+      description: Retrieves information about tokens staked by a specific wallet address.
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
+        - name: accountAddress
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The wallet address to query staked tokens for.
+      responses:
+        "200":
+          description: Staked tokens information for the specified wallet address.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StakedTokensResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+
+components:
+  parameters:
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Your API key to authenticate requests.
+
+  schemas:
+    StakingOptionsResponse:
+      type: array
+      items:
+        $ref: "#/components/schemas/StakingOption"
+    StakingOption:
+      type: object
+      properties:
+        tokenAddress:
+          type: string
+        tokenSymbol:
+          type: string
+        tokenName:
+          type: string
+        tokenLogoURI:
+          type: string
+        unStakeTokenAddress:
+          type: string
+        stakingProviderId:
+          type: string
+        expired:
+          type: boolean
+        stakingApr:
+          type: number
+        tvl:
+          type: number
+    StakeRequest:
+      type: object
+      properties:
+        accountAddress:
+          type: string
+        tokenAmount:
+          type: string
+        tokenAddress:
+          type: string
+    StakeResponse:
+      type: object
+      properties:
+        contractAddress:
+          type: string
+        encodedABI:
+          type: string
+    UnstakeRequest:
+      $ref: "#/components/schemas/StakeRequest"
+    UnstakeResponse:
+      $ref: "#/components/schemas/StakeResponse"
+    StakedTokensResponse:
+      type: object
+      properties:
+        totalStakedAmountUSD:
+          type: number
+        totalEarnedAmountUSD:
+          type: number
+        stakedTokens:
+          type: array
+          items:
+            $ref: "#/components/schemas/StakingOption"
+
+  responses:
+    ForbiddenError:
+      description: Access to the resource is forbidden.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+              errorMessage:
+                type: string
+              error:
+                type: string

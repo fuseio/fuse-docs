@@ -1,0 +1,406 @@
+openapi: 3.0.0
+info:
+  title: Swap Price API
+  version: 2.0.0
+  description: |
+    The Swap Price API offers a suite of endpoints tailored to enhance your token-swapping capabilities. Whether you're seeking indicative prices for transactions, exploring liquidity sources, or obtaining quotes for buying or selling ERC20 tokens, our APIs streamline the token-swapping process with precision and efficiency. The API endpoint is used to acquire an indicative price for a transaction.
+
+    ## Key Features:
+
+    ### 1. Get Indicative Price for a Transaction:
+      Obtain real-time indicative prices for transactions, empowering you to make informed decisions while exchanging tokens. Gain insights into transaction costs and optimize your token exchange experience effortlessly.
+
+    ### 2. Returns Liquidity Sources Enabled for the Chain:
+      Explore the liquidity sources available for the blockchain chain you're operating on. Uncover a diverse array of liquidity providers and optimize your token-swapping strategy based on available resources.
+
+    ### 3. Get a Quote for Buying or Selling any ERC20 Token:
+      Obtain quotes for buying or selling ERC20 tokens seamlessly with our intuitive API. Simplify the token exchange process and optimize your trading activities with ease.
+
+    ## Getting Started:
+
+    Get an API from the [Console](https://console.fuse.io/build) tool and refer to our comprehensive documentation. Access guides, code snippets, and examples to integrate the Swap Price API seamlessly into your applications.
+servers:
+  - url: https://api.fuse.io/api/v1/trade
+    description: Production server
+  - url: https://api.staging.fuse.io/api/v1/trade
+    description: Staging server
+
+paths:
+  /price:
+    get:
+      summary: Get an indicative price for a transaction
+      operationId: getIndicativePrice
+      parameters:
+        - $ref: "#/components/parameters/apiKey"
+        - $ref: "#/components/parameters/sellToken"
+        - $ref: "#/components/parameters/buyToken"
+        - $ref: "#/components/parameters/sellAmount"
+        - $ref: "#/components/parameters/buyAmount"
+        - $ref: "#/components/parameters/slippagePercentage"
+        - $ref: "#/components/parameters/gasPrice"
+        - $ref: "#/components/parameters/takerAddress"
+        - $ref: "#/components/parameters/excludedSources"
+        - $ref: "#/components/parameters/includedSources"
+        - $ref: "#/components/parameters/skipValidation"
+        - $ref: "#/components/parameters/feeRecipient"
+        - $ref: "#/components/parameters/buyTokenPercentageFee"
+        - $ref: "#/components/parameters/enableSlippageProtection"
+        - $ref: "#/components/parameters/priceImpactProtectionPercentage"
+        - $ref: "#/components/parameters/feeRecipientTradeSurplus"
+      responses:
+        "200":
+          $ref: "#/components/responses/IndicativePriceResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /quote:
+    get:
+      summary: Get a quote for buying or selling any ERC20 token
+      operationId: getQuote
+      parameters:
+        - $ref: "#/components/parameters/apiKey"
+        - $ref: "#/components/parameters/sellToken"
+        - $ref: "#/components/parameters/buyToken"
+        - $ref: "#/components/parameters/sellAmount"
+        - $ref: "#/components/parameters/buyAmount"
+        - $ref: "#/components/parameters/slippagePercentage"
+        - $ref: "#/components/parameters/gasPrice"
+        - $ref: "#/components/parameters/takerAddress"
+        - $ref: "#/components/parameters/excludedSources"
+        - $ref: "#/components/parameters/includedSources"
+        - $ref: "#/components/parameters/skipValidation"
+        - $ref: "#/components/parameters/feeRecipient"
+        - $ref: "#/components/parameters/buyTokenPercentageFee"
+        - $ref: "#/components/parameters/enableSlippageProtection"
+        - $ref: "#/components/parameters/priceImpactProtectionPercentage"
+        - $ref: "#/components/parameters/feeRecipientTradeSurplus"
+        - $ref: "#/components/parameters/shouldSellEntireBalance"
+      responses:
+        "200":
+          $ref: "#/components/responses/QuoteResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /sources:
+    get:
+      summary: Returns the liquidity sources enabled for the chain
+      operationId: getLiquiditySources
+      parameters:
+        - $ref: "#/components/parameters/apiKey"
+      responses:
+        "200":
+          $ref: "#/components/responses/LiquiditySourcesResponse"
+
+components:
+  parameters:
+    apiKey:
+      name: apiKey
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Your Public API key.
+    sellToken:
+      name: sellToken
+      in: query
+      required: true
+      schema:
+        type: string
+      description: The ERC20 token address of the token you want to sell.
+    buyToken:
+      name: buyToken
+      in: query
+      required: true
+      schema:
+        type: string
+      description: The ERC20 token address of the token you want to receive.
+    sellAmount:
+      name: sellAmount
+      in: query
+      schema:
+        type: string
+      description: The amount of sellToken (in sellToken base units) you want to send.
+    buyAmount:
+      name: buyAmount
+      in: query
+      schema:
+        type: string
+      description: The amount of buyToken (in buyToken base units) you want to receive.
+    slippagePercentage:
+      name: slippagePercentage
+      in: query
+      schema:
+        type: string
+      description: The maximum acceptable slippage percentage.
+    gasPrice:
+      name: gasPrice
+      in: query
+      schema:
+        type: string
+      description: The target gas price for the swap transaction.
+    takerAddress:
+      name: takerAddress
+      in: query
+      schema:
+        type: string
+      description: The address which will fill the quote.
+    excludedSources:
+      name: excludedSources
+      in: query
+      schema:
+        type: string
+      description: Liquidity sources to exclude from the quote.
+    includedSources:
+      name: includedSources
+      in: query
+      schema:
+        type: string
+      description: Liquidity sources to include in the quote.
+    skipValidation:
+      name: skipValidation
+      in: query
+      schema:
+        type: boolean
+      description: Skip validation of the quote.
+    feeRecipient:
+      name: feeRecipient
+      in: query
+      schema:
+        type: string
+      description: The address that should receive affiliate fees.
+    buyTokenPercentageFee:
+      name: buyTokenPercentageFee
+      in: query
+      schema:
+        type: string
+      description: The percentage of the buyAmount attributed as affiliate fees.
+    enableSlippageProtection:
+      name: enableSlippageProtection
+      in: query
+      schema:
+        type: boolean
+      description: Enable slippage protection.
+    priceImpactProtectionPercentage:
+      name: priceImpactProtectionPercentage
+      in: query
+      schema:
+        type: string
+      description: Allowed price impact percentage.
+    feeRecipientTradeSurplus:
+      name: feeRecipientTradeSurplus
+      in: query
+      schema:
+        type: string
+      description: The recipient address of any trade surplus fees.
+    shouldSellEntireBalance:
+      name: shouldSellEntireBalance
+      in: query
+      schema:
+        type: boolean
+      description: Sell the entirety of the caller's takerToken balance.
+
+  responses:
+    IndicativePriceResponse:
+      description: Indicative price for the transaction
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/TransactionPriceDetails"
+    QuoteResponse:
+      description: Successful response with the quote details
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/QuoteDetails"
+    LiquiditySourcesResponse:
+      description: An array of liquidity sources
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/LiquiditySource"
+    BadRequest:
+      description: Bad request, possibly due to missing or invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Unauthorized:
+      description: Unauthorized, possibly due to missing or invalid API key
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+  schemas:
+    TransactionPriceDetails:
+      type: object
+      properties:
+        price:
+          type: string
+          description: Price of buyToken in sellToken and vice versa.
+        grossPrice:
+          type: string
+          description: Price with fees removed.
+        estimatedPriceImpact:
+          type: string
+          description: Estimated change in price due to price impact.
+        value:
+          type: string
+          description: Amount of ether (in wei) to be sent with the transaction.
+        gasPrice:
+          type: string
+          description: Gas price (in wei) for the transaction.
+        gas:
+          type: string
+          description: Estimated gas limit for the transaction.
+        estimatedGas:
+          type: string
+          description: Estimate of the actual gas used in the transaction.
+        protocolFee:
+          type: string
+          description: Maximum ether paid towards the protocol fee (in wei).
+        minimumProtocolFee:
+          type: string
+          description: Minimum ether paid towards the protocol fee (in wei).
+        buyAmount:
+          type: string
+          description: Amount of buyToken that would be bought in this swap.
+        grossBuyAmount:
+          type: string
+          description: BuyAmount with fees removed.
+        sellAmount:
+          type: string
+          description: Amount of sellToken that would be sold in this swap.
+        grossSellAmount:
+          type: string
+          description: SellAmount with fees removed.
+        sources:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              proportion:
+                type: string
+          description: Distribution of buyAmount or sellAmount between liquidity sources.
+        buyTokenAddress:
+          type: string
+          description: ERC20 token address of the token you want to receive.
+        sellTokenAddress:
+          type: string
+          description: ERC20 token address of the token you want to sell.
+        allowanceTarget:
+          type: string
+          description: Target contract address for which the user needs to have an allowance.
+        sellTokenToEthRate:
+          type: string
+          description: Rate between ETH and sellToken.
+        buyTokenToEthRate:
+          type: string
+          description: Rate between ETH and buyToken.
+        expectedSlippage:
+          type: string
+          description: Expected slippage used in routing calculations for the quote.
+        fees:
+          type: object
+          properties:
+            zeroExFee:
+              type: object
+              properties:
+                feeType:
+                  type: string
+                feeToken:
+                  type: string
+                feeAmount:
+                  type: string
+                billingType:
+                  type: string
+          description: Fees that would be charged, including 0x fee details.
+    QuoteDetails:
+      type: object
+      properties:
+        price:
+          type: string
+        guaranteedPrice:
+          type: string
+        to:
+          type: string
+        data:
+          type: string
+        value:
+          type: string
+        gasPrice:
+          type: string
+        gas:
+          type: string
+        estimatedGas:
+          type: string
+        protocolFee:
+          type: string
+        minimumProtocolFee:
+          type: string
+        buyAmount:
+          type: string
+        sellAmount:
+          type: string
+        sources:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              proportion:
+                type: string
+        buyTokenAddress:
+          type: string
+        sellTokenAddress:
+          type: string
+        allowanceTarget:
+          type: string
+          fees:
+          properties:
+            zeroExFee:
+              type: object
+              properties:
+                feeType:
+                  type: string
+                feeToken:
+                  type: string
+                feeAmount:
+                  type: string
+                billingType:
+                  type: string
+        grossPrice:
+          type: string
+        grossBuyAmount:
+          type: string
+        grossSellAmount:
+          type: string
+        sellTokenToEthRate:
+          type: string
+        buyTokenToEthRate:
+          type: string
+        expectedSlippage:
+          type: string
+    LiquiditySource:
+      type: object
+      properties:
+        name:
+          type: string
+        proportion:
+          type: string
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer

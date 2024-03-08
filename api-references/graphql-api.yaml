@@ -1,0 +1,268 @@
+openapi: 3.0.3
+info:
+  title: GraphQL API
+  description: >
+    ## Empowering NFT Exploration and User Operations
+
+    The GraphQL API opens up a world of possibilities for developers, enabling efficient queries for NFTs and user operations. These APIs provide an interface to query NFTs and user operations associated with specific wallet addresses.
+
+    ## Key Features:
+
+    ### 1. Get NFTs by Wallet Address:
+      Explore and retrieve NFTs associated with a specific wallet address. Gather comprehensive information to enrich your NFT-related applications.
+
+    ### 2. Get UserOps by Wallet Address:
+      Query and analyze user operations linked to a specific wallet address. Retrieve user interactions, transactions, and activity data to enhance your understanding of user behavior.
+
+    ## Getting Started:
+
+    Get an API key from the [Console](https://console.fuse.io/build) tool and refer to our comprehensive documentation. Experience the power of dynamic queries and personalized data retrieval with minimal development effort.
+  version: 1.0.0
+servers:
+  - url: https://api.fuse.io/api/v0/graphql
+    description: Production server
+  - url: https://api.staging.fuse.io/api/v0/graphql
+    description: Staging server
+paths:
+  /collectibles/{address}:
+    get:
+      tags:
+        - NFTs
+      summary: Get NFTs by wallet address
+      description: Retrieves NFTs associated with a specific wallet address, including details like creation time, token ID, and collection information.
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
+        - name: address
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The wallet address to query for associated NFTs.
+      responses:
+        "200":
+          description: A list of NFTs associated with the wallet address.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NFTsResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+
+  /userops/{address}:
+    get:
+      tags:
+        - User Operations
+      summary: Get UserOps by wallet address
+      description: Fetches user operations for a specific wallet address, including transactions, user operation hashes, and related activity data.
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
+        - name: address
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The wallet address to query for user operations.
+      responses:
+        "200":
+          description: A list of user operations associated with the wallet address.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserOpsResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+
+components:
+  parameters:
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Your API key to authenticate requests.
+
+  schemas:
+    NFTsResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            account:
+              type: object
+              properties:
+                id:
+                  type: string
+                address:
+                  type: string
+                collectibles:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Collectible"
+    Collectible:
+      type: object
+      properties:
+        id:
+          type: string
+        created:
+          type: string
+        tokenId:
+          type: string
+        description:
+          type: string
+        descriptorUri:
+          type: string
+        name:
+          type: string
+        imageURL:
+          type: string
+        creator:
+          $ref: "#/components/schemas/Account"
+        owner:
+          $ref: "#/components/schemas/Account"
+        collection:
+          type: object
+          properties:
+            collectionName:
+              type: string
+            collectionSymbol:
+              type: string
+            collectionAddress:
+              type: string
+
+    UserOpsResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            userOps:
+              type: array
+              items:
+                $ref: "#/components/schemas/UserOp"
+
+    UserOp:
+      type: object
+      properties:
+        id:
+          type: string
+        transactionHash:
+          type: string
+        userOpHash:
+          type: string
+        sender:
+          type: string
+        entryPoint:
+          type: string
+        paymaster:
+          type: string
+        paymasterAndData:
+          type: string
+        bundler:
+          type: string
+        nonce:
+          type: string
+        initCode:
+          type: string
+        actualGasCost:
+          type: string
+        actualGasUsed:
+          type: string
+        callGasLimit:
+          type: string
+        verificationGasLimit:
+          type: string
+        preVerificationGas:
+          type: string
+        maxFeePerGas:
+          type: string
+        maxPriorityFeePerGas:
+          type: string
+        baseFeePerGas:
+          type: string
+        gasPrice:
+          type: string
+        gasLimit:
+          type: string
+        signature:
+          type: string
+        success:
+          type: boolean
+        revertReason:
+          type: string
+        blockTime:
+          type: string
+        blockNumber:
+          type: string
+        network:
+          type: string
+        target:
+          type: string
+        accountTarget:
+          type: object
+          properties:
+            id:
+              type: string
+            userOpsCount:
+              type: string
+        callData:
+          type: string
+        beneficiary:
+          type: string
+        factory:
+          type: string
+        erc721Transfers:
+          type: array
+          items: object
+          properties:
+            from:
+              type: string
+            to:
+              type: string
+            tokenId:
+              type: string
+            contractAddress:
+              type: string
+            name:
+              type: string
+            symbol:
+              type: string
+        erc20Transfers:
+          type: array
+          items: object
+          properties:
+            from:
+              type: string
+            to:
+              type: string
+            value:
+              type: string
+            contractAddress:
+              type: string
+            name:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: string
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+
+  responses:
+    ForbiddenError:
+      description: Access to the resource is forbidden.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+              errorMessage:
+                type: string
+              error:
+                type: string

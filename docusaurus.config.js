@@ -1,34 +1,34 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const lightCodeTheme = require('prism-react-renderer/themes/github')
+const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Fuse Documentation",
-  url: "https://docs.fuse.io",
-  baseUrl: "/",
+  title: 'Fuse Documentation',
+  url: 'https://docs.fuse.io',
+  baseUrl: '/',
   onBrokenLinks: 'log',
   onBrokenMarkdownLinks: 'warn',
-  favicon: "img/logo.svg",
-  staticDirectories: ["static"],
-  organizationName: "fuse",
-  projectName: "fuse-docs",
+  favicon: 'img/logo.svg',
+  staticDirectories: ['static'],
+  organizationName: 'fuse',
+  projectName: 'fuse-docs',
   i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
+    defaultLocale: 'en',
+    locales: ['en'],
   },
   presets: [
     [
-      "classic",
+      'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
+          sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/fuseio/fuse-docs/blob/master',
-          docLayoutComponent: "@theme/DocPage",
-          docItemComponent: "@theme/ApiItem",
+          docLayoutComponent: '@theme/DocPage',
+          docItemComponent: '@theme/ApiItem',
           remarkPlugins: [
             [
               require('@docusaurus/remark-plugin-npm2yarn'),
@@ -38,13 +38,16 @@ const config = {
                   'yarn',
                   [
                     'Bun',
-                    code => code.replace(/npm i /g, 'bun a ').replace(/npm install /g, 'bun add ')
+                    (code) =>
+                      code
+                        .replace(/npm i /g, 'bun a ')
+                        .replace(/npm install /g, 'bun add '),
                   ],
-                  'pnpm'
-                ]
-              }
-            ]
-          ]
+                  'pnpm',
+                ],
+              },
+            ],
+          ],
         },
         sitemap: {
           changefreq: 'always',
@@ -54,11 +57,11 @@ const config = {
         },
         blog: false,
         gtag: {
-          trackingID: "G-ZQQQ9Q88VY",
+          trackingID: 'G-ZQQQ9Q88VY',
           anonymizeIP: true,
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
@@ -67,50 +70,50 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       prism: {
-        additionalLanguages: ["dart", "solidity", "javascript"],
+        additionalLanguages: ['dart', 'solidity', 'javascript'],
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
       colorMode: {
-        defaultMode: "light",
+        defaultMode: 'light',
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
       algolia: {
-        appId: "NPQ4ZLHJEE",
-        apiKey: "634a56f04a07683a37e4462981e0a754",
-        indexName: "fuseio",
+        appId: 'NPQ4ZLHJEE',
+        apiKey: '634a56f04a07683a37e4462981e0a754',
+        indexName: 'fuseio',
         contextualSearch: true,
         searchParameters: {},
-        searchPagePath: "search",
+        searchPagePath: 'search',
         externalUrlRegex: 'voltage\\.finance|fuse\\.io',
       },
       navbar: {
         logo: {
-          alt: "Fuse_logo",
-          src: "img/fuse-logo.svg",
+          alt: 'Fuse_logo',
+          src: 'img/fuse-logo.svg',
         },
         items: [
           {
-            to: "https://discord.com/invite/jpPMeSZ",
-            label: "Support",
-            position: "right",
-            className: "navbar--discord-logo",
+            to: 'https://discord.com/invite/jpPMeSZ',
+            label: 'Support',
+            position: 'right',
+            className: 'navbar--discord-logo',
           },
           {
-            href: "https://discord.com/invite/jpPMeSZ",
-            position: "right",
-            className: "navbar--discord-link",
+            href: 'https://discord.com/invite/jpPMeSZ',
+            position: 'right',
+            className: 'navbar--discord-link',
           },
           {
-            type: "search",
-            position: "right",
+            type: 'search',
+            position: 'right',
           },
           {
             href: 'https://github.com/fuseio/',
             position: 'right',
             className: 'header-github-link',
-            'aria-label': 'GitHub repository'
+            'aria-label': 'GitHub repository',
           },
           {
             label: 'Get API key',
@@ -120,86 +123,86 @@ const config = {
             'aria-label': 'Become an operator',
           },
           {
-            type: "docSidebar",
-            sidebarId: "basicsSidebar",
-            position: "left",
-            label: "Basics",
+            type: 'docSidebar',
+            sidebarId: 'basicsSidebar',
+            position: 'left',
+            label: 'Basics',
           },
           {
-            type: "doc",
-            docId: "developers/Quick-Start",
-            position: "left",
-            label: "Developers",
+            type: 'doc',
+            docId: 'developers/Quick-Start',
+            position: 'left',
+            label: 'Developers',
           },
           {
-            type: "doc",
-            docId: "fuse-box/getting-started",
-            position: "left",
-            label: "FuseBox",
+            type: 'doc',
+            docId: 'fuse-box/getting-started',
+            position: 'left',
+            label: 'FuseBox',
           },
           {
-            type: "docSidebar",
-            sidebarId: "validatorsSidebar",
-            position: "left",
-            label: "Validators",
+            type: 'docSidebar',
+            sidebarId: 'validatorsSidebar',
+            position: 'left',
+            label: 'Validators',
           },
         ],
       },
       footer: {
-        style: "light",
+        style: 'light',
         links: [
           {
-            title: "Getting Started",
+            title: 'Getting Started',
             items: [
               {
-                label: "Fuse Network",
-                to: "https://www.fuse.io/network"
+                label: 'Fuse Network',
+                to: 'https://www.fuse.io/network',
               },
               {
-                label: "Mobile Stack",
-                to: "https://www.fuse.io/mobile",
+                label: 'Mobile Stack',
+                to: 'https://www.fuse.io/mobile',
               },
               {
-                label: "Voltage Finance",
-                to: "https://voltage.finance/",
+                label: 'Voltage Finance',
+                to: 'https://voltage.finance/',
               },
             ],
           },
           {
-            title: "Under the hood",
+            title: 'Under the hood',
             items: [
               {
-                label: "Explorer",
-                to: "https://explorer.fuse.io/",
+                label: 'Explorer',
+                to: 'https://explorer.fuse.io/',
               },
               {
-                label: "Bridge",
-                to: "https://console.fuse.io/bridge",
+                label: 'Bridge',
+                to: 'https://console.fuse.io/bridge',
               },
               {
-                label: "Staking",
-                to: "https://console.fuse.io/staking",
+                label: 'Staking',
+                to: 'https://console.fuse.io/staking',
               },
               {
-                label: "Governance",
-                to: "https://forum.fuse.io/",
+                label: 'Governance',
+                to: 'https://forum.fuse.io/',
               },
               {
-                label: "Service Status",
-                to: "https://status.fuse.io/",
+                label: 'Service Status',
+                to: 'https://status.fuse.io/',
               },
             ],
           },
           {
-            title: "General",
+            title: 'General',
             items: [
               {
-                label: "Brand kits",
-                to: "https://www.fuse.io/brand-kit",
+                label: 'Brand kits',
+                to: 'https://www.fuse.io/brand-kit',
               },
               {
-                label: "Jobs",
-                to: "https://fuse.freshteam.com/jobs",
+                label: 'Jobs',
+                to: 'https://fuse.freshteam.com/jobs',
               },
             ],
           },
@@ -209,47 +212,77 @@ const config = {
     }),
   plugins: [
     [
-      "docusaurus-plugin-yandex-metrica",
+      'docusaurus-plugin-yandex-metrica',
       {
-        counterID: "94018505",
+        counterID: '94018505',
         webvisor: true,
       },
     ],
     [
-      "docusaurus-plugin-openapi-docs",
+      'docusaurus-plugin-openapi-docs',
       {
-        id: "api",
-        docsPluginId: "api", // e.g. "classic" or the plugin-content-docs id
+        id: 'api',
+        docsPluginId: 'api', // e.g. "classic" or the plugin-content-docs id
         config: {
           notificationApi: {
-            specPath: "api-references/fuse-notification-api.yaml",
-            outputDir: "docs/fuse-box/fuse-apis/Notification API",
+            specPath: 'api-references/fuse-notification-api.yaml',
+            outputDir: 'docs/fuse-box/fuse-apis/Notification API',
             sidebarOptions: {
-              groupPathsBy: "tag",
+              groupPathsBy: 'tag',
             },
           },
           smartWalletApi: {
-            specPath: "api-references/fuse-smart-wallets-api.yaml",
-            outputDir: "docs/fuse-box/fuse-apis/Smart Wallets API",
+            specPath: 'api-references/fuse-smart-wallets-api.yaml',
+            outputDir: 'docs/fuse-box/fuse-apis/Smart Wallets API',
             sidebarOptions: {
-              groupPathsBy: "tag",
+              groupPathsBy: 'tag',
             },
           },
-          tradeApi: {
-            specPath: "api-references/trade-api.yaml",
-            outputDir: "docs/fuse-box/fuse-apis/Trade API",
+          tradeApiV1: {
+            specPath: 'api-references/trade-api-v1.yaml',
+            outputDir: 'docs/fuse-box/fuse-apis/Trade API/V1',
             sidebarOptions: {
-              groupPathsBy: "tag",
+              groupPathsBy: 'tag',
+            },
+          },
+          tradeApiV2: {
+            specPath: 'api-references/trade-api-v2.yaml',
+            outputDir: 'docs/fuse-box/fuse-apis/Trade API/V2',
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          },
+          explorerApi: {
+            specPath: 'api-references/explorer-api.yaml',
+            outputDir: 'docs/fuse-box/fuse-apis/Explorer API',
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+              sidebarCollapsible: true,
+              sidebarCollapsed: true,
+            },
+          },
+          graphqlApi: {
+            specPath: 'api-references/graphql-api.yaml',
+            outputDir: 'docs/fuse-box/fuse-apis/Graphql API',
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          },
+          stakingApi: {
+            specPath: 'api-references/staking-api.yaml',
+            outputDir: 'docs/fuse-box/fuse-apis/Staking API',
+            sidebarOptions: {
+              groupPathsBy: 'tag',
             },
           },
         },
       },
     ],
   ],
-  themes: ["docusaurus-theme-openapi-docs"],
+  themes: ['docusaurus-theme-openapi-docs'],
   customFields: {
-    happyReactToken: "c56b4364-23fd-41f1-8f5b-3ebe7f31d082",
+    happyReactToken: 'c56b4364-23fd-41f1-8f5b-3ebe7f31d082',
   },
-};
+}
 
-module.exports = config;
+module.exports = config
