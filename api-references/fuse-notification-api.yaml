@@ -198,7 +198,7 @@ info:
 
     #### Step 1
 
-    Create a webhook with [Create Webhook API](./create-webhook.api.mdx)
+    Create a webhook with [Create Webhook API](./create-a-webhook.api.mdx)
 
     > #### 📘You can find your `projectId` in the URL of your project page
     >
@@ -206,11 +206,11 @@ info:
 
     #### Step 2
 
-    Add addresses to listen to with [Add Webhook Addresses API](./add-webhook-addresses.api.mdx)
+    Add addresses to listen to with [Add Webhook Addresses API](./add-addresses-to-a-webhook.api.mdx)
 
     > #### 📘
     >
-    > If you don't remember your `webhookId`, you can always fetch all your webhooks with [Get Webhooks for Project](./get-webhooks-for-project.api.mdx)
+    > If you don't remember your `webhookId`, you can always fetch all your webhooks with [Get Webhooks for Project](./get-webhooks-for-a-project.api.mdx)
 
     #### Step 3
 
