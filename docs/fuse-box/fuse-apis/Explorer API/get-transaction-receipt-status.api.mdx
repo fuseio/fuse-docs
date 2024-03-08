@@ -1,0 +1,42 @@
+---
+id: get-transaction-receipt-status
+title: "Get transaction receipt status"
+description: "Get transaction receipt status"
+sidebar_label: "Get transaction receipt status"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVl9v3DYM/yqEAmwd4F7Sbns5oCiypu2CPqxIUvSh6QNP5tlsZMkV6UuuQb77QNmXuyRN1z2dT5ZI/v6Q8rVLPWVUTvG4dnPXkJ5ljILelk7IE/d6qqiDuMr1mLEjpSxu/unaRezIzV2X6iGQqxxHN3dfB8prVznxLXXo5tdO171tE80cG1c5ikPn5p+cbhO5zzeVy/R14Ey1m2se6Ka6TTDt+d8JGlK9yiMGGTH8MI9etSjtz+Z5GOmzrUifopDY/ucHB/ZTk/jMfcEwd/+8c5XzKSpFtbfY94F9UWD/i9iW64cp0+ILeTUFsumlPCboSAQbeqQ2GYL+d4yJmIchbm6qH728KRvuYntLCjuqwsQ9yMZAHWmbJp8VP2nr5m7/5WihFztnfxl/XnxHw8oJ5dXGhEMObu5a1V7m+/vY82w5CM042fP+6mCfrvqQMmV3v9ojWuIQFMZozozwMJgoNhybnw56irFepKvboJ/NTctUKGQNxuHr6Swcvj9+cH5vDz7EQCgtaEvwPl1ShrSEN4MQ/BWSv/AtcoTDiGGt7OU8nsePFHzqqJyIdBnWMMQVcaB6PLebcQZnLYs9AXW9hReoaUXBTCFwydoCek8ioKlE5Bgpw2XKFxwbsWJs9X5BGGuYwuGmtrJYoyKMfBWXQ4rfCzAzIHt78LFFBZaHhb+0DWebg7tvbDvCyevTs/KvQKBY94mjGjjhJlJtcPqcVlzTQ8DgU9dnaikKrwhkYCVDuoXisccFB7a+gWXK38UAH1vSljIsBg41xwZq8hQ1Y+BvVMNOsws8OTrse/mtAp9iPXi17ZmEMPu2gpRBiIxy4CjctCrAURMstpzv9IsYrVZOBbrRlwXWacjQoNIlro0AhEvCoK1hM2E2rL+jNbwh1CGTzMe1PXg2gxPC8PSMO4KdawGOp4Lm5xHgyAgrlRkjLWHWxzxSuM4WUi3k7qgoxWxUrUbev5WHGlYsQyHwLmAUS7KG5P2QK2iQo7GFUK8jduxhiDVlUYxFibTcpc6CrFjXsw3Y5zM4rOtsvj+Oy5S7olJBeEKamVZmG8XSVbzdAbhIg4L05HnJHnAMQvKYz+FD9GlF+Q78lkVTZpIKFhgwensy7KnYqczrSFGnEgR8HjxjKE7sUmQ7beBjPXInLLfQfp/BWbqgnaFRYJ0SdoFEwtrkoyajEmjZuLV9Eba4aNe7M7ODv5h2d2lFHUWtNpVA4K8D16zrEYRJAysMAy4C3bNzCfE0U0C1BhllYdpW/8cMTjsz1atkjeT1HowjCrsGXA6xUIqBdT1OJcpFrehLS0sJ5qdgNh/6kNZUP6rX66sx7YoVwzjONEHqlTvzZCHnB21uJVBsx/QryhjCZv4YaUDLJXum6Lde/HMGf4+G8BjgCBUL0sNxLLfbV5tiJojA8WlNvQ204gEaszcUaRQ3U6xv+d86sUdVylEq4Jqi8tKISx0G3tiwwwuaXE+1oWUp4BYojzL3651Sd1TYDJ23pGXonSpmpbrMnbNkXwtZx1mh3xv31e749hihIQWMZeQtc+rKqU+vUpQU6POTzW3ux4Xbm7yM6N9AUwoFYqYlZTKV7Pzd+6BOfjCxiqQVcPRhmMb7NBGagWsjy6eaQCL3PenEHV1h1weSGRxPbWYdzwIyNWAFGEK6tHjrNJieLeZYbuCWxkv1/vS67c9CU8eROwxmpZR1dm7fyvaBNH5SPJsdzA7czc2/I95Jlw==
+sidebar_class_name: "get api-method"
+info_path: docs/fuse-box/fuse-apis/Explorer API/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get transaction receipt status</h1>
+
+<MethodEndpoint method={"get"} path={"/?module=transaction&action=gettxreceiptstatus"}></MethodEndpoint>
+
+
+
+Get transaction receipt status
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["transaction"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["gettxreceiptstatus"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"txhash","in":"query","schema":{"type":"string"},"required":true}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><span className={"openapi-schema__container"}><strong className={"openapi-schema__property"}>result</strong><span className={"openapi-schema__name"}> object</span></span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\",\n  \"result\": {\n    \"status\": \"string\"\n  },\n  \"status\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

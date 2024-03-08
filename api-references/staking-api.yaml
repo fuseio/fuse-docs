@@ -1,0 +1,361 @@
+openapi: 3.0.0
+info:
+  title: Staking API
+  description: |
+    ## Elevate Your Token Staking Experience
+
+    Staking APIs provide robust endpoints to enhance your staking experience on the Fuse Blockchain.
+
+    ## What is Staking API?
+
+    The Staking API offers a suite of endpoints designed to empower developers to manage token staking efficiently. Whether you're staking tokens, exploring staking options, or monitoring staked assets, these APIs provide a streamlined interface for a comprehensive staking experience.
+
+    ## Key Features:
+
+    ### 1. Get Staked Tokens by Wallet Address:
+      Retrieve detailed information about staked tokens associated with a specific wallet address. Gain insights into staking activities and track the status of staked assets effortlessly.
+
+    ### 2. Stake Token:
+      Seamlessly stake tokens using our intuitive API. With just a few API calls, you can simplify the staking process and optimize your token holdings.
+
+    ### 3. Staking Options:
+      Explore the available staking options to tailor your staking strategy. Retrieve information on staking durations, rewards, and other essential parameters to make informed decisions.
+
+    ### 4. Unstake Token:
+      Unleash flexibility with the ability to **unstake** tokens conveniently. Utilize the Unstake Token endpoint to manage and adjust your staking portfolio according to your preferences.
+
+    ## Getting Started:
+
+    Get an API from the [Console](https://console.fuse.io/build) tool and refer to our comprehensive documentation to dive into the world of effortless token staking. Access guides, code snippets, and examples to integrate the Staking APIs seamlessly into your applications. Experience a frictionless staking journey with minimal development effort.
+  version: 1.0.0
+servers:
+  - url: https://api.fuse.io/api/v0/staking
+    description: Default server
+  - url: https://api.staging.fuse.io/api/v0/staking
+    description: Sandbox server
+paths:
+  /staking_options:
+    get:
+      tags:
+        - default
+      summary: Staking options
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: "{{publicKey}}"
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  tokenAddress:
+                    type: string
+                  tokenSymbol:
+                    type: string
+                  tokenName:
+                    type: string
+                  tokenLogoURI:
+                    type: string
+                  unStakeTokenAddress:
+                    type: string
+                  stakingProviderId:
+                    type: string
+                  expired:
+                    type: boolean
+                  stakingApr:
+                    type: number
+                  tvl:
+                    type: number
+                example:
+                  - tokenAddress: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4"
+                    tokenSymbol: VOLT
+                    tokenName: VoltToken
+                    tokenLogoURI: >-
+                      https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4/logo.png
+                    unStakeTokenAddress: "0x97a6e78c9208c21afaDa67e7E61d7ad27688eFd1"
+                    stakingProviderId: volt-bar
+                    expired: true
+                    stakingApr: 4.680838850990786
+                    tvl: 17677.41655899244
+                  - tokenAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+                    tokenSymbol: FUSE
+                    tokenName: Fuse
+                    tokenLogoURI: >-
+                      https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE/logo.png
+                    unStakeTokenAddress: "0xb1DD0B683d9A56525cC096fbF5eec6E60FE79871"
+                    stakingProviderId: fuse-liquid-staking
+                    expired: false
+                    stakingApr: 16.967527320525
+                    tvl: 511042.40456797834
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 403
+                  errorMessage:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: integer
+                        example: 403
+                      message:
+                        type: string
+                        example: Forbidden resource
+                      error:
+                        type: string
+                        example: Forbidden
+                  path:
+                    type: string
+                    example: >-
+                      /api/v0/staking/staking_options?apiKey={{publicKey}}
+  /stake:
+    post:
+      tags:
+        - default
+      summary: Stake token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: true
+              properties:
+                accountAddress:
+                  type: string
+                  example: "{{wallet_address}}"
+                tokenAmount:
+                  type: string
+                  example: "1000000000000000000000"
+                tokenAddress:
+                  type: string
+                  example: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: "{{publicKey}}"
+          required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contractAddress:
+                    type: string
+                    example: "0xa3dc222eC847Aac61FB6910496295bF344Ea46be"
+                  encodedABI:
+                    type: string
+                    example: "0xd0e30db0"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 403
+                  errorMessage:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: integer
+                        example: 403
+                      message:
+                        type: string
+                        example: Forbidden resource
+                      error:
+                        type: string
+                        example: Forbidden
+                  path:
+                    type: string
+                    example: >-
+                      /api/v0/staking/stake?apiKey={{publicKey}}
+  /unstake:
+    post:
+      tags:
+        - default
+      summary: Unstake token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required: true
+              type: object
+              properties:
+                accountAddress:
+                  type: string
+                  example: "{{wallet_address}}"
+                tokenAmount:
+                  type: string
+                  example: "1000000000000000000000"
+                tokenAddress:
+                  type: string
+                  example: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: "{{publicKey}}"
+          required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contractAddress:
+                    type: string
+                    example: "0xa3dc222eC847Aac61FB6910496295bF344Ea46be"
+                  encodedABI:
+                    type: string
+                    example: >-
+                      0x2e1a7d4d
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 403
+                  errorMessage:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: integer
+                        example: 403
+                      message:
+                        type: string
+                        example: Forbidden resource
+                      error:
+                        type: string
+                        example: Forbidden
+                  path:
+                    type: string
+                    example: >-
+                      /api/v0/staking/unstake?apiKey={{publicKey}}
+  /staked_tokens/{accountAddress}:
+    get:
+      tags:
+        - default
+      summary: Get staked tokens by wallet address
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: "{{publicKey}}"
+          required: true
+        - name: accountAddress
+          in: path
+          schema:
+          type: string
+          required: true
+          example: "{{wallet_address}}"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalStakedAmountUSD:
+                    type: number
+                  totalEarnedAmountUSD:
+                    type: number
+                  stakedTokens:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        tokenAddress:
+                          type: string
+                        tokenLogoURI:
+                          type: string
+                        tokenName:
+                          type: string
+                        tokenSymbol:
+                          type: string
+                        unStakeTokenAddress:
+                          type: string
+                        stakedAmount:
+                          type: number
+                        stakedAmountUSD:
+                          type: number
+                        earnedAmountUSD:
+                          type: number
+                        stakingApr:
+                          type: number
+              example:
+                totalStakedAmountUSD: 0.001034357555140009
+                totalEarnedAmountUSD: 0
+                stakedTokens:
+                  - tokenAddress: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4"
+                    tokenLogoURI: >-
+                      https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4/logo.png
+                    tokenName: VoltToken
+                    tokenSymbol: VOLT
+                    unStakeTokenAddress: "0x97a6e78c9208c21afaDa67e7E61d7ad27688eFd1"
+                    stakedAmount: 0.5113831095056965
+                    stakedAmountUSD: 0.00009015088204551696
+                    earnedAmountUSD: 0
+                    stakingApr: 4.680838850990786
+                  - tokenAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+                    tokenLogoURI: >-
+                      https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE/logo.png
+                    tokenName: Fuse
+                    tokenSymbol: FUSE
+                    unStakeTokenAddress: "0xb1DD0B683d9A56525cC096fbF5eec6E60FE79871"
+                    stakedAmount: 0.010824735319451318
+                    stakedAmountUSD: 0.000944206673094492
+                    earnedAmountUSD: 0
+                    stakingApr: 16.967527320525
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 403
+                  errorMessage:
+                    type: object
+                    properties:
+                      statusCode:
+                        type: integer
+                        example: 403
+                      message:
+                        type: string
+                        example: Forbidden resource
+                      error:
+                        type: string
+                        example: Forbidden
+                  path:
+                    type: string
+                    example: >-
+                      /api/v0/staking/staked_tokens{{wallet_address}}apiKey={{publicKey}}

@@ -1,0 +1,42 @@
+---
+id: get-abi
+title: "Get ABI for a verified contract"
+description: "Get ABI for a verified contract"
+sidebar_label: "Get ABI for a verified contract"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVutv1DgQ/1dGrnTHSWFbXvdYCaFCgav4cIgW8YFWp1l7Nhnq2MGebAkV//tpnGx3++Jgv2zix3h+jxnnwsSOEgrHcOjM3NQk+ws2lekwYUtCKZv5xwsTsCUzN210vSdTGQ5mbj73lAZTmWwbatHML4wMnS7LkjjUpjIU+tbMPxobgyS0Yk6/VSbR554TOTOX1NO36jI6Ws3j56PXJLjg/4ntXKKcfzT4d0N1/IaGn4hEX7DtvI51Z/8+ePjo8ZPf//jzrz1z44xTHcldDJmyRnq4t6d/jrJN3BVy5uafN6YqhFIQncWu82yLhLufsi65uJlMXHwiK6prUsGFxwNayhlrugN/7r3cOpUFpc+3TI2/6lrGr0lg//khLGMChBUlXjI5uDRFZVqSJk7+K+aTxszN7rPRb0/XK38ZHfJ0ErwymdJqbdE+eTM3jUiX57u72PFs2WeacdTn3dXeLn3pfEyUzPX8DmiJvRcYoxmV+mawLFhzqH846BEGt4hfLoOeql+WsZDGUtzwctoL+28Pb+zf2YH3wRPmBqQheBvPKUFcwqs+Ezz30Z7ZBjnAfkA/CNt8Ek7CB/I2tlR2BDr3A/RhRezJjfu2T5zBccNZn4DaTsNncLQirwbJcM7SAFpLOYPEEpFDoATnMZ1xqLMmo6PXE8LgYAqH69zKoENBGPkqboUYbgswUyA7O/ChQQHONxN/pguO1xu3Z3Q5wruXR8flrUCg4LrIQRRc5jqQUzhdiit2dBMw2Nh2iRoKmVcEuWchRbqBYrHDBXvWGiqWvg0DfGhIGkqw6Nk7DjU4sqQu9vyVHGwVbYZ7B/tdl3+rtCJcb0WXJ8qEyTYVxASZSCkHDpnrRjJwkAiLDeeSMOSxOLLSqulUIGt9OcMQ+wQ1Cp3joAQgnBN6aRSbCrNm/Q0N8IpQ+kR5Po7twIMZvCP094+5JTjenAWHU0LzkwBwoISVzJSRhjDJXR4pXCcNKRpyK/0xmbWq1cj71/LgYMW5LwReBYxZDxkgWtunCmrkoGwhuCFgyxb64ChlwVCUiMtt6jTIimWYrcE+nMH+eFnAYVjG1BaVCsJ3JIlppbYRLFXFmxWAi9gL5I4sL9nCdONQvsvn8D7YuKJ0BX7DWWJiyhUs0GOw+qTYY7FT6d2BgkwpZLCpt4y+OLGNgXW3gg9u5C5zvoT2aAbH8Yy2mkaBdUTYesrZDyof1QmFQMrCje2LsMVF296dqR3s2bS6jStqKUi1zgQ8f+7ZsQwjCJUGVuh7XHi6ZucS4n4ij6IFMsrCtMn+8QyOWjXVi+k6uAbjgPy2AZd9KJSiZxnGrkSpqBVsKelcgq3vFu0PnY8DuTv1evllPHbFgn5sZxIhdsKterKQ850y1xQoNOPxK0ro/br/KGlAyyVbpmA3Xnwyg79HQ1j0cICCBen+2JabzdQ6mQkicLjvqNOGVjxA4+k1BRrFTRTcJf8bJ3YoQinkCthREF4qcbFFz2sbtnhGk+vJKVrOBdwC853M/Xol1S0V1k3nNUlpekeCSciVvnMcIevr2CvktnZfbbdviwFqEsBQWt4yxbbs+vgihhw9nd5b3+Z2HLi8yUuL/g0kRl8gJlpSIlVJ91+9D1y0vYpVJK2Ag/X91N6njlD37JQsGx1BDtx1JBN303dgnsHhVGZa8ZwhTwVYAXofzzXeEHvVs8EUyg3c0HipXu9el/VZaGo5cIterRSTzE70Y1o/kMZPigezvdme+fbtP6mlRBg=
+sidebar_class_name: "get api-method"
+info_path: docs/fuse-box/fuse-apis/Explorer API/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get ABI for a verified contract</h1>
+
+<MethodEndpoint method={"get"} path={"/?module=contract&action=getabi"}></MethodEndpoint>
+
+
+
+Get ABI for a verified contract
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["getabi"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"address","in":"query","schema":{"type":"string"},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"result"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\",\n  \"result\": \"string\",\n  \"status\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      
