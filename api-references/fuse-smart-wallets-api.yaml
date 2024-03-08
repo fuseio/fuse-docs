@@ -20,7 +20,7 @@ info:
     >
     > For all Smart Wallets API requests, you will need to add your Public API Key to the request query params under the key `apiKey`.
 
-    Once you have your project set and access to your Public API key, you can start working with the Smart Wallets API. Check out the [Smart Wallets API Reference](/docs/smart-wallets-api/auth) for usage.
+    Once you have your project set and access to your Public API key, you can start working with the Smart Wallets API.
 
 servers:
   - url: https://api.fuse.io/api/v2/smart-wallets
