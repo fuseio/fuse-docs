@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.0.3
 info:
-  title: Graphql API
-  description: |
+  title: GraphQL API
+  description: >
     ## Empowering NFT Exploration and User Operations
 
     The GraphQL API opens up a world of possibilities for developers, enabling efficient queries for NFTs and user operations. These APIs provide an interface to query NFTs and user operations associated with specific wallet addresses.
@@ -16,335 +16,253 @@ info:
 
     ## Getting Started:
 
-    Get an API from the [Console](https://console.fuse.io/build) tool and refer to our comprehensive documentation. Access guides, code snippets, and examples to seamlessly integrate the GraphQL API into your applications. Experience the power of dynamic queries and personalized data retrieval with minimal development effort.
+    Get an API key from the [Console](https://console.fuse.io/build) tool and refer to our comprehensive documentation. Experience the power of dynamic queries and personalized data retrieval with minimal development effort.
   version: 1.0.0
 servers:
   - url: https://api.fuse.io/api/v0/graphql
-    description: Default server
+    description: Production server
   - url: https://api.staging.fuse.io/api/v0/graphql
-    description: Sandbox server
+    description: Staging server
 paths:
   /collectibles/{address}:
     get:
       tags:
-        - default
-      summary: Get NFT`s by wallet address
+        - NFTs
+      summary: Get NFTs by wallet address
+      description: Retrieves NFTs associated with a specific wallet address, including details like creation time, token ID, and collection information.
       parameters:
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: "{{publicKey}}"
-          required: true
+        - $ref: "#/components/parameters/ApiKey"
         - name: address
           in: path
+          required: true
           schema:
             type: string
-          required: true
-          example: "{{wallet_address}}"
+          description: The wallet address to query for associated NFTs.
       responses:
         "200":
-          description: OK
+          description: A list of NFTs associated with the wallet address.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    properties:
-                      account:
-                        type: object
-                        properties:
-                          id:
-                            type: string
-                            example: "{{wallet_address}}"
-                          address:
-                            type: string
-                            example: "{{wallet_address}}"
-                          collectibles:
-                            type: array
-                            items:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  example: 0xa7239f619cafdf010e4fe71bc0f52ca497cac7e2-0x121
-                                created:
-                                  type: string
-                                  example: "1704724260"
-                                tokenId:
-                                  type: string
-                                  example: "289"
-                                description:
-                                  type: string
-                                  example: null
-                                descriptorUri:
-                                  type: string
-                                  example: https://www.npmjs.com/package/body-parser289
-                                name:
-                                  type: string
-                                  example: null
-                                imageURL:
-                                  type: string
-                                  example: null
-                                creator:
-                                  type: object
-                                  properties:
-                                    id:
-                                      type: string
-                                      example: "{{wallet_address}}"
-                                owner:
-                                  type: object
-                                  properties:
-                                    id:
-                                      type: string
-                                      example: "{{wallet_address}}"
-                                collection:
-                                  type: object
-                                  properties:
-                                    collectionName:
-                                      type: string
-                                      example: MyToken
-                                    collectionSymbol:
-                                      type: string
-                                      example: MTK
-                                    collectionAddress:
-                                      type: string
-                                      example: "0xa7239f619cafdf010e4fe71bc0f52ca497cac7e2"
+                $ref: "#/components/schemas/NFTsResponse"
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  statusCode:
-                    type: integer
-                    example: 403
-                  errorMessage:
-                    type: object
-                    properties:
-                      statusCode:
-                        type: integer
-                        example: 403
-                      message:
-                        type: string
-                        example: Forbidden resource
-                      error:
-                        type: string
-                        example: Forbidden
-                  path:
-                    type: string
-                    example: /api/v0/graphql/collectibles{{wallet_address}}=pk_KRGd_qRcUSm9c0NrwFv3ZYxf%20
+          $ref: "#/components/responses/ForbiddenError"
+
   /userops/{address}:
     get:
       tags:
-        - default
+        - User Operations
       summary: Get UserOps by wallet address
+      description: Fetches user operations for a specific wallet address, including transactions, user operation hashes, and related activity data.
       parameters:
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: "{{publicKey}}"
-          required: true
+        - $ref: "#/components/parameters/ApiKey"
         - name: address
           in: path
+          required: true
           schema:
             type: string
-          example: "{{wallet_address}}"
-          required: true
+          description: The wallet address to query for user operations.
       responses:
         "200":
-          description: OK
+          description: A list of user operations associated with the wallet address.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    properties:
-                      userOps:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            id:
-                              type: string
-                              example: >-
-                                0x7fc29ae0592ce1235047b98f18679b6c9f81e55acd4b58513376fcec0c233d5d-1
-                            transactionHash:
-                              type: string
-                              example: >-
-                                0x8f102263e0be9cc546b3cee15b485ad2c9dc27cbbb9dad0491c8d95772864fc0
-                            userOpHash:
-                              type: string
-                              example: >-
-                                0x7fc29ae0592ce1235047b98f18679b6c9f81e55acd4b58513376fcec0c233d5d
-                            sender:
-                              type: string
-                              example: "{{wallet_address}}"
-                            entryPoint:
-                              type: string
-                              example: "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789"
-                            paymaster:
-                              type: string
-                              example: "0xea1ba4305a07ced2bb5e42224d71abe0bc3c3f28"
-                            paymasterAndData:
-                              type: string
-                              example: >-
-                                0xea1ba4305a07ced2bb5e42224d71abe0bc3c3f280
-                            bundler:
-                              type: string
-                              example: "0x4e0df48f7584ad9ae9978c60178ef726345cc48a"
-                            nonce:
-                              type: string
-                              example: "1639"
-                            initCode:
-                              type: string
-                              example: 0x
-                            actualGasCost:
-                              type: string
-                              example: "3637220000000000"
-                            actualGasUsed:
-                              type: string
-                              example: "363722"
-                            callGasLimit:
-                              type: string
-                              example: "52598"
-                            verificationGasLimit:
-                              type: string
-                              example: "140000"
-                            preVerificationGas:
-                              type: string
-                              example: "297548"
-                            maxFeePerGas:
-                              type: string
-                              example: "10000000000"
-                            maxPriorityFeePerGas:
-                              type: string
-                              example: "10000000000"
-                            baseFeePerGas:
-                              type: string
-                              example: null
-                            gasPrice:
-                              type: string
-                              example: "10000000000"
-                            gasLimit:
-                              type: string
-                              example: "872160"
-                            signature:
-                              type: string
-                              example: >-
-                                0xc9e71bdfe27c9db58c6a57d579c8558b2dd540263a330b347d30834d5930cf3230ffef12eafc392fbc19ac66d5ac8bafb74121633531917cb7f5346c1bd8414f1b
-                            success:
-                              type: boolean
-                              example: true
-                            revertReason:
-                              type: string
-                              example: null
-                            blockTime:
-                              type: string
-                              example: "1709474985"
-                            blockNumber:
-                              type: string
-                              example: "28299801"
-                            network:
-                              type: string
-                              example: fuse
-                            target:
-                              type: string
-                              example: "{{wallet_address}}"
-                            accountTarget:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                  example: "{{wallet_address}}"
-                                userOpsCount:
-                                  type: string
-                                  example: "3656"
-                            callData:
-                              type: string
-                              example: >-
-                                0xb61d27f6000000000000000000000000e65513fe95f52f4350d2184c2fd722c37e6fd995
-                            beneficiary:
-                              type: string
-                              example: "0xdcdd0ddeaa0407c26dfcd481de9a34e1c55f8d54"
-                            factory:
-                              type: string
-                              example: 0x
-                            erc721Transfers:
-                              type: array
-                              items: object
-                              properties:
-                                from:
-                                  type: string
-                                  example: "{{wallet_address}}"
-                                to:
-                                  type: string
-                                  example: "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789"
-                                tokenId:
-                                  type: string
-                                  example: "1.0"
-                                contractAddress:
-                                  type: string
-                                  example: "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789"
-                                name:
-                                  type: string
-                                  example: "Fuse"
-                                symbol:
-                                  type: string
-                                  example: "FUSE"
-                            erc20Transfers:
-                              type: array
-                              items: object
-                              properties:
-                                from:
-                                  type: string
-                                  example: "{{wallet_address}}"
-                                to:
-                                  type: string
-                                  example: "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789"
-                                value:
-                                  type: string
-                                  example: "1000000000000000000"
-                                contractAddress:
-                                  type: string
-                                  example: "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789"
-                                name:
-                                  type: string
-                                  example: "Fuse"
-                                symbol:
-                                  type: string
-                                  example: "FUSE"
-                                decimals:
-                                  type: string
-                                  example: "18"
+                $ref: "#/components/schemas/UserOpsResponse"
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  statusCode:
-                    type: integer
-                    example: 403
-                  errorMessage:
-                    type: object
-                    properties:
-                      statusCode:
-                        type: integer
-                        example: 403
-                      message:
-                        type: string
-                        example: Forbidden resource
-                      error:
-                        type: string
-                        example: Forbidden
-                  path:
-                    type: string
-                    example: /api/v0/graphql/userops{{wallet_address}}={{wrong_api_key}}
+          $ref: "#/components/responses/ForbiddenError"
+
+components:
+  parameters:
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Your API key to authenticate requests.
+
+  schemas:
+    NFTsResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            account:
+              type: object
+              properties:
+                id:
+                  type: string
+                address:
+                  type: string
+                collectibles:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Collectible"
+    Collectible:
+      type: object
+      properties:
+        id:
+          type: string
+        created:
+          type: string
+        tokenId:
+          type: string
+        description:
+          type: string
+        descriptorUri:
+          type: string
+        name:
+          type: string
+        imageURL:
+          type: string
+        creator:
+          $ref: "#/components/schemas/Account"
+        owner:
+          $ref: "#/components/schemas/Account"
+        collection:
+          type: object
+          properties:
+            collectionName:
+              type: string
+            collectionSymbol:
+              type: string
+            collectionAddress:
+              type: string
+
+    UserOpsResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            userOps:
+              type: array
+              items:
+                $ref: "#/components/schemas/UserOp"
+
+    UserOp:
+      type: object
+      properties:
+        id:
+          type: string
+        transactionHash:
+          type: string
+        userOpHash:
+          type: string
+        sender:
+          type: string
+        entryPoint:
+          type: string
+        paymaster:
+          type: string
+        paymasterAndData:
+          type: string
+        bundler:
+          type: string
+        nonce:
+          type: string
+        initCode:
+          type: string
+        actualGasCost:
+          type: string
+        actualGasUsed:
+          type: string
+        callGasLimit:
+          type: string
+        verificationGasLimit:
+          type: string
+        preVerificationGas:
+          type: string
+        maxFeePerGas:
+          type: string
+        maxPriorityFeePerGas:
+          type: string
+        baseFeePerGas:
+          type: string
+        gasPrice:
+          type: string
+        gasLimit:
+          type: string
+        signature:
+          type: string
+        success:
+          type: boolean
+        revertReason:
+          type: string
+        blockTime:
+          type: string
+        blockNumber:
+          type: string
+        network:
+          type: string
+        target:
+          type: string
+        accountTarget:
+          type: object
+          properties:
+            id:
+              type: string
+            userOpsCount:
+              type: string
+        callData:
+          type: string
+        beneficiary:
+          type: string
+        factory:
+          type: string
+        erc721Transfers:
+          type: array
+          items: object
+          properties:
+            from:
+              type: string
+            to:
+              type: string
+            tokenId:
+              type: string
+            contractAddress:
+              type: string
+            name:
+              type: string
+            symbol:
+              type: string
+        erc20Transfers:
+          type: array
+          items: object
+          properties:
+            from:
+              type: string
+            to:
+              type: string
+            value:
+              type: string
+            contractAddress:
+              type: string
+            name:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: string
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+
+  responses:
+    ForbiddenError:
+      description: Access to the resource is forbidden.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+              errorMessage:
+                type: string
+              error:
+                type: string

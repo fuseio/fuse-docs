@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.3
 info:
   title: Staking API
   description: |
@@ -26,336 +26,183 @@ info:
 
     ## Getting Started:
 
-    Get an API from the [Console](https://console.fuse.io/build) tool and refer to our comprehensive documentation to dive into the world of effortless token staking. Access guides, code snippets, and examples to integrate the Staking APIs seamlessly into your applications. Experience a frictionless staking journey with minimal development effort.
+    Get an API key from the [Console](https://console.fuse.io/build) tool and refer to our comprehensive documentation to dive into the world of effortless token staking.
   version: 1.0.0
 servers:
   - url: https://api.fuse.io/api/v0/staking
-    description: Default server
+    description: Production server
   - url: https://api.staging.fuse.io/api/v0/staking
-    description: Sandbox server
+    description: Staging server
 paths:
   /staking_options:
     get:
       tags:
-        - default
-      summary: Staking options
+        - Staking
+      summary: Retrieve staking options
+      description: Fetches available staking options including details like APR, token information, and provider IDs.
       parameters:
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: "{{publicKey}}"
-          required: true
+        - $ref: "#/components/parameters/ApiKey"
       responses:
         "200":
-          description: OK
+          description: A list of staking options.
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  tokenAddress:
-                    type: string
-                  tokenSymbol:
-                    type: string
-                  tokenName:
-                    type: string
-                  tokenLogoURI:
-                    type: string
-                  unStakeTokenAddress:
-                    type: string
-                  stakingProviderId:
-                    type: string
-                  expired:
-                    type: boolean
-                  stakingApr:
-                    type: number
-                  tvl:
-                    type: number
-                example:
-                  - tokenAddress: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4"
-                    tokenSymbol: VOLT
-                    tokenName: VoltToken
-                    tokenLogoURI: >-
-                      https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4/logo.png
-                    unStakeTokenAddress: "0x97a6e78c9208c21afaDa67e7E61d7ad27688eFd1"
-                    stakingProviderId: volt-bar
-                    expired: true
-                    stakingApr: 4.680838850990786
-                    tvl: 17677.41655899244
-                  - tokenAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
-                    tokenSymbol: FUSE
-                    tokenName: Fuse
-                    tokenLogoURI: >-
-                      https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE/logo.png
-                    unStakeTokenAddress: "0xb1DD0B683d9A56525cC096fbF5eec6E60FE79871"
-                    stakingProviderId: fuse-liquid-staking
-                    expired: false
-                    stakingApr: 16.967527320525
-                    tvl: 511042.40456797834
+                $ref: "#/components/schemas/StakingOptionsResponse"
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  statusCode:
-                    type: integer
-                    example: 403
-                  errorMessage:
-                    type: object
-                    properties:
-                      statusCode:
-                        type: integer
-                        example: 403
-                      message:
-                        type: string
-                        example: Forbidden resource
-                      error:
-                        type: string
-                        example: Forbidden
-                  path:
-                    type: string
-                    example: >-
-                      /api/v0/staking/staking_options?apiKey={{publicKey}}
+          $ref: "#/components/responses/ForbiddenError"
+
   /stake:
     post:
       tags:
-        - default
-      summary: Stake token
+        - Staking
+      summary: Stake tokens
+      description: Stakes a specified amount of tokens from a wallet.
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              type: object
-              required: true
-              properties:
-                accountAddress:
-                  type: string
-                  example: "{{wallet_address}}"
-                tokenAmount:
-                  type: string
-                  example: "1000000000000000000000"
-                tokenAddress:
-                  type: string
-                  example: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
-      parameters:
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: "{{publicKey}}"
-          required: true
+              $ref: "#/components/schemas/StakeRequest"
       responses:
         "201":
-          description: Created
+          description: Token staking initiated successfully.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  contractAddress:
-                    type: string
-                    example: "0xa3dc222eC847Aac61FB6910496295bF344Ea46be"
-                  encodedABI:
-                    type: string
-                    example: "0xd0e30db0"
+                $ref: "#/components/schemas/StakeResponse"
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  statusCode:
-                    type: integer
-                    example: 403
-                  errorMessage:
-                    type: object
-                    properties:
-                      statusCode:
-                        type: integer
-                        example: 403
-                      message:
-                        type: string
-                        example: Forbidden resource
-                      error:
-                        type: string
-                        example: Forbidden
-                  path:
-                    type: string
-                    example: >-
-                      /api/v0/staking/stake?apiKey={{publicKey}}
+          $ref: "#/components/responses/ForbiddenError"
+
   /unstake:
     post:
       tags:
-        - default
-      summary: Unstake token
+        - Staking
+      summary: Unstake tokens
+      description: Unstakes a specified amount of tokens back to a wallet.
+      parameters:
+        - $ref: "#/components/parameters/ApiKey"
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              required: true
-              type: object
-              properties:
-                accountAddress:
-                  type: string
-                  example: "{{wallet_address}}"
-                tokenAmount:
-                  type: string
-                  example: "1000000000000000000000"
-                tokenAddress:
-                  type: string
-                  example: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
-      parameters:
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: "{{publicKey}}"
-          required: true
+              $ref: "#/components/schemas/UnstakeRequest"
       responses:
         "201":
-          description: Created
+          description: Token unstaking initiated successfully.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  contractAddress:
-                    type: string
-                    example: "0xa3dc222eC847Aac61FB6910496295bF344Ea46be"
-                  encodedABI:
-                    type: string
-                    example: >-
-                      0x2e1a7d4d
+                $ref: "#/components/schemas/UnstakeResponse"
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  statusCode:
-                    type: integer
-                    example: 403
-                  errorMessage:
-                    type: object
-                    properties:
-                      statusCode:
-                        type: integer
-                        example: 403
-                      message:
-                        type: string
-                        example: Forbidden resource
-                      error:
-                        type: string
-                        example: Forbidden
-                  path:
-                    type: string
-                    example: >-
-                      /api/v0/staking/unstake?apiKey={{publicKey}}
+          $ref: "#/components/responses/ForbiddenError"
+
   /staked_tokens/{accountAddress}:
     get:
       tags:
-        - default
+        - Staking
       summary: Get staked tokens by wallet address
+      description: Retrieves information about tokens staked by a specific wallet address.
       parameters:
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          example: "{{publicKey}}"
-          required: true
+        - $ref: "#/components/parameters/ApiKey"
         - name: accountAddress
           in: path
-          schema:
-          type: string
           required: true
-          example: "{{wallet_address}}"
+          schema:
+            type: string
+          description: The wallet address to query staked tokens for.
       responses:
         "200":
-          description: OK
+          description: Staked tokens information for the specified wallet address.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  totalStakedAmountUSD:
-                    type: number
-                  totalEarnedAmountUSD:
-                    type: number
-                  stakedTokens:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        tokenAddress:
-                          type: string
-                        tokenLogoURI:
-                          type: string
-                        tokenName:
-                          type: string
-                        tokenSymbol:
-                          type: string
-                        unStakeTokenAddress:
-                          type: string
-                        stakedAmount:
-                          type: number
-                        stakedAmountUSD:
-                          type: number
-                        earnedAmountUSD:
-                          type: number
-                        stakingApr:
-                          type: number
-              example:
-                totalStakedAmountUSD: 0.001034357555140009
-                totalEarnedAmountUSD: 0
-                stakedTokens:
-                  - tokenAddress: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4"
-                    tokenLogoURI: >-
-                      https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4/logo.png
-                    tokenName: VoltToken
-                    tokenSymbol: VOLT
-                    unStakeTokenAddress: "0x97a6e78c9208c21afaDa67e7E61d7ad27688eFd1"
-                    stakedAmount: 0.5113831095056965
-                    stakedAmountUSD: 0.00009015088204551696
-                    earnedAmountUSD: 0
-                    stakingApr: 4.680838850990786
-                  - tokenAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
-                    tokenLogoURI: >-
-                      https://raw.githubusercontent.com/voltfinance/token-logos/main/logos/0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE/logo.png
-                    tokenName: Fuse
-                    tokenSymbol: FUSE
-                    unStakeTokenAddress: "0xb1DD0B683d9A56525cC096fbF5eec6E60FE79871"
-                    stakedAmount: 0.010824735319451318
-                    stakedAmountUSD: 0.000944206673094492
-                    earnedAmountUSD: 0
-                    stakingApr: 16.967527320525
+                $ref: "#/components/schemas/StakedTokensResponse"
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  statusCode:
-                    type: integer
-                    example: 403
-                  errorMessage:
-                    type: object
-                    properties:
-                      statusCode:
-                        type: integer
-                        example: 403
-                      message:
-                        type: string
-                        example: Forbidden resource
-                      error:
-                        type: string
-                        example: Forbidden
-                  path:
-                    type: string
-                    example: >-
-                      /api/v0/staking/staked_tokens{{wallet_address}}apiKey={{publicKey}}
+          $ref: "#/components/responses/ForbiddenError"
+
+components:
+  parameters:
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Your API key to authenticate requests.
+
+  schemas:
+    StakingOptionsResponse:
+      type: array
+      items:
+        $ref: "#/components/schemas/StakingOption"
+    StakingOption:
+      type: object
+      properties:
+        tokenAddress:
+          type: string
+        tokenSymbol:
+          type: string
+        tokenName:
+          type: string
+        tokenLogoURI:
+          type: string
+        unStakeTokenAddress:
+          type: string
+        stakingProviderId:
+          type: string
+        expired:
+          type: boolean
+        stakingApr:
+          type: number
+        tvl:
+          type: number
+    StakeRequest:
+      type: object
+      properties:
+        accountAddress:
+          type: string
+        tokenAmount:
+          type: string
+        tokenAddress:
+          type: string
+    StakeResponse:
+      type: object
+      properties:
+        contractAddress:
+          type: string
+        encodedABI:
+          type: string
+    UnstakeRequest:
+      $ref: "#/components/schemas/StakeRequest"
+    UnstakeResponse:
+      $ref: "#/components/schemas/StakeResponse"
+    StakedTokensResponse:
+      type: object
+      properties:
+        totalStakedAmountUSD:
+          type: number
+        totalEarnedAmountUSD:
+          type: number
+        stakedTokens:
+          type: array
+          items:
+            $ref: "#/components/schemas/StakingOption"
+
+  responses:
+    ForbiddenError:
+      description: Access to the resource is forbidden.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+              errorMessage:
+                type: string
+              error:
+                type: string

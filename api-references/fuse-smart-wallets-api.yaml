@@ -1,6 +1,8 @@
 openapi: 3.0.0
 info:
-  description: |
+  title: Smart Wallets API
+  version: 1.0.0
+  description: >
 
     Smart Wallets API provides a Wallets as a Service (WaaS) API for your cross-platform applications. Developers can also access the Smart Wallets API via the [fuse-sdk](/docs/fuse-box/getting-started.mdx).
 
@@ -20,58 +22,27 @@ info:
 
     Once you have your project set and access to your Public API key, you can start working with the Smart Wallets API. Check out the [Smart Wallets API Reference](/docs/smart-wallets-api/auth) for usage.
 
-  title: Smart Wallets API
-  version: 1.0.0
 servers:
   - url: https://api.fuse.io/api/v2/smart-wallets
-    description: Default server
+    description: Production server
   - url: https://api.staging.fuse.io/api/v2/smart-wallets
-    description: Sandbox server
-components:
-  securitySchemes:
-    bearerAuth:
-      bearerFormat: "JWT"
-      type: https
-      scheme: bearer
+    description: Staging server
+
 paths:
   /auth:
     post:
       tags:
         - Smart Wallets
-      summary: Auth
-      description: Authenticate user using signed data standard EIP-191
+      summary: Authenticate user
+      description: Authenticate user using signed data standard EIP-191.
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                hash:
-                  type: string
-                  example: "0xdf6d23a8155755395ba2cf5ae9b18b5988f49aeb907f267525975832d544c88f"
-                signature:
-                  type: string
-                  example: "0xd773c543f1702629f0dfe2f788cc46a56bd504e1eb25bb26bdd4983d928440302f402cc3183c98814e6d467a00f969e238604a74cc5a3d2ec057d937ceec1ba71c"
-                ownerAddress:
-                  type: string
-                  example: "0x61Cda92886f6aA817587bd190D77fA08a14A1be1"
-                smartWalletAddress:
-                  type: string
-                  example: "0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117"
-              example:
-                hash: >-
-                  0xdf6d23a8155755395ba2cf5ae9b18b5988f49aeb907f267525975832d544c88f
-                signature: >-
-                  0xd773c543f1702629f0dfe2f788cc46a56bd504e1eb25bb26bdd4983d928440302f402cc3183c98814e6d467a00f969e238604a74cc5a3d2ec057d937ceec1ba71c
-                ownerAddress: "0x61Cda92886f6aA817587bd190D77fA08a14A1be1"
-                smartWalletAddress: "0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117"
+              $ref: "#/components/schemas/AuthRequest"
       parameters:
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          description: (Required) Your Public API key
-          example: "{{publicKey}}"
+        - $ref: "#/components/parameters/ApiKey"
       responses:
         "201":
           description: Created
@@ -82,42 +53,11 @@ paths:
                 properties:
                   jwt:
                     type: string
-                    example: >-
-                      eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvd25lckFkZHJlc3MiOiIweDgwOUI3ODM3MWY1MGYyOEQyQzYxRjYzZTQ4YjU4YjdFZTA1M0UzRWEiLCJwcm9qZWN0SWQiOiI2M2NkMWJjMWQxOGMxNjQyMmJiOGMwYzMiLCJpYXQiOjE2NzUzMjcxOTR9.-iWIEN6OLyCI4j5WOA8V2mH3KQtrmEoUGhIS4migV9g
         "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  statusCode:
-                    type: integer
-                    example: 400
-                  errorMessage:
-                    type: string
-                    example: Owner Address does not match recovered address in signature
-                  path:
-                    type: string
-                    example: >-
-                      /api/v2/smart-wallets/auth?apiKey={{publicKey}}
+          $ref: "#/components/responses/BadRequest"
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  statusCode:
-                    type: integer
-                    example: 403
-                  errorMessage:
-                    type: string
-                    example: Forbidden resource
-                  path:
-                    type: string
-                    example: >-
-                      /api/v2/smart-wallets/auth?apiKey={{publicKey}}
+          $ref: "#/components/responses/Forbidden"
+
   /actions:
     get:
       tags:
@@ -126,28 +66,10 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: apiKey
-          in: query
-          schema:
-            type: string
-          description: (Required) Your Public API key
-          required: true
-          example: "{{publicKey}}"
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: "1"
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: "10"
-        - name: tokenAddress
-          in: query
-          schema:
-            type: string
-          example: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        - $ref: "#/components/parameters/ApiKey"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/TokenAddress"
       responses:
         "200":
           description: Successful response
@@ -159,118 +81,127 @@ paths:
                   docs:
                     type: array
                     items:
-                      type: object
-                      properties:
-                        _id:
-                          type: string
-                          example: "6502e7648e04f67688ac69f9"
-                        walletAddress:
-                          type: string
-                          example: "0x5bbea139c1b1b32cf7b5c7fd1d1ff802de006117"
-                        name:
-                          type: string
-                          example: swapTokens
-                        status:
-                          type: string
-                          example: pending
-                        received:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              name:
-                                type: string
-                                example: Luna Terra
-                              symbol:
-                                type: string
-                                example: atLUNA
-                              address:
-                                type: string
-                                example: "0x588e24DEd8f850b14BB2e62E9c50A7Cd5Ee13Da9"
-                              decimals:
-                                type: integer
-                                example: 18
-                              value:
-                                type: string
-                                example: "12320154038834973"
-                              type:
-                                type: string
-                                example: ERC-20
-                              _id:
-                                type: string
-                                example: "6502e7648e04f67688ac69fa"
-                        sent:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              name:
-                                type: string
-                                example: GoodDollar
-                              symbol:
-                                type: string
-                                example: G$
-                              address:
-                                type: string
-                                example: "0x495d133B938596C9984d462F007B676bDc57eCEC"
-                              decimals:
-                                type: integer
-                                example: 2
-                              value:
-                                type: string
-                                example: "1"
-                              to:
-                                type: string
-                                example: "0xE3F85aAd0c8DD7337427B9dF5d0fB741d65EEEB5"
-                              type:
-                                type: string
-                                example: ERC-20
-                              _id:
-                                type: string
-                                example: "6502e7648e04f67688ac69fb"
-                        userOpHash:
-                          type: string
-                          example: "0x111"
-                        txHash:
-                          type: string
-                          example:
+                      $ref: "#/components/schemas/ActionResponseItem"
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  statusCode:
-                    type: integer
-                    example: 401
-                  errorMessage:
-                    type: object
-                    properties:
-                      statusCode:
-                        type: integer
-                        example: 401
-                      message:
-                        type: string
-                        example: Unauthorized
-                  path:
-                    type: string
-                    example: >-
-                      /api/v2/smart-wallets/actions?apiKey={{publicKey}}
+          $ref: "#/components/responses/Unauthorized"
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  statusCode:
-                    type: integer
-                    example: 403
-                  errorMessage:
-                    type: string
-                    example: Forbidden resource
-                  path:
-                    type: string
-                    example: >-
-                      /api/v2/smart-wallets/actions?apiKey={{publicKey}}
+          $ref: "#/components/responses/Forbidden"
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        errorMessage:
+          type: string
+        path:
+          type: string
+    AuthRequest:
+      type: object
+      properties:
+        hash:
+          type: string
+        signature:
+          type: string
+        ownerAddress:
+          type: string
+        smartWalletAddress:
+          type: string
+    ActionResponseItem:
+      type: object
+      properties:
+        _id:
+          type: string
+        walletAddress:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        received:
+          type: array
+          items:
+            $ref: "#/components/schemas/TokenTransaction"
+        sent:
+          type: array
+          items:
+            $ref: "#/components/schemas/TokenTransaction"
+        userOpHash:
+          type: string
+        txHash:
+          type: string
+    TokenTransaction:
+      type: object
+      properties:
+        name:
+          type: string
+        symbol:
+          type: string
+        address:
+          type: string
+        decimals:
+          type: integer
+        value:
+          type: string
+        type:
+          type: string
+        _id:
+          type: string
+        to:
+          type: string
+          nullable: true
+
+  parameters:
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Your Public API key.
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+      description: Page number for pagination.
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 10
+      description: Number of items per page.
+    TokenAddress:
+      name: tokenAddress
+      in: query
+      schema:
+        type: string
+      description: Filter actions by token address.
+  responses:
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
