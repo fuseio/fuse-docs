@@ -1,0 +1,12 @@
+[
+  {
+    "version": "2.0.0",
+    "label": "v2.0.0",
+    "baseUrl": "/trade_versioned/trade-api"
+  },
+  {
+    "version": "1.0.0",
+    "label": "v1.0.0",
+    "baseUrl": "/trade_versioned/1.0.0/trade-api"
+  }
+]

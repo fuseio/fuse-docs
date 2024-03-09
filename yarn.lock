@@ -6668,30 +6668,7 @@ dns-packet@^5.2.2:
   dependencies:
     "@leichtgewicht/ip-codec" "^2.0.1"
 
-docusaurus-plugin-openapi-docs@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/docusaurus-plugin-openapi-docs/-/docusaurus-plugin-openapi-docs-2.0.3.tgz#82bb17e2c48bf4c44a4186534a6d3002aea9f627"
-  integrity sha512-BIppMWICplBLuqMSclwXW2dlWha26/p/iujfE7GBDQxaAW1h8xi6A2gqGk42NE4aTtaJoSPN5W9/P5wrXrCLlw==
-  dependencies:
-    "@apidevtools/json-schema-ref-parser" "^10.1.0"
-    "@docusaurus/plugin-content-docs" ">=2.4.1 <=2.4.3"
-    "@docusaurus/utils" ">=2.4.1 <=2.4.3"
-    "@docusaurus/utils-validation" ">=2.4.1 <=2.4.3"
-    "@paloaltonetworks/openapi-to-postmanv2" "3.1.0-hotfix.1"
-    "@paloaltonetworks/postman-collection" "^4.1.0"
-    "@redocly/openapi-core" "^1.0.0-beta.125"
-    chalk "^4.1.2"
-    clsx "^1.1.1"
-    fs-extra "^9.0.1"
-    json-pointer "^0.6.2"
-    json-schema-merge-allof "^0.8.1"
-    lodash "^4.17.20"
-    mustache "^4.2.0"
-    slugify "^1.6.5"
-    swagger2openapi "^7.0.8"
-    xml-formatter "^2.6.1"
-
-docusaurus-plugin-openapi-docs@^2.0.3:
+docusaurus-plugin-openapi-docs@2.0.4, docusaurus-plugin-openapi-docs@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/docusaurus-plugin-openapi-docs/-/docusaurus-plugin-openapi-docs-2.0.4.tgz#773d5aeefe0bb34e8f119bac0182f35da7514fe4"
   integrity sha512-jLgEEbMsQ+Y6ihy4y7SmXthUMRDbqAL0OKrdtUaOAxxb/wkLXB28mX74xiZzL928DZJ84IJejHgbjFb2ITcKhA==
@@ -6728,10 +6705,10 @@ docusaurus-plugin-yandex-metrica@1.1.0:
   dependencies:
     "@docusaurus/core" "2.0.0-rc.1"
 
-docusaurus-theme-openapi-docs@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/docusaurus-theme-openapi-docs/-/docusaurus-theme-openapi-docs-2.0.3.tgz#826e25fe80765f6b01401dbc178691c9da993637"
-  integrity sha512-g25rawmmnF4BioNNJAfuR/Jibm7yoeu3WJAKxHF/3MfWmKN4YX6YXw3/Bhq6UfrwTy1jBFSsct8oPnfFR30tGA==
+docusaurus-theme-openapi-docs@2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/docusaurus-theme-openapi-docs/-/docusaurus-theme-openapi-docs-2.0.4.tgz#0abeee2776375404087ceca6bcced86359f6f15d"
+  integrity sha512-w4YodyfMuzvWg6DDDzqb+eNBt4D5ZkMB13343u4zREBdDBOeOK5ikLQuQ+735WqPbAbH4gonvInXLQTAYodCNw==
   dependencies:
     "@docusaurus/theme-common" ">=2.4.1 <=2.4.3"
     "@hookform/error-message" "^2.0.1"
@@ -6741,7 +6718,7 @@ docusaurus-theme-openapi-docs@2.0.3:
     clsx "^1.1.1"
     copy-text-to-clipboard "^3.1.0"
     crypto-js "^4.1.1"
-    docusaurus-plugin-openapi-docs "^2.0.3"
+    docusaurus-plugin-openapi-docs "^2.0.4"
     docusaurus-plugin-sass "^0.2.3"
     file-saver "^2.0.5"
     lodash "^4.17.20"

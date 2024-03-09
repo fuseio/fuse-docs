@@ -1,0 +1,42 @@
+---
+id: check-verify-status
+title: "Return status of a verification attempt"
+description: "Return status of a verification attempt"
+sidebar_label: "Return status of a verification attempt"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVttuGzcQ/ZUBDbQJsJGdWy8CgsCNk8bIQwPbaR5ioxhxR9qJueSGnJWzMfzvxZArS7bsIK1fvOJleM6ZM0NemtBRROHgD2szNbYhe/43RZ4Px4LSJ1OZDiO2JBSTmX66NB5bMlPThrp3ZCrD3kzNl57iYCqTbEMtmumlkaHTZUki+4WpDPm+NdNPxgYvEa2Ys6vKRPrSc6TaTCX2dFVdR0erkP5HdMW/zPhTwf/dYxY91z96yHfhdvyOhv8Qib5i2zkd687/efzk6bPnv/z62+97ZuuMMx1JXfCJkkZ6sren/2pKNnKXRZqav96ZKgtLXnQWu86xzVnd/Zx0yeU2mDD7TFY0v1E9IFwOaCklXNA9/FPv5M6pUe3tqfJX3UJ8RNJHD2UXhDkg5KyNqAFFqO0UXUvSBLXmgjJYlMZMze7L4r8XKzv9VBzzYtsAlUkUlyv39tGZqWlEujTd3cWOJ/M+0YSDfu8u93bpa+dCpGhuQ34fQ93nQ6AENGqA7XhJcMF+8cNxj8v666Bn6qJ5yFKyZI+8HvfC/vvDrf07O/DBO8LUgDQE78MFRVX0TZ8I/nDBntsG2cO+RzcI23TqT/1Hcja0lHd4unAD9H5J7Kgu+zZPnMBJw0m/gNpOwyeoaUlObZPggqUBtJZSAgk5IntPES5CPGe/yOnV0duA0NcwhsMVtjxYoyAUvYobgr8rwESJ7OzAxwYFOG0Df6kLTlYbN2d0OcLR6+OT/CtTIF93gb0oucQLT7XS6WJYck3bhMGGtovUkE+8JEg9C2UjX1Ox2OGMHWtlwTzEOznAx4akoQiznl2tPqjJknra8TeqYaOUEzw42O+69LACG3z2ol9ApEQYbVNBiJCIVHJgn3jRSAL2EmC21lwi+lRKJamsCqcCWeWXEwyhj7BAoQscVACEC0InjXLTxKxUf0cDvCGUPlKalrEdeDyBI0L36IRbgpP1WXA4ApqeeoADFSwjU0Uawij3eSRrHTWkaMgN+AXMKqtV0f1b/qhhyanPAt4kjEkPGSBY28cKFshe1UKoB48tW+h9TTEJ+pyJMN+UToMsWYbJiuyTCezXdVTfH/p5iG3OUmZ4RBKZlmobwVxVvF4BOAu9QOrIasMDLEEo3edz+OBtWFK8Qb/hJCEypQpm6NBb/VLuIdspd3RPXkYICWzsLaPLTmyDZ92t5H1dtEucrqk9ncBJOKeNppFpHRO2jlJyg6aPFhGFQPLCte1zYrOLNr07UTvY83F1G5bUkpdqhQQcf+m5ZhkKCU0NLNH1OHN0y845xKNIDkULpKSFaY3+2QSOWzXVq/FyuEXjgNymAee9z5KiYxlKV6KYs+VtLumUg61uGu0PnQsD1ffm6/XXcuySBV1pZxIgdMKtejKL850yVwjkm3L8kiI6t+o/KhrQfM6Wydu1F59P4G0xhEUHByiYme6Xttysp1ZgRorA/lFNnTa07AEqpy/IU0luJF9f6792YqcXdPSpAq7JC89VuNCi45UNWzyn0fVUK1tOmdwM073K/XwD6kYWVk3nT5Lc9I4Fo1Cd+85J0GdElNIr5K52X222b4seFiSAPre8eQxt3vXpVfApODp7sLrNbRm4vslzi34IEoLLFCPNKZJmSfffvA/qYHtNVk5pBeyt68f2PnYEfXuqWDbUBMlz15GM2o2vwzSBw7HMtOI5QRoLsAJ0LlxovCH0ms8Go883cEPlUr3dva7rM8vUsucWnVopRJmc6lNb30jlSfF4sjfZM1dX/wJZYFaY
+sidebar_class_name: "get api-method"
+info_path: docs/explorer-api/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Return status of a verification attempt</h1>
+
+<MethodEndpoint method={"get"} path={"/?module=contract&action=checkverifystatus"}></MethodEndpoint>
+
+
+
+Return status of a verification attempt
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["checkverifystatus"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"guid","in":"query","schema":{"type":"string"},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"result"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\",\n  \"result\": \"string\",\n  \"status\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

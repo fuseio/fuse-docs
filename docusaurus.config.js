@@ -25,6 +25,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/fuseio/fuse-docs/blob/master',
           docLayoutComponent: '@theme/DocPage',
@@ -135,10 +136,32 @@ const config = {
             label: 'Developers',
           },
           {
-            type: 'doc',
-            docId: 'fuse-box/getting-started',
+            type: 'dropdown',
             position: 'left',
             label: 'FuseBox',
+            items: [
+              {
+                label: "Getting Started",
+                to: "fuse-box/getting-started"
+              },
+              {
+                label: "SDK Reference",
+                to: "fuse-box/sdk"
+              },
+              {
+                label: "Tutorials & Guides",
+                to: "category/tutorials"
+              },
+              {
+                type: 'docSidebar',
+                label: "API Reference",
+                sidebarId: "apiSidebar",
+              },
+              {
+                label: "Trade API (versioned)",
+                to: "/category/trade-versioned-api",
+              },
+            ]
           },
           {
             type: 'docSidebar',
@@ -224,37 +247,52 @@ const config = {
         id: 'api',
         docsPluginId: 'api', // e.g. "classic" or the plugin-content-docs id
         config: {
+          trade_versioned: {
+            specPath: 'api-references/trade-api-v2.yaml',
+            outputDir: "docs/trade_versioned",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+            version: "2.0.0",
+            label: "v2.0.0",
+            baseUrl: "/trade_versioned/trade-api",
+            versions: {
+              "1.0.0": {
+                specPath: 'api-references/trade-api-v1.yaml',
+                outputDir: "docs/trade_versioned/1.0.0",
+                label: "v1.0.0",
+                baseUrl: "/trade_versioned/1.0.0/trade-api",
+              },
+            },
+          },
           notificationApi: {
             specPath: 'api-references/fuse-notification-api.yaml',
-            outputDir: 'docs/fuse-box/fuse-apis/Notification API',
+            outputDir: "docs/notification-api",
             sidebarOptions: {
               groupPathsBy: 'tag',
+              categoryLinkSource: "tag",
             },
           },
           smartWalletApi: {
             specPath: 'api-references/fuse-smart-wallets-api.yaml',
-            outputDir: 'docs/fuse-box/fuse-apis/Smart Wallets API',
+            outputDir: 'docs/smart-wallet-api',
             sidebarOptions: {
               groupPathsBy: 'tag',
+              categoryLinkSource: "tag",
             },
           },
-          tradeApiV1: {
-            specPath: 'api-references/trade-api-v1.yaml',
-            outputDir: 'docs/fuse-box/fuse-apis/Trade API/V1',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
-          },
-          tradeApiV2: {
+          tradeApi: {
             specPath: 'api-references/trade-api-v2.yaml',
-            outputDir: 'docs/fuse-box/fuse-apis/Trade API/V2',
+            outputDir: 'docs/trade-api',
             sidebarOptions: {
               groupPathsBy: 'tag',
+              categoryLinkSource: "tag",
             },
           },
           explorerApi: {
             specPath: 'api-references/explorer-api.yaml',
-            outputDir: 'docs/fuse-box/fuse-apis/Explorer API',
+            outputDir: "docs/explorer-api",
             sidebarOptions: {
               groupPathsBy: 'tag',
               sidebarCollapsible: true,
@@ -263,16 +301,18 @@ const config = {
           },
           graphqlApi: {
             specPath: 'api-references/graphql-api.yaml',
-            outputDir: 'docs/fuse-box/fuse-apis/Graphql API',
+            outputDir: "docs/graphql-api",
             sidebarOptions: {
               groupPathsBy: 'tag',
+              categoryLinkSource: "tag",
             },
           },
           stakingApi: {
             specPath: 'api-references/staking-api.yaml',
-            outputDir: 'docs/fuse-box/fuse-apis/Staking API',
+            outputDir: "docs/staking-api",
             sidebarOptions: {
               groupPathsBy: 'tag',
+              categoryLinkSource: "tag",
             },
           },
         },
