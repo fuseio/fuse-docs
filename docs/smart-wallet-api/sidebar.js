@@ -1,0 +1,1 @@
+module.exports = [{"type":"doc","id":"smart-wallet-api/smart-wallets-api"},{"type":"category","label":"Smart Wallets","items":[{"type":"doc","id":"smart-wallet-api/authenticate-user","label":"Authenticate user","className":"api-method post"},{"type":"doc","id":"smart-wallet-api/get-wallet-actions","label":"Get Wallet Actions","className":"api-method get"}]}];

@@ -1,9 +1,9 @@
 openapi: 3.0.0
 info:
-  title: Swap Price API
+  title: Trade API
   version: 2.0.0
   description: |
-    The Swap Price API offers a suite of endpoints tailored to enhance your token-swapping capabilities. Whether you're seeking indicative prices for transactions, exploring liquidity sources, or obtaining quotes for buying or selling ERC20 tokens, our APIs streamline the token-swapping process with precision and efficiency. The API endpoint is used to acquire an indicative price for a transaction.
+    The Trade API offers a suite of endpoints tailored to enhance your token-swapping capabilities. Whether you're seeking indicative prices for transactions, exploring liquidity sources, or obtaining quotes for buying or selling ERC20 tokens, our APIs streamline the token-swapping process with precision and efficiency. The API endpoint is used to acquire an indicative price for a transaction.
 
     ## Key Features:
 
@@ -18,16 +18,21 @@ info:
 
     ## Getting Started:
 
-    Get an API from the [Console](https://console.fuse.io/build) tool and refer to our comprehensive documentation. Access guides, code snippets, and examples to integrate the Swap Price API seamlessly into your applications.
+    Get an API from the [Console](https://console.fuse.io/build) tool and refer to our comprehensive documentation. Access guides, code snippets, and examples to integrate the Trade API seamlessly into your applications.
 servers:
   - url: https://api.fuse.io/api/v1/trade
     description: Production server
   - url: https://api.staging.fuse.io/api/v1/trade
     description: Staging server
 
+tags:
+  - name: Swap
+
 paths:
   /price:
     get:
+      tags:
+        - Swap
       summary: Get an indicative price for a transaction
       operationId: getIndicativePrice
       parameters:
@@ -57,6 +62,8 @@ paths:
 
   /quote:
     get:
+      tags:
+        - Swap
       summary: Get a quote for buying or selling any ERC20 token
       operationId: getQuote
       parameters:
@@ -87,6 +94,8 @@ paths:
 
   /sources:
     get:
+      tags:
+        - Swap
       summary: Returns the liquidity sources enabled for the chain
       operationId: getLiquiditySources
       parameters:

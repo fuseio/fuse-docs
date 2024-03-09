@@ -1,0 +1,42 @@
+---
+id: eth-price
+title: "Get latest price of native coin in USD and BTC"
+description: "Get latest price of native coin in USD and BTC"
+sidebar_label: "Get latest price of native coin in USD and BTC"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVltvEzsQ/isjVzoHpCUtt3OJhFChwKl4OBUN4oFWRxPvJDvUay+e2ZRQ9b8fjTdp0huCvnSztj/Pd/F4L1zqKKNyioe1GzvS5iizJ1e5DjO2pJTFjT9fuIgtubFrU90HG+boxu5rT3npKie+oRbd+MLpsrNpopnj3FWOYt+68Wcniiru9LJymb72nKl2Y809XVZX0OitjF+HJm26UvMP0QudnwX/YZkdv6flLyDRN2y7UGo4++/xk6fPnv/x519/77lbe5zaG+lSFBJDerK3Z/9qEp+5K+KM3b/vXeV8ikpRbRS7LrAvDu5+EZtycbuYNP1CXs3UbH4rDxu0JIJzuoe/9EHvHDIve7ljaPirblT8jhQCKolC8QnSDCIqLwh84ggc4ePxAWCs4dXktatcS9okS+OcSs2ojRu73ZdD9l6UKP02pOXFlfmVE8qLdVr7HNzYNaqdjHd3sePRrBcacbLn3cXeLn3rQsqU3c1qj3Kq+4INA6Az72/jieKc4/yncY+H+VegpxagWSoqspZ4vFmthf2jw1vrd3bgYwyE0oA2BEfpnLIp+bYXglch+TPfIEfYjxiWyl5O4kn8RMGnlsqKSOdhCX1cEAeqh3XbO45g0rDYE1DbGbxATQsKlhiBc9YG0HsSAU0FkWOkDOcpn3GcixVjb28WZL6u4HBdW3lZoyIMepX4Qop3AYyMyM4OfGpQgeV24S9twmS9cHvEpiN8eHM8Kb8KBYp1lziqkROeR6qNTpfTgmu6TRh8artMDUWxwErPWgK8oeKxwykHtkMFs5Tv5ACfGtKGMkx7DrXloCZPUTMG/k41bJ1igQcH+10nDyvwKZYsxjlkEsLsmwpSBiEyyYGj8LxRAY6aYLrRXDNGGU6ImKxWTgW69pcFlqnPMEelc1yaAAjnhEEb42bGrFV/T0t4S6h9JhkP73bg8Qg+EIZHE24JJpu94HBV0PgkAhyYYKUyU6QhzHpfRorW2SDVILfKH4pZu1oNun8vDzUsWPoi4HXCKLbJEpL3fa5gjhxNLYR6GbFlD32sKYtiLE6k2bZ0BrJgXY7WZJ+MYL+us+X+MM5SbotLheEH0sy0sNgollPFmxmA09QrSEeeZ+wBBxCS+3IOH6NPC8rX6DcsmjKTVDDFgNHbk3FPJU6lmUeKuipBwOfeM4aSxDZFttVGPtaDdsJyRe3pCCbpjLaaRqF1TNgGEglLs4/mGZVAy8RN7IuxJUXb2R1ZHPzZanabFtRS1GpdCQT+2nPNuhxImDWwwNDjNNCNOBeIR5ns6qjXtjBtqn82guPWQvU62UHyeoPGAYXtAM76WCTFwLocuhLl4lYc7iQpYH4FZv2hC2lJ9b1+vfk2bLtgxTC0M02QOuXWMlnE+cExtxIoNsP2C8oYwrr/mGhAsxl7pug3WXw+gn+GQHgMcICKhen+0JabzdC6mBVF4Piops4aWskADbvPKdJgbqZYX+m/SWKHqpSjVMA1ReWZCZdaDLyOYYtntEo91caWpZCbotyr3O/XSt1yYd103pGWpnesmJXq0ncmCcR+Dr1C72r31Xb79hhhTgoYS8ub5dSWVZ9fpygp0OmD9W3uhxdXN3lp0Q9BUwqFYqYZZTKXbP31+6BOvjeziqUVcPShX7X3VUeY91ybWD7VBBK560hX2q0+DGUEh6tjZieeBWR1ACvAENK54S1Tb342mGO5gRsaLtWb3evqfBaZWo7cYrAopayjE/u6tm+k4ZPi8WhvtOcuL/8H009J0Q==
+sidebar_class_name: "get api-method"
+info_path: docs/explorer-api/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get latest price of native coin in USD and BTC</h1>
+
+<MethodEndpoint method={"get"} path={"/?module=stats&action=ethprice"}></MethodEndpoint>
+
+
+
+Get latest price of native coin in USD and BTC
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["stats"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["ethprice"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"param","in":"query","schema":{"type":"string"},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"result"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\",\n  \"result\": \"string\",\n  \"status\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      
