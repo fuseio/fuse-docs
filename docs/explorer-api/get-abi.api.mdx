@@ -1,0 +1,42 @@
+---
+id: get-abi
+title: "Get ABI for a verified contract"
+description: "Get ABI for a verified contract"
+sidebar_label: "Get ABI for a verified contract"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVllv3DYQ/isDGmhTQFk7V48FgsA5a+ShQewgD7FRzJKz0sQUqZCjdRTD/70YSutdX2niF2sp8uN8B4c6N7GjhMIxHDgzNzXJ/oJNZTpM2JJQymb+6dwEbMnMTRtd78lUhoOZmy89pcFUJtuGWjTzcyNDp9OyJA61qQyFvjXzT8bGIAmtmJOLyiT60nMiZ+aSerqoLtHRah0/j16T4IL/B9u5RDn/KPh3oTp+S8NPINFXbDuvY93pvw8ePnr85Pc//vxrz9zY40RHchdDpqxID/f29J+jbBN3RZy5+eetqYqgFETfYtd5tsXC3c9Zp5zfLCYuPpMV9TWp4cLjBi3ljDXdwT/3Xm59lQWlz7e8Gv+qaxW/IYH95wewjAkQVpR4yeTgMhSVaUmaOOWvhE8aMze7z8a8PV3P/GVMyNPJ8MpkSqt1RPvkzdw0Il2e7+5ix7Nln2nGUZ93V3u79LXzMVEy1+t7l6LrCzKMgEbdvomXBWsO9Q/jHo7zL0FPNDLLWHRjKYF4Na2F/XcHN9bv7MCH4AlzA9IQvItnlCAu4XWfCZ77aE9tgxxgP6AfhG0+DsfhI3kbWyorAp35AfqwIvbkxnXbO87gqOGsT0Btp/AZHK3Ia0YynLE0gNZSziCxIHIIlOAsplMOddZidPR6QRgcTHC4rq0MOhSEUa8SWIjhNoCZEtnZgY8NCnC+WfgznXC0Xrj9RqcjvH91eFR+FQoUXBc5iJLLXAdySqdLccWObhIGG9suUUMh84og9yykTDdULHa4YM96jEqqb+MAHxuShhIsevZOc+DIkgbZ8zdysHVuM9x7ud91+bdKD0XJYqghUSZMtqkgJshEKjlwyFw3koGDRFhsNJeEIY/nI6usWk4FsvaXMwyxT1Cj0BkOKgDCGaGXRrmpMWvV39IArwmlT5Tn49gOPJjBe0J//4hbgqPNXnAwFTQ/DgAvVbBSmSrSECa5KyNF66SQopBb5Y/FrF2tRt2/lQcHK859EfAqYcy6yQDR2j5VUCMHVQvBDQFbttAHRykLhuJEXG5LpyArlmG2JvtwBvvjfQEHYRlTW1wqDN+TJKaVxkawnCrezABcxF4gd2R5yRamS4fyXTmHD8HGFaUr9BvOEhNTrmCBHoPVJ+UeS5xK+w4UZCohg029ZfQliW0MrKuVfHCjdpnzJbVHMziKp7TVNAqtQ8LWU85+UPuoTigEUiZuYl+MLSnazu5M42BPp9ltXFFLQap1JeD5S8+OZRhJqDWwQt/jwtO1OBeI+4k8ih6Q0RamTfWPZ3DYaqheTDfCNRovyW8HcNmHIil6lmHsSpSKW8GWI50L2Pp60f7Q+TiQu9OvV1/HbVcs6Md2JhFiJ9xqJos43znmWgKFZtx+RQm9X/cfFQ1ouWTLFOwmi09m8PcYCIseXqJgYbo/tuVm82pdzEQRONx31GlDKxmgcfeaAo3mJgruUv9NEjsUoRRyBewoCC9VuNii53UMWzylKfXklC3nQm6B+U7lfr1S6pYL66bzhqQ0vUPBJORK3zmKkPXn2CvktnZfbbdviwFqEsBQWt4yxbas+vQihhw9ndxb3+Z2HLi8yUuL/g0kRl8oJlpSInVJ11+9D1y0vZpVLK2Ag/X91N6njlD37FQsGx1BDtx1JJN206dgnsHBdMz0xHOGPB3ACtD7eKZ4Q+zVzwZTKDdwQ+Oler17XZ7PIlPLgVv0GqWYZHas39P6jTR+UjyY7c32zMXFfwxoRXg=
+sidebar_class_name: "get api-method"
+info_path: explorer-api/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get ABI for a verified contract</h1>
+
+<MethodEndpoint method={"get"} path={"/?module=contract&action=getabi"}></MethodEndpoint>
+
+
+
+Get ABI for a verified contract
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"action","in":"query","schema":{"type":"string","enum":["getabi"]},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"address","in":"query","schema":{"type":"string"},"required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"result"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\",\n  \"result\": \"string\",\n  \"status\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      
