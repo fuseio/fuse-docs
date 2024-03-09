@@ -3,19 +3,19 @@ const ExploreApisList = [
     title: "Smart Wallets API",
     description:
       "Maximize the security and user experience of your apps by leveraging smart contract wallets.",
-    href: "/category/smart-wallets-api",
+    href: "/smart-wallet-api/smart-wallets-api",
   },
   {
     title: "Trade API",
     description:
       "Enable DeFi functionalities including token swaps, real-time price information, and more in your apps.",
-    href: "/category/trade-api",
+    href: "/trade-api/trade-api",
   },
   {
     title: "Notifications API",
     description:
       "Maximize the security and user experience of your apps by leveraging smart contract wallets.",
-    href: "/category/notification-api",
+    href: "/notification-api/notifications-api",
   },
   {
     title: "Data APIs",
@@ -27,12 +27,12 @@ const ExploreApisList = [
     title: "GraphQL APIs",
     description:
       "Access real-time indexed transactions with ease.",
-    href: "/category/graphql-api",
+    href: "/graphql-api/graphql-api",
   },
   {
     title: "Staking APIs",
     description: "Enhance your app with staking functionalities.",
-    href: "/category/staking-api",
+    href: "/staking-api/staking-api",
   },
 ];
 
