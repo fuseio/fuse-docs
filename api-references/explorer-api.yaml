@@ -39,6 +39,8 @@ servers:
 paths:
   /?module=account&action=eth_get_balance:
     get:
+      tags:
+        - Account module
       summary: Return balance from a provided block
       operationId: ethGetBalance
       parameters:
@@ -60,7 +62,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: address
           in: query
@@ -90,6 +92,8 @@ paths:
 
   /?module=account&action=balance:
     get:
+      tags:
+        - Account module
       summary: Get the native token balance for an address
       operationId: getBalance
       parameters:
@@ -111,7 +115,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: address
           in: query
@@ -136,6 +140,8 @@ paths:
 
   /?module=account&action=balancemulti:
     get:
+      tags:
+        - Account module
       summary: Get balance for multiple addresses
       operationId: getBalanceMulti
       parameters:
@@ -157,7 +163,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: address
           in: query
@@ -191,6 +197,8 @@ paths:
 
   /?module=account&action=pendingtxlist:
     get:
+      tags:
+        - Account module
       summary: Get pending transactions by address
       operationId: getPendingTxList
       parameters:
@@ -212,7 +220,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: address
           in: query
@@ -249,6 +257,8 @@ paths:
 
   /?module=account&action=txlist:
     get:
+      tags:
+        - Account module
       summary: Get transactions by address
       operationId: getTxList
       parameters:
@@ -270,7 +280,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: address
           in: query
@@ -323,6 +333,8 @@ paths:
 
   /?module=account&action=txlistinternal:
     get:
+      tags:
+        - Account module
       summary: Get internal transactions by transaction or address hash
       operationId: getTxListInternal
       parameters:
@@ -344,7 +356,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: txhash
           in: query
@@ -401,6 +413,8 @@ paths:
 
   /?module=account&action=tokentx:
     get:
+      tags:
+        - Account module
       summary: Get token transfer events by address
       operationId: getTokenTx
       parameters:
@@ -422,7 +436,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: address
           in: query
@@ -480,6 +494,8 @@ paths:
 
   /?module=account&action=tokennfttx:
     get:
+      tags:
+        - Account module
       summary: Get ERC-721 token transfer events by address
       operationId: getTokenNftTx
       parameters:
@@ -501,7 +517,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: address
           in: query
@@ -559,6 +575,8 @@ paths:
 
   /?module=account&action=tokenbalance:
     get:
+      tags:
+        - Account module
       summary: Get token account balance for token contract address
       operationId: getTokenBalance
       parameters:
@@ -580,7 +598,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: contractaddress
           in: query
@@ -611,6 +629,8 @@ paths:
 
   /?module=account&action=tokenlist:
     get:
+      tags:
+        - Account module
       summary: Get list of tokens owned by address
       operationId: getTokenList
       parameters:
@@ -632,7 +652,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: address
           in: query
@@ -659,6 +679,8 @@ paths:
 
   /?module=account&action=getminedblocks:
     get:
+      tags:
+        - Account module
       summary: Get list of blocks mined by address
       operationId: getMinedBlocks
       parameters:
@@ -680,7 +702,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: address
           in: query
@@ -717,6 +739,8 @@ paths:
 
   /?module=account&action=listaccounts:
     get:
+      tags:
+        - Account module
       summary: Get a list of accounts and their balances
       operationId: listAccounts
       parameters:
@@ -738,7 +762,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: page
           in: query
@@ -769,6 +793,8 @@ paths:
 
   /?module=block&action=getblockreward:
     get:
+      tags:
+        - Block module
       summary: Get block reward by block number
       operationId: getBlockReward
       parameters:
@@ -776,7 +802,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: module
           in: query
@@ -828,6 +854,8 @@ paths:
 
   /?module=block&action=getblockcountdown:
     get:
+      tags:
+        - Block module
       summary: Get estimated block countdown time by block number
       operationId: getBlockCountdown
       parameters:
@@ -835,7 +863,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: module
           in: query
@@ -883,6 +911,8 @@ paths:
 
   /?module=block&action=getblocknobytime:
     get:
+      tags:
+        - Block module
       summary: Get block number by time stamp
       operationId: getBlockNoByTime
       parameters:
@@ -890,7 +920,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: module
           in: query
@@ -941,6 +971,8 @@ paths:
 
   /?module=block&action=eth_block_number:
     get:
+      tags:
+        - Block module
       summary: Get the latest block number
       operationId: ethBlockNumber
       parameters:
@@ -948,7 +980,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
         - name: module
           in: query
@@ -985,6 +1017,8 @@ paths:
                   id: type
   /?module=contract&action=listcontracts:
     get:
+      tags:
+        - Contract module
       summary: Get a list of contracts
       operationId: listContracts
       parameters:
@@ -1036,7 +1070,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1056,6 +1090,8 @@ paths:
                     type: string
   /?module=contract&action=getabi:
     get:
+      tags:
+        - Contract module
       summary: Get ABI for a verified contract
       operationId: getAbi
       parameters:
@@ -1082,7 +1118,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1100,6 +1136,8 @@ paths:
                     type: string
   /?module=contract&action=getsourcecode:
     get:
+      tags:
+        - Contract module
       summary: Get contract source code for a verified contract
       operationId: getSourceCode
       parameters:
@@ -1126,7 +1164,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1144,6 +1182,8 @@ paths:
                     type: string
   /?module=contract&action=getcontractcreation:
     get:
+      tags:
+        - Contract module
       summary: Get contract creator address hash and creation transaction hash
       operationId: getContractCreation
       parameters:
@@ -1170,7 +1210,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1190,6 +1230,8 @@ paths:
                     type: string
   /?module=contract&action=verify:
     post:
+      tags:
+        - Contract module
       summary: Verify a contract with its source code and contract creation information
       operationId: verifyContract
       parameters:
@@ -1211,7 +1253,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       requestBody:
         required: true
@@ -1246,6 +1288,8 @@ paths:
                     type: string
   /?module=contract&action=verify_via_sourcify:
     post:
+      tags:
+        - Contract module
       summary: Verify a contract through Sourcify
       operationId: verifyViaSourcify
       parameters:
@@ -1267,7 +1311,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       requestBody:
         required: true
@@ -1299,6 +1343,8 @@ paths:
                     type: string
   /?module=contract&action=verify_vyper_contract:
     post:
+      tags:
+        - Contract module
       summary: Verify a Vyper contract with its source code and contract creation information
       operationId: verifyVyperContract
       parameters:
@@ -1320,7 +1366,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       requestBody:
         required: true
@@ -1353,6 +1399,8 @@ paths:
                     type: string
   /?module=contract&action=verifysourcecode:
     post:
+      tags:
+        - Contract module
       summary: Verify a contract with Standard input JSON file
       operationId: verifySourceCode
       parameters:
@@ -1374,7 +1422,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       requestBody:
         required: true
@@ -1409,6 +1457,8 @@ paths:
                     type: string
   /?module=contract&action=checkverifystatus:
     get:
+      tags:
+        - Contract module
       summary: Return status of a verification attempt
       operationId: checkVerifyStatus
       parameters:
@@ -1435,7 +1485,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1453,6 +1503,8 @@ paths:
                     type: string
   /?module=contract&action=verifyproxycontract:
     post:
+      tags:
+        - Contract module
       summary: Verify proxy contract
       operationId: verifyProxyContract
       parameters:
@@ -1479,7 +1531,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1497,6 +1549,8 @@ paths:
                     type: string
   /?module=contract&action=checkproxyverification:
     get:
+      tags:
+        - Contract module
       summary: Return status of a proxy contract verification attempt
       operationId: checkProxyVerification
       parameters:
@@ -1523,7 +1577,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1541,6 +1595,8 @@ paths:
                     type: string
   /?module=logs&action=getLogs:
     get:
+      tags:
+        - Logs module
       summary: Get Event Logs by Address and/or Topic(s)
       operationId: getLogs
       parameters:
@@ -1636,7 +1692,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1679,6 +1735,8 @@ paths:
                     type: string
   /?module=stats&action=tokensupply:
     get:
+      tags:
+        - Stats module
       summary: Get ERC-20 or ERC-721 token total supply by contract address
       operationId: tokenSupply
       parameters:
@@ -1705,7 +1763,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1723,6 +1781,8 @@ paths:
                     type: string
   /?module=stats&action=ethsupplyexchange:
     get:
+      tags:
+        - Stats module
       summary: Get total supply in Wei from exchange
       operationId: ethSupplyExchange
       parameters:
@@ -1749,7 +1809,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1767,6 +1827,8 @@ paths:
                     type: string
   /?module=stats&action=ethsupply:
     get:
+      tags:
+        - Stats module
       summary: Get total supply in Wei from DB
       operationId: ethSupply
       parameters:
@@ -1793,7 +1855,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1811,6 +1873,8 @@ paths:
                     type: string
   /?module=stats&action=coinsupply:
     get:
+      tags:
+        - Stats module
       summary: Get total coin supply from DB minus burnt number
       operationId: coinSupply
       parameters:
@@ -1837,7 +1901,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1855,6 +1919,8 @@ paths:
                     type: string
   /?module=stats&action=ethprice:
     get:
+      tags:
+        - Stats module
       summary: Get latest price of native coin in USD and BTC
       operationId: ethPrice
       parameters:
@@ -1881,7 +1947,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1899,6 +1965,8 @@ paths:
                     type: string
   /?module=stats&action=coinprice:
     get:
+      tags:
+        - Stats module
       summary: Get latest price of native coin in USD and BTC in more general format
       operationId: coinPrice
       parameters:
@@ -1925,7 +1993,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1943,6 +2011,8 @@ paths:
                     type: string
   /?module=stats&action=totalfees:
     get:
+      tags:
+        - Stats module
       summary: Get total transaction fees in Wei paid by users to validators per day
       operationId: totalFees
       parameters:
@@ -1969,7 +2039,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -1987,6 +2057,8 @@ paths:
                     type: string
   /?module=token&action=getToken:
     get:
+      tags:
+        - Token module
       summary: Get ERC-20 or ERC-721 token by contract address
       operationId: getToken
       parameters:
@@ -2013,7 +2085,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -2046,6 +2118,8 @@ paths:
                     type: string
   /?module=token&action=getTokenHolders:
     get:
+      tags:
+        - Token module
       summary: Get token holders by contract address
       operationId: getTokenHolders
       parameters:
@@ -2080,7 +2154,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -2105,6 +2179,8 @@ paths:
                     type: string
   /?module=token&action=bridgedTokenList:
     get:
+      tags:
+        - Token module
       summary: Get bridged tokens list
       operationId: bridgedTokenList
       parameters:
@@ -2139,7 +2215,7 @@ paths:
           in: query
           schema:
             type: string
-          example: "pk_1234567890"
+          example: 'pk_1234567890'
           required: true
       responses:
         '200':
@@ -2178,6 +2254,8 @@ paths:
                     type: string
   /?module=transaction&action=gettxinfo:
     get:
+      tags:
+        - Transaction module
       summary: Get transaction info
       operationId: getTransactionInfo
       parameters:
@@ -2259,6 +2337,8 @@ paths:
                     type: string
   /?module=transaction&action=gettxreceiptstatus:
     get:
+      tags:
+        - Transaction module
       summary: Get transaction receipt status
       operationId: getTransactionReceiptStatus
       parameters:
@@ -2300,6 +2380,8 @@ paths:
                     type: string
   /?module=transaction&action=getstatus:
     get:
+      tags:
+        - Transaction module
       summary: Get error status and message
       operationId: getErrorStatus
       parameters:
