@@ -141,27 +141,27 @@ const config = {
             label: 'FuseBox',
             items: [
               {
-                label: "Getting Started",
-                to: "fuse-box/getting-started"
+                label: 'Getting Started',
+                to: 'fuse-box/getting-started',
               },
               {
-                label: "SDK Reference",
-                to: "fuse-box/sdk"
+                label: 'SDK Reference',
+                to: 'fuse-box/sdk',
               },
               {
-                label: "Tutorials & Guides",
-                to: "category/tutorials"
+                label: 'Tutorials & Guides',
+                to: 'category/tutorials',
               },
               {
                 type: 'docSidebar',
-                label: "API Reference",
-                sidebarId: "apiSidebar",
+                label: 'API Reference',
+                sidebarId: 'apiSidebar',
               },
               {
-                label: "Trade API (versioned)",
-                to: "/category/trade-versioned-api",
+                label: 'Trade API (versioned)',
+                to: '/category/trade-versioned-api',
               },
-            ]
+            ],
           },
           {
             type: 'docSidebar',
@@ -249,29 +249,29 @@ const config = {
         config: {
           trade_versioned: {
             specPath: 'api-references/trade-api-v2.yaml',
-            outputDir: "docs/trade_versioned",
+            outputDir: 'docs/trade_versioned',
             sidebarOptions: {
-              groupPathsBy: "tag",
-              categoryLinkSource: "tag",
+              groupPathsBy: 'tag',
+              categoryLinkSource: 'tag',
             },
-            version: "2.0.0",
-            label: "v2.0.0",
-            baseUrl: "/trade_versioned/trade-api",
+            version: '2.0.0',
+            label: 'v2.0.0',
+            baseUrl: '/trade_versioned/trade-api',
             versions: {
-              "1.0.0": {
+              '1.0.0': {
                 specPath: 'api-references/trade-api-v1.yaml',
-                outputDir: "docs/trade_versioned/1.0.0",
-                label: "v1.0.0",
-                baseUrl: "/trade_versioned/1.0.0/trade-api",
+                outputDir: 'docs/trade_versioned/1.0.0',
+                label: 'v1.0.0',
+                baseUrl: '/trade_versioned/1.0.0/trade-api',
               },
             },
           },
           notificationApi: {
             specPath: 'api-references/fuse-notification-api.yaml',
-            outputDir: "docs/notification-api",
+            outputDir: 'docs/notification-api',
             sidebarOptions: {
               groupPathsBy: 'tag',
-              categoryLinkSource: "tag",
+              categoryLinkSource: 'tag',
             },
           },
           smartWalletApi: {
@@ -279,7 +279,7 @@ const config = {
             outputDir: 'docs/smart-wallet-api',
             sidebarOptions: {
               groupPathsBy: 'tag',
-              categoryLinkSource: "tag",
+              categoryLinkSource: 'tag',
             },
           },
           tradeApi: {
@@ -287,32 +287,31 @@ const config = {
             outputDir: 'docs/trade-api',
             sidebarOptions: {
               groupPathsBy: 'tag',
-              categoryLinkSource: "tag",
+              categoryLinkSource: 'tag',
             },
           },
           explorerApi: {
             specPath: 'api-references/explorer-api.yaml',
-            outputDir: "docs/explorer-api",
+            outputDir: 'docs/explorer-api',
             sidebarOptions: {
               groupPathsBy: 'tag',
-              sidebarCollapsible: true,
-              sidebarCollapsed: true,
+              categoryLinkSource: 'tag',
             },
           },
           graphqlApi: {
             specPath: 'api-references/graphql-api.yaml',
-            outputDir: "docs/graphql-api",
+            outputDir: 'docs/graphql-api',
             sidebarOptions: {
               groupPathsBy: 'tag',
-              categoryLinkSource: "tag",
+              categoryLinkSource: 'tag',
             },
           },
           stakingApi: {
             specPath: 'api-references/staking-api.yaml',
-            outputDir: "docs/staking-api",
+            outputDir: 'docs/staking-api',
             sidebarOptions: {
               groupPathsBy: 'tag',
-              categoryLinkSource: "tag",
+              categoryLinkSource: 'tag',
             },
           },
         },

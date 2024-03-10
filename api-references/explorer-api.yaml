@@ -36,9 +36,28 @@ servers:
     description: Production server
   - url: https://api.staging.fuse.io/api/v0/explorer
     description: Staging server
+
+tags:
+  - name: Account
+    description: Account module endpoints
+  - name: Block
+    description: Block endpoints
+  - name: Contract
+    description: Contract endpoints
+  - name: Logs
+    description: Logs endpoints
+  - name: Stats
+    description: Stats endpoints
+  - name: Token
+    description: Token endpoints
+  - name: Transaction
+    description: Transaction endpoints
+
 paths:
   /?module=account&action=eth_get_balance:
     get:
+      tags:
+        - Account
       summary: Return balance from a provided block
       operationId: ethGetBalance
       parameters:
@@ -67,14 +86,14 @@ paths:
           required: true
           schema:
             type: string
-          description: 'string containing the address hash.'
+          description: "string containing the address hash."
         - name: block
           in: query
           schema:
             type: string
-          description: 'Block number as a string, or `latest`, `earliest` or `pending`. Latest is the latest balance in a consensus block. Earliest is the first recorded balance for the address. Pending is the latest balance in a consensus or nonconsensus block.'
+          description: "Block number as a string, or `latest`, `earliest` or `pending`. Latest is the latest balance in a consensus block. Earliest is the first recorded balance for the address. Pending is the latest balance in a consensus or nonconsensus block."
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -90,6 +109,8 @@ paths:
 
   /?module=account&action=balance:
     get:
+      tags:
+        - Account
       summary: Get the native token balance for an address
       operationId: getBalance
       parameters:
@@ -118,9 +139,9 @@ paths:
           required: true
           schema:
             type: string
-          description: 'string containing the address hash.'
+          description: "string containing the address hash."
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -136,6 +157,8 @@ paths:
 
   /?module=account&action=balancemulti:
     get:
+      tags:
+        - Account
       summary: Get balance for multiple addresses
       operationId: getBalanceMulti
       parameters:
@@ -164,9 +187,9 @@ paths:
           required: true
           schema:
             type: string
-          description: 'string containing the address hash, comma separated. Max 20 addresses.'
+          description: "string containing the address hash, comma separated. Max 20 addresses."
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -191,6 +214,8 @@ paths:
 
   /?module=account&action=pendingtxlist:
     get:
+      tags:
+        - Account
       summary: Get pending transactions by address
       operationId: getPendingTxList
       parameters:
@@ -219,19 +244,19 @@ paths:
           required: true
           schema:
             type: string
-          description: 'string containing the address hash.'
+          description: "string containing the address hash."
         - name: page
           in: query
           schema:
             type: integer
-          description: 'integer representing the page number used for pagination. `offset` must also be provided.'
+          description: "integer representing the page number used for pagination. `offset` must also be provided."
         - name: offset
           in: query
           schema:
             type: integer
-          description: 'integer representing number of transactions returned per page. `page` must also be provided.'
+          description: "integer representing number of transactions returned per page. `page` must also be provided."
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -249,6 +274,8 @@ paths:
 
   /?module=account&action=txlist:
     get:
+      tags:
+        - Account
       summary: Get transactions by address
       operationId: getTxList
       parameters:
@@ -277,35 +304,35 @@ paths:
           required: true
           schema:
             type: string
-          description: 'string containing the address hash.'
+          description: "string containing the address hash."
         - name: startblock
           in: query
           schema:
             type: integer
-          description: 'integer block number to start transaction search.'
+          description: "integer block number to start transaction search."
         - name: endblock
           in: query
           schema:
             type: integer
-          description: 'integer block number to stop transaction search.'
+          description: "integer block number to stop transaction search."
         - name: page
           in: query
           schema:
             type: integer
-          description: 'integer representing the page number used for pagination. `offset` must also be provided.'
+          description: "integer representing the page number used for pagination. `offset` must also be provided."
         - name: offset
           in: query
           schema:
             type: integer
-          description: 'integer representing number of transactions returned per page. `page` must also be provided.'
+          description: "integer representing number of transactions returned per page. `page` must also be provided."
         - name: sort
           in: query
           schema:
             type: string
             enum: [asc, desc]
-          description: 'sorting preference, `asc` for ascending and `desc` for descending. Descending is default.'
+          description: "sorting preference, `asc` for ascending and `desc` for descending. Descending is default."
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -323,6 +350,8 @@ paths:
 
   /?module=account&action=txlistinternal:
     get:
+      tags:
+        - Account
       summary: Get internal transactions by transaction or address hash
       operationId: getTxListInternal
       parameters:
@@ -350,40 +379,40 @@ paths:
           in: query
           schema:
             type: string
-          description: 'string representing the transaction hash to check for internal transactions.'
+          description: "string representing the transaction hash to check for internal transactions."
         - name: address
           in: query
           schema:
             type: string
-          description: 'string containing the address hash. Optional.'
+          description: "string containing the address hash. Optional."
         - name: startblock
           in: query
           schema:
             type: integer
-          description: 'integer block number to start transaction search. Optional.'
+          description: "integer block number to start transaction search. Optional."
         - name: endblock
           in: query
           schema:
             type: integer
-          description: 'integer block number to stop transaction search. Optional.'
+          description: "integer block number to stop transaction search. Optional."
         - name: page
           in: query
           schema:
             type: integer
-          description: 'integer representing the page number used for pagination. `offset` must also be provided. Optional.'
+          description: "integer representing the page number used for pagination. `offset` must also be provided. Optional."
         - name: offset
           in: query
           schema:
             type: integer
-          description: 'integer representing number of transactions returned per page. `page` must also be provided. Optional.'
+          description: "integer representing number of transactions returned per page. `page` must also be provided. Optional."
         - name: sort
           in: query
           schema:
             type: string
             enum: [asc, desc]
-          description: 'sorting preference, `asc` for ascending and `desc` for descending. Descending is default. Only available if `address` is provided.'
+          description: "sorting preference, `asc` for ascending and `desc` for descending. Descending is default. Only available if `address` is provided."
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -401,6 +430,8 @@ paths:
 
   /?module=account&action=tokentx:
     get:
+      tags:
+        - Account
       summary: Get token transfer events by address
       operationId: getTokenTx
       parameters:
@@ -429,40 +460,40 @@ paths:
           required: true
           schema:
             type: string
-          description: 'string containing the address hash.'
+          description: "string containing the address hash."
         - name: contractaddress
           in: query
           schema:
             type: string
-          description: 'string with the token contract address to identify a contract. Optional.'
+          description: "string with the token contract address to identify a contract. Optional."
         - name: startblock
           in: query
           schema:
             type: integer
-          description: 'integer block number to start transaction search. Optional.'
+          description: "integer block number to start transaction search. Optional."
         - name: endblock
           in: query
           schema:
             type: integer
-          description: 'integer block number to stop transaction search. Optional.'
+          description: "integer block number to stop transaction search. Optional."
         - name: page
           in: query
           schema:
             type: integer
-          description: 'integer representing the page number used for pagination. `offset` must also be provided. Optional.'
+          description: "integer representing the page number used for pagination. `offset` must also be provided. Optional."
         - name: offset
           in: query
           schema:
             type: integer
-          description: 'integer representing number of transactions returned per page. `page` must also be provided. Optional.'
+          description: "integer representing number of transactions returned per page. `page` must also be provided. Optional."
         - name: sort
           in: query
           schema:
             type: string
             enum: [asc, desc]
-          description: 'sorting preference, `asc` for ascending and `desc` for descending. Descending is default. Optional.'
+          description: "sorting preference, `asc` for ascending and `desc` for descending. Descending is default. Optional."
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -480,6 +511,8 @@ paths:
 
   /?module=account&action=tokennfttx:
     get:
+      tags:
+        - Account
       summary: Get ERC-721 token transfer events by address
       operationId: getTokenNftTx
       parameters:
@@ -508,40 +541,40 @@ paths:
           required: true
           schema:
             type: string
-          description: 'string containing the address hash.'
+          description: "string containing the address hash."
         - name: contractaddress
           in: query
           schema:
             type: string
-          description: 'string with the token contract address to identify a contract. Optional.'
+          description: "string with the token contract address to identify a contract. Optional."
         - name: startblock
           in: query
           schema:
             type: integer
-          description: 'integer block number to start transaction search. Optional.'
+          description: "integer block number to start transaction search. Optional."
         - name: endblock
           in: query
           schema:
             type: integer
-          description: 'integer block number to stop transaction search. Optional.'
+          description: "integer block number to stop transaction search. Optional."
         - name: page
           in: query
           schema:
             type: integer
-          description: 'integer representing the page number used for pagination. `offset` must also be provided. Optional.'
+          description: "integer representing the page number used for pagination. `offset` must also be provided. Optional."
         - name: offset
           in: query
           schema:
             type: integer
-          description: 'integer representing number of transactions returned per page. `page` must also be provided. Optional.'
+          description: "integer representing number of transactions returned per page. `page` must also be provided. Optional."
         - name: sort
           in: query
           schema:
             type: string
             enum: [asc, desc]
-          description: 'sorting preference, `asc` for ascending and `desc` for descending. Descending is default. Optional.'
+          description: "sorting preference, `asc` for ascending and `desc` for descending. Descending is default. Optional."
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -559,6 +592,8 @@ paths:
 
   /?module=account&action=tokenbalance:
     get:
+      tags:
+        - Account
       summary: Get token account balance for token contract address
       operationId: getTokenBalance
       parameters:
@@ -587,15 +622,15 @@ paths:
           required: true
           schema:
             type: string
-          description: 'string containing the contract address hash.'
+          description: "string containing the contract address hash."
         - name: address
           in: query
           required: true
           schema:
             type: string
-          description: 'string containing the account address hash to retrieve balance for.'
+          description: "string containing the account address hash to retrieve balance for."
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -611,6 +646,8 @@ paths:
 
   /?module=account&action=tokenlist:
     get:
+      tags:
+        - Account
       summary: Get list of tokens owned by address
       operationId: getTokenList
       parameters:
@@ -639,9 +676,9 @@ paths:
           required: true
           schema:
             type: string
-          description: 'string containing the account address hash.'
+          description: "string containing the account address hash."
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -659,6 +696,8 @@ paths:
 
   /?module=account&action=getminedblocks:
     get:
+      tags:
+        - Account
       summary: Get list of blocks mined by address
       operationId: getMinedBlocks
       parameters:
@@ -687,19 +726,19 @@ paths:
           required: true
           schema:
             type: string
-          description: 'string containing the address hash.'
+          description: "string containing the address hash."
         - name: page
           in: query
           schema:
             type: integer
-          description: 'integer representing the page number used for pagination. `offset` must also be provided. Optional.'
+          description: "integer representing the page number used for pagination. `offset` must also be provided. Optional."
         - name: offset
           in: query
           schema:
             type: integer
-          description: 'integer representing number of transactions returned per page. `page` must also be provided. Optional.'
+          description: "integer representing number of transactions returned per page. `page` must also be provided. Optional."
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -717,6 +756,8 @@ paths:
 
   /?module=account&action=listaccounts:
     get:
+      tags:
+        - Account
       summary: Get a list of accounts and their balances
       operationId: listAccounts
       parameters:
@@ -744,14 +785,14 @@ paths:
           in: query
           schema:
             type: integer
-          description: 'integer representing the page number used for pagination. `offset` must also be provided. Optional.'
+          description: "integer representing the page number used for pagination. `offset` must also be provided. Optional."
         - name: offset
           in: query
           schema:
             type: integer
-          description: 'integer representing number of transactions returned per page. `page` must also be provided. Optional.'
+          description: "integer representing number of transactions returned per page. `page` must also be provided. Optional."
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -769,6 +810,8 @@ paths:
 
   /?module=block&action=getblockreward:
     get:
+      tags:
+        - Block
       summary: Get block reward by block number
       operationId: getBlockReward
       parameters:
@@ -799,7 +842,7 @@ paths:
           required: true
           description: Integer block number to check block rewards for.
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -828,6 +871,8 @@ paths:
 
   /?module=block&action=getblockcountdown:
     get:
+      tags:
+        - Block
       summary: Get estimated block countdown time by block number
       operationId: getBlockCountdown
       parameters:
@@ -858,7 +903,7 @@ paths:
           required: true
           description: Integer block number to check block countdown time for.
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -883,6 +928,8 @@ paths:
 
   /?module=block&action=getblocknobytime:
     get:
+      tags:
+        - Block
       summary: Get block number by time stamp
       operationId: getBlockNoByTime
       parameters:
@@ -922,7 +969,7 @@ paths:
           required: true
           description: Closest block to the provided timestamp, either before or after.
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -941,6 +988,8 @@ paths:
 
   /?module=block&action=eth_block_number:
     get:
+      tags:
+        - Block
       summary: Get the latest block number
       operationId: ethBlockNumber
       parameters:
@@ -971,7 +1020,7 @@ paths:
           required: false
           description: Optional nonnegative integer that represents the json rpc request id.
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -985,6 +1034,8 @@ paths:
                   id: type
   /?module=contract&action=listcontracts:
     get:
+      tags:
+        - Contract
       summary: Get a list of contracts
       operationId: listContracts
       parameters:
@@ -1039,7 +1090,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1056,6 +1107,8 @@ paths:
                     type: string
   /?module=contract&action=getabi:
     get:
+      tags:
+        - Contract
       summary: Get ABI for a verified contract
       operationId: getAbi
       parameters:
@@ -1085,7 +1138,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1100,6 +1153,8 @@ paths:
                     type: string
   /?module=contract&action=getsourcecode:
     get:
+      tags:
+        - Contract
       summary: Get contract source code for a verified contract
       operationId: getSourceCode
       parameters:
@@ -1129,7 +1184,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1144,6 +1199,8 @@ paths:
                     type: string
   /?module=contract&action=getcontractcreation:
     get:
+      tags:
+        - Contract
       summary: Get contract creator address hash and creation transaction hash
       operationId: getContractCreation
       parameters:
@@ -1173,7 +1230,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1190,6 +1247,8 @@ paths:
                     type: string
   /?module=contract&action=verify:
     post:
+      tags:
+        - Contract
       summary: Verify a contract with its source code and contract creation information
       operationId: verifyContract
       parameters:
@@ -1231,7 +1290,7 @@ paths:
                 contractSourceCode:
                   type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1246,6 +1305,8 @@ paths:
                     type: string
   /?module=contract&action=verify_via_sourcify:
     post:
+      tags:
+        - Contract
       summary: Verify a contract through Sourcify
       operationId: verifyViaSourcify
       parameters:
@@ -1284,7 +1345,7 @@ paths:
                     type: string
                     format: binary
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1299,6 +1360,8 @@ paths:
                     type: string
   /?module=contract&action=verify_vyper_contract:
     post:
+      tags:
+        - Contract
       summary: Verify a Vyper contract with its source code and contract creation information
       operationId: verifyVyperContract
       parameters:
@@ -1338,7 +1401,7 @@ paths:
                 contractSourceCode:
                   type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1353,6 +1416,8 @@ paths:
                     type: string
   /?module=contract&action=verifysourcecode:
     post:
+      tags:
+        - Contract
       summary: Verify a contract with Standard input JSON file
       operationId: verifySourceCode
       parameters:
@@ -1394,7 +1459,7 @@ paths:
                 sourceCode:
                   type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1409,6 +1474,8 @@ paths:
                     type: string
   /?module=contract&action=checkverifystatus:
     get:
+      tags:
+        - Contract
       summary: Return status of a verification attempt
       operationId: checkVerifyStatus
       parameters:
@@ -1438,7 +1505,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1453,6 +1520,8 @@ paths:
                     type: string
   /?module=contract&action=verifyproxycontract:
     post:
+      tags:
+        - Contract
       summary: Verify proxy contract
       operationId: verifyProxyContract
       parameters:
@@ -1482,7 +1551,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1497,6 +1566,8 @@ paths:
                     type: string
   /?module=contract&action=checkproxyverification:
     get:
+      tags:
+        - Contract
       summary: Return status of a proxy contract verification attempt
       operationId: checkProxyVerification
       parameters:
@@ -1526,7 +1597,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1541,6 +1612,8 @@ paths:
                     type: string
   /?module=logs&action=getLogs:
     get:
+      tags:
+        - Logs
       summary: Get Event Logs by Address and/or Topic(s)
       operationId: getLogs
       parameters:
@@ -1639,7 +1712,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1679,6 +1752,8 @@ paths:
                     type: string
   /?module=stats&action=tokensupply:
     get:
+      tags:
+        - Stats
       summary: Get ERC-20 or ERC-721 token total supply by contract address
       operationId: tokenSupply
       parameters:
@@ -1708,7 +1783,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1723,6 +1798,8 @@ paths:
                     type: string
   /?module=stats&action=ethsupplyexchange:
     get:
+      tags:
+        - Stats
       summary: Get total supply in Wei from exchange
       operationId: ethSupplyExchange
       parameters:
@@ -1752,7 +1829,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1767,6 +1844,8 @@ paths:
                     type: string
   /?module=stats&action=ethsupply:
     get:
+      tags:
+        - Stats
       summary: Get total supply in Wei from DB
       operationId: ethSupply
       parameters:
@@ -1796,7 +1875,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1811,6 +1890,8 @@ paths:
                     type: string
   /?module=stats&action=coinsupply:
     get:
+      tags:
+        - Stats
       summary: Get total coin supply from DB minus burnt number
       operationId: coinSupply
       parameters:
@@ -1840,7 +1921,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1855,6 +1936,8 @@ paths:
                     type: string
   /?module=stats&action=ethprice:
     get:
+      tags:
+        - Stats
       summary: Get latest price of native coin in USD and BTC
       operationId: ethPrice
       parameters:
@@ -1884,7 +1967,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1899,6 +1982,8 @@ paths:
                     type: string
   /?module=stats&action=coinprice:
     get:
+      tags:
+        - Stats
       summary: Get latest price of native coin in USD and BTC in more general format
       operationId: coinPrice
       parameters:
@@ -1928,7 +2013,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1943,6 +2028,8 @@ paths:
                     type: string
   /?module=stats&action=totalfees:
     get:
+      tags:
+        - Stats
       summary: Get total transaction fees in Wei paid by users to validators per day
       operationId: totalFees
       parameters:
@@ -1972,7 +2059,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1987,6 +2074,8 @@ paths:
                     type: string
   /?module=token&action=getToken:
     get:
+      tags:
+        - Token
       summary: Get ERC-20 or ERC-721 token by contract address
       operationId: getToken
       parameters:
@@ -2016,7 +2105,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -2046,6 +2135,8 @@ paths:
                     type: string
   /?module=token&action=getTokenHolders:
     get:
+      tags:
+        - Token
       summary: Get token holders by contract address
       operationId: getTokenHolders
       parameters:
@@ -2083,7 +2174,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -2105,6 +2196,8 @@ paths:
                     type: string
   /?module=token&action=bridgedTokenList:
     get:
+      tags:
+        - Token
       summary: Get bridged tokens list
       operationId: bridgedTokenList
       parameters:
@@ -2142,7 +2235,7 @@ paths:
           example: "pk_1234567890"
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -2178,6 +2271,8 @@ paths:
                     type: string
   /?module=transaction&action=gettxinfo:
     get:
+      tags:
+        - Transaction
       summary: Get transaction info
       operationId: getTransactionInfo
       parameters:
@@ -2206,7 +2301,7 @@ paths:
             type: integer
           required: false
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -2259,6 +2354,8 @@ paths:
                     type: string
   /?module=transaction&action=gettxreceiptstatus:
     get:
+      tags:
+        - Transaction
       summary: Get transaction receipt status
       operationId: getTransactionReceiptStatus
       parameters:
@@ -2282,7 +2379,7 @@ paths:
             type: string
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -2300,6 +2397,8 @@ paths:
                     type: string
   /?module=transaction&action=getstatus:
     get:
+      tags:
+        - Transaction
       summary: Get error status and message
       operationId: getErrorStatus
       parameters:
@@ -2323,7 +2422,7 @@ paths:
             type: string
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
