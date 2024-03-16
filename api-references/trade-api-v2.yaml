@@ -27,6 +27,7 @@ servers:
 
 tags:
   - name: Swap
+    description: Swap API endpoints
 
 paths:
   /price:
