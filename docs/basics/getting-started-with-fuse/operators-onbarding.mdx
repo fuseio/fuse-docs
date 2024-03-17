@@ -8,13 +8,13 @@ An **Operator** on Fuse is an Intermediary that enables consumers interact with 
 
 A key feature of Operators is that they pay network fees on behalf of users.
 
-Operatorsc an  build thier applications on Fuse using the FuseBox Web SDK, Flutter SDK or REST API endpoints.
-
+Operators an build their applications on Fuse using the FuseBox Web SDK, Flutter SDK or REST API endpoints.
 
 ### How to get API key?
-To build as an Operator, you need to get an API KEY to use the FuseBox SDK. Create an API KEY using the Fuse [Console](https://console.fuse.io/build) Tool by following the steps outlined in this [guide](../../fuse-box/getting-started). 
 
-###  How to fund my Operator Account with Fuse Tokens?
+To build as an Operator, you need to get an API KEY to use the FuseBox SDK. Create an API KEY using the Fuse [Console](https://console.fuse.io/build) Tool by following the steps outlined in this [guide](../../fuse-box/getting-started).
+
+### How to fund my Operator Account with Fuse Tokens?
 
 After you have successfully created an Operator Account, click the button “Add funds”. Copy the Operator Account Address.
 Note: The Operator Account Address is a Smart Contract Wallet, and as such it can be used for ALL ERC-4337 functions.
@@ -24,7 +24,6 @@ Note: The Operator Account Address is a Smart Contract Wallet, and as such it ca
 <img src="/img/console/operator-balance.png" width="60%" height="50%" />
 
 Once you have funded the Operator Account with at least 10 Fuse Tokens, you can then access the API Key.
-
 
 <img src="/img/console/operator-dashboard-final.png" width="60%" height="50%" />
 
@@ -43,12 +42,14 @@ Via [Voltage Finance](https://voltage.finance/home).
 You can read the section on "**Build on Fuse [Guides](../../developers/deploying-smart-contracts/)**".
 
 ### How to build on Sparknet?
+
 To deploy applications to Fuse Sparknet, follow the "Build on Fuse Guide" and set the Network ID to **123**.
 
 ### How to deploy to mainnet?
+
 To deploy applications to Fuse Sparknet, follow the "Build on Fuse Guide" and set the Network ID to **122**.
 
-###  How to find ALL API endpoints?
+### How to find ALL API endpoints?
 
 [API References](/api-introduction).
 
@@ -62,14 +63,13 @@ The [FuseBox SDK](../../fuse-box/sdk/) contains ALL the methods required for bui
 - Data Services.
 - Trading Functions.
 
+### How do you set up a Paymaster?
 
-### How do you  set up a Paymaster?
-
-Upon successfully creating an API and funding your Operator Account, your Operator Account Paymaster is pre-funded with 1 FUSE (enough to sponser ~300 txns) and you can set up your application for a Gasless experience by parsing a 3rd argument when initializing the FuseBox SDK.
+Upon successfully creating an API and funding your Operator Account, your Operator Account Paymaster is pre-funded with 1 FUSE (enough to sponsor ~300 transactions) and you can set up your application for a Gasless experience by parsing a 3rd argument when initializing the FuseBox SDK.
 
 Ensure you replace YOUR_FUSEBOX_API_KEY with your actual API key:
 
-```js
+```typescript
 const apiKey = "YOUR_FUSEBOX_API_KEY";
 const credentials = new ethers.Wallet(privateKey);
 const fuseSDK = await FuseSDK.init(apiKey, credentials, {
@@ -77,23 +77,20 @@ const fuseSDK = await FuseSDK.init(apiKey, credentials, {
 });
 ```
 
-###  Which node providers supports Fuse and their URLs?
+### Which node providers supports Fuse and their URLs?
 
 See RPC Node Providers [page](../getting-started-with-fuse/rpc).
 
+### How to get Fuse test tokens for building on Sparknet?
 
+[ChainDrop faucet](https://chaindrop.org/?chainid=123&token=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee "ChainDrop faucet"), [Stakely faucet](https://stakely.io/en/faucet/fuse-fuse)
 
-###  How to get Fuse test tokens for building on Sparknet?
-
-[ChainDrop faucet](https://chaindrop.org/?chainid=123&token=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee "ChainDrop faucet"), [Stakely faucet](https://stakely.io/en/faucet/fuse-fuse) 
-
-
-###  List of important Smart Contract Addresses?
+### List of important Smart Contract Addresses?
 
 [Here](../../category/important-smart-contracts) are a collection of Smart Contracts address that you need to know in the course of building on Fuse. The Smart Contracts include Fuse Contracts deployed across other Blockchain networks.
 
-###  Tutorial Guides:
+### Tutorial Guides:
+
 - [FuseBox MetaMask Login](../../fuse-box/tutorials/metamask-login)
 - [FuseBox Social Authentication using Web3Auth](../../fuse-box/tutorials/web3auth-login)
 - [Send a Gasless transaction using FuseBox](../../fuse-box/tutorials/send-your-first-gasless-transaction)
-
