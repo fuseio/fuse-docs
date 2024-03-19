@@ -48,21 +48,27 @@ To deploy the `GameItems` contract using Hardhat, follow these steps:
 
 ## Step 1: Initialize Hardhat
 
-If you haven't already installed Hardhat, you can do so by running:
+Create a new directory for your project and initialize a Hardhat project.
 
 ```bash
+mkdir erc1155project $$ cd erc1155project
+npm init -y
 npm install --save-dev hardhat
 ```
 
-Then, initialize Hardhat in your project directory:
+Initialize Hardhat in your project directory:
 
 ```bash
 npx hardhat init
 ```
 
+Follow the prompts and set up a javascript project:
+
+<img src="/img/tutorials/hardhat-init.png" width="100%" height="50%" />
+
 ## Step 2: Install Required Dependencies
 
-Ensure you have installed the OpenZeppelin Contracts library:
+Ensure you install the OpenZeppelin Contracts library:
 
 ```bash
 npm install @openzeppelin/contracts
@@ -72,43 +78,46 @@ npm install @openzeppelin/contracts
 
 Create a new Solidity file named `GameItems.sol` in the `contracts` directory and paste the provided contract code above into it.
 
-## Step 4: Write the Deployment Script
 
-Create a deployment script named `deploy.js` in the `scripts` directory:
+## Step 4: Compile the Smart Contract
+
+To compile the contract run npx hardhat compile in your terminal:
+
+```bash
+npx hardhat compile
+```
+
+## Step 4: Deploy the Smart Contract
+
+In Hardhat, deployments are defined through Ignition Modules. These modules are abstractions to describe a deployment; that is, JavaScript functions that specify what you want to deploy.
+
+Open ignition inside the project root's directory, then, enter the directory named modules. Create a `deploy.js` and paste the following code:
 
 ```javascript
-const { ethers } = require("hardhat");
+const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
 
-async function main() {
-  const GameItems = await ethers.getContractFactory("GameItems");
-  const gameItems = await GameItems.deploy();
+const GameItems = buildModule("GameItems", (m) => {
+  const contract = m.contract("GameItems");
 
-  await gameItems.deployed();
+  return { contract };
+});
 
-  console.log("GameItems deployed to:", gameItems.address);
-}
-
-main()
-  .then(() => process.exit(0))
-  .catch(error => {
-    console.error(error);
-    process.exit(1);
-  });
+module.exports = GameItems;
 ```
 
 ## Step 5: Run Deployment
-Update the hardhat.config.js file to include the required plugins.
+Update the hardhat.config.js file to include the network information:
 
 ```javascript
 // hardhat.config.js
-require("@nomiclabs/hardhat-waffle");
+require("@nomicfoundation/hardhat-toolbox");
 
 module.exports = {
-  solidity: "0.8.0",
+  solidity: "0.8.24",
   networks: {
     fuse: {
       url: `https://rpc.fuse.io`,
-      accounts: [`${PRIVATE_KEY}`],
+      accounts: [`0xPRIVATE_KEY`],
       gas: 2100000,
       gasPrice: 8000000000,
       saveDeployments: true,
@@ -120,8 +129,10 @@ module.exports = {
 Run the deployment script using Hardhat:
 
 ```bash
-npx hardhat run scripts/deploy.js --network fuse
+npx hardhat ignition deploy ./ignition/modules/deploy.js --network fuse
 ```
+
+<img src="/img/tutorials/hardhat-deploy.png" width="100%" height="50%" />
 
 You've successfully deployed the `GameItems` contract using Hardhat. Now, you can interact with the deployed contract on the Fuse blockchain. 
 
