@@ -16,8 +16,7 @@ Part 1: The NFT Smart Contract
 Create a new directory for your project and initialize a Hardhat project.
 
 ```bash
-mkdir NFTDApp
-cd NFTDApp
+mkdir NFTDApp && cd NFTDApp
 npm init -y
 npm install --save-dev hardhat
 npx hardhat
@@ -89,20 +88,45 @@ uint256 private _nextTokenId;
 
 ```
 
-## 4. Hardhat Configuration
+## Step 4: Compile the Smart Contract
 
-Update the `hardhat.config.js` file to include the required plugins.
+To compile the contract run npx hardhat compile in your terminal:
+
+```bash
+npx hardhat compile
+```
+
+## Step 5: Deploy the Smart Contract
+
+In Hardhat, deployments are defined through Ignition Modules. These modules are abstractions to describe a deployment; that is, JavaScript functions that specify what you want to deploy.
+
+Open ignition inside the project root's directory, then, enter the directory named modules. Create a `deploy.js` and paste the following code:
+
+```javascript
+const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
+
+const NFTContract = buildModule("NFTContract", (m) => {
+  const contract = m.contract("NFTContract");
+
+  return { contract };
+});
+
+module.exports = NFTContract;
+```
+
+## Step 5: Run Deployment
+Update the hardhat.config.js file to include the network information:
 
 ```javascript
 // hardhat.config.js
-require("@nomiclabs/hardhat-waffle");
+require("@nomicfoundation/hardhat-toolbox");
 
 module.exports = {
   solidity: "0.8.0",
   networks: {
     fuse: {
       url: `https://rpc.fuse.io`,
-      accounts: [`${PRIVATE_KEY}`],
+      accounts: [`0xPRIVATE_KEY`],
       gas: 2100000,
       gasPrice: 8000000000,
       saveDeployments: true,
@@ -111,24 +135,10 @@ module.exports = {
 };
 ```
 
-## 5. Deploy the Smart Contract
+Please note: The `0xPRIVATE_KEY` is used to sign the Transaction from your EOA without the need to request permission. You must ensure the EOA that owns the Private Key is funded with some Fuse Tokens to pay for Gas when deploying the Smart Contract.
 
-Create a deployment script for the NFT contract. Save the file as `scripts/deploy.js`.
-
-```javascript
-// scripts/deploy.js
-async function main() {
-  const NFTContract = await ethers.getContractFactory("NFTContract");
-  const nftContract = await NFTContract.deploy();
-
-  console.log("NFTContract deployed to:", nftContract.address);
-}
-
-main();
-```
-
-Deploy the smart contract to the Fuse network.
+Deploy the smart contract to the Fuse network by running the Hardhat deployment script:
 
 ```bash
-npx hardhat run scripts/deploy.js --network fuse
+npx hardhat ignition deploy ./ignition/modules/deploy.js --network fuse
 ```
