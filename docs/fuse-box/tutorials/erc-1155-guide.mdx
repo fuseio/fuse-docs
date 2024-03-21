@@ -1,0 +1,178 @@
+---
+title: ERC 1155 Guide -  Deploy to Fuse. Connect with FuseBox Web SDK 
+sidebar_position: 10
+---
+
+# Introduction to ERC-1155 Tokens
+
+The ERC-1155 token standard, proposed by Enjin, is a widely adopted standard on the Ethereum blockchain that allows for the creation of both fungible and non-fungible tokens (NFTs) within a single contract. Unlike its predecessors, ERC-20 and ERC-721, ERC-1155 offers significant improvements in efficiency, flexibility, and functionality.
+
+## Key Features of ERC-1155
+
+**1. Batch Transfers:** ERC-1155 enables batch transfers, allowing multiple token types to be transferred in a single transaction. This significantly reduces gas costs and optimizes contract interactions, making it more efficient than previous token standards.
+
+**2. Fungible and Non-Fungible Tokens:** ERC-1155 supports both fungible and non-fungible tokens within the same contract. This versatility allows developers to create various token types within a single contract, simplifying token management and deployment.
+
+**3. Reduced On-Chain Footprint:** By bundling multiple token types into a single contract, ERC-1155 reduces the on-chain footprint compared to deploying separate contracts for each token type. This optimization leads to lower deployment costs and better scalability.
+
+**4. Metadata Extension:** ERC-1155 includes a metadata extension, allowing developers to attach metadata to each token type. This metadata can include additional information such as token name, description, image URI, and other relevant attributes.
+
+## Example Contract: GameItems
+
+Let's take a look at a simple example of an ERC-1155 contract called `GameItems`. This contract mints two types of tokens: "Thors Hammer" (a non-fungible token) and "Gold" (a fungible token).
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import {ERC1155} from "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+
+contract GameItems is ERC1155 {
+    uint256 public constant THORS_HAMMER = 0;
+    uint256 public constant GOLD = 1;
+
+    constructor() ERC1155("https://ipfs.io/ipfs/QmfPqxv1y1LLZdSwRftrr9FWLA4hPJ2mNfxUDS1wy5BRsH/0.json") {
+        _mint(msg.sender, GOLD, 10**6, "");
+        _mint(msg.sender, THORS_HAMMER, 100, "");
+    }
+}
+```
+
+In this contract:
+
+- `THORS_HAMMER` and `GOLD` are defined as token IDs for the non-fungible and fungible tokens, respectively.
+- Upon deployment, the contract mints 1,000,000 units of Gold and 100 units of Thor's Hammer to the contract deployer.
+- The contract URI points to metadata stored on IPFS, providing additional information about the tokens.
+
+To deploy the `GameItems` contract using Hardhat, follow these steps:
+
+## Step 1: Initialize Hardhat
+
+Create a new directory for your project and initialize a Hardhat project.
+
+```bash
+mkdir erc1155project && cd erc1155project
+npm init -y
+npm install --save-dev hardhat
+```
+
+Initialize Hardhat in your project directory:
+
+```bash
+npx hardhat init
+```
+
+Follow the prompts and set up a javascript project:
+
+<img src="/img/tutorials/hardhat-init.png" width="100%" height="50%" />
+
+## Step 2: Install Required Dependencies
+
+Ensure you install the OpenZeppelin Contracts library:
+
+```bash
+npm install @openzeppelin/contracts
+```
+
+## Step 3: Write the Smart Contract
+
+Create a new Solidity file named `GameItems.sol` in the `contracts` directory and paste the provided contract code above into it.
+
+
+## Step 4: Compile the Smart Contract
+
+To compile the contract run npx hardhat compile in your terminal:
+
+```bash
+npx hardhat compile
+```
+
+## Step 4: Deploy the Smart Contract
+
+In Hardhat, deployments are defined through Ignition Modules. These modules are abstractions to describe a deployment; that is, JavaScript functions that specify what you want to deploy.
+
+Open ignition inside the project root's directory, then, enter the directory named modules. Create a `deploy.js` and paste the following code:
+
+```javascript
+const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
+
+const GameItems = buildModule("GameItems", (m) => {
+  const contract = m.contract("GameItems");
+
+  return { contract };
+});
+
+module.exports = GameItems;
+```
+
+## Step 5: Run Deployment
+Update the hardhat.config.js file to include the network information:
+
+```javascript
+// hardhat.config.js
+require("@nomicfoundation/hardhat-toolbox");
+
+module.exports = {
+  solidity: "0.8.24",
+  networks: {
+    fuse: {
+      url: `https://rpc.fuse.io`,
+      accounts: [`0xPRIVATE_KEY`],
+      gas: 2100000,
+      gasPrice: 8000000000,
+      saveDeployments: true,
+    },
+  },
+};
+```
+
+Please note: The `0xPRIVATE_KEY` is used to sign the Transaction from your EOA without the need to request permission. You must ensure the EOA that owns the Private Key is funded with some Fuse Tokens to pay for Gas when deploying the Smart Contract.
+
+Run the deployment script using Hardhat:
+
+```bash
+npx hardhat ignition deploy ./ignition/modules/deploy.js --network fuse
+```
+
+<img src="/img/tutorials/hardhat-deploy.png" width="100%" height="50%" />
+
+You've successfully deployed the `GameItems` contract using Hardhat. Now, you can interact with the deployed contract on the Fuse blockchain. 
+
+## Example UI Interaction
+If you have completed the UI guide for interacting with [ERC 721 NFTs using FuseBox](./mint-erc721-aa-part2), this guide is no different in the nature of the UI. What is highlighted here is the difference between interacting with the ERC721 and ERC-1155 by parsing a TokenID for ERC-1155. For example, calling the `safeTransfer()` method:
+
+```javascript
+const transfer = async () => {
+  try {
+    const mintTx = new ethers.Interface(["function safeTransferFrom(address from, address to, uint256 id, uint256 value, data)"]);
+        const from = “0xOwnerAddress”
+    const to = "0xReceiverAddress";
+    const id = “TokenID” //0 for Thor’s Hammer 1 for Gold
+    const value = 1;
+    const data = [];
+    const txData = mintTx.encodeFunctionData("safeTransferFrom", (from, to, id, value, data));
+    const finalData = Uint8Array.from([txData]);
+    console.log(finalData);
+
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const signer = await provider.getSigner();
+
+    const apiKey = "API_KEY";
+    const fuseSDK = await FuseSDK.init(apiKey, signer);
+    const res = await fuseSDK.callContract(to, value, finalData);
+
+    console.log(`UserOpHash: ${res?.userOpHash}`);
+    console.log("Waiting for transaction...");
+    console.log("Transaction Hash:", receipt?.transactionHash);
+  } catch (error) {
+    console.log(error);
+  }
+};
+```
+
+You can also send a Batch Transaction by passing an array of receiving addresses, and an array of the value of the token types they are to receive.
+
+## Conclusion
+
+ERC-1155 tokens offer a powerful and efficient solution for managing both fungible and non-fungible tokens on the Fuse blockchain. With features such as batch transfers, and metadata extension, ERC-1155 provides developers with the flexibility and scalability needed to build complex decentralized applications. As you explore ERC-1155 further, consider its various applications in gaming, digital collectibles, decentralized finance (DeFi), and more.
+
