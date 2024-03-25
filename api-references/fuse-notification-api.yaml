@@ -116,7 +116,12 @@ info:
       "tokenType": "FUSE",
       "tokenAddress": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
       "projectId": "62ce87c8131bbffe0f83af65",
-      "direction": "outgoing"
+      "direction": "outgoing",
+      "gasPrice": "11000000000",
+      "gasUsed": "119104",
+      "gasFee": "1310144000000000",
+      "gasLimit": "872949",
+      "txnValue": "0",
     }
     ```
 
@@ -140,7 +145,12 @@ info:
       "tokenDecimals": "2",
       "value": "109700",
       "projectId": "62caedf9e2719e72815d0703",
-      "direction": "incoming"
+      "direction": "incoming",
+      "gasPrice": "11000000000",
+      "gasUsed": "119104",
+      "gasFee": "1310144000000000",
+      "gasLimit": "872949",
+      "txnValue": "0",
     }
     ```
 
@@ -163,7 +173,12 @@ info:
       "tokenName": "FusePunks",
       "tokenId": 341,
       "projectId": "62ce87c8131bbffe0f83af65",
-      "direction": "outgoing"
+      "direction": "outgoing",
+      "gasPrice": "11000000000",
+      "gasUsed": "119104",
+      "gasFee": "1310144000000000",
+      "gasLimit": "872949",
+      "txnValue": "0",
     }
     ```
 
@@ -171,7 +186,7 @@ info:
 
     Note the `isInternalTransaction: true` field in the event that specifies that the transfer is an Internal Transfer.
 
-    OutgoingIncoming
+    Incoming
 
     ```json
     {
@@ -186,7 +201,12 @@ info:
       "tokenAddress": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
       "isInternalTransaction": true,
       "projectId": "62caedf9e2719e72815d0703",
-      "direction": "outgoing"
+      "direction": "outgoing",
+      "gasPrice": "11000000000",
+      "gasUsed": "119104",
+      "gasFee": "1310144000000000",
+      "gasLimit": "872949",
+      "txnValue": "0",
     }
     ```
 
