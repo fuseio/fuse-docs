@@ -147,7 +147,7 @@ const config = {
             type: 'doc',
             docId: 'developers/Quick-Start',
             position: 'left',
-            label: 'Developers',
+            label: 'Fuse Network',
           },
           {
             type: 'dropdown',
