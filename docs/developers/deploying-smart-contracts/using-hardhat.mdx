@@ -84,23 +84,20 @@ Compiled 1 contract successfully
 
 The compiled artifacts will be saved in the artifacts/ directory by default. If you need to customize the Solidity compiler options, then you can do so through the solidity field in your hardhat.config.js
 
-The next step is to deploy the contracts to the Fuse Blockchain. Open the `Scripts` directory and update the contents of `deploy.js`
+The next step is to deploy the contracts to the Fuse Blockchain. In Hardhat, deployments are defined through Ignition Modules. These modules are abstractions to describe a deployment; that is, JavaScript functions that specify what you want to deploy.
+
+Open ignition inside the project root's directory, then, enter the directory named modules. Create a `deploy.js` and paste the following code:
 
 ```javascript
-const hre = require("hardhat");
+const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
 
-async function main() {
-  const token = await hre.ethers.deployContract("Token");
+const Token = buildModule("Token", (m) => {
+  const contract = m.contract("Token");
 
-  await token.waitForDeployment();
-
-  console.log(`Contract deployed to ${token.target}`);
-}
-
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
+  return { contract };
 });
+
+module.exports = Token;
 ```
 
 ## Deploy Contract
@@ -113,25 +110,23 @@ module.exports = {
   networks: {
     fuse: {
       url: "https://rpc.fuse.io/",
-      accounts: {
-        // put dev menomonic or PK here
-      },
+      accounts: [`0xPRIVATE_KEY`] // put dev menomonic or PK here,
     },
     spark: {
       url: "https://rpc.fusespark.io/",
-      accounts: {
-        // put dev menomonic or PK here
-      },
+      accounts: [`0xPRIVATE_KEY`] // put dev menomonic or PK here,
     },
   },
   // ...
 };
 ```
 
+Please note: The `0xPRIVATE_KEY` is used to sign the Transaction from your EOA without the need to request permission. You must ensure the EOA that owns the Private Key is funded with some Fuse Tokens to pay for Gas when deploying the Smart Contract.
+
 Open a new terminal and deploy the smart contract to the Fuse network
 
 ```bash
-npx hardhat run --network fuse scripts/deploy.ts
+npx hardhat ignition deploy ./ignition/modules/deploy.js --network fuse
 ```
 
 ## How to verify contracts
@@ -169,6 +164,6 @@ etherscan: {
 
 ## Verify the contract on Fuse
 
-```javascript
+```bash
 npx hardhat verify --network fuse DEPLOYED_CONTRACT_ADDRESS "Constructor argument 1"
 ```

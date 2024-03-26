@@ -7,10 +7,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Fuse Documentation',
+  tagline: 'Fuse is an EVM-compatible blockchain providing a scalable, fast, and cost-effective infrastructure for Web3 applications.',
   url: 'https://docs.fuse.io',
   baseUrl: '/',
-  onBrokenLinks: 'log',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
   favicon: 'img/logo.svg',
   staticDirectories: ['static'],
   organizationName: 'fuse',
@@ -70,6 +71,19 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        { name: 'keywords', content: 'Fuse.io, Fuse, Fuse Documentation, Fuse Docs, Fuse SDK, Fuse Mobile SDK, Fuse Dart SDK, Fuse Flutter SDK, Fuse JS SDK, Fuse TypeScript SDK, Fuse Network, Fuse json rpc, blockchain development, smart contracts, dapps, dApp development, ERC-4337, Account Abstraction, Fuse APIs' },
+        { name: 'description', content: 'Fuse is an EVM-compatible blockchain providing a scalable, fast, and cost-effective infrastructure for Web3 applications.' },
+        { name: 'og:title', content: 'Fuse Docs' },
+        { name: 'og:description', content: 'Fuse is an EVM-compatible blockchain providing a scalable, fast, and cost-effective infrastructure for Web3 applications.' },
+        { name: 'og:type', content: 'website' },
+        { name: 'og:url', content: 'https://docs.fuse.io' },
+        { name: 'og:image', content: 'https://docs.fuse.io/img/home-picture.png' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Fuse Docs' },
+        { name: 'twitter:description', content: 'Official documentation for Fuse, an EVM-compatible blockchain providing a scalable, fast, and cost-effective infrastructure for Web3 applications.' },
+        { name: 'twitter:image', content: 'https://docs.fuse.io/img/logo.svg' },
+      ],
       prism: {
         additionalLanguages: ['dart', 'solidity', 'javascript'],
         theme: lightCodeTheme,
