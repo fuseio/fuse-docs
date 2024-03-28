@@ -28,6 +28,10 @@ servers:
   - url: https://api.staging.fuse.io/api/v2/smart-wallets
     description: Staging server
 
+tags:
+  - name: Smart Wallets
+    description: Smart Wallets API endpoints
+
 paths:
   /auth:
     post:
