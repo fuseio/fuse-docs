@@ -141,7 +141,7 @@ const transferToken = async() => {
   const fuseSDK = await FuseSDK.init(apiKey, credentials, {
     withPaymaster: true,
   });
-  ethers.parseUnits(amountValue, 6)
+  const amount = ethers.parseUnits(amountValue, 6)
   const res = await fuseSDK.transferToken(tokenAddress, recipient, amount);
   console.log(`UserOpHash: ${res?.userOpHash}`);
   console.log("Waiting for transaction...");
@@ -273,3 +273,5 @@ toast("Waiting for transaction...")
 This tutorial has provided a comprehensive guide on utilizing the FuseBox Web SDK to develop a Demo App for creating Smart Wallet Accounts and executing transfers, all seamlessly integrated with the NextJS UI framework. Throughout the tutorial, we've explored the fundamentals of integrating the FuseBox Web SDK into a Next.js project, including initializing the SDK, managing smart wallet accounts, and implementing transfer functionalities.
 
 This tutorial is a valuable resource for developers looking to harness the power of FuseBox and NextJS to create innovative blockchain-based applications. With the knowledge gained from this tutorial, developers can confidently embark on their journey to build cutting-edge solutions that empower users to interact with digital assets securely and efficiently. To stretch your knowledge, you can use the `GET Smart Wallet Token Balance` to implement viewing the Balance of the Smart Contract Wallet.
+
+Checkout the complete [code](https://github.com/fuseio/examples/tree/master?tab=readme-ov-file#example-projects). 💻
