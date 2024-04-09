@@ -214,8 +214,8 @@ Let's break down the `smartWallet` function and explain the usage of the `getTok
 
 ```javascript
 const smartWalletBalance = async () => {
-setLoading(true)
-try {
+ setLoading(true)
+ try {
    // Initialize FuseSDK with API key and credentials
    const apiKey = "YOUR_API_KEY"; // Replace with your API key
    const credentials = new ethers.Wallet(`YOUR_PRIVATE_KEY`); // Replace with your private key
@@ -246,22 +246,24 @@ try {
     }
     setTokenNames(tokenListResponse)
 
-  // Extract token addresses from the token list
-  const tokenAddresses = tokenList.map((x) => x.address);
 
-  // Fetch balances for each token
-  const fetchedBalances = {}
+   // Extract token addresses from the token list
+   const tokenAddresses = tokenList.map((x) => x.address);
+
+   // Fetch balances for each token
+   const fetchedBalances = {}
       for (const token of tokenListResponse) {
         const balance = await fuseSDK.explorerModule.getTokenBalance(
           token.address,
           sender
         )
         fetchedBalances[token.address] = balance
-   }
+    }
 
-  // Update the balances state with the fetched balances
-  setBalances(fetchedBalances);
-};
+    // Update the balances state with the fetched balances
+    setBalances(fetchedBalances);
+ };
+}
 ```
 
 Now let's explain each part of the `smartWallet` function:
