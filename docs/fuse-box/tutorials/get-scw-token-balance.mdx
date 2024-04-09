@@ -38,84 +38,163 @@ Install the necessary packages by running the following command in your project 
 npm install @fuseio/fusebox-web-sdk ethers
 ```
 
-## Step 3: Implement the Code
-
-Replace the contents of `pages/index.js` with the following code:
+## Step 3: Import Libraries
+Open the index.tsx file, delete the default code from NextJS. Edit index.tsx file by adding the code below and save it to see the updated result in your browser. First, import the required libraries and put up a default `Hello, World!’ text:
 
 ```javascript
-// pages/index.js
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
-
 import { FuseSDK } from "@fuseio/fusebox-web-sdk";
 import { ethers } from "ethers";
-import { useState, useEffect } from 'react'
 
 export default function Home() {
-  const [smartAccount, setSmartAccount] = useState<string>("")
-  const [tokenNames, setTokenNames] = useState([])
-  const [balances, setBalances] = useState({});
-
-  const smartWallet = async () => {
-    const apiKey = "YOUR_API_KEY"; // Replace with your API key
-    const credentials = new ethers.Wallet(`YOUR_PRIVATE_KEY`); // Replace with your private key
-    const fuseSDK = await FuseSDK.init(apiKey, credentials, {
-      withPaymaster: true,
-    });
-
-    setSmartAccount(fuseSDK.wallet.getSender());
-
-    const tokenList = await fuseSDK.explorerModule.getTokenList(smartAccount);
-    setTokenNames(tokenList);
-
-    const tokenAddresses = tokenList.map((x) => x.address);
-
-    const fetchedBalances = {};
-
-    for (const tokenAddress of tokenAddresses) {
-      const balance = await fuseSDK.explorerModule.getTokenBalance(tokenAddress, smartAccount);
-      fetchedBalances[tokenAddress] = balance;
-    }
-
-    setBalances(fetchedBalances);
-  };
-
-  useEffect(() => {
-    smartWallet();
-  }, []);
-
   return (
     <main className={`flex flex-col items-center p-24 ${inter.className}`}>
-      <h1>Hello, World!</h1>
-      <p>Smart Account Address: {smartAccount}</p>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-12">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase dark:text-gray-400">
-            <tr>
-              <th scope="col" className="px-6 py-3 bg-gray-50 dark:bg-gray-800">Token Name</th>
-              <th scope="col" className="px-6 py-3">Token Address</th>
-              <th scope="col" className="px-6 py-3 bg-gray-50 dark:bg-gray-800">Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tokenNames.map((token, index) => (
-              <tr key={index}>
-                <td>{token.name}</td>
-                <td>{Object.keys(balances)[index]}</td>
-                <td>{Object.values(balances)[index].toString()}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      Hello, World!
     </main>
   );
 }
 ```
 
+## Step 4: Run the Development Server
+Run npm run dev to start the development server. Visit http://localhost:3000 to view your application.
+
+
+## Step 5: Initialize the App State
+We are going to first get the Smart Contract Wallet, and it's owned Tokens and their respective balances. We will handle these information in various state and set/call each as required. We will also implement an App Loading state while waiting for the Promise methods to be resolved.
+
+```javascript
+  const [smartAccount, setSmartAccount] = useState<string>('')
+  const [tokenNames, setTokenNames] = useState<Token[]>([])
+  const [balances, setBalances] = useState<Record<string, string>>({})
+  const [loading, setLoading] = useState<boolean>(true)
+```
+
+The `Token` type interface is:
+
+```javascript
+interface Token {
+  name: string
+  address: string
+}
+```
+
+## Step 6: implement methods
+We will implement the methods: `init`, `getSender`, `getTokenList` and `getTokenBalance` in one method call. Declare the method as `smartWalletBalance`. Update the `smartWalletBalance` method with the following code:
+
+```javascript
+// pages/index.js
+  const smartWalletBalance = async () => {
+    setLoading(true)
+    try {
+      const apiKey = 'API_KEY'
+      const credentials = new ethers.Wallet(
+        `0xPrivateKey`
+      )
+      const fuseSDK = await FuseSDK.init(apiKey, credentials, {
+        withPaymaster: true,
+      })
+      const sender = fuseSDK.wallet.getSender()
+      console.log('Sender Address:', sender)
+      if (!sender) {
+        console.error('No sender address available')
+        setLoading(false)
+        return
+      }
+      setSmartAccount(sender)
+
+      const tokenListResponse = await fuseSDK.explorerModule.getTokenList(
+        sender
+      )
+      console.log('Token List Response:', tokenListResponse)
+      if (!Array.isArray(tokenListResponse)) {
+        console.error(
+          'Token list fetch returned a non-array response:',
+          tokenListResponse
+        )
+        setLoading(false)
+        return
+      }
+      setTokenNames(tokenListResponse)
+
+      const fetchedBalances = {}
+      for (const token of tokenListResponse) {
+        const balance = await fuseSDK.explorerModule.getTokenBalance(
+          token.address,
+          sender
+        )
+        fetchedBalances[token.address] = balance
+      }
+      setBalances(fetchedBalances)
+
+    } catch (error) {
+      console.error('Error fetching data:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+```
+
 Replace `"YOUR_API_KEY"` and `"YOUR_PRIVATE_KEY"` with your actual API key and private key.
 
-## Step 4: Run Your Next.js Application
+## Step 7: Update the UI
+
+Update the UI to a Dashboard that displays the information from calling the `smartWalletBalance`. Paste the following code in the `return` section.
+
+```javascript
+    <main className={`flex flex-col items-center p-24`}>
+      <h1>Hello, World!</h1>
+      <p>Smart account address: {smartAccount}</p>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className={`relative overflow-x-auto shadow-md sm:rounded-lg mt-12`}>
+          <table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
+            <thead className='text-xs text-gray-700 uppercase dark:text-gray-400'>
+              <tr>
+                <th
+                  scope='col'
+                  className='px-6 py-3 bg-gray-50 dark:bg-gray-800'
+                >
+                  Token Name
+                </th>
+                <th scope='col' className='px-6 py-3'>
+                  Token Address
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 bg-gray-50 dark:bg-gray-800'
+                >
+                  Amount
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {tokenNames.map((token) => (
+                <tr key={token.address}>
+                  <td>{token.name}</td>
+                  <td>{token.address}</td>
+                  <td>
+                    {balances[token.address]
+                      ? Number(balances[token.address]).toString()
+                      : '0'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </main>
+```
+
+## Step 8: Run Your Next.js Application
+
+Call the `smartWalletBalance` in a useEffect Hook:
+
+```javascript
+useEffect(() => {
+    smartWalletBalance()
+}, [])
+```
 
 Run your Next.js application using the following command:
 
@@ -129,38 +208,56 @@ Visit `http://localhost:3000` in your browser to see the application in action. 
 
 That's it! Using the Fusebox Web SDK, you've successfully fetched and displayed token balances for a Smart Contract Wallet in a Next.js application. You can further customize the UI or add additional features per your requirements.
 
-## Step 5: Code breakdown
+## Step 9: Code breakdown
 
 Let's break down the `smartWallet` function and explain the usage of the `getTokenList` and `getTokenBalance` methods:
 
 ```javascript
-const smartWallet = async () => {
-  // Initialize FuseSDK with API key and credentials
-  const apiKey = "YOUR_API_KEY"; // Replace with your API key
-  const credentials = new ethers.Wallet(`YOUR_PRIVATE_KEY`); // Replace with your private key
-  const fuseSDK = await FuseSDK.init(apiKey, credentials, {
-    withPaymaster: true,
-  });
+const smartWalletBalance = async () => {
+setLoading(true)
+try {
+   // Initialize FuseSDK with API key and credentials
+   const apiKey = "YOUR_API_KEY"; // Replace with your API key
+   const credentials = new ethers.Wallet(`YOUR_PRIVATE_KEY`); // Replace with your private key
+   const fuseSDK = await FuseSDK.init(apiKey, credentials, {
+     withPaymaster: true,
+   });
 
-  // Get the Smart Account Address
-  setSmartAccount(fuseSDK.wallet.getSender());
+   // Get the Smart Account Address
+   const sender = fuseSDK.wallet.getSender()
+   console.log('Sender Address:', sender)
+      if (!sender) {
+        console.error('No sender address available')
+        setLoading(false)
+        return
+    }
+    setSmartAccount(sender)
 
-  // Get the list of tokens held by the Smart Contract Wallet
-  const tokenList = await fuseSDK.explorerModule.getTokenList(smartAccount);
-  setTokenNames(tokenList);
+   // Get the list of tokens held by the Smart Contract Wallet
+   const tokenListResponse = await fuseSDK.explorerModule.getTokenList(sender)
+   console.log('Token List Response:', tokenListResponse)
+   if (!Array.isArray(tokenListResponse)) {
+        console.error(
+          'Token list fetch returned a non-array response:',
+          tokenListResponse
+        )
+        setLoading(false)
+        return
+    }
+    setTokenNames(tokenListResponse)
 
   // Extract token addresses from the token list
   const tokenAddresses = tokenList.map((x) => x.address);
 
   // Fetch balances for each token
-  const fetchedBalances = {};
-
-  for (const tokenAddress of tokenAddresses) {
-    // Get the balance for the current token
-    const balance = await fuseSDK.explorerModule.getTokenBalance(tokenAddress, smartAccount);
-    // Store the balance in the fetchedBalances object with tokenAddress as key
-    fetchedBalances[tokenAddress] = balance;
-  }
+  const fetchedBalances = {}
+      for (const token of tokenListResponse) {
+        const balance = await fuseSDK.explorerModule.getTokenBalance(
+          token.address,
+          sender
+        )
+        fetchedBalances[token.address] = balance
+   }
 
   // Update the balances state with the fetched balances
   setBalances(fetchedBalances);
