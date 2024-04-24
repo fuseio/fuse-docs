@@ -41,16 +41,14 @@ The URL when appended with the parameters for examples:
 [`https://api.fuse.io/api/v0/explorer?module=account&action=tokenlist&apiKey=pk_API_KEY&address=0xa42872B5359F6e3905BB031df62C3AADde532933`](https://api.fuse.io/api/v0/explorer?module=account&action=tokenlist&apiKey=pk_API_KEY&address=0xa42872B5359F6e3905BB031df62C3AADde532933)
 
 ## Step 3: Fetch the API response.
-In this step, we will test calling the API and parsing the response to the web browser console. Add the following code to index.tsx
+In this step, we will test calling the API and parsing the response to the web browser console. Add the following code to index.tsx before the `return` statement.
 
 ```javascript
 const apiUrl = `https://api.fuse.io/api/v0/explorer?module=account&action=tokenlist&apiKey=pk_API_KEY&address=0xa42872B5359F6e3905BB031df62C3AADde532933`
 
 async function fetchData() {
     try {
-      console.log(address)
       const response = await fetch(apiUrl);
-      console.log(address)
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -64,7 +62,15 @@ async function fetchData() {
 fetchData();
 ```
 
-Save the file, open your browser and go to the console, you will find the results logged to the console.
+Save the file.
+
+Run the application using the command:
+
+```javascript
+npm run dev
+```
+
+Open your browser go to `http://localhost:3000` and open the developer console, you will find the results logged to the console.
 
 <img src="/img/tutorials/get-balances-console.png" width="100%" height="50%" />
 
@@ -215,7 +221,7 @@ const handleReturnBalances = async (e) => {
 ```
 
 Save the file. 
-Run your Next.js application using the following command:
+Run the application using the following command:
 
 ```javascript
 npm run dev
