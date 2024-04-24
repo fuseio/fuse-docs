@@ -118,10 +118,21 @@ To return the response via the UI, we will use a Table. Copy the code below:
 
 Save the file.
 
-To parse the responses via the UI, we will use React useState to update the UI components. Create a state to store the responses from the Fetch call.
+To parse the responses via the UI, we will use React useState to update the UI components. Create an `interface` to handle the Token response object:
 
 ```javascript
-const [tokenData, setTokenData] = useState([]);
+interface Token {
+    symbol: string
+    contractAddress: string
+    balance: number
+    type: string
+}
+```
+
+Create a state to store the responses from the Fetch call using the Token interface.
+
+```javascript
+const [tokenData, setTokenData] = useState<Token[]>([]);
 ```
 
 Update the FetchData function by parsing the data response to the state:
@@ -154,7 +165,7 @@ Update the table body by calling the map() method:
 Save the file.
 
 ## Step 5: Form UI.
-In this step, we add a form component with an input where users can enter any address instead of hard coding it to the URL. Add a form component to the application, copy and paste the code below above the Table.
+In this step, we add a form component with an input where users can enter any address instead of hard coding it to the URL. Add a form component to the application. Copy and paste the following code snippet directly above the `<table>` component in your `index.tsx` file.
 
 ```javascript
 <form
@@ -192,10 +203,16 @@ const handleReturnBalances = async (e) => {
 };
 ```
 
-Add a state to handle the address from the input, before it parses it to the URL.
+Add a state to handle the address from the input. When the `address` is received from the Form input, it will be parsed to the API URL as a parameter `address=${address}` replacing the hardcoded address.
 
 ```javascript
-const [address, setAddress] = useState("");
+const [address, setAddress] = useState<string>("");
+```
+
+Update the `apiUrl`, use backticks: 
+
+```javascript
+const apiUrl = `https://api.fuse.io/api/v0/explorer?module=account&action=tokenlist&apiKey=pk_API_KEY&address=${address}`
 ```
 
 Update the Form Input elements by adding `value` and `onchange` arguments. We will set the state when calling onchange:
@@ -240,4 +257,4 @@ Visit `http://localhost:3000` in your browser to see the application in action. 
 
 This example code creates a web application that allows users to enter an address, fetch its balances using a REST API, and display the token data in a table format.
 
-Checkout the complete [code](https://github.com/fuseio/examples/tree/master?tab=readme-ov-file#example-projects). 💻
+Checkout the complete [code](https://github.com/fuseio/examples/blob/api-address-balance/api-token-balances/pages/index.tsx). 💻
