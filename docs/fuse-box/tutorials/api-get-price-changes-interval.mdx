@@ -3,6 +3,9 @@ title: REST API - How to GET Price Changes for a Token By Intervals
 sidebar_position: 14
 ---
 
+## Introduction
+In this Tutorial we will build a sample application to display Price Changes for a Token across an Interval. The Changes can be across "ALL","MONTH","WEEK","DAY","HOUR" in Unix timestamp.
+
 ## Prerequisites
 Before starting, ensure you have the following:
 
@@ -10,7 +13,7 @@ Before starting, ensure you have the following:
 - Code Editor: Use your preferred code editor; VS Code is recommended.
 - An EOA wallet with a private key. You can use an existing one or create a new wallet.
 - A basic understanding of React.js and Next.js.
-- An API key from the Fuse Console. Get one here.
+- An API key from the Fuse Console. Get one [here](https://console.fuse.io/build).
 
 ## Step 1: Set Up a Next.js Project
 If you haven't already set up a Next.js project, you can create one using the following commands:
@@ -21,6 +24,8 @@ cd my-project
 ```
 
 Answer the required prompts from NextJS in the terminal. Note that we use TypeScript and Tailwind CSS for this application.
+
+<img src="/img/tutorials/nextjs-init.png" width="100%" height="50%" />
 
 ## Step 2: API Endpoint
 
@@ -58,44 +63,50 @@ The URL will return the following response, for example:
 ```
 
 Where:
-**timeStamp:** `integer`- a Unix timestamp (which is the number of seconds since January 1, 1970)
-**priceChange:** `string` - The difference between `previousPrice` and `currentPrice`
-**previousPrice:** `string` - The Previous Price at the timestamp
-**currentPrice:** `string` - The Current Price at the timestamp
+
+| Param             | Type      | Description                                                             |
+| ----------------- | --------- | ----------------------------------------------------------------------- |
+| **timeStamp**     | `integer` | a Unix timestamp (which is the number of seconds since January 1, 1970) |
+| **priceChange**   | `string`  | The difference between `previousPrice` and `currentPrice`               |
+| **previousPrice** | `string`  | The Previous Price at the timestamp                                     |
+| **currentPrice**  | `string`  | The Current Price at the timestamp                                      | 
 
 An example response from calling the URL looks like this: 
 
 ```json
 {
-data: [
-{
-timestamp: 1714626000,
-priceChange: 0,
-previousPrice: 0.22263642188397303,
-currentPrice: 0.22263642188397303
-},
-{
-timestamp: 1714626099,
-priceChange: 0,
-previousPrice: 0.22263642188397303,
-currentPrice: 0.22263642188397303
-},
-{
-timestamp: 1714626198,
-priceChange: 0.024984737664834156,
-previousPrice: 0.22263642188397303,
-currentPrice: 0.22269204700992712
+    data: [
+        {
+        timestamp: 1714626000,
+        priceChange: 0,
+        previousPrice: 0.22263642188397303,
+        currentPrice: 0.22263642188397303
+        },
+        {
+        timestamp: 1714626099,
+        priceChange: 0,
+        previousPrice: 0.22263642188397303,
+        currentPrice: 0.22263642188397303
+        },
+        {
+        timestamp: 1714626198,
+        priceChange: 0.024984737664834156,
+        previousPrice: 0.22263642188397303,
+        currentPrice: 0.22269204700992712
+        },
+        …
+    ]
 }
-…
 ```
 
-We will track the timestamp on the y-axis and the current price on the x-axis of the line chart.
+We will track the `timestamp` on the **y-axis** and the `currentPrice` on the **x-axis** of the line chart.
 
 ## Step 4: Fetch the API response.
 
 In this step, we will test calling the API and parsing the response to the web browser console. Add the following code to index.tsx before the return statement.
 
-const apiUrl = `https://api.fuse.io/api/v0/trade/pricechange/interval/HOUR/0xDe4b9879B56187D13B2c41Da24c72Ff100A5AC9A?apiKey={API_KEY} `
+```javascript
+const apiUrl = `https://api.fuse.io/api/v0/trade/pricechange/interval/HOUR/0xDe4b9879B56187D13B2c41Da24c72Ff100A5AC9A?apiKey={API_KEY}`
 
 async function fetchData() {
     try {
@@ -111,7 +122,7 @@ async function fetchData() {
   }
 
 fetchData();
-
+```
 
 Save the file.
 
@@ -178,7 +189,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
 
  ChartJS.register(
   CategoryScale,
@@ -246,4 +256,4 @@ npm run dev
 
 Visit `http://localhost:3000` in your browser to see the application in action.
 
-Checkout the complete code. 💻
+Checkout the complete [code](https://github.com/fuseio/examples/blob/api-price-changes-by-interval/api-price-changes-by-interval/pages/index.tsx). 💻
