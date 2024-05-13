@@ -12,6 +12,9 @@ description: 'When your validator is jailed, follow these instructions'
 
 ## **Instructions**
 
-1. Send an unjail request 
-2. Send a 0 FUSE transaction to the consensus contract **0x3014ca10b91cb3D0AD85fEf7A3Cb95BCAc9c0f79** from your validator wallet with the following data: **0x6eae5b11**
-3. This will move the node to the pending list and it will be released at the start of the next cycle
+1. Go to the [Proxy Consensus Smart Contract](https://explorer.fuse.io/address/0x3014ca10b91cb3D0AD85fEf7A3Cb95BCAc9c0f79?tab=write_proxy#address-tabs). 
+2. Connect to the Smart Contract with your Validator MetaMask address.
+3. Call the `unJail` function. It is a `write` function.
+4. This will move the node to the pending list and it will be released at the start of the next cycle.
+
+<img src="/img/tutorials/unjail-validator.png" width="100%" height="50%" />
