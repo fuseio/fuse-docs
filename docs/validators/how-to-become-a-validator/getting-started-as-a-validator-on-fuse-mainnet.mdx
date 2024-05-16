@@ -22,20 +22,11 @@ To quickly become a validator, follow these steps:
 ```
 mkdir fuse-validator
 cd fuse-validator
-wget -O quickstart.sh https://raw.githubusercontent.com/fuseio/fuse-network/master/scripts/quickstart.sh
-chmod 777 quickstart.sh
-wget -O .env https://raw.githubusercontent.com/fuseio/fuse-network/master/scripts/examples/.env.validator.example
+wget -O quickstart.sh https://raw.githubusercontent.com/fuseio/fuse-network/master/nethermind/quickstart.sh
+chmod 755 quickstart.sh
 ```
 
-### Step 2: Update the \`.env\` file:
-
-```
-set "sudo" on `PERMISSION_PREFIX` if running docker/docker-compose requires root
-
-(optional) set 'VAL_NAME' to display a custom name on health.fuse.io (cannot contain spaces)
-```
-
-### Step 3: Run the script as a validator:
+### Step 2: Run the script as a validator:
 
 ```
 ./quickstart.sh
@@ -46,7 +37,7 @@ set "sudo" on `PERMISSION_PREFIX` if running docker/docker-compose requires root
 After running the script successfully, you will see your address in the [health](https://health.fuse.io/) site.
 \:::
 
-### Step 5: Stake and/or delegate!
+### Step 3: Stake and/or delegate!
 
 #### Stake
 
@@ -83,7 +74,7 @@ Use: `0x5c19a95c000000000000000000000000b8ce4a040e8aa33bbe2de62e92851b7d7afd52de
 `b8ce4a040e8aa33bbe2de62e92851b7d7afd52de`in this example, is an address you're delegating to (without the `0x` prefix)
 \:::
 
-### Step 6: Wait for one cycle (approximately 48 hours).
+### Step 4: Wait for one cycle (approximately 48 hours).
 
 Wait until the next cycle is started.
 
