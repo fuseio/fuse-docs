@@ -1,0 +1,181 @@
+---
+title: Build a Mobile App for Token Staking on Fuse.
+sidebar_position: 16
+---
+
+# Build a Mobile App for Token Staking on Fuse.
+In this guide, we will walk through the steps to build a mobile app using the Fuse Flutter SDK method [Token Staking](https://pub.dev/packages/fuse_wallet_sdk#staking). This guide will walk you through setting up your Flutter environment, initializing the Fuse SDK, and implementing wallet creation and token staking functionalities. Let’s dive right in!
+
+## Pre-requites:
+
+- Basic knowledge of Dart/Flutter
+- An API Key from the [Console](https://console.fuse.io/build)
+
+## Set Up Your Flutter Environment
+First things first, you need to have Flutter installed on your machine. If you haven’t installed it yet, you can find the installation guide on the Flutter official website. Once you have Flutter set up, create a new project by running:
+
+```bash
+flutter create fuse_wallet_app
+cd fuse_wallet_app
+```
+
+Next, add the Fuse Wallet SDK to your project. Open your pubspec.yaml and add the following line under dependencies:
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  fuse_wallet_sdk: latest_version
+```
+
+Check for the latest version on [pub.dev](https://pub.dev/packages/fuse_wallet_sdk)
+
+To install the new dependency, run 
+
+```bash
+flutter pub get
+```
+
+## Step 1: Initializing the Fuse SDK
+Now, let's initialize the Fuse SDK. Open your `main.dart` file, and set up the FuseSDK object with your API and private keys. Remember to keep your private key secure and not expose it in your codebase.
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Fuse Wallet and Staking App',
+      home: WalletScreen(),
+    );
+  }
+}
+
+class WalletScreen extends StatefulWidget {
+  @override
+  _WalletScreenState createState() => _WalletScreenState();
+}
+
+class _WalletScreenState extends State<WalletScreen> {
+  final apiKey = 'YOUR_API_KEY';
+  final privateKey = 'YOUR_PRIVATE_KEY'; // Typically fetched securely
+  late FuseSDK fuseSDK;
+
+  @override
+  void initState() {
+    super.initState();
+    initFuseSDK();
+  }
+
+  Future<void> initFuseSDK() async {
+    fuseSDK = await FuseSDK.init(apiKey, privateKey);
+    setState(() {
+      // If the SDK returns wallet details or needs to display the address
+      _address = fuseSDK.wallet.getSender();
+    });
+    print("Fuse SDK initialized successfully!");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // UI Building happens here
+  }
+}
+```
+
+## Step 2: Implement Token Staking
+Depending on your setup, the SDK initialization might automatically handle creating a wallet in the Fuse ecosystem. For this guide, let’s focus on the token staking functionality, which is crucial for participating in Staking on Fuse. Staking allows users to stake their tokens and earn rewards. Currently, the SDK supports staking for the following tokens: Native Fuse & VoltToken
+
+```dart
+Future<void> stakeTokens() async {
+    setState(() {
+      _isStaking = true;
+    });
+    try {
+      String tokenAddress = selectedToken == "Fuse" ? "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" : "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4";  // Use actual addresses
+      final res = await fuseSDK.stakeToken(
+        StakeRequestBody(
+          accountAddress: _address,
+          tokenAmount: tokenController.text,
+          tokenAddress: tokenAddress,
+        ),
+      );
+      print('UserOpHash: ${res.userOpHash}');
+      print('Waiting for transaction...');
+      final ev = await res.wait();
+      if (ev != null && ev is FilterEvent) {
+      String transactionHash = ev.transactionHash ?? "Unknown";  // Extracting the transaction hash from the event
+      setState(() {
+        _transactionHash = 'Transaction Hash: $transactionHash';
+        _isStaking = false;
+      });
+      print(_transactionHash);
+    } else {
+      throw Exception("Failed to retrieve transaction details.");
+    }
+    } catch (e) {
+      setState(() {
+        _transactionHash = "Error: ${e.toString()}";
+        _isStaking = false;
+      });
+      print(_transactionHash);
+    }
+  }
+```
+
+In the UI, we added a form to input the amount and select the token type, Fuse or Volt, and a button to initiate the staking process. Below is the UI implementation:
+
+```dart
+@override
+Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+        title: Text('Fuse Wallet and Staking App'),
+        ),
+        body: Center(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+            if (_address.isNotEmpty)
+                Text('Wallet Address: $_address'),
+            if (_transactionHash.isNotEmpty)
+                Text(_transactionHash),
+            TextField(
+                controller: tokenController,
+                decoration: InputDecoration(labelText: 'Token Amount'),
+            ),
+            DropdownButton<String>(
+                value: selectedToken,
+                onChanged: (String? newValue) {
+                setState(() {
+                    selectedToken = newValue!;
+                });
+                },
+                items: <String>['Fuse', 'Volt']
+                    .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                );
+                }).toList(),
+            ),
+            ElevatedButton(
+                onPressed: _isStaking ? null : stakeTokens,
+                child: _isStaking ? CircularProgressIndicator() : Text('Stake Tokens'),
+            ),
+            ],
+        ),
+        ),
+    );
+}
+```
+
+## Conclusion
+You’ve just built an app that can enable users stake tokens on the Fuse network using Flutter. This can be a foundation for more complex interactions on the Fuse blockchain you might want to implement.
+
