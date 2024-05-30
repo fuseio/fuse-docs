@@ -1,0 +1,334 @@
+---
+title: REST API - Trade v2 GET Quotes 
+sidebar_position: 17
+---
+
+Trade v2 API
+
+# Introduction
+
+In this tutorial, we'll walk through using the FuseBox REST API in a Next.js application to consume the Trade v2 API **”[Get a quote for buying or selling any ERC20 token](../../trade-api/get-quote)”** endpoint. We'll utilize React hooks to manage the State and display the response in a table format.
+
+## Prerequisites
+Before starting, ensure you have the following:
+
+Node.js installed on your machine.
+- Code Editor: Use your preferred code editor; VS Code is recommended.
+- An EOA wallet with a private key. You can use an existing one or create a new wallet.
+- A basic understanding of React.js and Next.js.
+- An API key from the Fuse Console. Get one [here](https://console.fuse.io/build).
+
+## Step 1: Set Up a Next.js Project
+If you haven't already set up a Next.js project, you can create one using the following commands:
+
+```bash
+npx create-next-app my-project
+cd my-project
+```
+
+Answer the required prompts from NextJS in the terminal. Note that we use TypeScript and Tailwind CSS for this application.
+
+## Step 2: API Endpoint
+In this example tutorial, we are going to build a Form element that takes in Tokens for BUY and SELL orders and an amount and returns the response in a table. We will use the Axios library to call the Fuse REST APIs and return the responses.
+
+The endpoint that we will use in this tutorial is the Get List of Tokens Owned by Address.
+
+The base URL is https://api.fuse.io/api/v1/trade/quote, and it takes three required parameters: **buyToken**, **sellToken**, and **amount**. You can get an API key from [Console](https://console.fuse.io/build).
+
+The URL, when appended with the parameters, for example:
+
+https://api.fuse.io/api/v1/trade/quote?apiKey=YOUR_API_KEY&sellToken=FUSE&buyToken=0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4&sellAmount=1000000000000000000
+## Step 2: Install Axios
+Axios is a promise-based HTTP client for the browser and Node.js. Install Axios to handle the API requests:
+```bash
+npm install axios
+```
+
+## Step 3: Fetch the API response.
+
+In this step, we will test calling the API and parsing the response to the web browser console. Add the following code to the `index.tsx` file before the return statement.
+
+```javascript
+const apiUrl = `https://api.fuse.io/api/v1/trade/quote?apiKey=YOUR_API_KEY&sellToken=FUSE&buyToken=0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4&sellAmount=1000000000000000000`
+
+async function fetchData() {
+    try {
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      console.log(data);
+      } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    }
+  }
+
+fetchData();
+```
+
+Save the file.
+
+Run the application using the command:
+
+```bash
+npm run dev
+```
+Open your browser, go to `http://localhost:3000`, and open the developer console. You will find the results logged to the console.
+
+## Step 4: Implementing the Application
+### State Management with React Hooks
+We use the `useState` hook to manage the form inputs and API response data. This allows us to keep track of the user inputs and the API results.
+
+```javascript
+const [inputs, setInputs] = useState({
+  sellToken: 'FUSE',
+  buyToken: '',
+  sellAmount: '1000000000000000000'
+});
+const [result, setResult] = useState(null);
+```
+
+- `inputs` stores the values of the form fields.
+- `result` will hold the data fetched from the API.
+
+### Handling Form Input Changes
+The `handleInputChange` function updates the `input` state whenever a user types into the form fields. This function is triggered on every keystroke, ensuring that the state is always up-to-date with what the user has entered.
+
+```javascript
+const handleInputChange = (event) => {
+  const { name, value } = event.target;
+  setInputs(prevState => ({
+    ...prevState,
+    [name]: value
+  }));
+};
+```
+
+We use a function to ensure the new state is based on the correct previous state, which is important in React to prevent state update issues during rapid state changes.
+
+### Submitting the Form
+The `handleSubmit` function is called when the user submits the form. It prevents the default form submission event, constructs the API request, and handles the API response.
+
+```javascript
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const { sellToken, buyToken, sellAmount } = inputs;
+  const url = `https://api.fuse.io/api/v1/trade/quote`;
+  const params = { apiKey: 'your_api_key', sellToken, buyToken, sellAmount };
+
+  try {
+    const response = await axios.get(url, { params });
+    setResult(response.data);
+  } catch (error) {
+    console.error('Error fetching trade quote:', error);
+    setResult({ error: error.message });
+  }
+};
+```
+
+We make an asynchronous API call using Axios. Upon success, the result is stored in the `result` state, and if an error occurs, it is handled.
+
+## Step 5: Building the User Interface
+The user interface uses HTML form elements styled with Tailwind CSS. It includes input fields for the **sellToken**, **buyToken**, and **sellAmount**, and a submit button.
+
+```javascript
+<form onSubmit={handleSubmit} className="space-y-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+   <label className="block text-gray-700 text-sm font-bold mb-2">
+        Sell Token:
+        <input
+            type="text"
+            name="sellToken"
+            value={inputs.sellToken}
+            onChange={handleInputChange}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        </label>
+    </div>
+    <div>
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+        Buy Token:
+        <input
+            type="text"
+            name="buyToken"
+            value={inputs.buyToken}
+            onChange={handleInputChange}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        </label>
+    </div>
+    <div>
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+        Sell Amount:
+        <input
+            type="text"
+            name="sellAmount"
+            value={inputs.sellAmount}
+            onChange={handleInputChange}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        </label>
+    </div>
+    <div>
+        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        Get Quote
+        </button>
+    </div>
+</form>
+```
+
+Each input field is linked to the `handleInputChange` function.
+The form submission is linked to the `handleSubmit` function.
+
+### Displaying the API Response
+Once the API data is fetched, it is displayed in a table format using Tailwind CSS for styling. This part of the UI will render conditionally based on whether the `result` state is populated.
+
+```javascript
+{result && (
+  <div className="bg-gray-100 rounded px-8 pt-6 pb-8 mb-4">
+    <h3 className="text-gray-700 text-lg">API Response:</h3>
+    <div className="bg-gray-100 rounded px-8 pt-6 pb-8 mb-4">
+            <h3 className="text-gray-700 text-lg">API Response:</h3>
+            <table className="min-w-full table-auto">
+                <thead className="bg-gray-200">
+                  <tr>
+                    <th className="px-4 py-2">Field</th>
+                    <th className="px-4 py-2">Value</th>
+                  </tr>
+                </thead>
+                <tbody className="text-gray-700">
+                  <tr>
+                    <td className="border px-4 py-2">Price</td>
+                    <td className="border px-4 py-2">{result.price}</td>
+                  </tr>
+                  <tr>
+                    <td className="border px-4 py-2">Guaranteed Price</td>
+                    <td className="border px-4 py-2">{result.guaranteedPrice}</td>
+                  </tr>
+                  <tr>
+                    <td className="border px-4 py-2">Estimated Price Impact</td>
+                    <td className="border px-4 py-2">{result.estimatedPriceImpact}</td>
+                  </tr>
+                  <tr>
+                    <td className="border px-4 py-2">To</td>
+                    <td className="border px-4 py-2">{result.to}</td>
+                  </tr>
+                  <tr>
+                    <td className="border px-4 py-2">Value</td>
+                    <td className="border px-4 py-2">{result.value}</td>
+                  </tr>
+                  <tr>
+                    <td className="border px-4 py-2">Buy Token Address</td>
+                    <td className="border px-4 py-2">{result.buyTokenAddress}</td>
+                  </tr>
+                  <tr>
+                    <td className="border px-4 py-2">Buy Amount</td>
+                    <td className="border px-4 py-2">{result.buyAmount}</td>
+                  </tr>
+                  <tr>
+                    <td className="border px-4 py-2">Sell Token Address</td>
+                    <td className="border px-4 py-2">{result.sellTokenAddress}</td>
+                  </tr>
+                  
+                  <tr>
+                    <td className="border px-4 py-2">Sell Amount</td>
+                    <td className="border px-4 py-2">{result.sellAmount}</td>
+                  </tr>
+                </tbody>
+            </table>
+
+            <h4 className="text-gray-700 font-bold m-3">Sources</h4>
+            <table className="min-w-full table-auto">
+                <thead className="bg-gray-200">
+                <tr>
+                    <th className="px-4 py-2">Source Name</th>
+                    <th className="px-4 py-2">Proportion</th>
+                </tr>
+                </thead>
+                <tbody className="text-gray-700">
+                {result.sources.map((source, index) => (
+                    <tr key={index}>
+                    <td className="border px-4 py-2">{source.name}</td>
+                    <td className="border px-4 py-2">{source.proportion}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+
+            <h4 className="text-gray-700 font-bold m-3">Orders</h4>
+            {result.orders.map((order, index) => (
+                <div key={index} className="mb-4">
+                <table className="min-w-full table-auto bg-white rounded shadow-md">
+                    <thead className="bg-gray-200">
+                    <tr>
+                        <th className="px-4 py-2">Field</th>
+                        <th className="px-4 py-2">Value</th>
+                    </tr>
+                    </thead>
+                    <tbody className="text-gray-700">
+                    <tr>
+                        <td className="border px-4 py-2">Source</td>
+                        <td className="border px-4 py-2">{order.source}</td>
+                    </tr>
+                    <tr>
+                        <td className="border px-4 py-2">Maker Token</td>
+                        <td className="border px-4 py-2">{order.makerToken}</td>
+                    </tr>
+                    <tr>
+                        <td className="border px-4 py-2">Taker Token</td>
+                        <td className="border px-4 py-2">{order.takerToken}</td>
+                    </tr>
+                    <tr>
+                        <td className="border px-4 py-2">Maker Amount</td>
+                        <td className="border px-4 py-2">{order.makerAmount}</td>
+                    </tr>
+                    <tr>
+                        <td className="border px-4 py-2">Taker Amount</td>
+                        <td className="border px-4 py-2">{order.takerAmount}</td>
+                    </tr>
+                    <tr>
+                        <td className="border px-4 py-2">Router</td>
+                        <td className="border px-4 py-2">{order.fillData.router}</td>
+                    </tr>
+                    <tr>
+                        <td className="border px-4 py-2">Token Address Path</td>
+                        <td className="border px-4 py-2">{order.fillData.tokenAddressPath}</td>
+                    </tr>
+                    <tr>
+                        <td className="border px-4 py-2">Uniswap Path</td>
+                        <td className="border px-4 py-2">{order.fillData.uniswapPath}</td>
+                    </tr>
+                    <tr>
+                        <td className="border px-4 py-2">Input</td>
+                        <td className="border px-4 py-2">{order.fill.input}</td>
+                    </tr>
+                    <tr>
+                        <td className="border px-4 py-2">Output</td>
+                        <td className="border px-4 py-2">{order.fill.output}</td>
+                    </tr>
+                    <tr>
+                        <td className="border px-4 py-2">Adjusted Output</td>
+                        <td className="border px-4 py-2">{order.fill.adjustedOutput}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            ))}
+    </div>
+)}
+```
+
+Save the file.
+
+Run the application using the command:
+
+```bash
+npm run dev
+```
+
+## Conclusion
+This tutorial covered how to consume the Trade v2 API **”Get a quote for buying or selling any ERC20 token”** endpoint. This basic framework can be expanded to build more complex applications by integrating the other Trade v2 API Endpoints
+
+Checkout the complete [code](https://github.com/fuseio/examples/blob/rest-api-guide-trade-v2/trade-api/pages/index.tsx). 💻.
+
+
