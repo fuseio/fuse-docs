@@ -28,6 +28,10 @@ cd my-project
 
 Answer the required prompts from NextJS in the terminal. Note that we use TypeScript and Tailwind CSS for this application.
 
+<img src="/img/tutorials/nextjs-init.png" width="100%" height="50%" />
+
+A new NextJS project is created with a pages directory containing an `index.tsx` file.
+
 ## Step 2: API Endpoint
 In this example tutorial, we are going to build a Form element that takes in Tokens for BUY and SELL orders and an amount and returns the response in a table. We will use the Axios library to call the Fuse REST APIs and return the responses.
 
@@ -46,7 +50,7 @@ npm install axios
 
 ## Step 3: Fetch the API response.
 
-In this step, we will test calling the API and parsing the response to the web browser console. Add the following code to the `index.tsx` file before the return statement.
+In this step, we will test calling the API and parsing the response to the web browser console. Add the following code to the `index.tsx` file inside the `Home() {}` Component.
 
 ```javascript
 const apiUrl = `https://api.fuse.io/api/v1/trade/quote?apiKey=YOUR_API_KEY&sellToken=FUSE&buyToken=0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4&sellAmount=1000000000000000000`
