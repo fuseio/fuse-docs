@@ -25,7 +25,7 @@ Next, add the Fuse Wallet SDK to your project. Open your pubspec.yaml and add th
 dependencies:
   flutter:
     sdk: flutter
-  fuse_wallet_sdk: latest_version
+  fuse_wallet_sdk: ^0.3.3
 ```
 
 Check for the latest version on [pub.dev](https://pub.dev/packages/fuse_wallet_sdk)
@@ -64,7 +64,7 @@ class WalletScreen extends StatefulWidget {
 
 class _WalletScreenState extends State<WalletScreen> {
   final apiKey = 'YOUR_API_KEY';
-  final privateKey = 'YOUR_PRIVATE_KEY'; // Typically fetched securely
+  final privateKey = EthPrivateKey.fromHex('YOUR_PRIVATE_KEY');
   late FuseSDK fuseSDK;
 
   @override
@@ -82,10 +82,7 @@ class _WalletScreenState extends State<WalletScreen> {
     print("Fuse SDK initialized successfully!");
   }
 
-  @override
-  Widget build(BuildContext context) {
-    // UI Building happens here
-  }
+ ...
 }
 ```
 
