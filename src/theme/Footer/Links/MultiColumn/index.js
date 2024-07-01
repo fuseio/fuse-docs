@@ -1,7 +1,7 @@
 import React from 'react'
 import LinkItem from '@theme/Footer/LinkItem'
 import styles from './styles.module.css'
-import MailChimpNewsLetter from '../../MailSubsription/MailChimpNewsLetter.js'
+import BeehiivNewsLetter from '../../MailSubsription/BeehiivNewsLetter.js'
 
 function ColumnLinkItem({ item }) {
   return item.html ? (
@@ -36,7 +36,7 @@ export default function FooterLinksMultiColumn({ columns }) {
         <Column key={i} column={column} />
       ))}
       {/* Subscribe */}
-      <MailChimpNewsLetter />
+      <BeehiivNewsLetter />
     </div>
   )
 }
