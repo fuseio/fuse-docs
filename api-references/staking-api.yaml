@@ -33,6 +33,11 @@ servers:
     description: Production server
   - url: https://api.staging.fuse.io/api/v0/staking
     description: Staging server
+
+tags:
+  - name: Staking
+    description: Staking API endpoints
+
 paths:
   /staking_options:
     get:

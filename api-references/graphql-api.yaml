@@ -23,6 +23,13 @@ servers:
     description: Production server
   - url: https://api.staging.fuse.io/api/v0/graphql
     description: Staging server
+
+tags:
+  - name: NFTs
+    description: NFT-related API endpoints
+  - name: User Operations
+    description: User operation-related API endpoints
+
 paths:
   /collectibles/{address}:
     get:
