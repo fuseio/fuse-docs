@@ -214,6 +214,7 @@ type Mutation {
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
   deleteDocument(collection: String, relativePath: String!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
+  createFolder(collection: String, relativePath: String!): DocumentNode!
   updateDoc(relativePath: String!, params: DocMutation!): Doc!
   createDoc(relativePath: String!, params: DocMutation!): Doc!
   updateDropdowns(relativePath: String!, params: DropdownsMutation!): Dropdowns!
