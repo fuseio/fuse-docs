@@ -1,5 +1,6 @@
 {
-  "name": "tinasaurus",
+  "name": "fuse-docs",
+  "description": "Fuse Documentation Site",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -18,27 +19,30 @@
     "re-gen": "yarn clean-all && yarn gen-all"
   },
   "dependencies": {
-    "@docusaurus/core": "2.4.3",
-    "@docusaurus/preset-classic": "2.4.3",
-    "@docusaurus/remark-plugin-npm2yarn": "2.4.3",
-    "@happyreact/react": "0.2.5",
-    "@mdx-js/react": "^1.6.22",
-    "@tinacms/cli": "^1.5.12",
-    "clsx": "^1.2.1",
-    "docusaurus-plugin-openapi-docs": "^2.1.3",
-    "docusaurus-plugin-yandex-metrica": "1.1.0",
-    "docusaurus-theme-openapi-docs": "^2.1.3",
-    "formik": "^2.4.2",
-    "prism-react-renderer": "^1.3.5",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "@docusaurus/core": "^3.4.0",
+    "@docusaurus/preset-classic": "^3.4.0",
+    "@docusaurus/remark-plugin-npm2yarn": "^3.4.0",
+    "@happyreact/react": "^0.2.5",
+    "@mdx-js/react": "^3.0.1",
+    "@tinacms/cli": "^1.5.46",
+    "clsx": "^2.1.1",
+    "docusaurus-plugin-openapi-docs": "3.0.1",
+    "docusaurus-plugin-yandex-metrica": "^1.2.1",
+    "docusaurus-theme-openapi-docs": "3.0.0-beta.10",
+    "formik": "^2.4.6",
+    "prism-react-renderer": "^2.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-mailchimp-subscribe": "^2.1.3",
     "react-router-dom": "^5.3.4",
-    "tinacms": "^1.5.5",
+    "tinacms": "^1.6.4",
     "title": "^3.5.3"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^2.4.3"
+    "@docusaurus/module-type-aliases": "^3.4.0",
+    "@docusaurus/tsconfig": "^3.4.0",
+    "@docusaurus/types": "^3.4.0",
+    "typescript": "^5.5.3"
   },
   "browserslist": {
     "production": [
