@@ -290,6 +290,14 @@ const config: Config = {
               categoryLinkSource: 'tag',
             },
           },
+          balancesApi: {
+            specPath: 'api-references/balances-api.yaml',
+            outputDir: 'docs/balances-api',
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+              categoryLinkSource: 'tag',
+            },
+          },
           tradeApi: {
             specPath: 'api-references/trade-api-v2.yaml',
             outputDir: 'docs/trade-api',
