@@ -59,6 +59,15 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Balances API",
+      link: {
+        type: "generated-index",
+        title: "Balances API",
+      },
+      items: require("./docs/balances-api/sidebar.js"),
+    },
+    {
+      type: "category",
       label: "Trade API",
       link: {
         type: "generated-index",
