@@ -8,10 +8,10 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Balances",
+      label: "NFT tokens",
       link: {
         type: "doc",
-        id: "balances-api/balances",
+        id: "balances-api/nft-tokens",
       },
       items: [
         {
@@ -20,6 +20,16 @@ const sidebar: SidebarsConfig = {
           label: "Get Non Fungible NFT Token Balances",
           className: "api-method get",
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "ERC20 tokens",
+      link: {
+        type: "doc",
+        id: "balances-api/erc-20-tokens",
+      },
+      items: [
         {
           type: "doc",
           id: "balances-api/get-fungible-erc-20-token-balances",

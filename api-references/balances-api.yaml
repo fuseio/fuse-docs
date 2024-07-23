@@ -6,8 +6,10 @@ info:
   version: 1.0.0
 
 tags:
-  - name: Balances
-    description: Balances API endpoints
+  - name: NFT tokens
+    description: The NFT Assets API lets you get all ERC-721 and ERC-1155 NFT assets owned by an address.
+  - name: ERC20 tokens
+    description: The ERC20 Assets API lets you get all ERC20 tokens owned by an address including the native token.
 
 servers:
   - url: https://api.fuse.io/api/v0/balances
@@ -19,7 +21,7 @@ paths:
   /nft-assets/{address}:
     get:
       tags:
-        - Balances
+        - NFT tokens
       summary: Get Non Fungible NFT Token Balances
       parameters:
         - $ref: "#/components/parameters/ApiKey"
@@ -42,7 +44,7 @@ paths:
   /assets/{address}:
     get:
       tags:
-        - Balances
+        - ERC20 tokens
       summary: Get Fungible ERC20 Token Balances
       parameters:
         - $ref: "#/components/parameters/ApiKey"
