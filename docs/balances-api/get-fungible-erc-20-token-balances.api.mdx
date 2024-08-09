@@ -5,7 +5,7 @@ description: "Get Fungible ERC20 Token Balances"
 sidebar_label: "Get Fungible ERC20 Token Balances"
 hide_title: true
 hide_table_of_contents: true
-api: eJytVU1v00AQ/SurOYFkxaFw8i1UbYUqoCrhgEoOG3tib2vvbnfGgSjyf0fjj9RRDJSPU2LP7ts3780+74F1TpDcwcXt+dlcsXtAS7CKwOugK2QMUt2D1RVCAtqba9xBBMZCAo81BnkI+FibgBkkHGqMgNICKw3JHnjnZRtxMDaHJoIMKQ3Gs3EC8MXVQS1u3qkH3Cl2StdcoGWTakYlqEhMM2iiJwJZFpBoYOA1F/9CYFmg+qbLEln1yEKj7UttXFBjVWbQrOQo8s4SkqCfzefyc4z58RoiSJ1ltCxV7X0pHRln43uSJftTgm59jylDBD44j4FNd0CFRDrHyU4CUl3yqKRD0K03jBX9HnutS23TaWyhH3TKi17uaSVTU+lyutjZNVGgXbV25WSpe3FSkIrhUl5d1jY36xKXYkhbIdZcT1EY7VoQIb/tuqXb3j9oGlnzZv761MFFmvaTwIXMIbk6pKgMyUysTZahnf0/j7sWzl02bt5YxhyDyIIhuPD+F4PQLpiSoOl6PG7uClkNOvbz3cqpBoUgggq5cBkkkGPLV25ZArEWISne91elgQgIw3bIiDqUkEDB7CmJY+3NbFMTzoyT//F2Hq+fTjjmdBNcVqfyoDrA9sqf4hHr3Nj82bifuvUH0JXExsa1WvXDMXQtMXSyX+JhvED54LYmQ1JoM++M5VFe9DkykGnz48PlkpS22XGQfLUQgcjWnfJqNp/NxUjviCvdDk8fd88x64jyYQgYv3PsS22sILdS7nsj76AzEiJIhjxdRVA4Yinu92tN+DmUTSOvu5AXfzNDel1Kym50SXhy8uE+wIvbPpBfqmdGfDTN+wF346/OVpe1LGqd3OpghM/fc/uz9P8JxSF87RHBA/Ve32bVRFCgzjC0fLuqBI3n0b6THJFGD7fx6mIJTfMDL1KlVw==
+api: eJy9VU1v1DAQ/SvWnECKskvhlFupWoQQHyrlgGAPTjK7MXVs1zMprFb572jysc12A5QPcUriscdv3pu82QHrDUH2Cc4vz06Wiv01OoJVAkFHXSNjlOgOnK4RMtDBvMItJGAcZHDTYJSPiDeNiVhCxrHBBKiosNaQ7YC3QY4RR+M20CZQIhXRBDZeEnz0TVSn716qa9wq9ko3XKFjU2hGJVmRmFJokzsAZRmRaEQQNFd/A+CqQvVVW4ushswCo6tLrX1UU1YOcHRLp4dgjulYa0u/A+dt96JtqgQYBSzM2hT9/UcAU/VyrZxnFaK/NSWWidLWDptzbbUrkNRXY63KhU1uosMyhXYlECl4R0gC6mS5lMc9KK8ggcI7RscS1SFY0cV4t/hCsmV3XJfPv2DBkECIPmBk019QI5He4CwBEamxPAnpGHXXYYw1/Tr3UOhsboEfdcGjTvMCFKbWdj7Yiz0ToG2dezsb6heOAhIxbGXponEbk1u8EqW6CLHmZg7C5NQpEfLzQdbLQT9oW9nzbPn0WMHTohjahSvRn3wTC1SGpLNzU5bo0n+ncV/CmS+nxRvHuMEotGCMPr7+SSN0G+YoaPsaD4t7gaxGHoe/tKNTjQxBAjVy5UvIYIMdXvGKDBZaiKTFbvifWkiAMN6OTtdECxlUzIGyxUIHk64bwtR4eV/cLhf53Q2HmN5FXzaFfKg+YWcYx/mI9ca4zYPzvu/375OuxG/WvuNqaI6xajHTo/PiJdMNo2GQQlcGbxxPXG9ww71/iAu+ubgipV15aIefHSQgtPW3PEmX6VKEDJ641l3zDGb5ELEOIO+bgPEbL4LVxknmjsrdIOQn6IWEBLJxKqwSqDyxBHe7XBN+iLZtZbn3ZtG3NKRzO3Hnezfv/wd4dDkY+WP1wEGVzOO+xu10dt5q28imrj0eDue/DIefVnBv6N3VsZKPaKSQP+f492bxD4COQ8QdEL2XYMDertoEKtQlxg5vHxXDDDw5d+SHUujeVV6cX0Hbfge2CDDk
 sidebar_class_name: "get api-method"
 info_path: docs/balances-api/balances-api
 custom_edit_url: null
@@ -94,6 +94,11 @@ Get Fungible ERC20 Token Balances
       <ParamsItem
         className={"paramsItem"}
         param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your API key to authenticate requests."}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"tokenAddress","in":"query","required":false,"schema":{"type":"string"},"description":"Optional. The specific token address to query. If not provided, all token balances will be returned."}}
       >
         
       </ParamsItem>
