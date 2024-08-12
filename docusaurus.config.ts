@@ -322,14 +322,6 @@ const config: Config = {
               categoryLinkSource: 'tag',
             },
           },
-          stakingApi: {
-            specPath: 'api-references/staking-api.yaml',
-            outputDir: 'docs/staking-api',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
-          },
         },
       },
     ],
