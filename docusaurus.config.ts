@@ -144,32 +144,35 @@ const config: Config = {
           label: 'Fuse Network',
         },
         {
-          type: 'dropdown',
+          type: 'docSidebar',
           position: 'left',
           label: 'FuseBox',
-          items: [
-            {
-              label: 'Getting Started',
-              to: 'fuse-box/getting-started',
-            },
-            {
-              label: 'SDK Reference',
-              to: 'fuse-box/sdk',
-            },
-            {
-              label: 'Tutorials & Guides',
-              to: 'category/tutorials',
-            },
-            {
-              type: 'docSidebar',
-              label: 'API Reference',
-              sidebarId: 'apiSidebar',
-            },
-            {
-              label: 'Trade API (versioned)',
-              to: '/category/trade-versioned-api',
-            },
-          ],
+          sidebarId: 'fuseBoxSidebar'
+          // The Items section below is used to create a dropdown menu. 
+          // The dropdown menu requires removing the 'sidebarId'
+          // items: [
+          //   {
+          //     label: 'Getting Started',
+          //     to: 'fuse-box/getting-started',
+          //   },
+          //   {
+          //     label: 'SDK Reference',
+          //     to: 'fuse-box/sdk',
+          //   },
+          //   {
+          //     label: 'Tutorials & Guides',
+          //     to: 'category/tutorials',
+          //   },
+          //   {
+          //     type: 'docSidebar',
+          //     label: 'API Reference',
+          //     sidebarId: 'apiSidebar',
+          //   },
+          //   {
+          //     label: 'Trade API (versioned)',
+          //     to: '/category/trade-versioned-api',
+          //   },
+          // ],
         },
         {
           type: 'docSidebar',
