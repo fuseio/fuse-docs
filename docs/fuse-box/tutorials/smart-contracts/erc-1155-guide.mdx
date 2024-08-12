@@ -1,5 +1,5 @@
 ---
-title: ERC 1155 Guide -  Deploy to Fuse. Connect with FuseBox Web SDK 
+title: ERC 1155 Guide -  Deploy to Fuse. Connect with FuseBox Web SDK
 sidebar_position: 10
 ---
 
@@ -78,7 +78,6 @@ npm install @openzeppelin/contracts
 
 Create a new Solidity file named `GameItems.sol` in the `contracts` directory and paste the provided contract code above into it.
 
-
 ## Step 4: Compile the Smart Contract
 
 To compile the contract run npx hardhat compile in your terminal:
@@ -106,6 +105,7 @@ module.exports = GameItems;
 ```
 
 ## Step 5: Run Deployment
+
 Update the hardhat.config.js file to include the network information:
 
 ```javascript
@@ -136,10 +136,11 @@ npx hardhat ignition deploy ./ignition/modules/deploy.js --network fuse
 
 <img src="/img/tutorials/hardhat-deploy.png" />
 
-You've successfully deployed the `GameItems` contract using Hardhat. Now, you can interact with the deployed contract on the Fuse blockchain. 
+You've successfully deployed the `GameItems` contract using Hardhat. Now, you can interact with the deployed contract on the Fuse blockchain.
 
 ## Example UI Interaction
-If you have completed the UI guide for interacting with [ERC 721 NFTs using FuseBox](./mint-erc721-aa-part2), this guide is no different in the nature of the UI. What is highlighted here is the difference between interacting with the ERC721 and ERC-1155 by parsing a TokenID for ERC-1155. For example, calling the `safeTransfer()` method:
+
+If you have completed the UI guide for interacting with [ERC 721 NFTs using FuseBox](../web-sdk/mint-erc721-aa-part2), this guide is no different in the nature of the UI. What is highlighted here is the difference between interacting with the ERC721 and ERC-1155 by parsing a TokenID for ERC-1155. For example, calling the `safeTransfer()` method:
 
 ```javascript
 const transfer = async () => {
@@ -175,4 +176,3 @@ You can also send a Batch Transaction by passing an array of receiving addresses
 ## Conclusion
 
 ERC-1155 tokens offer a powerful and efficient solution for managing both fungible and non-fungible tokens on the Fuse blockchain. With features such as batch transfers, and metadata extension, ERC-1155 provides developers with the flexibility and scalability needed to build complex decentralized applications. As you explore ERC-1155 further, consider its various applications in gaming, digital collectibles, decentralized finance (DeFi), and more.
-
