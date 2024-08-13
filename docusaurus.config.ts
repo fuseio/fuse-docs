@@ -144,39 +144,48 @@ const config: Config = {
           label: 'Fuse Network',
         },
         {
-          type: 'dropdown',
-          position: 'left',
-          label: 'FuseBox',
-          items: [
-            {
-              label: 'Getting Started',
-              to: 'fuse-box/getting-started',
-            },
-            {
-              label: 'SDK Reference',
-              to: 'fuse-box/sdk',
-            },
-            {
-              label: 'Tutorials & Guides',
-              to: 'category/tutorials',
-            },
-            {
-              type: 'docSidebar',
-              label: 'API Reference',
-              sidebarId: 'apiSidebar',
-            },
-            {
-              label: 'Trade API (versioned)',
-              to: '/category/trade-versioned-api',
-            },
-          ],
-        },
-        {
           type: 'docSidebar',
           sidebarId: 'validatorsSidebar',
           position: 'left',
           label: 'Validators',
         },
+        {
+          type: 'docSidebar',
+          position: 'left',
+          label: 'FuseBox',
+          sidebarId: 'fuseBoxSidebar'
+          // The Items section below is used to create a dropdown menu. 
+          // The dropdown menu requires removing the 'sidebarId'
+          // items: [
+          //   {
+          //     label: 'Getting Started',
+          //     to: 'fuse-box/getting-started',
+          //   },
+          //   {
+          //     label: 'SDK Reference',
+          //     to: 'fuse-box/sdk',
+          //   },
+          //   {
+          //     label: 'Tutorials & Guides',
+          //     to: 'category/tutorials',
+          //   },
+          //   {
+          //     type: 'docSidebar',
+          //     label: 'API Reference',
+          //     sidebarId: 'apiSidebar',
+          //   },
+          //   {
+          //     label: 'Trade API (versioned)',
+          //     to: '/category/trade-versioned-api',
+          //   },
+          // ],
+        },
+        {
+            type: "docSidebar",
+            sidebarId: "apiSidebar",
+            label: "API References",
+            position: "left",
+          },
       ],
     },
     footer: {
