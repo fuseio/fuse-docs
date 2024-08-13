@@ -145,6 +145,12 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
+          sidebarId: 'validatorsSidebar',
+          position: 'left',
+          label: 'Validators',
+        },
+        {
+          type: 'docSidebar',
           position: 'left',
           label: 'FuseBox',
           sidebarId: 'fuseBoxSidebar'
@@ -175,11 +181,11 @@ const config: Config = {
           // ],
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'validatorsSidebar',
-          position: 'left',
-          label: 'Validators',
-        },
+            type: "docSidebar",
+            sidebarId: "apiSidebar",
+            label: "API References",
+            position: "left",
+          },
       ],
     },
     footer: {
