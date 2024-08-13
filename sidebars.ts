@@ -95,15 +95,6 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Staking API",
-      link: {
-        type: "generated-index",
-        title: "Staking API",
-      },
-      items: require("./docs/staking-api/sidebar.js"),
-    },
-    {
-      type: "category",
       label: "Explorer API",
       link: {
         type: "generated-index",
