@@ -11,6 +11,8 @@ Our smart contract wallets are fully compatible with the WalletConnect protocol.
 
 When integrating WalletConnect into your Dapp, it is important to consider how smart contract wallets are affected. Specifically, pay attention to how accounts are exposed in the session, how message signatures are returned, and how transactions are broadcasted.
 
+When you build your project using FuseBox, you can also use WalletConnect. See FuseBox Guides [here](../getting-started).
+
 ### Accounts
 
 When connecting your Dapp to a smart contract wallet, you will be provided with the actual contract address for the wallet. It is important to note that this should not be confused with delegate keys, which are utilized for message and transaction signing (i.e. the `ownerAddress` of the Smart Wallet).
@@ -20,7 +22,7 @@ Smart contract wallets can be detected by on-chain verification to determine if 
 The below code examples can be used in order to check if a given address is a smart contract or a regular address.
 
 ```jsx
-const rpcUrl = '<https://rpc.fuse.io>';
+const rpcUrl = "<https://rpc.fuse.io>";
 
 // with ethers
 import { providers, utils } from "ethers";
@@ -91,8 +93,8 @@ Your dapp manages this seamlessly with the mobile wallet application. Simply sub
 
 The mobile wallet will convert the data into a meta transaction with the following parameters:
 
-* `to` will be the address of the `RelayerManager` contract
-* `data` will be the encoded data of the `execute()` method call with the relevant parameters
+- `to` will be the address of the `RelayerManager` contract
+- `data` will be the encoded data of the `execute()` method call with the relevant parameters
 
 Your dapp will receive the transaction hash for monitoring the transaction status, and events will be emitted as usual.
 
