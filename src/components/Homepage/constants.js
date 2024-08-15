@@ -19,14 +19,12 @@ const ExploreApisList = [
   },
   {
     title: "Data APIs",
-    description:
-      "Access real-time indexed transactions with ease.",
+    description: "Access real-time indexed transactions with ease.",
     href: "/smart-wallet-api/get-wallet-actions",
   },
   {
     title: "GraphQL APIs",
-    description:
-      "Access real-time indexed transactions with ease.",
+    description: "Access real-time indexed transactions with ease.",
     href: "/graphql-api/graphql-api",
   },
   {
@@ -49,7 +47,7 @@ const MainFeatureList = [
     title: "Fuse Basics",
     description:
       "Learn all the basics about the Fuse network, including network details, wallets, bridges and more.",
-    link: "/category/intro-to-fuse",
+    link: "/basics/intro-to-fuse",
   },
   {
     image: "img/new-ms-p2.svg",
@@ -65,7 +63,7 @@ const MainFeatureList = [
     title: "Tutorials",
     description:
       "Discover everything you need to know about Fuse v2 and how we're revolutionizing various industries with web3 technology.",
-    link: "/category/tutorials",
+    link: "/fuse-box/tutorials",
   },
 ];
 
