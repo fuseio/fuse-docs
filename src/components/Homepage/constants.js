@@ -47,7 +47,7 @@ const MainFeatureList = [
     title: "Fuse Basics",
     description:
       "Learn all the basics about the Fuse network, including network details, wallets, bridges and more.",
-    link: "/basics/intro-to-fuse",
+    link: "/category/intro-to-fuse",
   },
   {
     image: "img/new-ms-p2.svg",
