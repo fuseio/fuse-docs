@@ -1,5 +1,5 @@
 ---
-title: How to Get Token Balances for a Smart Contract Wallet 
+title: How to Get Token Balances for a Smart Contract Wallet
 sidebar_position: 12
 ---
 
@@ -11,11 +11,11 @@ In this tutorial, we'll walk through fetching token balances for a Smart Contrac
 
 Before starting, ensure you have the following:
 
-- Node.js installed on your machine.
-- Code Editor: Use your preferred code editor; VS Code is recommended.
-- An EOA wallet with a private key. You can use an existing one or create a new wallet.
-- A basic understanding of React.js and Next.js.
-- An API key from the Fuse Console. Get one [here](https://console.fuse.io/build).
+* Node.js installed on your machine.
+* Code Editor: Use your preferred code editor; VS Code is recommended.
+* An EOA wallet with a private key. You can use an existing one or create a new wallet.
+* A basic understanding of React.js and Next.js.
+* An API key from the Fuse Console. Get one [here](https://console.fuse.io/build).
 
 ## Step 1: Set Up a Next.js Project
 
@@ -39,7 +39,8 @@ npm install @fuseio/fusebox-web-sdk ethers
 ```
 
 ## Step 3: Import Libraries
-Open the index.tsx file, delete the default code from NextJS. Edit index.tsx file by adding the code below and save it to see the updated result in your browser. First, import the required libraries and put up a default `Hello, World!’ text:
+
+Open the index.tsx file, delete the default code from NextJS. Edit index.tsx file by adding the code below and save it to see the updated result in your browser. First, import the required libraries and put up a default \`Hello, World!’ text:
 
 ```javascript
 import { FuseSDK } from "@fuseio/fusebox-web-sdk";
@@ -55,11 +56,20 @@ export default function Home() {
 ```
 
 ## Step 4: Run the Development Server
-Run npm run dev to start the development server. Visit http://localhost:3000 to view your application.
 
+Run npm run dev to start the development server. Visit [http://localhost:3000](http://localhost:3000) to view your application.
 
 ## Step 5: Initialize the App State
-We are going to first get the Smart Contract Wallet, and it's owned Tokens and their respective balances. We will handle these information in various state and set/call each as required. We will also implement an App Loading state while waiting for the Promise methods to be resolved.
+
+We are going to first get the Smart Contract Wallet, and it's owned Tokens and their respective balances, excluding Fuse native token balance. We will handle these information in various state and set/call each as required. We will also implement an App Loading state while waiting for the Promise methods to be resolved.
+
+Import the useState method:
+
+```javascript
+import { useState } from 'react'
+```
+
+Set the state variables:
 
 ```javascript
   const [smartAccount, setSmartAccount] = useState<string>('')
@@ -78,6 +88,7 @@ interface Token {
 ```
 
 ## Step 6: implement methods
+
 We will implement the methods: `init`, `getSender`, `getTokenList` and `getTokenBalance` in one method call. Declare the method as `smartWalletBalance`. Update the `smartWalletBalance` method with the following code:
 
 ```javascript
@@ -268,29 +279,24 @@ const smartWalletBalance = async () => {
 
 Now let's explain each part of the `smartWallet` function:
 
-1. **Initialization**: 
-   - We initialize the FuseSDK using the provided API key and credentials using `FuseSDK.init()`. 
-   - The `withPaymaster: true` option enables the use of a paymaster.
-
+1. **Initialization**:
+   * We initialize the FuseSDK using the provided API key and credentials using `FuseSDK.init()`.
+   * The `withPaymaster: true` option enables the use of a paymaster.
 2. **Getting Smart Account Address**:
-   - We retrieve the address of the Smart Account using `fuseSDK.wallet.getSender()` and set it to the `smartAccount` state variable.
-
+   * We retrieve the address of the Smart Account using `fuseSDK.wallet.getSender()` and set it to the `smartAccount` state variable.
 3. **Getting Token List**:
-   - We use `fuseSDK.explorerModule.getTokenList(smartAccount)` to fetch the list of tokens held by the Smart Contract Wallet.
-   - This method returns an array of objects, each containing information about a token, such as symbol, name, and address.
-   - We set this array of token objects to the `tokenNames` state variable.
-
+   * We use `fuseSDK.explorerModule.getTokenList(smartAccount)` to fetch the list of tokens held by the Smart Contract Wallet.
+   * This method returns an array of objects, each containing information about a token, such as symbol, name, and address.
+   * We set this array of token objects to the `tokenNames` state variable.
 4. **Extracting Token Addresses**:
-   - We extract the token addresses from the `tokenList` array using the `map()` function and store them in the `tokenAddresses` array.
-
+   * We extract the token addresses from the `tokenList` array using the `map()` function and store them in the `tokenAddresses` array.
 5. **Fetching Balances**:
-   - We initialize an empty object, `fetchedBalances`, to store the token balances.
-   - We iterate over each `tokenAddress` in the `tokenAddresses` array.
-   - For each `tokenAddress`, we use `fuseSDK.explorerModule.getTokenBalance(tokenAddress, smartAccount)` to fetch the balance of that token held by the Smart Contract Wallet.
-   - We store each balance in the `fetchedBalances` object with the `tokenAddress` as the key.
-
+   * We initialize an empty object, `fetchedBalances`, to store the token balances.
+   * We iterate over each `tokenAddress` in the `tokenAddresses` array.
+   * For each `tokenAddress`, we use `fuseSDK.explorerModule.getTokenBalance(tokenAddress, smartAccount)` to fetch the balance of that token held by the Smart Contract Wallet.
+   * We store each balance in the `fetchedBalances` object with the `tokenAddress` as the key.
 6. **Updating State**:
-   - Finally, we update the `balances` state variable with the `fetchedBalances` object containing token balances.
+   * Finally, we update the `balances` state variable with the `fetchedBalances` object containing token balances.
 
 This breakdown explains how each part of the `smartWallet` function works and utilizes the `getTokenList` and `getTokenBalance` methods to fetch token information and balances for a Smart Contract Wallet.
 
