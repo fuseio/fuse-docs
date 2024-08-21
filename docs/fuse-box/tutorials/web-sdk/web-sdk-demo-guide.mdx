@@ -1,5 +1,7 @@
 ---
-title: FuseBox Web SDK Demo App - Smart Contract Wallet, Transfer Token and View Balance 
+title: >-
+  FuseBox Web SDK Demo App - Smart Contract Wallet, Transfer Token and View
+  Balance
 sidebar_position: 11
 ---
 
@@ -9,18 +11,20 @@ This is a code lab on building a simple application where you can create a Smart
 
 At the end of this code lab, we will build an application that returns your Smart Contract Wallet Address, a Form that you can use to send tokens, and a display of the Tokens owned by the Smart Contract Wallet with their respective balances.
 
-FuseBox leverages Account Abstraction out of the Box. It is an Open Source Wallet-As-A-Service platform and is ERC-4337 complaint. Providing Developers the ability to use a Bundler for collacting UserOperations, and also a Paymaster to sponsor Gas payments for their users to provide a Gasless experience. 
+FuseBox leverages Account Abstraction out of the Box. It is an Open Source Wallet-As-A-Service platform and is ERC-4337 complaint. Providing Developers the ability to use a Bundler for collacting UserOperations, and also a Paymaster to sponsor Gas payments for their users to provide a Gasless experience.
 
 ## Prerequisites
+
 Before we begin, ensure you have the following:
 
-- Node.js is installed on your machine.
-- Code Editor: Use your preferred code editor; VS Code is recommended.
-- An EOA wallet with a private key. You can use an existing one or create a new wallet.
-- A basic understanding of React.js and Next.js.
-- An API key from the Fuse Console. Get one [here](https://console.fuse.io/build).
+* Node.js is installed on your machine.
+* Code Editor: Use your preferred code editor; VS Code is recommended.
+* An EOA wallet with a private key. You can use an existing one or create a new wallet.
+* A basic understanding of React.js and Next.js.
+* An API key from the Fuse Console. Get one [here](https://console.fuse.io/build).
 
 ## Step 1: Set Up Your Next.js App
+
 Create a new Next.js app:
 
 ```bash
@@ -33,6 +37,7 @@ Answer the required prompts from NextJS in the terminal. We must note that we us
 <img src="/img/tutorials/nextjs-init.png" />
 
 ## Step 2: Install Dependencies
+
 Install the required dependencies:
 
 ```bash
@@ -41,10 +46,12 @@ npm install ethers
 ```
 
 ## Step 3: Run the Development Server
-Run npm run dev to start the development server. Visit `http://localhost:3000` to view your application. 
+
+Run npm run dev to start the development server. Visit `http://localhost:3000` to view your application.
 
 ## Step 4: Import Libraries
-Open the index.tsx file, delete the default code from NextJS. Edit `index.tsx` file by adding the code below and save it to see the updated result in your browser. First, import the required libraries and put up a default `Hello, World!’ text:
+
+Open the index.tsx file, delete the default code from NextJS. Edit `index.tsx` file by adding the code below and save it to see the updated result in your browser. First, import the required libraries and put up a default \`Hello, World!’ text:
 
 ```javascript
 import { FuseSDK } from "@fuseio/fusebox-web-sdk";
@@ -66,19 +73,20 @@ GET List of Tokens Owned by Address.
 GET Token Balance.
 
 ## Step 5: Create a Smart Contract Wallet.
+
 To use the SDK in your project, you must create an instance of the FuseSDK class. This class is the key to interacting with the Fuse API using the SDK.
 
-The init method sets up a wallet and authenticates the user's provided credentials. It requires a PRIVATE_KEY, which you can get in the Fuse Developer Console [here](https://console.fuse.io/build). When you send a request to the server using this method, it verifies the credentials. If the credentials are valid, developers can use the `getSender()` to return an address.
+The init method sets up a wallet and authenticates the user's provided credentials. It requires a API\_KEY from FuseBox. Create an Account and get the API\_KEY in the Fuse Developer Console [here](https://console.fuse.io/build). When you send a request to the server using this method, it verifies the credentials. If the credentials are valid, developers can use the `getSender()` to return an address.
 
 To create the Smart Contract Wallet, we will update the code by adding a `smartWallet` function, and parsing the returned Smart Contract Address to a state variable.
 
-Import the useState method:
+Inside the `Home` Component, import the useState method:
 
 ```javascript
 import { useState, useEffect } from 'react'
 ```
 
-Set the state variable:
+Set the state variable to manage the state of the Smart Contract Account that will be created:
 
 ```javascript
 const [smartAccount, setSmartAccount] = useState<string>("")
@@ -113,6 +121,7 @@ useEffect(()=> {
   smartWallet()
 }, [])
 ```
+
 Reload the app and open the console. The newly created Smart Contract Address will be logged into the Console!
 
 To return the Smart Contract Address to the UI, you can parse the stored state variable:
@@ -142,6 +151,7 @@ const transferToken = async() => {
   const fuseSDK = await FuseSDK.init(apiKey, credentials, {
     withPaymaster: true,
   });
+  const recipient = "Enter ANY EOA or SCA address";
   const amount = ethers.parseUnits(amountValue, 6)
   const res = await fuseSDK.transferToken(tokenAddress, recipient, amount);
   console.log(`UserOpHash: ${res?.userOpHash}`);
@@ -156,7 +166,7 @@ const transferToken = async() => {
 
 The `transferToken` method takes in three arguments: `tokenAddress`, `recipient`, `amount`.
 
-The `tokenAddress` is the address of the Token which we are sending a specific `amount` to a receiving address `recipient`. You can find a list of Token Addresses here: https://explorer.fuse.io/tokens
+The `tokenAddress` is the address of the Token which we are sending a specific `amount` to a receiving address `recipient`. You can find a list of Token Addresses here: [https://explorer.fuse.io/tokens](https://explorer.fuse.io/tokens)
 
 It is important to mention that when sending a Token, you will parse the token in units to the number of the decimal places which the Token is defined. For example, USDC has 6 decimal places. To send 1 USDC, you parse it thus:
 
@@ -167,6 +177,7 @@ ethers.parseUnits(“1”, 6)
 Where the string “1” is the amount, and 6 the number of decimal places.
 
 ## Step 7: Form UI.
+
 To carryout Token Transfer, the next step is to build a Form component where we can enter the recipient and amount values we want to transfer to.
 
 Update the UI:
@@ -192,6 +203,7 @@ Let’s write the state variables to store the `recipient` and `amount` values. 
 const [toValue, setToValue] = useState<string>(' ');
 const [amountValue, setAmountValue] = useState<string>(' ');
 ```
+
 Add a handle method to take the input data
 
 ```javascript
@@ -203,8 +215,8 @@ Add a handle method to take the input data
      setAmountValue(e.target.value)
   };
 ```
-The values are set in the state: recipient == toValue, amount == amountValue
 
+The values are set in the state: recipient == toValue, amount == amountValue
 
 Update the Form UI to handle the data and submit it:
 
@@ -220,7 +232,6 @@ Update the Form UI to handle the data and submit it:
     <button type="submit" className=" focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Send</button>
 </form>
 ```
-
 
 Update the `transferToken` function to read the values stored in the state:
 
