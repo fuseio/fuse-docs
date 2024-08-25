@@ -7,8 +7,8 @@ In this article, we will use the Fuse Wallet SDK **[Swap Tokens SDK](../../sdk/s
 
 Pre-requites:
 
-- Basic knowledge of Dart/Flutter
-- An API Key from the [Console](https://console.fuse.io/build)
+* Basic knowledge of Dart/Flutter
+* An API Key from the [Console](https://console.fuse.io/build)
 
 ## Step 1: Set Up Your Project
 
@@ -71,7 +71,7 @@ import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
 
 ## Step 4: SWAP Implementation
 
-The app's basic functionality is to swap from one token to another, in this first example, from USDC to FUSE. The method is:
+The app's basic functionality is to swap from one token to another, in this first example, from FUSE to USDC. The method is:
 
 ```dart
 final nativeTokenAddress = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
@@ -229,7 +229,7 @@ Future<void> _swapTokens() async {
     credentials,
   );
 
-  final nativeTokenAddress = Variables.NATIVE_TOKEN_ADDRESS;
+  final nativeTokenAddress = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE';
   final usdcTokenAddress = '0x28C3d1cD466Ba22f6cae51b1a4692a831696391A';
 ```
 
@@ -309,7 +309,11 @@ Save the file. Run the application using the command
 flutter run
 ```
 
-At this point, you can confirm that the SWAP functionality works! The next step is a bonus step to improve the User Experience, and we will update the code to include a Dropdown for selecting currencies and an input field to specify a particular amount.
+At this point, you can confirm that the SWAP functionality works! 
+
+## BONUS SECTION
+
+The next step is a bonus step to improve the User Experience, and we will update the code to include a Dropdown for selecting currencies and an input field to specify a particular amount.
 
 Update the `TokenSwapScreenState` by adding a `_formKey` for handling Form events, and a controller `_amountController` and update the `_swapTokens`:
 
