@@ -12,10 +12,13 @@ We'll guide you through the steps, from setting up your tools to adding features
 Whether you're a pro developer wanting to try out blockchain or someone new to tech, this guide is your friend. Let's dive in and see how we can create mobile apps that bring the power of Fuse blockchain to your fingertips!
 
 ## Pre-requites:
-- Basic knowledge of Dart/Flutter
-- An API Key from [Console](https://console.fuse.io/build)
+
+* Basic knowledge of Dart/Flutter
+* An API Key from [Console](https://console.fuse.io/build)
+* PrivateKEY from an Externally Owned Account (EOA)
 
 ## Step 1: Set Up Your Project
+
 Create a new project folder and initialize it using Flutter:
 
 ```bash
@@ -28,9 +31,11 @@ Open the project in your favorite code editor, such as VSCode and run it using:
 ```bash
 flutter run
 ```
-You will find the default app running: 
+
+You will find the default app running:
 
 ## Step2: Index
+
 Open your Flutter project and update the default  Dart file in the `lib` dir of your app, `main.dart`.
 
 ```dart
@@ -51,6 +56,7 @@ void main() {
 This is a basic `Hello, world!` app.
 
 ## Step 3: The User Interface
+
 In Flutter, everything is a widget. Widgets are just tiny blocks of UI that you can combine to make a complete app.
 
 In this demo, we are not going to focus on the aestethics of the application, rather, we are going to focus on the implemention the creation of a Smart Contract Wallet using FuseBox, funding the Wallet and carrying out a Transfer. Here is a Basic UI for the application, update the `main.dart` file:
@@ -91,7 +97,8 @@ class MyHomePage extends StatelessWidget {
 ```
 
 ## Step 4: Create a Smart Contract  Wallet
-Install the required dependencies [fuse_wallet_sdk](https://pub.dev/packages/fuse_wallet_sdk)
+
+Install the required dependencies [fuse\_wallet\_sdk](https://pub.dev/packages/fuse_wallet_sdk)
 
 Open the `pubspec.yaml` file located inside the app folder, and `fuse_wallet_sdk: ^0.2.20` under **dependencies**.
 
@@ -103,12 +110,13 @@ Add the imported file at the top of your `main.dart` file:
 import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
 ```
 
-There are 2 primary functions for this demo: Creating Smart Contract Wallets and Transfers. Both actions will be carried out using the FuseBox Flutter SDK. 
+There are 2 primary functions for this demo: Creating Smart Contract Wallets and Transfers. Both actions will be carried out using the FuseBox Flutter SDK.
 
 ## Step 5: Create Smart Contract Wallet:
-To create a Smart Contract Wallet, we are going to be using Stateful Flutter Widgets. A widget that changes when a user interacts with it is called a stateful widget. For example, a button action to return a Smart Contract Wallet. 
 
-We will change the `HomePage` Stateless widget to a Stateful widget and create a state where we carry out a change (creating) a Smart Contract Wallet at the click of a Button. Update the code:
+To create a Smart Contract Wallet, we are going to be using Stateful Flutter Widgets. A widget that changes when a user interacts with it is called a stateful widget. For example, a button action to return a Smart Contract Wallet.
+
+We will change the `MyHomePage` Stateless widget to a Stateful widget and create a state where we carry out a change (creating) a Smart Contract Wallet at the click of a Button. Update the code:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -185,11 +193,11 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-Run the application. 
+Run the application.
 
 Click the **Connect** button, you will see the Smart Contract Wallet Address logged to the console.
 
-_**Note: If you are experiencing problems, open the `macos` directory, open `Runner` and open the `DebugProfile.entitlements` add the line:**_
+***Note: If you are experiencing problems, open the `macos` directory, open `Runner` and open the `DebugProfile.entitlements` add the line:***
 
 ```flutter
 <key>com.apple.security.network.client</key>
@@ -225,7 +233,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 print("OKKK");
                 const apiKey = 'API_KEY';
                 final privateKey = EthPrivateKey.fromHex(
-                    'EOA_PRIVATE_KEY’');
+                    'EOA_PRIVATE_KEY’);
 
                 final fuseSDK = await FuseSDK.init(apiKey, privateKey);
                 String address = fuseSDK.wallet.getSender();
@@ -282,7 +290,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
 Re-Run the code!
 
-Click the “Create Button” You will see the Smart Contract Address displayed on your screen, and the Button is now ready for carrying out Transfers.
+Click the “Create" Button, you will see the Smart Contract Address displayed on your screen, and the Button is now ready for carrying out Transfers.
 
 ## Conclusion
+
 This is a beginner guide on creating Smart Contract Wallets using the Fuse Wallet SDK. Developers can build Mobile Apps where users can authentication using Social Methods and get assinged a Smart Contract Wallet address which they can use to carry out UserOperations according to the ERC-4337 standard. In the next guide, we will walk through sending "Transfers" to the Fuse Blockchain from Mobile App powered by the Fuse Wallet SDK.
