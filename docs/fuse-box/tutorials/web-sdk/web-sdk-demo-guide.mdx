@@ -233,6 +233,16 @@ Update the Form UI to handle the data and submit it:
 </form>
 ```
 
+Add a `handleSubmit` method:
+
+```javascript
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log("Input value:", toValue, amountValue);
+  transferToken();
+};
+```
+
 Update the `transferToken` function to read the values stored in the state:
 
 ```javascript
