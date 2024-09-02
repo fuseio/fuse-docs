@@ -181,11 +181,11 @@ const config: Config = {
           // ],
         },
         {
-            type: "docSidebar",
-            sidebarId: "apiSidebar",
-            label: "API References",
-            position: "left",
-          },
+          type: "docSidebar",
+          sidebarId: "apiSidebar",
+          label: "API References",
+          position: "left",
+        },
       ],
     },
     footer: {
