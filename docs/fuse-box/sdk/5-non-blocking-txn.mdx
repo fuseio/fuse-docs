@@ -20,7 +20,7 @@ To utilize this feature, simply pass the `TxOptions` with `useNonceSequence: tru
 const tokenAddress = "YOUR_TOKEN";
 const tokenDecimals = 18;
 const to = "RECEIVER_ADDRESS";
-const amount = parseUnits("0.001", tokenDecimals);
+const amount = ethers.parseUnits("0.001", tokenDecimals);
 const data = Uint8Array.from([]);
 await fuseSDK.transferToken(
   tokenAddress,

@@ -25,7 +25,7 @@ You can also subscribe to events related to the token transfer to track its prog
 ```typescript
 const tokenAddress = "0x28C3d1cD466Ba22f6cae51b1a4692a831696391A"; // USDC Token address
 const to = "RECEIVER_ADDRESS";
-const amount = parseUnits("0.001", 6); // 6 represents the decimals of USDC token in the [contract](https://explorer.fuse.io/address/0x28C3d1cD466Ba22f6cae51b1a4692a831696391A?tab=read_contract) 
+const amount = ethers.parseUnits("0.001", 6); // 6 represents the decimals of USDC token in the [contract](https://explorer.fuse.io/address/0x28C3d1cD466Ba22f6cae51b1a4692a831696391A?tab=read_contract) 
 const res = await fuseSDK.transferToken(tokenAddress, to, amount);
 
 console.log(`UserOpHash: ${res?.userOpHash}`);
