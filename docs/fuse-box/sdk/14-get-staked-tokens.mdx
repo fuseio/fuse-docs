@@ -16,8 +16,7 @@ import PlatformTabItem from "../../components/PlatformTabItem";
 
 ```typescript
 const smartWalletAddress = fuseSDK.wallet.getSender();
-const stakedTokens: StakedTokenResponse =
-  await fuseSDK.stakingModule.getStakedTokens(smartWalletAddress);
+const stakedTokens = await fuseSDK.stakingModule.getStakedTokens(smartWalletAddress);
 ```
 
 </PlatformTabItem>
