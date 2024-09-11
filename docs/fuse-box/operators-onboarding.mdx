@@ -1,0 +1,97 @@
+---
+title: Operators Onboarding
+sidebar_position: 6
+---
+
+### Who is an Operator?
+
+An **Operator** on Fuse is an Intermediary that enables consumers interact with the Fuse blockchain via their Solutions. Operators can include integrators, payment providers, financial institutions, apps, consumer clubs, sharing economies, startups, local communities, online and offline retailers, and more. They use the Fuse Network blockchain and other tools to power payment services for their customers, enabling the exchange of real-world goods and services using the blockchain.
+
+A key feature of Operators is that they pay network fees on behalf of users.
+
+Operators an build their applications on Fuse using the FuseBox Web SDK, Flutter SDK or REST API endpoints.
+
+### How to get API key?
+
+To build as an Operator, you need to get an API KEY to use the FuseBox SDK. Create an API KEY using the Fuse [Console](https://console.fuse.io/build) Tool by following the steps outlined in this [guide](../../fuse-box/getting-started).
+
+### How to fund my Operator Account with Fuse Tokens?
+
+After you have successfully created an Operator Account, click the button “Add funds”. Copy the Operator Account Address.
+Note: The Operator Account Address is a Smart Contract Wallet, and as such it can be used for ALL ERC-4337 functions.
+
+<img src="/img/console/operator-add-funds.png" />
+
+<img src="/img/console/operator-balance.png" />
+
+Once you have funded the Operator Account with at least 10 Fuse Tokens, you can then access the API Key.
+
+<img src="/img/console/operator-dashboard-final.png" />
+
+**Note: Operator Functions are currently only available on Mainnet.**
+
+### How to get Fuse Tokens?
+
+FUSE is available on several centralized (CEX) and decentralized DEX [exchanges](../intro-to-fuse/fuse_token#where-to-buy-fuse-token).
+
+Via [Voltage Finance](https://voltage.finance/home).
+
+[BSC Bridge](../guides/Voltage-Finance-bridge-FuseBNB-Chain)
+
+### How to deploy a Smart Contract on Fuse?
+
+You can read the section on "**Build on Fuse [Guides](../../developers/deploying-smart-contracts/)**".
+
+### How to build on Sparknet?
+
+To deploy applications to Fuse Sparknet, follow the "Build on Fuse Guide" and set the Network ID to **123**.
+
+### How to deploy to mainnet?
+
+To deploy applications to Fuse Sparknet, follow the "Build on Fuse Guide" and set the Network ID to **122**.
+
+### How to find ALL API endpoints?
+
+[API References](/api-introduction).
+
+### How to find ALL Web/Flutter SDK methods
+
+The [FuseBox SDK](../../fuse-box/sdk/) contains ALL the methods required for building a complete application on Fuse. The SDKs for both Flutter and JS. The FuseBox SDK simplifies the incorporation of Account Abstraction on the Fuse Blockchain, offering features such as:
+
+- Smart Contract Wallet Creation.
+- ERC20 and Native FUSE Transfers.
+- Staking.
+- Data Services.
+- Trading Functions.
+
+### How do you set up a Paymaster?
+
+Upon successfully creating an API and funding your Operator Account, your Operator Account Paymaster is pre-funded with 1 FUSE (enough to sponsor ~300 transactions) and you can set up your application for a Gasless experience by parsing a 3rd argument when initializing the FuseBox SDK.
+
+Ensure you replace YOUR_FUSEBOX_API_KEY with your actual API key:
+
+```typescript
+const apiKey = "YOUR_FUSEBOX_API_KEY";
+const credentials = new ethers.Wallet(privateKey);
+const fuseSDK = await FuseSDK.init(apiKey, credentials, {
+  withPaymaster: true,
+});
+```
+
+### Which node providers supports Fuse and their URLs?
+
+See RPC Node Providers [page](../rpc).
+
+### How to get Fuse test tokens for building on Sparknet?
+
+[ChainDrop faucet](https://chaindrop.org/?chainid=123&token=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee "ChainDrop faucet"), [Stakely faucet](https://stakely.io/en/faucet/fuse-fuse)
+
+### List of important Smart Contract Addresses?
+
+[Here](../../category/important-smart-contracts) are a collection of Smart Contracts address that you need to know in the course of building on Fuse. The Smart Contracts include Fuse Contracts deployed across other Blockchain networks.
+
+### Tutorial Guides:
+
+- [FuseBox MetaMask Login](../../fuse-box/tutorials/partner/metamask-login)
+- [FuseBox Social Authentication using Web3Auth](../../fuse-box/tutorials/partner/web3auth-login)
+- [Send a Gasless transaction using FuseBox](../../fuse-box/tutorials/send-your-first-gasless-transaction)
