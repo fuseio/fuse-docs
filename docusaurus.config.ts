@@ -23,7 +23,6 @@ const config: Config = {
       'classic',
       {
         docs: {
-          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/fuseio/fuse-docs/blob/master',
           docItemComponent: '@theme/ApiItem',
