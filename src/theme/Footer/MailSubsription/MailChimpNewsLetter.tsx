@@ -29,12 +29,12 @@ const CustomForm = ({ status, message, onValidated }) => {
         validateOnBlur={false}
         onSubmit={(v, { resetForm }) => {
           submit(v.email)
-          resetForm({ email: '' })
-          combinedAnalyticsClickHandler(
-            'news_letter_subscription',
-            'Newsletter Subscribe',
-            ''
-          )
+          resetForm({ values: { email: '' } })
+          // combinedAnalyticsClickHandler(
+          //   'news_letter_subscription',
+          //   'Newsletter Subscribe',
+          //   ''
+          // )
         }}
       >
         {({ isSubmitting, dirty }) => (
