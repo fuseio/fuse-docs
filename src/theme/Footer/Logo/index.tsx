@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import {useBaseUrlUtils} from '@docusaurus/useBaseUrl';
 import ThemedImage from '@theme/ThemedImage';
 import styles from './styles.module.css';
+
 function LogoImage({logo}) {
   const {withBaseUrl} = useBaseUrlUtils();
   const sources = {

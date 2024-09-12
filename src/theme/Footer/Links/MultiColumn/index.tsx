@@ -1,7 +1,7 @@
 import React from 'react'
 import LinkItem from '@theme/Footer/LinkItem'
 import styles from './styles.module.css'
-import BeehiivNewsLetter from '../../MailSubsription/BeehiivNewsLetter.js'
+import BeehiivNewsLetter from '../../MailSubsription/BeehiivNewsLetter'
 
 function ColumnLinkItem({ item }) {
   return item.html ? (

@@ -1,8 +1,10 @@
 import React from 'react'
 import LinkItem from '@theme/Footer/LinkItem'
+
 function Separator() {
   return <span className='footer__link-separator'>·</span>
 }
+
 function SimpleLinkItem({ item }) {
   return item.html ? (
     <span
@@ -15,6 +17,7 @@ function SimpleLinkItem({ item }) {
     <LinkItem item={item} />
   )
 }
+
 export default function FooterLinksSimple({ links }) {
   return (
     <div className='footer__links text--center '>

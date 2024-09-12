@@ -1,7 +1,24 @@
 import React from 'react';
 import Link from "@docusaurus/Link";
 import styles from './styles.module.css';
-export function MainFeatureCard({ href, image, imageHover, title, link, description }) {
+
+interface MainFeatureCardProps {
+    href?: string;
+    image: string;
+    imageHover?: string;
+    title: string;
+    link: string;
+    description: string;
+}
+
+export function MainFeatureCard({
+    href,
+    image,
+    imageHover,
+    title,
+    link,
+    description,
+}: MainFeatureCardProps) {
     return (
         <Link
             style={{
