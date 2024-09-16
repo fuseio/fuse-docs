@@ -24,7 +24,7 @@ const config: Config = {
       {
         docs: {
           routeBasePath: '/',
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/fuseio/fuse-docs/blob/master',
           docItemComponent: '@theme/ApiItem',
           remarkPlugins: [
@@ -59,7 +59,7 @@ const config: Config = {
           anonymizeIP: true,
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: './src/css/custom.css',
         },
       } satisfies Preset.Options,
     ],
