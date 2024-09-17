@@ -135,7 +135,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'basicsSidebar',
           position: 'left',
-          label: 'Basics',
+          label: 'Fuse Network',
         },
         // {
         //   type: 'doc',
