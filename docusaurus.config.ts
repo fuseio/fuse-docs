@@ -135,14 +135,14 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'basicsSidebar',
           position: 'left',
-          label: 'Basics',
-        },
-        {
-          type: 'doc',
-          docId: 'developers/Quick-Start',
-          position: 'left',
           label: 'Fuse Network',
         },
+        // {
+        //   type: 'doc',
+        //   docId: 'developers/Quick-Start',
+        //   position: 'left',
+        //   label: 'Fuse Network',
+        // },
         {
           type: 'docSidebar',
           sidebarId: 'validatorsSidebar',
@@ -152,7 +152,7 @@ const config: Config = {
         {
           type: 'docSidebar',
           position: 'left',
-          label: 'FuseBox',
+          label: 'Build',
           sidebarId: 'fuseBoxSidebar'
           // The Items section below is used to create a dropdown menu. 
           // The dropdown menu requires removing the 'sidebarId'
