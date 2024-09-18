@@ -23,31 +23,14 @@ servers:
     description: Production server
   - url: https://api.staging.fuse.io/api/v0/graphql
     description: Staging server
-paths:
-  /collectibles/{address}:
-    get:
-      tags:
-        - NFTs
-      summary: Get NFTs by wallet address
-      description: Retrieves NFTs associated with a specific wallet address, including details like creation time, token ID, and collection information.
-      parameters:
-        - $ref: "#/components/parameters/ApiKey"
-        - name: address
-          in: path
-          required: true
-          schema:
-            type: string
-          description: The wallet address to query for associated NFTs.
-      responses:
-        "200":
-          description: A list of NFTs associated with the wallet address.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NFTsResponse"
-        "403":
-          $ref: "#/components/responses/ForbiddenError"
 
+tags:
+  - name: NFTs
+    description: NFT-related API endpoints
+  - name: User Operations
+    description: User operation-related API endpoints
+
+paths:
   /userops/{address}:
     get:
       tags:
@@ -83,54 +66,6 @@ components:
       description: Your API key to authenticate requests.
 
   schemas:
-    NFTsResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            account:
-              type: object
-              properties:
-                id:
-                  type: string
-                address:
-                  type: string
-                collectibles:
-                  type: array
-                  items:
-                    $ref: "#/components/schemas/Collectible"
-    Collectible:
-      type: object
-      properties:
-        id:
-          type: string
-        created:
-          type: string
-        tokenId:
-          type: string
-        description:
-          type: string
-        descriptorUri:
-          type: string
-        name:
-          type: string
-        imageURL:
-          type: string
-        creator:
-          $ref: "#/components/schemas/Account"
-        owner:
-          $ref: "#/components/schemas/Account"
-        collection:
-          type: object
-          properties:
-            collectionName:
-              type: string
-            collectionSymbol:
-              type: string
-            collectionAddress:
-              type: string
-
     UserOpsResponse:
       type: object
       properties:
@@ -246,11 +181,6 @@ components:
               type: string
             decimals:
               type: string
-    Account:
-      type: object
-      properties:
-        id:
-          type: string
 
   responses:
     ForbiddenError:

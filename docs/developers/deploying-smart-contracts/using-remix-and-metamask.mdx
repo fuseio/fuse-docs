@@ -22,7 +22,7 @@ Using MetaMask with Remix is an example of Injected Web3, which is illustrated i
 
 - To start, go to [https://remix-project.org/](https://remix-project.org/)
 
-<img src="/img/remix-ide/landing.png" width="80%" height="70%" />
+<img src="/img/remix-ide/landing.png" />
 
 Create a Folder or a File where you want to write your Smart Contract, in this guide we will code and deploy an ERC-20 Token. Create a file called `Token.sol` and add the code:
 
@@ -50,7 +50,7 @@ The next step is to compile your Smart Contract Code to ensure thier are no bugs
 
 Click the Compile button and select a **Compiler** version. In this example, it is `0.8.0`
 
-<img src="/img/remix-ide/compile.png" width="80%" height="70%" />
+<img src="/img/remix-ide/compile.png" />
 
 If your code compiles successfully, you will see the **Solidity** logo with a green tick. After a successful Smart Contract compile, you can also copy the abi code which is used for interacting with your Smart Contract methods via a UI.
 
@@ -58,15 +58,15 @@ The next step is to deploy the Smart Contract. Remix IDE provides an environment
 
 Go to the deploy tab. Select the **ENVIRONMENT** dropdown and select the option **Injected Provider**
 
-<img src="/img/remix-ide/inject.png" width="80%" height="70%" />
+<img src="/img/remix-ide/inject.png" />
 
 This will prompt you to sign into your MetaMask, if you are already signed in, it will display your Wallet Address information and the Fuse Network information: mainnet ot testnet.
 
-<img src="/img/remix-ide/injected.png" width="80%" height="70%" />
+<img src="/img/remix-ide/injected.png" />
 
 After you have connected your MetaMask, the next step is to deploy the Smart Contract. Go to the deploy tab, and simply click the button **Deploy**. This will prompt an interaction with MetaMask which requires your approval. Approve the Transaction and it will deploy the Smart Contract to the Blockchain.
 
-<img src="/img/remix-ide/deploy.png" width="80%" height="70%" />
+<img src="/img/remix-ide/deploy.png" />
 
 You can view your deployed Smart Contract by copying the Transaction Hash and looking it up in the Fuse explorers.
 
