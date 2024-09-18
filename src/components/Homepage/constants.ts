@@ -40,7 +40,7 @@ const MainFeatureList = [
     title: "Quick Start",
     description:
       "Find links to valuable resources and websites that will bring you up to speed on building on Fuse.",
-    link: "/developers/Quick-Start",
+    link: "/fuse-box/Quick-Start",
   },
   {
     image: "img/new-ms-p.svg",
