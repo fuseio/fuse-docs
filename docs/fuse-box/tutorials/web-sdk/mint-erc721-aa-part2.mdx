@@ -192,6 +192,7 @@ const signer = await provider.getSigner();
 const apiKey = "API_KEY";
 const fuseSDK = await FuseSDK.init(apiKey, signer);
 const res = await fuseSDK.callContract(to, value, data);
+const receipt = await res?.wait()
 
 console.log(`UserOpHash: ${res?.userOpHash}`);
 console.log("Waiting for transaction...");

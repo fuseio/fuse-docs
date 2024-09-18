@@ -11,11 +11,11 @@ In this tutorial, we'll walk through fetching token balances for an Address usin
 
 Before starting, ensure you have the following:
 
-- Node.js installed on your machine.
-- Code Editor: Use your preferred code editor. VS Code is recommended.
-- An EOA wallet with a private key. You can use an existing one or create a new wallet.
-- A basic understanding of React.js and Next.js.
-- An API key from the Fuse Console. Get one [here](https://console.fuse.io/build).
+* Node.js installed on your machine.
+* Code Editor: Use your preferred code editor. VS Code is recommended.
+* An EOA wallet with a private key. You can use an existing one or create a new wallet.
+* A basic understanding of React.js and Next.js.
+* An API key from the Fuse Console. Get one [here](https://console.fuse.io/build).
 
 ## Step 1: Set Up a Next.js Project
 
@@ -164,7 +164,7 @@ Update the table body by calling the map() method:
       <td className="px-6 py-4">{token.contractAddress}</td>
       <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">{token.balance}</td>
     </tr>
-  ));
+  ))
 }
 ```
 
@@ -232,7 +232,7 @@ onChange={(e) => setAddress(e.target.value)}
 Update the Form submit argument by parsing `handleReturnBalance`:
 
 ```javascript
-onSubmit = { handleReturnBalances };
+onSubmit = { handleReturnBalances }
 ```
 
 Before saving the file, move the FetchData call to the handleReturnBalances, so that we can get the response as soon as we hit submit on the Form:
@@ -257,11 +257,11 @@ Visit `http://localhost:3000` in your browser to see the application in action. 
 
 ## Code Breakdown:
 
-- State variables `address` and `tokenData` are initialized using the `useState` hook. `address` stores the EOA or SCW address entered by the user, and `tokenData` stores the token data fetched from the API.
-- The `apiUrl` variable is dynamically constructed using template literals. It includes the address entered by the user.
-- The `handleReturnBalances` function is an asynchronous function called when the form is submitted. It prevents the default form submission behavior, and then calls the `fetchData` function.
-- The `fetchData` function is an asynchronous function that sends a **GET** request to the API using the fetch function. It checks if the response is ok, then parses the JSON response and updates the `tokenData` state with the fetched data. If an error occurs during the fetch operation, it is caught and logged.
-- The JSX code renders a form with an input field for the user to enter an Ethereum address. Upon submission, the `handleReturnBalances` function is called. The fetched token data is displayed in a table with columns for **Token Symbol, Contract Address, Balance**, and **Token type**.
+* State variables `address` and `tokenData` are initialized using the `useState` hook. `address` stores the EOA or SCW address entered by the user, and `tokenData` stores the token data fetched from the API.
+* The `apiUrl` variable is dynamically constructed using template literals. It includes the address entered by the user.
+* The `handleReturnBalances` function is an asynchronous function called when the form is submitted. It prevents the default form submission behavior, and then calls the `fetchData` function.
+* The `fetchData` function is an asynchronous function that sends a **GET** request to the API using the fetch function. It checks if the response is ok, then parses the JSON response and updates the `tokenData` state with the fetched data. If an error occurs during the fetch operation, it is caught and logged.
+* The JSX code renders a form with an input field for the user to enter an Ethereum address. Upon submission, the `handleReturnBalances` function is called. The fetched token data is displayed in a table with columns for **Token Symbol, Contract Address, Balance**, and **Token type**.
 
 This example code creates a web application that allows users to enter an address, fetch its balances using a REST API, and display the token data in a table format.
 
