@@ -259,7 +259,7 @@ const transferToken = async() => {
   const fuseSDK = await FuseSDK.init(apiKey, credentials, {
     withPaymaster: true,
   });
-  const recipient = "Enter ANY EOA or SCA address";
+  const recipient = "Enter ANY EOA or SCW address";
   const amount = ethers.parseUnits(amountValue, 6)
   const res = await fuseSDK.transferToken(tokenAddress, recipient, amount);
   console.log(`UserOpHash: ${res?.userOpHash}`);
@@ -273,6 +273,8 @@ const transferToken = async() => {
 ```
 
 The `transferToken` method takes in three arguments: `tokenAddress`, `recipient`, `amount`.
+
+Note: **SCW** is a *Smart Contract Wallet Address*.
 
 The tokenAddress is the address of the Token which we are sending a specific amount to a receiving address recipient. You can find a list of Token Addresses here: https://explorer.fuse.io/tokens
 
