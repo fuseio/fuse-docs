@@ -9,91 +9,353 @@ Welcome to the Fuse Blockchain Developer Quick Start Guide! This guide is design
 
 ## Network Details
 
-### Fuse Mainnet
+|               |             Fuse Mainnet                                    |  Fuse Testnet (Sparknet)  |
+| :------------ | :----------------------------------------------------- |:---|   
+| **Chain ID**  | 122                                                    | 123   |
+| **RPC**       | [https://rpc.fuse.io/](https://rpc.fuse.io/)​           | [https://rpc.fusespark.io](https://rpc.fusespark.io) |
+| **Symbol**    | FUSE                                                   | FUSE |
+| **Health**    | [https://health.fuse.io/](https://health.fuse.io/)     | [https://health.fusespark.io](https://health.fusespark.io) |
+| **Explorer**  | [https://explorer.fuse.io/](https://explorer.fuse.io/) | [https://explorer.fusespark.io/](https://explorer.fusespark.io/)
+| **WebSocket** | wss://explorer-node.fuse.io/ws                         | wss://explorernode.fusespark.io/ws |
+| **Faucet**    | [Stakely](https://stakely.io/faucet/fuse-fuse)         | [ChainDrop faucet](https://chaindrop.org/?chainid=123&token=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee "ChainDrop faucet"), [Stakely faucet](https://stakely.io/en/faucet/fuse-fuse) |
+| **Block size** | 20,000,000 | 20,000,000 |
+| **Block speed** | 5 seconds | 5 seconds |
+| **Gas price** | 10 GWei |10 GWei |
 
-| Block size | Block speed | Gas price | Native token | Network ID |
-| ---------- | ----------- | --------- | ------------ | ---------- |
-| 20,000,000 | 5 seconds   | 10 GWei   | FUSE         | 122        |
-
-| **RPC**       | [https://rpc.fuse.io/](https://rpc.fuse.io/)​          |
-| :------------ | :----------------------------------------------------- |
-| **Chain ID**  | 122                                                    |
-| **Symbol**    | FUSE                                                   |
-| **Health**    | [https://health.fuse.io/](https://health.fuse.io/)     |
-| **Explorer**  | [https://explorer.fuse.io/](https://explorer.fuse.io/) |
-| **WebSocket** | wss://explorer-node.fuse.io/ws                         |
 
 <p>&nbsp;</p>
 
-### Fuse Spark Testnet
+## Create and Deploy Smart Contracts 
 
-| Block size | Block speed | Gas price | Native token | Network ID |
-| ---------- | ----------- | --------- | ------------ | ---------- |
-| 20,000,000 | 5 seconds   | 10 GWei   | FUSE         | 123        |
+Fuse Blockchain is EVM-compatible. Smart Contracts written in Solidity are deployed on the Fuse Chain. Developers can deploy Smart Contracts in development to the Testnet and Smart Contracts going to Production on the Mainnet. Developers have the option to write their Smart Contracts using a variety of build tools:
+- [Remix](./deploying-smart-contracts/using-remix-and-metamask)
+- [Hardhat](./deploying-smart-contracts/using-hardhat)
+- [ThirdWeb](./deploying-smart-contracts/using-thirdweb)
 
+After writing a Smart Contract to deploy to the Fuse Blockchain, developers must add the Fuse Network to MetaMask. You can add Fuse Network to MetaMask using the following [guide](../basics/intro-to-fuse/tutorialsOverview).
 
-| **RPC**       | [https://rpc.fusespark.io](https://rpc.fusespark.io)                                                                                                                                 |
-| :------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Chain ID**  | 123                                                                                                                                                                                  |
-| **Symbol**    | FUSE                                                                                                                                                                                 |
-| **Health**    | [https://health.fusespark.io](https://health.fusespark.io)                                                                                                                           |
-| **Explorer**  | [https://explorer.fusespark.io/](https://explorer.fusespark.io/)                                                                                                                     |
-| **Faucet**    | [ChainDrop faucet](https://chaindrop.org/?chainid=123&token=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee "ChainDrop faucet"), [Stakely faucet](https://stakely.io/en/faucet/fuse-fuse) |
-| **WebSocket** | wss://explorernode.fusespark.io/ws                                                                                                                                                   |
+We are going to write an example Smart Contract and follow the required steps to deploy it to the Fuse Blockchain using Hardhat.
 
-<p>&nbsp;</p>
+Open a new terminal and run these commands to create a new folder:
 
-## Building on Fuse
+```bash
+mkdir hardhat-fuse-guide && cd hardhat-fuse-guide
+```
 
-### Creating a Fuse Wallet
+Inside the folder, initialize a project by running:
 
-To interact with the Fuse Blockchain, you'll need a wallet. Follow the [Fuse Metamask guide](../basics/intro-to-fuse/tutorialsOverview) to set up your wallet.
+```bash
+npm init -y
+```
 
+In the same directory where you installed Hardhat run:
 
-### Choosing a Development Option
+```bash
+npx hardhat init
+```
 
-Fuse is EVM compatible and uses Solidity programming languages for smart contract development.
+Open the Project in a VSCode editor. Open the Contract folder, delete the default Lock.sol file and add a new file Token.sol. Update the contents of HelloWorld.sol with the following code:
 
-Fuse provides a set of **APIs** for building on the Fuse blockchain, and also a **Web SDK** and **Flutter SDK** for building Mobile Apps.
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
-### Writing and Deploying Smart Contracts
+import "@openzeppelin/contracts@4.0.0/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts@4.0.0/token/ERC20/extensions/ERC20Burnable.sol";
+import "@openzeppelin/contracts@4.0.0/access/Ownable.sol";
 
-You can use [Remix IDE](./deploying-smart-contracts/using-remix-and-metamask), [Hardhat](./deploying-smart-contracts/using-hardhat), or [ThirdWeb](./deploying-smart-contracts/using-thirdweb) to deploy and test your smart contracts.
+contract MyToken is ERC20, ERC20Burnable, Ownable {
+    constructor(address initialOwner)
+        ERC20("MyToken", "MTK")
+        Ownable()
+    {}
 
-Learn how to interact with smart contracts using web3 libraries. Fuse supports Ethereum-compatible libraries like Web3.js, Ethers.js and Viem.js.
+    function mint(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount);
+    }
+}
+```
 
-<p>&nbsp;</p>
+To compile your contracts run:
 
-## Fuse Developer Tools
+```bash
+npx hardhat compile
+```
 
-### FuseBox
+It will return the response:
 
-[Create your project](https://console.fuse.io/build) to access FuseBox APIs.
+```bash
+Compiling...
+Compiled 1 contract successfully
+```
+The next step is to deploy the contracts to the Fuse Blockchain. In Hardhat, deployments are defined through Ignition Modules. These modules are abstractions to describe a deployment; that is, JavaScript functions that specify what you want to deploy.
 
-### SDK (Both TS & Dart)
+Open ignition inside the project root's directory, then, enter the directory named modules. Create a deploy.js and paste the following code:
 
-Fuse provides a variety of tools and SDKs to enhance your development experience.
+```javascript
+const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
 
-[Fuse API documentation](../api-introduction) for comprehensive information on FuseBox APIs, endpoints, and tutorials.
+const Token = buildModule("Token", (m) => {
+  const contract = m.contract("Token");
 
-<p>&nbsp;</p>
+  return { contract };
+});
 
-## Community and Support
+module.exports = Token;
+```
+To deploy the Smart Contract, open the hardhat.config.js file and update the information on Fuse Network
 
-### Joining the Fuse Developer Community
+```javascript
+hardhat.config.js
+module.exports = {
+  // ...
+  networks: {
+    fuse: {
+      url: "https://rpc.fuse.io/",
+      accounts: [`0xPRIVATE_KEY`], // put dev menomonic or PK here,
+    },
+    spark: {
+      url: "https://rpc.fusespark.io/",
+      accounts: [`0xPRIVATE_KEY`], // put dev menomonic or PK here,
+    },
+  },
+  // ...
+};
+```
 
-Connect with fellow developers, ask questions, and share your experiences in the [Fuse Discord channel](https://discord.gg/ZRJc7QW).
+Please note: The `0xPRIVATE_KEY` is used to sign the Transaction from your EOA without needing permission. You must ensure the EOA that owns the Private Key is funded with some Fuse Tokens to pay for Gas when deploying the Smart Contract.
 
-### Getting Support and Assistance
+Open a new terminal and deploy the smart contract to the Fuse network:
 
-For technical support and assistance, visit the [Fuse Help Center](https://help.fuse.io/) or reach out to the community on Discord.
+```bash
+npx hardhat ignition deploy ./ignition/modules/deploy.js --network fuse
+```
 
-<p>&nbsp;</p>
+The Smart Contract is deployed to the Fuse Mainnet and Testnet. To view the deployed Contract address and the Transaction calls, open the Fuse [Mainnet]((https://explorer.fuse.io/)) or [Testnet]((https://explorer.fusespark.io/)) Explorer and paste the deployed address. 
 
-## Next Steps
+The Deployed Smart Contract can be verified and interacted with from a User Interface leveraging several tools. The official recommended tool from Fuse is FuseBox.
 
-### Contributing to the Fuse Ecosystem
+## Connect Smart Contract using FuseBox
 
-Join the open-source community by contributing to the development of Fuse tools, libraries, and documentation. Visit the [Fuse GitHub repository](https://github.com/fuseio) to explore contribution opportunities.
+[FuseBox](./getting-started) is an Open-Source Wallet-as-a-Service platform based on Account Abstraction. It is ERC-4337 compliant and allows developers to use a Bundler to collect UserOperations and a Paymaster to sponsor Gas payments for their users, enabling a Gasless experience. 
 
-Congratulations! You've completed the Fuse Blockchain Developer Quick Start Guide. Now you're ready to dive deeper into Fuse development and contribute to the thriving ecosystem. Happy coding!
+FuseBox is available as a TypeScript SDK and a Flutter SDK. It is a middleware infrastructure that connects directly to the fuse blockchain without needing an RPC node provider. It also makes it easy for Web2 developers to start building blockchain applications without the need to understand ABIs.
+
+To understand FuseBox, we will build a quick guide to building a UI for the deployed Token Smart Contract using the FuseBox Web SDK.
+
+The Smart Contract has several deployed methods for interacting with it. This quickstart guide will focus on `transfer` and `balanceOf`. The respective SDK methods required are:
+- [Send Native/ERC20 Transactions](./sdk/send-single-txn)
+- [GET List of Tokens Owned by Address](./sdk/get-list-of-tokens-owned-by-address)
+
+### Step 1: Set Up Your Next.js App
+Create a new Next.js app:
+
+```bash
+npx create-next-app my-fuse-demo-app
+cd my-fuse-demo-app
+```
+
+Answer the required prompts from NextJS in the terminal. We must note that we use TypeScript and Tailwind CSS for this application.
+
+### Step 2: Install Dependencies
+Install the required dependencies:
+
+```bash
+npm install @fuseio/fusebox-web-sdk
+npm install ethers
+```
+
+### Step 3: Run the Development Server
+Run `npm run dev` to start the development server. Visit `http://localhost:3000` to view your application.
+
+### Step 4: Import Libraries
+Open the `index.tsx` file, delete the default code from NextJS. Edit `index.tsx` file by adding the code below and save it to see the updated result in your browser. First, import the required libraries and put up a default **Hello, World!** text:
+
+```javascript
+import { FuseSDK } from "@fuseio/fusebox-web-sdk";
+import { ethers } from "ethers";
+
+export default function Home() {
+  return (
+    <main className={`flex flex-col items-center p-24 ${inter.className}`}>
+      Hello, World!
+    </main>
+  );
+}
+```
+
+### Step 5: Create a Smart Contract Wallet.
+To use the SDK in your project, you must create an instance of the FuseSDK class. This class is the key to interacting with the Fuse API using the SDK.
+
+The `init` method sets up a wallet and authenticates the user's provided credentials. It requires a API_KEY from FuseBox. Create an Account and get the `API_KEY` in the Fuse Developer Console [here](https://console.fuse.io). When you send a request to the server using this method, it verifies the credentials. If the credentials are valid, developers can use the `getSender()` to return an address.
+
+To create the Smart Contract Wallet, we will update the code by adding a `smartWallet` function, and parsing the returned Smart Contract Address to a state variable.
+
+Inside the Home Component, import the useState method:
+
+```javascript
+import { useState, useEffect } from 'react'
+```
+
+Set the state variable to manage the state of the Smart Contract Account that will be created:
+
+```javascript
+const [smartAccount, setSmartAccount] = useState<string>("")
+```
+
+Add the smartWallet function:
+
+```javascript
+const smartWallet = async() => {
+  const apiKey = "API_KEY";
+  const credentials = new ethers.Wallet(`0xPrivateKey`);
+  const fuseSDK = await FuseSDK.init(apiKey, credentials, {
+    withPaymaster: true,
+  });
+  setSmartAccount(fuseSDK.wallet.getSender());
+  console.log(
+      `Smart account address: https://explorer.fuse.io/address/${fuseSDK.wallet.getSender()}`
+  );
+ }
+```
+
+To call the function and render the response in the application UI, we have to use the `useEffect` hook to prevent too many re-renders:
+
+```javascript
+import { useState, useEffect } from ’react’;
+```
+
+Add the useEffect Hook:
+
+```javascript
+useEffect(()=> {
+  smartWallet()
+}, [])
+```
+
+Reload the app and open the console. The newly created Smart Contract Address will be logged into the Console!
+
+To return the Smart Contract Address to the UI, you can parse the stored state variable:
+
+```javascript
+ return (
+    <main className={`flex flex-col items-center p-24 ${inter.className}`}>
+      Hello, World!
+      {smartAccount}
+    </main>
+  );
+```
+
+### Step 6: Token Transfers
+Transfer Transactions which happen on the Blockchain are state-changing. In Account Abstraction these “Transactions” are called “UserOperations” because they are first sent to an alternate Mempool where they are then Bundled and sent on-chain. FuseBox uses the transferToken method to carry out a UserOperation of transferring a Token from one Address to another.
+
+Add another Function transferToken:
+
+```javascript
+const transferToken = async() => {
+  const tokenAddress = "0x28C3d1cD466Ba22f6cae51b1a4692a831696391A"
+  const apiKey = "API_KEY";
+  const credentials = new ethers.Wallet(`0xPrivateKey`);
+  const fuseSDK = await FuseSDK.init(apiKey, credentials, {
+    withPaymaster: true,
+  });
+  const recipient = "Enter ANY EOA or SCA address";
+  const amount = ethers.parseUnits(amountValue, 6)
+  const res = await fuseSDK.transferToken(tokenAddress, recipient, amount);
+  console.log(`UserOpHash: ${res?.userOpHash}`);
+  console.log("Waiting for transaction...");
+
+  const receipt = await res?.wait();
+  console.log(
+    `User operation hash: https://explorer.fuse.io/tx/${receipt?.transactionHash}`
+  );
+}
+```
+
+The `transferToken` method takes in three arguments: `tokenAddress`, `recipient`, `amount`.
+
+The tokenAddress is the address of the Token which we are sending a specific amount to a receiving address recipient. You can find a list of Token Addresses here: https://explorer.fuse.io/tokens
+
+It is important to mention that when sending a Token, you will parse the token in units to the number of the decimal places which the Token is defined. For example, USDC has 6 decimal places. To send 1 USDC, you parse it thus:
+
+```javascript
+ethers.parseUnits(“1”, 6)
+```
+
+Where the string “1” is the amount, and 6 the number of decimal places.
+
+Step 7: Form UI.
+To carryout Token Transfer, the next step is to build a Form component where we can enter the recipient and amount values we want to transfer to.
+
+Update the UI:
+
+```javascript
+ <form className="flex max-w-md flex-col gap-4">
+    <div className="mt-3">
+        <label htmlFor="base-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" />
+        <input type="text" id="base-input" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+
+        <label htmlFor="base-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" />
+        <input type="text" id="base-input" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+    </div>
+    <button type="text" className=" focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Send</button>
+</form>
+```
+
+The Form above has two labels and a button. To use the form, we have to take the input data and pass it as arguments to the transferToken method.
+
+Let’s write the state variables to store the recipient and amount values. In this example, we will keep the tokenAddress static as USDC.
+
+```javascript
+const [toValue, setToValue] = useState<string>(' ');
+const [amountValue, setAmountValue] = useState<string>(' ');
+```
+
+Add a handle method to take the input data
+
+```javascript
+  const handleTo = (e) => {
+      setToValue(e.target.value);
+  };
+
+  const handleAmount = (e) => {
+     setAmountValue(e.target.value)
+  };
+```
+
+The values are set in the state: `recipient == toValue`, `amount == amountValue`
+
+Update the Form UI to handle the data and submit it:
+
+```javascript
+ <form onSubmit={handleSubmit} className="flex max-w-md flex-col gap-4">
+    <div className="mt-3">
+        <label htmlFor="base-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" />
+        <input type="text" id="base-input" **value={toValue} onChange={handleTo}** className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+
+        <label htmlFor="base-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" />
+        <input type="text" id="base-input" **value={amountValue} onChange={handleAmount}** className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+    </div>
+    <button type="submit" className=" focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Send</button>
+</form>
+```
+
+Add a handleSubmit method:
+
+```javascript
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log("Input value:", toValue, amountValue);
+  transferToken();
+};
+```
+
+Update the transferToken function to read the values stored in the state:
+
+```javascript
+const res = await fuseSDK.transferToken(tokenAddress, toValue, amountValue);
+```
+
+You can carry out Token Transfers via the UI. Note that you have to get some USDC Token, or you can put the number ‘0’ in the amount field to see the success of the UserOperation. You can open the console to see the UserOperation logged.
+
+This is a quickstart guide on how to deploy Smart Contracts to Fuse Testnet and Mainnet, and also how to use FuseBox to connect to the deployed Smart Contract
