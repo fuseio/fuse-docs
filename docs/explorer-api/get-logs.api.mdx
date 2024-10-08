@@ -34,6 +34,7 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=logs&action=getLogs"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -68,82 +69,82 @@ Get Event Logs by Address and/or Topic(s)
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["logs"]},"required":true}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["logs"]},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getLogs"]},"required":true}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getLogs"]},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"fromBlock","in":"query","schema":{"type":"integer"},"required":true}}
+        param={{"name":"fromBlock","in":"query","schema":{"type":"integer"},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"toBlock","in":"query","schema":{"type":"integer"},"required":true}}
+        param={{"name":"toBlock","in":"query","schema":{"type":"integer"},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"address","in":"query","schema":{"type":"string"},"required":true}}
+        param={{"name":"address","in":"query","schema":{"type":"string"},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"topic0","in":"query","schema":{"type":"string"},"required":true}}
+        param={{"name":"topic0","in":"query","schema":{"type":"string"},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"topic1","in":"query","schema":{"type":"string"}}}
+        param={{"name":"topic1","in":"query","schema":{"type":"string"},"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"topic2","in":"query","schema":{"type":"string"}}}
+        param={{"name":"topic2","in":"query","schema":{"type":"string"},"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"topic3","in":"query","schema":{"type":"string"}}}
+        param={{"name":"topic3","in":"query","schema":{"type":"string"},"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"topic0_1_opr","in":"query","schema":{"type":"string","enum":["and","or"]}}}
+        param={{"name":"topic0_1_opr","in":"query","schema":{"type":"string","enum":["and","or"]},"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"topic0_2_opr","in":"query","schema":{"type":"string","enum":["and","or"]}}}
+        param={{"name":"topic0_2_opr","in":"query","schema":{"type":"string","enum":["and","or"]},"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"topic0_3_opr","in":"query","schema":{"type":"string","enum":["and","or"]}}}
+        param={{"name":"topic0_3_opr","in":"query","schema":{"type":"string","enum":["and","or"]},"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"topic1_2_opr","in":"query","schema":{"type":"string","enum":["and","or"]}}}
+        param={{"name":"topic1_2_opr","in":"query","schema":{"type":"string","enum":["and","or"]},"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"topic1_3_opr","in":"query","schema":{"type":"string","enum":["and","or"]}}}
+        param={{"name":"topic1_3_opr","in":"query","schema":{"type":"string","enum":["and","or"]},"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"topic2_3_opr","in":"query","schema":{"type":"string","enum":["and","or"]}}}
+        param={{"name":"topic2_3_opr","in":"query","schema":{"type":"string","enum":["and","or"]},"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem>

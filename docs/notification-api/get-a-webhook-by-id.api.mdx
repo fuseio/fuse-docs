@@ -34,6 +34,7 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/webhook/{webhookId}"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -68,7 +69,7 @@ Retrieve details of a specific webhook by its ID.
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"webhookId","in":"path","required":true,"schema":{"type":"string"},"description":"The unique identifier of the webhook."}}
+        param={{"name":"webhookId","in":"path","required":true,"schema":{"type":"string"},"description":"The unique identifier of the webhook.","enumDescriptions":[]}}
       >
         
       </ParamsItem>
@@ -92,7 +93,7 @@ Retrieve details of a specific webhook by its ID.
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"The public API key for authentication."}}
+        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"The public API key for authentication.","enumDescriptions":[]}}
       >
         
       </ParamsItem>
@@ -116,7 +117,7 @@ Retrieve details of a specific webhook by its ID.
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"API-SECRET","in":"header","required":true,"schema":{"type":"string"},"description":"The secret API key for authentication."}}
+        param={{"name":"API-SECRET","in":"header","required":true,"schema":{"type":"string"},"description":"The secret API key for authentication.","enumDescriptions":[]}}
       >
         
       </ParamsItem>

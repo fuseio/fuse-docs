@@ -41,8 +41,6 @@ tags:
   - name: Price
   - name: Price Change
   - name: Stats
-  - name: Swap
-  - name: Tokens
 
 paths:
   /price/{tokenAddress}:
@@ -109,43 +107,6 @@ paths:
         "200":
           $ref: "#/components/responses/StatsResponse"
 
-  /swap/quote:
-    post:
-      tags:
-        - Swap
-      summary: Get a Quote for a Token Pair
-      requestBody:
-        $ref: "#/components/requestBodies/SwapQuote"
-      parameters:
-        - $ref: "#/components/parameters/ApiKey"
-      responses:
-        "201":
-          $ref: "#/components/responses/SwapQuoteResponse"
-
-  /swap/swapcallparameters:
-    post:
-      tags:
-        - Swap
-      summary: Create Swap Parameters for a Trade
-      requestBody:
-        $ref: "#/components/requestBodies/SwapParameters"
-      parameters:
-        - $ref: "#/components/parameters/ApiKey"
-      responses:
-        "201":
-          $ref: "#/components/responses/SwapParametersResponse"
-
-  /tokens:
-    get:
-      tags:
-        - Tokens
-      summary: Get the List of Tokens on Fuse
-      parameters:
-        - $ref: "#/components/parameters/ApiKey"
-      responses:
-        "200":
-          $ref: "#/components/responses/TokenListResponse"
-
 components:
   parameters:
     ApiKey:
@@ -192,49 +153,7 @@ components:
             example:
               duration:
                 days: 1
-    SwapQuote:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              currencyIn:
-                type: string
-              currencyOut:
-                type: string
-              amountIn:
-                type: string
-            example:
-              currencyIn: "0x495d133B938596C9984d462F007B676bDc57eCEC"
-              currencyOut: "0x0BE9e53fd7EDaC9F859882AfdDa116645287C629"
-              amountIn: "1000"
-    SwapParameters:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              currencyIn:
-                type: string
-              currencyOut:
-                type: string
-              amountIn:
-                type: string
-              recipient:
-                type: string
-              slippageTolerance:
-                type: string
-              deadline:
-                type: string
-            example:
-              currencyIn: "0xd8Bf72f3e163B9CF0C73dFdCC316417A5ac20670"
-              currencyOut: "0x620fd5fa44BE6af63715Ef4E65DDFA0387aD13F5"
-              amountIn: "1"
-              recipient: "0xe5d28349fb6Cb9C16D3163497e49C5E9253f9976"
-              slippageTolerance: "50"
-              deadline: "1200"
+
 
   responses:
     PriceResponse:
@@ -306,56 +225,4 @@ components:
                     timestamp:
                       type: integer
                     date:
-                      type: string
-    SwapQuoteResponse:
-      description: Created
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              data:
-                type: object
-                properties:
-                  info:
-                    type: object
-                  trade:
-                    type: object
-    SwapParametersResponse:
-      description: Created
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              data:
-                type: object
-                properties:
-                  info:
-                    type: object
-                  trade:
-                    type: object
-    TokenListResponse:
-      description: OK
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              tokens:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    symbol:
-                      type: string
-                    decimals:
-                      type: integer
-                    address:
-                      type: string
-                    logoURI:
-                      type: string
-                    type:
                       type: string

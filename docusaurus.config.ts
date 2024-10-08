@@ -1,7 +1,8 @@
 import { themes as prismThemes } from 'prism-react-renderer';
+import { EnumChangefreq } from 'sitemap';
+
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-import { EnumChangefreq } from 'sitemap';
 
 const config: Config = {
   title: 'Fuse Documentation',
@@ -264,25 +265,6 @@ const config: Config = {
         id: 'api',
         docsPluginId: 'api', // e.g. "classic" or the plugin-content-docs id
         config: {
-          trade_versioned: {
-            specPath: 'api-references/trade-api-v2.yaml',
-            outputDir: 'docs/trade_versioned',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
-            version: '2.0.0',
-            label: 'v2.0.0',
-            baseUrl: '/trade_versioned/trade-api',
-            versions: {
-              '1.0.0': {
-                specPath: 'api-references/trade-api-v1.yaml',
-                outputDir: 'docs/trade_versioned/1.0.0',
-                label: 'v1.0.0',
-                baseUrl: '/trade_versioned/1.0.0/trade-api',
-              },
-            },
-          },
           notificationApi: {
             specPath: 'api-references/fuse-notification-api.yaml',
             outputDir: 'docs/notification-api',
@@ -308,7 +290,7 @@ const config: Config = {
             },
           },
           tradeApi: {
-            specPath: 'api-references/trade-api-v2.yaml',
+            specPath: 'api-references/trade-api-merged.yaml',
             outputDir: 'docs/trade-api',
             sidebarOptions: {
               groupPathsBy: 'tag',
