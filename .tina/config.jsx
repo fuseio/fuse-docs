@@ -7,9 +7,8 @@ import { MDXTemplates } from "../src/theme/template";
 import { docusaurusDate, titleFromSlug } from "../util";
 import title from "title";
 
-// Your hosting provider likely exposes this as an environment variable
-const branch =
-  "master";
+const isProduction = process.env.TINA_ENV === 'production';
+const branch = isProduction ? "master" : "staging";
 
 const DocsCollection = {
   name: "doc",
@@ -74,14 +73,10 @@ const DropdownCollection = {
   ],
 };
 
-
-
-
-
 export default defineConfig({
   branch,
-  clientId: process.env.clientId, // Get this from tina.io
-  token: process.env.token, // Get this from tina.io
+  clientId: process.env.clientId,
+  token: process.env.token,
   build: {
     outputFolder: "admin",
     publicFolder: "static",
