@@ -34,6 +34,7 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=block&action=getblocknobytime"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -68,27 +69,27 @@ Get block number by time stamp
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["block"]},"required":true}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["block"]},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getblocknobytime"]},"required":true}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getblocknobytime"]},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"timestamp","in":"query","schema":{"type":"integer"},"required":true,"description":"Integer representing the Unix timestamp in seconds."}}
+        param={{"name":"timestamp","in":"query","schema":{"type":"integer"},"required":true,"description":"Integer representing the Unix timestamp in seconds.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"closest","in":"query","schema":{"type":"string","enum":["before","after"]},"required":true,"description":"Closest block to the provided timestamp, either before or after."}}
+        param={{"name":"closest","in":"query","schema":{"type":"string","enum":["before","after"]},"required":true,"description":"Closest block to the provided timestamp, either before or after.","enumDescriptions":[]}}
       >
         
       </ParamsItem>

@@ -11,12 +11,6 @@ import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
   Create as many sidebars as you want.
  */
 
-const tradeVersions = require("./docs/trade_versioned/versions.json");
-const {
-  versionSelector,
-  versionCrumb,
-} = require("docusaurus-plugin-openapi-docs/lib/sidebars/utils");
-
 const sidebars: SidebarsConfig = {
   basicsSidebar: [
     {
@@ -102,53 +96,6 @@ const sidebars: SidebarsConfig = {
       },
       items: require("./docs/explorer-api/sidebar.js"),
     }
-  ],
-  "trade-2.0.0": [
-    {
-      type: "html",
-      defaultStyle: true,
-      value: versionSelector(tradeVersions),
-      className: "version-button",
-    },
-    {
-      type: "html",
-      defaultStyle: true,
-      value: versionCrumb(`v2.0.0`),
-    },
-    {
-      type: "category",
-      label: "Trade",
-      link: {
-        type: "generated-index",
-        title: "Trade API (latest)",
-        slug: "/category/trade-versioned-api",
-      },
-      items: require("./docs/trade_versioned/sidebar.js"),
-    },
-  ],
-
-  "trade-1.0.0": [
-    {
-      type: "html",
-      defaultStyle: true,
-      value: versionSelector(tradeVersions),
-      className: "version-button",
-    },
-    {
-      type: "html",
-      defaultStyle: true,
-      value: versionCrumb(`v1.0.0`),
-    },
-    {
-      type: "category",
-      label: "Trade",
-      link: {
-        type: "generated-index",
-        title: "Trade API (v1.0.0)",
-        slug: "/category/trade-api-1.0.0",
-      },
-      items: require("./docs/trade_versioned/1.0.0/sidebar.js"),
-    },
   ],
 };
 

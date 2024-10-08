@@ -4,14 +4,74 @@ const sidebar: SidebarsConfig = {
   apisidebar: [
     {
       type: "doc",
-      id: "trade-api/trade-api",
+      id: "trade-api/trade-api-v-1-v-2",
     },
     {
       type: "category",
-      label: "Swap",
+      label: "V1 Price",
       link: {
         type: "doc",
-        id: "trade-api/swap",
+        id: "trade-api/v-1-price",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "trade-api/get-latest-price-for-a-token",
+          label: "Get Latest Price for a Token",
+          className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "V1 Price Change",
+      link: {
+        type: "doc",
+        id: "trade-api/v-1-price-change",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "trade-api/get-price-change-for-token-over-last-24-hours",
+          label: "Get Price Change for Token Over Last 24 hours",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "trade-api/get-price-change-for-token-over-time-duration",
+          label: "Get Price Change for Token Over Time Duration",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "trade-api/get-price-change-for-token-over-an-interval",
+          label: "Get Price Change for Token Over An Interval",
+          className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "V1 Stats",
+      link: {
+        type: "doc",
+        id: "trade-api/v-1-stats",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "trade-api/get-historical-statistics-of-a-token",
+          label: "Get Historical Statistics of a Token",
+          className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "V2 Swap",
+      link: {
+        type: "doc",
+        id: "trade-api/v-2-swap",
       },
       items: [
         {

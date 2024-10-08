@@ -1,0 +1,617 @@
+openapi: 3.0.0
+info:
+  title: Trade API V1 & V2
+  version: 1.0.0
+  description: |
+    Integrate advanced trading functionality into your application with our comprehensive Trade API.
+    Powered by [voltage.finance](https://voltage.finance/) DEX
+
+    ### V1 Features
+    - Get price changes over custom intervals
+    - Fetch current and historical asset prices
+
+    ### V2 Enhancements
+    - Powered by [voltage.finance](https://voltage.finance/) DEX
+    - Real-time indicative transaction prices
+    - Explore available liquidity sources
+    - Obtain quotes for ERC20 token swaps
+
+    ### Quick Start
+    1. Get your API key from the [Console](https://console.fuse.io/build)
+    2. Follow our [Getting Started](fuse-box/getting-started.mdx) guide
+    3. Add your `apiKey` to all request query params
+
+    ### Key Endpoints
+    - `/api/v0/trade/price/{tokenAddress}`: Get latest token price (V1)
+    - `/api/v0/trade/pricechange/{tokenAddress}`: Get price changes (V1)
+    - `/api/v1/trade/price`: Get indicative transaction price (V2)
+    - `/api/v1/trade/quote`: Get ERC20 token swap quotes (V2)
+    - `/api/v1/trade/sources`: List available liquidity sources (V2)
+
+    For detailed documentation, code snippets, and integration examples, refer to our comprehensive API guide.
+
+servers:
+  - url: https://api.fuse.io
+    description: Production server
+  - url: https://api.staging.fuse.io
+    description: Staging server
+
+tags:
+  - name: V1 Price
+  - name: V1 Price Change
+  - name: V1 Stats
+  - name: V2 Swap
+
+paths:
+  # V1 Endpoints
+  /api/v0/trade/price/{tokenAddress}:
+    get:
+      tags:
+        - V1 Price
+      summary: Get Latest Price for a Token
+      parameters:
+        - $ref: "#/components/parameters/V1ApiKey"
+        - $ref: "#/components/parameters/V1TokenAddress"
+      responses:
+        "200":
+          $ref: "#/components/responses/V1PriceResponse"
+
+  /api/v0/trade/pricechange/{tokenAddress}:
+    get:
+      tags:
+        - V1 Price Change
+      summary: Get Price Change for Token Over Last 24 hours
+      parameters:
+        - $ref: "#/components/parameters/V1ApiKey"
+        - $ref: "#/components/parameters/V1TokenAddress"
+      responses:
+        "200":
+          $ref: "#/components/responses/V1PriceChangeResponse"
+    post:
+      tags:
+        - V1 Price Change
+      summary: Get Price Change for Token Over Time Duration
+      description: >
+        Specify a duration object to calculate the price change over the specified timeframe.
+      requestBody:
+        $ref: "#/components/requestBodies/V1Duration"
+      parameters:
+        - $ref: "#/components/parameters/V1ApiKey"
+        - $ref: "#/components/parameters/V1TokenAddress"
+      responses:
+        "200":
+          $ref: "#/components/responses/V1PriceChangeResponse"
+
+  /api/v0/trade/pricechange/interval/{timeFrame}/{tokenAddress}:
+    get:
+      tags:
+        - V1 Price Change
+      summary: Get Price Change for Token Over An Interval
+      parameters:
+        - $ref: "#/components/parameters/V1ApiKey"
+        - $ref: "#/components/parameters/V1TimeFrame"
+        - $ref: "#/components/parameters/V1TokenAddress"
+      responses:
+        "200":
+          $ref: "#/components/responses/V1PriceChangeIntervalResponse"
+
+  /api/v0/trade/stats/{tokenAddress}:
+    get:
+      tags:
+        - V1 Stats
+      summary: Get Historical Statistics of a Token
+      parameters:
+        - $ref: "#/components/parameters/V1Limit"
+        - $ref: "#/components/parameters/V1ApiKey"
+        - $ref: "#/components/parameters/V1TokenAddress"
+      responses:
+        "200":
+          $ref: "#/components/responses/V1StatsResponse"
+
+  # V2 Endpoints
+  /api/v1/trade/price:
+    get:
+      tags:
+        - V2 Swap
+      summary: Get an indicative price for a transaction
+      operationId: getIndicativePrice
+      parameters:
+        - $ref: "#/components/parameters/V2ApiKey"
+        - $ref: "#/components/parameters/V2SellToken"
+        - $ref: "#/components/parameters/V2BuyToken"
+        - $ref: "#/components/parameters/V2SellAmount"
+        - $ref: "#/components/parameters/V2BuyAmount"
+        - $ref: "#/components/parameters/V2SlippagePercentage"
+        - $ref: "#/components/parameters/V2GasPrice"
+        - $ref: "#/components/parameters/V2TakerAddress"
+        - $ref: "#/components/parameters/V2ExcludedSources"
+        - $ref: "#/components/parameters/V2IncludedSources"
+        - $ref: "#/components/parameters/V2SkipValidation"
+        - $ref: "#/components/parameters/V2FeeRecipient"
+        - $ref: "#/components/parameters/V2BuyTokenPercentageFee"
+        - $ref: "#/components/parameters/V2EnableSlippageProtection"
+        - $ref: "#/components/parameters/V2PriceImpactProtectionPercentage"
+        - $ref: "#/components/parameters/V2FeeRecipientTradeSurplus"
+      responses:
+        "200":
+          $ref: "#/components/responses/V2IndicativePriceResponse"
+        "400":
+          $ref: "#/components/responses/V2BadRequest"
+        "401":
+          $ref: "#/components/responses/V2Unauthorized"
+
+  /api/v1/trade/quote:
+    get:
+      tags:
+        - V2 Swap
+      summary: Get a quote for buying or selling any ERC20 token
+      operationId: getQuote
+      parameters:
+        - $ref: "#/components/parameters/V2ApiKey"
+        - $ref: "#/components/parameters/V2SellToken"
+        - $ref: "#/components/parameters/V2BuyToken"
+        - $ref: "#/components/parameters/V2SellAmount"
+        - $ref: "#/components/parameters/V2BuyAmount"
+        - $ref: "#/components/parameters/V2SlippagePercentage"
+        - $ref: "#/components/parameters/V2GasPrice"
+        - $ref: "#/components/parameters/V2TakerAddress"
+        - $ref: "#/components/parameters/V2ExcludedSources"
+        - $ref: "#/components/parameters/V2IncludedSources"
+        - $ref: "#/components/parameters/V2SkipValidation"
+        - $ref: "#/components/parameters/V2FeeRecipient"
+        - $ref: "#/components/parameters/V2BuyTokenPercentageFee"
+        - $ref: "#/components/parameters/V2EnableSlippageProtection"
+        - $ref: "#/components/parameters/V2PriceImpactProtectionPercentage"
+        - $ref: "#/components/parameters/V2FeeRecipientTradeSurplus"
+        - $ref: "#/components/parameters/V2ShouldSellEntireBalance"
+      responses:
+        "200":
+          $ref: "#/components/responses/V2QuoteResponse"
+        "400":
+          $ref: "#/components/responses/V2BadRequest"
+        "401":
+          $ref: "#/components/responses/V2Unauthorized"
+
+  /api/v1/trade/sources:
+    get:
+      tags:
+        - V2 Swap
+      summary: Returns the liquidity sources enabled for the chain
+      operationId: getLiquiditySources
+      parameters:
+        - $ref: "#/components/parameters/V2ApiKey"
+      responses:
+        "200":
+          $ref: "#/components/responses/V2LiquiditySourcesResponse"
+
+components:
+  parameters:
+    # V1 Parameters
+    V1ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Your Public API key.
+    V1TokenAddress:
+      name: tokenAddress
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Token Contract Address.
+    V1TimeFrame:
+      name: timeFrame
+      in: path
+      required: true
+      schema:
+        type: string
+      description: 'Interval for price change. Allowed values: "ALL", "MONTH", "WEEK", "DAY", "HOUR".'
+    V1Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+      description: Number of items to return.
+
+    # V2 Parameters
+    V2ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Your Public API key.
+    V2SellToken:
+      name: sellToken
+      in: query
+      required: true
+      schema:
+        type: string
+      description: The ERC20 token address of the token you want to sell.
+    V2BuyToken:
+      name: buyToken
+      in: query
+      required: true
+      schema:
+        type: string
+      description: The ERC20 token address of the token you want to receive.
+    V2SellAmount:
+      name: sellAmount
+      in: query
+      schema:
+        type: string
+      description: The amount of sellToken (in sellToken base units) you want to send.
+    V2BuyAmount:
+      name: buyAmount
+      in: query
+      schema:
+        type: string
+      description: The amount of buyToken (in buyToken base units) you want to receive.
+    V2SlippagePercentage:
+      name: slippagePercentage
+      in: query
+      schema:
+        type: string
+      description: The maximum acceptable slippage percentage.
+    V2GasPrice:
+      name: gasPrice
+      in: query
+      schema:
+        type: string
+      description: The target gas price for the swap transaction.
+    V2TakerAddress:
+      name: takerAddress
+      in: query
+      schema:
+        type: string
+      description: The address which will fill the quote.
+    V2ExcludedSources:
+      name: excludedSources
+      in: query
+      schema:
+        type: string
+      description: Liquidity sources to exclude from the quote.
+    V2IncludedSources:
+      name: includedSources
+      in: query
+      schema:
+        type: string
+      description: Liquidity sources to include in the quote.
+    V2SkipValidation:
+      name: skipValidation
+      in: query
+      schema:
+        type: boolean
+      description: Skip validation of the quote.
+    V2FeeRecipient:
+      name: feeRecipient
+      in: query
+      schema:
+        type: string
+      description: The address that should receive affiliate fees.
+    V2BuyTokenPercentageFee:
+      name: buyTokenPercentageFee
+      in: query
+      schema:
+        type: string
+      description: The percentage of the buyAmount attributed as affiliate fees.
+    V2EnableSlippageProtection:
+      name: enableSlippageProtection
+      in: query
+      schema:
+        type: boolean
+      description: Enable slippage protection.
+    V2PriceImpactProtectionPercentage:
+      name: priceImpactProtectionPercentage
+      in: query
+      schema:
+        type: string
+      description: Allowed price impact percentage.
+    V2FeeRecipientTradeSurplus:
+      name: feeRecipientTradeSurplus
+      in: query
+      schema:
+        type: string
+      description: The recipient address of any trade surplus fees.
+    V2ShouldSellEntireBalance:
+      name: shouldSellEntireBalance
+      in: query
+      schema:
+        type: boolean
+      description: Sell the entirety of the caller's takerToken balance.
+
+  requestBodies:
+    V1Duration:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              duration:
+                type: object
+                properties:
+                  days:
+                    type: integer
+            example:
+              duration:
+                days: 1
+
+  responses:
+    # V1 Responses
+    V1PriceResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  price:
+                    type: string
+    V1PriceChangeResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  priceChange:
+                    type: string
+                  currentPrice:
+                    type: string
+                  previousPrice:
+                    type: string
+    V1PriceChangeIntervalResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    timestamp:
+                      type: integer
+                    priceChange:
+                      type: string
+                    previousPrice:
+                      type: string
+                    currentPrice:
+                      type: string
+    V1StatsResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    address:
+                      type: string
+                    price:
+                      type: string
+                    volume:
+                      type: string
+                    timestamp:
+                      type: integer
+                    date:
+                      type: string
+
+    # V2 Responses
+    V2IndicativePriceResponse:
+      description: Indicative price for the transaction
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/V2TransactionPriceDetails"
+    V2QuoteResponse:
+      description: Successful response with the quote details
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/V2QuoteDetails"
+    V2LiquiditySourcesResponse:
+      description: An array of liquidity sources
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/V2LiquiditySource"
+    V2BadRequest:
+      description: Bad request, possibly due to missing or invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/V2Error"
+    V2Unauthorized:
+      description: Unauthorized, possibly due to missing or invalid API key
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/V2Error"
+
+  schemas:
+    # V2 Schemas
+    V2TransactionPriceDetails:
+      type: object
+      properties:
+        price:
+          type: string
+          description: Price of buyToken in sellToken and vice versa.
+        grossPrice:
+          type: string
+          description: Price with fees removed.
+        estimatedPriceImpact:
+          type: string
+          description: Estimated change in price due to price impact.
+        value:
+          type: string
+          description: Amount of ether (in wei) to be sent with the transaction.
+        gasPrice:
+          type: string
+          description: Gas price (in wei) for the transaction.
+        gas:
+          type: string
+          description: Estimated gas limit for the transaction.
+        estimatedGas:
+          type: string
+          description: Estimate of the actual gas used in the transaction.
+        protocolFee:
+          type: string
+          description: Maximum ether paid towards the protocol fee (in wei).
+        minimumProtocolFee:
+          type: string
+          description: Minimum ether paid towards the protocol fee (in wei).
+        buyAmount:
+          type: string
+          description: Amount of buyToken that would be bought in this swap.
+        grossBuyAmount:
+          type: string
+          description: BuyAmount with fees removed.
+        sellAmount:
+          type: string
+          description: Amount of sellToken that would be sold in this swap.
+        grossSellAmount:
+          type: string
+          description: SellAmount with fees removed.
+        sources:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              proportion:
+                type: string
+          description: Distribution of buyAmount or sellAmount between liquidity sources.
+        buyTokenAddress:
+          type: string
+          description: ERC20 token address of the token you want to receive.
+        sellTokenAddress:
+          type: string
+          description: ERC20 token address of the token you want to sell.
+        allowanceTarget:
+          type: string
+          description: Target contract address for which the user needs to have an allowance.
+        sellTokenToEthRate:
+          type: string
+          description: Rate between ETH and sellToken.
+        buyTokenToEthRate:
+          type: string
+          description: Rate between ETH and buyToken.
+        expectedSlippage:
+          type: string
+          description: Expected slippage used in routing calculations for the quote.
+        fees:
+          type: object
+          properties:
+            zeroExFee:
+              type: object
+              properties:
+                feeType:
+                  type: string
+                feeToken:
+                  type: string
+                feeAmount:
+                  type: string
+                billingType:
+                  type: string
+          description: Fees that would be charged, including 0x fee details.
+    V2QuoteDetails:
+      type: object
+      properties:
+        price:
+          type: string
+        guaranteedPrice:
+          type: string
+        to:
+          type: string
+        data:
+          type: string
+        value:
+          type: string
+        gasPrice:
+          type: string
+        gas:
+          type: string
+        estimatedGas:
+          type: string
+        protocolFee:
+          type: string
+        minimumProtocolFee:
+          type: string
+        buyAmount:
+          type: string
+        sellAmount:
+          type: string
+        sources:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              proportion:
+                type: string
+        buyTokenAddress:
+          type: string
+        sellTokenAddress:
+          type: string
+        allowanceTarget:
+          type: string
+        fees:
+          type: object
+          properties:
+            zeroExFee:
+              type: object
+              properties:
+                feeType:
+                  type: string
+                feeToken:
+                  type: string
+                feeAmount:
+                  type: string
+                billingType:
+                  type: string
+        grossPrice:
+          type: string
+        grossBuyAmount:
+          type: string
+        grossSellAmount:
+          type: string
+        sellTokenToEthRate:
+          type: string
+        buyTokenToEthRate:
+          type: string
+        expectedSlippage:
+          type: string
+    V2LiquiditySource:
+      type: object
+      properties:
+        name:
+          type: string
+        proportion:
+          type: string
+    V2Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
