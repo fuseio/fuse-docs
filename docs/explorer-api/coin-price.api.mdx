@@ -34,6 +34,7 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=stats&action=coinprice"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -68,22 +69,22 @@ Get latest price of native coin in USD and BTC in more general format
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["stats"]},"required":true}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["stats"]},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["coinprice"]},"required":true}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["coinprice"]},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"param","in":"query","schema":{"type":"string"},"required":true}}
+        param={{"name":"param","in":"query","schema":{"type":"string"},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem>

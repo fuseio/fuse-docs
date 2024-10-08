@@ -34,6 +34,7 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/userops/{address}"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -68,7 +69,7 @@ Fetches user operations for a specific wallet address, including transactions, u
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"address","in":"path","required":true,"schema":{"type":"string"},"description":"The wallet address to query for user operations."}}
+        param={{"name":"address","in":"path","required":true,"schema":{"type":"string"},"description":"The wallet address to query for user operations.","enumDescriptions":[]}}
       >
         
       </ParamsItem>
@@ -92,7 +93,7 @@ Fetches user operations for a specific wallet address, including transactions, u
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your API key to authenticate requests."}}
+        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your API key to authenticate requests.","enumDescriptions":[]}}
       >
         
       </ParamsItem>
