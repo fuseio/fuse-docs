@@ -7,8 +7,6 @@ import Homepage from '@site/src/components/Homepage';
 
 import styles from './index.module.css';
 
-
-
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
@@ -18,4 +16,4 @@ export default function Home() {
         <Homepage />
     </Layout>
   );
-}
+};
