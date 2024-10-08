@@ -75,8 +75,8 @@ const DropdownCollection = {
 
 export default defineConfig({
   branch,
-  clientId: isProduction ? process.env.PROD_CLIENT_ID : process.env.STAGING_CLIENT_ID,
-  token: isProduction ? process.env.PROD_TOKEN : process.env.STAGING_TOKEN,
+  clientId: process.env.clientId,
+  token: process.env.token,
   build: {
     outputFolder: "admin",
     publicFolder: "static",
