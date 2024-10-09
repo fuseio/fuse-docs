@@ -34,6 +34,7 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/api/v1/trade/quote"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -68,87 +69,87 @@ Get a quote for buying or selling any ERC20 token
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your Public API key."}}
+        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your Public API key.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"sellToken","in":"query","required":true,"schema":{"type":"string"},"description":"The ERC20 token address of the token you want to sell."}}
+        param={{"name":"sellToken","in":"query","required":true,"schema":{"type":"string"},"description":"The ERC20 token address of the token you want to sell.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"buyToken","in":"query","required":true,"schema":{"type":"string"},"description":"The ERC20 token address of the token you want to receive."}}
+        param={{"name":"buyToken","in":"query","required":true,"schema":{"type":"string"},"description":"The ERC20 token address of the token you want to receive.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"sellAmount","in":"query","schema":{"type":"string"},"description":"The amount of sellToken (in sellToken base units) you want to send."}}
+        param={{"name":"sellAmount","in":"query","schema":{"type":"string"},"description":"The amount of sellToken (in sellToken base units) you want to send.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"buyAmount","in":"query","schema":{"type":"string"},"description":"The amount of buyToken (in buyToken base units) you want to receive."}}
+        param={{"name":"buyAmount","in":"query","schema":{"type":"string"},"description":"The amount of buyToken (in buyToken base units) you want to receive.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"slippagePercentage","in":"query","schema":{"type":"string"},"description":"The maximum acceptable slippage percentage."}}
+        param={{"name":"slippagePercentage","in":"query","schema":{"type":"string"},"description":"The maximum acceptable slippage percentage.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"gasPrice","in":"query","schema":{"type":"string"},"description":"The target gas price for the swap transaction."}}
+        param={{"name":"gasPrice","in":"query","schema":{"type":"string"},"description":"The target gas price for the swap transaction.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"takerAddress","in":"query","schema":{"type":"string"},"description":"The address which will fill the quote."}}
+        param={{"name":"takerAddress","in":"query","schema":{"type":"string"},"description":"The address which will fill the quote.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"excludedSources","in":"query","schema":{"type":"string"},"description":"Liquidity sources to exclude from the quote."}}
+        param={{"name":"excludedSources","in":"query","schema":{"type":"string"},"description":"Liquidity sources to exclude from the quote.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"includedSources","in":"query","schema":{"type":"string"},"description":"Liquidity sources to include in the quote."}}
+        param={{"name":"includedSources","in":"query","schema":{"type":"string"},"description":"Liquidity sources to include in the quote.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"skipValidation","in":"query","schema":{"type":"boolean"},"description":"Skip validation of the quote."}}
+        param={{"name":"skipValidation","in":"query","schema":{"type":"boolean"},"description":"Skip validation of the quote.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"feeRecipient","in":"query","schema":{"type":"string"},"description":"The address that should receive affiliate fees."}}
+        param={{"name":"feeRecipient","in":"query","schema":{"type":"string"},"description":"The address that should receive affiliate fees.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"buyTokenPercentageFee","in":"query","schema":{"type":"string"},"description":"The percentage of the buyAmount attributed as affiliate fees."}}
+        param={{"name":"buyTokenPercentageFee","in":"query","schema":{"type":"string"},"description":"The percentage of the buyAmount attributed as affiliate fees.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"enableSlippageProtection","in":"query","schema":{"type":"boolean"},"description":"Enable slippage protection."}}
+        param={{"name":"enableSlippageProtection","in":"query","schema":{"type":"boolean"},"description":"Enable slippage protection.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"priceImpactProtectionPercentage","in":"query","schema":{"type":"string"},"description":"Allowed price impact percentage."}}
+        param={{"name":"priceImpactProtectionPercentage","in":"query","schema":{"type":"string"},"description":"Allowed price impact percentage.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"feeRecipientTradeSurplus","in":"query","schema":{"type":"string"},"description":"The recipient address of any trade surplus fees."}}
+        param={{"name":"feeRecipientTradeSurplus","in":"query","schema":{"type":"string"},"description":"The recipient address of any trade surplus fees.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"shouldSellEntireBalance","in":"query","schema":{"type":"boolean"},"description":"Sell the entirety of the caller's takerToken balance."}}
+        param={{"name":"shouldSellEntireBalance","in":"query","schema":{"type":"boolean"},"description":"Sell the entirety of the caller's takerToken balance.","enumDescriptions":[]}}
       >
         
       </ParamsItem>

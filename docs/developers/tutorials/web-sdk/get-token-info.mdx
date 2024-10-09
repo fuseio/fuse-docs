@@ -9,11 +9,11 @@ In this tutorial, we'll explore using the FuseBox Web SDK to build a Next.js app
 
 Before we begin, ensure you have the following:
 
-* Node.js installed on your machine.
-* Code Editor: Use your preferred code editor; VS Code is recommended.
-* An EOA wallet with a private key. You can use an existing one or create a new wallet.
-* A basic understanding of React.js and Next.js.
-* An API key from the Fuse Console. Get one [here](https://console.fuse.io/build).
+- Node.js installed on your machine.
+- Code Editor: Use your preferred code editor; VS Code is recommended.
+- An EOA wallet with a private key. You can use an existing one or create a new wallet.
+- A basic understanding of React.js and Next.js.
+- An API key from the Fuse Console. Get one [here](https://console.fuse.io/build).
 
 ### Step 1: Set Up Your Project
 
@@ -45,7 +45,7 @@ Install the required dependencies:
 npm install @fuseio/fusebox-web-sdk
 ```
 
-The application has two primary functions: [`GET Token`](../../sdk/get-token-details) and [`Token Price`](../../sdk/get-token-price) details. Both actions will be carried out using the FuseBox Web SDK. We will also use the EthersJS Library for particular Wallet methods. Install the EthersJS library; we will use v6.
+The application has two primary functions: [`GET Token`](../../../../developers/fusebox/sdk/get-token-details) and [`Token Price`](../../../../developers/fusebox/sdk/get-token-price) details. Both actions will be carried out using the FuseBox Web SDK. We will also use the EthersJS Library for particular Wallet methods. Install the EthersJS library; we will use v6.
 
 ```bash
 npm install ethers
@@ -56,9 +56,9 @@ npm install ethers
 Open the index.tsx file, delete the default code from NextJS. First, import the required libraries and put up a default \`Hello, World!’ text:
 
 ```javascript
-import { useState, useEffect } from "react";
-import { FuseSDK } from "@fuseio/fusebox-web-sdk";
-import { ethers } from "ethers";
+import {useState, useEffect} from "react";
+import {FuseSDK} from "@fuseio/fusebox-web-sdk";
+import {ethers} from "ethers";
 
 export default function Home() {
   return (
@@ -71,7 +71,7 @@ export default function Home() {
 
 ### Step 5: Dashboard
 
-This is a guide to `GET` requests using the FuseBox SDK. In this example, we are using the **[GET Token Details](../../sdk/get-token-details)** and **[GET Token Price](../../sdk/get-token-price)** methods to illustrate how a developer can call the methods and build a simple interactive user interface.
+This is a guide to `GET` requests using the FuseBox SDK. In this example, we are using the **[GET Token Details](../../../../developers/fusebox/sdk/get-token-details)** and **[GET Token Price](../../../../developers/fusebox/sdk/get-token-price)** methods to illustrate how a developer can call the methods and build a simple interactive user interface.
 
 To interact with the FuseBox Web SDK, you need to initialize the SDK by parsing an API Key and the Private Key of an EOA. You can get an API Key [here](https://console.fuse.io/build).
 
@@ -81,34 +81,35 @@ Start with USDT.
 
 ```javascript
 export default function Home() {
+  const [usdt, setUSDT] = useState({});
+  const [usdtP, setUsdtP] = useState(0);
 
-const [usdt, setUSDT] = useState({})
-const [usdtP, setUsdtP] = useState(0);
+  const tokenInfo = async () => {
+    console.log("Hello world!");
+    const apiKey = "API_KEY";
+    const credentials = new ethers.Wallet(`0xPrivateKey`);
+    const fuseSDK = await FuseSDK.init(apiKey, credentials, {
+      withPaymaster: true,
+    });
 
-const tokenInfo = async () => {
-console.log("Hello world!")
-const apiKey = "API_KEY";
-const credentials = new ethers.Wallet(`0xPrivateKey`);
-const fuseSDK = await FuseSDK.init(apiKey, credentials, {
-  withPaymaster: true,
-});
+    //USDC
+    //USDT
+    const usdtTokenAddress = "0x68c9736781E9316ebf5c3d49FE0C1f45D2D104Cd";
+    const usdtTokenDetails = await fuseSDK.explorerModule.getTokenDetails(
+      usdtTokenAddress
+    );
+    console.log(usdtTokenDetails);
+    setUSDT(usdtTokenDetails);
+    const usdtPrice = await fuseSDK.tradeModule.price(usdtTokenAddress);
+    console.log(`Token: ${usdtTokenAddress} price: ${usdtPrice}`);
+    setUsdtP(usdtPrice);
+    console.log(usdtPrice);
+  };
 
-//USDC
-//USDT
-const usdtTokenAddress = "0x68c9736781E9316ebf5c3d49FE0C1f45D2D104Cd";
-const usdtTokenDetails = await fuseSDK.explorerModule.getTokenDetails(usdtTokenAddress);
-console.log(usdtTokenDetails)
-setUSDT(usdtTokenDetails)
-const usdtPrice = await fuseSDK.tradeModule.price(usdtTokenAddress);
-console.log(`Token: ${usdtTokenAddress} price: ${usdtPrice}`)
-setUsdtP(usdtPrice);
-console.log(usdtPrice)
-}
-
-useEffect(() => {
-tokenInfo()
-console.log(usdc)
-}, [])
+  useEffect(() => {
+    tokenInfo();
+    console.log(usdc);
+  }, []);
 }
 ```
 
@@ -119,31 +120,37 @@ To display more token information, we can use a Table to display the User Interf
 In this example we add more tokens `usdc`, `volt` and `fuse`:
 
 ```javascript
-const [usdc, setUSDC] = useState({})
-const [fuse, setFUSE] = useState({})
-const [volt, setVOLT] = useState({})
+const [usdc, setUSDC] = useState({});
+const [fuse, setFUSE] = useState({});
+const [volt, setVOLT] = useState({});
 const [usdcP, setUsdcP] = useState(0);
 const [fuseP, setFuseP] = useState(0);
 const [voltP, setVoltP] = useState(0);
 
 //USDC
 const usdcTokenAddress = "0x28C3d1cD466Ba22f6cae51b1a4692a831696391A";
-const tokenDetails = await fuseSDK.explorerModule.getTokenDetails(usdcTokenAddress);
-setUSDC(tokenDetails)
+const tokenDetails = await fuseSDK.explorerModule.getTokenDetails(
+  usdcTokenAddress
+);
+setUSDC(tokenDetails);
 const usdcPrice = await fuseSDK.tradeModule.price(usdcTokenAddress);
 setUsdcP(usdcPrice);
 
 //FUSE
 const fuseTokenAddress = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
-const fuseTokenDetails = await fuseSDK.explorerModule.getTokenDetails(fuseTokenAddress);
-setFUSE(fuseTokenDetails)
+const fuseTokenDetails = await fuseSDK.explorerModule.getTokenDetails(
+  fuseTokenAddress
+);
+setFUSE(fuseTokenDetails);
 const fusePrice = await fuseSDK.tradeModule.price(fuseTokenAddress);
 setFuseP(fusePrice);
 
-//VOLT 
+//VOLT
 const voltTokenAddress = "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4";
-const voltTokenDetails = await fuseSDK.explorerModule.getTokenDetails(voltTokenAddress);
-setVOLT(voltTokenDetails)
+const voltTokenDetails = await fuseSDK.explorerModule.getTokenDetails(
+  voltTokenAddress
+);
+setVOLT(voltTokenDetails);
 const voltPrice = await fuseSDK.tradeModule.price(voltTokenAddress);
 setVoltP(voltPrice);
 ```
@@ -153,93 +160,80 @@ setVoltP(voltPrice);
 Upate the `return` statement:
 
 ```javascript
-  return (
-    <main className={`flex min-h-screen flex-col p-24 ${inter.className}`}>
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase dark:text-gray-400">
-                    <tr>
-                        <th scope="col" className="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                            Token Name
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Token Symbol
-                        </th>
-                        <th scope="col" className="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                            Price
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Contract Address
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr className="border-b border-gray-200 dark:border-gray-700">
-                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                            {usdc.name}
-                        </th>
-                        <td className="px-6 py-4">
-                            {usdc.symbol}
-                        </td>
-                        <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                            {usdcP}
-                        </td>
-                        <td className="px-6 py-4">
-                            {usdc.address}
-                        </td>
-                    </tr>
-                    <tr className="border-b border-gray-200 dark:border-gray-700">
-                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                            {usdt.name}
-                        </th>
-                        <td className="px-6 py-4">
-                            {usdt.symbol}
-                        </td>
-                        <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                            {usdtP}
-                        </td>
-                        <td className="px-6 py-4">
-                            {usdt.address}
-                        </td>
-                    </tr>
-                    <tr className="border-b border-gray-200 dark:border-gray-700">
-                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                            {fuse.name}
-                        </th>
-                        <td className="px-6 py-4">
-                            {fuse.symbol}
-                        </td>
-                        <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                            {fuseP}
-                        </td>
-                        <td className="px-6 py-4">
-                            {fuse.address}
-                        </td>
-                    </tr>
-                    <tr className="border-b border-gray-200 dark:border-gray-700">
-                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                            {volt.name}
-                        </th>
-                        <td className="px-6 py-4">
-                            {volt.symbol}
-                        </td>
-                        <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                            {voltP}
-                        </td>
-                        <td className="px-6 py-4">
-                            {volt.address}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
-  );
-
+return (
+  <main className={`flex min-h-screen flex-col p-24 ${inter.className}`}>
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead className="text-xs text-gray-700 uppercase dark:text-gray-400">
+          <tr>
+            <th scope="col" className="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+              Token Name
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Token Symbol
+            </th>
+            <th scope="col" className="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+              Price
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Contract Address
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="border-b border-gray-200 dark:border-gray-700">
+            <th
+              scope="row"
+              className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
+            >
+              {usdc.name}
+            </th>
+            <td className="px-6 py-4">{usdc.symbol}</td>
+            <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">{usdcP}</td>
+            <td className="px-6 py-4">{usdc.address}</td>
+          </tr>
+          <tr className="border-b border-gray-200 dark:border-gray-700">
+            <th
+              scope="row"
+              className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
+            >
+              {usdt.name}
+            </th>
+            <td className="px-6 py-4">{usdt.symbol}</td>
+            <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">{usdtP}</td>
+            <td className="px-6 py-4">{usdt.address}</td>
+          </tr>
+          <tr className="border-b border-gray-200 dark:border-gray-700">
+            <th
+              scope="row"
+              className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
+            >
+              {fuse.name}
+            </th>
+            <td className="px-6 py-4">{fuse.symbol}</td>
+            <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">{fuseP}</td>
+            <td className="px-6 py-4">{fuse.address}</td>
+          </tr>
+          <tr className="border-b border-gray-200 dark:border-gray-700">
+            <th
+              scope="row"
+              className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
+            >
+              {volt.name}
+            </th>
+            <td className="px-6 py-4">{volt.symbol}</td>
+            <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">{voltP}</td>
+            <td className="px-6 py-4">{volt.address}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+);
 ```
 
 <img src="/img/tutorials/gettokeninfo.png" />
 
 ### Conclusion
 
-In this tutorial, we've demonstrated how to retrieve token information using the FuseBox Web SDK in a Next.js application. With this knowledge, you can build powerful decentralized applications on the Fuse blockchain that interact seamlessly with tokens. Expand on this code and explore further possibilities for adding token information into your projects, and other non-state changing methods available via the [SDK](../../sdk).
+In this tutorial, we've demonstrated how to retrieve token information using the FuseBox Web SDK in a Next.js application. With this knowledge, you can build powerful decentralized applications on the Fuse blockchain that interact seamlessly with tokens. Expand on this code and explore further possibilities for adding token information into your projects, and other non-state changing methods available via the [SDK](../../../../developers/fusebox/sdk).

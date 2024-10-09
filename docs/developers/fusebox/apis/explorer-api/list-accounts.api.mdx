@@ -34,6 +34,7 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=account&action=listaccounts"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -68,27 +69,27 @@ Get a list of accounts and their balances
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["account"]},"required":true}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["account"]},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["listaccounts"]},"required":true}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["listaccounts"]},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"page","in":"query","schema":{"type":"integer"},"description":"integer representing the page number used for pagination. `offset` must also be provided. Optional."}}
+        param={{"name":"page","in":"query","schema":{"type":"integer"},"description":"integer representing the page number used for pagination. `offset` must also be provided. Optional.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"offset","in":"query","schema":{"type":"integer"},"description":"integer representing number of transactions returned per page. `page` must also be provided. Optional."}}
+        param={{"name":"offset","in":"query","schema":{"type":"integer"},"description":"integer representing number of transactions returned per page. `page` must also be provided. Optional.","enumDescriptions":[]}}
       >
         
       </ParamsItem>

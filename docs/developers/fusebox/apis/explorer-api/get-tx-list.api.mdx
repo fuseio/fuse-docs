@@ -34,6 +34,7 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=account&action=txlist"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -68,47 +69,47 @@ Get transactions by address
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["account"]},"required":true}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["account"]},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["txlist"]},"required":true}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["txlist"]},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"address","in":"query","required":true,"schema":{"type":"string"},"description":"string containing the address hash."}}
+        param={{"name":"address","in":"query","required":true,"schema":{"type":"string"},"description":"string containing the address hash.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"startblock","in":"query","schema":{"type":"integer"},"description":"integer block number to start transaction search."}}
+        param={{"name":"startblock","in":"query","schema":{"type":"integer"},"description":"integer block number to start transaction search.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"endblock","in":"query","schema":{"type":"integer"},"description":"integer block number to stop transaction search."}}
+        param={{"name":"endblock","in":"query","schema":{"type":"integer"},"description":"integer block number to stop transaction search.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"page","in":"query","schema":{"type":"integer"},"description":"integer representing the page number used for pagination. `offset` must also be provided."}}
+        param={{"name":"page","in":"query","schema":{"type":"integer"},"description":"integer representing the page number used for pagination. `offset` must also be provided.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"offset","in":"query","schema":{"type":"integer"},"description":"integer representing number of transactions returned per page. `page` must also be provided."}}
+        param={{"name":"offset","in":"query","schema":{"type":"integer"},"description":"integer representing number of transactions returned per page. `page` must also be provided.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"sort","in":"query","schema":{"type":"string","enum":["asc","desc"]},"description":"sorting preference, `asc` for ascending and `desc` for descending. Descending is default."}}
+        param={{"name":"sort","in":"query","schema":{"type":"string","enum":["asc","desc"]},"description":"sorting preference, `asc` for ascending and `desc` for descending. Descending is default.","enumDescriptions":[]}}
       >
         
       </ParamsItem>

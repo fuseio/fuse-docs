@@ -34,6 +34,7 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/nft-assets/{address}"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -68,7 +69,7 @@ Get Non Fungible NFT Token Balances
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"address","in":"path","required":true,"schema":{"type":"string"},"description":"The wallet address to query for associated NFTs."}}
+        param={{"name":"address","in":"path","required":true,"schema":{"type":"string"},"description":"The wallet address to query for associated NFTs.","enumDescriptions":[]}}
       >
         
       </ParamsItem>
@@ -92,17 +93,17 @@ Get Non Fungible NFT Token Balances
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your API key to authenticate requests."}}
+        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your API key to authenticate requests.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"limit","in":"query","required":false,"schema":{"type":"integer","minimum":1,"maximum":100,"default":100},"description":"The maximum number of NFTs to return per request. Default is 100."}}
+        param={{"name":"limit","in":"query","required":false,"schema":{"type":"integer","minimum":1,"maximum":100,"default":100},"description":"The maximum number of NFTs to return per request. Default is 100.","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"cursor","in":"query","required":false,"schema":{"type":"string"},"description":"Cursor for pagination. Use the nextCursor from the previous response to fetch the next page."}}
+        param={{"name":"cursor","in":"query","required":false,"schema":{"type":"string"},"description":"Cursor for pagination. Use the nextCursor from the previous response to fetch the next page.","enumDescriptions":[]}}
       >
         
       </ParamsItem>

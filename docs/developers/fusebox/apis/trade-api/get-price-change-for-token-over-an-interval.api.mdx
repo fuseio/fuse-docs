@@ -34,6 +34,7 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/api/v0/trade/pricechange/interval/{timeFrame}/{tokenAddress}"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -68,12 +69,12 @@ Get Price Change for Token Over An Interval
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"timeFrame","in":"path","required":true,"schema":{"type":"string"},"description":"Interval for price change. Allowed values: \"ALL\", \"MONTH\", \"WEEK\", \"DAY\", \"HOUR\"."}}
+        param={{"name":"timeFrame","in":"path","required":true,"schema":{"type":"string"},"description":"Interval for price change. Allowed values: \"ALL\", \"MONTH\", \"WEEK\", \"DAY\", \"HOUR\".","enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"tokenAddress","in":"path","required":true,"schema":{"type":"string"},"description":"Token Contract Address."}}
+        param={{"name":"tokenAddress","in":"path","required":true,"schema":{"type":"string"},"description":"Token Contract Address.","enumDescriptions":[]}}
       >
         
       </ParamsItem>
@@ -97,7 +98,7 @@ Get Price Change for Token Over An Interval
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your Public API key."}}
+        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your Public API key.","enumDescriptions":[]}}
       >
         
       </ParamsItem>

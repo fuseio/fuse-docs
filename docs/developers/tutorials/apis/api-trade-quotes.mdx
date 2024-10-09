@@ -7,7 +7,7 @@ Trade v2 API
 
 # Introduction
 
-In this tutorial, we'll walk through using the FuseBox REST API in a Next.js application to consume the Trade v2 API **”[Get a quote for buying or selling any ERC20 token](../../../trade-api/get-quote)”** endpoint. We'll utilize React hooks to manage the State and display the response in a table format.
+In this tutorial, we'll walk through using the FuseBox REST API in a Next.js application to consume the Trade v2 API **”[Get a quote for buying or selling any ERC20 token](../../../../developers/fusebox/apis/trade-api/get-quote)”** endpoint. We'll utilize React hooks to manage the State and display the response in a table format.
 
 ## Prerequisites
 
@@ -114,7 +114,7 @@ The `handleInputChange` function updates the `input` state whenever a user types
 
 ```javascript
 const handleInputChange = (event) => {
-  const { name, value } = event.target;
+  const {name, value} = event.target;
   setInputs((prevState) => ({
     ...prevState,
     [name]: value,
@@ -131,16 +131,16 @@ The `handleSubmit` function is called when the user submits the form. It prevent
 ```javascript
 const handleSubmit = async (event) => {
   event.preventDefault();
-  const { sellToken, buyToken, sellAmount } = inputs;
+  const {sellToken, buyToken, sellAmount} = inputs;
   const url = `https://api.fuse.io/api/v1/trade/quote`;
-  const params = { apiKey: "your_api_key", sellToken, buyToken, sellAmount };
+  const params = {apiKey: "your_api_key", sellToken, buyToken, sellAmount};
 
   try {
-    const response = await axios.get(url, { params });
+    const response = await axios.get(url, {params});
     setResult(response.data);
   } catch (error) {
     console.error("Error fetching trade quote:", error);
-    setResult({ error: error.message });
+    setResult({error: error.message});
   }
 };
 ```

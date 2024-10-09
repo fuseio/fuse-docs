@@ -34,6 +34,7 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=contract&action=checkproxyverification"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -68,22 +69,22 @@ Return status of a proxy contract verification attempt
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["checkproxyverification"]},"required":true}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["checkproxyverification"]},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"guid","in":"query","schema":{"type":"string"},"required":true}}
+        param={{"name":"guid","in":"query","schema":{"type":"string"},"required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
       >
         
       </ParamsItem>
