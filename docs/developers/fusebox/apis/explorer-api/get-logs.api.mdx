@@ -1,0 +1,377 @@
+---
+id: get-logs
+title: "Get Event Logs by Address and/or Topic(s)"
+description: "Get Event Logs by Address and/or Topic(s)"
+sidebar_label: "Get Event Logs by Address and/or Topic(s)"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1WF1vHLcO/SuEDNwmwGT9kbb33gWKwm3S1kjRBrGDPDRGwNVwZ1hrpInIWWcb+L8X1Ox61/Y6TYrkyeORdMRzSB6O/d4pNuKmf7hfUyPuvHKpp4zKKZ7Ubuoa0rJQuR4zdqSUbfd7F7EjN3VdqodArnIc3dS9HSgvXeXEt9Shm753uuxtm2jm2LjKURw6uy2U264ql+ntwJlqN9U80FV1jYzegvh05HXEHwSf59T9EJK/+Ed8jkoNZfchNE2fDwvrOpPIx/L+cFg9+4PPhnT40Ui3Tx7965OP//XJgzeHb1KfP71+MNaucim78x2YR18A8/Fnxzz8AnEefoE4jz4vJvb8jJafUO/0Drs+2Lv+4s3h0eOvv/n2v//7v3XMrU44tzfSpygkhnR0cGA/ahKfuS8+NXW/P3OV8ykqRbVV7PvAvljp/p9iW97fDSbN/iSvZq/ZjFd5vKAjEWzoni6VIejWEuaMhbZSJ/+MvXaYXdgz87Hfhm5Geed6jbpbygbleWa/O+IG5aWYmDvWQmpOYk3vdi4qd3Sq2PW7V62G5COE2HiE04xRxtHyC0q7G3ez577QrgxLFHXYec/VuOFmffxMCk8XFBVsPsFsCcdjJgBjvZ8ynBmfB/LQVa4jbdNq/pbZq62buv3vx3H7nU3P/4wRfreZ0EJ5sR7PQw5u6lrVXqb7+9jzZD4ITTjZ8/7iYJ/e9SFlsua7GebznOqhQMMI6KzF7uKJYsOx+Wjc03H/Nei59ek8FflYSxc+XZ2F4+cnd87v7cHLGAilBW0JnqdLypDm8NMgBGX++hY5wnHEsFT28jq+jq8o+NRRORHpMixhiAviQPV4bvvGCZy1LPYE1PUGL1DTgoI1j8AlawvovSVMU0HkGCnDZcoXHBuxYOzt7YAw1rCCw3Vs5aU1E4x6FZeAFHcBTIzI3h68alGB5W7g39uGs/XB7RXbjvDi6elZ+a1QoFj3iaMaOeEmUm10+pwWXNNdwuBT12dqKQovCGRgJWO6oeKxxxkHNn+Beco7OcCrlrSlDLOBQ211UJOnqBkD/0U1bJmlwIMnx30vDyvwKZZajA1kEsLs2wpSBiEyyYGjcNOqAEdNMNtovtXCYrJaOBXoOr8ssExDhgaVLnFpAiBcEgZtjZslZq36M1rCT4Q6ZJLp+G4PDifwgjA8OuOO4GxzF5ysApq+jgBPTLASmSnSEma9r0aK1tkgzfK2wx+DWWe1GnX/qzzUsGAZioA3CaPYJUtI3g+5ggY5mloI9TJixx6GWFMWxVgykebb0hnIgnU5WZM9mlwb1Umcp9yVLBWGL0gz08LKRrF0FW92AM7SoCA9eZ6zh9XcIbmvzuFl9GlB+Qb9lkVTZpIKZhgwensy7qmUU5lr0Ux1DEHA58EzhlKJXYpsp418rEfthOWa2uMJnKUL2jKNQuuUsAskEpZQPtkzKoGWjZuyL4ktVbRduxMrB3+x2t2lBXUUtVpHAoHfDlyzLkcSlhpYYBhwFuhWOReIR5kCqjXImBamTfRfT+C0s6L6MVkjeb1F4wmF7QKcD7FIioF1OboS5ZKt6EtLSwHzKzDzhz6kJdX35uvpu/HaBSuG0c40QeqVO6vJIs4H2txCoNiO1y8oYwhr/zHRgOZz9kzRb2rxmwn8MhaExwBPULEwPR5tud0srYNZUQSOj2rqzdBKDdB4e0ORxuRmivW1/ptK7FGVcpQKuKaoPDfhUoeB12XY4QWtqp5qY8tSyM1Q7lXuqxuhbmVhbTo/kxbTO1XMSnXxnbMEYr+OXqG77L7atm+PERpSwFgsz/7iLaf++DFFSYHOH6ynuR9fXE/yYtEPQVMKhWKmOWWyLNn5m/OgTn6wZJWUVsDRh2Fl7ytHaAauTSyfagKJ3PekK+1W398ygZNVm1nHs4CsGrACDCFdGt4yDZbPFnMsE7ilcajedq/r/iwydRy5w2CllLJOXtv/E+wbafykOJwcTA7c1dXfOEjzXw==
+sidebar_class_name: "get api-method"
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Event Logs by Address and/or Topic(s)"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/?module=logs&action=getLogs"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get Event Logs by Address and/or Topic(s)
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["logs"]},"required":true,"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getLogs"]},"required":true,"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"fromBlock","in":"query","schema":{"type":"integer"},"required":true,"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"toBlock","in":"query","schema":{"type":"integer"},"required":true,"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"address","in":"query","schema":{"type":"string"},"required":true,"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"topic0","in":"query","schema":{"type":"string"},"required":true,"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"topic1","in":"query","schema":{"type":"string"},"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"topic2","in":"query","schema":{"type":"string"},"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"topic3","in":"query","schema":{"type":"string"},"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"topic0_1_opr","in":"query","schema":{"type":"string","enum":["and","or"]},"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"topic0_2_opr","in":"query","schema":{"type":"string","enum":["and","or"]},"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"topic0_3_opr","in":"query","schema":{"type":"string","enum":["and","or"]},"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"topic1_2_opr","in":"query","schema":{"type":"string","enum":["and","or"]},"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"topic1_3_opr","in":"query","schema":{"type":"string","enum":["and","or"]},"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"topic2_3_opr","in":"query","schema":{"type":"string","enum":["and","or"]},"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          OK
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"message"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                result
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"address"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"blockNumber"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"data"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"gasPrice"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"gasUsed"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"logIndex"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"timeStamp"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"topics"}
+                              required={false}
+                              schemaName={"string[]"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"array","items":{"type":"string"}}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"transactionHash"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"transactionIndex"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"status"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"message\": \"string\",\n  \"result\": [\n    {\n      \"address\": \"string\",\n      \"blockNumber\": \"string\",\n      \"data\": \"string\",\n      \"gasPrice\": \"string\",\n      \"gasUsed\": \"string\",\n      \"logIndex\": \"string\",\n      \"timeStamp\": \"string\",\n      \"topics\": [\n        \"string\"\n      ],\n      \"transactionHash\": \"string\",\n      \"transactionIndex\": \"string\"\n    }\n  ],\n  \"status\": \"string\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

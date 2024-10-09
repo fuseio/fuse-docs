@@ -1,0 +1,41 @@
+---
+title: GET Token Price Change in the Last 24 hours
+sidebar_position: 16
+---
+
+import PlatformTabs from "../../../components/PlatformTabs";
+import PlatformTabItem from "../../../components/PlatformTabItem";
+
+### Get Token Price Change in the last 24 hours
+
+<PlatformTabs
+	groupId="sdk"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```typescript
+const tokenAddress = "TOKEN_ADDRESS";
+const priceChange = await fuseSDK.tradeModule.priceChange(tokenAddress);
+console.log(`Token: ${tokenAddress}, Price Change: ${priceChange}`);
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+```dart
+final tokenAddress = 'TOKEN_ADDRESS';
+final priceChangeData = await fuseSDK.tradeModule.priceChange(tokenAddress);
+priceChangeData.pick(
+  onData: (String priceInfo) {
+    // Do you magic here
+  },
+  onError: (err) {
+    // Handle errors
+  },
+);
+```
+
+</PlatformTabItem>
+</PlatformTabs>

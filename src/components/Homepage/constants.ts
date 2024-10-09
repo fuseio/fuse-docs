@@ -40,14 +40,14 @@ const MainFeatureList = [
     title: "Quick Start",
     description:
       "Find links to valuable resources and websites that will bring you up to speed on building on Fuse.",
-    link: "/fuse-box/Quick-Start",
+    link: "/developers/developers-getting-started",
   },
   {
     image: "img/new-ms-p.svg",
     title: "Fuse Basics",
     description:
       "Learn all the basics about the Fuse network, including network details, wallets, bridges and more.",
-    link: "/category/intro-to-fuse",
+    link: "/basics/overview/",
   },
   {
     image: "img/new-ms-p2.svg",
@@ -55,7 +55,7 @@ const MainFeatureList = [
     title: "FuseBox",
     description:
       "Develop seamless UX with FuseBox on Fuse network, leveraging Account Abstraction, Gasless transactions, and more.",
-    link: "/fuse-box/getting-started",
+    link: "/developers/fusebox/",
   },
   {
     image: "img/new-ms-p3.svg",
@@ -63,7 +63,7 @@ const MainFeatureList = [
     title: "Tutorials",
     description:
       "Discover everything you need to know about Fuse v2 and how we're revolutionizing various industries with web3 technology.",
-    link: "/fuse-box/tutorials",
+    link: "/developers/tutorials",
   },
 ];
 

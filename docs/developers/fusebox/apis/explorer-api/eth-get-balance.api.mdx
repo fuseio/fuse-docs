@@ -1,0 +1,199 @@
+---
+id: eth-get-balance
+title: "Return balance from a provided block"
+description: "Return balance from a provided block"
+sidebar_label: "Return balance from a provided block"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVV9tu3DYQ/ZUBDbQNoMjOrZcFisK5tDVSoEHsIg9JkMySs9LUFKmQo3W2gf+9GEryrtdxkPjFMkXOzDlz5lD+ZASbbBavzbG1cQhi3lYm9pRQOIYTZxaGpP2D5DF6DJZMZXpM2JFQ0mOfTMCOzMJ00Q1eX3MwC/NhoLQxlcm2pQ7N4pORTa/bsiQOjakMhaHTtDinvaxMog8DJ3JmIWmgy+oqOFqt5tuDk7TvGpJ3y6n4Lyfp+TltvjbJZWXoI3a917X+/N29+w8ePvrxp59/OTJfyuFcopz3k1zf/8WkjrJN3Bc+5nWwMQhy0EdpCaYs0GJua7OTfumjPf8GhNeTPdbTEIZuSQkwA8K4s4KY4L1HoSzvK3hPmDzrc1nvKTgOzfsa/io7gHMpctwPU2uAA6DiyBTykKFUWsOzKdR8aMUpCySyMTlyV4dXMe0Cr+HFmPTrcsUEIYb93ObyrTYm97qelZ77R0f66zopfz83lVH+KYi+xb73bMv0HP6bdcunmwzH5b9kRWcp6awJjwnY7ezhINRQ0jZonNTbz7YoUR68fObV+LPfw5ckQwpb4lLsAKFPcc2F0EkgHUkbdfgbKmWitGZhDn8bp/zXaWi/G+fy1/0xq0ymtJ4NYkjeLEwr0ufF4SH2XK+GTDVHfT5cHx3Sx97HRMnsF/siRTeUFDAGLFq+GS8LNhyar457Ou6/CvpWJ2IVC4ksZaKfTWfh+MXJjfMHB/BP8IS5Lep6ES8oQVzB70MmKFNiW+QAxwH9RtjmN+FNeEXexo7KiUAXfgNDWBN7cuO53Yw1nLWc9Qmo6zV8Bkdr8qqWDBcsLaC1OuMSS0QOgRJcxHTOoclajK7uF4TBwRQO59rKokNBGPkq0oUYPhegViAHB/CqxTKSNwr/TTeczQd33+h2hJfPTs/KXwUCBddHDqLgMjeBnMKZxHgTMNjY9YlaCpnXBHlgIUW6hWKxxyV71oG6MoV9DPCqJWkpwXJgX1zCkaUgCT3/Rw52JjjDD0+P+z7fqdQuihZDA4kyYbJt8b1MdF6cJmRuWsnAQeI4RyPnkjDkcVCy0qrlVCBzfznDJg4JGhS6wI0SgHBB6KVVbNqYmfXntIHfCWVIlBfj2gHcq+Elob97xh3B2TYXnEwFLd4EgKdKWKlMGWkJk9ymkcJ10pCiIXfKH4uZu1qNvP9XHhysOQ+FwOuAsRjwBqK1Q6qgmW4pBLcJ2LGFIThKWXD067japU6DrFk29Qz2fg3H0912ElYxdaVLBeFLksS0VtkIlqni7Q7AZRwEck+WV2zne4LybTqHf4KNa0rX4LecJSamXM3+mUfsscipGHmgIFMJGWwaLKMvSuxiYD2t4IMbucucr6A9qOEsntOOaRRYp4Sdp5z9BsqFkFAIpGzcyr40tqhoV7u1ysGeT7u7uKaOglRzJeD5w8COZTOC0NbAGv2AS097ci4h7ibSe9TNbWHaVv+whtNORfUk6iBZ2YPxlPyuAFdDKJSiZ9mMrkSpdEsvpbiCXILZKZj6Q+/jhtyt/Xr2cUy7ZkE/2plEiL1wp5os5HxhzLUECu2Yfk0JvZ/9R0kDWq3YMgW71eKjGv4cBWHRw1MULEiPR1tut6/mYiaIwOGuo14NrWiAxuwNBRqbmyi4K/63SuxRhFLIFbCjILxS4mKHnmcZdnhOk+rJKVrOBdwS863MfX+t1J0uzKbzB0kxvVPBJOSK75xFyPrn6BXyObuvdu3bYoCGBDAUyysfHXrq9ZMYcvT09of5NrfjwtVNXiz6DkiMvkBMtKJE2iU9f/0+cNEO2qzS0go4WD9M9j45QjOwU7JsdAQ5cN+TTNxN3/K5hpNpzHTiOUOeBrAC9D5eaLxNHLSfLaZQbuCWxkt1372u5rPQ1HHgDr1KKSap3+i/M/qNNH5S3KuP6iNzefk/kO7XGQ==
+sidebar_class_name: "get api-method"
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Return balance from a provided block"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/?module=account&action=eth_get_balance"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return balance from a provided block
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["account"]},"required":true,"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["eth_get_balance"]},"required":true,"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"address","in":"query","required":true,"schema":{"type":"string"},"description":"string containing the address hash.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"block","in":"query","schema":{"type":"string"},"description":"Block number as a string, or `latest`, `earliest` or `pending`. Latest is the latest balance in a consensus block. Earliest is the first recorded balance for the address. Pending is the latest balance in a consensus or nonconsensus block.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          OK
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"id"}
+                        required={false}
+                        schemaName={"integer"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"integer"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"jsonrpc"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"result"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"id\": 0,\n  \"jsonrpc\": \"string\",\n  \"result\": \"string\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

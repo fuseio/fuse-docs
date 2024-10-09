@@ -21,7 +21,7 @@ info:
 
     ## Working with Trade API
 
-    Before working with Trade API, if you haven't done so, please follow the guide [Getting Started](fuse-box/getting-started.mdx).
+    Before working with Trade API, if you haven't done so, please follow the guide [Getting Started](developers/fusebox/fusebox.mdx).
 
     #### Ready to start!
 
@@ -153,7 +153,6 @@ components:
             example:
               duration:
                 days: 1
-
 
   responses:
     PriceResponse:

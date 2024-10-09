@@ -1,0 +1,33 @@
+---
+title: GET Historical Transactions
+sidebar_position: 9
+---
+
+import PlatformTabs from "../../../components/PlatformTabs";
+import PlatformTabItem from "../../../components/PlatformTabItem";
+
+### **Get the Historical Transactions**
+
+<PlatformTabs
+	groupId="sdk"
+	activeOptions={["web","flutter"]}
+>
+<PlatformTabItem value="web">
+
+```typescript
+const walletActionsResult = await fuseSDK.getWalletActions({
+  page: 1,
+  limit: 10,
+});
+```
+
+</PlatformTabItem>
+
+<PlatformTabItem value="flutter">
+
+```dart
+final WalletActionsResult walletActionsResult = await fuseSDK.getWalletActions(page: 1, limit: 50);
+```
+
+</PlatformTabItem>
+</PlatformTabs>

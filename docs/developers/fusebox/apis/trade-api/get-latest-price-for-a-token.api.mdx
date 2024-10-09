@@ -1,0 +1,215 @@
+---
+id: get-latest-price-for-a-token
+title: "Get Latest Price for a Token"
+description: "Get Latest Price for a Token"
+sidebar_label: "Get Latest Price for a Token"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVm1r4zgQ/iuDCkcLrvNy3/yt9NKydGF73b1yRxOoYk1ibWVJlcZuQ8h/P0Z2QtK0u8etvxhLmmeeedEzXguSyyiKB3E/gtugSxSzTHgZZI2EgXfWwsoaRSGk1ze4EpnQVhTiucHAHwGfGx1QiYJCg5mIZYW1FMVa0MqzWaSg7VJsMqEwlkF70o4B/nFNgNtmbnQJF7ef4AlXudhkO3fkntBeKBUwxq1TL6n6FZ/fGBMunaUgS4IePRebGYNG72zEyDjj4ZBfh9ZfbkQmSmcJLfGu9N7oUvLu4HvkI+tjKm7+HUsSmfDBeQykOwdK0n845VNFjuPaPm/ju0aCz5IwUldMWLgAElLYIhM1UuWUKMQSky/OZiEG0utBOxxQkAoHyeVgvZ/9jchExNBu+6EJRhSiIvKxGLB1vmgi5tqJt3xug1NNyR/QAaQCH9tHkkttlx/ifO32dyAz7oeFS5nRZDg135h9aqT7EfwG92ORCWbcAYzyYT48gv1kCZdBEoJUrbQlKuAksKdFYxNvaTStQFtysOKG3as5vGiqgBdLV/uAFdqoW4Qdk3xqb90LBlQwX8FD6wzJJeYLbdnX7HSbgTcbgzP4Y/L31E7tyckJR3OFkpqAcWrPgSucSgRlJe0SI7gWA5RNJFczTwytNOnoFVJZQdmEgJZAWgWVjuSCLqUBGeMWKe5cjWFiK6ZQo6WE8Sv8z+EOpTknXSNoq1LWWuQM2yi7ptj6P4fJqzcuIMhWaiPnBsHo50Yrzn50TeiPfZmT1BaeG0cYU3dP7i7HQ0jtCvFF+l00fza6fIKvJANN7ShPmUsl7MUGFsHVQBXCw6Wz0Zm9iMpuYduPg3mjjTqb2nEOV84Y95LK/nCNRNwsyQmq2anCFg1f4Dhg07l73b7zWr2ewbLRCqf295ylp2Pz2MnqI5ADaQywtvH9TfoKSYl3Id3gCiZWeaf78jz+/O4+Fily06lCl6eugU7vR2cfgXTN9T7UYfu9QRnto/QGPyo+nN6P37NPFe7t35Z4W/4PTPt2eSzgs470o47qEab2ygVQSFIbVKBc2fAFSJc8g9IphGi190gxS/dI97rBUeCrrL3BmEHABQYu47EkcMul2udTy1PJu0i1TAOjn3Y/Ue4D3dqNA8JXGngjdQJNsrruVf2BxzVLIKteyksaLjxOMlEczNZZJioXiW3W67mM+Fcwmw0vdzOeJV/pyClUolhIE/GI0G4qitO7fjifwbsTPnuf/BOu9n8xWmkaPpSkvpVBs/f/z+Sjuf8BmX5R2gMqW5IHydvMNpmoUCoMiV535KIs0dOe8dGvAse1G8fXk29is/kXJghRfg==
+sidebar_class_name: "get api-method"
+info_path: docs/developers/fusebox/apis/trade-api/trade-api-v-1-v-2
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Latest Price for a Token"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/v0/trade/price/{tokenAddress}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get Latest Price for a Token
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"tokenAddress","in":"path","required":true,"schema":{"type":"string"},"description":"Token Contract Address.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your Public API key.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          OK
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={false}
+                              name={"price"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"data\": {\n    \"price\": \"string\"\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

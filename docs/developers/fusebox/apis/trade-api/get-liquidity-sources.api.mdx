@@ -1,0 +1,182 @@
+---
+id: get-liquidity-sources
+title: "Returns the liquidity sources enabled for the chain"
+description: "Returns the liquidity sources enabled for the chain"
+sidebar_label: "Returns the liquidity sources enabled for the chain"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVk1v4zYQ/SsDLlAkgCJ/9KZbsHWCYBdommyNFraB0OLY4oYiFXKkxDD03xdDyV7HdvbQ+iKI4jy+eTN8460guQ4im4npGB5fZSUWiXAVekna2TslMrFG+qpfaq00bR5d7XMMIhGV9LJEQs/BW2FliSITstJfcCMSoa3IxEuNnl88vtTaoxIZ+RoTEfICSymyraBNxWGBvLZr0SZCYci9rvhwkYl/Xe3hvl4ancP1/R084yYV7YIRQ+VswMAg4+GQH+9Dry1I7+UG3ArMjj6EPf/cWUJLHCiryug8Jjz4Hjh6e0oxgnFihGU4WHfL75gTC+JZNtIdp06PMwnyNuc7kief20SQJsNL0/GR6KKNv2OJHpBqbwNQgad5Alq5NKhg5XzckRdSW5GIEqlwfXFjMakQmRjISg+a0YC8VDj4qVVA3+wKXXsjMlEQVSEbcEC6qgOm2oljZvfeqTrnF+gARJuciw8k19quP8R57L7vQRbcXSsX5evF+saEY4dMR/AbTMciEcy4Axilw3R4AntnCddeEoJUjbQ5KuC8+aRVbSNvaVhLbcnBhjvxoFHgVVMBvJi7svJYoA26QdgzSef23r2iRwXLDcwaZ0iuMV1py2ctLnYKHH0YXMIfk3/mdm4/ffrE2dygpNpjmNsruEWCyus81tGuMYBr0ENeB3Il80TfSBO33iDlBeS192gJpFVQ6EDO61wakCHskML+qDFMbMEUSrQUMf4P/yt4QGmuSJcI2qqoWoOssA2ya4rd+VcweauM8wiykdpww552Mm/7c0lSW3ipHWGILT15+DweArlntBBeZbXP5q9a58/wSNLT3I7SqFwsYe8isPKujDdi9tnZ4MxBRnm3sOvHwbLWRl3O7TiFG2eMe41ln90iETdLPATV4kJhg4Y9IAw4dOneds+0VG+XsK61wrn9PYVrpTo2T51fPgE5kMYAGyUGgmicEC12n9IX3MDEqsrpvjxP3XUd9tc1yjnYRjGulfIYQvuUxcyNJEbtdOoa6GI6uvwIpGuu81Dv2+8IZXSI0gf8qvhwMR2fi48V7uOPS7wr/wehfbs8ZfBVB/pVR/UIc3vjPCgkqdkolctrvgDxkieQO4UQrK4qpJDEe6R73+As8E2WlcGQgMcVei7jqSVwy8Xap3MbJ4ALVEr7c0r8Rw9/Z2f7UUL4RoPK8JY26dx22/v7jMczO+NIJCLKxd7eu/wiEYULxLu226UM+Lc3bcvL3RRn71c6RCoiW0kT8ITCfqaKi4d+5F/C2RmenKf7jJvDPxGNNDVvip7fSK/5dJHNFm0iCpQKfaTVRV3nOVZ0EHUy1hllP/huJ99E2/4APPwmbg==
+sidebar_class_name: "get api-method"
+info_path: docs/developers/fusebox/apis/trade-api/trade-api-v-1-v-2
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Returns the liquidity sources enabled for the chain"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/v1/trade/sources"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the liquidity sources enabled for the chain
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your Public API key.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          An array of liquidity sources
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                        >
+                          Array [
+                        </div>
+                      </li><SchemaItem
+                        collapsible={false}
+                        name={"name"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"proportion"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                        >
+                          ]
+                        </div>
+                      </li>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"[\n  {\n    \"name\": \"string\",\n    \"proportion\": \"string\"\n  }\n]"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

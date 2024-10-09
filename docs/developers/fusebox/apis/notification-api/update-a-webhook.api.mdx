@@ -1,0 +1,358 @@
+---
+id: update-a-webhook
+title: "Update a webhook"
+description: "Update a webhook's details such as its URL or event type."
+sidebar_label: "Update a webhook"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "put api-method"
+info_path: docs/developers/fusebox/apis/notification-api/notifications-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update a webhook"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/webhook"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update a webhook's details such as its URL or event type.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"The public API key for authentication.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Header Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"API-SECRET","in":"header","required":true,"schema":{"type":"string"},"description":"The secret API key for authentication.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"application/json"}
+    value={"application/json-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3><strong
+          className={"openapi-schema__required"}
+        >
+          required
+        </strong>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"webhookId"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"webhookUrl"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"eventType"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string"}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Webhook successfully updated.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"webhookId"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"webhookUrl"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"eventType"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"webhookId\": \"string\",\n  \"webhookUrl\": \"string\",\n  \"eventType\": \"string\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"403"}
+        value={"403"}
+      >
+        <div>
+          
+          
+          Access to the resource is forbidden.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"statusCode"}
+                        required={false}
+                        schemaName={"integer"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"integer","example":403}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"errorMessage"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","example":"Forbidden resource"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"error"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","example":"Forbidden"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"statusCode\": 403,\n  \"errorMessage\": \"Forbidden resource\",\n  \"error\": \"Forbidden\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      
