@@ -100,92 +100,56 @@ const config: Config = {
     },
     navbar: {
       logo: {
-        alt: 'Fuse_logo',
+        alt: 'Fuse Logo',
         src: 'img/fuse-logo.svg',
       },
       items: [
         {
-          to: 'https://discord.com/invite/jpPMeSZ',
-          label: 'Support',
-          position: 'right',
-          className: 'navbar--discord-logo',
-        },
-        {
-          href: 'https://discord.com/invite/jpPMeSZ',
-          position: 'right',
-          className: 'navbar--discord-link',
-        },
-        {
-          type: 'search',
-          position: 'right',
-        },
-        {
-          href: 'https://github.com/fuseio/',
-          position: 'right',
-          className: 'header-github-link',
-          'aria-label': 'GitHub repository',
-        },
-        {
-          label: 'Get API key',
-          href: 'https://console.fuse.io/build',
-          position: 'right',
-          className: 'navbar--get-api-key',
-          'aria-label': 'Become an operator',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'basicsSidebar',
+          type: 'doc',
+          docId: 'basics/overview/overview',
           position: 'left',
-          label: 'Fuse Network',
+          label: 'Basics',
         },
-        // {
-        //   type: 'doc',
-        //   docId: 'developers/Quick-Start',
-        //   position: 'left',
-        //   label: 'Fuse Network',
-        // },
         {
-          type: 'docSidebar',
-          sidebarId: 'validatorsSidebar',
+          type: 'doc',
+          docId: 'developers/web3-tools/web3-tools',
           position: 'left',
-          label: 'Validators',
+          label: 'Developers',
         },
         {
-          type: 'docSidebar',
+          type: 'doc',
+          docId: 'how-fuse-works/how-fuse-works',
           position: 'left',
-          label: 'Build',
-          sidebarId: 'fuseBoxSidebar'
-          // The Items section below is used to create a dropdown menu. 
-          // The dropdown menu requires removing the 'sidebarId'
-          // items: [
-          //   {
-          //     label: 'Getting Started',
-          //     to: 'fuse-box/getting-started',
-          //   },
-          //   {
-          //     label: 'SDK Reference',
-          //     to: 'fuse-box/sdk',
-          //   },
-          //   {
-          //     label: 'Tutorials & Guides',
-          //     to: 'category/tutorials',
-          //   },
-          //   {
-          //     type: 'docSidebar',
-          //     label: 'API Reference',
-          //     sidebarId: 'apiSidebar',
-          //   },
-          //   {
-          //     label: 'Trade API (versioned)',
-          //     to: '/category/trade-versioned-api',
-          //   },
-          // ],
+          label: 'How Fuse Works',
         },
         {
-          type: "docSidebar",
-          sidebarId: "apiSidebar",
-          label: "API References",
-          position: "left",
+          type: 'doc',
+          docId: 'fuse-ember/fuse-ember',
+          position: 'left',
+          label: 'Fuse Ember',
+        },
+        {
+          type: 'doc',
+          docId: 'businesses/businesses',
+          position: 'left',
+          label: 'Businesses',
+        },
+        {
+          type: 'doc',
+          docId: 'ecosystem/ecosystem',
+          position: 'left',
+          label: 'Ecosystem',
+        },
+        {
+          type: 'doc',
+          docId: 'support-faq/overview',
+          position: 'left',
+          label: 'Support & FAQ',
+        },
+        {
+          href: 'https://github.com/fuseio/fuse-docs',
+          label: 'GitHub',
+          position: 'right',
         },
       ],
     },
@@ -323,4 +287,4 @@ const config: Config = {
   },
 }
 
-module.exports = config
+export default config;

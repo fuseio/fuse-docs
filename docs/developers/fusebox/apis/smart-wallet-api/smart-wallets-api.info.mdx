@@ -1,0 +1,71 @@
+---
+id: smart-wallets-api
+title: "Smart Wallets API"
+description: "Smart Wallets API provides a Wallets as a Service (WaaS) API for your cross-platform applications. Developers can also access the Smart Wallets API via the [fuse-sdk]."
+sidebar_label: Introduction
+sidebar_position: 0
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Heading from "@theme/Heading";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+import Export from "@theme/ApiExplorer/Export";
+
+<span
+  className={"theme-doc-version-badge badge badge--secondary"}
+  children={"Version: 1.0.0"}
+></span>
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Smart Wallets API"}
+></Heading>
+
+Smart Wallets API provides a Wallets as a Service (WaaS) API for your cross-platform applications. Developers can also access the Smart Wallets API via the [fuse-sdk].
+Smart Wallets API lets you authenticate users with their Externally Owned Accounts (EOAs) and create Smart Contract wallets, execute gasless transactions through the relay service, fetch balances and tokens, get transaction history, and much more.
+Each wallet created through the Smart Wallets API is an upgradable Smart Contract wallet deployed on the Fuse network. The wallet is non-custodial. Thus it has an owner in charge of the wallet. The owner controls the wallet funds and can perform other transactions by signing messages and sending them to the relayer.
+
+## Working with Smart Wallets API
+
+Before working with Smart Wallets API, if you haven't done so, please follow the guide [Getting Started].
+
+#### Ready to start!
+
+> #### 📘Remember > > For all Smart Wallets API requests, you will need to add your Public API Key to the request query params under the key `apiKey`.
+>
+> Once you have your project set and access to your Public API key, you can start working with the Smart Wallets API.
+
+<div style={{marginBottom: "2rem"}}>
+  <Heading
+    id={"authentication"}
+    as={"h2"}
+    className={"openapi-tabs__heading"}
+    children={"Authentication"}
+  ></Heading>
+  <SchemaTabs className={"openapi-tabs__security-schemes"}>
+    <TabItem label={"HTTP: Bearer Auth"} value={"bearerAuth"}>
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>Security Scheme Type:</th>
+              <td>http</td>
+            </tr>
+            <tr>
+              <th>HTTP Authorization Scheme:</th>
+              <td>bearer</td>
+            </tr>
+            <tr>
+              <th>Bearer format:</th>
+              <td>JWT</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem>
+  </SchemaTabs>
+</div>
