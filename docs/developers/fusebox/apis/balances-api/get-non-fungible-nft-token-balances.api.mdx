@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJy1Vktz2zYQ/iuYPbUzrESnPfHmunEmk1bNOPah4+oAkUsJMQkwi4Vij4b/PbMgqYdF20rcniQC3y6+fe8GWC89ZLcwu7xW7O7Qepgn0GjSNTKS3G3A6hohA92YD/gACRgLGXwJSPJB+CUYwgIypoAJ+HyFtYZsA/zQiJhnMnYJbQIF+pxMw8aJgn9cIHX+8b26wwfFTunAK7Rscs2oRCt69hNokx2BoiD0fmDQaF69hsD1CtVXXVXIqtcsNKJdqnSktPcuN5qxULPL60MqlakNP+2KUld+jIqxjEskSKA21tShhuwsgVrf9//TVEiWOlQcv0Y593BlQ71AUq6M9IQ7IQeyqkEaHDhRf3TqlPHqLE0PjMgDeUffb8VTDr2I+qLvGr00Vsv5RN14VLxCZfGeBwi5Op41hGvjgleEvnFWkE6VyPlqKyK6cALtXKh1IC9k3qSp/BxS+PsDJJA7y2hZbnXTVJJRxtnpZy+QzbE9bvEZc4lmQ65BYtM9UGg+AaXz3IXusReAffaO+TF3VYU5m0WF+wBNpGPBMdb+5RcGLZ2Zp2LPT+Dl7CymzLOQTw/1wlUjoFZghFJJ4yrkztHLpM2YfPs4D5/JU0c3ZEYRo6oTMLVe4s3Vn6OX9imfuK8WX2NO7MTvR28TYMOVHM1KvtiljQhG2V2VHYsnYENVaYH3zXK0gNmp4DHWcSxFY5eH1Sg9h9CHiv1EzUJVKVMKglBpQmWdqh3hFvKY9u+60jZHf9WXM3TMf0t/PS7o8zzvG7MwIPQuUI7SzUpHC1MUaCf/Xcl71hz8hSv24zo07TYBJHL0F3qvl+ORj4DRqLbHiQrvkNXMWXUZ7FKCKI1cXUvw1eAjGRXIK1dABkuMjGXsZTC1Jf+ivUf2003fW1pIwCOth8EdqIIMVsyNz6ZT3ZhJGTxOjJP/03U6XexeOWT2kVwRYlWrTmGcG8f6PEujX56s91OH3yqdy/ApXfRYnyCD5bIbHMnL/NsHqIbc2hToFdqiccby3hDvh/tAJiZ0HJXaFurt1cWbtN95Jv9aSEDc1r1yNkknqYSzcZ5rHVOon5mnhWy8HzHe87SptLGiOzpz04fzFnbhhASyYVjME1g5zwLYbBba4w1VbSvH3biWKBfGS0nvBvaj17e1AT9d9bP9Z3Xi9pWMc7/Dh/2FcK2rIKCYJKfTef0y8yy9YUf7QXb/6zbzLPHtXrZjPpcPMl3r/tGYf/fC+wTLYTuxB7HfZkWfuu28TWCFupBReLvpb6WfN/tROWrXYuu25b17ew1t+w06hGFg
 sidebar_class_name: "get api-method"
-info_path: docs/balances-api/balances-api
+info_path: docs/developers/fusebox/apis/balances-api/balances-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/nft-assets/{address}"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,7 +68,7 @@ Get Non Fungible NFT Token Balances
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"address","in":"path","required":true,"schema":{"type":"string"},"description":"The wallet address to query for associated NFTs.","enumDescriptions":[]}}
+        param={{"name":"address","in":"path","required":true,"schema":{"type":"string"},"description":"The wallet address to query for associated NFTs."}}
       >
         
       </ParamsItem>
@@ -93,17 +92,17 @@ Get Non Fungible NFT Token Balances
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your API key to authenticate requests.","enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your API key to authenticate requests."}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"limit","in":"query","required":false,"schema":{"type":"integer","minimum":1,"maximum":100,"default":100},"description":"The maximum number of NFTs to return per request. Default is 100.","enumDescriptions":[]}}
+        param={{"name":"limit","in":"query","required":false,"schema":{"type":"integer","minimum":1,"maximum":100,"default":100},"description":"The maximum number of NFTs to return per request. Default is 100."}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"cursor","in":"query","required":false,"schema":{"type":"string"},"description":"Cursor for pagination. Use the nextCursor from the previous response to fetch the next page.","enumDescriptions":[]}}
+        param={{"name":"cursor","in":"query","required":false,"schema":{"type":"string"},"description":"Cursor for pagination. Use the nextCursor from the previous response to fetch the next page."}}
       >
         
       </ParamsItem>

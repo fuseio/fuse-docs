@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJytV21v20YS/iuDNXBtAYZ20pe7E1AUbpO2Rg64IHaRD03QjJYjcerlLrMzlK0G/u/FLElL8kuuB1RfRJG7M88888yz1EenuBa3+NWdep+GqO5d5VJPGZVTPGvcwq1JX1FsOK4vrv/Doq5yPWbsSCnbzo8uYkdu4brUDIFc5Ti6hfswUN66yolvqUO3+Oh029sy0cxx7SpHcegsM86ZbyqX6cPAmRq30DzQTXUbHL0B+v+D9yN0vQ4G/dMpen5J27+a4qZydI1dH+xef/nb02dffvX1N//8179P3KdyNE0mkbtJDtd/MmlD4jP3hY35PvgUFTnapbYEUxZoUdra7aXvcf2/G8RRaU35frLpAWTqMwlFnfNZWIhDt6QMg1ADq5TtJscioxrep9VKSN9DN4gCBkmwJOhz2nBDzQHEceXfDHLCllagGaOMYhLIpEOO1EBPBS/V8N6+Hsf5znolfYpCYmienZzY1yGE/750lbOWUFR7in0f2Bcqjn8XW/LxfkFp+Tv5MlzZ5k95TNCRiDXtISlkkiHo3iPMGYuAlTq5H/vmpnKiqIM8EG783GXzJ1KYRuiQuuUWdlruSNs0eUWxB23dwh1/NzrCt9OA/2Pc++3hSFZOKG9mKxlycAvXqvayOD7GnuvVIFRzsuvjzckxXfchZcruLtJXOTVDSQBjwCKq+/FETZfrvxz3fFx/G/SdKXOVCoOsZfpfTHvh9NXZvf1HR/BLDITSllF5la5GIf44CMH3IflL3yJHOI0Ytspe3sa38Q0FnzoqOyJdhS0McUMcqBn37Wes4aJlsSugrrfwAg1tKJiMBK5YW0DvzQ80lYgcI2W4SvmS41rKVLR0DxDGBqZwOGMrNxtUhJGvomlI8aEAtRVydARvWlRguQ/8O1twMW/cf2LLEV6/OL8ov0oJFJs+cVQrTnhtU6tpHs37BYNPXZ+ppSi8IZCBlazSXSkee1xyYJu0YlgP1QBvWtKWMiwHDmUKGvIUNWPgP6iBvdEW+Pz5ad/LF5XZcdFiXIN5EGbfVpAyCJFRDhyF160KcNQEyx3nByOWYoFTgc79ZYFtGjKsUekKt0YAwhVh0NZqs8bMrL+kLfxIqEMmWYz3juBpDa8Jw5ML7ggudrngbAK0eBsBnhthBZkx0hJmfUwjhetsIdVC7sEfwcxdrUbe/ygXDWxYhkLgYcEolmQLyfshV7CeTjSEZhuxYw9DbCiL4uhHabVPnQXZsG7rudhnNZxO5+BZXKXclS6VCl+TZqaNyUaxTBXvVgAu06AgPXlesZ9tjuQxncMv0acN5YPyWxZNmUkqWGLA6O3Kak9FTsXhI0WdIAj4PHjGUJTYpci224qPzcidsNyW9mUNF+mS9kyjlHVO2AUSCVsop2BGJdCycCf70tiion3t1iYHfzmt7tKGOopazUgg8IeBG9btWIS1BjYYBlwGuiPnEuJJpoBqAzK2hWmH/qsazjsT1Q/JBsnrnTKeU9gX4GqIhVIMrNvRlSiXbkVfRlpKMD8FM3/oQ9pS82i/XlyPaTesGEY70wSpV+5Mk4WcT4y5QaDYjuk3lDGE2X+MNKDVij1T9Dstfl3Dz6MgPAZ4joql0tPRltvdoxnMVCJwfNJQb4ZWNEBj9jVFGpubKTa3/O+U2KMq5SgVcGOvQCsjLnUYeJZhh5c0qZ4aq5ZlPNdRHmXuswOoe12YTecn0mJ654pZqSm+c5FA7OfoFfqQ3Vf79u0xwpoUMBbLW+XUlV2//pCipEDvPp9Pcz/euD3Ji0V/AZpSKCVmWlEm65LtPzwPmuQHa1ZpaQUcfRgme58cYT1wY2T51BBI5L4nnbib3vulhrNpzGziWUCmAawAQ0hXFm+bButnizmWE9jeludXgH33up3PQlPHkTsMJqWUtX5rf3zsHWl8pXhan9Qn7ubmT2Wq5+w=
 sidebar_class_name: "get api-method"
-info_path: docs/explorer-api/explorer-api
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=account&action=pendingtxlist"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,32 +68,32 @@ Get pending transactions by address
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["account"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["account"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["pendingtxlist"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["pendingtxlist"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"address","in":"query","required":true,"schema":{"type":"string"},"description":"string containing the address hash.","enumDescriptions":[]}}
+        param={{"name":"address","in":"query","required":true,"schema":{"type":"string"},"description":"string containing the address hash."}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"page","in":"query","schema":{"type":"integer"},"description":"integer representing the page number used for pagination. `offset` must also be provided.","enumDescriptions":[]}}
+        param={{"name":"page","in":"query","schema":{"type":"integer"},"description":"integer representing the page number used for pagination. `offset` must also be provided."}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"offset","in":"query","schema":{"type":"integer"},"description":"integer representing number of transactions returned per page. `page` must also be provided.","enumDescriptions":[]}}
+        param={{"name":"offset","in":"query","schema":{"type":"integer"},"description":"integer representing number of transactions returned per page. `page` must also be provided."}}
       >
         
       </ParamsItem>

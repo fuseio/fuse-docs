@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJytV21v3EYO/ivEGLi2gCI7aXsvCxSF26Q9Izg0iF3kQxNcuCPuivVoRhlS66iB//uBI8m7fkmaArdfVivNkA8fPnxG+8EpbsWtfnOn3qchqntTudRTRuUUzxq3clvS/3Ck5oeQ/KW4yvWYsSOlbPs+uIgduZXrUjMEcpXj6Fbu3UB5dJUT31KHbvXB6djbMtHMcesqR3HoLC8uea8rl+ndwJkat9I80HV1Exy9wfnrwbeknWFfT9g/naPn5zR+bo7rytF77Ppg9/rL/z5+8vU33/79H//814n7VI6mySRyN8nt9Z9M2pD4zH2hY7kPPkVFjnapLcGcBVqUtnYH6Xvc/nmHOCptKd9PNj+ATH0moahLPgsLcejWlGEQamCTst3kWFRUw9u02QjpW+gGUcAgCdYEfU47bqip4ZeSAsMtsNOe/zPcGWXagGaMMulKIJMOOVIDPRXkVMNb+/ocxG+sf9KnKCSG68nJiX3dBvPLc1c5axNFtafY94F9oef4d7ElH+6Xlta/kzcG+mwjqTwl6EjEGvmQPDLJEPTgEeaMRdRKndyPfX1dOVHUQR4IN33u8vozKQQWNRKnuYIyY7AeYa/vjrRNs30Uz9DWrdzx95NNfDdP/d+mBnx3Z04rJ5R3i8EMObiVa1V7WR0fY8/1ZhCqOdn18e7kmN73IWXK7i7UFzk1Q8kAU8Cir/vxRE2s28+Oez6tvwn6xkS6SYVC1mIJz+a9cPri7N7+oyP4NQZCacv8vEhXkyZ/GoSg+KxvkSOcRgyjspfX8XV8RcGnjsqOSFdhhCHuiAM1077DjDVctCx2BdT1Fl6goR0F05HAFWsL6L2ZhKYSkWOkDFcpX3LcShmQlu4BwtjAHA4XbOVmg4ow8VVEDSk+FKC2Qo6O4FWLCiz3gX9vCy6WjYdPbDnCy2fnF+VXKYFi0yeOasUJb02EmpYpvV8w+NT1mVqKwjsCGVjJKt2X4rHHNQe2USsu9lAN8KolbSnDeuDQmA4a8hQ1Y+A/qIGD2Rb48ulp38tXlXl00WLcgtkRZt9WkDIIkVEOHIW3rQpw1DQN1sT5LaNKscCpQJf+ssCYhgxbVLrC0QhAuCIM2lpt1piF9ec0wk+EOmSS1XTvCB7X8JIwPLrgjuBinwvOZkCr1xHgqRFWkBkjLWHWj2mkcJ0tpFrIA/gTmKWr1cT7H+WigR3LUAi8XTCKJRkheT/kCrbzMYfQjBE79jDEhrIoxtKJxZNmuXrlHetYL8U+qeF0PhzP4iblrnSpVPiSNDPtTDaKZap4vwJwnQYF6cnzhv3icyQf0zn8Gn3aUb5VfsuiKTNJBWsMGL1dWe2pyKlYfKSoMwQBnwfPGIoSuxTZdlvxsZm4E5ab0r6u4SJd0oFplLLOCbtAImGEciBmVAItC/eyL40tKjrUbm1y8Jfz6i7tqKOo1YIEAr8buGEdpyKsNbDDMOA60B05lxCPMgVUG5CpLUx79N/UcN6ZqH5MNkhe75TxlMKhADdD9NMBzDpOrkS5dCv6MtJSgvk5mPlDH9JIzUf79ez9lHbHimGyM02QeuXONFnI+cSYGwSK7ZR+RxlDWPzHSAPabNgzRb/X4rc1/HsShMcAT1GxVHo62XK7f7SAmUsEjo8a6s3QigZoyr6lSFNzM8Xmhv+9EntUpRylAm7sbWhjxKUOAy8y7PCSZtVTY9WylOLWKB9l7otbUA+6sJjOz6TF9M4Vs1JTfOcigdjPySv0IbuvDu3bY4QtKWAslrfJqSu7fvsxRUmB3ny5nOZ+unFzkheL/go0pVBKzLShTNYl23/7PGiSH6xZpaUVcPRhmO19doTtwI2R5VNDIJH7nnTmbv4zIDWczWNmE88CMg9gBRhCurJ4Yxqsny3mWE5ge4VeXgEO3etmPgtNHUfuMJiUUtb6tf0dsnek6ZXicX1Sn7jr6/8BTVbuDA==
 sidebar_class_name: "get api-method"
-info_path: docs/explorer-api/explorer-api
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=account&action=getminedblocks"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,32 +68,32 @@ Get list of blocks mined by address
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["account"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["account"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getminedblocks"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getminedblocks"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"address","in":"query","required":true,"schema":{"type":"string"},"description":"string containing the address hash.","enumDescriptions":[]}}
+        param={{"name":"address","in":"query","required":true,"schema":{"type":"string"},"description":"string containing the address hash."}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"page","in":"query","schema":{"type":"integer"},"description":"integer representing the page number used for pagination. `offset` must also be provided. Optional.","enumDescriptions":[]}}
+        param={{"name":"page","in":"query","schema":{"type":"integer"},"description":"integer representing the page number used for pagination. `offset` must also be provided. Optional."}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"offset","in":"query","schema":{"type":"integer"},"description":"integer representing number of transactions returned per page. `page` must also be provided. Optional.","enumDescriptions":[]}}
+        param={{"name":"offset","in":"query","schema":{"type":"integer"},"description":"integer representing number of transactions returned per page. `page` must also be provided. Optional."}}
       >
         
       </ParamsItem>

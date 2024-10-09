@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJzNV99vGzcM/lcE5aUFPNvNBgzwW5A1WdEuTVNnw5DkgdbRPjU66SrynF4N/+8FdWcnse/Sdr+wp8RHivpIiuTHlWZYkJ5c6UvCqN6WGIFt8KRvBjpDMtGW8ltP9AmyyZFUJYphq6jmISpQVKKxc2vUHTiHrCDLIhINlPXGVZn1C8URPIFJpwY7ZlQOlCMNFPhMRXTAmCnRXVquVQYMQz3QJUQokDEK4pX2UKCeaCjta6z1QFuB+bHCKD8ifqxsxExPOFY40GRyLEBPVprrUo4RR+sXer3r55+hiuro/JW6xVpxUFBxjp6tAUYlVpGYhno9uAfQ+LpBUALnfwfANMedKAqM5FcK9k4Chnp9I7dRGTwhyQWH47H8eWz2SDlLrMJ8L4NAFIxNIb+znCveAyDBN8EzehbDUJZO4mGDH30gsb7ady/MPqBhyVqUu9g22CSXX9cSiG9LeqAIMUJKMmNBXzdgs85IP3iDvwLlnTrN3b1iQp9h7BSh51ifB9tEaU9cQl0Acc/hrfTIZ788DtK90qzymesx4IM32Cmx3vJxyLqFYLgCdwp0HKgb91bjkrA7rAacyN/YwnabWGKU7pCezJOKZcTfH+t2qhXw6QTxHOMTCufRhmi5flpxBoRPayyAzqPtCe3iKWfILjxwFbuPUmWMtI172SwEh+BFGHGJkS8Q2vLax+2CuZ3aott2kp5VxazvrSDfhXjbXSMQF9j3EkyoPE93Nb6vCNviPhZTHQrr9kH1FwF6nFtjIdad8jkYDj0yjObnwxdTaQPzNEf6GkyfT/MYiu6whZ7Pt+hf9ZRN8BzB8FE7QDozBT0pprqYBdcTP4zmcPwferkEV3XD/Hd8lJlpbAGuy2CKAFt28vEyPbb0ce8rXbRTsz3z0/jHjrmZqlRGsMzFiBSqaFDZxHxmNsvQ/4PjkRi4op1mbT3jAmPzfmOIvyERLLpDlhS6g5J8LJDzkOmJlgoeNGRlokdSk6Gk0aqd+Gstky4uN1yrik5PdM5c0mQ0gtIO5xXh0Ab5f7QcjxYRyvyj07ts5jyGrEoDVzX2EnPaN0cMC+sX32r2faO+tXkjU27ePM42x6dy9N0b4XJ7xw8O1MuiDHcowVFnJ1P18lPpQktGhYTu8OFrL7TsgUkhUJ5UVSpQdyG6TJhVGYjszDor6UxkLcMlOkkwDRR6mDm5D+fSvtBzYnUb1bOTKaWrdwmemuZIKJeSKmNY2gwVeCWvIs7B4D097DOxR/F66DrS8NofHKjXWKsTTKOLJvLlQL0YqlPk5oZZrf5ozrVVPbn2qo0gthSeo8Ultoh2bu9dF4bqFDjHqEwoyog5erJLVJLZWDS54aDQR2tyVQtRPzuZ/rDdF+7rTvxocB82uNuC74H+LkVPgIMHV3/GvQA6628xS/tAP/iLjdfpdMrPdt95vP2kqx6uN41fOXiDjWOVsExi8Gl32rD2GeawtCG27olrLPL3DJExm1x7cRb8doGRRp4a19Vx8BQc3jzbVJ1pPmwrblZZlz1XHIJrczjHKLgEzuOEZMFUBXpOwRlK5uUZC3a5KtWVQM5qD4U121cuVqUUggdnP2PWeN6+FXDN4yisl8a+qRy5RgomRB5ee52oJDVF/GI4Ho4TaQzEBaQ+265kOyl/nKjdbrC6b97/hy23bdyMn3hUOrCJD6aGuWrb9ZVu27Ue6MnGqZuBzhODv9KrlbDay+jWa/ncrMTSxTNLMHNC4ufgCJ+Iw7OLdn19rr5xIe4Bfov1wx29JQo6dewlRCt4/jq2796Ve1Bu2JF/hHGLvg3x+mY90DlC2v+uVq1UCELJD87tzX/xdTt3T19O9Xr9BSldJRw=
 sidebar_class_name: "get api-method"
-info_path: docs/graphql-api/graphql-api
+info_path: docs/developers/fusebox/apis/graphql-api/graphql-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/userops/{address}"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,7 +68,7 @@ Fetches user operations for a specific wallet address, including transactions, u
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"address","in":"path","required":true,"schema":{"type":"string"},"description":"The wallet address to query for user operations.","enumDescriptions":[]}}
+        param={{"name":"address","in":"path","required":true,"schema":{"type":"string"},"description":"The wallet address to query for user operations."}}
       >
         
       </ParamsItem>
@@ -93,7 +92,7 @@ Fetches user operations for a specific wallet address, including transactions, u
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your API key to authenticate requests.","enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your API key to authenticate requests."}}
       >
         
       </ParamsItem>

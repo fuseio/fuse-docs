@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJytVmFv3DYS/SsDGui1gLJ20vauXaAo3CS9GvlwQewkH5IgGJOzq6kpUuFQctTA//0w5Gp3ba+LHHD+Yi1Fzsyb9+aJX0zGtZjlO/M0hpzQZvOhMbGnhJljOHNmaUZKvJreTD2l7abG9Jiwo0xJT38xATsyS9NFN3gyjeFglubTQGkyjRHbUodm+cXkqddtkhOHtWkMhaHT7Hab/aYxiT4NnMiZZU4D3TTb6Gi1qP89ekXwcVQIH78yVc8vaPraVDeNoc/Y9V7X+quPj598/8OP//zXTz+fmHs5PtQVkvxbdJPGur2hKc2gkPUV9r1nW7g4/lNi0LV7RcTLP6lykpS5zCTlrHOJRP5AaQ9WXJEeeGFj17On9IaScM15YE/t4nkckqWn0R0KVf4UrvQxSK3qycmJ/nMkNnFf+Fya/7ww/zfYHYng+jCyRDL4fPCVZMyDPATiprlT8ZsiKUAocwFzO+CacwucBaQ0Bmx0BBjcbodNVIABh1VMHW4k3VFuo45bH6XOV27N0hz/Wkfql/n8N3UIfjms6cYIpXEeyiF5szRtzr0sj4+x58VqEFpw1Ofj8eSYPvc+JkrmLryXKbqhJIIa0Ohs3I8nGdcc1l8d97zu3wb90Bjl99VuIJ7Pc3RHwLup3kzo9vc9ue6/uq/SPc6VgcI45zK5zzdlw+nLs3ulHx3B6+AJpYXcEryM15QgruD3QQh+89Fe2RY5wGlAP2W28j68D2/J29hRORHo2k8whJHYk6vn9jMu4KJl0SegrtfwAo5G8qpuqcpCa0kEciwROQRKcB3TFYe1aDG6ercgVd8mHM61lUWHGaFSVRUZw6EACwVydARvW8zAcr/wX3XDxXxw/41uR3j1/Pyi/CoQKLg+csgKTngdyCmcPsWRHd0HDEpvopaC8EggA2dSpDsoFnu8ZM9qALCK6SAGeNtSbinB5cDeqQQdWVJ1eP6LHOw5jsC3z077Xr5rdGjLGIQ1JBLCZNsGYgIh0pYDB+F1mwU45AiXu57nhEHqpIq2VctpIM/8ssAUhwRrzHSNkzYA4ZrQ51axKTFz11/QBL8T5iGRLOvaETxewCtC/+iCO4KLXS442xS0fB8AnmnDSmXakZYw5Yc0UnqdNGTWkHvl12JmVpva97/Kg4ORZSgNvA0YRZNMEK0dUgNr5KDdQnBTwI4tDMFRkoyhMBFX+63TICPnaTGDfbKA0+oEcLazzILwFeXENKpsMpap2jNVwMs4ZJCeLK/YwsZOSB7SObwONo6UbsFvWXJMTNLAJXoMVp8UeyxyKh+eQCFvShCwabCMviixi4H1tIIPrvZOWLbQvl/ARbyiPdMosM4JO08iflL6aJ0wE+SycSf7QmxR0b52FyoHe7XZ3cWROgq5mSsBz58GdpynCkKpgRH9gJee7si5hHiUyGPWAam0MO2q/2EB552Kar4W3oHxjPy+AFdDKC1Fz3mqrkSpsBVsGWkpwWbPVn/ofZzIPcjX88817cgZfbWzHCH2mTvVZGnO34y5lkChrelHSuj97D/aNKDVii1TsDst/riAP6ogLHp4hhkL0tNqy+3u1VzMBiJweOSoV0MrGqCafU2BKrmJgtv2f6fEHnOmFKQBdhRyuXKE2KHnWYYdXtFG9eQULUsBd4nyYOf+cavUPRZm0/k35WJ65xlTJld85yKC6M/qFfmQ3Tf79m0xwJoyYCiWt0qxK6fePY1BoqcP384XCVsXtpeIYtHfQY7RF4iJVpRIWdLzt78HLtpBySqUNsDB+mFj7xtHWA/stFnlJiaB+57ypnebO7ss4GwzZuVeJiCbAWwAvY/XGm+Kg/LZYgrlC9xS/ajeda/tfJY2dRy4Q69Siikv3utNb9zeUx4vThYn5ubmv+Ls2gU=
 sidebar_class_name: "post api-method"
-info_path: docs/explorer-api/explorer-api
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"post"}
   path={"/?module=contract&action=verify_vyper_contract"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,17 +68,17 @@ Verify a Vyper contract with its source code and contract creation information
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["verify_vyper_contract"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["verify_vyper_contract"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
       >
         
       </ParamsItem>

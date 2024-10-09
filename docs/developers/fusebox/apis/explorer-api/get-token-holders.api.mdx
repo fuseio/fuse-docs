@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJydV2lv3EYM/SvEGGhTQFk7V48FgsBtLiMfGsQO8iEJCu6Iu2I9mlGG1DpK4P9ecLTyro9c9RfrmCH5Hh/faD87xZW4+Vt3kk4puveVSx1lVE7xqHZztyItb56nUFMWV7kOM7akdjN/+9lFbMnNXZvqPpCrHEc3dx96yoOrnPiGWnTzz06HzpaJZo4rVzmKfWtpdUx7XrlMH3rOVLu55p7Oq4vQ6K2aHw99tfSvJvEpakavWNeZRL4329dCdrj6NiEclVaU3fnOxrRcCun/2oodv6DhB6qnj9h2oZR7+s+du/fuP/j1t9//OHDXcL23J9KlKCQW6e7Bgf2rSXzmrnRo7v5+4apCJUW1t9h1gX1R0/6/Yks+Xy8mLf4lb3C7bNpTHhO0JGIM3sy59EF3XmHOWGArtfLt2FOXb4q9xtDflPX8/Lxyoqj9TfvGv+oKH89IoSgcmlGEsBhgkhpstdaSNmkzbmXEtHFzt/9onKqHJcRP4xw8vD6RQnk9jWOfg5u7RrWT+f4+djxb9kIzTna9vz7Yp49dSJmyu1rry5zqvqSAMaAzXV2PJ4orjqvvjns8rr8I+t7EuUyFQ9YivSebvXD48uja/r09eB0DoTSgDcHLdEYZ0hKe9kLwZ0j+1DfIEQ4jhkHZy7v4Lr6h4FNLZUekszBAH9fEgepx327GGZw0LHYF1HYWXqCmNQVTjMAZawPoPYmAphKRY6QMZymfclyJFWNPrxaEsYZNOJxqKw9rVISRrzIakOJNAWYGZG8P3jSowHK98Ee24GTauPvGliO8enJ8Uu4KBIp1lziqgRNeRaoNTpfTmmu6Dhh8artMDUXhNYH0rGRIt1A8drjgwDZUsEz5RgzwpiFtKMOi51CbDmryZAMQ+BPVsOMQArceH3ad/FLZiBQtxhVkEsLsmwpSBiEyyoGj8KpRAY6aYLHlXDNGGQdFjFYrpwKd+ssCQ+ozrFDpDAcjAOGMMGhj2KwxE+svaICnhNpnkvn4bA/uzOAVYbh9wi3ByTYXHG0Kmr+LAI+NsFKZMdIQZv2SRgrX2UKqhdwpfyxm6mo18v6pXNSwZukLgZcBo1iSAZL3fa5ghRyNLYR6iNiyhz6aZSjG0om03KXOgqxZh9kE9u4MDkeHgqO4TLktXSoIX5FmprXJRrFMFW9XAC5SryAdeV6yn2yO5Es6h9fRpzXlS/AbFk2ZSSpYYMDo7cqwpyKnYuaRom5KEPC594yhKLFNkW23gY/1yJ2wXEC7N4PioVvTKLCOCdtAImGAcrhmVNr491b2pbFFRbvanZkc/OlmdZvW1FLUaqoEAn/ouWYdRhDWGrCTBheBrsi5hLidKaDagIxtYdpWf38Gx62J6q/pJLkM4zGFXQEu+1goxcA6jK5EuXQr+jLSUoJNx5L5QxfSQPUX+/Xk45h2zYphtDNNkDrl1jRZyPnKmFsJFJsx/ZoyhjD5j5EGtFyyZ4p+q8UHM3g+CsJjgMeoWJAejrbcbF9NxWwgAsfbNXVmaEUDNGZfUaSxuZlifcH/VokdqlKOUgHXFJWXRlxqMfAkwxZPaaN6qg0tSwG3QPkicz9fKnWnC5PpPCMtpnesmJXq4jsnCcRuR6/Qm+y+2rVvjxFWpICxWN4yp7bsevtXipICvb81neZ+fHBxkheL/gU0pVAgZlpSJuuS7b98HtTJ99as0tIKOPrQb+x94wirnmsjy6eaQCJ3HemGu81Hp8zgaDNmNvEsIJsBrABDSGcWb0i99bPBHMsJ3NB4qF51r4v5LDS1HLnFYFJKWWfv7OeDfSONnxR3ZgezA3d+/h88UaCO
 sidebar_class_name: "get api-method"
-info_path: docs/explorer-api/explorer-api
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=token&action=getTokenHolders"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,32 +68,32 @@ Get token holders by contract address
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["token"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["token"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getTokenHolders"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getTokenHolders"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"contractaddress","in":"query","schema":{"type":"string"},"required":true,"enumDescriptions":[]}}
+        param={{"name":"contractaddress","in":"query","schema":{"type":"string"},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"page","in":"query","schema":{"type":"integer"},"enumDescriptions":[]}}
+        param={{"name":"page","in":"query","schema":{"type":"integer"}}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"offset","in":"query","schema":{"type":"integer"},"enumDescriptions":[]}}
+        param={{"name":"offset","in":"query","schema":{"type":"integer"}}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
       >
         
       </ParamsItem>

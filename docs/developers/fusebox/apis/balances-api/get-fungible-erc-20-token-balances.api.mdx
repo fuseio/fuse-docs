@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJy9VU1v1DAQ/SvWnECKskvhlFupWoQQHyrlgGAPTjK7MXVs1zMprFb572jysc12A5QPcUriscdv3pu82QHrDUH2Cc4vz06Wiv01OoJVAkFHXSNjlOgOnK4RMtDBvMItJGAcZHDTYJSPiDeNiVhCxrHBBKiosNaQ7YC3QY4RR+M20CZQIhXRBDZeEnz0TVSn716qa9wq9ko3XKFjU2hGJVmRmFJokzsAZRmRaEQQNFd/A+CqQvVVW4ushswCo6tLrX1UU1YOcHRLp4dgjulYa0u/A+dt96JtqgQYBSzM2hT9/UcAU/VyrZxnFaK/NSWWidLWDptzbbUrkNRXY63KhU1uosMyhXYlECl4R0gC6mS5lMc9KK8ggcI7RscS1SFY0cV4t/hCsmV3XJfPv2DBkECIPmBk019QI5He4CwBEamxPAnpGHXXYYw1/Tr3UOhsboEfdcGjTvMCFKbWdj7Yiz0ToG2dezsb6heOAhIxbGXponEbk1u8EqW6CLHmZg7C5NQpEfLzQdbLQT9oW9nzbPn0WMHTohjahSvRn3wTC1SGpLNzU5bo0n+ncV/CmS+nxRvHuMEotGCMPr7+SSN0G+YoaPsaD4t7gaxGHoe/tKNTjQxBAjVy5UvIYIMdXvGKDBZaiKTFbvifWkiAMN6OTtdECxlUzIGyxUIHk64bwtR4eV/cLhf53Q2HmN5FXzaFfKg+YWcYx/mI9ca4zYPzvu/375OuxG/WvuNqaI6xajHTo/PiJdMNo2GQQlcGbxxPXG9ww71/iAu+ubgipV15aIefHSQgtPW3PEmX6VKEDJ641l3zDGb5ELEOIO+bgPEbL4LVxknmjsrdIOQn6IWEBLJxKqwSqDyxBHe7XBN+iLZtZbn3ZtG3NKRzO3Hnezfv/wd4dDkY+WP1wEGVzOO+xu10dt5q28imrj0eDue/DIefVnBv6N3VsZKPaKSQP+f492bxD4COQ8QdEL2XYMDertoEKtQlxg5vHxXDDDw5d+SHUujeVV6cX0Hbfge2CDDk
 sidebar_class_name: "get api-method"
-info_path: docs/balances-api/balances-api
+info_path: docs/developers/fusebox/apis/balances-api/balances-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/assets/{address}"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,7 +68,7 @@ Get Fungible ERC20 Token Balances
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"address","in":"path","required":true,"schema":{"type":"string"},"description":"The wallet address to query for ERC20 tokens.","enumDescriptions":[]}}
+        param={{"name":"address","in":"path","required":true,"schema":{"type":"string"},"description":"The wallet address to query for ERC20 tokens."}}
       >
         
       </ParamsItem>
@@ -93,12 +92,12 @@ Get Fungible ERC20 Token Balances
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your API key to authenticate requests.","enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your API key to authenticate requests."}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"tokenAddress","in":"query","required":false,"schema":{"type":"string"},"description":"Optional. The specific token address to query. If not provided, all token balances will be returned.","enumDescriptions":[]}}
+        param={{"name":"tokenAddress","in":"query","required":false,"schema":{"type":"string"},"description":"Optional. The specific token address to query. If not provided, all token balances will be returned."}}
       >
         
       </ParamsItem>

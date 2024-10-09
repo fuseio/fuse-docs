@@ -231,51 +231,33 @@ const config: Config = {
         config: {
           notificationApi: {
             specPath: 'api-references/fuse-notification-api.yaml',
-            outputDir: 'docs/notification-api',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
+            outputDir: 'docs/developers/fusebox/apis/notification-api',
+
           },
           smartWalletApi: {
             specPath: 'api-references/fuse-smart-wallets-api.yaml',
-            outputDir: 'docs/smart-wallet-api',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
+            outputDir: 'docs/developers/fusebox/apis/smart-wallet-api',
+
           },
           balancesApi: {
             specPath: 'api-references/balances-api.yaml',
-            outputDir: 'docs/balances-api',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
+            outputDir: 'docs/developers/fusebox/apis/balances-api',
+
           },
           tradeApi: {
             specPath: 'api-references/trade-api-merged.yaml',
-            outputDir: 'docs/trade-api',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
+            outputDir: 'docs/developers/fusebox/apis/trade-api',
+
           },
           explorerApi: {
             specPath: 'api-references/explorer-api.yaml',
-            outputDir: 'docs/explorer-api',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
+            outputDir: 'docs/developers/fusebox/apis/explorer-api',
+
           },
           graphqlApi: {
             specPath: 'api-references/graphql-api.yaml',
-            outputDir: 'docs/graphql-api',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
+            outputDir: 'docs/developers/fusebox/apis/graphql-api',
+
           },
         },
       },

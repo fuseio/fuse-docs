@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJytVttuHDcM/RVCBnoBJmsnvS9QFG6TtkYeGsQu8pAEBi1xdlhrpInIWWcb+N8LavbmS9IEiF88OyMd8hweUnrnFBfi5i/dbzlpQa/udePyQAWVczoJbu4ii26+imvcgAV7Uiq2751L2JObuz6HMZJrHCc3d29GKivXOPEd9ejm75yuBlsmWjgtXOMojb3F9du4140r9GbkQsHNtYx03WzR0Vs6n45uuftt7h8MMeDi/9PnpLSg4m4AtRhlHym3rZB+HqyWo1L5WOIfhEpZzwP53A8cKZxfsXbnSyryCcJ+EH9JhVumcI56LopFz5V7EsV++Dxa7AegFD43PA78lFafIAW9xX6I1TuX5w8fffPtd9//8ONPR+6OyV7bGxlyEhJDenR0ZP8CiS88VGfP3V9PXVO7gZLaVxyGyL624eE/Ykve3U0mX/xD3qw2FGta5SlATyJm5/sLKGPUvU9YClbaSr3cxb6+bpwo6ij3wE1/zS0qf5ACgvUe5Bb83uzoSbtsQ2VRG2RA7dzcHf4yTY+fN0u/mPr955vt2zihstzMnbFEN3ed6iDzw0MceNaOQjPO9ny4PDqkt0PMpTbPzfSelRzGGgAmQGcuuIsnigtOi4/GPZ3Wb0Ffm5XaXGVjrUZ5st4Lx89O7uw/OIC/UySUDrQjeJavqJiAv49C8GvM/tJ3yAmOE8aVspdX6VV6QdHnnuqORFdxBWNaknX4tG8/4gzOOhZ7AuoHgxcItKRo3hGwiQDoPYmA5orIKVGBq1wuOS3EkrG3txPCFGANh5vc6suAijDpVY0MOd0HMDMiBwfwokMFlruJ/2ILzjYb97/YcoTnT07P6q9KgVIYMic1csKLRMHoDCUvOdBdwmAjsVBHSXhJICMrGdMdFY8DXnBkay9oc7mXA7zoSDsqcDFyDOaDQJ7Mu5H/pQB7/Szw1ePjYZCvG2uO6sW0gEJCWHzXQC4gRCY5cBJedCrASTNc7DTXgkmmNhGT1dJpQDf1ZYFVHgssUOkKVyYAwhVh1M64WWE2qj+lFfxOqGMhmU/vDuDhDJ4Txgdn3BOc7WLByTqh+asE8NgEq5mZIh1h0fd5pGpdDNLG9n76UzKbqjaT7v/WhwBLlrEKeJMwigVZQfZ+LA0skJOphRBWCXv2MKZARRRTrURu96UzkCXrarYh+2gGxyEU8/1JanPpa5Uqw+ekhWlptlGsXcW7FYAXeVSQgTy37AEnEJL3+Rz+Tj4vqdyg37FoLkzSwAVGTN6ejHuudqpjPVHSdQoCvoyeMVYn9jmx7TbyKUzaCcuW2jczOMuXtDc0Kq1Twj6SSFxBPRsLKoHWhTvb18JWF+17d2Z28Jfr1X1eUk9Jm00mEPnNyIF1NZGw0sAS44gXkW7ZuUI8KBRRrUGmsjDtsv92Bqe9mWpz/7xF4zHFfQO2Y6qSYmRdTVOJSq1W8rWlpYJtTxQINMS8ovDeej15O4VdsmKcxplmyINyb56s4nygzS0FSt0UfkkFY9zMHxMNqG3ZMyW/8+J3M/hzMoTHCI9RsTI9nsZyt/u0SWZNETg9CDTYQKseoCn6ghJNxS2Uwlb/nRMHVKWSpAEOlJRbEy73GHljwx4vae16CsaWpZK7QHmvcl/eSHWvCpuh8wdpHXqndlGkUOfOWYZ6b5xmhd437pv98e0xwcKuGqmOvLbkvu56+VtOkiO9/mpzmvvpxfYkryP6a9CcY6VYqKVCViXbf/M8CNmPVqxa0gY4+Tiux/t6IixGDiaWz4FAEg8D6Vq79RVRZnCybjPreBaQdQM2gDHmK8Nb5dHq2WFJ9QTuaDpUb0+vbX9WmXpO3GM0K+Wis1d2l9/c6ufu4exoduSur/8DQO7zVA==
 sidebar_class_name: "get api-method"
-info_path: docs/explorer-api/explorer-api
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=contract&action=listcontracts"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,47 +68,47 @@ Get a list of contracts
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["listcontracts"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["listcontracts"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"page","in":"query","schema":{"type":"integer"},"required":false,"enumDescriptions":[]}}
+        param={{"name":"page","in":"query","schema":{"type":"integer"},"required":false}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"offset","in":"query","schema":{"type":"integer"},"required":false,"enumDescriptions":[]}}
+        param={{"name":"offset","in":"query","schema":{"type":"integer"},"required":false}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"filter","in":"query","schema":{"type":"string"},"required":false,"enumDescriptions":[]}}
+        param={{"name":"filter","in":"query","schema":{"type":"string"},"required":false}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"not_decompiled_with_version","in":"query","schema":{"type":"string"},"required":false,"enumDescriptions":[]}}
+        param={{"name":"not_decompiled_with_version","in":"query","schema":{"type":"string"},"required":false}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"verified_at_start_timestamp","in":"query","schema":{"type":"integer"},"required":false,"enumDescriptions":[]}}
+        param={{"name":"verified_at_start_timestamp","in":"query","schema":{"type":"integer"},"required":false}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"verified_at_end_timestamp","in":"query","schema":{"type":"integer"},"required":false,"enumDescriptions":[]}}
+        param={{"name":"verified_at_end_timestamp","in":"query","schema":{"type":"integer"},"required":false}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
       >
         
       </ParamsItem>

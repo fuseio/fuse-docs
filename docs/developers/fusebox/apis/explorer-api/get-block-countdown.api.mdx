@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJyVV2FvG0cO/SvEGOi1wEZ20vZ6J6AofEnaM/LhgthFPjTBgZqhdlnPcjYzXDlqoP9+4OxKlmM77X2ytMt55CMf38ifnGJb3PI396+Y/LV737g0UEblJBfBLV1LWt88T6NoSDfiGjdgxp6Ush385AR7ckuHA7+irWsci1u6DyNl+1J8Rz265Sen28HCimaW1u0aRx+xH6I9G67/+/TZt999//cf/vHPM9e4TB9GzhTcUvNIu+aQo09hjPRXczSOZOyN3Goit/sCNHrj/P9Dt6QV3R8a9MU0NVbSn+ZhUWopu3tYjQtUfOahlrt0F1MgVGCQsV9RBk3gO/LX89NDbaDcE6xTXrjde0MuQ5JCxRI/OzuzP3fR//PKNc4nURK1tzgMkX2Vx+nvxUI+3a89rX4nryaUbGJSnhL0VAq29KAWMpUx6p9jPB9zJpkk+SDQQaePh7yhHllY2sdDXhblHpWuuKcLuST/QNRu17iiqGN58OWuBtzt5i+kQDN0eHg2q+2dSbrG9aRdmlexLp92bulOf5p24cca/dWk3h/vi7FxhfJmv6pjjm7pOtWhLE9PceDFeiy04GSfTzdnp/RxiCnXvHdLf51TGGsSmACdifo+XlFsWdq/jHs5xR9A39tirFNtKWt1h5fzWTh/fXHv/MkJ/CqRsHSgHcHrdEMZ0hp+HgtBHbDvkAXOBeNW2Zd38k7eUvSpp3pC6CZuYZQNcaQwnTvOuICrjot9AuoHgy8QaEPRZFnghrUD9J5Ksa0zRBahDDcpX7O0xYqxp58XhBJghsN9bfVhQEWY+lX3DJI8BLAwIicn8LZDBS73C//JAq72B4/fWDjCm5eXV/VbpUAShsSiRq5wKxSMzpDThgPdJww+9UOmjqTwhqCMrGRMb6l4HHDFkW1zzXEe5ABvO9LO3GvkGEwHgTyJZoz8BwU4spsCX784H4byTQM+SdWitJCpEGbfNZAyFCJrObAUbjstwKJpWqep55pRyrQqxdpq5TSg+/lygW0aM7SodINbawDCDWHUzrjZYPZdf0Vb+JlQx0xlOT07gacLeEMYn5hrwNVtLriYC1q+E4AX1rBamXWkI8z6mEZqr7NBVm84Kn8qZj/VZur7H/VDgA2XsTbwLmEslmQLyfsxN9BOJggIYSvYs4dRAuWiKHUSaX3cOgPZsG4Xe7LPFnAeQjbdX8g65b5OqTJ8Q5qZNiYbxbpVfBsBuEqjQhnI85o94ARC5TGdw6/i08YutSP6HRdNmak0sMKI4u2TcU9VTvXGEBKdSyjg8+gZY1Vin4TttJGXMPWucDlQ+3YBV+majkyj0rok7COVErdQb+eMSqA18Fb2dbBVRcfaXZgc/PUc3acN9STa7CuByB9GDqzbiYSNBjYYR1xF+kzOFeJJpljvkHksTLfVf7eAy95E9TzZInn9jMYLiscCXI9SW4qRdTu5EuU6LfF1pUsF8zOY+cMQ05bCo/N6+XFKu2HFONmZJkiDcm+arM35wppbCSTdlH5DGWPc+481DWi9Zs8k/laL3y/g35MgPEZ4gYqV6flky93tq30xM0VgeRJoMEOrGqApe0tC03AzSTj0/1aJA6pSltIABxLltTUu9Rh5L8Mer2lWPQVjy6WSW2F5tHN/u1Pq0RT2pvMLaTW9S8WsFKrvXCUo9nXyCn3I7ptj+/Yo0JICSrW8dU59PfXb8yQlRXr/9f4299ODw01eLfob0JRipZhpTZlsSnb+7n0Qkh9tWHWkDbD4OM72PjtCO3KwZvkUCIrwMJDOvZv/LygLuJjXzDaeC5R5ARvAGNON4W3TaPPsMEu9gTuaLtXP3euwn7VNPQv3GE1KKevinf1Mst9I00+Kp4uzxZnb7f4HBbuvjQ==
 sidebar_class_name: "get api-method"
-info_path: docs/explorer-api/explorer-api
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=block&action=getblockcountdown"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,22 +68,22 @@ Get estimated block countdown time by block number
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["block"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["block"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getblockcountdown"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getblockcountdown"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"blockno","in":"query","schema":{"type":"integer"},"required":true,"description":"Integer block number to check block countdown time for.","enumDescriptions":[]}}
+        param={{"name":"blockno","in":"query","schema":{"type":"integer"},"required":true,"description":"Integer block number to check block countdown time for."}}
       >
         
       </ParamsItem>

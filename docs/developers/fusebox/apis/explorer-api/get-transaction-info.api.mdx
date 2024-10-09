@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJyVV99v2zYQ/lcODLC1gOqk3fZioBiytuuCDlvQpOjD2oczdZZuoY4qeXLiFvnfh6Pk2EmctsuLJZH367vvPjJfnGKT3fwfd55QMnrlKO5j5WJPCe3lpHZz15DurJ/IMrrK9ZiwI6Vk9l+cYEdu7rpYD4Fc5Vjc3H0aKK1d5bJvqUM3/+J03du2rImlcZUjGTqLr7vxryuX6NPAiWo31zTQdXUTYNrzvwM0pHrFlvpX3etVi7n9Xvdf88RS09U3HbEoNZRue1piyHT90T7lPkqmbBbPjo7sp6bsE/cFhbn7+42rnI+iJGqr2PeBfWnd4b/Ztny5HzQu/iWv1sNkjVYeAyTKQ9Dv2beipG8JJ//3MFmE6C/+GroFpb3rPsqSU1eyzHt3LFPs9i40mP/kjvWhxdPEnh5afJcN3T1rpef7Flj6YX+sEJvd1DEltAazUpe/DSHWdaK8v/YadT/VNPbsvyfoxsT+KpcH72/HWsQYCKX45I7OFLv+gYh7P68wDPtALtEUdXgoGdtwm7+vSWFn9oFHcelI2zhJT9Eabd3cHf46ysvzHYsfxp/n2/muXKa02ujSkIKbu1a1z/PDQ+x5thwyzTja8+Hq6JCu+hATJXc3tdMU62HManTobLrv+8uKDUvz3X7Pxv03Tj8azZYj0qzBMHs12cLx6ck9+4MDeCeBMLegLcFpvKQEcQm/D5ngNxs93yILHAuGtbLPH+SDvKfgY0fFQugyrGGQFXGgerTbjTiD85azPQF1vbnPUNOKgjE4wyVrC1g4BRqLRxahBJcxXbA02ZKxr3cTQqlhcoeb3MpHYzyMeBVNgCj7HMyskIMDeN+iAuf7if9qG843hrsrth3h7auz8/JWSiCp+8iiVlzmRqi2cvoUV1zT/YLBx65P1JJkXhHkgZWs0m0pHntccGAbcljGtLcGeN+StpRgMXCojQc1eRJNGPgz1bAj4BkevTzu+/y4Ah+lcFEaSJQJk28riAkykUEOLJmbVjOwaITFFvOdSckGq6VTgW76yxnWcUjQoNIlrg0AhEvCoK3VZo3ZoP6G1vA7oQ6J8nz8dgBPZ/CWMDw5545g544AJ1NC8w8C8NIAK5kZIi1h0oc4UrBO5tKU6ZY0lGQ2Xa1G3D+XhxpWnIcC4O2CMVuQNUTvh1RBgyyGFkK9FuzYwyA1pawopRNxuQudOVmxrmebYp/N4HjUbbA70HSAlQrfkiamldFGsUwVb3cALuKgkHvyvGQPk/hTfojn8E58XFG6VX7LWWNiyhUsMKB4e7LaY6FTOVyERKcUMvg0eMZQmNhFYbO24qUescucb0r7aQbn8YJ2RKOUdUbYBco5rKFcVBIqgZaNW9qXxhYW7XJ3ZnTwF9PuLq6oI9FqkwkE/jRwzboei7DWgJ0ruAh0h87FxZNEAdUGZGwL0zb7n2dw1hmpXkQbJK93ynhJYZeAy0EKpBhY16MqUSrdEl9GOhdnfnJm+tCHuKb6wX69uhrDrlgxjHKmEWKv3BknCzhfGXNLgaQdw68oYQgb/THQgJZL9kzit1z8ZQZ/jITwGOAlKpZKj0dZbrdLm2SmEoHlSU29CVrhAI3RGxIam5tI6hv8t0zsUZWS5Aq4JlFeGnCxw8AbGnZ4QRPrqbZqOZfiFpgfRO7HW6nudGEjOq9Ji+idKSaluujOeYRsr6NW6D65r3bl26NAQwooRfLsalms/nkRJcdAHx9tTnM/frg5yYtEPwaNMZQSEy0pkXXJ7G+fB3X0gzWrtLQCFh+GSd4nRWgGrg0sH2uCLNz3pBN2dIVdHyjP4GQas3IXypCnAawAQ4iX5m8dB+tni0nKCdzSeKjeVa+b+SwwdSzcYTAqxaSzD/YflN2RxivF09nR7MhdX/8HPMUC6g==
 sidebar_class_name: "get api-method"
-info_path: docs/explorer-api/explorer-api
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=transaction&action=gettxinfo"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,22 +68,22 @@ Get transaction info
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["transaction"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["transaction"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["gettxinfo"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["gettxinfo"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"txhash","in":"query","schema":{"type":"string"},"required":true,"enumDescriptions":[]}}
+        param={{"name":"txhash","in":"query","schema":{"type":"string"},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"index","in":"query","schema":{"type":"integer"},"required":false,"enumDescriptions":[]}}
+        param={{"name":"index","in":"query","schema":{"type":"integer"},"required":false}}
       >
         
       </ParamsItem>

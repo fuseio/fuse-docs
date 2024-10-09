@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJyVVttuFDkQ/ZWSI+2C1EzCbS8jIRQIsBEPG5FBPJBoVWPXdBdx241dPaGJ8u+rcs9kJjcEeUlP2z6uc3G5L4xgnc30szkWlGxOKxM7Sigcw6EzU0PSHCW2ZCrTYcKWhJLOvzABWzJT00bXex3mYKbma09pMJXJtqEWzfTCyNDptCyJQ20qQ6Fvdb887ndZmURfe07kzFRST5fVFTRaLePXoUmartT8Q/RC52fBf1hmx+9p+AUk+oZt50sNZ/89fvL02fM//vzr7z1za49TfZO7GDJlRXqyt6f/HGWbuCviTM2/701lbAxCQXQUu86zLQ7ufsk65eJ2MXH+hayoqUn9Fh43aClnrOke/rn3cueQetnnO4bGv+pGxe9IwKNQFig+QVxAQOElgY0cgAN8PD4ADA5ezV6byrQkTdQ01lRqRmnM1Oy+HLP3okTptzEtL67Mr0ymtFyntU/eTE0j0uXp7i52PFn0mSYc9Xl3ubdL3zofEyVzs9qjFF1fsGEENOr9bbwsWHOofxr3eJx/BXqqAVrEoiJLiceb1VrYPzq8tX5nBz4GT5gbkIbgKJ5TUiXf9pnglY/2zDbIAfYD+kHY5pNwEj6Rt7GlsiLQuR+gD0tiT25ct73jBGYNZ30CajuFz+BoSV4Tk+GcpQG0lnIGiQWRQ6AE5zGdcaizFqNvbxakvq7gcF1beelQEEa9SnwhhrsAJkpkZwc+NSjA+XbhL3XCbL1we0SnI3x4czwrvwoFCq6LHETJZa4DOaXTpbhkR7cJg41tl6ihkDWwuWcpAd5QsdjhnD3roYJFTHdygE8NSUMJ5j17pzlwZClIQs/fycHWKc7w4GC/6/LDCmwMJYuhhkSZMNmmgpggE6nkwCFz3UgGDhJhvtFcEoY8npCssmo5FcjaX84wxD5BjULnOKgACOeEXhrlpsasVX9PA7wllD5Rno7vduDxBD4Q+kczbglmm73gcFXQ9CQAHKhgpTJVpCFMcl9GitZJIUUht8ofi1m7Wo26fy8PDpac+yLgdcKYdZMBorV9qqBGDqoWghsCtmyhD45SFgzFibjYlk5BlizDZE32yQT2nUua+8OwiKktLhWGH0gS01JjI1hOFW9mAM5jL5A7srxgCziCUL4v5/Ax2LikdI1+w1liYsoVzNFjsPqk3GOJU2nmgYKsSshgU28ZfUliGwPraiUf3Khd5nxF7ekEZvGMtppGoXVM2HrK2Q9qH9UJhUDKxE3si7ElRdvZnWgc7NlqdhuX1FKQal0JeP7as2MZRhJqDSzR9zj3dCPOBeJRIr063NoWpk31zyZw3GqoXkc9SFZu0Dggvx3ARR+KpOhZhrErUSpuhfFOygXMrsC0P3Q+DuTu9evNt3HbJQv6sZ1JhNgJt5rJIs4PjrmWQKEZt19SQu/X/UdFA1os2DIFu8ni8wn8MwbCoocDFCxM98e23GyG1sWsKAKHR446bWglAzTuXlOg0dxEwV3pv0lihyKUQq6AHQXhhQoXW/S8jmGLZ7RKPTlly7mQm2O+V7nfr5W65cK66bwjKU3vWDAJudJ3ZhGy/hx7hdzV7qvt9m0xQE0CGErLW6TYllWfX8eQo6fTB+vb3I4vrm7y0qIfgsToC8VEC0qkLun66/eBi7ZXs4qlFXCwvl+191VHqHt2KpaNjiAH7jqSlXarD8M8gcPVMdMTzxny6gBWgN7Hc8UbYq9+NphCuYEbGi/Vm93r6nwWmVoO3KLXKMUkkxP9utZvpPGT4vFkb7JnLi//B9XQTzU=
 sidebar_class_name: "get api-method"
-info_path: docs/explorer-api/explorer-api
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=stats&action=ethprice"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,22 +68,22 @@ Get latest price of native coin in USD and BTC
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["stats"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["stats"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["ethprice"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["ethprice"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"param","in":"query","schema":{"type":"string"},"required":true,"enumDescriptions":[]}}
+        param={{"name":"param","in":"query","schema":{"type":"string"},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
       >
         
       </ParamsItem>

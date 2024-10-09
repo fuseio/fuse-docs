@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJyVVm1v1DgQ/isjV7rjpLAtb/eyEkI9ClzFh0O0iA+0Os06s8lQxw72ZEuo+t9P4yS7226LoF+adeyZeV5mnCsjWCUz/2ReBi8RrZjzwoSWIgoHf1yaualIppcvI+V1U5gWIzYkFPX0lfHYkJmbJpSdI1MY9mZuvnQUe1OYZGtq0MyvjPStbksS2VemMOS7RrPbdfbrwkT60nGk0swldnRdrKOjHZP/ZPSKZEpgJwTfTTTtxrKMlBKlH8353epbfkv9T0Sir9i0Ttfai/8ePX7y9Nnvf/z514HZyXGuK6kNXiudX5nHBwf6r6RkI7cZ7tz8+9YUGRh50bfYto5tJmP/c9ItV7vFhMVnsqJyRzWF8JCgoZSwonvwp87J1iuMETNsoSbtxr6+LkwSlC7dEW74K25BeUMCk0SQFQ0RRq2gxlQD+hImqUEi+jR4J781hWlI6jCaO5tZajM3+y8G/z6fgv8ynHp+l4EKkyiuJv930Zm5qUXaNN/fx5Znyy7RjIM+768O9ulr60KkaG6DeRdD2Q3FDQGNemY3XhKs2Fc/HPdk2L8Oeq7GW4ZMMku21avxLBy+O945v7cHH7wjZVNqgnfhkiKEJbzuEsHfLtgLWyN7OPToemGbzvyZ/0jOhobyCU+XrofOr4gdlcO57YwzOK056RNQ02r4BCWtyKnTElyy1IDWqqYSckT2niJchnjBvkpajK7eLki1H8PhVFteLFEQBr4GY6g3dgPMFMjeHnysUYDTbuEvdMPpdHD7jW5HeP/q5DT/yhDIl21gLwouceWpVDhtDCsuaRcw2NC0kWryiVcEqWMhRbqBYrHFBTvWZoRliHdigI81SU0RFh27Un1QkiW1sONvVMJW9yd4cHTYtum3Qpsqe9FXECkRRlsXECIkIqUc2CeuaknAXgIsNpxvtVhSWrWcAmTSlxP0oYtQodAl9koAwiWhk1qxqTAT62+ph9eE0kVK82FtDx7N4D2he3jKDcHpVjsfjwXNzzzAkRKWK1NGasIo93kkcx01pGjI7QmRi5lULQbev+WHElacukzgTcCYNEkPwdouFlAhe2ULoew9Nmyh8yXFJOizEmG5TZ0GWbH0swns4xkcjrPs2C9DbLJKGeF7ksi0UtsI5q7izQ7ARegEUkuWl2xhfXnd53P44G1YUbw5IDlJiEypgAU69FafFHvIdsqXgCcvYwkJbOwso8tObIJnPa3gfTlwlzitoT2ZwWm4oK2hkWGdEDaOUnK9ykdVRCGQvHFj+yxsdtG2d2dqB3sx7m7CihryUkyVgOMvHZcs/QBCpYEVug4Xjm7ZOYd4GMmhaIMMsjBtqn86g5NGTTV9Dt2CcURu24DLzmdK0bH0w1SimNXyNrd0ysGmi0XnQ+tCT+W9er36OqRdsaAbxpkECK1wo57M5HynzbUE8vWQfkURnZvmj5IGtFyyZfJ248VnM/hnMIRFB0comJEeDmO53ryaihkhAvuHJbU60LIHaMhekadB3Ei+XPO/cWKLIhR9KoBL8sJLJS406HiyYYMXNLqeSkXLKYNbYLqXuV9vlLqlwjR03pDkoXciGIXKPHdOAyT9OcwKuWvcF9vj26KHigTQ55G3jKHJpz69DD4FR+cPptvcDgvrmzyP6N9AQnAZYqQlRVKV9PzN+6AMtlOxsqQFsLeuG8f7OBGqjksly4aSIHluW5KRu/GDMs3geGwz7XhOkMYGLACdC5carw+d6llj9PkGrmm4VG9Pr3V/Zpoa9tygUyuFKLMz/UzSb6Thk+LR7GB2YK6v/wccv3Xn
 sidebar_class_name: "get api-method"
-info_path: docs/explorer-api/explorer-api
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=contract&action=getcontractcreation"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,22 +68,22 @@ Get contract creator address hash and creation transaction hash
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getcontractcreation"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getcontractcreation"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"contractaddresses","in":"query","schema":{"type":"string"},"required":true,"enumDescriptions":[]}}
+        param={{"name":"contractaddresses","in":"query","schema":{"type":"string"},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
       >
         
       </ParamsItem>

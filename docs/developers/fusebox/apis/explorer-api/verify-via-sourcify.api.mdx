@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJyVVttu3EYM/RViDLQJoKydpNcFisLNpTHy0CB2k4ckCLgj7orxaEYZUuuogf+94GjlXdvrIvWLtaMZ8pzDQ46+OsWVuPk79yRFzejVfahc6iijcoontZu7NWVeDm8YT1OfPS8HV7kOM7aklO3sVxexJTd3bar7QK5yHN3cfe4p217xDbXo5l+dDp1tE80cV65yFPvWcvur3JeVy/S550y1m2vu6bK6io7eIP3/6CP+j2vGjzIx+O9EHb+k4VsTXVaOvmDbBVvrzj8+fPT4hx9/+vmXX4/crRwfxhUS/SPVg8W6vqEqUlBUe9X2QbnDrIfLlNsHNWrJfgtHWnwir1aUbIVTJrG3WNeZRF6gNHtBLzmMGzdvMGcspJVa2aenoUB1c7fgiHlwl+OfUZIuRRmjPTo6sn81ic/clYrN3V8v3TVq2HWBfbHY4SexLd/OqyURXNFeTpmkD7r3lShqv4fXFYvriN8U0wDC5E3QJqd+1cBOF7SkTbIW6ZIUoKiNm7vD38dG+G06+91o3d/2ObFyQnk9NVKfg5u7RrWT+eEhdjxb9kIzTvZ8uD46pC9dSJmyuwn4VU51X9LAGNCZo2/HE8UVx9U3xz0d918F/WBtsUxFSNZi+mebs3D86uTW+YMD+DsGQmlAG4JX6YIypCU874Xgj5D8uW+QIxxHDIOyl/fxfXxLwaeWyolIF2GAPq6JA9Xjud2MMzhrWOwJqO0svEBNawpmGoEL1gbQexIBTSUix0gZLlI+57gSA2OrNwFhrGETDidsZdEaEUa9ioMhxX0BZkbk4ADeNqjAchv477bhbDq4+8a2I7x+dnpWfhUKFOsucVQjJ7yKVBudLqc113SbMPjUdpkaisJrAulZyZhuqXjscMGBra9gmfJeDvC2IW0ow6LnUJsPavJkrg78D9Ww08gC954ed53cr6xnihfjCjIJYfZNBSmDEJnkwFF41agAR02w2GquGaOMzSImq8GpQKf6ssCQ+gwrVLrAwQRAuCAM2hg3K8yk+ksa4Dmh9plkPq4dwMMZvCYMD864JTjb5oKTDaD5+wjw1AQryEyRhjDrXR4pWmcLqRZyB/4IZqpqNer+T3moYc3SFwGvE0axJAMk7/tcwQo5mloI9RCxZQ99rCmLYiyVSMtd6SzImnWYTWQfzeB4vALgJI6zm1MsDF+TZqa12UaxdBVvdwAuUq8gHXlesofNPUJyl8/h7+jTmvI1+g2LpswkFSwwYPT2ZNxTsVOZ55GibiAI+Nx7xlCc2KbIdtrIx3rUTliuqD2ewVk6p52hUWidEraBRMJg5aNVRiXQsnFr+1LY4qJd787MDv58s7tNa2opajUhgcCfe65Zh5GElQbWGHpcBLph5xLiQaaAag0yloVpi/6HGZy2Zqrpk+sGjacUdg247GORFAPrME4lyqVa0ZeWlhJsumtsPnQhDVTfWa9nX8a0a1YM4zjTBKlTbs2TRZz/aHODQLEZ068pYwjT/DHRgJZL9kzRb7344wxejIbwGOApKhamx+NYbravJjAbisDxQU2dDbTiARqzryjSWNxMsb7Sf+vEDlUpR6mAa4pabvKYWgw82bDFc9q4nmpjy1LILVDuVO77a1B3qjANnT9Jy9A7VcxKdZk7ZwnEfo6zQveN+2p3fHuMsCIFjGXkLXNqy6l3T1KUFOjDvek29+PC1U1eRvR90JRCoZhpSZmsSnb++n1QJ99bsUpJK+DoQ78Z75uJsOq5NrF8qgkkcteRbrTbfO7KDE42bWYdzwKyacAKMIR0YfGG1Fs9G8yx3MANjZfqzel11Z9FppYjtxjMSinr7L199ds30vhJ8XB2NDtyl5f/Ao/sj8I=
 sidebar_class_name: "post api-method"
-info_path: docs/explorer-api/explorer-api
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"post"}
   path={"/?module=contract&action=verify_via_sourcify"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,17 +68,17 @@ Verify a contract through Sourcify
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["contract"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["verify_via_sourcify"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["verify_via_sourcify"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
       >
         
       </ParamsItem>

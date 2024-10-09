@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJyVV21v20YM/ivEBdhaQHXSt70YGIZsfVlQbCuaDP2wFgN9oiU2J556Rzn1Cv/3gSc5cRKn2z5ZuuM95EM+5MmfnWKT3fxP91OI/ty9r1zsKaFylJPazV1DWnbe0AWm2lWux4QdKSU79dkJduTmDnt+RWtXORY3dx8HSvaSfUsduvlnp+vezLImlsZtKkefsOuDrfXnfz189PjJ02++/e77I1e5RB8HTlS7uaaBNtWljy7WQ6D/6qNyJENnzBYjs80XoNEb4f8P3ZAW9DRm54s+iqHEf3XCotRQcrewKldT9on7EuvcnYyGUIBBhm5BCTSCb8mfT6tjYBmWMc3c5r1B5j5KpmweHx0d2c912N9fucr5KEqitot9H9gXRRx+yGby+XbQcfGBvJo8kulHeXTQUc7Y0F4FJMpD0H/HKER+ZaG0F6Zs/1bI370/qXffvnJHp4pdv3d3EB/oRHwYMkf5AkwxzHu2NpvKZUUd9m9uisH1CrwkvVY+WKyvFdlVriNt49SfpSm1dXN3+OPYIz8U669GVf9wQ6SVy5RW2/4dUnBz16r2eX54iD3PlkOmGUd7PlwdHdKnPsRUnF6P8nWK9VA8wAjoTOy38bJiw9L8Z9zT0f4S9L01zDKW7LGWkfF8OgvHr09unT84gD8kEOYWtCV4HS8oQVzCiyETlFnmW2SBY8GwVvb5nbyTtxR87KicELoIaxhkRRyoHs/tepzBWcvZnoC63uAz1LSiYKrNcMHaAnpPOVs3GiKLUIKLmM5ZmmzB2OrNgFBqmOBwG1tZrFERxnyVNoQo+wBmRuTgAN62qMD5duA/msHZ9uDujpkjvHl+elbeCgWSuo8sauQyN0K10elTXHFNtwmDj12fqCXJvCLIAysZ0ysqHntccGBrbBtIeznA25a0tak2cKhNBzV5Ek0Y+G+qYWcaZbj37Ljv8/0KfJSiRWkgUSZMvq0gJshElnJgydy0moFF49hLY841oeSxT7Kl1cKpQLf15QzrOCRoUOkC15YAhAvCoK1xs8Jss/6K1vCCUIdEeT6uHcDDGbwhDA/OuCM4u/IFJ1NA83cC8MwSViKzjLSESe/SSMl1MkibW7vhj8Fsq1qNef+7PNSw4jyUBF4njNmcrCF6P6QKGmSxbCHUa8GOPQxSU8qKUioRl7upM5AV63q2JftoBsd1nUz3J7KMqStVKgzfkCamlclGsXQVX1kALuKgkHvyvGQPOIJQvkvn8If4uLLLbod+y1ljYsoVLDCgeHsy7rHIqVwoQqJTCBl8GjxjKErsorCdNvJSj7nLnC+pPZ7BWTynnaFRaJ0SdoFyDmsot3ZCJdBieCX7Utiiol3tzkwO/nyy7uKKOhKttpFA4I8D16zrkYSVBlYYBlwEuiHnAvEgUUC1BhnLwnQV/ZMZnHYmqp+jNZLXGzSeUdgV4HKQklIMrOtxKlEq1RJfWjoXMD+B2XzoQ1xTfWe9nn8a3a5YMYzjTCPEXrkzTZbkfKHNLQSSdnS/ooQhbOePJQ1ouWTPJP5Ki09n8MsoCI8BnqFiYXo8juX2amsbzEQRWB7U1NtAKxqg0XtDQmNxE0l9mf8rJfaoSklyBVyTKC8tcbHDwFsZdnhOk+qpNracC7kF5jsz9/W1UHeqsB06L0nL0DtVTEp1mTtnEbK9jrNC9437and8exRoSAGljLxlil059efPUXIM9P7e9jb348LlTV5G9H3QGEOhmGhJiaxKdv76fVBHP1ixSkkrYPukmsb7NBGagWtLlo81QRbue9Ipd9OfhTyDk6nNrOM5Q54asAIMIV4Y3joOVs8Wk5QbuKXxUr05vS77s6SpY+EOg0kpJp29s/8C9o00flI8nB3Njtxm8w+N17Ps
 sidebar_class_name: "get api-method"
-info_path: docs/explorer-api/explorer-api
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=block&action=getblockreward"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,22 +68,22 @@ Get block reward by block number
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["block"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["block"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getblockreward"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["getblockreward"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"blockno","in":"query","schema":{"type":"integer"},"required":true,"description":"Integer block number to check block rewards for.","enumDescriptions":[]}}
+        param={{"name":"blockno","in":"query","schema":{"type":"integer"},"required":true,"description":"Integer block number to check block rewards for."}}
       >
         
       </ParamsItem>

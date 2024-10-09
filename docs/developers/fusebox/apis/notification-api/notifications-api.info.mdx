@@ -17,28 +17,33 @@ import Export from "@theme/ApiExplorer/Export";
 <span
   className={"theme-doc-version-badge badge badge--secondary"}
   children={"Version: 1.0.0"}
-></span>
+>
+</span>
 
 <Heading
   as={"h1"}
   className={"openapi__heading"}
   children={"Notifications API"}
-></Heading>
+>
+</Heading>
+
+
+
 
 ## Problem
 
 Notifications don't exist on the blockchain!
 
-- UX and lack of relevant notifications are among the biggest inhibitors to the growth of blockchain apps.
-- Getting the information required to notify users about web3 events is complicated and requires considerable dev time and extra infrastructure.
-- Developers can’t trigger notifications for important events like receiving tokens in their wallets.
+* UX and lack of relevant notifications are among the biggest inhibitors to the growth of blockchain apps.
+* Getting the information required to notify users about web3 events is complicated and requires considerable dev time and extra infrastructure.
+* Developers can’t trigger notifications for important events like receiving tokens in their wallets.
 
 ## Solution
 
 Fuse Notifications enables you to send relevant, timely notifications on the most essential Web3 events with the following benefits:
 
-- Starts working with a simple API call, doing all the hard work for you.
-- Has built-in notifications for mined transactions for token-type transfers, with more capabilities to be added soon.
+* Starts working with a simple API call, doing all the hard work for you.
+* Has built-in notifications for mined transactions for token-type transfers, with more capabilities to be added soon.
 
 ## Benefits of Notifications API
 
@@ -54,9 +59,9 @@ No crazy infrastructure or complicated processes. Engage your users in less than
 
 With Fuse Notifications, you can let users know when transaction activity occurs at their address. No more refreshing the page or watching each new block and creating custom filters to track users’ data. The Address Activity webhooks include notifications for:
 
-- External Transfers
-- Internal Transfers
-- Token Transfers
+* External Transfers
+* Internal Transfers
+* Token Transfers
 
 Fuse Notifications works by using webhooks, a way to subscribe to events on your application. This guide will walk through what webhooks are and how you can use them to get started with Fuse Notifications.
 
@@ -113,12 +118,12 @@ Requests are retried for non-200 response codes, and upon failures to reach the 
 
 Requests are retried up to 6 times before failing over. Here are the times after the initial failure that the request is retried, with each time interval building off the previous:
 
-- 15 seconds
-- 1 minute
-- 10 minutes
-- 1 hour
-- 1 day
-- 1 day
+* 15 seconds
+* 1 minute
+* 10 minutes
+* 1 hour
+* 1 day
+* 1 day
 
 ## Example Events
 
@@ -145,7 +150,7 @@ Outgoing
   "gasUsed": "119104",
   "gasFee": "1310144000000000",
   "gasLimit": "872949",
-  "txnValue": "0"
+  "txnValue": "0",
 }
 ```
 
@@ -174,7 +179,7 @@ Incoming
   "gasUsed": "119104",
   "gasFee": "1310144000000000",
   "gasLimit": "872949",
-  "txnValue": "0"
+  "txnValue": "0",
 }
 ```
 
@@ -202,7 +207,7 @@ Outgoing
   "gasUsed": "119104",
   "gasFee": "1310144000000000",
   "gasLimit": "872949",
-  "txnValue": "0"
+  "txnValue": "0",
 }
 ```
 
@@ -230,7 +235,7 @@ Incoming
   "gasUsed": "119104",
   "gasFee": "1310144000000000",
   "gasLimit": "872949",
-  "txnValue": "0"
+  "txnValue": "0",
 }
 ```
 
@@ -246,7 +251,7 @@ Create a webhook with [Create Webhook API](./create-a-webhook.api.mdx)
 
 > #### 📘You can find your `projectId` in the URL of your project page
 >
-> Note that you will need to have an active Fuse account and a project with Public and Secret API keys before getting started.
+> Note that you will need to have an active Fuse account and a project with Public and Secret API keys before getting started. Please refer to [Getting Started](developers/fusebox/fusebox.mdx) before the next steps.
 
 #### Step 2
 
@@ -268,4 +273,9 @@ You can always edit or delete your webhook, add or remove addresses, and change 
 >
 > Addresses that you add to webhooks, can be either wallet or token addresses. In all webhook event objects you will see the `addressType` key with the value `Wallet` for wallet addresses or `Token` for token addresses that you subscribed to.
 >
+> 
 > **Note:** If in any event there is both a wallet address and a token address you subscribed to, you may receive events that may look like duplicates, but you should be able to differentiate between them by looking at the `addressType` field.
+
+
+
+      

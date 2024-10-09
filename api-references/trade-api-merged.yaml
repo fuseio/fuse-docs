@@ -18,7 +18,7 @@ info:
 
     ### Quick Start
     1. Get your API key from the [Console](https://console.fuse.io/build)
-    2. Follow our [Getting Started](fuse-box/getting-started.mdx) guide
+    2. Follow our [Getting Started](developers/fusebox/fusebox.mdx) guide
     3. Add your `apiKey` to all request query params
 
     ### Key Endpoints

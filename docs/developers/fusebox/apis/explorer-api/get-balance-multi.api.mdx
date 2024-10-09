@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJyVV21v20YM/ivEBdgLoCpp170ZGIZs7bagGFY0GfqhLQb6RFtcTnfqkXLqFf7vA09S7Ly06/Ilsu6O5PPw4XP2e6e4Frd45U69T0NU96ZyqaeMyimeNW7h1qQ/YcDo6fchKLvK9ZixI6VsB9+7iB25hetSMwRylePoFu7tQHnrKie+pQ7d4r3TbW/bRDPHtascxaGzxDgn3lUu09uBMzVuoXmgXXUdHL3V8/+DL8fKu1L5xzP0/Iy2n5phVzl6h10f7F1/+dfDR189/vqbb7/7/sR9LEfTZBK5neTm/o8mbUh85r6QMb8Hn6IiR3vUlmDKAi1KW4FPXYcgZE1Tamr4Hd/Bo5N5F0ntdm+sBulTFBJL++jkxP7dTPbHM1c5S0VRbRX7PrAvOjn+W2zL+7uVp+Xf5NU0k01VymOCjkRwTfdCzCRD0IMlzBlLY5Q6+e/Ys57uiz3J4d41UQyHK8uUAmF0u91uXNVB7jk4/t3uzK+kMCWDVcpQBNgH2tPuKteRtmkasTJW2rqFO/5xnKQfJiCfjdr/4YaUKyeUN/MEDjm4hWtVe1kcH2PP9WoQqjnZ8/Hm5Jje9SFlyu52nc9zaoYSH8aAzuR6N54orjmuPznu+bj/Ougbk/wqFf5Yy9Q8nc7C6fOzO+ePjuDPGAilLZJ+nq4oQ1rBL4MQ/BSSv/QtcoTTiGGr7OV1fB1fUvCpo3Ii0lXYwhA3xIGa8dxhxhouWhZ7Aup6Cy/Q0IaCSUngirUF9N7mSFOJyDFShquULzmuxYqxt7cLwtjAFA7n2srLBhVh5KvMDKR4X4DagBwdwcsWFVjuFv6jbbiYDx6u2HaEF0/PL8qnAoFi0yeOauCE15Eag9PntOGG7gI2t+gztRSFNwQysJIh3UPx2OOSA9u0FWXfhwFetqQtZVgOHBrTQUOeomYM/A81cGAdAl88Oe17+dKcKhYtxjVkEsLs2wpSBiEyyoGj8LpVAY6aYLnnXDNGGadEjFYrpwKd+8sC2zRkWKPSFW6NAIQrwqCtYbPGzKw/oy38QqhDJlmM747gYQ0vCMODC+4ILva54GwqaPE6AjwxwkplxkhLmPVDGilcZwupFvKg/LGYuavVyPs/5aGBDctQCLwJGMWSbCF5P+QK1tNNgNBsI3bsYYgNZVGMpRNpdUidBdmwbusZ7KMaTqf74yyuUu5KlwrCF6SZaWOyUSxTxfsdgMs0KEhPnlfs9z73IZ3Dn9GnDeUb8FsWTZlJqtk9ZcSeipyKy0eKOpUg4PPgGcPosSmynTbwsRm5E5ZraF/VcJEu6cA0Cqxzwi6QSNha+2ht1yRo2biXfWlsUdGhdmuTg7+cdndpQx1FreZKIPDbgRvW7QjCWgMbDAMuA92ScwnxIFOwS3puC9O++sc1nHcmqp+TDZLXWzCeUDgU4GqIhVIMrNvRlSiXbtmVlFYgJZifgpk/9CFtqflgv56+G9NuWDGMdqYJUq/cmSYLOR8ZcyuBYjum31DGEGb/MdKAViv2TNHvtfh1Db+NgvAY4AkqFqSnoy23+6W5mAkicHzQUG+GVjRAY/Y1RRqbmyk21/zvldijKuUoFXBDUXllxKUOA88y7PCSJtVTY2hZCrglygeZ+/xGqQddmE3nV9JieueKWakpvnORQOzj6BV6n91Xh/btMcKaFDAWy1vl1JVTr35OUVKgN1/Mt7kfX1zf5MWivwRNKRSImVaUybpk52/eB03ygzWrtLQCjj4Mk71PjrAeuDGyfGoIJHLfk07cTd+XpYazacxs4llApgGsAENIVxZvmwbrZ4s5lhu4pfFSve1e1/NZaOo4cofBpJSy1q/t94J9Rxq/UjysT+oTt9v9C67jnoY=
 sidebar_class_name: "get api-method"
-info_path: docs/explorer-api/explorer-api
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=account&action=balancemulti"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,22 +68,22 @@ Get balance for multiple addresses
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["account"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["account"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["balancemulti"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["balancemulti"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true,"enumDescriptions":[]}}
+        param={{"name":"apiKey","in":"query","schema":{"type":"string"},"example":"pk_1234567890","required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"address","in":"query","required":true,"schema":{"type":"string"},"description":"string containing the address hash, comma separated. Max 20 addresses.","enumDescriptions":[]}}
+        param={{"name":"address","in":"query","required":true,"schema":{"type":"string"},"description":"string containing the address hash, comma separated. Max 20 addresses."}}
       >
         
       </ParamsItem>

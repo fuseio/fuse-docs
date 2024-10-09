@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: eJyVVt1v3DYM/1cIBdg6wL2k3fZyQFFkTdsFfViRpOhDkweezLPZyJIr0pdcg/zvA2VfcvnquqfzyRTF3wcpXznFRtz8izvJGAW9corurHKpp4z257B2c9eQbr0/Ik/c67GiDuIq12PGjpSyJbpyETtyc9elegjkKsfRzd23gfLaVU58Sx26+ZXTdW9hoplj4ypHceisEN0u5Lpymb4NnKl2c80DXVc3B0wx//uAhlQv84hBRgw/PEcvW5T2Z895mOnMVqRPUUgs/uXenv3UJD5zXzDM3T8fXOV8ikpR7S32fWBfFNj9KhZy9fDItPhKXk2BbHopjwd0JIINPVGbDEH/O8dEzMMU19fVj15el4C72N6TwpaqMHEPsjFQR9qmyWfFT9q6udt9PVro1dbeX8afV49oWDmhvNqYcMjBzV2r2st8dxd7ni0HoRkne95d7e3SZR9SpuzuV/sxp3oYCx0TOvPCw3yi2HBsfjrv8Rh/k/TMDLVMhUXWYDS+nfbC/sfDB/t3duBTDITSgrYEH9MFZUhLeDcIwV8h+XPfIkfYjxjWyl5O42n8TMGnjsqOSBdhDUNcEQeqx33bJ87gpGWxJ6Cut/QCNa0omC8ELlhbQO9JBDSVjBwjZbhI+ZxjI1aMrd4vCGMNUzrc1FYWa1SEka9idEjxsQQzA7KzA59bVGB5WPhrCzjZbNx+Y+EIR2+PT8q/AoFi3SeOauCEm0i1welzWnFNDwGDT12fqaUovCKQgZUM6S0Ujz0uOLC1DixTfhQDfG5JW8qwGDjU5oOaPEXNGPg71bDV7wLPDvb7Xn6rwKdYvBgbyCSE2bcVpAxCZJQDR+GmVQGOmmBxy/lWy4jRauVUoBt9WWCdhgwNKl3g2ghAuCAM2ho2E2bD+gdawztCHTLJfFzbgRczOCIMz0+4I9i6GeBwKmh+GgEOjLBSmTHSEmZ9yiOF62wp1VJuT4tSzEbVauT9e3moYcUyFALvAkaxQ9aQvB9yBQ1yNLYQ6nXEjj0MsaYsirEokZbb1FmSFet6tgH7cgb7dZ3N94dxmXJXVCoIj0gz08pso1i6im8jABdpUJCePC/ZA45JSJ7yOXyKPq0o34HfsmjKTFLBAgNGb0+GPRU7lZEdKepUgoDPg2cMxYldimy7DXysR+6E5Qba7zM4See0NTQKrGPCLpBIWJt81GRUAi2Bt7YvwhYXbXt3Znbw51N0l1bUUdRqUwkE/jZwzboeQZg0sMIw4CLQPTuXFM8zBVRrkFEWptvq/5jBcWemepOskbzeg3FAYduAyyEWSjGwrsepRLmoFX1paSnJ/JTM5kMf0prqJ/V6ezkeu2LFMI4zTZB65c48Wcj5QZtbCRTb8fgVZQxhM3+MNKDlkj1T9Lde/HMGf4+G8BjgABUL0v1xLLe3rzbFTBCB4/OaehtoxQM0nt5QpFHcTLG+4f/WiT2qUo5SAdcUlZdGXOow8MaGHZ7T5HqqDS1LAbdAeZK5X++UuqXCZui8Jy1D71gxK9Vl7pwk+2DIOs4KfWzcV9vj22OEhhQwlpG3zKkru768SVFSoLNnm9vcjws3N3kZ0b+BphQKxExLymQq2f6790Gd/GBiFUkr4OjDMI33aSI0A9dGlk81gUTue9KJO7rErg8kMzic2sw6ngVkasAKMIR0YfnWaTA9W8yx3MAtjZfq/el105+Fpo4jdxjMSinr7NQ+l+0bafykeDHbm+256+t/AbtDUtI=
 sidebar_class_name: "get api-method"
-info_path: docs/explorer-api/explorer-api
+info_path: docs/developers/fusebox/apis/explorer-api/explorer-api
 custom_edit_url: null
 ---
 
@@ -34,7 +34,6 @@ import TabItem from "@theme/TabItem";
 <MethodEndpoint
   method={"get"}
   path={"/?module=transaction&action=gettxreceiptstatus"}
-  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -69,17 +68,17 @@ Get transaction receipt status
     <ul>
       <ParamsItem
         className={"paramsItem"}
-        param={{"name":"module","in":"query","schema":{"type":"string","enum":["transaction"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"module","in":"query","schema":{"type":"string","enum":["transaction"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"action","in":"query","schema":{"type":"string","enum":["gettxreceiptstatus"]},"required":true,"enumDescriptions":[]}}
+        param={{"name":"action","in":"query","schema":{"type":"string","enum":["gettxreceiptstatus"]},"required":true}}
       >
         
       </ParamsItem><ParamsItem
         className={"paramsItem"}
-        param={{"name":"txhash","in":"query","schema":{"type":"string"},"required":true,"enumDescriptions":[]}}
+        param={{"name":"txhash","in":"query","schema":{"type":"string"},"required":true}}
       >
         
       </ParamsItem>
