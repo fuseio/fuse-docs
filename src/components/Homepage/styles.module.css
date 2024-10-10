@@ -1,4 +1,7 @@
 .container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,64 +22,70 @@
 
 .grid {
   margin-top: 74px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
   justify-content: center;
-  max-width: 1200px;
-  /* grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
   width: 100%;
-  margin-top: 48px; */
+  max-width: 1200px;
 }
 
 .card {
-  min-width: 48%;
-  max-width: 553px;
+  background-color: #ffffff;
   border-radius: 12px;
-  padding: 16px;
-  background-color: #fff;
-  margin: 24px 16px 0 0;
-  height: 284px;
-  transition: all 0.2s ease-in-out;
-}
-.card > div {
-  background-color: #f2f2f2;
-  width: 100%;
-  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 24px 0px;
-  justify-content: center;
-  max-height: 125px;
+  justify-content: space-between;
 }
 
-.card h2 {
-  margin-top: 16px;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
+
+.card h3 {
+  font-size: 1.5rem;
+  color: #333333;
+  margin-bottom: 12px;
+}
+
 .card p {
-  width: 100%;
-  font-size: 14px;
-  line-height: 20px;
-  color: #737373;
+  flex-grow: 1;
+  font-size: 1rem;
+  color: #555555;
+  margin-bottom: 16px;
 }
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card li {
+  margin-bottom: 8px;
+}
+
+.card a {
+  color: #2c7be5;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.card a:hover {
+  color: #1a5fdc;
+  text-decoration: underline;
+}
+
 .cardArrow {
   margin-left: 8.5px;
   max-width: 11px;
   max-height: 8px;
 }
-.card:hover {
-  box-shadow: 0px 8px 24px rgba(66, 74, 83, 0.12),
-    0px 1px 3px rgba(66, 74, 83, 0.12);
-}
-[data-theme='dark'] .card:hover {
-  box-shadow: 0px 8px 24px rgba(255, 255, 255, 0.12),
-    0px 1px 3px rgba(255, 255, 255, 0.12);
-}
-
 .card:hover > h2 > .cardArrow {
   margin-left: 18px;
   transition: all 0.2s linear;
@@ -90,45 +99,94 @@
 
 @media screen and (max-width: 1100px) {
   .grid {
-    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media screen and (max-width: 900px) {
   .container {
     width: 100%;
-    padding: 0 0 40px 10px;
+    padding: 0 20px 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: auto;
   }
-  .container h1 {
-    font-size: 40px !important;
-    text-align: left;
+  .first-page-header-title h1 {
+    font-size: 2.5rem;
+    text-align: center;
   }
-  .container p {
-    margin-top: 10px;
-    text-align: start;
+  .first-page-header-title p {
+    text-align: center;
   }
-
   .grid {
-    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
     margin-top: 20px;
     justify-content: center;
-    /* padding-right: 36px; */
   }
   .card {
-    /* margin:15px 0 0 0; */
     width: 100%;
   }
 }
 @media screen and (max-width: 550px) {
   .grid {
+    grid-template-columns: 1fr;
     padding-right: 20px;
   }
   .card {
-    /* margin:15px 0 0 0; */
     width: 100%;
     max-width: 100%;
   }
+}
+
+.container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.first-page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.first-page-header-title {
+  max-width: 800px;
+}
+
+.first-page-header-title h1 {
+  font-size: 3rem;
+  color: #222222;
+  margin-bottom: 20px;
+}
+
+.first-page-header-title p {
+  font-size: 1.125rem;
+  color: #555555;
+  line-height: 1.6;
+}
+
+.first-page-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-top: 30px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #222222;
+  margin-bottom: 30px;
+  text-align: center;
 }
