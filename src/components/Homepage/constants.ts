@@ -3,34 +3,34 @@ const ExploreApisList = [
     title: "Smart Wallets API",
     description:
       "Maximize the security and user experience of your apps by leveraging smart contract wallets.",
-    href: "/smart-wallet-api/smart-wallets-api",
+    link: "/developers/fusebox/apis/smart-wallet-api/smart-wallets-api",
   },
   {
     title: "Trade API",
     description:
       "Enable DeFi functionalities including token swaps, real-time price information, and more in your apps.",
-    href: "/trade-api/trade-api",
+    link: "/developers/fusebox/apis/trade-api/trade-api-v-1-v-2",
   },
   {
     title: "Notifications API",
     description:
       "Maximize the security and user experience of your apps by leveraging smart contract wallets.",
-    href: "/notification-api/notifications-api",
+    link: "/developers/fusebox/apis/notification-api/notifications-api",
   },
   {
-    title: "Data APIs",
+    title: "Balance APIs",
     description: "Access real-time indexed transactions with ease.",
-    href: "/smart-wallet-api/get-wallet-actions",
+    link: "/developers/fusebox/apis/balances-api/balances-api",
   },
   {
     title: "GraphQL APIs",
     description: "Access real-time indexed transactions with ease.",
-    href: "/graphql-api/graphql-api",
+    link: "/developers/fusebox/apis/graphql-api/graphql-api",
   },
   {
-    title: "Staking APIs",
+    title: "Explorer APIs",
     description: "Enhance your app with staking functionalities.",
-    href: "/staking-api/staking-api",
+    link: "/developers/fusebox/apis/explorer-api/explorer-api",
   },
 ];
 
@@ -72,14 +72,14 @@ const GovernanceList = [
     icon: "img/git.png",
     title: "Fip`s",
     description: `Governance is currently split among the following \n actors.....`,
-    href: "basics/intro-to-fuse/fuse-governance-and-development/fips",
+    link: "/ecosystem/fuse-governance-and-development/fips",
   },
   {
     icon: "img/forum.png",
     title: "Fuse Assembly",
     description:
       "Fuse Assembly is the first step in transitioning full governance and ownership over the Fuse platform to the community.",
-    href: "basics/intro-to-fuse/fuse-governance-and-development/fuse-assembly",
+    link: "/ecosystem/fuse-governance-and-development/fuse-assembly",
   },
 ];
 
