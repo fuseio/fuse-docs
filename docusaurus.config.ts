@@ -112,7 +112,7 @@ const config: Config = {
         },
         {
           type: 'doc',
-          docId: 'developers/web3-tools/web3-tools',
+          docId: 'developers/developers',
           position: 'left',
           label: 'Developers',
         },
