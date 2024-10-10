@@ -1,21 +1,24 @@
 ---
-title: REST API - How to GET Price Changes for a Token By Intervals 
+title: REST API - How To GET Price Changes For A Token By Intervals
 sidebar_position: 14
 ---
 
 ## Introduction
+
 In this Tutorial we will build a sample application to display Price Changes for a Token across an Interval. The Changes can be across "ALL","MONTH","WEEK","DAY","HOUR" in Unix timestamp.
 
 ## Prerequisites
+
 Before starting, ensure you have the following:
 
-- Node.js installed on your machine.
-- Code Editor: Use your preferred code editor; VS Code is recommended.
-- An EOA wallet with a private key. You can use an existing one or create a new wallet.
-- A basic understanding of React.js and Next.js.
-- An API key from the Fuse Console. Get one [here](https://console.fuse.io/build).
+* Node.js installed on your machine.
+* Code Editor: Use your preferred code editor; VS Code is recommended.
+* An EOA wallet with a private key. You can use an existing one or create a new wallet.
+* A basic understanding of React.js and Next.js.
+* An API key from the Fuse Console. Get one [here](https://console.fuse.io/build).
 
 ## Step 1: Set Up a Next.js Project
+
 If you haven't already set up a Next.js project, you can create one using the following commands:
 
 ```javascript
@@ -31,7 +34,7 @@ Answer the required prompts from NextJS in the terminal. Note that we use TypeSc
 
 In this example tutorial, we are going to build a Dashboard that returns the Price Changes for the LadyBot Token in a Line Chart. We will use the Fetch API method to call the Fuse REST APIs and return the responses.
 
-The end point that we will use in this tutorial is the [**GET Price Change for a Token Over An Interval**](https://docs.fuse.io/trade_versioned/1.0.0/get-price-change-for-token-over-an-interval).
+The end point that we will use in this tutorial is the **[GET Price Change for a Token Over An Interval](https://docs.fuse.io/trade_versioned/1.0.0/get-price-change-for-token-over-an-interval)**.
 
 The base URL `https://api.fuse.io/api/v0/trade/pricechange/interval/:timeFrame/:tokenAddress?apiKey={API_KEY}`
 
@@ -43,8 +46,8 @@ The URL when appended with the parameters for examples:
 
 `https://api.fuse.io/api/v0/trade/pricechange/interval/HOUR/0xDe4b9879B56187D13B2c41Da24c72Ff100A5AC9A?apiKey={API_KEY}`
 
-
 ## Step 3: Understanding the API Response
+
 The URL will return the following response, for example:
 
 ```json
@@ -69,9 +72,9 @@ Where:
 | **timeStamp**     | `integer` | a Unix timestamp (which is the number of seconds since January 1, 1970) |
 | **priceChange**   | `string`  | The difference between `previousPrice` and `currentPrice`               |
 | **previousPrice** | `string`  | The Previous Price at the timestamp                                     |
-| **currentPrice**  | `string`  | The Current Price at the timestamp                                      | 
+| **currentPrice**  | `string`  | The Current Price at the timestamp                                      |
 
-An example response from calling the URL looks like this: 
+An example response from calling the URL looks like this:
 
 ```json
 {
@@ -132,9 +135,10 @@ Run the application using the command:
 npm run dev
 ```
 
-Open your browser go to http://localhost:3000 and open the developer console, you will find the results logged to the console.
+Open your browser go to [http://localhost:3000](http://localhost:3000) and open the developer console, you will find the results logged to the console.
 
 ## Step 5: UI
+
 TO display the response in a Chart using a Line Chart, we will make use of the **react-chartjs-2** Library. A set of React components for Chart.js a JavaScript charting library. Install the following packages:
 
 ```javascript
@@ -227,7 +231,8 @@ const data = {
      ],
   };
 ```
-The Data object variable has `labels` as a parameter, which the y-axis and `data` going on the x-axis. As mentioned above, we will parse `timeStamp` to the y-axis and `currentPrice` to the x-axis. To do this we will map over the response stored in the `token` state. 
+
+The Data object variable has `labels` as a parameter, which the y-axis and `data` going on the x-axis. As mentioned above, we will parse `timeStamp` to the y-axis and `currentPrice` to the x-axis. To do this we will map over the response stored in the `token` state.
 
 For the `timeStamp` we will convert it to human readable date time in “Hours”, “Minutes” and “Seconds”..
 
