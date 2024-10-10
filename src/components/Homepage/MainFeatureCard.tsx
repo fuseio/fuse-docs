@@ -1,31 +1,28 @@
-import React from 'react';
+import React from "react";
+import styles from "./MainFeatureCard.module.css";
+import {MainFeatureCardProps} from "./types";
 import Link from "@docusaurus/Link";
-import styles from './styles.module.css';
-import { MainFeatureCardProps } from './types';
 
-export function MainFeatureCard({
-  href,
-  image,
+export const MainFeatureCard: React.FC<MainFeatureCardProps> = ({
   title,
-  link,
   description,
-}: MainFeatureCardProps) {
-  return (
-    <Link
-      style={{
-        textDecoration: "none",
-        color: "inherit",
-      }}
-      target={href ? "_blank" : "_self"}
-      href={href || ""}
-      to={link || ""}>
-      <div className={styles.card}>
-        <div>
-          <img src={image} alt={title} />
-        </div>
-        <h2>{title}<img src='img/card-arrow.svg' className={styles.cardArrow} /></h2>
-        <p>{description}</p>
-      </div>
-    </Link>
-  );
-};
+  links,
+}) => (
+  <div className={styles.card}>
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <ul>
+      {links.map((link, idx) => (
+        <li key={idx}>
+          <Link
+            target={link.href ? "_blank" : "_self"}
+            href={link.href || null}
+            to={link.link || ""}
+          >
+            {link.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
