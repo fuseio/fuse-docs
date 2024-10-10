@@ -5,13 +5,13 @@ sidebar_position: 1
 
 # FAQs
 
-### What is a Fuse Smart Wallet?
-
-A Fuse Smart Wallet is a non-custodial smart contract wallet ([Based on ERC-4337](https://eips.ethereum.org/EIPS/eip-4337)) that allows users to securely store, send, and receive cryptocurrency and tokens. It is built on top of the Fuse network and offers gasless transactions, making it ideal for use in dApps.
-
 ### What is the Fuse network?
 
 The Fuse network is a decentralized platform for creating and deploying Web3 applications. It is an EVM-compatible L1 blockchain that offers fast and inexpensive transactions, making it ideal for building decentralized applications.
+
+### What is a Fuse Smart Wallet?
+
+A Fuse Smart Wallet is a non-custodial smart contract wallet ([based on ERC-4337](https://eips.ethereum.org/EIPS/eip-4337)) that allows users to securely store, send, and receive cryptocurrency and tokens. It is built on top of the Fuse network and offers gasless transactions, making it ideal for use in dApps.
 
 ### What programming languages are supported by the FuseBox SDK?
 
@@ -19,126 +19,117 @@ Currently, the FuseBox SDK supports Dart & JS, with support for more languages p
 
 ### What is a gasless transaction?
 
-A gasless transaction is a transaction that does not require the user to pay for gas fees. In the case of the Fuse network, gasless transactions are covered by paymasters, which are incentivized to provide this service to users.
+A gasless transaction is a transaction that does not require the user to pay for gas fees. In the case of the Fuse network, gasless transactions are covered by paymasters, who are incentivized to provide this service to users.
 
 ### Can I use the FuseBox SDK to interact with other blockchains?
 
 Currently, the FuseBox SDK is designed to work with the Fuse network/Fuse Sparknet. However, we are planning to add support for additional blockchains and networks in the future.
 
-### Who is an Operator?
+### What is an Operator?
 
-An **Operator** on Fuse is an Intermediary that enables consumers interact with the Fuse blockchain via their Solutions. Operators can include integrators, payment providers, financial institutions, apps, consumer clubs, sharing economies, startups, local communities, online and offline retailers, and more. They use the Fuse Network blockchain and other tools to power payment services for their customers, enabling the exchange of real-world goods and services using the blockchain.
+An **Operator** on Fuse is an intermediary that enables consumers interact with the Fuse blockchain via their own solutions. Operators can include integrators, payment providers, financial institutions, apps, consumer clubs, sharing economies, startups, local communities, online and offline retailers, and more. They use the Fuse Network blockchain and other tools to power payment services for their customers, enabling the exchange of real-world goods and services using the blockchain.
 
 A key feature of Operators is that they pay network fees on behalf of users.
 
 Operators an build their applications on Fuse using the FuseBox Web SDK, Flutter SDK or REST API endpoints.
 
-### How to build on Sparknet?
+### How do I build on Sparknet?
 
 To deploy applications to Fuse Sparknet, follow the "Build on Fuse Guide" and set the Network ID to **123**.
 
-### How to deploy to mainnet?
+### How do I deploy to mainnet?
 
-To deploy applications to Fuse Sparknet, follow the "Build on Fuse Guide" and set the Network ID to **122**.
+To deploy applications to Fuse mainnet, follow the "Build on Fuse Guide" and set the Network ID to **122**.
 
-### How to find ALL API endpoints?
+### How can I find all API endpoints?
 
-[API References](../developers/fusebox/apis/).
+Check out our [API documentation](../developers/fusebox/apis/).
 
-### How to find ALL Web/Flutter SDK methods?
+### How do I find all Web/Flutter SDK methods?
 
-The [FuseBox SDK](../developers/fusebox/sdk/) contains ALL the methods required for building a complete application on Fuse. The SDKs for both Flutter and JS. The FuseBox SDK simplifies the incorporation of Account Abstraction on the Fuse Blockchain, offering features such as:
+The [FuseBox SDK](../developers/fusebox/sdk/) contains all the methods required for building a complete application on Fuse, with SDKs for both Flutter and JS. The FuseBox SDK simplifies the incorporation of Account Abstraction on the Fuse Blockchain, offering features such as:
 
-- Smart Contract Wallet Creation.
-- ERC20 and Native FUSE Transfers.
-- Staking.
-- Data Services.
-- Trading Functions.
+* Smart Contract wallet creation
+* ERC20 and native FUSE transfers
+* Staking
+* Data services
+* Trading functions
 
 ### Troubleshooting
 
-If you encounter any issues while using the FuseBox, here are some troubleshooting steps you can take:
+If you encounter any issues while using FuseBox, here are some troubleshooting steps you can take:
 
-- Make sure you have followed the installation instructions correctly.
-- Check that you have installed the latest version of the SDK. [Web](https://www.npmjs.com/package/@fuseio/fusebox-web-sdk "Web SDK"). [Mobile](https://pub.dev/packages/fuse_wallet_sdk "Flutter SDK").
-- Verify that your API key is valid and has the necessary permissions. Get an [API KEY.](https://console.fuse.io/build "API KEY")
-- Check the SDK documentation for common issues and solutions.
+* Make sure you have followed the installation instructions correctly.
+* Check that you have installed the latest version of the SDK ([Web](https://www.npmjs.com/package/@fuseio/fusebox-web-sdk "Web SDK"), [Mobile](https://pub.dev/packages/fuse_wallet_sdk "Flutter SDK")).
+* Verify that your API key is valid and has the necessary permissions. Get an [API KEY.](https://console.fuse.io/build "API KEY")
+* Check the SDK documentation for common issues and solutions.
 
 # Fuse Bridge FAQ
 
-### I have USDC or WETH on the Fuse network and want to bridge it to another network. But the Bridge shows me a balance of 0.
+### I have USDC or WETH on the Fuse network and want to bridge it to another network, but the Bridge displays a balance of 0.
 
-- The Fuse Bridge uses other tokens USDC V2 and WETH V2 on the bridge. Don't worry, their value is identical to standard USDC and WETH on the Fuse network.
-
-- So first you need to swap your USDC/WETH tokens for USDC V2/WETH V2 on the [Voltage Finance dapp](https://app.voltage.finance/#/swap) and then bridge tokens from Fuse to another network.
+* The Fuse Bridge uses other tokens (USDC V2 and WETH V2). Don't worry, their value is identical to standard USDC and WETH on the Fuse network.
+* First, you need to swap your USDC/WETH tokens for USDC V2/WETH V2 on the [Voltage Finance dApp](https://app.voltage.finance) and then bridge the tokens from Fuse to another network.
 
 ### I deposited USDC or WETH into the Fuse network, but I don't see the tokens in my wallet.
 
-- By depositing USDC or WETH into the Fuse network, you receive new tokens which exist specifically for the bridge. Therefore, to see them in your wallet, you need to add them. You can use the "**Add Token**" button or add them manually using the contract address.
+* By depositing USDC or WETH into the Fuse network, you receive new tokens which exist specifically for the bridge. Therefore, to see them in your wallet, you need to add them. You can use the "**Add Token**" button or add them manually using the contract address.
+* USDC V2 contract address: [0x28c3d1cd466ba22f6cae51b1a4692a831696391a](https://explorer.fuse.io/token/0x28C3d1cD466Ba22f6cae51b1a4692a831696391A/token-transfers)
+* WETH V2 contract address: [0x5622f6dc93e08a8b717b149677930c38d5d50682](https://explorer.fuse.io/token/0x5622F6dC93e08a8b717B149677930C38d5d50682/token-transfers)
 
-- USDC V2 contract address: [0x28c3d1cd466ba22f6cae51b1a4692a831696391a](https://explorer.fuse.io/token/0x28C3d1cD466Ba22f6cae51b1a4692a831696391A/token-transfers)
+After that, you can swap these tokens for standard USDC and WETH on Fuse using the [Voltage](https://app.voltage.finance) Finance dApp.
 
-- WETH V2 contract address: [0x5622f6dc93e08a8b717b149677930c38d5d50682](https://explorer.fuse.io/token/0x5622F6dC93e08a8b717B149677930C38d5d50682/token-transfers)
+### What are the Fuse token addresses on Polygon, Optimism, and Arbitrum?
 
-After that, you can swap these tokens for standard USDC and WETH on Fuse on the [Voltage](https://app.voltage.finance/#/swap) Finance dapp.
-
-### What are Fuse token addresses on Polygon, Optimism and Arbitrum?
-
-- Optimistic (OP): [0xe453d6649643F1F460C371dC3D1da98F7922fe51](https://optimistic.etherscan.io/token/0xe453d6649643f1f460c371dc3d1da98f7922fe51)
-
-- Arbitrum (ARB): [0x6b021b3f68491974bE6D4009fEe61a4e3C708fD6](https://arbiscan.io/token/0x6b021b3f68491974be6d4009fee61a4e3c708fd6)
-
-- Polygon (MATIC): [0x6b021b3f68491974bE6D4009fEe61a4e3C708fD6](https://polygonscan.com/token/0x6b021b3f68491974be6d4009fee61a4e3c708fd6)
+* Optimistic (OP): [0xe453d6649643F1F460C371dC3D1da98F7922fe51](https://optimistic.etherscan.io/token/0xe453d6649643f1f460c371dc3d1da98f7922fe51)
+* Arbitrum (ARB): [0x6b021b3f68491974bE6D4009fEe61a4e3C708fD6](https://arbiscan.io/token/0x6b021b3f68491974be6d4009fee61a4e3c708fd6)
+* Polygon (MATIC): [0x6b021b3f68491974bE6D4009fEe61a4e3C708fD6](https://polygonscan.com/token/0x6b021b3f68491974be6d4009fee61a4e3c708fd6)
 
 ### What tokens can be transferred using the Fuse Token Bridge?
 
-- The Fuse Token Bridge can send FUSE, USDC, and WETH tokens.
+* The Fuse Token Bridge can send FUSE, USDC, and WETH tokens.
 
-### Between which networks can the tokens be transferred?
+### Between which networks can these tokens be transferred?
 
-- The tokens can be transferred between the Fuse Network and Polygon, Optimism, and Arbitrum.
+* The tokens can be transferred between the Fuse Network and Polygon, Optimism, and Arbitrum.
 
 ### Is there a guide available on how to use the Fuse Token Bridge?
 
-- Yes, a guide on how to use the Fuse Token Bridge is available on the provided [link](https://youtu.be/LUsoAdsTWM4?si=LuOxRsTlMZ9RSsHh).
+* Yes, you can [find out how to use the bridge here](https://youtu.be/LUsoAdsTWM4?si=LuOxRsTlMZ9RSsHh).
 
 ### What is the Native Token of the Fuse Network?
 
-- The native token of the Fuse Network is the Fuse token (FUSE).
+* The native token of the Fuse Network is the Fuse token (FUSE).
 
 ### What technology powers the Fuse bridge, and who monitors its security?
 
-- The token bridge is powered by LayerZero technology, and its security is monitored by blockchain security experts Ironblocks.
+* The token bridge is powered by LayerZero technology, and its security is monitored by blockchain security experts Ironblocks.
 
 ### Are there any fees associated with using the Fuse Token Bridge?
 
-- Currently, there are zero bridge fees on the Fuse Token Bridge.
+* Currently, there are zero bridge fees on the Fuse Token Bridge.
 
-### Is there any liquidity concern users should know?
+### Is there any liquidity concern users should know about?
 
-- Users should be aware that liquidity at this stage is minimal, so they are advised to avoid trying to bridge substantial amounts.
+* Users should be aware that liquidity at this stage is minimal, so they are advised to avoid trying to bridge substantial amounts.
 
 ### How are gas fees on Fuse Network calculated?
 
-- Blockchain gas fees are calculated based on the complexity of the transaction or contract interaction on the network. Every operation, such as sending tokens, interacting with a contract, or transferring assets, requires a certain amount of computational work measured in "gas."
-
-- The total gas fee is determined by multiplying the gas used by the gas price, which is set by the user and measured in units like gwei for Ethereum.
+* Blockchain gas fees are calculated based on the complexity of the transaction or contract interaction on the network. Every operation, such as sending tokens, interacting with a contract, or transferring assets, requires a certain amount of computational work measured in "gas".
+* The total gas fee is determined by multiplying the gas used by the gas price, which is measured in units (gwei for Ethereum).
 
 ### I had FUSE tokens on the Polygon network, but after I withdrew the FUSE tokens from the Fuse network, I received other FUSE tokens. What's happening?
 
-- Don't worry, both tokens are valid, but one of them is deprecated and no longer used in the bridge.
-
-- Deprecated FUSE token on Polygon: [0xF915fDDa4c882731C0456a4214548Cd13A822886](https://polygonscan.com/token/0xF915fDDa4c882731C0456a4214548Cd13A822886)
-
-- New FUSE token on Polygon: [0x6b021b3f68491974bE6D4009fEe61a4e3C708fD6](https://polygonscan.com/token/0x6b021b3f68491974be6d4009fee61a4e3c708fd6)
-
-- Just swap the deprecated tokens for new ones. This can be done directly in MetaMask, for instance, or in any other dapp.
+* Don't worry, both tokens are valid, but one of them is deprecated and no longer used in the bridge.
+* Deprecated FUSE token on Polygon: [0xF915fDDa4c882731C0456a4214548Cd13A822886](https://polygonscan.com/token/0xF915fDDa4c882731C0456a4214548Cd13A822886)
+* New FUSE token on Polygon: [0x6b021b3f68491974bE6D4009fEe61a4e3C708fD6](https://polygonscan.com/token/0x6b021b3f68491974be6d4009fee61a4e3c708fd6)
+* Just swap the deprecated tokens for new ones. This can be done directly in MetaMask, for instance, or in any other dApp.
 
 ### Where to Get Help
 
 If you have any questions, feedback, or need assistance with the FuseBox, please reach out to us:
 
-- Join our **[Telegram](https://t.me/fuseio/163566)** community.
-- Join our [Discord](https://discord.com/invite/jpPMeSZ "Discord").
-- Contact us via email: [hello@fuse.io](mail:hello@fuse.io "email")
-- Visit our website for additional resources: **[https://fuse.io/](https://fuse.io/sdk)**
+* Join our [Telegram](https://t.me/fuseio/163566) community.
+* Join our [Discord](https://discord.com/invite/jpPMeSZ "Discord").
+* Contact us via email: [hello@fuse.io](<> "email")
+* Visit our website for additional resources: **[https://fuse.io/](https://fuse.io/sdk)**
