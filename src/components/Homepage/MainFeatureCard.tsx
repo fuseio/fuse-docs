@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./MainFeatureCard.module.css";
 import {MainFeatureCardProps} from "./types";
+import Link from "@docusaurus/Link";
 
 export const MainFeatureCard: React.FC<MainFeatureCardProps> = ({
   title,
@@ -13,7 +14,13 @@ export const MainFeatureCard: React.FC<MainFeatureCardProps> = ({
     <ul>
       {links.map((link, idx) => (
         <li key={idx}>
-          <a href={link.href}>{link.label}</a>
+          <Link
+            target={link.href ? "_blank" : "_self"}
+            href={link.href || null}
+            to={link.link || ""}
+          >
+            {link.label}
+          </Link>
         </li>
       ))}
     </ul>
