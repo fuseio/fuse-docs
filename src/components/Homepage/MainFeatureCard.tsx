@@ -1,11 +1,6 @@
 import React from "react";
 import styles from "./MainFeatureCard.module.css";
-
-interface MainFeatureCardProps {
-  title: string;
-  description: string;
-  links: {label: string; href: string}[];
-}
+import {MainFeatureCardProps} from "./types";
 
 export const MainFeatureCard: React.FC<MainFeatureCardProps> = ({
   title,

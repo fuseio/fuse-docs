@@ -8,7 +8,7 @@ export default function Homepage() {
   const mainFeatureCards = useMemo(
     () =>
       MainFeatureList.map((props, idx) => (
-        <MainFeatureCard key={idx} {...props} />
+        <MainFeatureCard link={""} key={idx} {...props} />
       )),
     []
   );

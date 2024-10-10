@@ -6,6 +6,5 @@ export interface CardProps {
 }
 
 export interface MainFeatureCardProps extends CardProps {
-  image: string;
-  imageHover?: string;
+  links: { label: string; href: string }[];
 }
