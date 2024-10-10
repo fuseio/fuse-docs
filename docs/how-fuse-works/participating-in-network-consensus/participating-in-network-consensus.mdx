@@ -1,15 +1,15 @@
 ---
-title: Participating in Network Consensus
+title: Participating In Network Consensus
 sidebar_position: 1
 ---
 
-# Participating in Network Consensus
+# Participating In Network Consensus
 
-Consensus is a fault-tolerant mechanism used in blockchain systems to achieve the necessary agreement on the single state of the network. The Fuse Network uses a [Delegated Proof of Stake](https://en.bitcoinwiki.org/wiki/DPoS) (DPoS) consensus model. DPoS is a variation of [Proof of Stake](https://en.bitcoinwiki.org/wiki/Proof-of-stake) consensus.
+Consensus is a fault-tolerant mechanism used in blockchain systems to achieve agreement on the complete state of the network. The Fuse Network uses a [Delegated Proof of Stake](https://en.bitcoinwiki.org/wiki/DPoS) (DPoS) consensus model. DPoS is a variation of [Proof of Stake](https://en.bitcoinwiki.org/wiki/Proof-of-stake) consensus.
 
-In PoS, there are a set of validators that are responsible for keeping the network updated and validating the network's state. They do this in turns, and every validator has their turn. On their turn, the validator updates the network's state, and the rest of the validators check that the update is valid.
+In PoS, a set of validators is responsible for keeping the network updated and validating the network's state. They do this in turns, with the next validator being selected by an algorithm, and every validator has an opportunity to participate. On their turn, the validator updates the network's state, and the rest of the validators check that the update is valid.
 
-![](</img/image(10).png>)
+![](/img/image\(10\).png)
 
 A consensus contract is used to manage the network validators and delegators list.
 
@@ -19,7 +19,7 @@ With Voting, contract validators vote on changes to these three base-level contr
 
 The bridge transfers the Fuse native token between Fuse and Ethereum networks.
 
-## [Consensus - 0x3014ca10b91cb3d0ad85fef7a3cb95bcac9c0f79](https://explorer.fuse.io/address/0x3014ca10b91cb3d0ad85fef7a3cb95bcac9c0f79)
+## [Consensus: 0x3014ca10b91cb3d0ad85fef7a3cb95bcac9c0f79](https://explorer.fuse.io/address/0x3014ca10b91cb3d0ad85fef7a3cb95bcac9c0f79)
 
 This contract is responsible for handling the network DPos consensus. The contract stores the current validator set and chooses a new validator set at the end of each cycle. The logic for updating the validator set is to select a random snapshot from the snapshots taken during the cycle.
 
@@ -29,22 +29,22 @@ The stake amount for a validator is the sum of staked and delegated amount to it
 
 This contract is based on `non-reporting ValidatorSet` [described in Parity Wiki](https://openethereum.github.io/Validator-Set.html).
 
-:::info
+\:::info
 
 minimum stake amount = 100,000 Fuse token
 
 cycle duration blocks = 34560 (approximately 2 days)
-:::
+\:::
 
-## [Block Reward - 0x63D4efeD2e3dA070247bea3073BCaB896dFF6C9B](https://explorer.fuse.io/address/0x63d4efed2e3da070247bea3073bcab896dff6c9b)
+## [Block Reward: 0x63D4efeD2e3dA070247bea3073BCaB896dFF6C9B](https://explorer.fuse.io/address/0x63d4efed2e3da070247bea3073bcab896dff6c9b)
 
 This contract generates and distributes block rewards to the network validators according to the network specs (5% yearly inflation).
 
-Another role of this contract is to call the snapshot/cycle logic on the Consensus contract
+Another role of this contract is to call the snapshot/cycle logic on the Consensus contract.
 
 This contract is based on `BlockReward` [described in Parity Wiki](https://openethereum.github.io/Block-Reward-Contract.html).
 
-## [Voting - 0x4c889f137232E827c00710752E86840805A70484](https://explorer.fuse.io/address/0x4c889f137232E827c00710752E86840805A70484)
+## [Voting: 0x4c889f137232E827c00710752E86840805A70484](https://explorer.fuse.io/address/0x4c889f137232E827c00710752E86840805A70484)
 
 This contract is responsible for opening new ballots and voting to accept/reject them. Ballots are offers to change other network contracts' implementation.
 
@@ -52,7 +52,7 @@ Only network validators can open new ballots, and everyone can vote on them, but
 
 Ballots are opened/closed on the cycle end.
 
-:::info
+\:::info
 
 max number of open ballots = 100
 
@@ -61,7 +61,7 @@ max number of open ballots per validator = 100 / number of validators
 minimum ballot duration (cycles) = 2
 
 maximum ballot duration (cycles) = 14
-:::
+\:::
 
 ## [Proxy Storage](https://explorer.fuse.io/address/0x23D8634ED1B2662dC96FcE6208fde93258731333)
 
