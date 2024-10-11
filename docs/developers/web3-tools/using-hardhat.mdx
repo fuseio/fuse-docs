@@ -3,16 +3,16 @@ title: Using Hardhat
 sidebar_position: 2
 ---
 
-# What is Hardhat
+# Using Hardhat
 
 Hardhat is a development environment for Ethereum software. It consists of different components for editing, compiling, debugging and deploying your smart contracts and dApps, all of which work together to create a complete development environment.
 
-This Guide will walk you throught the steps on how to deploy an ERC-20 Token Contract to Fuse Blockchain using Hardhat.
+This Guide will walk you through the steps on how to deploy an ERC-20 token contract to the Fuse blockchain using Hardhat.
 
-## Pre-requisites
+## Prerequisites
 
-- Solidity programming knowledge
-- JavaScript knowledge
+* Solidity programming knowledge
+* JavaScript knowledge
 
 Open a new terminal and run these commands to create a new folder:
 
@@ -20,7 +20,7 @@ Open a new terminal and run these commands to create a new folder:
 mkdir hardhat-fuse-guide && cd hardhat-fuse-guide
 ```
 
-Inside the folder, initialize a project by running
+Inside the folder, initialize a project by running:
 
 ```bash
 npm init -y
@@ -36,7 +36,7 @@ Follow the prompts. A `package.json` file is added to the project dir, and we ca
 
 Note:
 
-**Do you want to install this sample project's dependencies with npm (hardhat @nomicfoundation/hardhat-toolbox)? (Y/n) › y **
+\*\*Do you want to install this sample project's dependencies with npm (hardhat @nomicfoundation/hardhat-toolbox)? (Y/n) › y \*\*
 
 ```bash
 npm install --save-dev hardhat
@@ -105,7 +105,7 @@ module.exports = Token;
 
 Open the `hardhat.config.js` file and update the information on Fuse Network
 
-```typescript title="hardhat.config.js" overflow="wrap"
+```typescript
 module.exports = {
   // ...
   networks: {
@@ -132,11 +132,11 @@ npx hardhat ignition deploy ./ignition/modules/deploy.js --network fuse
 
 ## How to verify contracts
 
-To verify contracts with hardhat the [hardhat-etherscan](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify) is used. Yes it’s sound counterintuitive and wrong, but the `hardhat-etherscan` plugin verifies contracts in the blockscout explorer.
+To verify contracts with hardhat the [hardhat-etherscan](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify) is used. This sounds counterintuitive and wrong, but the `hardhat-etherscan` plugin verifies contracts in the blockscout explorer.
 
 Add the following property to `hardhat.config.js`
 
-```typescript title="hardhat.config.js" overflow="wrap"
+```typescript
 etherscan: {
     apiKey: {
       fuse: "YOUR_KEY_IF_YOU_HAVE_ONE",
