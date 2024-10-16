@@ -118,33 +118,9 @@ const config: Config = {
         },
         {
           type: 'doc',
-          docId: 'how-fuse-works/how-fuse-works',
-          position: 'left',
-          label: 'How Fuse Works',
-        },
-        {
-          type: 'doc',
           docId: 'fuse-ember/fuse-ember',
           position: 'left',
           label: 'Fuse Ember',
-        },
-        {
-          type: 'doc',
-          docId: 'businesses/businesses',
-          position: 'left',
-          label: 'Businesses',
-        },
-        {
-          type: 'doc',
-          docId: 'ecosystem/ecosystem',
-          position: 'left',
-          label: 'Ecosystem',
-        },
-        {
-          type: 'doc',
-          docId: 'support-faq/overview',
-          position: 'left',
-          label: 'Support & FAQ',
         },
         {
           href: 'https://github.com/fuseio/fuse-docs',

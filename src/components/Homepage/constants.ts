@@ -5,7 +5,7 @@ const MainFeatureList = [
     links: [
       { label: 'About Fuse', link: '/basics/overview' },
       { label: 'Connect to Fuse', link: '/basics/overview/connect-to-fuse' },
-      { label: 'Ecosystem', link: '/ecosystem' },
+      { label: 'Ecosystem', link: '/basics/ecosystem' },
     ],
   },
   {
@@ -21,9 +21,9 @@ const MainFeatureList = [
     title: 'Case Studies',
     description: 'Read how businesses are solving real-world problems with Fuse.',
     links: [
-      { label: 'Tbd', link: '/businesses/' },
-      { label: 'Tbd', link: '/businesses/' },
-      { label: 'Tbd', link: '/businesses/' },
+      { label: 'Tbd', link: '/basics/businesses/' },
+      { label: 'Tbd', link: '/basics/businesses/' },
+      { label: 'Tbd', link: '/basics/businesses/' },
     ],
   },
   {
