@@ -3,3 +3,61 @@ title: Components
 sidebar_position: 1
 ---
 
+### Sequencer
+
+A sequencer is vital for ensuring smooth network operation and high performance. It’s a specialized node responsible for ordering, executing, and processing transactions
+
+Key Functions of Sequencers:
+
+* Transaction Ordering: Sequencers collect and organize transactions submitted by users, determining the order in which they will be processed to maintain consistency and determinism within the Layer 2 state.
+* Transaction Execution: Once transactions are ordered, the sequencer executes them, updating account balances and smart contracts based on the rules of the Layer 2 system.
+* Batch Submission: After processing, the sequencer packages transactions into batches or blocks and submits them to the Layer 1 blockchain, typically recording them as cryptographic commitments.
+* Data Availability: Sequencers are responsible for ensuring transaction data can be accessed and verified, storing it on Fuse Ember data availability solution.
+
+Importance of Sequencers:
+
+* Scalability: Sequencers offload transaction processing from Layer 1, allowing Layer 2 solutions to achieve higher throughput and lower latency.
+* Cost Reduction: By bundling multiple transactions into single batches, sequencers reduce the number of Layer 1 interactions, leading to lower gas costs.
+* Deterministic Execution: Sequencers guarantee transactions are processed according to predefined rules, ensuring the consistency and integrity of the Layer 2 state.
+
+In practice, a trusted sequencer orders L2 transactions, generates blocks, fills batches, and submits them to a consensus contract on Layer 1.
+
+### Prover
+
+zkProvers are critical components in zero-knowledge (ZK) rollups, responsible for generating zero-knowledge proofs that validate the correctness of transactions executed on Layer 2 networks. In the context of Ember Chain, built using Polygon CDK, zkProvers handle the creation of succinct proofs that allow the Layer 1 (Ethereum) to verify the state transitions of Ember Chain without re-executing every transaction, significantly boosting scalability while maintaining security.
+
+How zkProvers Work with zkEVMs
+The zkProver works in tandem with zkEVMs (zero-knowledge Ethereum Virtual Machines) by generating proofs that verify the correctness of transaction execution:
+
+* Transaction Execution: Transactions are executed on the zkEVM, which interprets EVM bytecode and updates the Layer 2 state.
+* State Transitions: The zkProver captures these transitions, including changes to account balances, smart contract states, etc.
+* Proof Generation: Using advanced cryptographic techniques like zk-SNARKs or zk-STARKs, the zkProver creates a zero-knowledge proof to validate these transitions.
+* Proof Submission: This proof is submitted to Layer 1, allowing it to verify the state without needing to reprocess all transactions.
+
+zkProver Nodes: Decentralizing Proof Generation
+In the future, Ember Chain could adopt zkProver Nodes to further decentralize and scale the proof generation process. These nodes would distribute the computational load of generating zero-knowledge proofs, ensuring a resilient and efficient infrastructure.
+
+Proving Execution Correctness
+The zkProver ensures that every state transition is correct through polynomial constraints, which are verified using zk-STARK and zk-SNARK proofs. This combination allows for fast and scalable proof generation while keeping proof sizes small for efficiency.
+
+### Data Availability
+
+Data availability refers to the assurance that all transaction data required for validating and reconstructing the state of a blockchain is readily accessible to network participants. It is a critical component in modular Layer 2 rollups like Ember Chain, where the data needed to verify transactions must be accessible to Layer 1 network actors for settlement and finalization.
+
+In Ember Chain's architecture, DA plays a pivotal role in ensuring that transaction callback data is available to Layer 1, enabling the settlement, verification, and finalization of transactions. By maintaining a robust data availability structure, Ember Chain achieves high throughput while preserving the integrity and security of the network.
+
+#### Data Availability Committee
+
+Ember Chain uses Polygon CDK's validium configuration, which secures transactions through validity proofs while keeping data off-chain. This reduces gas fees by only publishing a small hash of the transaction data on Ethereum.
+
+With this setup, validiums can handle over 9,000 transactions per second, offering high scalability.
+
+In addition, the DAC promotes decentralization by enabling community involvement. Participants can operate DAC nodes and contribute to the network's security and performance. Initially, trusted partners serve as DAC operators to provide stability, with plans to expand community participation over time. Fair reward distribution among DAC operators creates an inclusive environment, encouraging active engagement and further decentralizing the network.
+
+Ref: [https://ethereum.org/en/developers/docs/scaling/validium/](https://ethereum.org/en/developers/docs/scaling/validium/)
+
+#### Ember DA node
+
+To operate a DAC node on Ember Chain, participants must obtain a "node license". These licenses grant the holder the right to operate a DAC node and earn rewards for their contribution to the network.
+
+[https://docs-staging.fuse.io/fuse-ember/Tokenomics/Node-Sale](https://docs-staging.fuse.io/fuse-ember/Tokenomics/Node-Sale)
