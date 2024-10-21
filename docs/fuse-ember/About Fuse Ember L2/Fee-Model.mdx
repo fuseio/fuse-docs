@@ -18,4 +18,20 @@ Community Governance: stFUSE holders can lock tokens to participate in governanc
 
 This is covered in more depth in Tokenomics: [https://docs-staging.fuse.io/fuse-ember/Tokenomics/](https://docs-staging.fuse.io/fuse-ember/Tokenomics/)
 
+### Effective Gas Price ([EGP](https://docs.polygon.technology/zkEVM/architecture/effective-gas/))
+
+The Effective Gas Price (EGP) mechanism ensures that gas fees are fair for both the user and the network when submitting transactions. It helps users avoid failed transactions while ensuring their transaction gets prioritized according to their preference.
+
+#### How It Works:
+
+* Gas Fee Basics: In Ethereum, gas fees depend on two factors: the maximum gas limit (the maximum units of gas you’re willing to use) and the gas price (the amount you’re willing to pay for each unit).
+* Polygon zkEVM: For Layer 2 (L2) on zkEVM, the gas price differs from Ethereum's Layer 1 (L1). You pay for both transaction execution and data availability, which uses the current L1 gas price. The EGP adjusts these prices to ensure fairness and efficiency on L2.
+
+#### Key Benefits of EGP:
+
+1. Fair Gas Fees: EGP ensures that the gas fee you pay is balanced to prevent high costs or transaction reverts.
+2. Transaction Priority: It allows you to set a gas price that aligns with your desired transaction priority, reducing wait times.
+3. Reduced Reverts: By using EGP, you minimize the risk of transaction failure due to insufficient gas fees.
+
+
 
