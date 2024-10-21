@@ -3,3 +3,28 @@ title: Native AA
 sidebar_position: 2
 ---
 
+With Native AA, every account is AA by default.
+
+The team is currently studying a few implementations of how to bring native AA on Fuse Ember. This would enable the introduction of features like multi-signature security, gasless transactions, smart contract wallets, and more complex account logic without relying on external contract deployment. While keeping a robust, secured, MEV-free solution without the disadvantage of ERC-4337.
+
+
+
+
+## Why Native (vs 4337)?
+
+* Native AA is implemented in the protocol. ERC-4337 provides easy integration with Ethereum, but having this as a second level gives restrictions and security risks like more MEV options. Native implementation solves it.
+* First class citizen - smart accounts are first class citizens, they are easy to use and leverage.
+* Gas stipends for everyone - all accounts can enjoy gas abstraction and pay with ER20 for gas.
+
+# Native AA on Ember
+
+With Fuse Ember’s Native AA, every account now is a a smart contract account and all transactions go through the native transaction cycle, together with EOA transactions  
+
+Native account abstraction means:
+
+* All accounts implement an IAccount standard interface that defines the methods that each smart contract account must implement.
+* Native AA supports the accounts JSON RPC module, meaning all EOA wallets like metamask are supported by default!
+* Be default, all contracts going through the DefaultAccount, which mimics the EOA behavior. 
+* All accounts have native support for a paymaster, meaning any account can sponsor the gas fees of another account’s transaction, or pay gas fees in another ERC-20 token.
+
+With Native account abstraction smart wallets and paymasters are first class primitives they are natively supported by the network. This on EOA with Native AA as a default smart contract, that can be extended with additional features. All accounts follow the same standard interface and going through the same transaction cycle&#x9;
