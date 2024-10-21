@@ -5,13 +5,8 @@ sidebar_position: 3
 
 In Ember Chain, transaction finality progresses through three key stages, each ensuring different levels of certainty before a transaction is fully confirmed on Ethereum:
 
-1. Trusted Finality
-   This is the initial stage where a transaction is submitted and executed on Ember Chain's Layer 2 (L2). The user receives the transaction result and can continue interacting with the L2 chain within 200 milliseconds, although the transaction is not yet fully confirmed on Ethereum.
-2. Virtual Finality
-   At this stage, the transaction has been batched and sequenced, meaning the batch containing the transaction has been sent to Ethereum. However, the ZK-proof that verifies the validity of the transaction has not yet been posted and verified. This step provides more security than Trusted Finality, but the transaction is still pending final confirmation on Ethereum.
-3. Consolidated Finality
-   The final stage occurs when the ZK-proof is generated, posted, and verified on Ethereum. This proves the validity of the transaction, marking it as fully finalized on Layer 1 (Ethereum). At this point, the user can withdraw funds from the L2 back to Ethereum with full assurance that the transaction is secure and immutable.
+1. **Trusted Finality**. This is the initial stage where a transaction is submitted and executed on Ember Chain's Layer 2 (L2). The user receives the transaction result and can continue interacting with the L2 chain within 200 milliseconds, although the transaction is not yet fully confirmed on Ethereum.
+2. **Virtual Finality**. At this stage, the transaction has been batched and sequenced, meaning the batch containing the transaction has been sent to Ethereum. However, the ZK-proof that verifies the validity of the transaction has not yet been posted and verified. This step provides more security than Trusted Finality, but the transaction is still pending final confirmation on Ethereum.
+3. **Consolidated Finality**. The final stage occurs when the ZK-proof is generated, posted, and verified on Ethereum. This proves the validity of the transaction, marking it as fully finalized on Layer 1 (Ethereum). At this point, the user can withdraw funds from the L2 back to Ethereum with full assurance that the transaction is secure and immutable.
 
-Ref: [Transaction finality - Polygon Knowledge Layer](https://docs.polygon.technology/cdk/concepts/transaction-finality/), [Transaction life cycle - Polygon Knowledge Layer](https://docs.polygon.technology/zkEVM/architecture/protocol/transaction-life-cycle/)
-
-
+Find out more: [Transaction finality - Polygon Knowledge Layer](https://docs.polygon.technology/cdk/concepts/transaction-finality/), [Transaction life cycle - Polygon Knowledge Layer](https://docs.polygon.technology/zkEVM/architecture/protocol/transaction-life-cycle/)
