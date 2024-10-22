@@ -7,6 +7,8 @@ const MainFeatureList = [
       { label: 'Connect to Fuse', link: '/basics/overview/connect-to-fuse' },
       { label: 'Ecosystem', link: '/basics/ecosystem' },
     ],
+    img: 'img/homepage/1.png',
+    imgClassName: 'card-1',
   },
   {
     title: 'Build On Fuse',
@@ -16,15 +18,22 @@ const MainFeatureList = [
       { label: 'Learn about FuseBox APIs and SDK', link: '/developers/fusebox' },
       { label: 'Web3 dev tools', link: '/developers/web3-tools' },
     ],
+    img: 'img/homepage/2.png',
+    imgClassName: 'card-2',
+
   },
   {
     title: 'Case Studies',
     description: 'Read how businesses are solving real-world problems with Fuse.',
     links: [
-      { label: 'Tbd', link: '/basics/businesses/' },
-      { label: 'Tbd', link: '/basics/businesses/' },
-      { label: 'Tbd', link: '/basics/businesses/' },
+      { label: 'Mystic Valley', link: '/basics/businesses/' },
+      { label: 'Freedom Wallet', link: '/basics/businesses/' },
+      { label: 'Sanduk', link: '/basics/businesses/' },
+      { label: 'Zneakrz', link: '/basics/businesses/' },
     ],
+    img: 'img/homepage/3.png',
+    imgClassName: 'card-3',
+
   },
   {
     title: 'Fuse Ember',
@@ -34,6 +43,9 @@ const MainFeatureList = [
       { label: 'Native Account Abstraction', link: '/fuse-ember' },
       { label: 'Data availability', link: '/fuse-ember' },
     ],
+    img: 'img/homepage/4.png',
+    imgClassName: 'card-4',
+
   },
 ];
 

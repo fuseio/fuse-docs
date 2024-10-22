@@ -1,17 +1,13 @@
-import React, {useMemo} from "react";
+import React from "react";
 import styles from "./styles.module.css";
 import {MainFeatureCard} from "./MainFeatureCard";
 import ErrorBoundary from "./ErrorBoundary";
 import {MainFeatureList} from "./constants";
 
 export default function Homepage() {
-  const mainFeatureCards = useMemo(
-    () =>
-      MainFeatureList.map((props, idx) => (
-        <MainFeatureCard key={idx} {...props} />
-      )),
-    []
-  );
+  const mainFeatureCards = MainFeatureList.map((props, idx) => (
+    <MainFeatureCard key={idx} {...props} />
+  ));
 
   return (
     <ErrorBoundary>

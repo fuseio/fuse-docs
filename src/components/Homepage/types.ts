@@ -13,4 +13,6 @@ export interface MainFeatureCardProps {
     link?: string;
     href?: string;
   }[];
+  img: string;
+  imgClassName: string;
 }
