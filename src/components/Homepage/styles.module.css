@@ -177,3 +177,10 @@
   margin-bottom: 30px;
   text-align: center;
 }
+
+@media screen and (max-width: 1200px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

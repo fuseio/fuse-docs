@@ -33,6 +33,7 @@ export const MainFeatureCard: React.FC<MainFeatureCardProps> = ({
         src={img}
         alt={title}
         className={`${styles.cardImage} ${styles[imgClassName]}`}
+        style={{objectFit: "contain"}}
       />
     </div>
   </div>

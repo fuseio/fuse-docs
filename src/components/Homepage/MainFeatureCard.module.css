@@ -98,3 +98,45 @@
   max-width: 177px;
   max-height: 170px;
 }
+
+@media screen and (max-width: 1200px) {
+  .card {
+    width: 100%;
+    max-width: 553px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    height: auto;
+    padding-bottom: 200px;
+  }
+
+  .cardImage {
+    max-width: 200px;
+    max-height: 150px;
+  }
+
+  .card-1,
+  .card-2,
+  .card-3,
+  .card-4 {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card h3 {
+    font-size: 1.2rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+  }
+
+  .cardImage {
+    max-width: 150px;
+    max-height: 120px;
+  }
+}
