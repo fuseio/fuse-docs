@@ -200,10 +200,6 @@
   font-weight: 500;
 }
 
-.navbar__link:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
 .navbar--discord-link {
   width: 32px;
   height: 32px;

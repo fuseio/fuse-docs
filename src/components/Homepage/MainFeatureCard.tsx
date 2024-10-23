@@ -7,6 +7,8 @@ export const MainFeatureCard: React.FC<MainFeatureCardProps> = ({
   title,
   description,
   links,
+  img,
+  imgClassName,
 }) => (
   <div className={styles.card}>
     <h3>{title}</h3>
@@ -18,11 +20,20 @@ export const MainFeatureCard: React.FC<MainFeatureCardProps> = ({
             target={link.href ? "_blank" : "_self"}
             href={link.href || null}
             to={link.link || ""}
+            className={styles.cardLink}
           >
             {link.label}
+            <span className={styles.arrow}>→</span>
           </Link>
         </li>
       ))}
     </ul>
+    <div className={styles.imgClassName}>
+      <img
+        src={img}
+        alt={title}
+        className={`${styles.cardImage} ${styles[imgClassName]}`}
+      />
+    </div>
   </div>
 );
