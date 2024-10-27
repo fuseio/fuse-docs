@@ -14,7 +14,7 @@ const MainFeatureList = [
     title: 'Build On Fuse',
     description: 'Tools and tutorials to make building applications fast and stress free.',
     links: [
-      { label: 'Get started', link: '/developers' },
+      { label: 'Get started', link: '/developers/building-on-fuse' },
       { label: 'Learn about FuseBox APIs and SDK', link: '/developers/fusebox' },
       { label: 'Web3 dev tools', link: '/developers/web3-tools' },
     ],
