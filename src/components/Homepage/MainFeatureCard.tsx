@@ -1,40 +1,40 @@
-import React from 'react';
+import React from "react";
+import styles from "./MainFeatureCard.module.css";
+import {MainFeatureCardProps} from "./types";
 import Link from "@docusaurus/Link";
-import styles from './styles.module.css';
 
-interface MainFeatureCardProps {
-    href?: string;
-    image: string;
-    imageHover?: string;
-    title: string;
-    link: string;
-    description: string;
-}
-
-export function MainFeatureCard({
-    href,
-    image,
-    imageHover,
-    title,
-    link,
-    description,
-}: MainFeatureCardProps) {
-    return (
-        <Link
-            style={{
-                textDecoration: "none",
-                color: "inherit",
-            }}
-            target={href ? "_blank" : "_self"}
-            href={href ? href : ""}
-            to={link ? link : ""}>
-            <div className={styles.card}>
-                <div>
-                    <img src={image} alt={title} />
-                </div>
-                <h2>{title}<img src='img/card-arrow.svg' className={styles.cardArrow} /></h2>
-                <p>{description}</p>
-            </div>
-        </Link>
-    );
-};
+export const MainFeatureCard: React.FC<MainFeatureCardProps> = ({
+  title,
+  description,
+  links,
+  img,
+  imgClassName,
+}) => (
+  <div className={styles.card}>
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <ul>
+      {links.map((link, idx) => (
+        <li key={idx}>
+          <Link
+            target={link.href ? "_blank" : "_self"}
+            href={link.href || null}
+            to={link.link || ""}
+            className={styles.cardLink}
+          >
+            {link.label}
+            <span className={styles.arrow}>→</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+    <div className={styles.imgClassName}>
+      <img
+        src={img}
+        alt={title}
+        className={`${styles.cardImage} ${styles[imgClassName]}`}
+        style={{objectFit: "contain"}}
+      />
+    </div>
+  </div>
+);

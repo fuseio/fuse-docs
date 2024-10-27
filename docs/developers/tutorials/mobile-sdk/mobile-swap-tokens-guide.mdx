@@ -1,0 +1,443 @@
+---
+title: Swap Tokens using FuseBox Flutter Wallet SDK
+sidebar_position: 15
+---
+
+In this article, we will use the Fuse Wallet SDK **[Swap Tokens SDK](../../../../developers/fusebox/sdk/swap-tokens)** method to create an App where users can swap tokens to the native FUSE token. In this example App, users can select USDC, USDT, and VOLT to swap to FUSE tokens.
+
+Pre-requites:
+
+* Basic knowledge of Dart/Flutter
+* An API Key from the [Console](https://console.fuse.io/build)
+
+## Step 1: Set Up Your Project
+
+Create a new project folder and initialize it using Flutter:
+
+```bash
+flutter create fusebox_mobile_app
+cd fusebox_mobile_app
+```
+
+Open the project in your favorite code editor, such as VSCode, and run it using:
+
+```dart
+flutter run
+```
+
+You will find the default app running:
+
+## Step 2: Hello, World!
+
+Open your Flutter project and update the default `main.dart` file in your app's lib dir.
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    const Center(
+      child: Text(
+        'Hello, world!',
+        textDirection: TextDirection.ltr,
+      ),
+    ),
+  );
+}
+```
+
+This is a basic Hello, world! app.
+
+## Step 3: Set Up Dependencies:
+
+Install the FuseBox Wallet SDK by running the command with Flutter:
+
+```dart
+ $ flutter pub add fuse_wallet_sdk
+```
+
+This will add a line like this to your package's `pubspec.yaml` (and run an implicit dart pub get):
+
+```dart
+dependencies:
+  fuse_wallet_sdk: ^0.3.2
+```
+
+Add the Fuse Wallet SDK to your `main.dart` file.
+
+```dart
+import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
+```
+
+## Step 4: SWAP Implementation
+
+The app's basic functionality is to swap from one token to another, in this first example, from FUSE to USDC. The method is:
+
+```dart
+final nativeTokenAddress = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
+final usdcTokenAddress = "0x28C3d1cD466Ba22f6cae51b1a4692a831696391A";
+
+final res = await fuseSDK.swapTokens(
+  TradeRequest(
+    inputToken: nativeTokenAddress,
+    outputToken: usdcTokenAddress,
+    inputAmount: BigInt.parse('100000000000000000'),
+    exactIn: true,
+  ),
+);
+
+print('UserOpHash: ${res.userOpHash}');
+
+print('Waiting for transaction...');
+final ev = await res.wait();
+print('Transaction hash: ${ev?.transactionHash}');
+```
+
+The `swapTokens` method takes in three parameters: `inputToken`, `outputToken` and `inputAmount`. It then performs the conversion and, if successful, returns the UserOperation Hash.
+
+Copy the code below where the SWAP functionality is hardcoded and paste it into the `main.dart` file.
+
+```dart
+import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:fuse_wallet_sdk/fuse_wallet_sdk.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Token Swap App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: TokenSwapScreen(),
+    );
+  }
+}
+
+class TokenSwapScreen extends StatefulWidget {
+  @override
+  _TokenSwapScreenState createState() => _TokenSwapScreenState();
+}
+
+class _TokenSwapScreenState extends State<TokenSwapScreen> {
+  bool _isLoading = false;
+  String _swapStatus = '';
+
+  Future<void> _swapTokens() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    final credentials = EthPrivateKey.fromHex('WALLET_PRIVATE_KEY');
+    final publicApiKey = 'YOUR_PUBLIC_API_KEY';
+    final fuseSDK = await FuseSDK.init(
+      publicApiKey,
+      credentials,
+    );
+
+    final nativeTokenAddress = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE';
+    final usdcTokenAddress = '0x28C3d1cD466Ba22f6cae51b1a4692a831696391A';
+
+    try {
+      final res = await fuseSDK.swapTokens(
+        TradeRequest(
+          inputToken: nativeTokenAddress,
+          outputToken: usdcTokenAddress,
+          inputAmount: BigInt.parse('100000000000000000'),
+          exactIn: true,
+        ),
+      );
+
+      setState(() {
+        _swapStatus = 'UserOpHash: ${res.userOpHash}';
+      });
+
+      final ev = await res.wait();
+      setState(() {
+        _swapStatus = 'Transaction hash: ${ev?.transactionHash}';
+      });
+
+      print('UserOpHash: ${res.userOpHash}');
+    } catch (error) {
+      setState(() {
+        _swapStatus = 'Error: $error';
+      });
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Token Swap'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _isLoading
+                ? CircularProgressIndicator()
+                : ElevatedButton(
+                    onPressed: _swapTokens,
+                    child: Text('Swap Tokens'),
+                  ),
+            SizedBox(height: 20),
+            Text(_swapStatus),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+**Replace the `WALLET_PRIVATE_KEY` and the `YOUR_PUBLIC_API_KEY` with your EOA Keys and API Keys.**
+
+## Code Breakdown
+
+### **\_TokenSwapScreenState Class**
+
+```dart
+class _TokenSwapScreenState extends State<TokenSwapScreen> {
+  bool _isLoading = false;
+  String _swapStatus = '';
+```
+
+`_TokenSwapScreenState` is a state class associated with `TokenSwapScreen`. It contains two member variables: `_isLoading` to track the loading state and `_swapStatus` to display the status of the token swap operation.
+
+### **\_swapTokens Method**
+
+```dart
+Future<void> _swapTokens() async {
+  setState(() {
+    _isLoading = true;
+  });
+
+  final credentials = EthPrivateKey.fromHex('WALLET_PRIVATE_KEY');
+  final publicApiKey = 'YOUR_PUBLIC_API_KEY';
+  final fuseSDK = await FuseSDK.init(
+    publicApiKey,
+    credentials,
+  );
+
+  final nativeTokenAddress = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE';
+  final usdcTokenAddress = '0x28C3d1cD466Ba22f6cae51b1a4692a831696391A';
+```
+
+`_swapTokens` is an asynchronous method for performing the token swap operation. We set `_isLoading` to `true` to indicate that the operation is in progress. We initialize credentials and Fuse SDK using provided private and public API keys. `nativeTokenAddress` and `usdcTokenAddress` represent the native and USDC token addresses, respectively.
+
+### **Perform Token Swap**
+
+```dart
+  try {
+    final res = await fuseSDK.swapTokens(
+      TradeRequest(
+        inputToken: nativeTokenAddress,
+        outputToken: usdcTokenAddress,
+        inputAmount: BigInt.parse('100000000000000000'),
+        exactIn: true,
+      ),
+    );
+
+    setState(() {
+      _swapStatus = 'UserOpHash: ${res.userOpHash}';
+    });
+
+    final ev = await res.wait();
+    setState(() {
+      _swapStatus = 'Transaction hash: ${ev?.transactionHash}';
+    });
+
+    print('UserOpHash: ${res.userOpHash}');
+  } catch (error) {
+    setState(() {
+      _swapStatus = 'Error: $error';
+    });
+  } finally {
+    setState(() {
+      _isLoading = false;
+    });
+  }
+}
+```
+
+We perform the token swap operation inside the `try` block using `fuseSDK.swapTokens()`. We set the `_swapStatus` based on the result of the operation. The result contains `userOpHash`, which is printed to the console. If an error occurs during the operation, we update `_swapStatus` with the error message. Finally, we set `_isLoading` to `false` to indicate that the operation is complete.
+
+### **UI Build Method**
+
+```dart
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Token Swap'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _isLoading
+                ? CircularProgressIndicator()
+                : ElevatedButton(
+                    onPressed: _swapTokens,
+                    child: Text('Swap Tokens'),
+                  ),
+            SizedBox(height: 20),
+            Text(_swapStatus),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+In the `build` method, we return a `Scaffold` widget, which provides the basic structure for the screen. The `AppBar` contains the title 'Token Swap'. The `body` consists of a `Center` widget containing a `Column` with a `CircularProgressIndicator` or an `ElevatedButton` based on the `_isLoading` state. Below the button, we display the `_swapStatus` using a `Text` widget.
+
+Save the file. Run the application using the command
+
+```bash
+flutter run
+```
+
+At this point, you can confirm that the SWAP functionality works!
+
+## BONUS SECTION
+
+The next step is a bonus step to improve the User Experience, and we will update the code to include a Dropdown for selecting currencies and an input field to specify a particular amount.
+
+Update the `TokenSwapScreenState` by adding a `_formKey` for handling Form events, and a controller `_amountController` and update the `_swapTokens`:
+
+```dart
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController _amountController = TextEditingController();
+  bool _isLoading = false;
+  String _swapStatus = '';
+  String _selectedToken = 'usdc'; // Set initial value
+
+  @override
+  void dispose() {
+    _amountController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _swapTokens() async {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+```
+
+Add the Token address variables:
+
+```dart
+ final amount = BigInt.parse(_amountController.text.trim());
+
+    final nativeTokenAddress = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE';
+    final usdcTokenAddress = '0x28C3d1cD466Ba22f6cae51b1a4692a831696391A';
+    final usdtTokenAddress = '0xFaDbBF8Ce7D5b7041bE672561bbA99f79c532e10';
+    final voltTokenAddress = '0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4';
+
+    String outputTokenAddress;
+    switch (_selectedToken) {
+      case 'usdc':
+        outputTokenAddress = usdcTokenAddress;
+        break;
+      case 'usdt':
+        outputTokenAddress = usdtTokenAddress;
+        break;
+      case 'volt':
+        outputTokenAddress = voltTokenAddress;
+        break;
+      default:
+        outputTokenAddress = usdcTokenAddress; // Default to usdc
+    }
+```
+
+Update the `InputAmount` to take the value from `amount`
+
+```dart
+  inputAmount: amount,
+```
+
+Update the `body` component to include the Dropdown:
+
+```dart
+ body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              DropdownButtonFormField<String>(
+                value: _selectedToken,
+                onChanged: (value) {
+                  setState(() {
+                    _selectedToken = value!;
+                  });
+                },
+                items: [
+                  DropdownMenuItem(
+                    value: 'usdc',
+                    child: Text('USDC'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'usdt',
+                    child: Text('USDT'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'volt',
+                    child: Text('VOLT'),
+                  ),
+                ],
+                decoration: InputDecoration(labelText: 'Token'),
+              ),
+              SizedBox(height: 20),
+              TextFormField(
+                controller: _amountController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(labelText: 'Amount'),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter an amount';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 20),
+              _isLoading
+                  ? CircularProgressIndicator()
+                  : ElevatedButton(
+                      onPressed: _swapTokens,
+                      child: Text('Swap Tokens'),
+                    ),
+              SizedBox(height: 20),
+              Text(_swapStatus),
+            ],
+          ),
+        ),
+      ),
+```
+
+Save the file. Run the application using the command:
+
+```bash
+flutter run
+```
+
+## Complete Code
+
+Check out the complete [code](https://github.com/fuseio/examples/blob/flutter-swap-tokens-app/swap_token_app/lib/main.dart). 💻

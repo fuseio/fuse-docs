@@ -1,0 +1,29 @@
+---
+title: Fee Model
+sidebar_position: 4
+---
+
+### Custom Token: stFUSE
+
+* **Network Security**: stFUSE enables liquid staking, allowing users to auto-compound rewards and secure the network by delegating voting power to DA node operators.
+* **Sustainable Economy**: With a fixed supply of 420 million tokens and zero inflation, stFUSE uses a deflationary model where rewards are tied to real network activity.
+* **Revenue Sharing**: stFUSE holders earn from network activities like node sales and sequencer fees, creating sustainable rewards from network growth.
+* **Frictionless Integration**: stFUSE facilitates seamless DeFi and staking participation, reducing complexity and enhancing user and developer experience.
+* **Community Governance**: stFUSE holders can lock tokens to participate in governance, influencing key network decisions like DA node operator selection.
+
+This is covered in more depth in [Tokenomics](https://docs-staging.fuse.io/fuse-ember/Tokenomics/).
+
+### Effective Gas Price
+
+The [Effective Gas Price](https://docs.polygon.technology/zkEVM/architecture/effective-gas/) (EGP) mechanism ensures that gas fees are fair for both the user and the network when submitting transactions. It helps users avoid failed transactions while ensuring their transaction gets prioritized according to their preference.
+
+#### How EGP Works:
+
+* Gas Fee Basics: In Ethereum, gas fees depend on two factors: the maximum gas limit (the maximum units of gas a user is willing to use) and the gas price (the amount you’re willing to pay for each unit).
+* Polygon zkEVM: For Layer 2 (L2) on zkEVM, the gas price differs from Ethereum's Layer 1 (L1). Users pay for both transaction execution and data availability, which uses the current L1 gas price. The EGP adjusts these prices to ensure fairness and efficiency on L2.
+
+#### Key Benefits of EGP:
+
+1. Fair Gas Fees: EGP ensures that the gas fee users pay is balanced to prevent high costs or transaction reverts.
+2. Transaction Priority: It allows users to set a gas price that aligns with their desired transaction priority, reducing wait times.
+3. Reduced Reverts: By using EGP, users minimize the risk of transaction failure due to insufficient gas fees.

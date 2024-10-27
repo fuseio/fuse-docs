@@ -1,0 +1,14 @@
+---
+title: Interoperability
+sidebar_position: 5
+---
+
+### L1 Bridge
+
+The LxLy bridge in Ember Chain enables asset transfers between Layer 1 (Ethereum) and Layer 2 (Ember), supporting both native tokens and ERC20s. By deploying its own bridge instance, Ember Chain gains full control over operations and funds.
+
+While this custom bridge offers control, it limits cross-chain (L2-to-L2) transfers. For cross-chain interoperability, Ember Chain will opt into AggLayer, enabling seamless movement across other L2 chains.
+
+### AggLayer
+
+[AggLayer](https://docs.polygon.technology/learn/agglayer/overview/?h=agglayer) is an interoperability protocol that enables trustless cross-chain token transfers, message-passing, and more complex operations, secured by ZK proofs. Initially connecting chains built with Polygon CDK, it is designed for ZK-powered Layer 2 solutions. The long-term vision for AggLayer is to support a wide range of blockchain architectures, including L2s, appchains, and non-EVM chains, offering flexible and scalable interoperability across various networks.

@@ -1,0 +1,27 @@
+---
+title: Native AA
+sidebar_position: 2
+---
+
+With Native Account Abstraction, every account supports AA by default.
+
+The team is currently studying a few implementations of how to bring native AA to Fuse Ember. This would enable the introduction of features like multi-signature security, gasless transactions, smart contract wallets, and more complex account logic without relying on external contract deployment, keeping a robust, secured, MEV-free solution without the disadvantages of ERC-4337.
+
+## Why Native (vs 4337)?
+
+* Native AA is implemented in the protocol. ERC-4337 provides easy integration with Ethereum, but having this as a second level-implementation brings restrictions and security risks, including more opportunities for MEV. A native implementation solves these issues.
+* First class citizen: smart accounts are first class citizens, and are easy to use and leverage.
+* Gas stipends for everyone. All accounts can enjoy gas abstraction and pay gas fees with ERC20 tokens.
+
+# Native AA on Ember
+
+With Fuse Ember’s Native AA, every account now is a a smart contract account and all transactions go through the native transaction cycle, together with EOA transactions. 
+
+Native account abstraction means:
+
+* All accounts implement an IAccount standard interface that defines the methods that each smart contract account must implement.
+* Native AA supports the accounts JSON RPC module, meaning all EOA wallets (like MetaMask) are supported by default.
+* By default, all contracts go through the DefaultAccount, which mimics EOA behavior. 
+* All accounts have native support for a paymaster, meaning any account can sponsor the gas fees for another account’s transactions, or pay gas fees in another ERC20 token.
+
+With Native Account Abstraction, smart wallets and paymasters are first class primitives that are natively supported by the network. This uses EOA with Native AA as a default smart contract that can be extended with additional features. All accounts follow the same standard interface and go through the same transaction cycle.

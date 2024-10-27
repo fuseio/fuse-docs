@@ -1,0 +1,734 @@
+---
+id: get-indicative-price
+title: "Get an indicative price for a transaction"
+description: "Get an indicative price for a transaction"
+sidebar_label: "Get an indicative price for a transaction"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: docs/developers/fusebox/apis/trade-api/trade-api-v-1-v-2
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get an indicative price for a transaction"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/v1/trade/price"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get an indicative price for a transaction
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your Public API key.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"sellToken","in":"query","required":true,"schema":{"type":"string"},"description":"The ERC20 token address of the token you want to sell.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"buyToken","in":"query","required":true,"schema":{"type":"string"},"description":"The ERC20 token address of the token you want to receive.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"sellAmount","in":"query","schema":{"type":"string"},"description":"The amount of sellToken (in sellToken base units) you want to send.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"buyAmount","in":"query","schema":{"type":"string"},"description":"The amount of buyToken (in buyToken base units) you want to receive.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"slippagePercentage","in":"query","schema":{"type":"string"},"description":"The maximum acceptable slippage percentage.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"gasPrice","in":"query","schema":{"type":"string"},"description":"The target gas price for the swap transaction.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"takerAddress","in":"query","schema":{"type":"string"},"description":"The address which will fill the quote.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"excludedSources","in":"query","schema":{"type":"string"},"description":"Liquidity sources to exclude from the quote.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"includedSources","in":"query","schema":{"type":"string"},"description":"Liquidity sources to include in the quote.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"skipValidation","in":"query","schema":{"type":"boolean"},"description":"Skip validation of the quote.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"feeRecipient","in":"query","schema":{"type":"string"},"description":"The address that should receive affiliate fees.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"buyTokenPercentageFee","in":"query","schema":{"type":"string"},"description":"The percentage of the buyAmount attributed as affiliate fees.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"enableSlippageProtection","in":"query","schema":{"type":"boolean"},"description":"Enable slippage protection.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"priceImpactProtectionPercentage","in":"query","schema":{"type":"string"},"description":"Allowed price impact percentage.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"feeRecipientTradeSurplus","in":"query","schema":{"type":"string"},"description":"The recipient address of any trade surplus fees.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Indicative price for the transaction
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"price"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Price of buyToken in sellToken and vice versa."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"grossPrice"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Price with fees removed."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"estimatedPriceImpact"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Estimated change in price due to price impact."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"value"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Amount of ether (in wei) to be sent with the transaction."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"gasPrice"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Gas price (in wei) for the transaction."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"gas"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Estimated gas limit for the transaction."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"estimatedGas"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Estimate of the actual gas used in the transaction."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"protocolFee"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Maximum ether paid towards the protocol fee (in wei)."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"minimumProtocolFee"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Minimum ether paid towards the protocol fee (in wei)."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"buyAmount"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Amount of buyToken that would be bought in this swap."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"grossBuyAmount"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"BuyAmount with fees removed."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"sellAmount"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Amount of sellToken that would be sold in this swap."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"grossSellAmount"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"SellAmount with fees removed."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                sources
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              Distribution of buyAmount or sellAmount between liquidity sources.
+                              
+                              
+                            </div><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"name"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"proportion"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"buyTokenAddress"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"ERC20 token address of the token you want to receive."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"sellTokenAddress"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"ERC20 token address of the token you want to sell."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"allowanceTarget"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Target contract address for which the user needs to have an allowance."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"sellTokenToEthRate"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Rate between ETH and sellToken."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"buyTokenToEthRate"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Rate between ETH and buyToken."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"expectedSlippage"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Expected slippage used in routing calculations for the quote."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                fees
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              Fees that would be charged, including 0x fee details.
+                              
+                              
+                            </div><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      zeroExFee
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={false}
+                                    name={"feeType"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"feeToken"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"feeAmount"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"billingType"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string"}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"price\": \"string\",\n  \"grossPrice\": \"string\",\n  \"estimatedPriceImpact\": \"string\",\n  \"value\": \"string\",\n  \"gasPrice\": \"string\",\n  \"gas\": \"string\",\n  \"estimatedGas\": \"string\",\n  \"protocolFee\": \"string\",\n  \"minimumProtocolFee\": \"string\",\n  \"buyAmount\": \"string\",\n  \"grossBuyAmount\": \"string\",\n  \"sellAmount\": \"string\",\n  \"grossSellAmount\": \"string\",\n  \"sources\": [\n    {\n      \"name\": \"string\",\n      \"proportion\": \"string\"\n    }\n  ],\n  \"buyTokenAddress\": \"string\",\n  \"sellTokenAddress\": \"string\",\n  \"allowanceTarget\": \"string\",\n  \"sellTokenToEthRate\": \"string\",\n  \"buyTokenToEthRate\": \"string\",\n  \"expectedSlippage\": \"string\",\n  \"fees\": {\n    \"zeroExFee\": {\n      \"feeType\": \"string\",\n      \"feeToken\": \"string\",\n      \"feeAmount\": \"string\",\n      \"billingType\": \"string\"\n    }\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"400"}
+        value={"400"}
+      >
+        <div>
+          
+          
+          Bad request, possibly due to missing or invalid parameters
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"message"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"code"}
+                        required={false}
+                        schemaName={"integer"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"integer"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"message\": \"string\",\n  \"code\": 0\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"401"}
+        value={"401"}
+      >
+        <div>
+          
+          
+          Unauthorized, possibly due to missing or invalid API key
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"message"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"code"}
+                        required={false}
+                        schemaName={"integer"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"integer"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"message\": \"string\",\n  \"code\": 0\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

@@ -1,0 +1,170 @@
+---
+title: Using Hardhat
+sidebar_position: 2
+---
+
+# Using Hardhat
+
+Hardhat is a development environment for Ethereum software. It consists of different components for editing, compiling, debugging and deploying your smart contracts and dApps, all of which work together to create a complete development environment.
+
+This Guide will walk you through the steps on how to deploy an ERC-20 token contract to the Fuse blockchain using Hardhat.
+
+## Prerequisites
+
+* Solidity programming knowledge
+* JavaScript knowledge
+
+Open a new terminal and run these commands to create a new folder:
+
+```bash
+mkdir hardhat-fuse-guide && cd hardhat-fuse-guide
+```
+
+Inside the folder, initialize a project by running:
+
+```bash
+npm init -y
+```
+
+In the same directory where you installed Hardhat run:
+
+```bash
+npx hardhat init
+```
+
+Follow the prompts. A `package.json` file is added to the project dir, and we can then install Hardhat by running:
+
+Note:
+
+\*\*Do you want to install this sample project's dependencies with npm (hardhat @nomicfoundation/hardhat-toolbox)? (Y/n) › y \*\*
+
+```bash
+npm install --save-dev hardhat
+```
+
+Next install the Hardhat toolbox. The `@nomicfoundation/hardhat-toolbox` plugin bundles all the commonly used packages and Hardhat plugins to start developing with Hardhat.
+
+```bash
+npm install --save-dev @nomicfoundation/hardhat-toolbox
+```
+
+If you are using VS Code Editor, you can add the folder and look at the contents. In this guide, we will focus on the `hardhat.config.js` file, `Contracts` and `Scripts` directories. Open the Contract folder, delete the default `Lock.sol` file and add a new file `Token.sol`. Update the contents of `Token.sol` with the following code:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts@4.0.0/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts@4.0.0/token/ERC20/extensions/ERC20Burnable.sol";
+import "@openzeppelin/contracts@4.0.0/access/Ownable.sol";
+
+contract MyToken is ERC20, ERC20Burnable, Ownable {
+    constructor(address initialOwner)
+        ERC20("MyToken", "MTK")
+        Ownable()
+    {}
+
+    function mint(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount);
+    }
+}
+```
+
+To compile your contracts run:
+
+```bash
+$ npx hardhat compile
+```
+
+It will return the response:
+
+```bash
+Compiling...
+Compiled 1 contract successfully
+```
+
+The compiled artifacts will be saved in the artifacts/ directory by default. If you need to customize the Solidity compiler options, then you can do so through the solidity field in your `hardhat.config.js`
+
+The next step is to deploy the contracts to the Fuse Blockchain. In Hardhat, deployments are defined through Ignition Modules. These modules are abstractions to describe a deployment; that is, JavaScript functions that specify what you want to deploy.
+
+Open ignition inside the project root's directory, then, enter the directory named modules. Create a `deploy.js` and paste the following code:
+
+```javascript
+const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
+
+const Token = buildModule("Token", (m) => {
+  const contract = m.contract("Token");
+
+  return { contract };
+});
+
+module.exports = Token;
+```
+
+## Deploy Contract
+
+Open the `hardhat.config.js` file and update the information on Fuse Network
+
+```typescript
+module.exports = {
+  // ...
+  networks: {
+    fuse: {
+      url: "https://rpc.fuse.io/",
+      accounts: [`0xPRIVATE_KEY`], // put dev menomonic or PK here,
+    },
+    spark: {
+      url: "https://rpc.fusespark.io/",
+      accounts: [`0xPRIVATE_KEY`], // put dev menomonic or PK here,
+    },
+  },
+  // ...
+};
+```
+
+Please note: The `0xPRIVATE_KEY` is used to sign the Transaction from your EOA without the need to request permission. You must ensure the EOA that owns the Private Key is funded with some Fuse Tokens to pay for Gas when deploying the Smart Contract.
+
+Open a new terminal and deploy the smart contract to the Fuse network
+
+```bash
+npx hardhat ignition deploy ./ignition/modules/deploy.js --network fuse
+```
+
+## How to verify contracts
+
+To verify contracts with hardhat the [hardhat-etherscan](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify) is used. This sounds counterintuitive and wrong, but the `hardhat-etherscan` plugin verifies contracts in the blockscout explorer.
+
+Add the following property to `hardhat.config.js`
+
+```typescript
+etherscan: {
+    apiKey: {
+      fuse: "YOUR_KEY_IF_YOU_HAVE_ONE",
+      spark: "YOUR_KEY_IF_YOU_HAVE_ONE"
+    },
+    customChains: [
+      {
+        network: "fuse",
+        chainId: 122,
+        urls: {
+          apiURL: "https://explorer.fuse.io/api",
+          browserURL: "https://explorer.fuse.io"
+        }
+      },
+      {
+        network: "spark",
+        chainId: 123,
+        urls: {
+          apiURL: "https://explorer.fusespark.io/api",
+          browserURL: "https://explorer.fusespark.io"
+        }
+      }
+    ]
+  }
+```
+
+## Verify the contract on Fuse
+
+```bash
+npx hardhat verify --network fuse DEPLOYED_CONTRACT_ADDRESS "Constructor argument 1"
+```

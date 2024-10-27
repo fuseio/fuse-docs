@@ -100,92 +100,33 @@ const config: Config = {
     },
     navbar: {
       logo: {
-        alt: 'Fuse_logo',
+        alt: 'Fuse Logo',
         src: 'img/fuse-logo.svg',
       },
       items: [
         {
-          to: 'https://discord.com/invite/jpPMeSZ',
-          label: 'Support',
-          position: 'right',
-          className: 'navbar--discord-logo',
+          type: 'doc',
+          docId: 'basics/overview/overview',
+          position: 'left',
+          label: 'Basics',
         },
         {
-          href: 'https://discord.com/invite/jpPMeSZ',
-          position: 'right',
-          className: 'navbar--discord-link',
+          type: 'doc',
+          docId: 'developers/building-on-fuse/building-on-fuse',
+          position: 'left',
+          label: 'Developers',
         },
         {
-          type: 'search',
-          position: 'right',
+          type: 'doc',
+          docId: 'fuse-ember/fuse-ember',
+          position: 'left',
+          label: 'Fuse Ember',
         },
         {
           href: 'https://github.com/fuseio/',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
-        },
-        {
-          label: 'Get API key',
-          href: 'https://console.fuse.io/build',
-          position: 'right',
-          className: 'navbar--get-api-key',
-          'aria-label': 'Become an operator',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'basicsSidebar',
-          position: 'left',
-          label: 'Fuse Network',
-        },
-        // {
-        //   type: 'doc',
-        //   docId: 'developers/Quick-Start',
-        //   position: 'left',
-        //   label: 'Fuse Network',
-        // },
-        {
-          type: 'docSidebar',
-          sidebarId: 'validatorsSidebar',
-          position: 'left',
-          label: 'Validators',
-        },
-        {
-          type: 'docSidebar',
-          position: 'left',
-          label: 'Build',
-          sidebarId: 'fuseBoxSidebar'
-          // The Items section below is used to create a dropdown menu. 
-          // The dropdown menu requires removing the 'sidebarId'
-          // items: [
-          //   {
-          //     label: 'Getting Started',
-          //     to: 'fuse-box/getting-started',
-          //   },
-          //   {
-          //     label: 'SDK Reference',
-          //     to: 'fuse-box/sdk',
-          //   },
-          //   {
-          //     label: 'Tutorials & Guides',
-          //     to: 'category/tutorials',
-          //   },
-          //   {
-          //     type: 'docSidebar',
-          //     label: 'API Reference',
-          //     sidebarId: 'apiSidebar',
-          //   },
-          //   {
-          //     label: 'Trade API (versioned)',
-          //     to: '/category/trade-versioned-api',
-          //   },
-          // ],
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "apiSidebar",
-          label: "API References",
-          position: "left",
         },
       ],
     },
@@ -267,51 +208,33 @@ const config: Config = {
         config: {
           notificationApi: {
             specPath: 'api-references/fuse-notification-api.yaml',
-            outputDir: 'docs/notification-api',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
+            outputDir: 'docs/developers/fusebox/apis/notification-api',
+
           },
           smartWalletApi: {
             specPath: 'api-references/fuse-smart-wallets-api.yaml',
-            outputDir: 'docs/smart-wallet-api',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
+            outputDir: 'docs/developers/fusebox/apis/smart-wallet-api',
+
           },
           balancesApi: {
             specPath: 'api-references/balances-api.yaml',
-            outputDir: 'docs/balances-api',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
+            outputDir: 'docs/developers/fusebox/apis/balances-api',
+
           },
           tradeApi: {
             specPath: 'api-references/trade-api-merged.yaml',
-            outputDir: 'docs/trade-api',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
+            outputDir: 'docs/developers/fusebox/apis/trade-api',
+
           },
           explorerApi: {
             specPath: 'api-references/explorer-api.yaml',
-            outputDir: 'docs/explorer-api',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
+            outputDir: 'docs/developers/fusebox/apis/explorer-api',
+
           },
           graphqlApi: {
             specPath: 'api-references/graphql-api.yaml',
-            outputDir: 'docs/graphql-api',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
+            outputDir: 'docs/developers/fusebox/apis/graphql-api',
+
           },
         },
       },
@@ -323,4 +246,4 @@ const config: Config = {
   },
 }
 
-module.exports = config
+export default config;

@@ -1,0 +1,268 @@
+---
+id: get-historical-statistics-of-a-token
+title: "Get Historical Statistics of a Token"
+description: "Get Historical Statistics of a Token"
+sidebar_label: "Get Historical Statistics of a Token"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVm1vGzcM/iuECgwJcDkn2bf7VnRJVmRYszYNNsQGQp9onxqddJF4TgzD/32g7uz6LVmH+othS3xIPnxEcqEYp1EV9+ruDL4wclSjTDUYsCamICcL5bAmVShrasMqU8apQj21FOYqU7GsqEZVLBTPG7llHNOUglpmSlMsg2nYeLH4s63HFMBPwDDVEdhDIG6Dy9UyWzvBxlzTfNdLoKfWBNKq4NDSAa+Rg3HTfaf/+DbATTu2poT3Nx/hkeZb7tg/knuvdaAYV04b5OpnfN4KJnzwjgOWDD16rpYjAY2Nd5Gi4JyfnsrXtvWna5Wp0jsmx3KKTWNNiXI6+BblymI/FD/+RqXUpgm+ocCmc6CRN29hCJioFf7/2xp7Wg5l3ART0sGTmbdtffiITU2RsW5ekQvyIbv1Z5fnK2L43UT2wZRok3pNZFNG0RhCKoPKVE1cea0KNaWUo1S3UANszGB2OuCAmgZRlD9YbKphKeKmMFs9gjZYVaiKuYnFQKzzSRspN17txnUTvG5L+QEdQBLcvn1knBo3fRXnS3e+BhmJPic+UWTYCke3En0S9t0Z/AJ35ypTEnEHcJaf5qd7sB+F8YBMgHqGriQNQoJ4mrQuxY3W8ByMYw9zeUAbGoRnwxXIn6Wvm0AVuWhmBOtI8qG78c8USMN4DvczbxmnlE+ME1+joxUDOweDY/jt4u+hG7p3795JNpeE3AaKQ3cCUumkOCgrdFOK4GcUoGwj+1ripDBDm65eEpcVlG0I5BjQaai+SwRjXCHFtatzuHCVhFCT44TxM/GfwGdCeyJSB+N0Ym1GwrCL2Ili5f8ELl4a6wMBztBYHFsCa55ao4X96NvQX/s0ZjQOnlrPFGHiA1x8/nB+CkmuEJ+xWWfzV2vKR3kKgYfuLE/MpRL2zQ8mwdfAFcH9B++itxsZld0fKz0Oxq2x+njoznO49Nb651T2+ytiFrEkJ6RHR5pmZKVxxIGYjv3L6juv9csxTFujaeh+zaUVdtE8dG3+QYYAWgvSaykypH4PafysU7qmOVw43XjTl+dh++0mOnfe7kORMrfIgtrx1Ano6O7s+DWQTlyHobblt4NytonSG7xVfDi6Oz9knyrc2++WeFX+V0x7uTwU8IeJ/JaieoShu/QBNDEaSxq0L1t5AOmRZ1B6TRCdaRrimKV3ZPq+IVnQC9aNpZhBoAkFKeN+SxDJpdrnQ5dmho9cYxpg/fT9wQ6+1b/W84HphQeNRZPAU3td9N39XtYIaYXS/RI/0szTdpOpYmvmjzJV+chis1iMMdLXYJdL+bvbPaT1axOFSq2KCdpIewGtp/VbO052OO5Hmm+sVjO0rdxJE+PH3R597neVYzi48Lzpe71xfXc+kh/BiPf/ScBGJK+tQa8Es9pR3FYoqyC3arYcLTNVEWoKKbzuyvuypGaTxL3NSfJabwNXF7dqufwXUgrSJQ==
+sidebar_class_name: "get api-method"
+info_path: docs/developers/fusebox/apis/trade-api/trade-api-v-1-v-2
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Historical Statistics of a Token"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/v0/trade/stats/{tokenAddress}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get Historical Statistics of a Token
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"tokenAddress","in":"path","required":true,"schema":{"type":"string"},"description":"Token Contract Address.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"limit","in":"query","schema":{"type":"integer"},"description":"Number of items to return.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"apiKey","in":"query","required":true,"schema":{"type":"string"},"description":"Your Public API key.","enumDescriptions":[]}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          OK
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"address"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"price"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"volume"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"timestamp"}
+                              required={false}
+                              schemaName={"integer"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"integer"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"date"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"data\": [\n    {\n      \"address\": \"string\",\n      \"price\": \"string\",\n      \"volume\": \"string\",\n      \"timestamp\": 0,\n      \"date\": \"string\"\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

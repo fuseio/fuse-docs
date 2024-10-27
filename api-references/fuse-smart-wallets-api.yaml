@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   description: >
 
-    Smart Wallets API provides a Wallets as a Service (WaaS) API for your cross-platform applications. Developers can also access the Smart Wallets API via the [fuse-sdk](/docs/fuse-box/getting-started.mdx).
+    Smart Wallets API provides a Wallets as a Service (WaaS) API for your cross-platform applications. Developers can also access the Smart Wallets API via the [fuse-sdk](developers/fusebox/fusebox.mdx).
 
     Smart Wallets API lets you authenticate users with their Externally Owned Accounts (EOAs) and create Smart Contract wallets, execute gasless transactions through the relay service, fetch balances and tokens, get transaction history, and much more.
 
@@ -12,7 +12,7 @@ info:
 
     ## Working with Smart Wallets API
 
-    Before working with Smart Wallets API, if you haven't done so, please follow the guide [Getting Started](fuse-box/getting-started.mdx).
+    Before working with Smart Wallets API, if you haven't done so, please follow the guide [Getting Started](developers/fusebox/fusebox.mdx).
 
     #### Ready to start!
 

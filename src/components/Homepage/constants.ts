@@ -1,86 +1,52 @@
-const ExploreApisList = [
-  {
-    title: "Smart Wallets API",
-    description:
-      "Maximize the security and user experience of your apps by leveraging smart contract wallets.",
-    href: "/smart-wallet-api/smart-wallets-api",
-  },
-  {
-    title: "Trade API",
-    description:
-      "Enable DeFi functionalities including token swaps, real-time price information, and more in your apps.",
-    href: "/trade-api/trade-api",
-  },
-  {
-    title: "Notifications API",
-    description:
-      "Maximize the security and user experience of your apps by leveraging smart contract wallets.",
-    href: "/notification-api/notifications-api",
-  },
-  {
-    title: "Data APIs",
-    description: "Access real-time indexed transactions with ease.",
-    href: "/smart-wallet-api/get-wallet-actions",
-  },
-  {
-    title: "GraphQL APIs",
-    description: "Access real-time indexed transactions with ease.",
-    href: "/graphql-api/graphql-api",
-  },
-  {
-    title: "Staking APIs",
-    description: "Enhance your app with staking functionalities.",
-    href: "/staking-api/staking-api",
-  },
-];
-
 const MainFeatureList = [
   {
-    image: "img/new-ms-p.svg",
-    title: "Quick Start",
-    description:
-      "Find links to valuable resources and websites that will bring you up to speed on building on Fuse.",
-    link: "/fuse-box/Quick-Start",
+    title: 'Fuse Overview',
+    description: 'Learn about the network and start using the platform.',
+    links: [
+      { label: 'About Fuse', link: '/basics/overview' },
+      { label: 'Connect to Fuse', link: '/basics/overview/connect-to-fuse' },
+      { label: 'Ecosystem', link: '/basics/ecosystem' },
+    ],
+    img: 'img/homepage/1.svg',
+    imgClassName: 'card-1',
   },
   {
-    image: "img/new-ms-p.svg",
-    title: "Fuse Basics",
-    description:
-      "Learn all the basics about the Fuse network, including network details, wallets, bridges and more.",
-    link: "/category/intro-to-fuse",
-  },
-  {
-    image: "img/new-ms-p2.svg",
+    title: 'Build On Fuse',
+    description: 'Tools and tutorials to make building applications fast and stress free.',
+    links: [
+      { label: 'Get started', link: '/developers/building-on-fuse' },
+      { label: 'Learn about FuseBox APIs and SDK', link: '/developers/fusebox' },
+      { label: 'Web3 dev tools', link: '/developers/web3-tools' },
+    ],
+    img: 'img/homepage/2.svg',
+    imgClassName: 'card-2',
 
-    title: "FuseBox",
-    description:
-      "Develop seamless UX with FuseBox on Fuse network, leveraging Account Abstraction, Gasless transactions, and more.",
-    link: "/fuse-box/getting-started",
   },
   {
-    image: "img/new-ms-p3.svg",
+    title: 'Case Studies',
+    description: 'Read how businesses are solving real-world problems with Fuse.',
+    links: [
+      { label: 'Mystic Valley', link: '/basics/businesses/' },
+      { label: 'Freedom Wallet', link: '/basics/businesses/' },
+      { label: 'Sanduk', link: '/basics/businesses/' },
+      { label: 'Zneakrz', link: '/basics/businesses/' },
+    ],
+    img: 'img/homepage/3.svg',
+    imgClassName: 'card-3',
 
-    title: "Tutorials",
-    description:
-      "Discover everything you need to know about Fuse v2 and how we're revolutionizing various industries with web3 technology.",
-    link: "/fuse-box/tutorials",
+  },
+  {
+    title: 'Fuse Ember',
+    description: 'Find out about the future of Fuse: a business-friendly L2, powered by zero knowledge technology.',
+    links: [
+      { label: 'What is Fuse Ember?', link: '/fuse-ember' },
+      { label: 'Native Account Abstraction', link: '/fuse-ember' },
+      { label: 'Data availability', link: '/fuse-ember' },
+    ],
+    img: 'img/homepage/4.svg',
+    imgClassName: 'card-4',
+
   },
 ];
 
-const GovernanceList = [
-  {
-    icon: "img/git.png",
-    title: "Fip`s",
-    description: `Governance is currently split among the following \n actors.....`,
-    href: "basics/intro-to-fuse/fuse-governance-and-development/fips",
-  },
-  {
-    icon: "img/forum.png",
-    title: "Fuse Assembly",
-    description:
-      "Fuse Assembly is the first step in transitioning full governance and ownership over the Fuse platform to the community.",
-    href: "basics/intro-to-fuse/fuse-governance-and-development/fuse-assembly",
-  },
-];
-
-export { ExploreApisList, MainFeatureList, GovernanceList };
+export { MainFeatureList };

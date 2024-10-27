@@ -1,0 +1,142 @@
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  width: 553px;
+  height: 339px;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  color: #333333;
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555555;
+  margin-bottom: 16px;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card li {
+  margin-bottom: 8px;
+}
+
+.card a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.card a:hover {
+  color: #555555;
+  text-decoration: none;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.arrow {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.cardLink:hover .arrow {
+  transform: translateX(5px);
+}
+
+.cardImage {
+  position: absolute;
+  bottom: 14.5px;
+  right: 50px;
+}
+
+.card-1 {
+  bottom: 28.5px;
+  right: 37px;
+  max-width: 260px;
+  max-height: 170px;
+}
+
+.card-2 {
+  bottom: 23px;
+  right: 33px;
+  max-width: 200px;
+  max-height: 170px;
+}
+
+.card-3 {
+  bottom: 37.5px;
+  right: 50px;
+  max-width: 144px;
+  max-height: 170px;
+}
+
+.card-4 {
+  bottom: 40px;
+  right: 40px;
+  max-width: 177px;
+  max-height: 170px;
+}
+
+@media screen and (max-width: 1200px) {
+  .card {
+    width: 100%;
+    max-width: 553px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    height: auto;
+    padding-bottom: 200px;
+  }
+
+  .cardImage {
+    max-width: 200px;
+    max-height: 150px;
+  }
+
+  .card-1,
+  .card-2,
+  .card-3,
+  .card-4 {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card h3 {
+    font-size: 1.2rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+  }
+
+  .cardImage {
+    max-width: 150px;
+    max-height: 120px;
+  }
+}

@@ -1,16 +1,10 @@
 // .tina/config.jsx
-import React4 from "react";
+import React2 from "react";
 import { defineConfig, TextField } from "tinacms";
 import { ReferenceField } from "tinacms";
 
-// src/components/Features/template.jsx
+// src/theme/template.tsx
 import React from "react";
-
-// src/components/Hero/template.jsx
-import React2 from "react";
-
-// src/theme/template.jsx
-import React3 from "react";
 
 // util.js
 import title from "title";
@@ -18,7 +12,7 @@ var slugify = (text) => {
   return text.toString().toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/[\s_-]+/g, "_").replace(/^-+|-+$/g, "");
 };
 
-// src/theme/template.jsx
+// src/theme/template.tsx
 var AdmonitionTemplate = {
   name: "Admonition",
   ui: {
@@ -141,10 +135,10 @@ var TabsTemplate = {
               type: "string",
               ui: {
                 component: ({ input, tinaForm }) => {
-                  React3.useEffect(() => {
+                  React.useEffect(() => {
                     input.onChange(slugify(tinaForm.values.label));
                   }, [JSON.stringify(tinaForm.values)]);
-                  return React3.createElement(
+                  return React.createElement(
                     "input",
                     {
                       type: "text",
@@ -191,7 +185,8 @@ var MDXTemplates = [
 
 // .tina/config.jsx
 import title2 from "title";
-var branch = "master";
+var isProduction = process.env.TINA_ENV === "production";
+var branch = isProduction ? "master" : "staging";
 var DocsCollection = {
   name: "doc",
   label: "Docs",
@@ -255,9 +250,7 @@ var DropdownCollection = {
 var config_default = defineConfig({
   branch,
   clientId: process.env.clientId,
-  // Get this from tina.io
   token: process.env.token,
-  // Get this from tina.io
   build: {
     outputFolder: "admin",
     publicFolder: "static"
