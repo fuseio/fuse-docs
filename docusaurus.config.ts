@@ -112,7 +112,7 @@ const config: Config = {
         },
         {
           type: 'doc',
-          docId: 'developers/developers',
+          docId: 'developers/building-on-fuse/building-on-fuse',
           position: 'left',
           label: 'Developers',
         },

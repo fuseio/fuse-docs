@@ -1,6 +1,6 @@
 ---
 title: Quick Start
-sidebar_position: -2
+sidebar_position: 1
 ---
 
 # Fuse Blockchain Developer Quick Start Guide
@@ -9,58 +9,57 @@ Welcome to the Fuse Blockchain Developer Quick Start Guide! This guide is design
 
 ## Network Details
 
-|               |             Fuse Mainnet                                    |  Fuse Testnet (Sparknet)  |
-| :------------ | :----------------------------------------------------- |:---|   
-| **Chain ID**  | 122                                                    | 123   |
-| **RPC**       | [https://rpc.fuse.io/](https://rpc.fuse.io/)​           | [https://rpc.fusespark.io](https://rpc.fusespark.io) |
-| **Symbol**    | FUSE                                                   | FUSE |
-| **Health**    | [https://health.fuse.io/](https://health.fuse.io/)     | [https://health.fusespark.io](https://health.fusespark.io) |
-| **Explorer**  | [https://explorer.fuse.io/](https://explorer.fuse.io/) | [https://explorer.fusespark.io/](https://explorer.fusespark.io/)
-| **WebSocket** | wss://explorer-node.fuse.io/ws                         | wss://explorernode.fusespark.io/ws |
-| **Faucet**    | [Stakely](https://stakely.io/faucet/fuse-fuse)         | [ChainDrop faucet](https://chaindrop.org/?chainid=123&token=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee "ChainDrop faucet"), [Stakely faucet](https://stakely.io/en/faucet/fuse-fuse) |
-| **Block size** | 20,000,000 | 20,000,000 |
-| **Block speed** | 5 seconds | 5 seconds |
-| **Gas price** | 10 GWei |10 GWei |
+|                 | Fuse Mainnet                                           | Fuse Testnet (Sparknet)                                                                                                                                                              |
+| :-------------- | :----------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Chain ID**    | 122                                                    | 123                                                                                                                                                                                  |
+| **RPC**         | [https://rpc.fuse.io/](https://rpc.fuse.io/)​          | [https://rpc.fusespark.io](https://rpc.fusespark.io)                                                                                                                                 |
+| **Symbol**      | FUSE                                                   | FUSE                                                                                                                                                                                 |
+| **Health**      | [https://health.fuse.io/](https://health.fuse.io/)     | [https://health.fusespark.io](https://health.fusespark.io)                                                                                                                           |
+| **Explorer**    | [https://explorer.fuse.io/](https://explorer.fuse.io/) | [https://explorer.fusespark.io/](https://explorer.fusespark.io/)                                                                                                                     |
+| **WebSocket**   | wss://explorer-node.fuse.io/ws                         | wss://explorernode.fusespark.io/ws                                                                                                                                                   |
+| **Faucet**      | [Stakely](https://stakely.io/faucet/fuse-fuse)         | [ChainDrop faucet](https://chaindrop.org/?chainid=123&token=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee "ChainDrop faucet"), [Stakely faucet](https://stakely.io/en/faucet/fuse-fuse) |
+| **Block size**  | 20,000,000                                             | 20,000,000                                                                                                                                                                           |
+| **Block speed** | 5 seconds                                              | 5 seconds                                                                                                                                                                            |
+| **Gas price**   | 10 GWei                                                | 10 GWei                                                                                                                                                                              |
 
 ## Fuse Network Core Contracts
 
- Name | Contract |
-|---|---|
-| **Core Consensus** | [0x3014ca10b91cb3D0AD85fEf7A3Cb95BCAc9c0f79](https://explorer.fuse.io/address/0x3014ca10b91cb3D0AD85fEf7A3Cb95BCAc9c0f79)|
-| **BlockReward** | [0x63D4efeD2e3dA070247bea3073BCaB896dFF6C9B](https://explorer.fuse.io/address/0x63D4efeD2e3dA070247bea3073BCaB896dFF6C9B)|
-| **Voting** | [0x4c889f137232E827c00710752E86840805A70484](https://explorer.fuse.io/address/0x4c889f137232E827c00710752E86840805A70484)|
+| Name               | Contract                                                                                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| **Core Consensus** | [0x3014ca10b91cb3D0AD85fEf7A3Cb95BCAc9c0f79](https://explorer.fuse.io/address/0x3014ca10b91cb3D0AD85fEf7A3Cb95BCAc9c0f79) |
+| **BlockReward**    | [0x63D4efeD2e3dA070247bea3073BCaB896dFF6C9B](https://explorer.fuse.io/address/0x63D4efeD2e3dA070247bea3073BCaB896dFF6C9B) |
+| **Voting**         | [0x4c889f137232E827c00710752E86840805A70484](https://explorer.fuse.io/address/0x4c889f137232E827c00710752E86840805A70484) |
 
 ## Oracles
 
 In the table below are the Supra Smart Contracts deployed on Fuse.
 
-| **Contract Name**       | Contract Address       | Version |
-| :------------ | :----------------------------------------------------- |:----------|
-| **Supra Router Contract**  | [0x1daB558F090029580854FbCF8f83ef3Ad8C223b5](https://explorer.fuse.io/address/0x1daB558F090029580854FbCF8f83ef3Ad8C223b5)    | V2 |
-| **Supra Deposit Contract**    | [0x7a168e3AE8B701648D4f8F89B5fCD278885eBeFA](https://explorer.fuse.io/address/0x7a168e3AE8B701648D4f8F89B5fCD278885eBeFA) | V2 |
-
+| **Contract Name**          | Contract Address                                                                                                          | Version |
+| :------------------------- | :------------------------------------------------------------------------------------------------------------------------ | :------ |
+| **Supra Router Contract**  | [0x1daB558F090029580854FbCF8f83ef3Ad8C223b5](https://explorer.fuse.io/address/0x1daB558F090029580854FbCF8f83ef3Ad8C223b5) | V2      |
+| **Supra Deposit Contract** | [0x7a168e3AE8B701648D4f8F89B5fCD278885eBeFA](https://explorer.fuse.io/address/0x7a168e3AE8B701648D4f8F89B5fCD278885eBeFA) | V2      |
 
 ## Fuse SubGraphs
 
-| Name | Description |
-|:-----|:------------|
-| [fuse-nft](https://thegraph.com/explorer/subgraphs/36MBsLQLDobyKmN9NWW5bStUS5GdXjK6mmKytMxcWFbq?view=Query&chain=arbitrum-one) | All NFTs on the Fuse Network |
-| [fuse-blocks](https://thegraph.com/explorer/subgraphs/4NdGNtBYVAuWriUfcb58vLmiaendp7v8EQ9tGe3i1RPo?chain=arbitrum-one) | Blocks details of the network |
-| [voltage-dex](https://thegraph.com/explorer/subgraphs/B4BGk9itvmRXzzNRAzBWwQARHRt3ZvLz11aWNVsZPT4?chain=arbitrum-one) | Voltage DEX subgraph for on-chain trading information |
-| [fuse-ethereum-amb](https://thegraph.com/explorer/subgraphs/8jXFLHnfvzC6SrSYcqMhtfFKrvJkgxSbgXbNrvv4Ripi?chain=arbitrum-one) | Subgraph for Fuse - **Ethereum AMB bridge** |
-| [etherem-fuse-amb](https://thegraph.com/explorer/subgraphs/BRLusHAkqsZ6WqQM5XP1fjWopco9nNMJy3Z1TWm229c7?chain=arbitrum-one) | Subgraph for Ethereum - **Fuse AMB bridge** |
-
+| Name                                                                                                                           | Description                                           |
+| :----------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------- |
+| [fuse-nft](https://thegraph.com/explorer/subgraphs/36MBsLQLDobyKmN9NWW5bStUS5GdXjK6mmKytMxcWFbq?view=Query&chain=arbitrum-one) | All NFTs on the Fuse Network                          |
+| [fuse-blocks](https://thegraph.com/explorer/subgraphs/4NdGNtBYVAuWriUfcb58vLmiaendp7v8EQ9tGe3i1RPo?chain=arbitrum-one)         | Blocks details of the network                         |
+| [voltage-dex](https://thegraph.com/explorer/subgraphs/B4BGk9itvmRXzzNRAzBWwQARHRt3ZvLz11aWNVsZPT4?chain=arbitrum-one)          | Voltage DEX subgraph for on-chain trading information |
+| [fuse-ethereum-amb](https://thegraph.com/explorer/subgraphs/8jXFLHnfvzC6SrSYcqMhtfFKrvJkgxSbgXbNrvv4Ripi?chain=arbitrum-one)   | Subgraph for Fuse - **Ethereum AMB bridge**           |
+| [etherem-fuse-amb](https://thegraph.com/explorer/subgraphs/BRLusHAkqsZ6WqQM5XP1fjWopco9nNMJy3Z1TWm229c7?chain=arbitrum-one)    | Subgraph for Ethereum - **Fuse AMB bridge**           |
 
 <p>&nbsp;</p>
 
-## Create and Deploy Smart Contracts 
+## Create and Deploy Smart Contracts
 
 Fuse Blockchain is EVM-compatible. Smart Contracts written in Solidity are deployed on the Fuse Chain. Developers can deploy Smart Contracts in development to the Testnet and Smart Contracts going to Production on the Mainnet. Developers have the option to write their Smart Contracts using a variety of build tools:
-- [Remix](./deploying-smart-contracts/using-remix-and-metamask)
-- [Hardhat](./deploying-smart-contracts/using-hardhat)
-- [ThirdWeb](./deploying-smart-contracts/using-thirdweb)
 
-After writing a Smart Contract to deploy to the Fuse Blockchain, developers must add the Fuse Network to MetaMask. You can add Fuse Network to MetaMask using the following [guide](../basics/intro-to-fuse/tutorialsOverview).
+- [Remix](../web3-tools/using-remix-and-metamask)
+- [Hardhat](../web3-tools/using-hardhat)
+- [ThirdWeb](../web3-tools/using-thirdweb)
+
+After writing a Smart Contract to deploy to the Fuse Blockchain, developers must add the Fuse Network to MetaMask. You can add Fuse Network to MetaMask using the following [guide](../../basics/overview/connect-to-fuse).
 
 We are going to write an example Smart Contract and follow the required steps to deploy it to the Fuse Blockchain using Hardhat.
 
@@ -116,25 +115,27 @@ It will return the response:
 Compiling...
 Compiled 1 contract successfully
 ```
+
 The next step is to deploy the contracts to the Fuse Blockchain. In Hardhat, deployments are defined through Ignition Modules. These modules are abstractions to describe a deployment; that is, JavaScript functions that specify what you want to deploy.
 
 Open ignition inside the project root's directory, then, enter the directory named modules. Create a deploy.js and paste the following code:
 
 ```javascript
-const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
+const {buildModule} = require("@nomicfoundation/hardhat-ignition/modules");
 
 const Token = buildModule("Token", (m) => {
   const contract = m.contract("Token");
 
-  return { contract };
+  return {contract};
 });
 
 module.exports = Token;
 ```
+
 To deploy the Smart Contract, open the hardhat.config.js file and update the information on Fuse Network
 
 ```javascript
-hardhat.config.js
+hardhat.config.js;
 module.exports = {
   // ...
   networks: {
@@ -159,23 +160,25 @@ Open a new terminal and deploy the smart contract to the Fuse network:
 npx hardhat ignition deploy ./ignition/modules/deploy.js --network fuse
 ```
 
-The Smart Contract is deployed to the Fuse Mainnet and Testnet. To view the deployed Contract address and the Transaction calls, open the Fuse [Mainnet](https://explorer.fuse.io/) or [Testnet](https://explorer.fusespark.io/) Explorer and paste the deployed address. 
+The Smart Contract is deployed to the Fuse Mainnet and Testnet. To view the deployed Contract address and the Transaction calls, open the Fuse [Mainnet](https://explorer.fuse.io/) or [Testnet](https://explorer.fusespark.io/) Explorer and paste the deployed address.
 
 The Deployed Smart Contract can be verified and interacted with from a User Interface leveraging several tools. The official recommended tool from Fuse is FuseBox.
 
 ## Connect Smart Contract using FuseBox
 
-[FuseBox](./getting-started) is an Open-Source Wallet-as-a-Service platform based on Account Abstraction. It is ERC-4337 compliant and allows developers to use a Bundler to collect UserOperations and a Paymaster to sponsor Gas payments for their users, enabling a Gasless experience. 
+[FuseBox](../fusebox) is an Open-Source Wallet-as-a-Service platform based on Account Abstraction. It is ERC-4337 compliant and allows developers to use a Bundler to collect UserOperations and a Paymaster to sponsor Gas payments for their users, enabling a Gasless experience.
 
 FuseBox is available as a TypeScript SDK and a Flutter SDK. It is a middleware infrastructure that connects directly to the fuse blockchain without needing an RPC node provider. It also makes it easy for Web2 developers to start building blockchain applications without the need to understand ABIs.
 
 To understand FuseBox, we will build a quick guide to building a UI for the deployed Token Smart Contract using the FuseBox Web SDK.
 
 The Smart Contract has several deployed methods for interacting with it. This quickstart guide will focus on `transfer` and `balanceOf`. The respective SDK methods required are:
-- [Send Native/ERC20 Transactions](./sdk/send-single-txn)
-- [GET List of Tokens Owned by Address](./sdk/get-list-of-tokens-owned-by-address)
+
+- [Send Native/ERC20 Transactions](../fusebox/sdk/send-single-txn)
+- [GET List of Tokens Owned by Address](../fusebox/sdk/get-list-of-tokens-owned-by-address)
 
 ### Step 1: Set Up Your Next.js App
+
 Create a new Next.js app:
 
 ```bash
@@ -186,6 +189,7 @@ cd my-fuse-demo-app
 Answer the required prompts from NextJS in the terminal. We must note that we use TypeScript and Tailwind CSS for this application.
 
 ### Step 2: Install Dependencies
+
 Install the required dependencies:
 
 ```bash
@@ -194,14 +198,16 @@ npm install ethers
 ```
 
 ### Step 3: Run the Development Server
+
 Run `npm run dev` to start the development server. Visit `http://localhost:3000` to view your application.
 
 ### Step 4: Import Libraries
+
 Open the `index.tsx` file, delete the default code from NextJS. Edit `index.tsx` file by adding the code below and save it to see the updated result in your browser. First, import the required libraries and put up a default **Hello, World!** text:
 
 ```javascript
-import { FuseSDK } from "@fuseio/fusebox-web-sdk";
-import { ethers } from "ethers";
+import {FuseSDK} from "@fuseio/fusebox-web-sdk";
+import {ethers} from "ethers";
 
 export default function Home() {
   return (
@@ -213,6 +219,7 @@ export default function Home() {
 ```
 
 ### Step 5: Create a Smart Contract Wallet.
+
 To use the SDK in your project, you must create an instance of the FuseSDK class. This class is the key to interacting with the Fuse API using the SDK.
 
 The `init` method sets up a wallet and authenticates the user's provided credentials. It requires a API_KEY from FuseBox. Create an Account and get the `API_KEY` in the Fuse Developer Console [here](https://console.fuse.io). When you send a request to the server using this method, it verifies the credentials. If the credentials are valid, developers can use the `getSender()` to return an address.
@@ -222,19 +229,19 @@ To create the Smart Contract Wallet, we will update the code by adding a `smartW
 Inside the Home Component, import the useState method:
 
 ```javascript
-import { useState, useEffect } from 'react'
+import {useState, useEffect} from "react";
 ```
 
 Set the state variable to manage the state of the Smart Contract Account that will be created:
 
 ```javascript
-const [smartAccount, setSmartAccount] = useState<string>("")
+const [smartAccount, setSmartAccount] = useState < string > "";
 ```
 
 Add the smartWallet function:
 
 ```javascript
-const smartWallet = async() => {
+const smartWallet = async () => {
   const apiKey = "API_KEY";
   const credentials = new ethers.Wallet(`0xPrivateKey`);
   const fuseSDK = await FuseSDK.init(apiKey, credentials, {
@@ -242,9 +249,9 @@ const smartWallet = async() => {
   });
   setSmartAccount(fuseSDK.wallet.getSender());
   console.log(
-      `Smart account address: https://explorer.fuse.io/address/${fuseSDK.wallet.getSender()}`
+    `Smart account address: https://explorer.fuse.io/address/${fuseSDK.wallet.getSender()}`
   );
- }
+};
 ```
 
 To call the function and render the response in the application UI, we have to use the `useEffect` hook to prevent too many re-renders:
@@ -256,9 +263,9 @@ import { useState, useEffect } from ’react’;
 Add the useEffect Hook:
 
 ```javascript
-useEffect(()=> {
-  smartWallet()
-}, [])
+useEffect(() => {
+  smartWallet();
+}, []);
 ```
 
 Reload the app and open the console. The newly created Smart Contract Address will be logged into the Console!
@@ -266,29 +273,30 @@ Reload the app and open the console. The newly created Smart Contract Address wi
 To return the Smart Contract Address to the UI, you can parse the stored state variable:
 
 ```javascript
- return (
-    <main className={`flex flex-col items-center p-24 ${inter.className}`}>
-      Hello, World!
-      {smartAccount}
-    </main>
-  );
+return (
+  <main className={`flex flex-col items-center p-24 ${inter.className}`}>
+    Hello, World!
+    {smartAccount}
+  </main>
+);
 ```
 
 ### Step 6: Token Transfers
+
 Transfer Transactions which happen on the Blockchain are state-changing. In Account Abstraction these “Transactions” are called “UserOperations” because they are first sent to an alternate Mempool where they are then Bundled and sent on-chain. FuseBox uses the transferToken method to carry out a UserOperation of transferring a Token from one Address to another.
 
 Add another Function transferToken:
 
 ```javascript
-const transferToken = async() => {
-  const tokenAddress = "0x28C3d1cD466Ba22f6cae51b1a4692a831696391A"
+const transferToken = async () => {
+  const tokenAddress = "0x28C3d1cD466Ba22f6cae51b1a4692a831696391A";
   const apiKey = "API_KEY";
   const credentials = new ethers.Wallet(`0xPrivateKey`);
   const fuseSDK = await FuseSDK.init(apiKey, credentials, {
     withPaymaster: true,
   });
   const recipient = "Enter ANY EOA or SCW address";
-  const amount = ethers.parseUnits(amountValue, 6)
+  const amount = ethers.parseUnits(amountValue, 6);
   const res = await fuseSDK.transferToken(tokenAddress, recipient, amount);
   console.log(`UserOpHash: ${res?.userOpHash}`);
   console.log("Waiting for transaction...");
@@ -297,12 +305,12 @@ const transferToken = async() => {
   console.log(
     `User operation hash: https://explorer.fuse.io/tx/${receipt?.transactionHash}`
   );
-}
+};
 ```
 
 The `transferToken` method takes in three arguments: `tokenAddress`, `recipient`, `amount`.
 
-Note: **SCW** is a *Smart Contract Wallet Address*.
+Note: **SCW** is a _Smart Contract Wallet Address_.
 
 The tokenAddress is the address of the Token which we are sending a specific amount to a receiving address recipient. You can find a list of Token Addresses here: https://explorer.fuse.io/tokens
 
@@ -320,15 +328,34 @@ To carryout Token Transfer, the next step is to build a Form component where we 
 Update the UI:
 
 ```javascript
- <form className="flex max-w-md flex-col gap-4">
-    <div className="mt-3">
-        <label htmlFor="base-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" />
-        <input type="text" id="base-input" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+<form className="flex max-w-md flex-col gap-4">
+  <div className="mt-3">
+    <label
+      htmlFor="base-input"
+      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    />
+    <input
+      type="text"
+      id="base-input"
+      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    />
 
-        <label htmlFor="base-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" />
-        <input type="text" id="base-input" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-    </div>
-    <button type="text" className=" focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Send</button>
+    <label
+      htmlFor="base-input"
+      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    />
+    <input
+      type="text"
+      id="base-input"
+      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    />
+  </div>
+  <button
+    type="text"
+    className=" focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+  >
+    Send
+  </button>
 </form>
 ```
 
@@ -337,20 +364,20 @@ The Form above has two labels and a button. To use the form, we have to take the
 Let’s write the state variables to store the recipient and amount values. In this example, we will keep the tokenAddress static as USDC.
 
 ```javascript
-const [toValue, setToValue] = useState<string>(' ');
-const [amountValue, setAmountValue] = useState<string>(' ');
+const [toValue, setToValue] = useState < string > " ";
+const [amountValue, setAmountValue] = useState < string > " ";
 ```
 
 Add a handle method to take the input data
 
 ```javascript
-  const handleTo = (e) => {
-      setToValue(e.target.value);
-  };
+const handleTo = (e) => {
+  setToValue(e.target.value);
+};
 
-  const handleAmount = (e) => {
-     setAmountValue(e.target.value)
-  };
+const handleAmount = (e) => {
+  setAmountValue(e.target.value);
+};
 ```
 
 The values are set in the state: `recipient == toValue`, `amount == amountValue`
