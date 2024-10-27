@@ -123,9 +123,10 @@ const config: Config = {
           label: 'Fuse Ember',
         },
         {
-          href: 'https://github.com/fuseio/fuse-docs',
-          label: 'GitHub',
+          href: 'https://github.com/fuseio/',
           position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },
