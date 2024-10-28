@@ -4,33 +4,18 @@ description: Toplevel page
 sidebar_position: 3
 ---
 
-Learn about account types on Fuse Ember
+Ethereum-compatible blockchains use two types of accounts: Externally Owned Accounts (EOAs) and Smart Contract accounts (or Smart Accounts).
 
-There are two types on accounts:
-
-1. Externally Owned Accounts (EOAs): Controlled by private keys that can sign transactions.
-2. Smart Contract Accounts: Controlled by the smart contract
-
-Only EOA accounts can send transactions, and the account must pay the network fees. To send a transaction, the user needs to sign with the private key.
-
-Smart Accounts are very flexible, they can provide advanced features such as recovery, custom permissions, and gasless transactions (or paying with tokens). But they cannot issue the transactions themselves. Currently, the network deals with this by leveraging the ERC4337 standard. 
-
-
-Ethereum-compatible blockchains use two types of accounts.
-
-1. Externally Owned Accounts (EOAs) are controlled by private keys. This is typically the type of account an individual user would manage. Transactions are generally simple, with the user signing the predetermined transaction with their key. 
-2. Contract Accounts are controlled by smart contract code. Because they are programmable, they offer a high degree of flexibility.
-
-Only EOA accounts can send transactions, and the account must pay the network fees. To send a transaction, the user needs to sign with the private key.
-
-Smart Accounts are very flexible, they can provide advanced features such as recovery, custom permissions, and gasless transactions (or paying with tokens). But they cannot issue the transactions themselves. Currently, the network deals with this by leveraging the ERC4337 standard. 
-
-### Externally Owned Accounts (EOAs):
+### Externally Owned Accounts (EOAs)
 
 * Controlled by private keys: These accounts are controlled by an individual or entity with access to a private key, which enables them to authorize transactions.
 * No associated code: EOAs do not have code or smart contract logic attached to them. They are simply used to send and receive transactions and hold Ether or other tokens.
 * Transaction fees: Whenever an EOA initiates a transaction (e.g., sending Ether, interacting with a smart contract), it must pay a transaction fee (also known as gas) using Ether.
 
+### Smart Contract Accounts
+
+Smart Contract accounts are controlled by smart contract code. Because they are programmable, they offer a high degree of flexibility. Smart Accounts are very flexible, and can provide advanced features such as recovery, custom permissions, and gasless transactions (or paying with tokens). However, they cannot issue the transactions themselves. Currently, the network deals with this by leveraging the ERC4337 standard. 
+
+### Account Abstraction
+
 Account abstraction (AA) is a feature that provides a high degree of flexibility for Fuse transactions and users by integrating smart contract functionality into regular end-user accounts. AA can be used to decrease common barriers to adoption by reducing the burdens on users. For example, it can be used to pay network fees in specific tokens, avoiding the need for users to keep topping up their wallets with FUSE for gas. It can also be used to customize security options and improve overall user experience.
-
-
