@@ -39,9 +39,9 @@ const MainFeatureList = [
     title: 'Fuse Ember',
     description: 'Find out about the future of Fuse: a business-friendly L2, powered by zero knowledge technology.',
     links: [
-      { label: 'What is Fuse Ember?', link: '/fuse-ember' },
-      { label: 'Native Account Abstraction', link: '/fuse-ember' },
-      { label: 'Data availability', link: '/fuse-ember' },
+      { label: 'What is Fuse Ember?', link: '/fuse-ember/fuse-ember' },
+      { label: 'Native Account Abstraction', link: '/fuse-ember/fuse-ember' },
+      { label: 'Data availability', link: '/fuse-ember/fuse-ember' },
     ],
     img: 'img/homepage/4.svg',
     imgClassName: 'card-4',
