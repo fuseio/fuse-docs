@@ -9,16 +9,16 @@ A sequencer is a specialized node responsible for ordering, executing, and proce
 
 **Key Functions of Sequencers:**
 
-* Transaction Ordering: Sequencers collect and organize transactions submitted by users, determining the order in which they will be processed to maintain consistency and determinism within the Layer 2 state.
-* Transaction Execution: Once transactions are ordered, the sequencer executes them, updating account balances and smart contracts based on the rules of the Layer 2 system.
-* Batch Submission: After processing, the sequencer packages transactions into batches or blocks and submits them to the Layer 1 blockchain, typically recording them as cryptographic commitments.
-* Data Availability: Sequencers are responsible for ensuring transaction data can be accessed and verified, storing it on Fuse Ember data availability solution.
+- Transaction Ordering: Sequencers collect and organize transactions submitted by users, determining the order in which they will be processed to maintain consistency and determinism within the Layer 2 state.
+- Transaction Execution: Once transactions are ordered, the sequencer executes them, updating account balances and smart contracts based on the rules of the Layer 2 system.
+- Batch Submission: After processing, the sequencer packages transactions into batches or blocks and submits them to the Layer 1 blockchain, typically recording them as cryptographic commitments.
+- Data Availability: Sequencers are responsible for ensuring transaction data can be accessed and verified, storing it on Fuse Ember data availability solution.
 
 **Importance of Sequencers:**
 
-* Scalability: Sequencers offload transaction processing from Layer 1, allowing Layer 2 solutions to achieve higher throughput and lower latency.
-* Cost Reduction: By bundling multiple transactions into single batches, sequencers reduce the number of Layer 1 interactions, leading to lower gas costs.
-* Deterministic Execution: Sequencers guarantee transactions are processed according to predefined rules, ensuring the consistency and integrity of the Layer 2 state.
+- Scalability: Sequencers offload transaction processing from Layer 1, allowing Layer 2 solutions to achieve higher throughput and lower latency.
+- Cost Reduction: By bundling multiple transactions into single batches, sequencers reduce the number of Layer 1 interactions, leading to lower gas costs.
+- Deterministic Execution: Sequencers guarantee transactions are processed according to predefined rules, ensuring the consistency and integrity of the Layer 2 state.
 
 In practice, a trusted sequencer orders L2 transactions, generates blocks, fills batches, and submits them to a consensus contract on Layer 1.
 
@@ -30,10 +30,10 @@ zkProvers are critical components in zero-knowledge (ZK) rollups, responsible fo
 
 The zkProver works in tandem with zkEVMs (zero-knowledge Ethereum Virtual Machines) by generating proofs that verify the correctness of transaction execution:
 
-* **Transaction Execution**: Transactions are executed on the zkEVM, which interprets EVM bytecode and updates the Layer 2 state.
-* **State Transitions**: The zkProver captures these transitions, including changes to account balances, smart contract states, etc.
-* **Proof Generation**: Using advanced cryptographic techniques like zk-SNARKs or zk-STARKs, the zkProver creates a zero-knowledge proof to validate these transitions.
-* **Proof Submission**: This proof is submitted to Layer 1, allowing it to verify the state without needing to reprocess all transactions.
+- **Transaction Execution**: Transactions are executed on the zkEVM, which interprets EVM bytecode and updates the Layer 2 state.
+- **State Transitions**: The zkProver captures these transitions, including changes to account balances, smart contract states, etc.
+- **Proof Generation**: Using advanced cryptographic techniques like zk-SNARKs or zk-STARKs, the zkProver creates a zero-knowledge proof to validate these transitions.
+- **Proof Submission**: This proof is submitted to Layer 1, allowing it to verify the state without needing to reprocess all transactions.
 
 **zkProver Nodes: Decentralizing Proof Generation**
 
@@ -61,4 +61,4 @@ Find out more: [https://ethereum.org/en/developers/docs/scaling/validium/](https
 
 #### Ember DA Node
 
-To operate a DAC node on Ember Chain, participants must [obtain a "node license"](https://docs-staging.fuse.io/fuse-ember/Tokenomics/Node-Sale). These licenses grant the holder the right to operate a DAC node and earn rewards for their contribution to the network.
+To operate a DAC node on Ember Chain, participants must [obtain a "node license"](/fuse-ember/fuse-ember/node-sale). These licenses grant the holder the right to operate a DAC node and earn rewards for their contribution to the network.
