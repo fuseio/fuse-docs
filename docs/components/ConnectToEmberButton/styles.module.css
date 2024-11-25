@@ -1,0 +1,90 @@
+.connect-button-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.connect-button {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.75rem 3rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.connect-button:hover {
+  background: #b4f9ba;
+  transform: translateY(-1px);
+  color: #000000;
+}
+
+.connect-button-disconnected {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #e5e7eb;
+}
+
+.connect-button-wrong-network {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.connect-button-connected {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.connected-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #ecfdf5;
+  border-radius: 8px;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.connected-status svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (max-width: 640px) {
+  .connect-button {
+    font-size: 0.8rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .connected-status {
+    font-size: 0.8rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+.connect-button-disconnected:hover {
+  background: #b4f9ba;
+  color: #000000;
+}
+
+.connect-button-wrong-network:hover {
+  background: #b4f9ba;
+  color: #000000;
+}
+
+.connect-button-connected:hover {
+  background: #b4f9ba;
+  color: #000000;
+}
