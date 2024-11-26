@@ -5,12 +5,12 @@ sidebar_position: 2
 
 With Native Account Abstraction, every account supports AA by default.
 
-The team is currently studying a few implementations of how to bring native AA to Fuse Ember. This would enable the introduction of features like multi-signature security, gasless transactions, smart contract wallets, and more complex account logic without relying on external contract deployment, keeping a robust, secured, MEV-free solution without the disadvantages of ERC-4337.
+The team is currently studying different options for how to bring native AA to Fuse Ember. This would enable the introduction of features like multi-signature security, gasless transactions, smart contract wallets, and more complex account logic without relying on external contract deployment, keeping a robust, secure, MEV-free solution without the disadvantages of ERC-4337.
 
 ## Why Native (vs 4337)?
 
 * Native AA is implemented in the protocol. ERC-4337 provides easy integration with Ethereum, but having this as a second level-implementation brings restrictions and security risks, including more opportunities for MEV. A native implementation solves these issues.
-* First class citizen: smart accounts are first class citizens, and are easy to use and leverage.
+* First class citizen. Smart accounts are first class citizens, and are easy to use and leverage.
 * Gas stipends for everyone. All accounts can enjoy gas abstraction and pay gas fees with ERC20 tokens.
 
 # Native AA on Ember
@@ -28,7 +28,7 @@ With Native Account Abstraction, smart wallets and paymasters are first class pr
 
 ## EIP-7702 Overview
 
-EIP-7702 is a proposal in the upcoming Ethereum [Pectra](https://eipsinsight.com/pectra) hardfork that introduces a new transaction type that allows EOAs (Externally Owned Accounts) to designate a Smart Contract as their "implementation." This innovation bridges the gap between EOAs and Smart Contract Accounts, supporting advanced functionalities at the protocol level. EIP-7702 will be implemented on Polygon when the fork is completed.
+EIP-7702 is a proposal in the upcoming Ethereum [Pectra](https://eipsinsight.com/pectra) hardfork that introduces a new transaction type that allows EOAs (Externally Owned Accounts) to designate a smart contract as their "implementation." This innovation bridges the gap between EOAs and Smart Contract Accounts, supporting advanced functionalities at the protocol level. EIP-7702 will be implemented on Polygon when the hardfork is completed.
 
 Key Features Enabled by EIP-7702:
 
@@ -39,11 +39,11 @@ Key Features Enabled by EIP-7702:
 
 This proposal enhances Ethereum's capabilities by empowering EOAs with smart account features, while maintaining compatibility with existing wallets and tools. Its adoption will streamline workflows for developers and provide users with a richer and more versatile account experience.
 
-### RIP-7560 Overview
+## RIP-7560 Overview
 
 RIP-7560 is a proposal that builds upon ERC-4337 and EIP-2938, introducing consensus-layer protocol changes to enable a truly native Account Abstraction implementation on Ethereum. Unlike ERC-4337, which relies on higher-layer infrastructure, RIP-7560 aims to integrate account abstraction directly into the Ethereum protocol, enhancing efficiency, compatibility, and functionality. There is no clear timeline for RIP-7560, but we will aim to support it on Fuse Ember as soon as it is implemented.
 
-The core idea is to split the transaction lifecycle into three distinct steps:
+The core idea is to split the transaction life cycle into three distinct steps:
 
 1. Validation: Determines transaction validity, including authorization and gas fee payment.
 2. Execution: Processes the transaction logic.
