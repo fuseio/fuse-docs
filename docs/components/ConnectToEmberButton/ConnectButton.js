@@ -3,9 +3,11 @@ import styles from "./styles.module.css";
 
 export default function ConnectButton() {
   const [networkStatus, setNetworkStatus] = useState("disconnected"); // "disconnected" | "wrong_network" | "connected"
+  const CHAIN_ID_DECIMAL = 1264453517;
+  const CHAIN_ID_HEX = `0x${CHAIN_ID_DECIMAL.toString(16)}`;
 
   const EMBER_TESTNET = {
-    chainId: `0x${(1264453517).toString(16)}`,
+    chainId: CHAIN_ID_HEX,
     chainName: "Flash Testnet",
     nativeCurrency: {
       name: "FUSE",
@@ -23,23 +25,10 @@ export default function ConnectButton() {
           method: "eth_chainId",
         });
 
-        // Also check if network exists in user's wallet
-        const networks = await window.ethereum.request({
-          method: "wallet_getPermissions",
-        });
-
-        const hasNetwork = networks.some(
-          (permission) =>
-            permission.parentCapability === "eth_accounts" &&
-            networks.some((n) => n.chainId === EMBER_TESTNET.chainId)
-        );
-
         if (currentChainId === EMBER_TESTNET.chainId) {
           setNetworkStatus("connected");
-        } else if (hasNetwork) {
-          setNetworkStatus("wrong_network");
         } else {
-          setNetworkStatus("disconnected");
+          setNetworkStatus("wrong_network");
         }
 
         return currentChainId === EMBER_TESTNET.chainId;
@@ -118,23 +107,46 @@ export default function ConnectButton() {
   };
 
   return (
-    <div className={styles["connect-button-container"]}>
-      {networkStatus !== "connected" ? (
-        <button onClick={switchNetwork} className={getButtonClass()}>
-          {getButtonText()}
-        </button>
-      ) : (
-        <div className={styles["connected-status"]}>
-          <svg fill="currentColor" viewBox="0 0 20 20">
-            <path
-              fillRule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-              clipRule="evenodd"
-            />
-          </svg>
-          Connected to Flash Testnet
-        </div>
-      )}
+    <div className={styles["connect-button-wrapper"]}>
+      <div className={styles["connect-description"]}>
+        <svg
+          className={styles["lightbulb-icon"]}
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9 21H15M12 3C8.68629 3 6 5.68629 6 9C6 10.6569 6.63214 12.1569 7.65864 13.2929C8.57758 14.2929 9.29289 15.5 9.29289 17H14.7071C14.7071 15.5 15.4224 14.2929 16.3414 13.2929C17.3679 12.1569 18 10.6569 18 9C18 5.68629 15.3137 3 12 3Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span>
+          Click the button below to connect your wallet to the Flash Testnet.
+        </span>
+      </div>
+      <div className={styles["connect-button-container"]}>
+        {networkStatus !== "connected" ? (
+          <button onClick={switchNetwork} className={getButtonClass()}>
+            {getButtonText()}
+          </button>
+        ) : (
+          <div className={styles["connected-status"]}>
+            <svg fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clipRule="evenodd"
+              />
+            </svg>
+            Connected to Flash Testnet
+          </div>
+        )}
+      </div>
     </div>
   );
 }
