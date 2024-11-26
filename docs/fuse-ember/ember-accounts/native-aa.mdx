@@ -15,7 +15,7 @@ The team is currently studying a few implementations of how to bring native AA t
 
 # Native AA on Ember
 
-With Fuse Ember’s Native AA, every account now is a a smart contract account and all transactions go through the native transaction cycle, together with EOA transactions. 
+With Fuse Ember’s Native AA, every account now is a smart contract account and all transactions go through the native transaction cycle, together with EOA transactions. 
 
 Native account abstraction means:
 
@@ -25,3 +25,30 @@ Native account abstraction means:
 * All accounts have native support for a paymaster, meaning any account can sponsor the gas fees for another account’s transactions, or pay gas fees in another ERC20 token.
 
 With Native Account Abstraction, smart wallets and paymasters are first class primitives that are natively supported by the network. This uses EOA with Native AA as a default smart contract that can be extended with additional features. All accounts follow the same standard interface and go through the same transaction cycle.
+
+## EIP-7702 Overview
+
+EIP-7702 is a proposal in the upcoming Ethereum [Pectra](https://eipsinsight.com/pectra) hardfork that introduces a new transaction type that allows EOAs (Externally Owned Accounts) to designate a Smart Contract as their "implementation." This innovation bridges the gap between EOAs and Smart Contract Accounts, supporting advanced functionalities at the protocol level. EIP-7702 will be implemented on Polygon when the fork is completed.
+
+Key Features Enabled by EIP-7702:
+
+* Batch Calls: Combine multiple operations into a single transaction, reducing overhead and enhancing efficiency.
+* Transaction Sponsorship: Delegate gas fee payment and execution to third parties such as Sequencers or Wallet Servers, enabling gasless transactions.
+* Arbitrary Signing Keys: Support diverse key types, including WebAuthn, P256, and BLS, for added flexibility and security in verifying actions.
+* Session & Scoped Keys: Authorize temporary or permissioned signing keys for specific use cases, improving usability and security.
+
+This proposal enhances Ethereum's capabilities by empowering EOAs with smart account features, while maintaining compatibility with existing wallets and tools. Its adoption will streamline workflows for developers and provide users with a richer and more versatile account experience.
+
+### RIP-7560 Overview
+
+RIP-7560 is a proposal that builds upon ERC-4337 and EIP-2938, introducing consensus-layer protocol changes to enable a truly native Account Abstraction implementation on Ethereum. Unlike ERC-4337, which relies on higher-layer infrastructure, RIP-7560 aims to integrate account abstraction directly into the Ethereum protocol, enhancing efficiency, compatibility, and functionality. There is no clear timeline for RIP-7560, but we will aim to support it on Fuse Ember as soon as it is implemented.
+
+The core idea is to split the transaction lifecycle into three distinct steps:
+
+1. Validation: Determines transaction validity, including authorization and gas fee payment.
+2. Execution: Processes the transaction logic.
+3. Post-Transaction Logic: Handles final operations post-execution.
+
+Additionally, RIP-7560 enables advanced features like gas sponsorship, allowing one contract (B) to pay gas fees for a transaction executed from another contract (A).
+
+EIP-2938 offers a robust approach but is not backward-compatible with the production-ready ERC-4337 ecosystem. RIP-7560 bridges these gaps, combining the strengths of both approaches.
