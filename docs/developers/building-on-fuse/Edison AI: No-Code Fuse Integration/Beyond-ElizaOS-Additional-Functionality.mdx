@@ -3,3 +3,165 @@ title: 'Beyond ElizaOS: Additional Functionality'
 sidebar_position: 1
 ---
 
+We are working on implementing features that are not available in Eliza. Current functionality includes:
+
+* Get Account Balance on Fuse blockchain
+* Transfer FUSE token with user-connected wallet instead of hardcoded private key
+
+
+## Get Account Balance on Fuse blockchain
+
+We have implemented a custom action “getBalance” in the ElizaOS to retrieve the correct information from the Fuse blockchain.
+
+<CodeBlock>
+  export const getBalanceAction = {
+
+      name: "getBalance",
+
+      description: "Get the balance of a provided wallet address",
+
+      handler: async (
+
+          runtime: IAgentRuntime,
+
+          \_message: Memory,
+
+          state: State,
+
+          \_options: any,
+
+          callback?: (response: any) => void
+
+      ) => {
+
+          const walletProvider = initWalletProvider(runtime);
+
+          const currentChain = walletProvider.getCurrentChain().name.toLowerCase() as SupportedChain;
+
+          const { address } = await buildAddressDetails(state, runtime);
+
+          try {
+
+              const client = walletProvider.getPublicClient(currentChain);
+
+              const balance = await client.getBalance({ address });
+
+              const formattedBalance = formatEther(balance);
+
+              if (callback) {
+
+                  callback({
+
+                      text: \`Balance for address ${address}: ${formattedBalance}\`,
+
+                      content: { balance: formattedBalance },
+
+                  });
+
+              }
+
+              return true;
+
+          } catch (error) {
+
+              console.error("Error getting balance:", error);
+
+              if (callback) {
+
+                  callback({
+
+                      text: \`Error getting balance: ${error.message}\`,
+
+                      content: { error: error.message },
+
+                  });
+
+              }
+
+              return false;
+
+          }
+
+      },
+
+      template: getAddressTemplate,
+
+      validate: async (runtime: IAgentRuntime) => {
+
+          const privateKey = runtime.getSetting("EVM\_PRIVATE\_KEY");
+
+          return typeof privateKey === "string" && privateKey.startsWith("0x");
+
+      },
+
+      examples: \[
+
+          \[
+
+              {
+
+                  user: "assistant",
+
+                  content: {
+
+                      text: "I'll check the balance for 0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+
+                      action: "GET\_BALANCE",
+
+                  },
+
+              },
+
+              {
+
+                  user: "user",
+
+                  content: {
+
+                      text: "What's the balance of 0x742d35Cc6634C0532925a3b844Bc454e4438f44e?",
+
+                      action: "GET\_BALANCE",
+
+                  },
+
+              },
+
+          ],
+
+      ],
+
+      similes: \["CHECK\_BALANCE", "BALANCE\_INQUIRY", "ACCOUNT\_BALANCE"],
+
+  };
+</CodeBlock>
+
+
+
+
+\<code>
+
+
+
+[https://github.com/fuseio/eliza/blob/836f2c95835aace18b09df43c7dc62fd24d26c23/packages/plugin-evm/sr...](https://github.com/fuseio/eliza/blob/836f2c95835aace18b09df43c7dc62fd24d26c23/packages/plugin-evm/src/actions/common.ts#L28-L89)
+
+
+
+
+## Transfer FUSE token with user-connected wallet
+
+In this instance, we have replaced Eliza’s hardcoded private key with the user’s connected wallet, enabling the user to transfer the FUSE token on the blockchain via Edison themselves.
+
+
+
+
+ElizaOS/Backend
+
+[https://github.com/fuseio/eliza/blob/836f2c95835aace18b09df43c7dc62fd24d26c23/packages/plugin-evm/sr...
+
+](https://github.com/fuseio/eliza/blob/836f2c95835aace18b09df43c7dc62fd24d26c23/packages/plugin-evm/src/actions/transfer.ts#L34-L87)
+
+Frontend: 
+
+[https://github.com/fuseio/console-dapp/blob/8f2f8945c975bc959a68e879bc937da9eb6cc0e5/components/ai-a...](https://github.com/fuseio/console-dapp/blob/8f2f8945c975bc959a68e879bc937da9eb6cc0e5/components/ai-agent/ChatMessage.tsx#L14-L118)
+
+
