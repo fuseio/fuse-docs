@@ -81,12 +81,171 @@ export const getBalanceAction = {
 
 In this instance, we have replaced Eliza’s hardcoded private key with the user’s connected wallet, enabling the user to transfer the FUSE token on the blockchain via Edison themselves.
 
-ElizaOS/Backend
+ElizaOS/Backend:
 
-\[[https://github.com/fuseio/eliza/blob/836f2c95835aace18b09df43c7dc62fd24d26c23/packages/plugin-evm/sr](https://github.com/fuseio/eliza/blob/836f2c95835aace18b09df43c7dc62fd24d26c23/packages/plugin-evm/sr)...
+```javascript
+export const transferAction = {
+  name: "transfer",
+  description: "Transfer tokens between addresses on the same chain",
+  handler: async (
+    runtime: IAgentRuntime,
+    _message: Memory,
+    state: State,
+    _options: any,
+    callback?: HandlerCallback
+  ) => {
+    const transferDetails = await buildTransferDetails(state, runtime);
 
-]\([https://github.com/fuseio/eliza/blob/836f2c95835aace18b09df43c7dc62fd24d26c23/packages/plugin-evm/src/actions/transfer.ts#L34-L87](https://github.com/fuseio/eliza/blob/836f2c95835aace18b09df43c7dc62fd24d26c23/packages/plugin-evm/src/actions/transfer.ts#L34-L87))
+    try {
+      if (callback) {
+        callback({
+          text: `You are about to transfer ${transferDetails.amount} to ${transferDetails.toAddress}`,
+          content: transferDetails,
+          action: "SEND_TOKENS"
+        });
+      }
+      return true;
+    } catch (error) {
+      console.error("Error during token transfer:", error);
+      if (callback) {
+        callback({
+          text: `Error transferring tokens: ${error.message}`,
+          content: { error: error.message },
+        });
+      }
+      return false;
+    }
+  },
+  template: transferTemplate,
+  validate: async (runtime: IAgentRuntime) => true,
+  examples: [
+    [
+      {
+        user: "assistant",
+        content: {
+          text: "I'll help you transfer 1 ETH to 0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+          action: "SEND_TOKENS",
+        },
+      },
+      {
+        user: "user",
+        content: {
+          text: "Transfer 1 ETH to 0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+          action: "SEND_TOKENS",
+        },
+      },
+    ],
+  ],
+  similes: ["SEND_TOKENS", "TOKEN_TRANSFER", "MOVE_TOKENS"],
+};
+```
 
 Frontend: 
 
-[https://github.com/fuseio/console-dapp/blob/8f2f8945c975bc959a68e879bc937da9eb6cc0e5/components/ai-a...](https://github.com/fuseio/console-dapp/blob/8f2f8945c975bc959a68e879bc937da9eb6cc0e5/components/ai-agent/ChatMessage.tsx#L14-L118)
+```javascript
+type ChatMessageProps = {
+  message: TextResponse;
+  setMessages: React.Dispatch<React.SetStateAction<TextResponse[]>>
+};
+
+type SendTokensContent = {
+  amount: string;
+  toAddress: Address;
+}
+
+const Spinner = () => {
+  return (
+    <span className="animate-spin border-2 border-gray border-t-2 border-t-dark-gray rounded-full w-4 h-4"></span>
+  )
+}
+
+const Button = ({ message, setMessages }: ChatMessageProps) => {
+  const dispatch = useAppDispatch();
+  const { isConnected } = useAccount();
+  const content = message.content as SendTokensContent;
+
+  const {
+    data: hash,
+    error,
+    isPending,
+    sendTransaction
+  } = useSendTransaction()
+
+  const { isLoading: isConfirming, isSuccess: isConfirmed } =
+    useWaitForTransactionReceipt({
+      hash,
+    })
+
+  const isLoading = isPending || isConfirming;
+
+  useEffect(() => {
+    if (isConfirmed && hash) {
+      setMessages((prevMessages) => {
+        const updatedMessages = [...prevMessages];
+        const lastSendTokensIndex = updatedMessages
+          .slice()
+          .reverse()
+          .findIndex((msg) => msg.text === message.text);
+
+        if (lastSendTokensIndex !== -1) {
+          const actualIndex = updatedMessages.length - 1 - lastSendTokensIndex;
+          updatedMessages[actualIndex] = {
+            ...updatedMessages[actualIndex],
+            hash,
+          };
+        }
+
+        return updatedMessages as TextResponse[];
+      });
+    }
+  }, [hash, isConfirmed, message.text, setMessages]);
+
+  return (
+    <button
+      className={`transition ease-in-out flex items-center gap-2 w-fit px-4 py-3 text-lg leading-none font-semibold rounded-full hover:bg-[transparent] hover:text-black ${error?.message ? "bg-[#FFEBE9] border border-[#FD0F0F] text-[#FD0F0F]" : "bg-black border border-black text-white"}`}
+      onClick={() => {
+        if (message.hash) {
+          window.open(`${fuse.blockExplorers.default.url}/tx/${hash}`, "_blank");
+        } else if (isConnected) {
+          sendTransaction({
+            to: content.toAddress,
+            value: parseEther(content.amount),
+          });
+        } else {
+          dispatch(setIsWalletModalOpen(true));
+        }
+      }}
+    >
+      {message.hash ? "View on Explorer" : isConnected ? "Sign Transaction" : "Connect Wallet"}
+      {isLoading && <Spinner />}
+      {message.hash && <ExternalArrow />}
+    </button>
+  );
+};
+
+const ChatMessage = ({ message, setMessages }: ChatMessageProps) => {
+  const isUser = message.user === "user";
+  const isButton = message.action === "SEND_TOKENS";
+
+  return (
+    <div className={`flex gap-3 mb-4 ${isUser ? "justify-end" : ""}`}>
+      {!isUser && (
+        <div className="w-11 h-11 rounded-full overflow-hidden">
+          <Image src={edisonLogo} alt="AI Assistant" width={50} height={50} />
+        </div>
+      )}
+      <div
+        className={`max-w-[85%] p-4 flex flex-col gap-2 ${isUser
+          ? "bg-[#E4E4E4] text-black rounded-l-[20px] rounded-br-[20px]"
+          : ""
+          }`}
+      >
+        <p className="text-sm">{message.text}</p>
+        {isButton && <Button message={message} setMessages={setMessages} />}
+      </div>
+    </div>
+  );
+};
+
+export default ChatMessage;
+```
