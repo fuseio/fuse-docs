@@ -67,3 +67,27 @@ Make sure everything is up to date by running the following code in the terminal
 
   apt-get install -y libssl1.1
 </CodeBlock>
+
+You should see a response like the following:
+
+![](/img/response.webp)
+
+5\. Create directory and download the Fuse Ember client
+
+<CodeBlock language="Bash">
+  \# Create directory for the client
+
+  mkdir -p \~/fuse-light && cd \~/fuse-light
+
+  \# Download the pre-built binary
+
+  wget https\://github.com/fuseio/avail-light/releases/download/v1.0.4/fuse-light-client-v1.0.4.tar.gz
+
+  \# Extract the archive
+
+  tar -xzf fuse-light-client-v1.0.4.tar.gz
+
+  \# Check what files were extracted
+
+  ls -la
+</CodeBlock>
