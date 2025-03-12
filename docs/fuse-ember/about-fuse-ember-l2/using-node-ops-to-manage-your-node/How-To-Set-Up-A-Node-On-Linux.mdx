@@ -135,3 +135,37 @@ For reward\_collector\_address you should set whatever address you want to recei
 
   chmod +x avail-light-client
 </CodeBlock>
+
+8\. Create Systemd service
+
+<CodeBlock language="Bash">
+  \# Create a systemd service file with the --network mainnet flag
+
+  cat > /etc/systemd/system/fuse-light.service \<\< EOF
+
+  \[Unit]
+
+  Description=Fuse Light Client
+
+  After=network.target
+
+  \[Service]
+
+  User=root
+
+  WorkingDirectory=/root/fuse-light
+
+  ExecStart=/root/fuse-light/avail-light-client --config config.yaml --network mainnet
+
+  Restart=on-failure
+
+  RestartSec=3
+
+  LimitNOFILE=65535
+
+  \[Install]
+
+  WantedBy=multi-user.target
+
+  EOF
+</CodeBlock>
