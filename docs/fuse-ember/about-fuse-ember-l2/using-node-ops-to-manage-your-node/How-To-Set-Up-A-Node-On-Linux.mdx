@@ -33,3 +33,33 @@ Recommended:
 * 8+ MBit/sec download speed
 
 This guide uses Hostinger, with a KVM 2 setup, which provides 2 vCPU cores.
+
+![](/img/KVM2.webp)
+
+Select Ubuntu to run the Fuse client.
+
+![](/img/Ubuntu.webp)
+
+After setup, go to the VPS Terminal.
+
+![](/img/Terminal.webp)
+
+4\. Update System and Install Dependencies
+
+Make sure everything is up to date by running the following code in the terminal:
+
+\# Update system packages
+
+apt-get update
+
+\# Install required dependencies including libssl1.1
+
+apt-get install -y wget tar
+
+\# Install libssl1.1 (required by the binary)
+
+echo "deb http\://security.ubuntu.com/ubuntu focal-security main" > /etc/apt/sources.list.d/focal-security.list
+
+apt-get update
+
+apt-get install -y libssl1.1
