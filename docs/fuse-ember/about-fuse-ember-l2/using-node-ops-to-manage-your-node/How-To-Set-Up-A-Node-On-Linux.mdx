@@ -12,15 +12,15 @@ Start by creating a new wallet with a random seed phrase, using a service like [
 
 Once you have generated a new mnemonic, private key, and address, you can export these by clicking Download, or copy and paste them.
 
-2\. Delegate your node
+**2. Delegate your node**
 
 Go to [Fuse testnet Nodes](https://console.fuse.io/nodes/testnet), connect your wallet containing your Fuse Node NFT, and delegate it to the wallet address you generated.
 
 ![](/img/Delegate.webp)
 
-**3. **Set up your VPS
+**3. Set up your VPS**
 
-There are lots of VPS providers to choose from, but you should ensure you select at least the minimum hardware requirements, and ideally more: 
+There are lots of VPS providers to choose from, but you should ensure you select at least the minimum hardware requirements, and ideally more:
 
 Minimum:
 
@@ -46,7 +46,7 @@ After setup, go to the VPS Terminal.
 
 ![](/img/Terminal.webp)
 
-4\. Update System and Install Dependencies
+**4. Update System and Install Dependencies**
 
 Make sure everything is up to date by running the following code in the terminal:
 
@@ -61,7 +61,7 @@ Make sure everything is up to date by running the following code in the terminal
 
   \# Install libssl1.1 (required by the binary)
 
-  echo "deb http\://security.ubuntu.com/ubuntu focal-security main" > /etc/apt/sources.list.d/focal-security.list
+  echo "deb [http://security.ubuntu.com/ubuntu](http://security.ubuntu.com/ubuntu) focal-security main" > /etc/apt/sources.list.d/focal-security.list
 
   apt-get update
 
@@ -72,7 +72,7 @@ You should see a response like the following:
 
 ![](/img/response.webp)
 
-5\. Create directory and download the Fuse Ember client
+**5. Create directory and download the Fuse Ember client**
 
 <CodeBlock language="Bash">
   \# Create directory for the client
@@ -81,7 +81,7 @@ You should see a response like the following:
 
   \# Download the pre-built binary
 
-  wget https\://github.com/fuseio/avail-light/releases/download/v1.0.4/fuse-light-client-v1.0.4.tar.gz
+  wget [https://github.com/fuseio/avail-light/releases/download/v1.0.4/fuse-light-client-v1.0.4.tar.gz](https://github.com/fuseio/avail-light/releases/download/v1.0.4/fuse-light-client-v1.0.4.tar.gz)
 
   \# Extract the archive
 
@@ -96,7 +96,7 @@ You should see a response as follows:
 
 ![](/img/response2.webp)
 
-6\. Create your configuration file
+**6. Create your configuration file**
 
 <CodeBlock language="Bash">
   \# Create config file with only the required fields
@@ -113,7 +113,7 @@ You should see a response as follows:
 
   check\_nft\_interval=300
 
-  check\_nft\_endpoint="https\://monitoring.avail.fuse.io/check-nft"
+  check\_nft\_endpoint="[https://monitoring.avail.fuse.io/check-nft](https://monitoring.avail.fuse.io/check-nft)"
 
   commission\_rate = "10"
 
@@ -128,7 +128,7 @@ You should see a response as follows:
 
 For reward\_collector\_address you should set whatever address you want to receive rewards, while private\_key should be the private key from the wallet you created in step 1. Your NFT is delegated to this wallet.
 
-7\. Make Binary executable
+**7. Make Binary executable**
 
 <CodeBlock language="Bash">
   \# Make the binary executable
@@ -136,7 +136,7 @@ For reward\_collector\_address you should set whatever address you want to recei
   chmod +x avail-light-client
 </CodeBlock>
 
-8\. Create Systemd service
+**8. Create Systemd service**
 
 <CodeBlock language="Bash">
   \# Create a systemd service file with the --network mainnet flag
@@ -170,7 +170,7 @@ For reward\_collector\_address you should set whatever address you want to recei
   EOF
 </CodeBlock>
 
-9\. Start and Enable the service
+**9. Start and Enable the service**
 
 <CodeBlock language="Bash">
   \# Reload systemd
@@ -192,7 +192,7 @@ This should result in the following output:
 
 ![](/img/output.webp)
 
-10\. Monitor the logs
+**10. Monitor the logs**
 
 Finally, you can monitor the node with the following command:
 
