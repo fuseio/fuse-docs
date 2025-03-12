@@ -91,3 +91,37 @@ You should see a response like the following:
 
   ls -la
 </CodeBlock>
+
+You should see a response as follows:
+
+![](/img/response2.webp)
+
+6\. Create your configuration file
+
+<CodeBlock language="Bash">
+  \# Create config file with only the required fields
+
+  cat > config.yaml \<\< EOF
+
+  sync\_start\_block = 1
+
+  genesis\_hash = "DEVTST"
+
+  avail\_path = "avail\_path"
+
+  avail\_secret\_key = "bottom drive obey lake curtain smoke basket hold race lonely fit walk//Alice"
+
+  check\_nft\_interval=300
+
+  check\_nft\_endpoint="https\://monitoring.avail.fuse.io/check-nft"
+
+  commission\_rate = "10"
+
+  operator\_name = "SELF\_RUN"
+
+  reward\_collector\_address = "0xYOUR\_REWARD\_ADDRESS"
+
+  private\_key = "0xYOUR\_PRIVATE\_KEY"
+
+  EOF
+</CodeBlock>
