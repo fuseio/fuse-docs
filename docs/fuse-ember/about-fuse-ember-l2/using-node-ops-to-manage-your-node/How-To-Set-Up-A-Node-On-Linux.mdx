@@ -187,3 +187,17 @@ For reward\_collector\_address you should set whatever address you want to recei
 
   systemctl status fuse-light
 </CodeBlock>
+
+This should result in the following output:
+
+![](/img/output.webp)
+
+10\. Monitor the logs
+
+Finally, you can monitor the node with the following command:
+
+<CodeBlock language="Bash">
+  \# View logs
+
+  journalctl -u fuse-light -f
+</CodeBlock>
