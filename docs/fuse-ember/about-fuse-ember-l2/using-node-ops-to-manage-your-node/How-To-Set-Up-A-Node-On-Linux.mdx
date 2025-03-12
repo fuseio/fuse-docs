@@ -169,3 +169,21 @@ For reward\_collector\_address you should set whatever address you want to recei
 
   EOF
 </CodeBlock>
+
+9\. Start and Enable the service
+
+<CodeBlock language="Bash">
+  \# Reload systemd
+
+  systemctl daemon-reload
+
+  \# Enable and start the service
+
+  systemctl enable fuse-light
+
+  systemctl start fuse-light
+
+  \# Check the status
+
+  systemctl status fuse-light
+</CodeBlock>
