@@ -48,18 +48,20 @@ After setup, go to the VPS Terminal.
 
 Make sure everything is up to date by running the following code in the terminal:
 
-\# Update system packages
+<CodeBlock>
+  \# Update system packages
 
-apt-get update
+  apt-get update
 
-\# Install required dependencies including libssl1.1
+  \# Install required dependencies including libssl1.1
 
-apt-get install -y wget tar
+  apt-get install -y wget tar
 
-\# Install libssl1.1 (required by the binary)
+  \# Install libssl1.1 (required by the binary)
 
-echo "deb http\://security.ubuntu.com/ubuntu focal-security main" > /etc/apt/sources.list.d/focal-security.list
+  echo "deb http\://security.ubuntu.com/ubuntu focal-security main" > /etc/apt/sources.list.d/focal-security.list
 
-apt-get update
+  apt-get update
 
-apt-get install -y libssl1.1
+  apt-get install -y libssl1.1
+</CodeBlock>
