@@ -25,15 +25,15 @@ There are lots of VPS providers to choose from, but you should ensure you select
 
 **Minimum:**
 
-* CPU with 1+ cores
-* 2 GB RAM
-* 4 MBit/sec download speed
+- CPU with 1+ cores
+- 2 GB RAM
+- 4 MBit/sec download speed
 
 **Recommended:**
 
-* Fast CPU with 2+ cores
-* 4 GB+ RAM
-* 8+ MBit/sec download speed
+- Fast CPU with 2+ cores
+- 4 GB+ RAM
+- 8+ MBit/sec download speed
 
 This guide uses Hostinger, with a KVM 2 setup, which provides 2 vCPU cores.
 
@@ -54,19 +54,20 @@ Make sure everything is up to date by running the following code in the terminal
 <CodeBlock language="Bash">
   \# Update system packages
 
-  apt-get update
+apt-get update
 
-  \# Install required dependencies including libssl1.1
+\# Install required dependencies including libssl1.1
 
-  apt-get install -y wget tar
+apt-get install -y wget tar
 
-  \# Install libssl1.1 (required by the binary)
+\# Install libssl1.1 (required by the binary)
 
-  echo "deb [http://security.ubuntu.com/ubuntu](http://security.ubuntu.com/ubuntu) focal-security main" > /etc/apt/sources.list.d/focal-security.list
+echo "deb [http://security.ubuntu.com/ubuntu](http://security.ubuntu.com/ubuntu) focal-security main" > /etc/apt/sources.list.d/focal-security.list
 
-  apt-get update
+apt-get update
 
-  apt-get install -y libssl1.1
+apt-get install -y libssl1.1
+
 </CodeBlock>
 
 You should see a response like the following:
@@ -78,19 +79,20 @@ You should see a response like the following:
 <CodeBlock language="Bash">
   \# Create directory for the client
 
-  mkdir -p \~/fuse-light && cd \~/fuse-light
+mkdir -p \~/fuse-light && cd \~/fuse-light
 
-  \# Download the pre-built binary
+\# Download the pre-built binary
 
-  wget [https://github.com/fuseio/avail-light/releases/download/v1.0.4/fuse-light-client-v1.0.4.tar.gz](https://github.com/fuseio/avail-light/releases/download/v1.0.4/fuse-light-client-v1.0.4.tar.gz)
+wget [https://github.com/fuseio/avail-light/releases/download/v1.0.4/fuse-light-client-v1.0.4.tar.gz](https://github.com/fuseio/avail-light/releases/download/v1.0.4/fuse-light-client-v1.0.4.tar.gz)
 
-  \# Extract the archive
+\# Extract the archive
 
-  tar -xzf fuse-light-client-v1.0.4.tar.gz
+tar -xzf fuse-light-client-v1.0.4.tar.gz
 
-  \# Check what files were extracted
+\# Check what files were extracted
 
-  ls -la
+ls -la
+
 </CodeBlock>
 
 You should see a response as follows:
@@ -102,39 +104,41 @@ You should see a response as follows:
 <CodeBlock language="Bash">
   \# Create config file with only the required fields
 
-  cat > config.yaml \<\< EOF
+cat > config.yaml \<\< EOF
 
-  sync\_start\_block = 1
+sync_start_block = 1
 
-  genesis\_hash = "DEVTST"
+genesis_hash = "DEVTST"
 
-  avail\_path = "avail\_path"
+avail_path = "avail_path"
 
-  avail\_secret\_key = "bottom drive obey lake curtain smoke basket hold race lonely fit walk//Alice"
+avail_secret_key = "bottom drive obey lake curtain smoke basket hold race lonely fit walk//Alice"
 
-  check\_nft\_interval=300
+check_nft_interval=300
 
-  check\_nft\_endpoint="[https://monitoring.avail.fuse.io/check-nft](https://monitoring.avail.fuse.io/check-nft)"
+check_nft_endpoint="[https://monitoring.avail.fuse.io/check-nft](https://monitoring.avail.fuse.io/check-nft)"
 
-  commission\_rate = "10"
+commission_rate = "10"
 
-  operator\_name = "SELF\_RUN"
+operator_name = "SELF_RUN"
 
-  reward\_collector\_address = "0xYOUR\_REWARD\_ADDRESS"
+reward_collector_address = "0xYOUR_REWARD_ADDRESS"
 
-  private\_key = "0xYOUR\_PRIVATE\_KEY"
+private_key = "0xYOUR_PRIVATE_KEY"
 
-  EOF
+EOF
+
 </CodeBlock>
 
-For reward\_collector\_address you should set whatever address you want to receive rewards, while private\_key should be the private key from the wallet you created in step 1. Your NFT is delegated to this wallet.
+For reward_collector_address you should set whatever address you want to receive rewards, while private_key should be the private key from the wallet you created in step 1. Your NFT is delegated to this wallet.
 
 **7. Make Binary executable**
 
 <CodeBlock language="Bash">
   \# Make the binary executable
 
-  chmod +x avail-light-client
+chmod +x avail-light-client
+
 </CodeBlock>
 
 **8. Create Systemd service**
@@ -142,33 +146,34 @@ For reward\_collector\_address you should set whatever address you want to recei
 <CodeBlock language="Bash">
   \# Create a systemd service file with the --network mainnet flag
 
-  cat > /etc/systemd/system/fuse-light.service \<\< EOF
+cat > /etc/systemd/system/fuse-light.service \<\< EOF
 
-  \[Unit]
+\[Unit]
 
-  Description=Fuse Light Client
+Description=Fuse Light Client
 
-  After=network.target
+After=network.target
 
-  \[Service]
+\[Service]
 
-  User=root
+User=root
 
-  WorkingDirectory=/root/fuse-light
+WorkingDirectory=/root/fuse-light
 
-  ExecStart=/root/fuse-light/avail-light-client --config config.yaml --network mainnet
+ExecStart=/root/fuse-light/avail-light-client --config config.yaml --network mainnet
 
-  Restart=on-failure
+Restart=on-failure
 
-  RestartSec=3
+RestartSec=3
 
-  LimitNOFILE=65535
+LimitNOFILE=65535
 
-  \[Install]
+\[Install]
 
-  WantedBy=multi-user.target
+WantedBy=multi-user.target
 
-  EOF
+EOF
+
 </CodeBlock>
 
 **9. Start and Enable the service**
@@ -176,17 +181,18 @@ For reward\_collector\_address you should set whatever address you want to recei
 <CodeBlock language="Bash">
   \# Reload systemd
 
-  systemctl daemon-reload
+systemctl daemon-reload
 
-  \# Enable and start the service
+\# Enable and start the service
 
-  systemctl enable fuse-light
+systemctl enable fuse-light
 
-  systemctl start fuse-light
+systemctl start fuse-light
 
-  \# Check the status
+\# Check the status
 
-  systemctl status fuse-light
+systemctl status fuse-light
+
 </CodeBlock>
 
 This should result in the following output:
@@ -200,7 +206,8 @@ Finally, you can monitor the node with the following command:
 <CodeBlock language="Bash">
   \# View logs
 
-  journalctl -u fuse-light -f
+journalctl -u fuse-light -f
+
 </CodeBlock>
 
 That's it, you're all done! You can contact Support via Discord if you need more assistance.
