@@ -1,11 +1,5 @@
-import React from "react";
-import { defineConfig, TextField } from "tinacms";
-import { ReferenceField } from "tinacms";
-import { FeaturesBlockTemplate } from "../src/components/Features/template";
-import { HeroBlockTemplate } from "../src/components/Hero/template";
+import { defineConfig } from "tinacms";
 import { MDXTemplates } from "../src/theme/template";
-import { docusaurusDate, titleFromSlug } from "../util";
-import title from "title";
 
 const isProduction = process.env.TINA_ENV === 'production';
 const branch = isProduction ? "master" : "staging";
