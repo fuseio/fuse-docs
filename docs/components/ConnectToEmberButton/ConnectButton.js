@@ -10,8 +10,8 @@ export default function ConnectButton() {
     chainId: CHAIN_ID_HEX,
     chainName: "Flash Testnet",
     nativeCurrency: {
-      name: "ETH",
-      symbol: "ETH",
+      name: "FUSE",
+      symbol: "FUSE",
       decimals: 18,
     },
     rpcUrls: [
