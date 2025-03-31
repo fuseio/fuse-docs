@@ -3,19 +3,21 @@ import styles from "./styles.module.css";
 
 export default function ConnectButton() {
   const [networkStatus, setNetworkStatus] = useState("disconnected"); // "disconnected" | "wrong_network" | "connected"
-  const CHAIN_ID_DECIMAL = 1264453517;
+  const CHAIN_ID_DECIMAL = 10920;
   const CHAIN_ID_HEX = `0x${CHAIN_ID_DECIMAL.toString(16)}`;
 
   const EMBER_TESTNET = {
     chainId: CHAIN_ID_HEX,
     chainName: "Flash Testnet",
     nativeCurrency: {
-      name: "FUSE",
-      symbol: "FUSE",
+      name: "ETH",
+      symbol: "ETH",
       decimals: 18,
     },
-    rpcUrls: ["https://rpc.flash.fuse.io"],
-    blockExplorerUrls: ["https://explorer.flash.fuse.io"],
+    rpcUrls: [
+      "https://floral-green-gadget.fuse-flash.quiknode.pro/0b560e99d1a605b43771fc313dbc3e7054df160e/",
+    ],
+    blockExplorerUrls: ["https://fuse-flash.explorer.quicknode.com/"],
   };
 
   const checkNetwork = async () => {
@@ -54,8 +56,13 @@ export default function ConnectButton() {
         params: [{chainId: EMBER_TESTNET.chainId}],
       });
     } catch (switchError) {
-      // If network doesn't exist, add it
-      if (switchError.code === 4902) {
+      // Check both the top-level code and originalError.code
+      if (
+        switchError.code === 4902 ||
+        (switchError.data &&
+          switchError.data.originalError &&
+          switchError.data.originalError.code === 4902)
+      ) {
         try {
           await window.ethereum.request({
             method: "wallet_addEthereumChain",
