@@ -1,7 +1,5 @@
 // .tina/config.jsx
-import React2 from "react";
-import { defineConfig, TextField } from "tinacms";
-import { ReferenceField } from "tinacms";
+import { defineConfig } from "tinacms";
 
 // src/theme/template.tsx
 import React from "react";
@@ -184,7 +182,6 @@ var MDXTemplates = [
 ];
 
 // .tina/config.jsx
-import title2 from "title";
 var isProduction = process.env.TINA_ENV === "production";
 var branch = isProduction ? "master" : "staging";
 var DocsCollection = {
