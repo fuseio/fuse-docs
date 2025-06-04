@@ -31,6 +31,7 @@ export type SystemInfo = {
   filename: Scalars['String']['output'];
   title?: Maybe<Scalars['String']['output']>;
   basename: Scalars['String']['output'];
+  hasReferences?: Maybe<Scalars['Boolean']['output']>;
   breadcrumbs: Array<Scalars['String']['output']>;
   path: Scalars['String']['output'];
   relativePath: Scalars['String']['output'];
@@ -411,7 +412,7 @@ export type DocQueryVariables = Exact<{
 }>;
 
 
-export type DocQuery = { __typename?: 'Query', doc: { __typename: 'Doc', id: string, title: string, description?: string | null, sidebar_position?: number | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type DocQuery = { __typename?: 'Query', doc: { __typename: 'Doc', id: string, title: string, description?: string | null, sidebar_position?: number | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type DocConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -423,14 +424,14 @@ export type DocConnectionQueryVariables = Exact<{
 }>;
 
 
-export type DocConnectionQuery = { __typename?: 'Query', docConnection: { __typename?: 'DocConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DocConnectionEdges', cursor: string, node?: { __typename: 'Doc', id: string, title: string, description?: string | null, sidebar_position?: number | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type DocConnectionQuery = { __typename?: 'Query', docConnection: { __typename?: 'DocConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DocConnectionEdges', cursor: string, node?: { __typename: 'Doc', id: string, title: string, description?: string | null, sidebar_position?: number | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type DropdownsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type DropdownsQuery = { __typename?: 'Query', dropdowns: { __typename: 'Dropdowns', id: string, label: string, position?: number | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type DropdownsQuery = { __typename?: 'Query', dropdowns: { __typename: 'Dropdowns', id: string, label: string, position?: number | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type DropdownsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -442,7 +443,7 @@ export type DropdownsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type DropdownsConnectionQuery = { __typename?: 'Query', dropdownsConnection: { __typename?: 'DropdownsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DropdownsConnectionEdges', cursor: string, node?: { __typename: 'Dropdowns', id: string, label: string, position?: number | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type DropdownsConnectionQuery = { __typename?: 'Query', dropdownsConnection: { __typename?: 'DropdownsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DropdownsConnectionEdges', cursor: string, node?: { __typename: 'Dropdowns', id: string, label: string, position?: number | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const DocPartsFragmentDoc = gql`
     fragment DocParts on Doc {
@@ -468,6 +469,7 @@ export const DocDocument = gql`
       _sys {
         filename
         basename
+        hasReferences
         breadcrumbs
         path
         relativePath
@@ -503,6 +505,7 @@ export const DocConnectionDocument = gql`
           _sys {
             filename
             basename
+            hasReferences
             breadcrumbs
             path
             relativePath
@@ -523,6 +526,7 @@ export const DropdownsDocument = gql`
       _sys {
         filename
         basename
+        hasReferences
         breadcrumbs
         path
         relativePath
@@ -558,6 +562,7 @@ export const DropdownsConnectionDocument = gql`
           _sys {
             filename
             basename
+            hasReferences
             breadcrumbs
             path
             relativePath
