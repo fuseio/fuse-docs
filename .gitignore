@@ -8,6 +8,10 @@
 .docusaurus
 .cache-loader
 
+# TinaCMS Generated files
+.tina/__generated__
+static/admin
+
 # Misc
 .DS_Store
 .env.local
