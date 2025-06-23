@@ -9,7 +9,6 @@ type SystemInfo {
   filename: String!
   title: String
   basename: String!
-  hasReferences: Boolean
   breadcrumbs(excludeExtension: Boolean): [String!]!
   path: String!
   relativePath: String!
