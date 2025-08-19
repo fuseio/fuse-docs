@@ -12,6 +12,9 @@
 # .tina/__generated__
 # static/admin
 
+# Claude
+.claude
+
 # Misc
 .DS_Store
 .env.local
