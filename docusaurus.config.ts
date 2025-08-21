@@ -12,6 +12,9 @@ const config: Config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   favicon: 'img/logo.svg',
+  future: {
+    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+  },
   staticDirectories: ['static'],
   organizationName: 'fuse',
   projectName: 'fuse-docs',
