@@ -1,0 +1,25 @@
+---
+title: Upgrade Guide
+description: For Nodes, Bootnodes and Validators
+---
+
+# Upgrade Guide
+
+### Step 1 - CD to the location of quickstart.sh and update quickstart
+
+```
+cd <location of quickstart.sh>
+wget -O quickstart.sh https://raw.githubusercontent.com/fuseio/fuse-network/master/nethermind/quickstart.sh
+```
+
+### Step 2 - Run quickstart and agree to upgrade
+
+```
+sudo ./quickstart.sh -n fuse -r validator -k <node_name_for_netstat>
+Agree [Y] when prompted to upgrade
+Wait for script to complete
+```
+
+### Step 3 - Verify Upgrade
+
+Check your node on our [health site ](https://health.fuse.io)It should be online, and the client should be "1.29.0" ensure your node is connected to peers and syncing/ in sync.
