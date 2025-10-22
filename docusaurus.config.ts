@@ -121,7 +121,7 @@ const config: Config = {
         },
         {
           type: 'doc',
-          docId: 'fuse-ember/connect-to-ember/connect-to-ember',
+          docId: 'fuse-ember/fuse-ember/fuse-ember',
           position: 'left',
           label: 'Fuse Ember',
         },
