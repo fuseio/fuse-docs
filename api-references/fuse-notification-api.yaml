@@ -73,10 +73,7 @@ info:
     As an added security measure, you can ensure your webhook notification originates from Fuse by using one of the following IP addresses:
 
     ```
-    35.191.17.80
-    35.191.17.87
-    35.191.17.84
-    35.191.24.103
+    40.160.8.235
     ```
 
     ### Webhooks Retry Logic
