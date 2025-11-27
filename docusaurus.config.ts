@@ -124,12 +124,6 @@ const config: Config = {
           label: 'Developers',
         },
         {
-          type: 'doc',
-          docId: 'fuse-ember/fuse-ember/fuse-ember',
-          position: 'left',
-          label: 'Fuse Ember',
-        },
-        {
           href: 'https://github.com/fuseio/',
           position: 'right',
           className: 'header-github-link',
