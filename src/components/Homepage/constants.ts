@@ -36,12 +36,12 @@ const MainFeatureList = [
 
   },
   {
-    title: 'Fuse Ember',
-    description: 'Find out about the future of Fuse: a business-friendly L2, powered by zero knowledge technology.',
+    title: 'FuseBox',
+    description: 'The best way to build on Fuse. Integrate account abstraction, gasless transactions and more.',
     links: [
-      { label: 'What is Fuse Ember?', link: '/fuse-ember/fuse-ember' },
-      { label: 'Native Account Abstraction', link: '/fuse-ember/fuse-ember' },
-      { label: 'Data availability', link: '/fuse-ember/fuse-ember' },
+      { label: 'What is FuseBox?', link: '/developers/fusebox' },
+      { label: 'Account Abstraction', link: '/developers/fusebox/sdk' },
+      { label: 'Mobile and Web SDKs', link: '/developers/fusebox/sdk' },
     ],
     img: 'img/homepage/4.svg',
     imgClassName: 'card-4',

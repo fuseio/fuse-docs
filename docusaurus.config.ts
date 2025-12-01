@@ -10,7 +10,11 @@ const config: Config = {
   url: 'https://docs.fuse.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
+  },
   favicon: 'img/logo.svg',
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
@@ -118,12 +122,6 @@ const config: Config = {
           docId: 'developers/building-on-fuse/building-on-fuse',
           position: 'left',
           label: 'Developers',
-        },
-        {
-          type: 'doc',
-          docId: 'fuse-ember/fuse-ember/fuse-ember',
-          position: 'left',
-          label: 'Fuse Ember',
         },
         {
           href: 'https://github.com/fuseio/',
