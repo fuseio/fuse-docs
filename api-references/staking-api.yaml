@@ -31,8 +31,6 @@ info:
 servers:
   - url: https://api.fuse.io/api/v0/staking
     description: Production server
-  - url: https://api.staging.fuse.io/api/v0/staking
-    description: Staging server
 
 tags:
   - name: Staking
