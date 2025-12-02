@@ -25,8 +25,6 @@ info:
 servers:
   - url: https://api.fuse.io/api/v2/smart-wallets
     description: Production server
-  - url: https://api.staging.fuse.io/api/v2/smart-wallets
-    description: Staging server
 
 tags:
   - name: Smart Wallets

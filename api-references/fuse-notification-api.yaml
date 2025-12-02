@@ -73,7 +73,10 @@ info:
     As an added security measure, you can ensure your webhook notification originates from Fuse by using one of the following IP addresses:
 
     ```
-    40.160.8.235
+    35.191.17.80
+    35.191.17.87
+    35.191.17.84
+    35.191.24.103
     ```
 
     ### Webhooks Retry Logic
@@ -249,8 +252,7 @@ info:
 servers:
   - url: https://api.fuse.io/api/v0/notifications
     description: Production server
-  - url: https://api.staging.fuse.io/api/v0/notifications
-    description: Staging server
+
 tags:
   - name: Webhooks
     description: Operations related to webhooks
