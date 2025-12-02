@@ -34,8 +34,6 @@ info:
 servers:
   - url: https://api.fuse.io/api/v0/trade
     description: Production server
-  - url: https://api.staging.fuse.io/api/v0/trade
-    description: Staging server
 
 tags:
   - name: Price

@@ -21,8 +21,6 @@ info:
 servers:
   - url: https://api.fuse.io/api/v0/graphql
     description: Production server
-  - url: https://api.staging.fuse.io/api/v0/graphql
-    description: Staging server
 
 tags:
   - name: NFTs

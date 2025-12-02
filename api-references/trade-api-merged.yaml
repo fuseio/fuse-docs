@@ -33,8 +33,6 @@ info:
 servers:
   - url: https://api.fuse.io
     description: Production server
-  - url: https://api.staging.fuse.io
-    description: Staging server
 
 tags:
   - name: V1 Price
