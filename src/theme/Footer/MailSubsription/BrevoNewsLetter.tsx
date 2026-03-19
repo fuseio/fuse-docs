@@ -26,19 +26,15 @@ const BrevoNewsLetter = () => {
       formData.append('email_address_check', '')
       formData.append('locale', 'en')
 
-      const response = await fetch(BREVO_FORM_ACTION, {
+      await fetch(BREVO_FORM_ACTION, {
         method: 'POST',
         body: formData,
+        mode: "no-cors",
       })
 
-      if (response.ok) {
-        setStatus('success')
-        setMessage('Your subscription has been successful.')
-        setEmail('')
-      } else {
-        setStatus('error')
-        setMessage('Your subscription could not be saved. Please try again.')
-      }
+      setStatus('success')
+      setMessage('Your subscription has been successful.')
+      setEmail('')
     } catch {
       setStatus('error')
       setMessage('Your subscription could not be saved. Please try again.')
