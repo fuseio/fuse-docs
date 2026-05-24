@@ -214,31 +214,31 @@
           },
           {
             "group": "Notification API",
-            "openapi": "api-references/fuse-notification-api.yaml"
+            "openapi": "/api-references/fuse-notification-api.yaml"
           },
           {
             "group": "Smart Wallets API",
-            "openapi": "api-references/fuse-smart-wallets-api.yaml"
+            "openapi": "/api-references/fuse-smart-wallets-api.yaml"
           },
           {
             "group": "Balances API",
-            "openapi": "api-references/balances-api.yaml"
+            "openapi": "/api-references/balances-api.yaml"
           },
           {
             "group": "Trade API",
-            "openapi": "api-references/trade-api-merged.yaml"
+            "openapi": "/api-references/trade-api-merged.yaml"
           },
           {
             "group": "Explorer API",
-            "openapi": "api-references/explorer-api.yaml"
+            "openapi": "/api-references/explorer-api.yaml"
           },
           {
             "group": "Staking API",
-            "openapi": "api-references/staking-api.yaml"
+            "openapi": "/api-references/staking-api.yaml"
           },
           {
             "group": "GraphQL API",
-            "openapi": "api-references/graphql-api.yaml"
+            "openapi": "/api-references/graphql-api.yaml"
           }
         ]
       }

@@ -1029,7 +1029,8 @@ paths:
                     type: string
                   result:
                     type: string
-                  id: type
+                  id:
+                    type: integer
   /?module=contract&action=listcontracts:
     get:
       tags:

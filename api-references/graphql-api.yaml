@@ -147,38 +147,40 @@ components:
           type: string
         erc721Transfers:
           type: array
-          items: object
-          properties:
-            from:
-              type: string
-            to:
-              type: string
-            tokenId:
-              type: string
-            contractAddress:
-              type: string
-            name:
-              type: string
-            symbol:
-              type: string
+          items:
+            type: object
+            properties:
+              from:
+                type: string
+              to:
+                type: string
+              tokenId:
+                type: string
+              contractAddress:
+                type: string
+              name:
+                type: string
+              symbol:
+                type: string
         erc20Transfers:
           type: array
-          items: object
-          properties:
-            from:
-              type: string
-            to:
-              type: string
-            value:
-              type: string
-            contractAddress:
-              type: string
-            name:
-              type: string
-            symbol:
-              type: string
-            decimals:
-              type: string
+          items:
+            type: object
+            properties:
+              from:
+                type: string
+              to:
+                type: string
+              value:
+                type: string
+              contractAddress:
+                type: string
+              name:
+                type: string
+              symbol:
+                type: string
+              decimals:
+                type: string
 
   responses:
     ForbiddenError:
