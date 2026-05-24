@@ -1,80 +1,313 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "Fuse Documentation",
+  "description": "Official documentation for Fuse, an EVM-compatible blockchain providing a scalable, fast, and cost-effective infrastructure for Web3 applications.",
   "colors": {
     "primary": "#16A34A",
-    "light": "#07C983",
+    "light": "#22C55E",
     "dark": "#15803D"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/static/img/favicon.ico",
+  "logo": {
+    "light": "/static/img/fuse-logo.svg",
+    "dark": "/static/img/fuse-logo.svg",
+    "href": "https://docs.fuse.io"
+  },
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Basics",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Overview",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "docs/basics/overview/overview",
+              "docs/basics/overview/fuse_token",
+              "docs/basics/overview/connect-to-fuse",
+              "docs/basics/overview/bridge-to-fuse"
             ]
           },
           {
-            "group": "Customization",
+            "group": "How Fuse Works",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "docs/basics/how-fuse-works/how-fuse-works",
+              "docs/basics/how-fuse-works/how-to-become-validator",
+              "docs/basics/how-fuse-works/vote",
+              {
+                "group": "Participating in Network Consensus",
+                "pages": [
+                  "docs/basics/how-fuse-works/participating-in-network-consensus/participating-in-network-consensus",
+                  "docs/basics/how-fuse-works/participating-in-network-consensus/stake-delegate-and-withdraw",
+                  "docs/basics/how-fuse-works/participating-in-network-consensus/end-of-cycle-flow"
+                ]
+              }
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Ecosystem",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/components",
-              "essentials/reusable-snippets"
+              "docs/basics/ecosystem/ecosystem",
+              "docs/basics/ecosystem/community",
+              "docs/basics/ecosystem/fuse-explorer",
+              "docs/basics/ecosystem/oracles",
+              "docs/basics/ecosystem/wallets-on-fuse",
+              {
+                "group": "Governance and Development",
+                "pages": [
+                  "docs/basics/ecosystem/fuse-governance-and-development/fuse-governance-and-development",
+                  "docs/basics/ecosystem/fuse-governance-and-development/fips"
+                ]
+              }
             ]
           },
           {
-            "group": "Agent ready",
+            "group": "Businesses",
             "pages": [
-              "agent-ready/prompt",
-              "agent-ready/visibility",
-              "agent-ready/contextual",
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "docs/basics/businesses/businesses"
             ]
           },
           {
-            "group": "Fuse.ai",
+            "group": "Support & FAQ",
             "pages": [
-              "fuse-ai/introduction",
-              "fuse-ai/fuse-mcp",
-              "fuse-ai/x402"
+              "docs/basics/support-faq/support-faq",
+              "docs/basics/support-faq/faq"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Developers",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Building on Fuse",
             "pages": [
-              "api-reference/introduction"
+              "docs/developers/building-on-fuse/building-on-fuse",
+              "docs/developers/building-on-fuse/quick-start",
+              "docs/developers/building-on-fuse/rpc",
+              "docs/developers/building-on-fuse/edison-ai/edison-ai"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "FuseBox",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "docs/developers/fusebox/fusebox",
+              "docs/developers/fusebox/architecture",
+              {
+                "group": "SDK",
+                "pages": [
+                  "docs/developers/fusebox/sdk/README",
+                  "docs/developers/fusebox/sdk/1-installation-and-setup",
+                  "docs/developers/fusebox/sdk/2-create-scw",
+                  "docs/developers/fusebox/sdk/3-send-single-txn",
+                  "docs/developers/fusebox/sdk/4-send-batch-txn",
+                  "docs/developers/fusebox/sdk/5-non-blocking-txn",
+                  "docs/developers/fusebox/sdk/6-transfer-nft",
+                  "docs/developers/fusebox/sdk/7-swap-tokens",
+                  "docs/developers/fusebox/sdk/8-get-list-of-tokens-owned-by-address",
+                  "docs/developers/fusebox/sdk/9-get-historical-txns",
+                  "docs/developers/fusebox/sdk/10-get-token-details",
+                  "docs/developers/fusebox/sdk/11-get-smart-wallet-token-balance",
+                  "docs/developers/fusebox/sdk/12-get-staking-options",
+                  "docs/developers/fusebox/sdk/13-stake-and-unstake",
+                  "docs/developers/fusebox/sdk/14-get-staked-tokens",
+                  "docs/developers/fusebox/sdk/15-get-token-price",
+                  "docs/developers/fusebox/sdk/16-get-token-price-change",
+                  "docs/developers/fusebox/sdk/17-get-price-change-in-interval",
+                  "docs/developers/fusebox/sdk/18-get-list-of-supported-tokens",
+                  "docs/developers/fusebox/sdk/19-sponsored-txn",
+                  "docs/developers/fusebox/sdk/limitations",
+                  "docs/developers/fusebox/sdk/migration",
+                  "docs/developers/fusebox/sdk/troubleshooting"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Web3 Tools",
+            "pages": [
+              "docs/developers/web3-tools/web3-tools",
+              "docs/developers/web3-tools/Key-Smart-Contracts",
+              "docs/developers/web3-tools/dapp-development-tools",
+              "docs/developers/web3-tools/grove",
+              "docs/developers/web3-tools/sharemint",
+              "docs/developers/web3-tools/using-hardhat",
+              "docs/developers/web3-tools/using-remix-and-metamask",
+              "docs/developers/web3-tools/using-thirdweb",
+              "docs/developers/web3-tools/walletconnect-on-fuse"
+            ]
+          },
+          {
+            "group": "Charge",
+            "pages": [
+              "docs/developers/charge/charge"
+            ]
+          },
+          {
+            "group": "Subgraphs",
+            "pages": [
+              "docs/developers/subgraphs"
+            ]
+          },
+          {
+            "group": "Tutorials",
+            "pages": [
+              "docs/developers/tutorials/tutorials",
+              "docs/developers/tutorials/send-your-first-transaction",
+              "docs/developers/tutorials/send-your-first-gasless-transaction",
+              {
+                "group": "APIs",
+                "pages": [
+                  "docs/developers/tutorials/apis/README",
+                  "docs/developers/tutorials/apis/api-get-address-balance",
+                  "docs/developers/tutorials/apis/api-get-nft-balance",
+                  "docs/developers/tutorials/apis/api-get-price-changes-interval",
+                  "docs/developers/tutorials/apis/api-trade-quotes"
+                ]
+              },
+              {
+                "group": "Web SDK",
+                "pages": [
+                  "docs/developers/tutorials/web-sdk/README",
+                  "docs/developers/tutorials/web-sdk/get-token-info",
+                  "docs/developers/tutorials/web-sdk/get-scw-token-balance",
+                  "docs/developers/tutorials/web-sdk/swap-tokens",
+                  "docs/developers/tutorials/web-sdk/mint-erc721-aa-part2",
+                  "docs/developers/tutorials/web-sdk/web-sdk-demo-guide"
+                ]
+              },
+              {
+                "group": "Mobile SDK",
+                "pages": [
+                  "docs/developers/tutorials/mobile-sdk/README",
+                  "docs/developers/tutorials/mobile-sdk/mobile-app-guide",
+                  "docs/developers/tutorials/mobile-sdk/mobile-guide-transfers",
+                  "docs/developers/tutorials/mobile-sdk/mobile-swap-tokens-guide"
+                ]
+              },
+              {
+                "group": "Validators",
+                "pages": [
+                  "docs/developers/tutorials/validators/staking-tutorials",
+                  "docs/developers/tutorials/validators/getting-started-as-a-validator-on-fuse-mainnet",
+                  "docs/developers/tutorials/validators/getting-started-as-a-validator-on-spark-testnet",
+                  "docs/developers/tutorials/validators/run-a-node",
+                  "docs/developers/tutorials/validators/upgrade-guide",
+                  "docs/developers/tutorials/validators/How-to-update-Validator-Metadata",
+                  "docs/developers/tutorials/validators/How-to-Unstake-FUSE-Tokens-from-an-Offline-Validator",
+                  "docs/developers/tutorials/validators/how-to-unjail-your-validator-node",
+                  "docs/developers/tutorials/validators/why-is-my-validator-node-jailed"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "FuseBox APIs",
+            "pages": [
+              "docs/developers/fusebox/apis/apis"
+            ]
+          },
+          {
+            "group": "Notification API",
+            "pages": [
+              "docs/developers/fusebox/apis/notification-api/notifications-api.info",
+              "docs/developers/fusebox/apis/notification-api/create-a-webhook.api",
+              "docs/developers/fusebox/apis/notification-api/update-a-webhook.api",
+              "docs/developers/fusebox/apis/notification-api/delete-a-webhook.api",
+              "docs/developers/fusebox/apis/notification-api/get-a-webhook-by-id.api",
+              "docs/developers/fusebox/apis/notification-api/get-webhooks-for-a-project.api",
+              "docs/developers/fusebox/apis/notification-api/add-addresses-to-a-webhook.api",
+              "docs/developers/fusebox/apis/notification-api/delete-addresses-from-a-webhook.api",
+              "docs/developers/fusebox/apis/notification-api/get-addresses-for-a-webhook.api"
+            ]
+          },
+          {
+            "group": "Smart Wallets API",
+            "pages": [
+              "docs/developers/fusebox/apis/smart-wallet-api/smart-wallets-api.info",
+              "docs/developers/fusebox/apis/smart-wallet-api/authenticate-user.api",
+              "docs/developers/fusebox/apis/smart-wallet-api/get-wallet-actions.api"
+            ]
+          },
+          {
+            "group": "Balances API",
+            "pages": [
+              "docs/developers/fusebox/apis/balances-api/balances-api.info",
+              "docs/developers/fusebox/apis/balances-api/get-fungible-erc-20-token-balances.api",
+              "docs/developers/fusebox/apis/balances-api/get-non-fungible-nft-token-balances.api"
+            ]
+          },
+          {
+            "group": "Trade API",
+            "pages": [
+              "docs/developers/fusebox/apis/trade-api/trade-api-v-1-v-2.info",
+              "docs/developers/fusebox/apis/trade-api/get-quote.api",
+              "docs/developers/fusebox/apis/trade-api/get-indicative-price.api",
+              "docs/developers/fusebox/apis/trade-api/get-liquidity-sources.api",
+              "docs/developers/fusebox/apis/trade-api/get-latest-price-for-a-token.api",
+              "docs/developers/fusebox/apis/trade-api/get-historical-statistics-of-a-token.api",
+              "docs/developers/fusebox/apis/trade-api/get-price-change-for-token-over-an-interval.api",
+              "docs/developers/fusebox/apis/trade-api/get-price-change-for-token-over-last-24-hours.api",
+              "docs/developers/fusebox/apis/trade-api/get-price-change-for-token-over-time-duration.api"
+            ]
+          },
+          {
+            "group": "Explorer API",
+            "pages": [
+              "docs/developers/fusebox/apis/explorer-api/explorer-api.info",
+              "docs/developers/fusebox/apis/explorer-api/eth-block-number.api",
+              "docs/developers/fusebox/apis/explorer-api/eth-get-balance.api",
+              "docs/developers/fusebox/apis/explorer-api/eth-price.api",
+              "docs/developers/fusebox/apis/explorer-api/eth-supply.api",
+              "docs/developers/fusebox/apis/explorer-api/eth-supply-exchange.api",
+              "docs/developers/fusebox/apis/explorer-api/coin-price.api",
+              "docs/developers/fusebox/apis/explorer-api/coin-supply.api",
+              "docs/developers/fusebox/apis/explorer-api/total-fees.api",
+              "docs/developers/fusebox/apis/explorer-api/token-supply.api",
+              "docs/developers/fusebox/apis/explorer-api/bridged-token-list.api",
+              "docs/developers/fusebox/apis/explorer-api/list-accounts.api",
+              "docs/developers/fusebox/apis/explorer-api/list-contracts.api",
+              "docs/developers/fusebox/apis/explorer-api/get-balance.api",
+              "docs/developers/fusebox/apis/explorer-api/get-balance-multi.api",
+              "docs/developers/fusebox/apis/explorer-api/get-token.api",
+              "docs/developers/fusebox/apis/explorer-api/get-token-balance.api",
+              "docs/developers/fusebox/apis/explorer-api/get-token-holders.api",
+              "docs/developers/fusebox/apis/explorer-api/get-token-list.api",
+              "docs/developers/fusebox/apis/explorer-api/get-token-tx.api",
+              "docs/developers/fusebox/apis/explorer-api/get-token-nft-tx.api",
+              "docs/developers/fusebox/apis/explorer-api/get-tx-list.api",
+              "docs/developers/fusebox/apis/explorer-api/get-tx-list-internal.api",
+              "docs/developers/fusebox/apis/explorer-api/get-pending-tx-list.api",
+              "docs/developers/fusebox/apis/explorer-api/get-transaction-info.api",
+              "docs/developers/fusebox/apis/explorer-api/get-transaction-receipt-status.api",
+              "docs/developers/fusebox/apis/explorer-api/get-error-status.api",
+              "docs/developers/fusebox/apis/explorer-api/get-logs.api",
+              "docs/developers/fusebox/apis/explorer-api/get-mined-blocks.api",
+              "docs/developers/fusebox/apis/explorer-api/get-block-reward.api",
+              "docs/developers/fusebox/apis/explorer-api/get-block-countdown.api",
+              "docs/developers/fusebox/apis/explorer-api/get-block-no-by-time.api",
+              "docs/developers/fusebox/apis/explorer-api/get-contract-creation.api",
+              "docs/developers/fusebox/apis/explorer-api/get-source-code.api",
+              "docs/developers/fusebox/apis/explorer-api/get-abi.api",
+              "docs/developers/fusebox/apis/explorer-api/verify-source-code.api",
+              "docs/developers/fusebox/apis/explorer-api/verify-contract.api",
+              "docs/developers/fusebox/apis/explorer-api/check-verify-status.api",
+              "docs/developers/fusebox/apis/explorer-api/verify-proxy-contract.api",
+              "docs/developers/fusebox/apis/explorer-api/check-proxy-verification.api",
+              "docs/developers/fusebox/apis/explorer-api/verify-via-sourcify.api",
+              "docs/developers/fusebox/apis/explorer-api/verify-vyper-contract.api"
+            ]
+          },
+          {
+            "group": "GraphQL API",
+            "pages": [
+              "docs/developers/fusebox/apis/graphql-api/graphql-api.info",
+              "docs/developers/fusebox/apis/graphql-api/get-user-ops-by-wallet-address.api"
             ]
           }
         ]
@@ -83,59 +316,110 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Console",
+          "href": "https://console.fuse.io",
+          "icon": "gauge"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Explorer",
+          "href": "https://explorer.fuse.io",
+          "icon": "magnifying-glass"
+        },
+        {
+          "anchor": "Status",
+          "href": "https://status.fuse.io",
+          "icon": "signal"
         }
       ]
     }
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "GitHub",
+        "href": "https://github.com/fuseio"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Open Console",
+      "href": "https://console.fuse.io"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
-  },
-  "redirects": [
-    {
-      "source": "/fuse-ai/fuse-mcp",
-      "destination": "fuse-ai/introduction",
-      "permanent": true
-    }
-  ]
+      "x": "https://x.com/fuse_network",
+      "github": "https://github.com/fuseio",
+      "linkedin": "https://www.linkedin.com/company/fuse-network"
+    },
+    "links": [
+      {
+        "header": "Getting Started",
+        "items": [
+          {
+            "label": "Fuse Network",
+            "href": "https://www.fuse.io/network"
+          },
+          {
+            "label": "Mobile Stack",
+            "href": "https://www.fuse.io/mobile"
+          },
+          {
+            "label": "Voltage Finance",
+            "href": "https://voltage.finance/"
+          }
+        ]
+      },
+      {
+        "header": "Under the Hood",
+        "items": [
+          {
+            "label": "Explorer",
+            "href": "https://explorer.fuse.io/"
+          },
+          {
+            "label": "Bridge",
+            "href": "https://console.fuse.io/bridge"
+          },
+          {
+            "label": "Staking",
+            "href": "https://console.fuse.io/staking"
+          },
+          {
+            "label": "Governance",
+            "href": "https://forum.fuse.io/"
+          },
+          {
+            "label": "Service Status",
+            "href": "https://status.fuse.io/"
+          }
+        ]
+      },
+      {
+        "header": "General",
+        "items": [
+          {
+            "label": "Brand Kit",
+            "href": "https://www.fuse.io/brand-kit"
+          },
+          {
+            "label": "Jobs",
+            "href": "https://fuse.freshteam.com/jobs"
+          }
+        ]
+      }
+    ]
+  }
 }
