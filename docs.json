@@ -8,10 +8,10 @@
     "light": "#22C55E",
     "dark": "#15803D"
   },
-  "favicon": "/static/img/favicon.ico",
+  "favicon": "/img/favicon.ico",
   "logo": {
-    "light": "/static/img/fuse-logo.svg",
-    "dark": "/static/img/fuse-logo.svg",
+    "light": "/img/fuse-logo.svg",
+    "dark": "/img/fuse-logo-light.svg",
     "href": "https://docs.fuse.io"
   },
   "navigation": {
@@ -207,108 +207,38 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "FuseBox APIs",
+            "group": "Overview",
             "pages": [
               "docs/developers/fusebox/apis/apis"
             ]
           },
           {
             "group": "Notification API",
-            "pages": [
-              "docs/developers/fusebox/apis/notification-api/notifications-api.info",
-              "docs/developers/fusebox/apis/notification-api/create-a-webhook.api",
-              "docs/developers/fusebox/apis/notification-api/update-a-webhook.api",
-              "docs/developers/fusebox/apis/notification-api/delete-a-webhook.api",
-              "docs/developers/fusebox/apis/notification-api/get-a-webhook-by-id.api",
-              "docs/developers/fusebox/apis/notification-api/get-webhooks-for-a-project.api",
-              "docs/developers/fusebox/apis/notification-api/add-addresses-to-a-webhook.api",
-              "docs/developers/fusebox/apis/notification-api/delete-addresses-from-a-webhook.api",
-              "docs/developers/fusebox/apis/notification-api/get-addresses-for-a-webhook.api"
-            ]
+            "openapi": "api-references/fuse-notification-api.yaml"
           },
           {
             "group": "Smart Wallets API",
-            "pages": [
-              "docs/developers/fusebox/apis/smart-wallet-api/smart-wallets-api.info",
-              "docs/developers/fusebox/apis/smart-wallet-api/authenticate-user.api",
-              "docs/developers/fusebox/apis/smart-wallet-api/get-wallet-actions.api"
-            ]
+            "openapi": "api-references/fuse-smart-wallets-api.yaml"
           },
           {
             "group": "Balances API",
-            "pages": [
-              "docs/developers/fusebox/apis/balances-api/balances-api.info",
-              "docs/developers/fusebox/apis/balances-api/get-fungible-erc-20-token-balances.api",
-              "docs/developers/fusebox/apis/balances-api/get-non-fungible-nft-token-balances.api"
-            ]
+            "openapi": "api-references/balances-api.yaml"
           },
           {
             "group": "Trade API",
-            "pages": [
-              "docs/developers/fusebox/apis/trade-api/trade-api-v-1-v-2.info",
-              "docs/developers/fusebox/apis/trade-api/get-quote.api",
-              "docs/developers/fusebox/apis/trade-api/get-indicative-price.api",
-              "docs/developers/fusebox/apis/trade-api/get-liquidity-sources.api",
-              "docs/developers/fusebox/apis/trade-api/get-latest-price-for-a-token.api",
-              "docs/developers/fusebox/apis/trade-api/get-historical-statistics-of-a-token.api",
-              "docs/developers/fusebox/apis/trade-api/get-price-change-for-token-over-an-interval.api",
-              "docs/developers/fusebox/apis/trade-api/get-price-change-for-token-over-last-24-hours.api",
-              "docs/developers/fusebox/apis/trade-api/get-price-change-for-token-over-time-duration.api"
-            ]
+            "openapi": "api-references/trade-api-merged.yaml"
           },
           {
             "group": "Explorer API",
-            "pages": [
-              "docs/developers/fusebox/apis/explorer-api/explorer-api.info",
-              "docs/developers/fusebox/apis/explorer-api/eth-block-number.api",
-              "docs/developers/fusebox/apis/explorer-api/eth-get-balance.api",
-              "docs/developers/fusebox/apis/explorer-api/eth-price.api",
-              "docs/developers/fusebox/apis/explorer-api/eth-supply.api",
-              "docs/developers/fusebox/apis/explorer-api/eth-supply-exchange.api",
-              "docs/developers/fusebox/apis/explorer-api/coin-price.api",
-              "docs/developers/fusebox/apis/explorer-api/coin-supply.api",
-              "docs/developers/fusebox/apis/explorer-api/total-fees.api",
-              "docs/developers/fusebox/apis/explorer-api/token-supply.api",
-              "docs/developers/fusebox/apis/explorer-api/bridged-token-list.api",
-              "docs/developers/fusebox/apis/explorer-api/list-accounts.api",
-              "docs/developers/fusebox/apis/explorer-api/list-contracts.api",
-              "docs/developers/fusebox/apis/explorer-api/get-balance.api",
-              "docs/developers/fusebox/apis/explorer-api/get-balance-multi.api",
-              "docs/developers/fusebox/apis/explorer-api/get-token.api",
-              "docs/developers/fusebox/apis/explorer-api/get-token-balance.api",
-              "docs/developers/fusebox/apis/explorer-api/get-token-holders.api",
-              "docs/developers/fusebox/apis/explorer-api/get-token-list.api",
-              "docs/developers/fusebox/apis/explorer-api/get-token-tx.api",
-              "docs/developers/fusebox/apis/explorer-api/get-token-nft-tx.api",
-              "docs/developers/fusebox/apis/explorer-api/get-tx-list.api",
-              "docs/developers/fusebox/apis/explorer-api/get-tx-list-internal.api",
-              "docs/developers/fusebox/apis/explorer-api/get-pending-tx-list.api",
-              "docs/developers/fusebox/apis/explorer-api/get-transaction-info.api",
-              "docs/developers/fusebox/apis/explorer-api/get-transaction-receipt-status.api",
-              "docs/developers/fusebox/apis/explorer-api/get-error-status.api",
-              "docs/developers/fusebox/apis/explorer-api/get-logs.api",
-              "docs/developers/fusebox/apis/explorer-api/get-mined-blocks.api",
-              "docs/developers/fusebox/apis/explorer-api/get-block-reward.api",
-              "docs/developers/fusebox/apis/explorer-api/get-block-countdown.api",
-              "docs/developers/fusebox/apis/explorer-api/get-block-no-by-time.api",
-              "docs/developers/fusebox/apis/explorer-api/get-contract-creation.api",
-              "docs/developers/fusebox/apis/explorer-api/get-source-code.api",
-              "docs/developers/fusebox/apis/explorer-api/get-abi.api",
-              "docs/developers/fusebox/apis/explorer-api/verify-source-code.api",
-              "docs/developers/fusebox/apis/explorer-api/verify-contract.api",
-              "docs/developers/fusebox/apis/explorer-api/check-verify-status.api",
-              "docs/developers/fusebox/apis/explorer-api/verify-proxy-contract.api",
-              "docs/developers/fusebox/apis/explorer-api/check-proxy-verification.api",
-              "docs/developers/fusebox/apis/explorer-api/verify-via-sourcify.api",
-              "docs/developers/fusebox/apis/explorer-api/verify-vyper-contract.api"
-            ]
+            "openapi": "api-references/explorer-api.yaml"
+          },
+          {
+            "group": "Staking API",
+            "openapi": "api-references/staking-api.yaml"
           },
           {
             "group": "GraphQL API",
-            "pages": [
-              "docs/developers/fusebox/apis/graphql-api/graphql-api.info",
-              "docs/developers/fusebox/apis/graphql-api/get-user-ops-by-wallet-address.api"
-            ]
+            "openapi": "api-references/graphql-api.yaml"
           }
         ]
       }
