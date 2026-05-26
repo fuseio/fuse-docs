@@ -1,0 +1,122 @@
+# **Fuse x402 - Agentic Payments for Fuse APIs**
+
+x402 is an emerging payment protocol for AI agents - it lets software agents make micropayments to access APIs and data services without accounts, API keys, or manual billing. Think of it as a paywall that any AI can cross autonomously, paying per request in real time.
+
+Fuse Network has integrated x402 to expose blockchain data and business infrastructure as paid, agent-accessible endpoints. Any AI agent - Claude, ChatGPT, or a custom autonomous system - can query Fuse network stats, wallet data, DeFi opportunities, and deploy or manage loyalty programs by simply calling the API and settling payment in USDC on Base. No signup, no subscription, no API key rotation. The agent pays, gets the data, and moves on.
+
+This is what agentic commerce looks like at the infrastructure layer: Fuse APIs become monetisable services that AI agents can discover and consume on demand, while developers and businesses using those agents get frictionless access to Fuse's full stack.
+
+---
+
+## **How It Works**
+
+Every Fuse x402 endpoint carries machine-readable pricing metadata. When an AI agent calls an endpoint, it receives a 402 Payment Required response containing payment instructions - the amount, the settlement currency (USDC on Base), and the merchant address. The agent then submits the payment on-chain and retries the request with a payment proof header. The server verifies the proof and returns the result.
+
+The entire flow is automated. The agent handles discovery, payment construction, and verification without any human intervention.
+
+**Settlement details:**
+
+- Network: Base mainnet (eip155:8453)
+- Currency: USDC
+- Merchant address: 0x198Ac74EFAeECE818Fb06C89bfded7C33d97C6F9
+- No accounts or API keys required
+
+---
+
+## **Paid Endpoints**
+
+| **Method** | **Endpoint** | **Description** | **Price** |
+| :-- | :-- | :-- | :-- |
+| GET | /api/fuse/stats | Real-time Fuse network statistics | \$0.01 |
+| GET | /api/fuse/wallet/:address | Wallet balance, transaction history, and DeFi positions | \$0.05 |
+| GET | /api/fuse/defi/opportunities | Business DeFi yield opportunities on Fuse | \$0.10 |
+| POST | /api/fuse/loyalty/create | Deploy a loyalty or payment token | \$5.00 |
+| POST | /api/fuse/loyalty/mint | Mint loyalty tokens to a recipient address | \$0.50 |
+| GET | /api/fuse/loyalty/balance/:token/:address | Check loyalty token balance for an address | \$0.02 |
+
+---
+
+## **Agent Discovery**
+
+Agents can auto-discover all available endpoints and their pricing without any manual configuration. Two discovery methods are supported:
+
+**OpenAPI specification**
+
+[https://fuse402.vercel.app/openapi.json](https://fuse402.vercel.app/openapi.json)
+
+Standard OpenAPI 3.1.0 spec listing all endpoints, parameters, and response schemas.
+
+**x402 well-known discovery**
+
+[https://fuse402.vercel.app/.well-known/x402](https://fuse402.vercel.app/.well-known/x402)
+
+x402-native discovery endpoint. Agents that support the x402 protocol will automatically scrape this, learn what each endpoint does, how much it costs, and how to pay - no integration work required on the developer's side.
+
+An AI agent pointed at [https://fuse402.vercel.app](https://fuse402.vercel.app) will be able to discover and use all endpoints automatically. You can instruct your agent in plain language: _"Get me the current stats for the Fuse blockchain"_ - it will find the right endpoint, pay for it, and return the result.
+
+---
+
+## **Using Fuse x402 with an AI Agent**
+
+### **Option 1 - Prompt your agent directly**
+
+If your agent supports x402 payments and has access to a funded wallet (USDC on Base), simply tell it what you need:
+
+- _"Get the current network statistics for Fuse blockchain"_
+- _"What are the DeFi yield opportunities available on Fuse right now?"_
+- _"Check the wallet balance and DeFi positions for address 0x..."_
+- _"Deploy a loyalty token for my business"_
+
+The agent handles endpoint discovery, payment, and result retrieval automatically.
+
+### **Option 2 - Direct API call with x402 payment**
+
+For developers integrating x402 into their own agent pipelines, the standard x402 flow applies:
+
+1. Make the initial request to the endpoint
+2. Receive a 402 Payment Required response with payment details
+3. Submit USDC payment on Base to the merchant address
+4. Retry the request with the X-PAYMENT header containing your payment proof
+5. Receive the response
+
+Refer to the[ <u>x402 protocol documentation</u>](https://x402.org/) and the[ <u>OpenAPI spec</u>](https://fuse402.vercel.app/openapi.json) for full integration details.
+
+---
+
+## **Use Cases**
+
+**Real-time blockchain monitoring** Agents can poll /api/fuse/stats to monitor network health, track block times, or trigger alerts - paying only for the data they actually consume, with no standing subscription.
+
+**Wallet intelligence for AI applications** Retrieve enriched wallet data including balances, transaction history, and active DeFi positions for any address. Useful for portfolio agents, financial reporting tools, or any AI that needs to reason about on-chain activity.
+
+**AI-driven loyalty programs** Deploy and manage loyalty tokens entirely through agent interactions. An agent can create a loyalty program, mint tokens to users, and check balances - all programmatically, at per-transaction cost.
+
+**DeFi opportunity discovery** Agents managing treasuries or business funds can query yield opportunities on Fuse and act on them without requiring a human in the loop.
+
+---
+
+## **Wallet Requirements**
+
+To use Fuse x402 endpoints, the AI agent needs access to a wallet funded with USDC on Base mainnet. There are two ways to provide this:
+
+**EOA wallet (direct):** Provide your wallet's private key directly to the agent. Note that some AI platforms (including Claude) may decline to handle raw private keys for security reasons.
+
+**Solid Agent Wallet (recommended):** Use the Solid Agent Wallet to generate an API key that the agent can use to make x402 payments on your behalf - without exposing your private key. Your underlying funds remain in your Solid wallet and continue earning yield on idle USDC while in use. See the[ <u>Solid Agent Wallet guide</u>](https://claude.ai/chat/solid-agent-wallet.md) for setup instructions.
+
+---
+
+## **Discovery & Listings**
+
+Fuse x402 is listed on[ <u>x402scan</u>](https://www.x402scan.com/server/778737b1-f341-447f-b823-bf06c7d0dab5), a public registry of x402-compatible APIs. Agents that reference x402scan can discover Fuse endpoints automatically alongside other x402 providers.
+
+**Note:** The current Fuse x402 deployment is a working prototype hosted at [fuse402.vercel.app](http://fuse402.vercel.app). Some endpoints currently return representative data while full production infrastructure is being finalised. The API surface and payment mechanics are stable and ready for integration.
+
+---
+
+## **Resources**
+
+\
+
+- [<u>Fuse x402 - Discovery Endpoint</u>](https://ai.fuse.io)
+- [<u>Fuse x402 on x402scan</u>](https://www.x402scan.com/server/778737b1-f341-447f-b823-bf06c7d0dab5)
+- [<u>x402 Protocol Documentation</u>](https://x402.org/)
