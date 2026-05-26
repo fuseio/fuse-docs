@@ -45,6 +45,12 @@
             ]
           },
           {
+            "group": "Fuse AI",
+            "pages": [
+              "docs/basics/fuse-ai/fuse-x402-agentic-payments-for-fuse-apis"
+            ]
+          },
+          {
             "group": "Ecosystem",
             "pages": [
               "docs/basics/ecosystem/ecosystem",
@@ -63,9 +69,7 @@
           },
           {
             "group": "Businesses",
-            "pages": [
-              "docs/basics/businesses/businesses"
-            ]
+            "pages": ["docs/basics/businesses/businesses"]
           },
           {
             "group": "Support & FAQ",
@@ -139,15 +143,11 @@
           },
           {
             "group": "Charge",
-            "pages": [
-              "docs/developers/charge/charge"
-            ]
+            "pages": ["docs/developers/charge/charge"]
           },
           {
             "group": "Subgraphs",
-            "pages": [
-              "docs/developers/subgraphs"
-            ]
+            "pages": ["docs/developers/subgraphs"]
           },
           {
             "group": "Tutorials",
@@ -208,9 +208,7 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": [
-              "docs/developers/fusebox/apis/apis"
-            ]
+            "pages": ["docs/developers/fusebox/apis/apis"]
           },
           {
             "group": "Notification API",
