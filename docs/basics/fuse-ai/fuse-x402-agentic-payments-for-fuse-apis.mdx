@@ -1,3 +1,7 @@
+---
+title: "fuse-x402-agentic-payments-for-fuse-apis"
+---
+
 # **Fuse x402 - Agentic Payments for Fuse APIs**
 
 x402 is an emerging payment protocol for AI agents - it lets software agents make micropayments to access APIs and data services without accounts, API keys, or manual billing. Think of it as a paywall that any AI can cross autonomously, paying per request in real time.
@@ -42,17 +46,17 @@ Agents can auto-discover all available endpoints and their pricing without any m
 
 **OpenAPI specification**
 
-[https://fuse402.vercel.app/openapi.json](https://fuse402.vercel.app/openapi.json)
+[<u>OpenAPI 3.1.0 specification</u>](https://ai.fuse.io/openapi.json)
 
 Standard OpenAPI 3.1.0 spec listing all endpoints, parameters, and response schemas.
 
 **x402 well-known discovery**
 
-[https://fuse402.vercel.app/.well-known/x402](https://fuse402.vercel.app/.well-known/x402)
+[https://ai.fuse.io/.well-known/x402](https://ai.fuse.io/.well-known/x402)
 
 x402-native discovery endpoint. Agents that support the x402 protocol will automatically scrape this, learn what each endpoint does, how much it costs, and how to pay - no integration work required on the developer's side.
 
-An AI agent pointed at [https://fuse402.vercel.app](https://fuse402.vercel.app) will be able to discover and use all endpoints automatically. You can instruct your agent in plain language: _"Get me the current stats for the Fuse blockchain"_ - it will find the right endpoint, pay for it, and return the result.
+An AI agent pointed at [https://ai.fuse.io/](https://ai.fuse.io/) will be able to discover and use all endpoints automatically. You can instruct your agent in plain language: _"Get me the current stats for the Fuse blockchain"_ - it will find the right endpoint, pay for it, and return the result.
 
 ---
 
@@ -79,7 +83,7 @@ For developers integrating x402 into their own agent pipelines, the standard x40
 4. Retry the request with the X-PAYMENT header containing your payment proof
 5. Receive the response
 
-Refer to the[ <u>x402 protocol documentation</u>](https://x402.org/) and the[ <u>OpenAPI spec</u>](https://fuse402.vercel.app/openapi.json) for full integration details.
+Refer to the[x402 protocol documentation](https://x402.org/) and the[ <u>OpenAPI spec</u>](https://fuse402.vercel.app/openapi.json) for full integration details.
 
 ---
 
@@ -107,15 +111,13 @@ To use Fuse x402 endpoints, the AI agent needs access to a wallet funded with US
 
 ## **Discovery & Listings**
 
-Fuse x402 is listed on[ <u>x402scan</u>](https://www.x402scan.com/server/778737b1-f341-447f-b823-bf06c7d0dab5), a public registry of x402-compatible APIs. Agents that reference x402scan can discover Fuse endpoints automatically alongside other x402 providers.
+Fuse x402 is listed on[x402scan](https://www.x402scan.com/server/778737b1-f341-447f-b823-bf06c7d0dab5), a public registry of x402-compatible APIs. Agents that reference x402scan can discover Fuse endpoints automatically alongside other x402 providers.
 
-**Note:** The current Fuse x402 deployment is a working prototype hosted at [fuse402.vercel.app](http://fuse402.vercel.app). Some endpoints currently return representative data while full production infrastructure is being finalised. The API surface and payment mechanics are stable and ready for integration.
+**Note:** The current Fuse x402 deployment is a working prototype hosted at  [https://ai.fuse.io](https://ai.fuse.io). Some endpoints currently return representative data while full production infrastructure is being finalised. The API surface and payment mechanics are stable and ready for integration.
 
 ---
 
 ## **Resources**
-
-\
 
 - [<u>Fuse x402 - Discovery Endpoint</u>](https://ai.fuse.io)
 - [<u>Fuse x402 on x402scan</u>](https://www.x402scan.com/server/778737b1-f341-447f-b823-bf06c7d0dab5)
