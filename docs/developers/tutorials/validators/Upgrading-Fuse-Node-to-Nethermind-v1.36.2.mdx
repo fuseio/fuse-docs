@@ -1,0 +1,111 @@
+# **Upgrading Your Fuse Node to Nethermind v1.36.2**
+
+Fuse nodes are being upgraded from Nethermind v1.29.0 to v1.36.2 — the biggest node upgrade the network has seen in a while. The new version brings meaningfully faster block processing, lower resource usage, built-in monitoring, and smarter disk management. It also brings Fuse in line with the Fusaka Ethereum fork and the broader improvements the Ethereum ecosystem has been building toward.
+
+The upgrade has been running cleanly on[ <u>Spark testnet</u>](https://explorer.fusespark.io/) since rollout, with state sync completing in under two hours. Validators should follow the steps below when rolling out to mainnet.
+
+---
+
+## **What's New**
+
+**Faster block processing** Block processing is significantly quicker across the board. RPC responses are snappier, and the node handles high traffic more efficiently under load. Under the hood, parallelised in-memory pruning no longer blocks the block processing thread, and new payload processing now averages under 20ms end-to-end.
+
+**Built-in monitoring dashboard** Node operators now get a real-time interface to track sync status, logs, and network activity without any additional setup. You can also configure extended monitoring via[ <u>Grafana and Prometheus</u>](https://docs.nethermind.io/monitoring/metrics/grafana-and-prometheus).
+
+**Smarter disk management** New history pruning tools keep storage growth under control at runtime, reducing disk usage by approximately 30%. That makes it cheaper and simpler to run a node long-term.
+
+**Expanded developer tooling** This release includes eth\_simulate for multi-block transaction simulation, and Era1 import/export as groundwork for Ethereum's long-term data management standards (EIP-4444).
+
+**Improved stability** DB corruption now triggers a clean exit instead of a hard crash. Memory regressions have been fixed, and numerous sync and RPC reliability improvements have landed across the release cycle.
+
+\
+
+## **Before You Begin**
+
+**Note:** The upgrade instructions below apply to nodes launched using the official [quickstart.sh](http://quickstart.sh) script. If you set up your node manually, refer to the[ <u>Nethermind documentation</u>](https://docs.nethermind.io/) for equivalent steps.
+
+**System requirements:** Review the minimum[ <u>hardware requirements</u>](https://docs.nethermind.io/validators/#hardware-configurations) and[ <u>required disk speed</u>](https://docs.nethermind.io/get-started/system-requirements/#disk-speed) before proceeding.
+
+**Database resync required:** Starting with Nethermind v1.33.0, the internal database structure changed. Any node running a version prior to v1.33.0 — which includes all nodes currently on Fuse mainnet — must perform a full resync. Thanks to improvements to Nethermind's state sync, this process typically takes **2–6 hours** depending on hardware. To speed it up, you can use the[ <u>DB snapshot</u>](https://claude.ai/chat/1c9bbd69-0303-42bb-a5bf-40a02a7dd98b#optional-use-a-db-snapshot-to-speed-up-sync) instead of syncing from scratch.
+
+---
+
+## **Upgrade Steps**
+
+**_Important:_**_ Please upgrade in a staggered fashion - do not upgrade all nodes at the same time. You can coordinate with other validators in the [<u>Fuse Validators Telegram group</u>](https://t.me/+VBCF_UHqUwYHlf6m) to sequence your upgrades and maintain network stability throughout the rollout._\
+
+### **1. Back up your keystore**
+
+Before making any changes, back up the keystore folder. This contains your node's identity and should be preserved regardless of what happens to the database.
+
+cp -r fusenet/keystore fusenet/keystore\_backup
+
+### **2. Stop the running node**
+
+sudo docker stop fuse
+
+### **3. Remove or move the existing database**
+
+The old database is incompatible with v1.36.2 and must be cleared before resyncing.
+
+**Option A — Delete (faster):**
+
+rm -rf fusenet/database
+
+**Option B — Move aside (if you have disk space and want to keep a backup):**
+
+mv fusenet/database fusenet/database\_backup
+
+### **4. Re-run the quickstart script**
+
+Re-running the script with your original arguments will pull the updated version tags from GitHub and download the new containers from Docker Hub.
+
+wget -O [quickstart.sh](http://quickstart.sh) [https://raw.githubusercontent.com/fuseio/fuse-network/master/nethermind/quickstart.sh](https://raw.githubusercontent.com/fuseio/fuse-network/master/nethermind/quickstart.sh)
+
+chmod 755 [quickstart.sh](http://quickstart.sh)
+
+./[quickstart.sh](http://quickstart.sh) -r \[node\_role\] -n \[network\_name\] -k \[node\_key\]
+
+**Examples:**
+
+# Validator on Fuse mainnet
+
+./[quickstart.sh](http://quickstart.sh) -r validator -n fuse -k my-fuse-validator
+
+# Standard node on Fuse mainnet
+
+./[quickstart.sh](http://quickstart.sh) -r node -n fuse -k my-fuse-node
+
+# Node on Spark testnet
+
+./[quickstart.sh](http://quickstart.sh) -r node -n spark -k my-spark-node
+
+**Tip:** If you already have [quickstart.sh](http://quickstart.sh) on your machine, re-running it with the same arguments is sufficient to pull the latest version — no need to re-download unless you want the freshest copy of the script itself.
+
+### **5. Monitor the sync**
+
+Once the node restarts, confirm it is syncing correctly:
+
+sudo docker logs fuse -f
+
+You should see the node progressing through state sync. Sync typically completes in 2–6 hours. You can also monitor your node on the[ <u>Fuse health dashboard</u>](https://health.fuse.io/) (or[ <u>Spark health dashboard</u>](https://health.fusespark.io/) for testnet).
+
+---
+
+## **Troubleshooting**
+
+**Node not appearing on the health dashboard** Allow a few minutes after startup. If the node still doesn't appear after 10–15 minutes, check the logs for sync errors:
+
+sudo docker logs fuse --tail 100
+
+**Sync appears stuck** State sync can appear slow during the initial peer discovery phase. Wait at least 30 minutes before concluding there's an issue. Check your firewall rules if peers are not connecting.
+
+**DB corruption error on startup** This is expected if the old database was not fully cleared. Confirm fusenet/database is empty or removed, then restart the node.
+
+---
+
+## **Resources**
+
+- [<u>Fuse Network GitHub — Nethermind README</u>](https://github.com/fuseio/fuse-network/blob/master/nethermind/README.md)
+- [<u>Nethermind Documentation</u>](https://docs.nethermind.io/)
+- [<u>Nethermind Monitoring with Grafana & Prometheus</u>](https://docs.nethermind.io/monitoring/metrics/grafana-and-prometheus)
