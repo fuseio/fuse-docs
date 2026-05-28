@@ -47,7 +47,8 @@
           {
             "group": "Fuse AI",
             "pages": [
-              "docs/basics/fuse-ai/fuse-x402-agentic-payments-for-fuse-apis"
+              "docs/basics/fuse-ai/fuse-x402-agentic-payments-for-fuse-apis",
+              "docs/basics/fuse-ai/Fuse MCP Server"
             ]
           },
           {
