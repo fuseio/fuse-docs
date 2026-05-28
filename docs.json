@@ -213,7 +213,7 @@
           },
           {
             "group": "Notification API",
-            "openapi": "/api-references/fuse-notification-api.yaml"
+            "openapi": "///////api-references/fuse-notification-api.yaml"
           },
           {
             "group": "Smart Wallets API",
@@ -237,7 +237,7 @@
           },
           {
             "group": "GraphQL API",
-            "openapi": "/api-references/graphql-api.yaml"
+            "openapi": "//api-references/graphql-api.yaml"
           }
         ]
       }
