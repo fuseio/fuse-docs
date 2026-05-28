@@ -1,0 +1,309 @@
+
+
+# Fuse MCP Server
+
+The Fuse MCP Server connects AI agents and LLM-powered tools directly to Fuse Network through the [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) — an open standard that lets AI assistants call external tools, query live data, and trigger on-chain actions in a structured, permission-scoped way.
+
+Any MCP-compatible AI client — Claude, Cursor, Gemini, or a custom agent — can connect to the Fuse MCP Server and immediately gain access to on-chain data from the Fuse blockchain, the full Fusebox SDK, and Fusebox REST APIs. That means an AI can read wallet balances, token prices, staking positions, and transaction history, and with a self-hosted instance, submit transactions, deploy contracts, and execute ERC-4337 UserOperations — all through natural language, without the developer writing manual integration code.
+
+The server is available as a free hosted endpoint at [https://mcp.fuse.io/mcp](https://mcp.fuse.io/mcp) for read-only use, or self-hosted via Docker or Node when write capabilities are needed.
+
+## Two Ways to Use It
+
+**Hosted endpoint (read-only, free).** Point any MCP-compatible agent at `https://mcp.fuse.io/mcp`. No setup, no API key, no rate limit configuration needed. All 35 read tools are available immediately. Write tools are disabled on the hosted endpoint — they require a server-side private key.
+
+**Self-hosted (reads \+ writes).** Run your own instance via Docker or Node to unlock all 50 tools including EOA transfers, contract deployment, ERC-4337 UserOperations, and gasless transactions via the Fuse paymaster. Required when you need to sign transactions or operate at higher rate limits.
+
+## Architecture
+
+The server exposes three layered backends:
+
+- **viem JSON-RPC** — chain primitives readable from any public Fuse node, plus EOA write operations: send FUSE, ERC-20 transfers, generic contract calls, contract deployment, and EIP-191/EIP-712 signing.
+- **Fusebox Web SDK** — value-added read APIs (token prices, staking, portfolio, UserOp history) and ERC-4337 smart-account writes via UserOperations, with optional gasless execution via the Fuse paymaster.
+- **Fusebox REST APIs** — direct access to Notification, Smart Wallet, Trade, and Explorer endpoints.
+
+## Quick Connect (Hosted Endpoint)
+
+The hosted endpoint speaks Streamable HTTP at `https://mcp.fuse.io/mcp`. Pick your client below.
+
+### Claude Code
+
+```bash
+claude mcp add fuse --transport http https://mcp.fuse.io/mcp
+```
+
+To remove later: `claude mcp remove fuse`
+
+### Cursor
+
+Settings → MCP → Add new server, or edit `~/.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "fuse": {
+      "url": "https://mcp.fuse.io/mcp"
+    }
+  }
+}
+```
+
+### Claude Desktop
+
+Claude Desktop launches MCP servers as local subprocesses, so it connects to the hosted endpoint through the `mcp-remote` bridge.
+
+Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
+
+```json
+{
+  "mcpServers": {
+    "fuse": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.fuse.io/mcp"]
+    }
+  }
+}
+```
+
+Restart Claude Desktop after saving.
+
+### Continue (VS Code / JetBrains)
+
+`~/.continue/config.yaml`:
+
+```yaml
+mcpServers:
+  - name: fuse
+    url: https://mcp.fuse.io/mcp
+```
+
+### Cline / Roo Code
+
+Add via the MCP sidebar → "Add Remote Server", URL `https://mcp.fuse.io/mcp`. Or edit `~/.cline/mcp_settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "fuse": { "url": "https://mcp.fuse.io/mcp", "transport": "streamable-http" }
+  }
+}
+```
+
+### Zed
+
+`~/.config/zed/settings.json`:
+
+```json
+{
+  "context_servers": {
+    "fuse": { "command": { "path": "npx", "args": ["-y", "mcp-remote", "https://mcp.fuse.io/mcp"] } }
+  }
+}
+```
+
+### Any other Streamable HTTP client
+
+- **Endpoint:** `https://mcp.fuse.io/mcp`
+- **Transport:** Streamable HTTP (POST \+ optional SSE upgrade)
+- **Auth:** none (hosted endpoint is read-only)
+
+## Self-Hosting for Writes
+
+The hosted endpoint runs without `FUSE_PRIVATE_KEY` — write tools return an actionable error directing you here. Run your own instance when you need to sign transactions, deploy contracts, or submit ERC-4337 UserOps.
+
+### Docker
+
+```bash
+docker build -t fuse-mcp-server .
+docker run --rm -p 3000:3000 \
+  -e MCP_TRANSPORT=http \
+  -e FUSEBOX_PUBLIC_API_KEY=pk_live_... \
+  -e FUSE_PRIVATE_KEY=0x... \
+  -e FUSE_USE_PAYMASTER=true \
+  fuse-mcp-server
+```
+
+Point your agent at `http://127.0.0.1:3000/mcp` using the same client configs above.
+
+### docker-compose
+
+Create a `.env` file next to `docker-compose.yml`:
+
+```text
+FUSEBOX_PUBLIC_API_KEY=pk_live_...
+FUSEBOX_SECRET_API_KEY=sk_live_...
+FUSE_PRIVATE_KEY=0x...
+FUSE_USE_PAYMASTER=true
+```
+
+Then:
+
+```bash
+docker compose up -d
+```
+
+### Node (stdio mode)
+
+```bash
+npm install
+npm run build
+FUSE_PRIVATE_KEY=0x... node dist/index.js
+```
+
+For Claude Desktop or any client that spawns the server as a local subprocess:
+
+```json
+{
+  "mcpServers": {
+    "fuse": {
+      "command": "node",
+      "args": ["/absolute/path/to/fuse-mcp-server/dist/index.js"],
+      "env": {
+        "FUSEBOX_PUBLIC_API_KEY": "pk_live_...",
+        "FUSE_PRIVATE_KEY": "0x...",
+        "FUSE_USE_PAYMASTER": "true"
+      }
+    }
+  }
+}
+```
+
+## Available Tools (v0.2 — 50 total)
+
+### RPC-Backed Reads
+
+_No API key required._
+
+| Tool | Description |
+| :-- | :-- |
+| `fuse_get_balance` | Native FUSE or ERC-20 balance for any address |
+| `fuse_get_transaction` | Fetch a transaction by hash |
+| `fuse_get_receipt` | Transaction receipt — status, logs, gas used |
+| `fuse_read_contract` | Call any view/pure function. ABI auto-fetched from the Fuse explorer |
+| `fuse_get_token_metadata` | Name, symbol, decimals, and total supply for any ERC-20 |
+| `fuse_get_gas_price` | Current gas price and EIP-1559 fee suggestions |
+| `fuse_resolve_ens` | Resolve an ENS name to an address (requires `ENS_RPC_URL`) |
+| `fuse_get_account_abstraction_info` | ERC-4337 state for a smart account: deployment, EntryPoint nonce, deposit |
+
+### Fusebox SDK Reads
+
+_Requires_ `FUSEBOX_PUBLIC_API_KEY`_. Get yours at [console.fuse.io/build](https://console.fuse.io/build)._
+
+`fuse_list_wallet_tokens`, `fuse_list_wallet_nfts`, `fuse_get_staking_options`, `fuse_get_staked_tokens`, `fuse_get_token_price`, `fuse_get_token_price_change`, `fuse_get_token_price_history`, `fuse_list_supported_tokens`, `fuse_get_trade_quote`, `fuse_get_user_operations`
+
+### Fusebox REST APIs
+
+_Requires_ `FUSEBOX_PUBLIC_API_KEY`_. Notification tools also require_ `FUSEBOX_SECRET_API_KEY`_._
+
+- **Notification (8):** webhook management and address subscription tools
+- **Smart Wallet (2):** `fuse_smart_wallet_authenticate`, `fuse_smart_wallet_get_actions`
+- **Trade (3):** indicative price, liquidity sources, price change over duration
+- **Explorer (1):** `fuse_explorer_query` — a generic dispatcher covering all 40\+ Etherscan-style endpoints
+
+### EOA Writes
+
+_Requires_ `FUSE_PRIVATE_KEY`_. Self-hosted only._
+
+| Tool | Description |
+| :-- | :-- |
+| `fuse_get_signer_address` | Show which EOA the server controls |
+| `fuse_send_native` | Transfer native FUSE |
+| `fuse_send_erc20` | Transfer an ERC-20 (decimals auto-detected) |
+| `fuse_write_contract` | State-mutating contract call (simulates first to surface revert reasons) |
+| `fuse_deploy_contract` | Deploy from bytecode \+ ABI \+ args |
+| `fuse_sign_message` | EIP-191 personal signature — no broadcast |
+| `fuse_sign_typed_data` | EIP-712 structured-data signature — no broadcast |
+
+### Smart-Account Writes (ERC-4337 UserOps)
+
+_Requires_ `FUSE_PRIVATE_KEY `_\+_ `FUSEBOX_PUBLIC_API_KEY`_. Self-hosted only. Set_ `FUSE_USE_PAYMASTER=true `_for gasless execution._
+
+`fuse_smart_get_info`, `fuse_smart_transfer_token`, `fuse_smart_transfer_nft`, `fuse_smart_approve_token`, `fuse_smart_approve_nft`, `fuse_smart_approve_and_call`, `fuse_smart_call_contract`, `fuse_smart_execute_batch`, `fuse_smart_swap_tokens`, `fuse_smart_stake_token`, `fuse_smart_unstake_token`
+
+## Use Cases for Builders
+
+### Query blockchain data in natural language
+
+Any developer, analyst, or product team can connect the MCP Server to their AI client and interrogate on-chain state without writing a single RPC call:
+
+- _"What's the FUSE balance and DeFi positions for address 0x...?"_
+- _"Show me the last 10 UserOperations for this smart account"_
+- _"What are the current staking options and their APRs?"_
+- _"What's the 30-day price history for this token?"_
+
+### Build Fuse-native apps without writing integration code
+
+Because the MCP Server carries the full Fusebox SDK context, an AI agent can go from a natural language prompt to a working implementation in a single pass. Describe your app, and the AI handles scaffolding, contract interaction, and SDK wiring.
+
+Example prompts (self-hosted, write tools enabled):
+
+- _"Create a wallet onboarding flow with account abstraction that airdrops 10 FUSE to each new user on account creation"_
+- _"Deploy a loyalty token for my business and mint 1000 tokens to this address"_
+- _"Scaffold a staking dashboard that shows active positions and lets users unstake with one click"_
+- _"Execute a batch: swap 100 USDC to FUSE and stake the result, gasless via the paymaster"_
+
+### Accelerate Fusebox SDK integration
+
+Teams building with the Fusebox SDK can use the MCP Server as a live reference and code generator. Ask the AI to implement specific SDK flows — account abstraction, swaps, staking, NFT portfolio views — and it will produce correct, Fusebox-idiomatic code because it has the full SDK surface available as callable tools, not just static documentation.
+
+### Launch a loyalty token or branded stablecoin
+
+Loyalty programs and branded payment tokens are some of the most practical things a business can deploy on Fuse — and the MCP Server makes both accessible without writing smart contract code from scratch.
+
+**Loyalty tokens** give businesses a way to reward customers on-chain: deploy a token, mint it to users based on activity, and let them redeem it within your ecosystem. With write tools enabled, the entire lifecycle is manageable through natural language.
+
+Example prompts (self-hosted, write tools enabled):
+
+- _"Deploy a loyalty token called BREW with a supply of 10 million for my coffee brand. Make me the owner."_
+- _"Mint 500 BREW tokens to each of these 20 wallet addresses."_
+- _"Check the BREW balance for address 0x... and tell me if they've hit the 1,000-token redemption threshold."_
+- _"What's the total circulating supply of BREW and how many unique holders does it have?"_
+
+**Branded stablecoins** let businesses issue their own dollar-pegged token — useful for closed-loop payment systems, employee rewards in markets with currency volatility, or building a branded wallet experience on top of Fuse. Because Fuse is EVM-compatible and supports the full ERC-20 standard, a branded stablecoin is a standard smart contract deployment with a custom name, symbol, and mint/burn logic.
+
+Example prompts (self-hosted, write tools enabled):
+
+- _"Deploy a branded stablecoin called ACME Dollars (ACMED) pegged to USDC at 1:1. I want to be able to mint and burn it."_
+- _"Mint 50,000 ACMED and send 1,000 to each of these vendor wallet addresses."_
+- _"Show me all transfers of ACMED in the last 7 days."_
+- _"Scaffold a simple redemption UI where users can swap ACMED back to USDC."_
+
+For both use cases, the MCP Server handles the contract interaction while the AI assistant generates deployment arguments, manages minting schedules, and queries balances — all without the business needing a blockchain developer on staff.
+
+→ See the [Fuse x402 endpoints](https://ai.fuse.io) for per-request loyalty token minting and balance checking, available to AI agents without self-hosting.
+
+## Configuration
+
+| Variable | Default | Purpose |
+| :-- | :-- | :-- |
+| `MCP_TRANSPORT` | `stdio` | `stdio` (local subprocess) or `http` (Streamable HTTP) |
+| `MCP_HTTP_HOST` | `0.0.0.0` | HTTP bind host |
+| `MCP_HTTP_PORT` | `3000` | HTTP listen port |
+| `MCP_HTTP_PATH` | `/mcp` | HTTP route path |
+| `FUSE_NETWORK` | `mainnet` | `mainnet` (chain 122) or `spark` (testnet, chain 123) |
+| `FUSE_RPC_URL` | network default | Override the JSON-RPC endpoint |
+| `FUSE_EXPLORER_URL` | network default | Override the Blockscout explorer base URL |
+| `FUSE_ENTRYPOINT_ADDRESS` | ERC-4337 v0.7 canonical | Override the ERC-4337 EntryPoint address |
+| `ENS_RPC_URL` | unset | Ethereum mainnet RPC for resolving `.eth` names |
+| `FUSEBOX_PUBLIC_API_KEY` | unset | Required for SDK reads, REST APIs, and smart-account tools |
+| `FUSEBOX_SECRET_API_KEY` | unset | Required for Notification API tools |
+| `FUSEBOX_BASE_URL` | SDK default | Override the Fusebox API host (e.g. for staging) |
+| `FUSEBOX_API_ORIGIN` | `https://api.fuse.io` | Override the raw HTTP client's Fusebox API origin |
+| `FUSE_PRIVATE_KEY` | unset | 32-byte hex private key for the signer. Required by all write tools. Read once at startup, never accepted as a tool argument |
+| `FUSE_USE_PAYMASTER` | `false` | When `true`, smart-account UserOps route through the Fuse paymaster (gasless) |
+
+## Security
+
+**Key handling.** Private keys live in the server's environment only. They are never accepted as tool arguments — passing a key through a tool call would expose it in the agent's conversation transcript. The server reads `FUSE_PRIVATE_KEY` once at startup and signs locally.
+
+**Hosted endpoint.** `https://mcp.fuse.io/mcp` has no `FUSE_PRIVATE_KEY` configured. Write tools return a clear error pointing to self-hosting. The Fusebox public key bundled on the hosted endpoint is rate-limited for fair sharing.
+
+**Self-hosted production.** Treat a self-hosted instance as a hot-wallet signer. Run it alongside your application, restrict ingress, fund the EOA with the minimum FUSE you're willing to lose to a prompt-injection mishap, and prefer `FUSE_USE_PAYMASTER=true` so the smart wallet can transact without holding gas.
+
+## Resources
+
+- [Fuse MCP Server — GitHub](https://github.com/fuseio/fuse-mcp-server)
+- [Get a Fusebox API Key](https://console.fuse.io/build)
+- [Fusebox SDK Documentation](https://docs.fuse.io/)
+- [Model Context Protocol — Official Docs](https://modelcontextprotocol.io/)
+- [Fuse Network Explorer](https://explorer.fuse.io/)
