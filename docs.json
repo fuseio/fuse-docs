@@ -214,7 +214,7 @@
           },
           {
             "group": "Notification API",
-            "openapi": "///////api-references/fuse-notification-api.yaml"
+            "openapi": "/////////////////////api-references/fuse-notification-api.yaml"
           },
           {
             "group": "Smart Wallets API",
