@@ -60,11 +60,12 @@ The agent will handle endpoint discovery, payment via your Agent Wallet, and res
 
 For developers integrating programmatically, the x402 payment endpoint is:
 
-curl -X POST [https://accounts.solid.xyz/v1/agents/me/x402-pay](https://accounts.solid.xyz/v1/agents/me/x402-pay) \\
+```text
+curl -X POST https://accounts.solid.xyz/v1/agents/me/x402-pay \
 
-  -H "Authorization: Bearer YOUR\_SOLID\_API\_KEY" \\
-
-  ...
+  -H "Authorization: Bearer YOUR_SOLID_API_KEY" \
+ ...
+```
 
 ---
 
