@@ -48,7 +48,8 @@
             "group": "Fuse AI",
             "pages": [
               "docs/basics/fuse-ai/fuse-x402-agentic-payments-for-fuse-apis",
-              "docs/basics/fuse-ai/Fuse-MCP"
+              "docs/basics/fuse-ai/Fuse-MCP",
+              "docs/basics/fuse-ai/solid-agent-wallet"
             ]
           },
           {
